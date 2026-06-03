@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>On the Interpretation of 2n+1 — Nomu Lab Diary</title>
+<!-- AdSense: ADSENSE_PUBLISHER_ID を設定後ここにコードが入ります -->
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #2d3748; background: #f7fafc; line-height: 1.75;
+}
+a { color: #2b6cb0; }
+a:hover { text-decoration: underline; }
+
+/* Header */
+.site-header {
+  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+  color: white; padding: 28px 0;
+}
+.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
+.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+
+/* Main layout */
+.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
+
+/* Index: article cards */
+.card-grid { display: grid; gap: 16px; }
+.card {
+  background: white; border-radius: 10px;
+  padding: 22px 24px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  transition: box-shadow .15s;
+}
+.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.card h2 { font-size: 1.05rem; margin-bottom: 6px; }
+.card h2 a { text-decoration: none; color: #1a365d; }
+.card h2 a:hover { color: #2b6cb0; }
+.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 10px; }
+.card .excerpt { font-size: 0.88rem; color: #718096; line-height: 1.6; }
+
+/* Post page */
+.post-wrap {
+  background: white; border-radius: 10px;
+  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+.back-link { margin-bottom: 20px; font-size: 0.88rem; }
+.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
+.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
+.post-body { font-size: 0.97rem; line-height: 1.85; }
+.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.post-body p { margin-bottom: 14px; }
+.post-body br { line-height: 2; }
+
+/* Amazon アフィリエイトボックス */
+.affiliate-box {
+  margin-top: 36px; padding: 20px 24px;
+  background: #fffbeb; border: 1px solid #f6e05e;
+  border-radius: 10px;
+}
+.affiliate-box .affiliate-title {
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+}
+.affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.affiliate-box li a {
+  display: inline-block; padding: 6px 14px;
+  background: #ff9900; color: white; border-radius: 6px;
+  text-decoration: none; font-size: 0.88rem; font-weight: 600;
+}
+.affiliate-box li a:hover { background: #e68900; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .post-wrap { padding: 22px 18px; }
+  .site-header h1 { font-size: 1.4rem; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <h1><a href="../index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
+    <p>Bicycle Workshop — English Edition</p>
+  </div>
+</header>
+<div class="page-wrap">
+  <p class="back-link"><a href="../index.html">← All posts</a></p>
+  <article class="post-wrap">
+    <h1>On the Interpretation of 2n+1</h1>
+    <p class="post-meta">July 27, 2024</p>
+    <!-- AdSense 広告ユニット -->
+    <div class="post-body"><div class="entrytext">The other day, regarding the number of positions that can be set on Shimano's electric rear derailleur, I expressed it as 2n+1 with plus/minus n stages plus the initial position.<br/>The 9070 series is n=12 with 25 stages, but<br/>the R9150 series is n=16 with 33 stages...<br/>or rather 32 stages, as I wrote.<br/>This is because Shimano defines it that way.<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/IMG_6976smsn5.jpg" target="_blank"><img alt="IMG_6976smsn5.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/IMG_6976smsn5s.jpg" width="320"/></a><br/>↑Excerpt from the 6770 series manual<br/>15 stages of adjustment inward from the initial position, 15 stages outward,<br/>for a total of 31 stages of adjustment possible.<br/>That's what it says.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/IMG_6977smsn5.jpg" target="_blank"><img alt="IMG_6977smsn5.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/IMG_6977smsn5s.jpg" width="320"/></a><br/>↑Excerpt from the 9070 series manual<br/>12 stages of adjustment inward from the initial position, 12 stages outward,<br/>for a total of 25 stages of adjustment possible.<br/>That's what it says.<br/>Why'd it get fewer than before<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/IMG_6978smsn5.jpg" target="_blank"><img alt="IMG_6978smsn5.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/IMG_6978smsn5s.jpg" width="320"/></a><br/>↑Excerpt from the R9150 series manual<br/>16 stages of adjustment inward from the initial position, 16 stages outward,<br/>for a total of 32 stages of adjustment possible.<br/>That's what it says.<br/>For some reason, the initial position is not being counted as 1 stage.<br/>I've copied the original text verbatim up to this point,<br/>but even though this portion is just a copy-paste with only the numbers changed,<br/>it doesn't match the 2n+1 interpretation, which is strange.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/IMG_6980smsn5.jpg" target="_blank"><img alt="IMG_6980smsn5.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/IMG_6980smsn5s.jpg" width="320"/></a><br/>From the R9250 series manual<br/>18 stages of adjustment inward from the initial position, 18 stages outward,<br/>for a total of 37 stages of adjustment possible.<br/>That's what it says.<br/><br/>In an earlier post I wrote,<br/>"If the number of these stages hasn't changed but<br/>the sprocket count has increased, then<br/>the adjustment range per stage would become coarser."<br/>But to be precise,<br/>"if the sprocket count increased but<br/>the tooth spacing remained unchanged" then<br/>this wouldn't necessarily apply.<br/>For road bikes, there haven't been<br/>examples of that since 9-speed onward.<br/>In Shimano's case, 9-speed and 10-speed<br/>were somehow crammed onto the original 8-speed freehub body,<br/>and with 11-speed they extended the freehub spline,<br/>but 12-speed is crammed in there somehow too.<br/><br/>Hypothetically, if 13-speed came out in the future, <s>there's no way Shimano would have<br/>the flexible judgment to hop on SRAM's XDR</s><br/>they might switch road to micro-spline,<br/>and looking at past trends, if that happened,<br/>the current Shimano wheels with 12-speed-compatible freehub bodies<br/>would likely remain incompatible,<br/>just like the WH-7900 that didn't support 11-speed.<br/>Though when they do that,<br/>they'll probably simultaneously introduce something like "Road Boost"<br/>and change the hub width.<br/>And if Road Boost does come out,<br/>I can already imagine crappy magazines and crappy curation sites saying<br/>"Emergency test ride! The increased rigidity from the new hub width is palpable!"<br/>and it makes me want to puke.<br/>Just because the overall hub width gets wider,<br/>the wheel structure from hub flange to rim<br/>won't stop being a wimpy wheel<br/>（Yo! Thanks for the rebuilds!）<br/>and riding around.<br/><br/>The shift from quick-release to through-axle<br/>is a bigger factor than the change in overall hub width, I think.<br/>Road rear wheels went from 130mm-width quick-release<br/>to 142mm-width through-axle,<br/>but the flange width and dish amount of the rear hubs in these two standards<br/>aren't that different, so<br/>if you were to compare a "130mm-width through-axle"<br/>with a "142mm-width quick-release,"<br/>the former would probably have less wobble and higher rigidity.<br/>Less wobble can be observed by<br/>the likelihood of the phenomenon where<br/>when you remove the rear wheel and immediately reattach it,<br/>the disc brake, which wasn't rubbing on the rotor before removal,<br/>now rubs against it.<br/>This is especially noticeable in cyclocross,<br/>where disc brakes began to spread<br/>before the through-axle conversion.<br/>Though riders who've been racing MTBs since way back<br/>probably experienced this even earlier.<br/>There's a product from DT where they take a DT rear hub,<br/>convert both ends to their proprietary 10mm through-axle,<br/>and instead of fixing it with the hub shaft under the frame's dropout,<br/>they fix it with the 10mm through-axle,<br/>essentially making a pseudo-through-axle quick-release hub.<br/>Since the frame side is a cutout rather than a through hole,<br/>I don't think you'd get the same satisfying click as a true through-axle,<br/>but it's an interesting idea.<br/><br/><span style="color:#FF0000">Addendum: I wrote "I don't think you'd get the same satisfying click as a true through-axle,"<br/>but according to someone who's actually used it,<br/>the feel is "rather equivalent to a through-axle,"<br/>and the disc brake engagement is noticeably different, they said.<br/>Thanks always for the comments.</span><br/><br/>Oops, I got off track.<br/>Regarding examples where the sprocket count (speed) increased but<br/>tooth spacing remained the same.<br/>Shimano's CUES (Cues) comes in<br/>four grades: U8000 series 11-speed, U6000 series 11-speed,<br/>U6000 series 10-speed, and U4000 series 9-speed,<br/>with unified tooth spacing across 9-, 10-, and 11-speed<br/>and using only 11-speed chains, so<br/>if CUES had an electric groupset,<br/>even if you increased the speed count,<br/>the coarseness per adjustment stage would remain unchanged.<br/><br/>For Shimano's electric groupset,<br/>the rear derailleur adjustment reference positioning is,<br/>across all 10-12 speeds, to set the low gear as 1,<br/>shift from there four gears toward the top to gear 5,<br/>enter adjustment mode, and adjust down toward the low side<br/>until you feel the chain plate rubbing against gear 4,<br/>then adjust toward the top side a few times.<br/>The number of times, though, is:<br/>6770 10-speed (n=15) 4 times<br/>9070 11-speed (n=12) 4 times<br/>R9150 11-speed (n=16) 4 times<br/>R9250 12-speed (n=18) 5 times<br/>The lateral movement per stage for each speed count<br/>may or may not be the same,<br/>but the fact that 9070 and R9150 are both 11-speed and both require 4 times means<br/>these two n values have the same movement amount (※), and<br/>the R9150 has a working range that's plus/minus 4 stages<br/>wider.<br/>In that case, if 9070 compared to 6770 is 10-speed→11-speed yet<br/>2n+1 drops from 31→25 stages,<br/>meaning you'd call it "coarser adjustment per stage,"<br/>then R9150 would also be coarser compared to 6770.<br/><br/>※It might not be the same, just that the adjustment reference of 4 times<br/>stays constant<br/><br/>Also, R9250 becoming 12-speed with<br/>narrower tooth spacing yet<br/>requiring 5 times for adjustment reference suggests<br/>the adjustment range per stage is finer,<br/>which would mean the full adjustment width<br/>of R9250's 37 stages might actually be<br/>slightly narrower than R9150's 33 stages (←my interpretation; Shimano says 32 stages).<br/>Hmm, dunno.<br/>Well, as long as you can adjust the shifting, no problem.
+</div></div>
+    <div class="affiliate-box">
+      <p class="affiliate-title">Related Products on Amazon</p>
+      <ul>
+        <li><a href="https://www.amazon.co.jp/s?tag=nomunomu05b-22&k=ロードバイク+ホイール+完組" target="_blank" rel="noopener sponsored">🛒 Road Bike Wheelsets</a></li>
+        <li><a href="https://www.amazon.co.jp/s?tag=nomunomu05b-22&k=ロードバイク+ドライブトレイン+チェーン" target="_blank" rel="noopener sponsored">🛒 Road Bike Drivetrain</a></li>
+        <li><a href="https://www.amazon.co.jp/s?tag=nomunomu05b-22&k=ロードバイク+ブレーキ" target="_blank" rel="noopener sponsored">🛒 Brakes & Levers</a></li>
+      </ul>
+      <p class="affiliate-note">* Amazon affiliate links — prices may vary</p>
+    </div>
+  </article>
+</div>
+</body>
+</html>

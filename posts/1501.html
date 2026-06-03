@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Wired a BMC SL01 for Internal Cable Routing — Nomu Lab Diary</title>
+<!-- AdSense: ADSENSE_PUBLISHER_ID を設定後ここにコードが入ります -->
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #2d3748; background: #f7fafc; line-height: 1.75;
+}
+a { color: #2b6cb0; }
+a:hover { text-decoration: underline; }
+
+/* Header */
+.site-header {
+  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+  color: white; padding: 28px 0;
+}
+.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
+.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+
+/* Main layout */
+.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
+
+/* Index: article cards */
+.card-grid { display: grid; gap: 16px; }
+.card {
+  background: white; border-radius: 10px;
+  padding: 22px 24px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  transition: box-shadow .15s;
+}
+.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.card h2 { font-size: 1.05rem; margin-bottom: 6px; }
+.card h2 a { text-decoration: none; color: #1a365d; }
+.card h2 a:hover { color: #2b6cb0; }
+.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 10px; }
+.card .excerpt { font-size: 0.88rem; color: #718096; line-height: 1.6; }
+
+/* Post page */
+.post-wrap {
+  background: white; border-radius: 10px;
+  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+.back-link { margin-bottom: 20px; font-size: 0.88rem; }
+.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
+.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
+.post-body { font-size: 0.97rem; line-height: 1.85; }
+.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.post-body p { margin-bottom: 14px; }
+.post-body br { line-height: 2; }
+
+/* Amazon アフィリエイトボックス */
+.affiliate-box {
+  margin-top: 36px; padding: 20px 24px;
+  background: #fffbeb; border: 1px solid #f6e05e;
+  border-radius: 10px;
+}
+.affiliate-box .affiliate-title {
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+}
+.affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.affiliate-box li a {
+  display: inline-block; padding: 6px 14px;
+  background: #ff9900; color: white; border-radius: 6px;
+  text-decoration: none; font-size: 0.88rem; font-weight: 600;
+}
+.affiliate-box li a:hover { background: #e68900; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .post-wrap { padding: 22px 18px; }
+  .site-header h1 { font-size: 1.4rem; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <h1><a href="../index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
+    <p>Bicycle Workshop — English Edition</p>
+  </div>
+</header>
+<div class="page-wrap">
+  <p class="back-link"><a href="../index.html">← All posts</a></p>
+  <article class="post-wrap">
+    <h1>I Wired a BMC SL01 for Internal Cable Routing</h1>
+    <p class="post-meta">October 28, 2014</p>
+    <!-- AdSense 広告ユニット -->
+    <div class="post-body"><div class="entrytext">The drill is screaming!<br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05325amx3.jpg" target="_blank"><img alt="DSC05325amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05325amx3s.jpg" width="300"/></a><br/>A customer left me a BMC frame (non e-bike compatible) to work on.<br/>They wanted me to do internal cable routing for their electric Ultegra upgrade.<br/>To judge whether it was possible,<br/>I removed the bottom bracket and seatpost to take a look, but it's not gonna happen.<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05404amx3.jpg" target="_blank"><img alt="DSC05404amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05404amx3s.jpg" width="300"/></a><br/>After investigating,<br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05405amx3.jpg" target="_blank"><img alt="DSC05405amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05405amx3s.jpg" width="300"/></a><br/>it turned out the bottom bracket shell was completely sealed.<br/>If the internal routing had been possible, I was ready to have the customer send over the complete groupset,<br/>but instead I had to call and turn them down.<br/>Except I somehow ended up saying "I think I can probably make it work."<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05327amx3.jpg" target="_blank"><img alt="DSC05327amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05327amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05328amx3.jpg" target="_blank"><img alt="DSC05328amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05328amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05330amx3.jpg" target="_blank"><img alt="DSC05330amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05330amx3s.jpg" width="300"/></a><br/>↑It's completely sealed.<br/>If you remove the cable stop bolts, there are M5 threaded holes,<br/>but aside from those, it's a sealed chamber.<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05406amx3.jpg" target="_blank"><img alt="DSC05406amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05406amx3s.jpg" width="300"/></a><br/>Further investigation revealed there's absolutely no passage between the seat tube, down tube, and right chainstay.<br/>That means I'd have to drill holes from the BB shell to each of them.<br/>The numbers in the diagram above show how many cables go through each hole.<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05409amx3.jpg" target="_blank"><img alt="DSC05409amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05409amx3s.jpg" width="300"/></a><br/>Since I need to pass two or more cables through everything except the right chainstay,<br/>I'd need to drill elongated holes at minimum, like in the diagram above.<br/>I can't back out now! Looking at the arrived groupset components, it's too late.<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05407amx3.jpg" target="_blank"><img alt="DSC05407amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05407amx3s.jpg" width="300"/></a><br/>↑This is how it'll end up in the end.<br/>It has an internal battery, which is because I'm the one who said it would probably work.<br/>I'll write about this later,<br/>but if the frame size is small, there's a good chance it won't be possible.<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05345amx3.jpg" target="_blank"><img alt="DSC05345amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05345amx3s.jpg" width="300"/></a><br/>First, I drilled a hole in the right chainstay.<br/>Then I threaded a probe cable through to check how far the hollow goes,<br/>and whether a cable can pass through at all.<br/>The result was OK.<br/>This was my biggest concern.<br/>There's a magnet stuck to the chainstay,<br/>but it's responding to the cable.<br/>When I pull the cable...<br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05346amx3.jpg" target="_blank"><img alt="DSC05346amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05346amx3s.jpg" width="300"/></a><br/>It slides right through smoothly.<br/>(Don't even think about what happens with steel frames)<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05408amx3.jpg" target="_blank"><img alt="DSC05408amx3.jpg" border="0" height="300" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05408amx3s.jpg" width="225"/></a><br/>The customer had left the cable length up to me, so I got standard lengths.<br/>Aside from two 350mm cables from the upper junction to the left and right levers,<br/>I got one each of 1200mm, 800mm, 750mm, and 300mm.<br/>The 1200mm is definitely for connecting the upper and lower junctions,<br/>and the 300mm is definitely for the front derailleur.<br/>The 800mm and 750mm will be assigned based on how things layout.<br/><br/>For the internal routing, I need to snap the cables into the lower junction,<br/>but that only works outside the frame since I can't fit the lower junction through the BB.<br/>So, as usual, I'll do it at the head tube, then drag it into the down tube.<br/>At that point, since the 300mm cable is shorter than the down tube,<br/>I'll attach a guide cable for it.<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05354amx3.jpg" target="_blank"><img alt="DSC05354amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05354amx3s.jpg" width="300"/></a><br/>I threaded it through the down tube.<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05367amx3.jpg" target="_blank"><img alt="DSC05367amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05367amx3s.jpg" width="300"/></a><br/>Then I split it to run through the right chainstay and seat tube.<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05369amx3.jpg" target="_blank"><img alt="DSC05369amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05369amx3s.jpg" width="300"/></a><br/>↑Something like this<br/>Fortunately, the BB shell interior was ovalized,<br/>so I could easily avoid interference with the BB water seal (the waterproof tube).<br/>It's possible even without oversizing (→<a href="http://pass13.blog.fc2.com/blog-entry-807.html" target="_blank" title="here">here</a>),<br/>but in that case it gets a bit tricky.<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05358amx3.jpg" target="_blank"><img alt="DSC05358amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05358amx3s.jpg" width="300"/></a><br/>Out of chronological order, but here are the 750mm and 800mm cables pulled out to full length and laid side by side.<br/>There's no way you can see a 50mm difference.<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05410amx3.jpg" target="_blank"><img alt="DSC05410amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05410amx3s.jpg" width="300"/></a><br/>That's because, due to how the lower junction connects,<br/>one of the three cables (besides the 1200mm) has to be routed back on itself.<br/>After thinking it through, I figured this was the best arrangement,<br/>but whether the length would be enough...<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05363amx3.jpg" target="_blank"><img alt="DSC05363amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05363amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05366amx3.jpg" target="_blank"><img alt="DSC05366amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05366amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05364amx3.jpg" target="_blank"><img alt="DSC05364amx3.jpg" border="0" height="300" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05364amx3s.jpg" width="225"/></a><br/>Tons of slack.<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05362amx3.jpg" target="_blank"><img alt="DSC05362amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05362amx3s.jpg" width="300"/></a><br/>I drilled the rear derailleur hole on the upper side of the chainstay.<br/>The chainstay has a wedge-shaped cross-section with a sharp point on the bottom, so I can only drill on the side or top.<br/>I didn't want to drill on top due to chain slap interference,<br/>and there were reasons not to drill on the side either, so I went with this.<br/>The cable gets routed further into the chainstay.<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05379amx3.jpg" target="_blank"><img alt="DSC05379amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05379amx3s.jpg" width="300"/></a><br/>I drilled the front derailleur hole on the front of the seat tube.<br/>As I've written before, this location prevents the cable from floating or moving around compared to drilling on the back.<br/>Support bolts and brackets can easily pinch or crush the cable, so that's something to watch out for.<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05380amx3.jpg" target="_blank"><img alt="DSC05380amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05380amx3s.jpg" width="300"/></a><br/>The internal battery in the seat tube is the next problem.<br/>The frame's included seatpost is quite long,<br/>and can't be cut.<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05381amx3.jpg" target="_blank"><img alt="DSC05381amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05381amx3s.jpg" width="300"/></a><br/>If I cut the seatpost at the same angle as the seat lug and remake the pull-up rod to match, that's a different story...<br/>but that's not impossible, just a major hack job, so I'll keep it as a last resort.<br/>Fitting the battery inside the seatpost itself was dimensionally impossible.<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05384amx3.jpg" target="_blank"><img alt="DSC05384amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05384amx3s.jpg" width="300"/></a><br/>The internal battery was getting hung up on something inside the seat tube.<br/>Even pushing the seatpost in from the top barely fit.<br/>It was in that state, but I made it work somehow.<br/>I can't write about the "somehow."<br/>If the frame size were even one size smaller, it probably would've been impossible.<br/>If it doesn't fit, the next steps would be to ask the customer and then either machine the seatpost,<br/>fit the battery into the down tube,<br/>or give up and go with an external battery.<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05356amx3.jpg" target="_blank"><img alt="DSC05356amx3.jpg" border="0" height="300" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05356amx3s.jpg" width="225"/></a><br/>The 1200mm cable that connects the upper and lower junctions<br/>gets a cable tray attached,<br/>then<br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05371amx3.jpg" target="_blank"><img alt="DSC05371amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05371amx3s.jpg" width="300"/></a><br/>exits here. The location is at the customer's request, but<br/>this is <span style="font-size:large;">an extremely difficult spot to drill.</span><br/>(The reason the text got bigger is unclear)<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05372amx3.jpg" target="_blank"><img alt="DSC05372amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05372amx3s.jpg" width="300"/></a><br/>It's an ideal location for routing along the rear brake housing.<br/>Actually, that's precisely why I chose this spot.<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05375amx3.jpg" target="_blank"><img alt="DSC05375amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05375amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05376amx3.jpg" target="_blank"><img alt="DSC05376amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05376amx3s.jpg" width="300"/></a><br/>I washed all the removed parts,<br/>whether or not they'd be reinstalled right away.<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05389amx3.jpg" target="_blank"><img alt="DSC05389amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05389amx3s.jpg" width="300"/></a><br/>About the BMC top cap,<br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05386amx3.jpg" target="_blank"><img alt="DSC05386amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05386amx3s.jpg" width="300"/></a><br/>it has a measurement tolerance stamped on the back.<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05387amx3.jpg" target="_blank"><img alt="DSC05387amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05387amx3s.jpg" width="300"/></a><br/>Thanks to this, you can apply pressure to the headset even if the top of the steerer tube is flush with the stem,<br/>or even if it sticks out 1mm.<br/>I guess they're trying to demonstrate this,<br/>because the steerer length on their completed bikes is cut exactly flush too.<br/>Most top caps can't apply pressure in this situation.<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05388amx3.jpg" target="_blank"><img alt="DSC05388amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05388amx3s.jpg" width="300"/></a><br/>Also, the end face of the steerer tube on the completed bike is finished abnormally cleanly.<br/>They must be using some quality tools.<br/>Though "tools" might be too modest a word—it's probably something more substantial.
+</div></div>
+    <div class="affiliate-box">
+      <p class="affiliate-title">Related Products on Amazon</p>
+      <ul>
+        <li><a href="https://www.amazon.co.jp/s?tag=nomunomu05b-22&k=ロードバイク+ドライブトレイン+チェーン" target="_blank" rel="noopener sponsored">🛒 Road Bike Drivetrain</a></li>
+        <li><a href="https://www.amazon.co.jp/s?tag=nomunomu05b-22&k=ロードバイク+サドル+シートポスト" target="_blank" rel="noopener sponsored">🛒 Saddles & Seatposts</a></li>
+        <li><a href="https://www.amazon.co.jp/s?tag=nomunomu05b-22&k=ロードバイク+ハンドル+ステム" target="_blank" rel="noopener sponsored">🛒 Handlebars & Stems</a></li>
+      </ul>
+      <p class="affiliate-note">* Amazon affiliate links — prices may vary</p>
+    </div>
+  </article>
+</div>
+</body>
+</html>

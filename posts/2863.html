@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>More on Building the Ultra-Lightweight Wheels — Nomu Lab Diary</title>
+<!-- AdSense: ADSENSE_PUBLISHER_ID を設定後ここにコードが入ります -->
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #2d3748; background: #f7fafc; line-height: 1.75;
+}
+a { color: #2b6cb0; }
+a:hover { text-decoration: underline; }
+
+/* Header */
+.site-header {
+  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+  color: white; padding: 28px 0;
+}
+.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
+.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+
+/* Main layout */
+.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
+
+/* Index: article cards */
+.card-grid { display: grid; gap: 16px; }
+.card {
+  background: white; border-radius: 10px;
+  padding: 22px 24px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  transition: box-shadow .15s;
+}
+.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.card h2 { font-size: 1.05rem; margin-bottom: 6px; }
+.card h2 a { text-decoration: none; color: #1a365d; }
+.card h2 a:hover { color: #2b6cb0; }
+.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 10px; }
+.card .excerpt { font-size: 0.88rem; color: #718096; line-height: 1.6; }
+
+/* Post page */
+.post-wrap {
+  background: white; border-radius: 10px;
+  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+.back-link { margin-bottom: 20px; font-size: 0.88rem; }
+.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
+.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
+.post-body { font-size: 0.97rem; line-height: 1.85; }
+.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.post-body p { margin-bottom: 14px; }
+.post-body br { line-height: 2; }
+
+/* Amazon アフィリエイトボックス */
+.affiliate-box {
+  margin-top: 36px; padding: 20px 24px;
+  background: #fffbeb; border: 1px solid #f6e05e;
+  border-radius: 10px;
+}
+.affiliate-box .affiliate-title {
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+}
+.affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.affiliate-box li a {
+  display: inline-block; padding: 6px 14px;
+  background: #ff9900; color: white; border-radius: 6px;
+  text-decoration: none; font-size: 0.88rem; font-weight: 600;
+}
+.affiliate-box li a:hover { background: #e68900; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .post-wrap { padding: 22px 18px; }
+  .site-header h1 { font-size: 1.4rem; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <h1><a href="../index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
+    <p>Bicycle Workshop — English Edition</p>
+  </div>
+</header>
+<div class="page-wrap">
+  <p class="back-link"><a href="../index.html">← All posts</a></p>
+  <article class="post-wrap">
+    <h1>More on Building the Ultra-Lightweight Wheels</h1>
+    <p class="post-meta">July 21, 2016</p>
+    <!-- AdSense 広告ユニット -->
+    <div class="post-body"><div class="entrytext">Wheels again today (and so on).<br/><a href="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC00548amx6.jpg" target="_blank"><img alt="DSC00548amx6.jpg" border="0" height="225" src="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC00548amx6s.jpg" width="300"/></a><br/>A customer brought in an AX Lightness rear wheel.<br/>This is a separate project from the ultra-lightweight rim rebuild we did the other day,<br/>but the story continues from there.<br/><br/><a href="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC00549amx6.jpg" target="_blank"><img alt="DSC00549amx6.jpg" border="0" height="225" src="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC00549amx6s.jpg" width="300"/></a><br/>ExtraLight's "Cyber Rear" rear hub.<br/>The ExtraLight hub from the other day was the Ultra grade,<br/>but checking the manufacturer's website, it seems to have been discontinued.<br/>The current road models use the Cyber grade,<br/>and MTB models use the Hyper grade.<br/>The Cyber front hub is marked as "Cyber Front,"<br/>so there's no confusion with front and rear designations.<br/>Even without it marked, there's no mistake.<br/>So this one is also marked as "Cyber Rear."<br/>Getting even more detailed, if it's a bent-spoke design it gets SL,<br/>and if it's a straight-spoke design it gets SP at the end,<br/>so the official name for this one is Cyber Rear SP.<br/>Also, there's an HD model for front hubs only, where the hub body is wider than the SL<br/>(presumably to accommodate larger diameter bearings),<br/>and HD stands for Heavy Duty.<br/><br/><a href="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC00550amx6.jpg" target="_blank"><img alt="DSC00550amx6.jpg" border="0" height="225" src="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC00550amx6s.jpg" width="300"/></a><br/>The spokes are DT black Aero Lite straight spokes on both sides,<br/>laced in a pattern equivalent to 4/0 reverse Italian.<br/><br/><a href="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC00551amx6.jpg" target="_blank"><img alt="DSC00551amx6.jpg" border="0" height="225" src="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC00551amx6s.jpg" width="300"/></a><br/>It says "Enduro brand ABEC-5 standard steel ball bearings,"<br/>but on the Ultra Hub, it was marked as CERAMIC.<br/>It seems the current ExtraLight hubs don't have any with ceramic bearings.<br/>The bearing adjustment uses a hex nut,<br/>but on the Ultra Hub it was a grooved round nut instead.<br/>Imagine "a grooved round nut like on a French valve, just larger,"<br/>adjusted by hand and not even locked with a locknut.<br/>Most Mavic hubs use a cone wrench for adjustment,<br/>but this is similar, just hand-adjusted.<br/><br/>The reason the rear wheel was brought in is the customer wanted it built with different spoke counts and patterns on each side<br/>for a stiffer ride.<br/>When you squeeze the spokes from the side of the wheel between both hands with force,<br/>the spokes flex and bend.<br/>I know that actual riding doesn't apply that exact stress,<br/>but the deflection at that moment definitely relates<br/>to how easily brake rub occurs and the perceived lateral stiffness.<br/>As I told the customer, most of the spoke deformation was on the non-drive side.<br/>Depending on the rider's weight, riding style, and brake-to-rim clearance,<br/>this wheel could potentially rub only on the left side during actual riding.<br/><br/>I happened to have a Nomu Lab Wheel No. 5 rear wheel in the shop,<br/>and when the customer squeezed its spokes the same way,<br/>compared to the AX Lightness rear wheel it was "rock solid"—<br/>the difference was that dramatic.<br/>In other words, if the AX Lightness rim would allow spoke tension<br/>comparable to an XR200 rim,<br/>then we could build a wheel that's the Nomu Lab Wheel No. 5 with the rim<br/>swapped out for an AX Lightness rim.<br/>Having the wheel brought in helped a lot.<br/>We could measure the original spoke tension before disassembly.<br/><br/>By the way, even before this rebuild, the drive side was already at its limit.<br/>Under the condition of all Aero Lite 4/0 lacing, it's tensioned as high as possible,<br/>and I think everything was done right.<br/><br/><a href="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC00554amx6.jpg" target="_blank"><img alt="DSC00554amx6.jpg" border="0" height="225" src="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC00554amx6s.jpg" width="300"/></a><br/>It's done.<br/><br/><a href="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC00555amx6.jpg" target="_blank"><img alt="DSC00555amx6.jpg" border="0" height="225" src="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC00555amx6s.jpg" width="300"/></a><br/>Leaf Hub 24H, black semi-compete 4/6 laced with reinforcement ring.<br/>Lateral stiffness is definitely improved over the previous build.<br/>However, I need to note that it's a weight increase as well.<br/><br/><a href="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC00552amx6.jpg" target="_blank"><img alt="DSC00552amx6.jpg" border="0" height="225" src="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC00552amx6s.jpg" width="300"/></a><br/>↑Before rebuild<br/><a href="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC00557amx6.jpg" target="_blank"><img alt="DSC00557amx6.jpg" border="0" height="225" src="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC00557amx6s.jpg" width="300"/></a><br/>↑After rebuild<br/>This 79g increase—even though the rim weight hasn't changed at all—<br/>means the wheel overall is definitely heavier.<br/>From my perspective, considering the factors that affect race performance,<br/>I'm confident the wheel's performance improved over the previous build,<br/>but it's not my decision to make—it's the rider's (the customer's).<br/>If they decide the previous version was better,<br/>I'll rebuild it back to the original spec, so just let me know.<br/><br/>What? Rim weight?<br/>I know it, so why do I have to tell you? ←Wow, this guy's got a terrible attitude.<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><a href="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC00558amx6.jpg" target="_blank"><img alt="DSC00558amx6.jpg" border="0" height="225" src="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC00558amx6s.jpg" width="300"/></a><br/>Sorry for the wait!<br/><br/><a href="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC00553amx6.jpg" target="_blank"><img alt="DSC00553amx6.jpg" border="0" height="225" src="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC00553amx6s.jpg" width="300"/></a><br/>Please take a look at this image!<br/><span style="font-size:large;">↑Stop it already!!</span>
+</div></div>
+    <div class="affiliate-box">
+      <p class="affiliate-title">Related Products on Amazon</p>
+      <ul>
+        <li><a href="https://www.amazon.co.jp/s?tag=nomunomu05b-22&k=ロードバイク+ホイール+完組" target="_blank" rel="noopener sponsored">🛒 Road Bike Wheelsets</a></li>
+        <li><a href="https://www.amazon.co.jp/s?tag=nomunomu05b-22&k=ロードバイク+ブレーキ" target="_blank" rel="noopener sponsored">🛒 Brakes & Levers</a></li>
+        <li><a href="https://www.amazon.co.jp/s?tag=nomunomu05b-22&k=ロードバイク+ベアリング+BB+ヘッドセット" target="_blank" rel="noopener sponsored">🛒 Bearings & Bottom Brackets</a></li>
+      </ul>
+      <p class="affiliate-note">* Amazon affiliate links — prices may vary</p>
+    </div>
+  </article>
+</div>
+</body>
+</html>

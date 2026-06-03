@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Converted GRAAL to Shimano Electronic Groupset with Internal Battery Spec — Nomu Lab Diary</title>
+<!-- AdSense: ADSENSE_PUBLISHER_ID を設定後ここにコードが入ります -->
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #2d3748; background: #f7fafc; line-height: 1.75;
+}
+a { color: #2b6cb0; }
+a:hover { text-decoration: underline; }
+
+/* Header */
+.site-header {
+  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+  color: white; padding: 28px 0;
+}
+.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
+.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+
+/* Main layout */
+.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
+
+/* Index: article cards */
+.card-grid { display: grid; gap: 16px; }
+.card {
+  background: white; border-radius: 10px;
+  padding: 22px 24px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  transition: box-shadow .15s;
+}
+.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.card h2 { font-size: 1.05rem; margin-bottom: 6px; }
+.card h2 a { text-decoration: none; color: #1a365d; }
+.card h2 a:hover { color: #2b6cb0; }
+.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 10px; }
+.card .excerpt { font-size: 0.88rem; color: #718096; line-height: 1.6; }
+
+/* Post page */
+.post-wrap {
+  background: white; border-radius: 10px;
+  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+.back-link { margin-bottom: 20px; font-size: 0.88rem; }
+.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
+.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
+.post-body { font-size: 0.97rem; line-height: 1.85; }
+.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.post-body p { margin-bottom: 14px; }
+.post-body br { line-height: 2; }
+
+/* Amazon アフィリエイトボックス */
+.affiliate-box {
+  margin-top: 36px; padding: 20px 24px;
+  background: #fffbeb; border: 1px solid #f6e05e;
+  border-radius: 10px;
+}
+.affiliate-box .affiliate-title {
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+}
+.affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.affiliate-box li a {
+  display: inline-block; padding: 6px 14px;
+  background: #ff9900; color: white; border-radius: 6px;
+  text-decoration: none; font-size: 0.88rem; font-weight: 600;
+}
+.affiliate-box li a:hover { background: #e68900; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .post-wrap { padding: 22px 18px; }
+  .site-header h1 { font-size: 1.4rem; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <h1><a href="../index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
+    <p>Bicycle Workshop — English Edition</p>
+  </div>
+</header>
+<div class="page-wrap">
+  <p class="back-link"><a href="../index.html">← All posts</a></p>
+  <article class="post-wrap">
+    <h1>I Converted GRAAL to Shimano Electronic Groupset with Internal Battery Spec</h1>
+    <p class="post-meta">April 23, 2015</p>
+    <!-- AdSense 広告ユニット -->
+    <div class="post-body"><div class="entrytext">The drill is screaming!<br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00583amx4.jpg" target="_blank"><img alt="DSC00583amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00583amx4s.jpg" width="300"/></a><br/>I received a complete Pinarello GRAAL time trial frame for rebuild.<br/>It was originally built with a mechanical Super Record 11-speed drivetrain,<br/>but the owner wants me to convert it to a Shimano electronic groupset<br/>(internal battery and internal junction box configuration).<br/><br/>Just looking at it briefly, I could see there were going to be plenty of problems.<br/>First, the bottom bracket shell is completely sealed.<br/>Second, there's nowhere obvious to fit the internal battery.<br/>It worked out in the end, but initially I was planning to route it through the downtube.<br/><br/>I forgot to photograph the frame before work started, so the image above is basically post-work.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC01075amx4.jpg" target="_blank"><img alt="DSC01075amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC01075amx4s.jpg" width="300"/></a><br/>↑First I checked whether the seat tube and downtube are connected<br/>(more precisely, whether there's enough gap for cables to pass through).<br/><br/>Without running a probe wire through, I confirmed by another method that there was definitely a path, but...<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00503amx4.jpg" target="_blank"><img alt="DSC00503amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00503amx4s.jpg" width="300"/></a><br/>↑The probe wire got stuck around this section of the downtube.<br/>(The magnet on the probe wire tip was reacting to something)<br/>I found that a foam insert was blocking it.<br/>Since it has nothing to do with frame rigidity, I scraped it out.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00602amx4.jpg" target="_blank"><img alt="DSC00602amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00602amx4s.jpg" width="300"/></a><br/>I modified the probe wire tip into a shape that breaks up the foam,<br/>pushed it through repeatedly, then pointed the head tube downward and shook—<br/>out came the foam.<br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00506amx4.jpg" target="_blank"><img alt="DSC00506amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00506amx4s.jpg" width="300"/></a><br/>↑This much<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC01076amx4.jpg" target="_blank"><img alt="DSC01076amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC01076amx4s.jpg" width="300"/></a><br/>Now that I'd confirmed there's enough gap in the downtube and seat tube for cables,<br/>the next step was to drill the front derailleur hole,<br/>and test threading probe wires from both directions.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00505amx4.jpg" target="_blank"><img alt="DSC00505amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00505amx4s.jpg" width="300"/></a><br/>I threaded from the downtube side first.<br/>The probe wire is a disposable tool I modified from a Shimano shift cable.<br/>(I call it disposable, but it's not really one-time use)<br/>The wire itself doesn't have magnets or anything—<br/>as shown in the photo, I modify the wire end<br/>so it moves through the frame smoothly and reliably.<br/>It's a small thing, but it makes the workability so much better.<br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00507amx4.jpg" target="_blank"><img alt="DSC00507amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00507amx4s.jpg" width="300"/></a><br/>I also threaded from the seat tube side in the same way.<br/>The wire end is shaped like this, same as before.<br/><span style="font-size:large;">Oops, both of those photos got cut off.<br/>Man, I wasn't careful. Sorry about that.</span><br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00509amx4.jpg" target="_blank"><img alt="DSC00509amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00509amx4s.jpg" width="300"/></a><br/>↑So it should pass through like this.<br/>The cable length of 1200mm would be enough,<br/>and if not I was planning to go up to the maximum 1400mm,<br/>but it clearly looked sufficient so I went with 1200mm.<br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00510amx4.jpg" target="_blank"><img alt="DSC00510amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00510amx4s.jpg" width="300"/></a><br/>It passed through.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00508amx4.jpg" target="_blank"><img alt="DSC00508amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00508amx4s.jpg" width="300"/></a><br/>Going back in the timeline, I discovered that fitting the internal battery into the seat tube—<br/>which I was pretty sure would be impossible—turned out to be a perfect fit.<br/>With Pinarello's TT frame, the earlier GRAAL model "Montero" has a wider seat post<br/>than the GRAAL, so I'm confident the battery would fit, but it would have some play<br/>that needs shims and anti-rotation measures.<br/>With the GRAAL though, it's nearly perfect fit,<br/>so the anti-rotation and retention work was easy.<br/><s>As for why I know the Montero's seat post inner diameter,<br/>well that's because... (etc.)</s><br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00585amx4.jpg" target="_blank"><img alt="DSC00585amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00585amx4s.jpg" width="300"/></a><br/>I routed the front derailleur cable.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00587amx4.jpg" target="_blank"><img alt="DSC00587amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00587amx4s.jpg" width="300"/></a><br/>I drilled the rear derailleur cable port here.<br/>The mechanical groupset cable port goes in a complete tunnel from the head tube,<br/>so I couldn't use it as a guide for the electronic version.<br/>If there was absolutely no chance of ever going back to mechanical components,<br/>I could have just enlarged the original hole, but to be safe I drilled a new one.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00588amx4.jpg" target="_blank"><img alt="DSC00588amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00588amx4s.jpg" width="300"/></a><br/>I drilled the upper junction port here.<br/>Pretty much anywhere would work, but I chose this spot in the black paint area<br/>so the grommet wouldn't be as visible.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00512amx4.jpg" target="_blank"><img alt="DSC00512amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00512amx4s.jpg" width="300"/></a><br/>The lower junction goes here, recessed into the seat tube.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00513amx4.jpg" target="_blank"><img alt="DSC00513amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00513amx4s.jpg" width="300"/></a><br/>I wired up the internal battery. For clarity in the photo<br/>I've routed it out here, but<br/>in reality the wiring runs up from inside the seat tube.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC01077amx4.jpg" target="_blank"><img alt="DSC01077amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC01077amx4s.jpg" width="300"/></a><br/>↑Here's what it ended up looking like.<br/>I glossed over it quickly earlier, but the biggest challenge on this frame<br/>was routing the rear derailleur cable.<br/>I'm not going to explain how I did it.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00580amx4.jpg" target="_blank"><img alt="DSC00580amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00580amx4s.jpg" width="300"/></a><br/>Through the seat post<br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00581amx4.jpg" target="_blank"><img alt="DSC00581amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00581amx4s.jpg" width="300"/></a><br/>and secured with a dedicated clamp.<br/>Another 20mm deeper and the seat post would interfere with the lower junction.<br/>As long as the frame owner doesn't change,<br/>even if the saddle is swapped for the thickest possible one, it should be fine.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00574amx4.jpg" target="_blank"><img alt="DSC00574amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00574amx4s.jpg" width="300"/></a><br/>Usually I clean the frame before work, but this time I did it after the wiring.<br/>Not because I felt like it—there were practical reasons.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00575amx4.jpg" target="_blank"><img alt="DSC00575amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00575amx4s.jpg" width="300"/></a><br/>Unlike most TT frames, both GRAAL and Montero have regular road bike<br/>reverse-dropouts rather than track ends.<br/>With reverse-dropouts you'd expect tire rub to be unlikely, but<br/>there are marks on the left chainstay where the tire scraped.<br/>It could be that a low spoke-count wheel went out of true,<br/>or a spoke broke, but I can rule that out—<br/>I know the history of this frame.<br/><br/>Anyway, there's definitely some scuff marks<br/>that won't come off with a finger.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00579amx4.jpg" target="_blank"><img alt="DSC00579amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00579amx4s.jpg" width="300"/></a><br/>But with the secret Y○○ auction technique, it came clean.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00593amx4.jpg" target="_blank"><img alt="DSC00593amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00593amx4s.jpg" width="300"/></a><br/>The wiring work is done.<br/>The important thing here is that the BB shell stayed completely sealed.<br/>Why didn't I remove the Ultra-Torque BB cups? Because what comes next<br/>involves combinations I can't write about here.<br/>Since it's completely sealed, I can install the crankset without needing<br/>Shimano's EPS BB protector.<br/>The key difference between Shimano's electronic groupset and Campagnolo's EPS is that<br/><span style="color:#FF0000">when the front derailleur is in the outer chainring,<br/>you can adjust the final position with a screw</span>.<br/>EPS also got this fine-tuning capability from V2 onward when shifted to outer,<br/>but it's only meant as an emergency fix for roadside adjustment issues—<br/>if you reset the derailleur and redo the adjustment from scratch,<br/>the fine-tuned outer position gets lost too.<br/>So if you want to build with <s>ROTOR or other</s> third-party cranks,<br/>Shimano's electronic groupset has better flexibility.<br/>In other words, even Super Record cranks can work with proper adjustment.<br/>And since sprocket tooth spacing is basically identical,<br/>for this electronic conversion the BB, crank, chain, and sprocket<br/>(and of course the freehub body) stay the same and just get reassembled.<br/>Wait, who's that at this hour? A customer?<br/>Whoa what are you d0iiing n0...
+</div></div>
+    <div class="affiliate-box">
+      <p class="affiliate-title">Related Products on Amazon</p>
+      <ul>
+        <li><a href="https://www.amazon.co.jp/s?tag=nomunomu05b-22&k=ロードバイク+ホイール+完組" target="_blank" rel="noopener sponsored">🛒 Road Bike Wheelsets</a></li>
+        <li><a href="https://www.amazon.co.jp/s?tag=nomunomu05b-22&k=ロードバイク+タイヤ+チューブ" target="_blank" rel="noopener sponsored">🛒 Road Bike Tires & Tubes</a></li>
+        <li><a href="https://www.amazon.co.jp/s?tag=nomunomu05b-22&k=ロードバイク+ドライブトレイン+チェーン" target="_blank" rel="noopener sponsored">🛒 Road Bike Drivetrain</a></li>
+      </ul>
+      <p class="affiliate-note">* Amazon affiliate links — prices may vary</p>
+    </div>
+  </article>
+</div>
+</body>
+</html>

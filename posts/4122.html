@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Continuation of the Bonus: Replacing the ErgoPower V3 Lever — Nomu Lab Diary</title>
+<!-- AdSense: ADSENSE_PUBLISHER_ID を設定後ここにコードが入ります -->
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #2d3748; background: #f7fafc; line-height: 1.75;
+}
+a { color: #2b6cb0; }
+a:hover { text-decoration: underline; }
+
+/* Header */
+.site-header {
+  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+  color: white; padding: 28px 0;
+}
+.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
+.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+
+/* Main layout */
+.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
+
+/* Index: article cards */
+.card-grid { display: grid; gap: 16px; }
+.card {
+  background: white; border-radius: 10px;
+  padding: 22px 24px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  transition: box-shadow .15s;
+}
+.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.card h2 { font-size: 1.05rem; margin-bottom: 6px; }
+.card h2 a { text-decoration: none; color: #1a365d; }
+.card h2 a:hover { color: #2b6cb0; }
+.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 10px; }
+.card .excerpt { font-size: 0.88rem; color: #718096; line-height: 1.6; }
+
+/* Post page */
+.post-wrap {
+  background: white; border-radius: 10px;
+  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+.back-link { margin-bottom: 20px; font-size: 0.88rem; }
+.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
+.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
+.post-body { font-size: 0.97rem; line-height: 1.85; }
+.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.post-body p { margin-bottom: 14px; }
+.post-body br { line-height: 2; }
+
+/* Amazon アフィリエイトボックス */
+.affiliate-box {
+  margin-top: 36px; padding: 20px 24px;
+  background: #fffbeb; border: 1px solid #f6e05e;
+  border-radius: 10px;
+}
+.affiliate-box .affiliate-title {
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+}
+.affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.affiliate-box li a {
+  display: inline-block; padding: 6px 14px;
+  background: #ff9900; color: white; border-radius: 6px;
+  text-decoration: none; font-size: 0.88rem; font-weight: 600;
+}
+.affiliate-box li a:hover { background: #e68900; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .post-wrap { padding: 22px 18px; }
+  .site-header h1 { font-size: 1.4rem; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <h1><a href="../index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
+    <p>Bicycle Workshop — English Edition</p>
+  </div>
+</header>
+<div class="page-wrap">
+  <p class="back-link"><a href="../index.html">← All posts</a></p>
+  <article class="post-wrap">
+    <h1>Continuation of the Bonus: Replacing the ErgoPower V3 Lever</h1>
+    <p class="post-meta">June 15, 2018</p>
+    <!-- AdSense 広告ユニット -->
+    <div class="post-body"><div class="entrytext">Finally I can document it.<br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04914amx9.jpg" target="_blank"><img alt="DSC04914amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04914amx9s.jpg" width="320"/></a><br/>I wrote about the ErgoPower V3 before (→<a href="http://pass13.blog.fc2.com/blog-entry-4043.html" target="_blank" title="こちら">here</a>)<br/>and in the bonus section at the end, I mentioned<br/>"The manufacturer's exploded diagram shows the right ErgoPower structure,<br/>but the left ErgoPower's internals are different from the diagram."<br/>I've already received comments confirming that's correct,<br/>and even though I said I'd look into it, I actually knew the answer all along<br/>but wanted to write about it in connection with Suntour's Command Shifter (※),<br/>so I delayed writing the continuation.<br/><br/>※The reason for the polite "command" prefix is unclear<br/><br/>I could probably find one or two Command Shifters if I searched the whole house,<br/>but it seemed faster to borrow one from an acquaintance,<br/>so that's what you see in the photo above for documentation purposes.<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04915amx9.jpg" target="_blank"><img alt="DSC04915amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04915amx9s.jpg" width="320"/></a><br/>The right lever can be switched between 7-speed, 8-speed, or friction mode.<br/>The left lever is a friction shifter with a "power ratchet" mechanism,<br/>where a steel ball on a spring presses against a gear<br/>to overcome the return spring force of the front derailleur.<br/>The Sugino 75 W-lever and the various W-levers currently produced by Yoshigai<br/>use exactly the same structure.<br/>Incidentally, I own three carbon W-levers—the Sugino 75, Offmega Mistral, and Modolo Chronos<br/>(my own personal "big three" designation)—<br/>but writing about those would get long again, so I'll skip it this time.<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04916amx9.jpg" target="_blank"><img alt="DSC04916amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04916amx9s.jpg" width="320"/></a><br/>I disassembled the Command Shifter.<br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04917amx9.jpg" target="_blank"><img alt="DSC04917amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04917amx9s.jpg" width="320"/></a><br/>↑This steel ball<br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04919amx9.jpg" target="_blank"><img alt="DSC04919amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04919amx9s.jpg" width="320"/></a><br/>snaps into the holes in the click ring to establish each gear position.<br/>While the sprocket spacing is uniform (※), the hole spacing is not,<br/>particularly the gap between top and second gear is wider than others—<br/>the same as in current rear shift components.<br/><br/>※There are parts that increase gearing by one speed by replacing a lockring with a sprocket,<br/>and with those types of sprockets, the gear position and tooth tip phase<br/>technically vary depending on how tightly the tool is adjusted... but it's negligible.<br/><br/>If you make click rings with holes positioned to match Shimano 9-speed or Campagnolo 10-speed and so on,<br/>you can make Command Shifters with even more gears.<br/>My spiritual mentor's shop sells them,<br/>but they've made them with through-holes instead of half-drilled holes,<br/>either because drilling half-holes is tedious or for better wear resistance.<br/>For 11-speed they said the hole spacing gets too tight, so they don't make it.<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04920amx9.jpg" target="_blank"><img alt="DSC04920amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04920amx9s.jpg" width="320"/></a><br/>Now for the main subject—the Record V3 left lever:<br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04921amx9.jpg" target="_blank"><img alt="DSC04921amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04921amx9s.jpg" width="320"/></a><br/>I disassembled it.<br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04922amx9.jpg" target="_blank"><img alt="DSC04922amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04922amx9s.jpg" width="320"/></a><br/>When you pop this open—<br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04924amx9.jpg" target="_blank"><img alt="DSC04924amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04924amx9s.jpg" width="320"/></a><br/>It's a Command Shifter! is what I wanted to say,<br/>but I realized I needed to explain the Command Shifter's internals first.<br/>Shimano precisely determines front positioning including trim,<br/>but Campagnolo just tells you to find whichever of these 7 positions<br/>doesn't make the front derailleur cage rub against the chain—figure it out yourself.<br/>Interestingly, this approach actually has better redundancy for third-party cranks.
+</div></div>
+    <div class="affiliate-box">
+      <p class="affiliate-title">Related Products on Amazon</p>
+      <ul>
+        <li><a href="https://www.amazon.co.jp/s?tag=nomunomu05b-22&k=ロードバイク+ホイール+完組" target="_blank" rel="noopener sponsored">🛒 Road Bike Wheelsets</a></li>
+        <li><a href="https://www.amazon.co.jp/s?tag=nomunomu05b-22&k=ロードバイク+ドライブトレイン+チェーン" target="_blank" rel="noopener sponsored">🛒 Road Bike Drivetrain</a></li>
+        <li><a href="https://www.amazon.co.jp/s?tag=nomunomu05b-22&k=ロードバイク+ブレーキ" target="_blank" rel="noopener sponsored">🛒 Brakes & Levers</a></li>
+      </ul>
+      <p class="affiliate-note">* Amazon affiliate links — prices may vary</p>
+    </div>
+  </article>
+</div>
+</body>
+</html>

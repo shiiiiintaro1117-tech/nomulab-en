@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Rebuilt the Rear Wheel on the C38 — Nomu Lab Diary</title>
+<!-- AdSense: ADSENSE_PUBLISHER_ID を設定後ここにコードが入ります -->
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #2d3748; background: #f7fafc; line-height: 1.75;
+}
+a { color: #2b6cb0; }
+a:hover { text-decoration: underline; }
+
+/* Header */
+.site-header {
+  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+  color: white; padding: 28px 0;
+}
+.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
+.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+
+/* Main layout */
+.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
+
+/* Index: article cards */
+.card-grid { display: grid; gap: 16px; }
+.card {
+  background: white; border-radius: 10px;
+  padding: 22px 24px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  transition: box-shadow .15s;
+}
+.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.card h2 { font-size: 1.05rem; margin-bottom: 6px; }
+.card h2 a { text-decoration: none; color: #1a365d; }
+.card h2 a:hover { color: #2b6cb0; }
+.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 10px; }
+.card .excerpt { font-size: 0.88rem; color: #718096; line-height: 1.6; }
+
+/* Post page */
+.post-wrap {
+  background: white; border-radius: 10px;
+  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+.back-link { margin-bottom: 20px; font-size: 0.88rem; }
+.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
+.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
+.post-body { font-size: 0.97rem; line-height: 1.85; }
+.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.post-body p { margin-bottom: 14px; }
+.post-body br { line-height: 2; }
+
+/* Amazon アフィリエイトボックス */
+.affiliate-box {
+  margin-top: 36px; padding: 20px 24px;
+  background: #fffbeb; border: 1px solid #f6e05e;
+  border-radius: 10px;
+}
+.affiliate-box .affiliate-title {
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+}
+.affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.affiliate-box li a {
+  display: inline-block; padding: 6px 14px;
+  background: #ff9900; color: white; border-radius: 6px;
+  text-decoration: none; font-size: 0.88rem; font-weight: 600;
+}
+.affiliate-box li a:hover { background: #e68900; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .post-wrap { padding: 22px 18px; }
+  .site-header h1 { font-size: 1.4rem; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <h1><a href="../index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
+    <p>Bicycle Workshop — English Edition</p>
+  </div>
+</header>
+<div class="page-wrap">
+  <p class="back-link"><a href="../index.html">← All posts</a></p>
+  <article class="post-wrap">
+    <h1>I Rebuilt the Rear Wheel on the C38</h1>
+    <p class="post-meta">August 13, 2023</p>
+    <!-- AdSense 広告ユニット -->
+    <div class="post-body"><div class="entrytext">Today it's wheels again (and so on)... but before that.<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5043amx15.jpg" target="_blank"><img alt="RIMG5043amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5043amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5044amx15.jpg" target="_blank"><img alt="RIMG5044amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5044amx15s.jpg" width="320"/></a><br/>About yesterday's front wheel on the Roval C38:<br/>The front hub isn't an original made on commission from DT, but rather<br/>a standard DT product, so unlike Roval's hubs—which are ridiculous—<br/>it doesn't commit the foolish mistake of adopting small-diameter bearings for petty weight savings,<br/>and the bearings are less prone to damage from compression by the through axle.<br/><br/>I said petty weight savings, but looking at Roval's hub,<br/>there appears to be space to accommodate bearings<br/>of the same size as this DT hub,<br/>yet they deliberately chose smaller-diameter bearings.<br/>The outer diameter of the drop-out insertion part equals the inner diameter of the bearing—<br/>both Roval's hub and this hub are the same in that regard—<br/>so Roval's bearing is only smaller in outer diameter compared to the bearing in the photo above,<br/>but when the dimension difference between inner and outer rings is smaller,<br/>it means the size of the bearing balls that can fit between them<br/>is also smaller.<br/><br/>Roval's front wheels are overwhelmingly most often mounted on<br/>Specialized front forks, of course, but<br/>Specialized's X-12 through-axle standard<br/>is also a specification that tightens unnecessarily well (to an excessive degree),<br/>so when people who don't fully understand this overtighten it,<br/>the result is wheels spinning worse than a department store bike's front wheel<br/>when rotated by their own weight alone—in other words, grinding—<br/>and you see quite a few Roval front wheels in this condition.<br/>The idea that all users treat their equipment properly<br/>is an illusion.<br/>There are people who diligently apply the manufacturer-specified grease<br/>to Mavic's Instant Drive 360 surface ratchet at the recommended frequency (every 1000 km),<br/>but it's probably not zero, though<br/>it's certainly not the majority (50% or more).<br/>I'd say it's even below 10%.<br/><br/>So if your Roval front wheel has grinding bearings,<br/>it's not your fault—it's Roval's fault for not being able to imagine<br/>that there are quite a few people like that,<br/>so don't worry about it.<br/><br/>Even DT, if it became clear through experience that<br/>reducing bearing size hardly changes maintenance frequency at all,<br/>would still shrink the bearings down to that critical size<br/>(since it would simply be weight savings with no risk).<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5056amx15.jpg" target="_blank"><img alt="RIMG5056amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5056amx15s.jpg" width="320"/></a><br/>↑Not the Tower of Hanoi,<br/>but there are three bearings here.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5057amx15.jpg" target="_blank"><img alt="RIMG5057amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5057amx15s.jpg" width="320"/></a><br/>The inner diameters are all the same.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5058amx15.jpg" target="_blank"><img alt="RIMG5058amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5058amx15s.jpg" width="320"/></a><br/>From left in the image above, these are 6802, 6902, 6903 in size,<br/>with 6802 being the size used in Roval's front wheel.<br/>6902 is the bearing size for this DT front hub,<br/>and 6903 has examples of use in DT rear hubs and elsewhere, but<br/>the contact-sealed 6903 that used to go in the left side of older Shimano Ultegra rear hubs<br/>was extremely durable—<br/>I've seen many instances of ones that were in constant use for five years,<br/>and older Ultegra rear wheels bought ten years ago<br/>showing no signs of wear whatsoever, even with less frequent use.<br/><br/>In contrast, it's common to see Roval front wheels<br/>where the bearings are grinding within six months of purchase<br/>due to over-tightening the through-axle.<br/><br/>So anyway,<br/>it's wheels again today (and so on).<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5045amx15.jpg" target="_blank"><img alt="RIMG5045amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5045amx15s.jpg" width="320"/></a><br/>Continuing from yesterday.<br/>I'm rebuilding the rear wheel on the C38.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5046amx15.jpg" target="_blank"><img alt="RIMG5046amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5046amx15s.jpg" width="320"/></a><br/>DT 370 hub, 24H, all-black Competé Race, built in 4-cross pattern.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5047amx15.jpg" target="_blank"><img alt="RIMG5047amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5047amx15s.jpg" width="320"/></a><br/>This freehub body says "Ratchet LN," so<br/>it's a system where initially it had a three-pawl ratchet with a pull spring,<br/>but could be upgraded later to the current single-push spring-type star ratchet... no wait,<br/>the older two-push spring-type star ratchet—<br/>and it had already been converted to a two-push spring-type star ratchet.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5049amx15.jpg" target="_blank"><img alt="RIMG5049amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5049amx15s.jpg" width="320"/></a><br/>Built.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5050amx15.jpg" target="_blank"><img alt="RIMG5050amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5050amx15s.jpg" width="320"/></a><br/>Half-Competé, 46-spoke JIS build.<br/>I'll do the lacing later.<br/>Like the front wheel, I've made the spoke and nipple nearest the valve hole on the left side black.<br/><br/>I'm confident that this rear wheel too, even without lacing,<br/>would have many people say it rolls better than the CLX 50's rear wheel,<br/>but to have a real basis for that claim, I need to know the rim weight.<br/>If we're targeting the CLX 50 as the benchmark, we need to beat its 50mm height / weight ratio of 435-440g.<br/>If the C38 rim weighs 500g, even if we win in the hub and spoke portion,<br/>we can't win overall.<br/><br/>And in fact, the C38 rim is inferior in height/weight ratio<br/>compared to the CLX 50's rim.<br/>With only 38mm rim height,<br/>the rim weight is actually heavier than the CLX 50, so.<br/>Even if you push the side of a C38 rim with your finger,<br/>it doesn't feel as squishy as the CLX rim does.<br/><br/>※Like Shimano's WH-R9170-C40, which has a 37mm-height rim in both TL and TU<br/>but doesn't express the exact rim height in the model name,<br/>I measured it just to be sure.<br/><br/>But the weight difference isn't that large, so<br/>considering the relative importance of each factor,<br/>the major disadvantage of the CLX—being forced into a 2:1 XI lacing pattern<br/>by rim hole runout repeating left-right-right ×n times<br/>(n=7 for front wheel, n=8 for rear wheel)—<br/>means the C38 can ultimately be built into a better wheel<br/>than the CLX.<br/>What? You want me to show the basis for that height/weight ratio?<br/>Why do I have to explain that kind of thing?<br/>↑Ugh, this guy has a bad attitude.<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5052amx15.jpg" target="_blank"><img alt="RIMG5052amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5052amx15s.jpg" width="320"/></a><br/>My apologies for the wait! Please view these images!<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5034amx15.jpg" target="_blank"><img alt="RIMG5034amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5034amx15s.jpg" width="320"/></a><br/>It's the front rim!<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5048amx15.jpg" target="_blank"><img alt="RIMG5048amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5048amx15s.jpg" width="320"/></a><br/>It's the rear rim!<br/>This time there happened to be no problems,<br/>but when the front and rear rims have the same number of holes and specifications,<br/>you might want to disassemble both wheels at the same time<br/>so you can use the heavier one for the front wheel!<br/><span style="font-size:large;">↑Stop it!</span>
+</div></div>
+    <div class="affiliate-box">
+      <p class="affiliate-title">Related Products on Amazon</p>
+      <ul>
+        <li><a href="https://www.amazon.co.jp/s?tag=nomunomu05b-22&k=ロードバイク+ホイール+完組" target="_blank" rel="noopener sponsored">🛒 Road Bike Wheelsets</a></li>
+        <li><a href="https://www.amazon.co.jp/s?tag=nomunomu05b-22&k=ロードバイク+ハンドル+ステム" target="_blank" rel="noopener sponsored">🛒 Handlebars & Stems</a></li>
+        <li><a href="https://www.amazon.co.jp/s?tag=nomunomu05b-22&k=ロードバイク+ベアリング+BB+ヘッドセット" target="_blank" rel="noopener sponsored">🛒 Bearings & Bottom Brackets</a></li>
+      </ul>
+      <p class="affiliate-note">* Amazon affiliate links — prices may vary</p>
+    </div>
+  </article>
+</div>
+</body>
+</html>

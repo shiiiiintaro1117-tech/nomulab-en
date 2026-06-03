@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Replies to Comments — Nomu Lab Diary</title>
+<!-- AdSense: ADSENSE_PUBLISHER_ID を設定後ここにコードが入ります -->
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #2d3748; background: #f7fafc; line-height: 1.75;
+}
+a { color: #2b6cb0; }
+a:hover { text-decoration: underline; }
+
+/* Header */
+.site-header {
+  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+  color: white; padding: 28px 0;
+}
+.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
+.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+
+/* Main layout */
+.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
+
+/* Index: article cards */
+.card-grid { display: grid; gap: 16px; }
+.card {
+  background: white; border-radius: 10px;
+  padding: 22px 24px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  transition: box-shadow .15s;
+}
+.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.card h2 { font-size: 1.05rem; margin-bottom: 6px; }
+.card h2 a { text-decoration: none; color: #1a365d; }
+.card h2 a:hover { color: #2b6cb0; }
+.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 10px; }
+.card .excerpt { font-size: 0.88rem; color: #718096; line-height: 1.6; }
+
+/* Post page */
+.post-wrap {
+  background: white; border-radius: 10px;
+  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+.back-link { margin-bottom: 20px; font-size: 0.88rem; }
+.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
+.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
+.post-body { font-size: 0.97rem; line-height: 1.85; }
+.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.post-body p { margin-bottom: 14px; }
+.post-body br { line-height: 2; }
+
+/* Amazon アフィリエイトボックス */
+.affiliate-box {
+  margin-top: 36px; padding: 20px 24px;
+  background: #fffbeb; border: 1px solid #f6e05e;
+  border-radius: 10px;
+}
+.affiliate-box .affiliate-title {
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+}
+.affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.affiliate-box li a {
+  display: inline-block; padding: 6px 14px;
+  background: #ff9900; color: white; border-radius: 6px;
+  text-decoration: none; font-size: 0.88rem; font-weight: 600;
+}
+.affiliate-box li a:hover { background: #e68900; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .post-wrap { padding: 22px 18px; }
+  .site-header h1 { font-size: 1.4rem; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <h1><a href="../index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
+    <p>Bicycle Workshop — English Edition</p>
+  </div>
+</header>
+<div class="page-wrap">
+  <p class="back-link"><a href="../index.html">← All posts</a></p>
+  <article class="post-wrap">
+    <h1>Replies to Comments</h1>
+    <p class="post-meta">October 10, 2024</p>
+    <!-- AdSense 広告ユニット -->
+    <div class="post-body"><div class="entrytext">Regarding the previous article,<br/>I've received a lot of comments.<br/>I thought I'd get completely trashed for it,<br/>but that didn't happen.<br/><br/>Among them, I received a comment about Anchor's head tube angle (head angle):<br/>"Anchor expresses head angle and seat angle in degrees and minutes, so<br/>30 minutes is 0.5 degrees, and 45 minutes is 0.75 degrees."<br/>Oh wow! I really apologize for that!<br/>Indeed, for example, it wasn't 72.0° but<br/>72°00′ (degrees and minutes).<br/>Degrees, minutes, and seconds are units used for latitude and longitude on maps.<br/>X°Y′Z″ (degrees, minutes, seconds) is how you read it,<br/>but frames don't go down to seconds.<br/><br/>By the way, sensitive track cyclists<br/>can apparently tell if a builder made a mistake on the seat angle by 5′ (0.0833…°)<br/>when they ride the frame.<br/>Recently Selle Italia has been allowed, but<br/>until not long ago, the only saddle available was Kashima's Five Gold,<br/>which had absolutely no cushioning, so<br/>when you insert the saddle and seatpost assembly to the usual position<br/>as always, you'd notice a difference of less than 0.1°.<br/><br/>From the geometry table of the Anchor in the previous article,<br/>I'll list the conversions from degrees and minutes<br/>where the minutes aren't exactly 00′<br/>to decimal degrees (where a circle is 360°):<br/>The following is degrees/minutes → decimal degrees:<br/>RP9 (RP8)<br/>72°18′ → 72.3°<br/>72°48′ → 72.8°<br/><br/>RIS9<br/>72°30′ → 72.5°<br/><br/>RL8W<br/>70°30′ → 70.5°<br/>71°30′ → 71.5°<br/><br/>However, the decimal degree values work out to exactly 0.1° increments,<br/>so there's a possibility that the frames were made using decimal degrees<br/>and then converted to degrees and minutes for display following track bike conventions.<br/>For example, 71°35′ would be 71.5833…°, but<br/>I don't see any examples where the decimal degree value is a messy number<br/>outside this range (though I might have missed something).<br/>On the other hand, 72°48′ working out to exactly 72.8°<br/>seems to me like they must have made the frame using 72.8° as the basis.<br/><br/><br/>Next,<br/>I received a comment saying:<br/>"Short people should probably give up on riding road bikes."<br/>That's not right—that's an extreme conclusion.<br/>It's true that road bikes, for Japanese people and especially men,<br/>are a sport where the frame sizes expected from wheel size are larger than the average height.<br/>If the average height of Japanese men were around 120cm<br/>and Dutch men, the world's tallest on average, were 135cm,<br/>road bike wheel size would absolutely not be 700C.<br/>With smaller wheel sizes,<br/>a corresponding geometry would have been established.<br/>And regarding whether road bikes exclude short people as the comment suggests—<br/>they don't.<br/>If they did, across all sizes they'd only use a 73° head angle,<br/>43mm fork offset, and basically say "I don't care if short people find road bikes hard to ride,"<br/>making frames that way.<br/>But in reality, frighteningly enough,<br/>there are frame brands with geometries close to that, so<br/>the previous article was about giving hints on how to distinguish between<br/>legitimate manufacturers and brands and those that aren't.<br/><br/>Factor, for example, has 57mm fork offset on their smallest size,<br/>and what's more, it's a bend amount provided only for that smallest size,<br/>with smaller sizes having less trail value—they're quite something.<br/><br/>Just because you're into the Bianchi Celeste color, or because it's the brand that won the Tour de France,<br/>or because the frame weight is light for the price—<br/>how about we stop buying frames based "only" on that kind of shallow reasoning<br/>(not that I'm completely denying that sort of thing).<br/>There are a lot of shop staff out there who don't know much about frame geometry<br/>(in fact, overwhelming majority, I'd say,<br/>and conversely, people who received detailed geometry explanations when buying frames or complete bikes<br/>must be an overwhelming minority),<br/>so just arming yourself with a little theory<br/>means you won't get fooled by the smooth talk of those kinds of people,<br/>and your frame selection quality, or shopping quality overall,<br/>will improve dramatically.<br/><br/>※To industry colleagues:<br/>When you find a customer with a measuring tape hidden in their pocket,<br/>give them a heads-up: "Just in case it might scratch the frame,<br/>please don't measure the front center."<br/><br/>※To those who say "I don't give a damn":<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/IMG_7820msn6.jpg" target="_blank"><img alt="IMG_7820msn6.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/IMG_7820msn6s.jpg" width="320"/></a><br/>Prepare a sewing or body measurement measuring tape<br/>with no possibility of rubbing with metal parts.<br/>By the way, the one in the image above is my personal one.<br/><br/>I'm not sure exactly what range "short people" in the comments refers to,<br/>but while the selection of wheels and tires and stable supply become dramatically narrower,<br/>and <s>many shops won't even service them</s>, if you include<br/>the option of Canyon's 650B wheelset frames or complete bikes,<br/>I don't think it comes down to short people having to give up on road bikes.<br/><br/><br/>Next,<br/>I received a comment:<br/>"Now I understand that Gusto's isn't a frame at all<br/>but a component display mount stand. lol"<br/><br/>Wh-what a terrible thing to say! ←You're one to talk<br/>It's like with a Christmas tree—the ornaments are worth more than the fir tree,<br/>or like with sashimi—the daikon garnish outshines the main ingredient,<br/>as I often say.<br/>Gusto is a frame brand started by Attaquer, a carbon rim/wheel brand, thinking<br/>"Everyone else is doing frame business, so it looks easy enough,<br/>why don't we give it a try too?"<br/>That's basically the vibe.<br/><br/>The RCR Duro Team Limited complete bike that started this whole discussion<br/>came with a full R8000-series Ultegra groupset from 2019<br/>without mixing in Tektro or FSA brake or crank components,<br/>topped with Attaquer's 45mm-deep tubular carbon rim wheels<br/>priced at 268,000 yen before tax, 294,800 yen with tax.<br/>When you strip everything except the frame from that,<br/>the frame's internal valuation is basically worth nothing.<br/>Even just selling off the wheels would be significant.<br/>Even without being able to choose crank length or front and rear gear tooth counts,<br/>between a frame and Ultegra full groupset here,<br/>which holds its price better against MSRP and has smaller size issues,<br/>making it easier to sell to more people? Obviously the groupset.<br/>Such leftover frames—the complete bike came with Control Tech stem, handlebar,<br/>and seatpost, but even those got stripped out, and the remainder<br/>wasn't being bought because customers wanted it,<br/>but was being pushed on them for the shop's convenience,<br/>so I strongly objected at the time.<br/>They ended up buying it anyway,<br/>maybe there was some loyalty involved.<br/>Though they did get rid of it pretty quick after that.<br/><br/>Thanks for the comments.<br/>Also, I'm really not writing "How to Read Geometry Better (Reach Edition),"<br/>so requests are pointless.
+</div></div>
+    <div class="affiliate-box">
+      <p class="affiliate-title">Related Products on Amazon</p>
+      <ul>
+        <li><a href="https://www.amazon.co.jp/s?tag=nomunomu05b-22&k=ロードバイク+ホイール+完組" target="_blank" rel="noopener sponsored">🛒 Road Bike Wheelsets</a></li>
+        <li><a href="https://www.amazon.co.jp/s?tag=nomunomu05b-22&k=ロードバイク+タイヤ+チューブ" target="_blank" rel="noopener sponsored">🛒 Road Bike Tires & Tubes</a></li>
+        <li><a href="https://www.amazon.co.jp/s?tag=nomunomu05b-22&k=ロードバイク+ドライブトレイン+チェーン" target="_blank" rel="noopener sponsored">🛒 Road Bike Drivetrain</a></li>
+      </ul>
+      <p class="affiliate-note">* Amazon affiliate links — prices may vary</p>
+    </div>
+  </article>
+</div>
+</body>
+</html>

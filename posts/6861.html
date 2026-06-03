@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responding to Comments — Nomu Lab Diary</title>
+<!-- AdSense: ADSENSE_PUBLISHER_ID を設定後ここにコードが入ります -->
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #2d3748; background: #f7fafc; line-height: 1.75;
+}
+a { color: #2b6cb0; }
+a:hover { text-decoration: underline; }
+
+/* Header */
+.site-header {
+  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+  color: white; padding: 28px 0;
+}
+.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
+.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+
+/* Main layout */
+.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
+
+/* Index: article cards */
+.card-grid { display: grid; gap: 16px; }
+.card {
+  background: white; border-radius: 10px;
+  padding: 22px 24px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  transition: box-shadow .15s;
+}
+.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.card h2 { font-size: 1.05rem; margin-bottom: 6px; }
+.card h2 a { text-decoration: none; color: #1a365d; }
+.card h2 a:hover { color: #2b6cb0; }
+.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 10px; }
+.card .excerpt { font-size: 0.88rem; color: #718096; line-height: 1.6; }
+
+/* Post page */
+.post-wrap {
+  background: white; border-radius: 10px;
+  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+.back-link { margin-bottom: 20px; font-size: 0.88rem; }
+.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
+.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
+.post-body { font-size: 0.97rem; line-height: 1.85; }
+.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.post-body p { margin-bottom: 14px; }
+.post-body br { line-height: 2; }
+
+/* Amazon アフィリエイトボックス */
+.affiliate-box {
+  margin-top: 36px; padding: 20px 24px;
+  background: #fffbeb; border: 1px solid #f6e05e;
+  border-radius: 10px;
+}
+.affiliate-box .affiliate-title {
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+}
+.affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.affiliate-box li a {
+  display: inline-block; padding: 6px 14px;
+  background: #ff9900; color: white; border-radius: 6px;
+  text-decoration: none; font-size: 0.88rem; font-weight: 600;
+}
+.affiliate-box li a:hover { background: #e68900; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .post-wrap { padding: 22px 18px; }
+  .site-header h1 { font-size: 1.4rem; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <h1><a href="../index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
+    <p>Bicycle Workshop — English Edition</p>
+  </div>
+</header>
+<div class="page-wrap">
+  <p class="back-link"><a href="../index.html">← All posts</a></p>
+  <article class="post-wrap">
+    <h1>Responding to Comments</h1>
+    <p class="post-meta">September 26, 2023</p>
+    <!-- AdSense 広告ユニット -->
+    <div class="post-body"><div class="entrytext">The other day, I wrote about Barcelona '92 rims where two rims happened to be the same weight, and mentioned that if there were a weight difference, I'd use the lighter one for the rear wheel. I received the following comment in response:<br/>
+"The weight reduction effect of rims should be identical for both front and rear wheels. If that's the case, wouldn't it make more sense from a Nomu Lab perspective to use the heavier rim—which would presumably have higher rigidity—on the rear wheel? Using 'because that's how it's always been done and there's no reason not to' doesn't seem like Nomu Lab at all, since you deny the practice of building rear wheels with the same number, gauge, and diameter spokes on both sides."<br/>
+<br/>
+First, the premise that "weight reduction of rims has the identical effect on both front and rear wheels" is incorrect.<br/>
+Let's say we're building wheels using two rims of the same rim height (technically, the same inner rim diameter)—one 400g and one 500g—where the spoke lengths work out the same, even if the manufacturer or model differs. No matter which rim we use for the front or rear, the total bike weight doesn't change. However, when the heavier rim is on the rear wheel, acceleration from a standstill and climbing definitely feel heavier. Whether the outer circumference of the drive wheel is light or heavy is extremely important.<br/>
+If a 100g difference seems unrealistic, I'll say this: even with rims from the same manufacturer and model, actual measured weight differences of 30g can occur depending on the individual piece.<br/>
+Beyond that, the cheapest 700C butyl tubes weigh around 100g, while the lightest TPU tube in the corresponding size weighs around 30g. So it's entirely possible to see a realistic 100g difference between a heavier rim of the same model paired with a butyl tube and a lighter rim paired with a TPU tube. It's something I wouldn't actually do, but it's not impossible.<br/>
+<br/>
+Now, the commenter continues with "if that's the case," but shouldn't we worry more about keeping the outer circumference of the drive wheel light—something that affects how the bike feels all the time—rather than worrying about rim damage, which doesn't happen every day?<br/>
+I suppose this explanation would be lost on someone who thinks "weight reduction has the identical effect on both wheels," so it might be pointless to argue. But even if we're only concerned about rim damage, if a rim suddenly collapses during riding, it's the front wheel that's more likely to cause a crash, not the rear wheel.<br/>
+This might be a bit of a tangent, but if you were handed two identical tires and absolutely had to use both—one nearly new and the other with the tread completely worn down and the casing fibers just starting to show—I don't think anyone would put the worn tire on the front wheel.<br/>
+<br/>
+Also, this is a bit nitpicky, but regarding the "rigidity" mentioned in "would presumably have higher rigidity"—that should technically be "strength."<br/>
+Equipment rigidity and strength generally correlate with some exceptions, but they're different concepts: rigidity is resistance to deformation under stress, while strength is resistance to breakage. If you loosen the spoke tension on a normally functional wheel to the point it's no longer usable as a wheel, rigidity decreases, but the buckling strength of the rim itself barely changes. Rigidity affects how a frame feels when you ride it; strength is about how likely it is to break in a crash. Classic ENVE rims, or EDGE rims from before that era, can be tensioned higher than average rims, allowing you to build wheels that feel more responsive under power than wheels built with standard rims. However, they have notoriously low buckling strength, making them an example of "high rigidity but low strength" equipment. There are also cranks where the rigidity when you stomp on them is higher than hollow-forged cranks, yet they sometimes fold like banana peels, so it's hard to call them high-strength.<br/>
+<br/>
+Then suddenly the conversation shifts to me supposedly denying traditional spoke arrangements, but this has nothing to do with the topic of splitting rims by weight between front and rear wheels.<br/>
+The commenter probably wants to say: "You follow the traditional practice of 'using the lighter rim on the rear when there's a weight difference,' but you don't follow the traditional practice of 'using the same number of spokes and gauge on both sides of the wheel.' That's inconsistent."<br/>
+Let me be clear upfront: I'm not denying "same number" builds. I don't recall building wheels with 2:1 spoke arrangements constantly.<br/>
+I'd say I actively incorporate the parts of collective wisdom from practitioners that seem good to me. I'm simply making choices about what to keep and what to discard from traditional practices based on how significant the factors are.<br/>
+<br/>
+To arbitrarily define what "Nomu Lab-like" means is fine, but if I'm to live up to how the world expects Nomu Lab to behave, then the "Nomu Lab-like" thing to do when faced with a condescending and off-target comment would be to expose it and criticize it harshly. Got it? Don't be stupid!<br/>
+<br/>
+<br/>
+[Addendum to "Responding to Comments"]<br/>
+For the record, I try to respond with appropriate courtesy to comments that show respect or make valid points. Recent examples include follow-up articles about Princeton. How do you tell the difference? I write "thank you for the comment" in those cases. With corrections for typos, I often don't include thanks, so it just looks like a silent fix—sorry about that.<br/>
+<br/>
+[Addendum to "Splitting Rims by Weight Between Front and Rear"]<br/>
+If I were handed one Nomu Lab Wheel #1 rim (30mm height / 460g) and one #5 rim (22mm height / 380g), both 24H, and told to build my personal front and rear wheels, despite how visually strange it would look, I'd build the front wheel with the higher #1 rim. In fact, my personal Nomu Lab wheels that I've genuinely wanted to build for a while consist of a #1 20H front wheel built with either CX Sprint or Aero SB3, paired with a #5 rear wheel with 28H semi-competition lacing. A front wheel that doesn't flex when you're out of the saddle or cornering, and a rear wheel that's responsive and light in the outer circumference—those are what matter most for the respective jobs of front and rear wheels. The modified Neutron Ultra front wheel I'm currently using, paired with a DT XR331 rim rear wheel, pretty well embodies that philosophy. The Neutron's 22H front rim is discontinued, but I have one more secured, and the XR331 rim's minimum spoke count is 28H anyway—but even if a 24H existed, I'd choose the 28H.
+</div></div>
+    <div class="affiliate-box">
+      <p class="affiliate-title">Related Products on Amazon</p>
+      <ul>
+        <li><a href="https://www.amazon.co.jp/s?tag=nomunomu05b-22&k=ロードバイク+ホイール+完組" target="_blank" rel="noopener sponsored">🛒 Road Bike Wheelsets</a></li>
+        <li><a href="https://www.amazon.co.jp/s?tag=nomunomu05b-22&k=ロードバイク+タイヤ+チューブ" target="_blank" rel="noopener sponsored">🛒 Road Bike Tires & Tubes</a></li>
+        <li><a href="https://www.amazon.co.jp/s?tag=nomunomu05b-22&k=ロードバイク+サドル+シートポスト" target="_blank" rel="noopener sponsored">🛒 Saddles & Seatposts</a></li>
+      </ul>
+      <p class="affiliate-note">* Amazon affiliate links — prices may vary</p>
+    </div>
+  </article>
+</div>
+</body>
+</html>

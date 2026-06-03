@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Converted Scott Addict SL to Shimano Di2 Internal Hub Specification — Nomu Lab Diary</title>
+<!-- AdSense: ADSENSE_PUBLISHER_ID を設定後ここにコードが入ります -->
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #2d3748; background: #f7fafc; line-height: 1.75;
+}
+a { color: #2b6cb0; }
+a:hover { text-decoration: underline; }
+
+/* Header */
+.site-header {
+  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+  color: white; padding: 28px 0;
+}
+.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
+.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+
+/* Main layout */
+.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
+
+/* Index: article cards */
+.card-grid { display: grid; gap: 16px; }
+.card {
+  background: white; border-radius: 10px;
+  padding: 22px 24px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  transition: box-shadow .15s;
+}
+.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.card h2 { font-size: 1.05rem; margin-bottom: 6px; }
+.card h2 a { text-decoration: none; color: #1a365d; }
+.card h2 a:hover { color: #2b6cb0; }
+.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 10px; }
+.card .excerpt { font-size: 0.88rem; color: #718096; line-height: 1.6; }
+
+/* Post page */
+.post-wrap {
+  background: white; border-radius: 10px;
+  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+.back-link { margin-bottom: 20px; font-size: 0.88rem; }
+.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
+.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
+.post-body { font-size: 0.97rem; line-height: 1.85; }
+.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.post-body p { margin-bottom: 14px; }
+.post-body br { line-height: 2; }
+
+/* Amazon アフィリエイトボックス */
+.affiliate-box {
+  margin-top: 36px; padding: 20px 24px;
+  background: #fffbeb; border: 1px solid #f6e05e;
+  border-radius: 10px;
+}
+.affiliate-box .affiliate-title {
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+}
+.affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.affiliate-box li a {
+  display: inline-block; padding: 6px 14px;
+  background: #ff9900; color: white; border-radius: 6px;
+  text-decoration: none; font-size: 0.88rem; font-weight: 600;
+}
+.affiliate-box li a:hover { background: #e68900; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .post-wrap { padding: 22px 18px; }
+  .site-header h1 { font-size: 1.4rem; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <h1><a href="../index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
+    <p>Bicycle Workshop — English Edition</p>
+  </div>
+</header>
+<div class="page-wrap">
+  <p class="back-link"><a href="../index.html">← All posts</a></p>
+  <article class="post-wrap">
+    <h1>Converted Scott Addict SL to Shimano Di2 Internal Hub Specification</h1>
+    <p class="post-meta">March 21, 2015</p>
+    <!-- AdSense 広告ユニット -->
+    <div class="post-body"><div class="entrytext">The drill is singing!<br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07871amx4.jpg" target="_blank"><img alt="DSC07871amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07871amx4s.jpg" width="300"/></a><br/>A customer left me with a Scott Addict SL to work on.<br/>Since this frame predates the introduction of electronic groupsets,<br/>it obviously has no provisions for internal hub routing.<br/><br/>This frame uses a BSC threaded bottom bracket (BB),<br/>but the Addict SL was quickly superseded by the press-fit BB version,<br/>so it was only produced for about a year or two—quite rare.<br/>There were lighter frames even back then, but no other mass-produced frame<br/>that was comparably light to this one.<br/>When you want to build an UCI rule-independent ultra-light bike<br/>weighing just under 4kg in actual measurement,<br/>the threaded BSC allows for lighter weight around the crankset compared to press-fit,<br/>so a light frame paired with a press-fit BB actually became a burden.<br/>Oops, that's completely off-topic.<br/><br/>The annoying thing about this frame for electric hub conversion is that<br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07875amx4.jpg" target="_blank"><img alt="DSC07875amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07875amx4s.jpg" width="300"/></a><br/>the BB is a completely sealed chamber.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07872amx4.jpg" target="_blank"><img alt="DSC07872amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07872amx4s.jpg" width="300"/></a><br/>The back of the derailleur hanger has a screw hole for mounting the cable stop and<br/>a drain hole, but<br/>the cable stop hole doesn't penetrate the BB,<br/>and the drain hole only goes to the down tube.<br/><br/>This is hard to understand in words, so<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00320amx4.jpg" target="_blank"><img alt="DSC00320amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00320amx4s.jpg" width="300"/></a><br/>↑here's a diagram of it.<br/>We're converting from a mechanical 9000 groupset<br/>to an electric 6870 groupset, but<br/>this is a downgrade in both grade and weight because<br/>we need to finish over 6.8kg.<br/>When it was built with the 9000, even with training wheels<br/>it easily exceeded 6.8kg, so<br/>with racing wheels we need quite a lot of added weight.<br/>So the weight increase from the groupset change is actually welcome.<br/><br/>The customer was adjusting the weight themselves,<br/>and their method was putting socket wrench pieces in a bag<br/>and stashing them inside the seat tube.<br/>The socket pieces were so badly rusted that I got curious,<br/>so I shined a light inside the seat tube and looked in—<br/>moisture wasn't escaping; it was damp and wet.<br/>(Water seeping in from the seatpost gap is normal)<br/>When I examined it more carefully,<br/>the seat tube didn't connect to anything.<br/>It would have been better if it at least connected to the down tube.<br/>Since it didn't connect to the right chainstay either,<br/>it became clear that we needed to drill holes from the BB to each tube.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00322amx4.jpg" target="_blank"><img alt="DSC00322amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00322amx4s.jpg" width="300"/></a><br/>↑I confirmed that the lower junction (JC) can be fed down the down tube<br/>from the head tube, so<br/>I'll route the cables like this.<br/>The numbers written in the BB holes show how many cables pass through.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07878amx4.jpg" target="_blank"><img alt="DSC07878amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07878amx4s.jpg" width="300"/></a><br/>First, I drilled the hole to the right chainstay.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07877amx4.jpg" target="_blank"><img alt="DSC07877amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07877amx4s.jpg" width="300"/></a><br/>↑The magnet is sticking to the chainstay,<br/>reacting to the probe wire I've threaded through it.<br/>The probe wire is homemade, but recently Park Tool released<br/>the "IR-1 Internal Cable Routing Kit (9,100 yen before tax),"<br/>which I recommend.<br/><s>I've added further modifications to my homemade version that make it even better.<br/>The usability of the wire's end is superior to the original—hehehehe (pat on my own back).<br/>I'm not showing it deliberately, of course.</s><br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07880amx4.jpg" target="_blank"><img alt="DSC07880amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07880amx4s.jpg" width="300"/></a><br/>Next, I also drilled holes through the down tube and seat tube.<br/>Four cables attach to the lower JC, but<br/>as shown in the diagram earlier, due to the geometry<br/>one of them has to be folded back.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07883amx4.jpg" target="_blank"><img alt="DSC07883amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07883amx4s.jpg" width="300"/></a><br/>↑Actually, I'm handling it like this.<br/>I'm not over-tightening the cable ties.<br/>I'm not cutting the excess expecting it to act as a rattle stop.<br/>The folded-back cable becomes effectively about 50mm shorter.<br/><br/>The short cable I didn't fold back is for the front derailleur,<br/>the long cable I didn't fold back is 750mm,<br/>and the folded-back cable is 700mm but effectively becomes about 650mm.<br/>Which of these 750mm and effectively 650mm<br/>goes to the seatpost battery and rear derailleur respectively will be<br/><s>a matter of improvisation</s>decided by fitting everything together.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07886amx4.jpg" target="_blank"><img alt="DSC07886amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07886amx4s.jpg" width="300"/></a><br/>I managed to thread 3 cables through the down tube.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07898amx4.jpg" target="_blank"><img alt="DSC07898amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07898amx4s.jpg" width="300"/></a><br/>I was worried because the frame size is fairly large,<br/>but the effectively 650mm was more than enough for the seatpost battery.<br/>Even though it's called a seatpost battery,<br/>this time I'm sinking it into the seat tube with a rattle stop.<br/>Since I wanted to make the installation easily reversible and<br/>allow room for some added weight,<br/>this required some careful planning.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07889amx4.jpg" target="_blank"><img alt="DSC07889amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07889amx4s.jpg" width="300"/></a><br/>↑This is what the BB wiring looks like.<br/>As I'll explain later, I further opened up the drain hole.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07887amx4.jpg" target="_blank"><img alt="DSC07887amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07887amx4s.jpg" width="300"/></a><br/>The front derailleur cable exits here.<br/>Both the 9070 and 6870 have the cable inserted on the rear side of the front derailleur,<br/>but it's better to drill the cable hole on the front side.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07896amx4.jpg" target="_blank"><img alt="DSC07896amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07896amx4s.jpg" width="300"/></a><br/>If you drill the shortest distance hole in the back of the seat tube,<br/>the cable will float up and rattle instead.<br/>From a mud splash perspective it's not good, and the rear tire could hit it.<br/><br/>Since I'm routing forward, there's a cable clip on the underside of the front derailleur<br/>that I'll use for the cable.<br/><br/>I've seen examples where the front derailleur mounting crushes the cable flat,<br/>so that requires careful attention.<br/>You also have to watch out for interference with the support bolts.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07890amx4.jpg" target="_blank"><img alt="DSC07890amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07890amx4s.jpg" width="300"/></a><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07892amx4.jpg" target="_blank"><img alt="DSC07892amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07892amx4s.jpg" width="300"/></a><br/>↑I drilled the rear derailleur hole here.<br/>I've confirmed the cable won't tangle around your right heel,<br/>and I routed it even lower to be safe.<br/><br/>If I were drilling above the chainstay, it would be better further back,<br/>but based on what I found probing with the probe wire,<br/>I wasn't confident about hitting a definite void, so I put it here.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07899amx4.jpg" target="_blank"><img alt="DSC07899amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07899amx4s.jpg" width="300"/></a><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07902amx4.jpg" target="_blank"><img alt="DSC07902amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07902amx4s.jpg" width="300"/></a><br/>↑The upper JC cable went here.<br/>The void space around the head tube was large and<br/>easy to see into, which was a relief.<br/><br/>The crankset isn't an FC-9000,<br/>but I managed to get the front shifting to work.<br/>As for the bike's actual weight with racing wheels,<br/>it came out slightly lighter than 6.8kg, so<br/>we do need added weight, but not nearly as much as before.<br/><br/>The socket wrench pieces have the actual measured weight written on them with oil pen,<br/>and the customer swaps them around like puzzle pieces,<br/>fine-tuning them to just over 6.8kg (barely exceeding it).<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00326amx4.jpg" target="_blank"><img alt="DSC00326amx4.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC00326amx4s.jpg" width="300"/></a><br/>Finally.<br/>Since the BB hole drain seemed sketchy,<br/>I extended the original drain hole and punched it through.<br/>Looking at the interior of the sealed seat tube before modification,<br/>it seems like this work was not just a good idea—it was necessary.
+</div></div>
+    <div class="affiliate-box">
+      <p class="affiliate-title">Related Products on Amazon</p>
+      <ul>
+        <li><a href="https://www.amazon.co.jp/s?tag=nomunomu05b-22&k=ロードバイク+ホイール+完組" target="_blank" rel="noopener sponsored">🛒 Road Bike Wheelsets</a></li>
+        <li><a href="https://www.amazon.co.jp/s?tag=nomunomu05b-22&k=ロードバイク+タイヤ+チューブ" target="_blank" rel="noopener sponsored">🛒 Road Bike Tires & Tubes</a></li>
+        <li><a href="https://www.amazon.co.jp/s?tag=nomunomu05b-22&k=ロードバイク+ドライブトレイン+チェーン" target="_blank" rel="noopener sponsored">🛒 Road Bike Drivetrain</a></li>
+      </ul>
+      <p class="affiliate-note">* Amazon affiliate links — prices may vary</p>
+    </div>
+  </article>
+</div>
+</body>
+</html>
