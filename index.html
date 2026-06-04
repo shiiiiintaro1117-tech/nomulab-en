@@ -86,6 +86,16 @@ a:hover { text-decoration: underline; }
 .sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
 .sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
 
+/* Language toggle */
+.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-btn {
+  padding:3px 11px; border-radius:4px; font-size:0.8rem;
+  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  text-decoration:none;
+}
+.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
+.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+
 /* Responsive */
 @media (max-width: 600px) {
   .post-wrap { padding: 22px 18px; }
@@ -98,6 +108,7 @@ a:hover { text-decoration: underline; }
   <div class="inner">
     <h1>Nomu Lab Diary</h1>
     <p>Bicycle Workshop Blog &nbsp;|&nbsp; 4917 posts</p>
+    <div class="lang-toggle"><span class="lang-btn active">EN</span><a class="lang-btn" href="/zh/index.html">繁中</a></div>
   </div>
 </header>
 <div class="page-wrap">
