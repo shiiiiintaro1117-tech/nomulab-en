@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="/favicon.ico">
+<title>Karooのルート生成とナビの挙動について — 野村工房日記</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #2d3748; background: #f7fafc; line-height: 1.75;
+}
+a { color: #2b6cb0; }
+a:hover { text-decoration: underline; }
+
+/* Header */
+.site-header {
+  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+  color: white; padding: 28px 0;
+}
+.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
+.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+
+/* Main layout */
+.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
+
+/* Index: article cards */
+.card-grid { display: grid; gap: 16px; }
+.card {
+  background: white; border-radius: 10px;
+  padding: 22px 24px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  transition: box-shadow .15s;
+}
+.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.card h2 { font-size: 1.05rem; margin-bottom: 6px; }
+.card h2 a { text-decoration: none; color: #1a365d; }
+.card h2 a:hover { color: #2b6cb0; }
+.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 10px; }
+.card .excerpt { font-size: 0.88rem; color: #718096; line-height: 1.6; }
+
+/* Post page */
+.post-wrap {
+  background: white; border-radius: 10px;
+  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+.back-link { margin-bottom: 20px; font-size: 0.88rem; }
+.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
+.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
+.post-body { font-size: 0.97rem; line-height: 1.85; }
+.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.post-body p { margin-bottom: 14px; }
+.post-body br { line-height: 2; }
+
+/* Amazon アフィリエイトボックス */
+.affiliate-box {
+  margin-top: 36px; padding: 20px 24px;
+  background: #fffbeb; border: 1px solid #f6e05e;
+  border-radius: 10px;
+}
+.affiliate-box .affiliate-title {
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+}
+.affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.affiliate-box li a {
+  display: inline-block; padding: 6px 14px;
+  background: #ff9900; color: white; border-radius: 6px;
+  text-decoration: none; font-size: 0.88rem; font-weight: 600;
+}
+.affiliate-box li a:hover { background: #e68900; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+
+/* Sort controls */
+.sort-bar {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+}
+.sort-btn {
+  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
+  background: white; color: #2d3748; font-size: 0.85rem;
+  cursor: pointer; transition: background .15s, border-color .15s;
+}
+.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
+.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+
+/* Language toggle */
+.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-btn {
+  padding:3px 11px; border-radius:4px; font-size:0.8rem;
+  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  text-decoration:none;
+}
+.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
+.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .post-wrap { padding: 22px 18px; }
+  .site-header h1 { font-size: 1.4rem; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <h1><a href="../index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
+    <p>自行車工房 — 繁體中文版</p>
+    <div class="lang-toggle"><a class="lang-btn" href="/posts/7146.html">EN</a><span class="lang-btn active">繁中</span></div>
+  </div>
+</header>
+<div class="page-wrap">
+  <p class="back-link"><a href="../index.html">← 所有文章</a></p>
+  <article class="post-wrap">
+    <h1>Karooのルート生成とナビの挙動について</h1>
+    <p class="post-meta">June 14, 2024</p>
+    <ins class="adsbygoogle"
+     style="display:block;margin:24px 0"
+     data-ad-client="ca-pub-2988824672029852"
+     data-ad-slot="auto"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="post-body"><div class="entrytext">Slamのカルー(SRAM Karoo2サイクルコンピューター)で<br/>本体の操作またはダッシュボードで<br/>設定したピンの位置までのナビをオンにした際の<br/>挙動について書きます。<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9611msn5.jpg" target="_blank"><img alt="RIMG9611msn5.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9611msn5s.jpg" width="320"/></a><br/>地圖のページではない<br/>データだけのページのレイアウトは<br/>数値の項目だけなら最大で１０個、<br/>グラフの項目は最大で２個 選択することが可能で、<br/>グラフの項目を１個選択した場合は<br/>数値の項目は最大で６個、<br/>グラフの項目を２個選択した場合は<br/>数値の項目は最大で４個選べます。<br/><br/>例として 上の画像で<br/>濃い色になって選択されているのは<br/>数値４個＋グラフ２個です。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/030amx15kar.jpg" target="_blank"><img alt="030amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/030amx15kars.jpg" width="320"/></a><br/>↑数値２個とグラフ２個の<br/>レイアウトにしたページです。<br/>家の前から本体の地圖を手動で操作して<br/>風吹峠の頂上の位置にピンを打ち、<br/>そこまでのナビをオンにしました。<br/>上の数値２つは ゴールまでの残りが<br/>３９．５ｋｍで 標高２２０ｍであることを意味します。<br/>先に書いておきますが 本体の地圖上では<br/>頂上の位置が不明瞭だったので<br/>（県境やトンネルの表示が無いので）<br/>実際の頂上より かなり手前をゴールとしています。<br/><br/>下のグラフは<br/>PROGRESS（進行状況）のデータ種類から選べる<br/>Distance Remaining（残りの距離）<br/>Elevation Remaining（残りの上昇距離）<br/>Dist + Elev Remaining（残りの距離＋上昇）<br/>のうち一番下の 残りの距離と標高を<br/>２つとも表示するグラフを選んでいます。<br/>ちなみに 英文の項目名のあとの（）内は<br/>日本語を選択した場合の表記の原文ママです。<br/>ゴールに近づくにつれ グラフの棒が右端から<br/>短くなっていくわけですが、<br/>ルートのうちの獲得標高のほとんどは<br/>風吹峠によるものなので、<br/>峠のふもと辺りで 距離のほうは残り１５％くらいなのに<br/>標高は８０％くらい残っている・・・みたいな<br/>偏ったグラフが見れるはずでしたが<br/>このグラフの機能の欠陥のせいで<br/>それは叶いませんでした。<br/><br/>上のグラフは<br/>ＣＬＩＭＢ（上り走行）のデータ種類から選べる<br/>Upcoming Elevation Graph（次の上昇のグラフ）<br/>Historical Elevation Graph（経時的な上昇グラフ）<br/>のうち 上のアップカミングのほうを表示しています。<br/>（）内は同じく日本語を選んだ際の原文ママですが、<br/>アップカミングのほうは「残りの標高データ」<br/>ヒストリカルのほうは「これまで走った標高データ」<br/>を意味します。<br/>アップカミングのほうは「ゴールまでの地形」を<br/>表示しているので ナビをオンにしていないと<br/>グラフが出ません。<br/><br/>上の画像では アップカミングのグラフは<br/>ルートを自動検出してから一切 触っていないので<br/>単なる横線のままですが、<br/>このグラフの表示部分をタップすると<br/>縮尺が変わります。<br/>用意されている縮尺は<br/>２．０ｋｍ、５．０ｋｍ、１０．０ｋｍ、２５．０ｋｍ、５０．０ｋｍ、<br/>８０．０ｋｍ、１５０．０ｋｍなどですが<br/>ゴールまでの距離が用意されている縮尺の距離を<br/>下回ると その縮尺は選べなくなり<br/>ゴールまでの距離自体が縮尺の上限となります。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/031amx15kar.jpg" target="_blank"><img alt="031amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/031amx15kars.jpg" width="320"/></a><br/>タップしていって 縮尺を２５．０ｋｍにしました。<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/032amx15kar.jpg" target="_blank"><img alt="032amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/032amx15kars.jpg" width="320"/></a><br/>↑これが現在地から 向こう２５．０ｋｍの標高です。<br/>厳密に言うと「ナビに従った場合の」<br/>向こう２５．０ｋｍの標高です。<br/>後述しますが これは「つどつど修正」をするので<br/>神がかった機能です。<br/><br/>次にタップすると 縮尺が５０．０ｋｍとなるはずですが、<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/033amx15kar.jpg" target="_blank"><img alt="033amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/033amx15kars.jpg" width="320"/></a><br/>ルートそのものが ５０ｋｍ未満なので<br/>グラフの上限が３９．４ｋｍとなりました。<br/>上の数値では３９．５ｋｍであるところ<br/>グラフでは３９．４ｋｍなのは、<br/>この場合でいうと３９．４５ｋｍ以上の処理を<br/>四捨五入しているか 切り捨てているかが違うようで<br/>ここは たまに０．１ｋｍの違いが出ます。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/034amx15kar.jpg" target="_blank"><img alt="034amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/034amx15kars.jpg" width="320"/></a><br/>コースの標高的な全景です。<br/>峠に入る前の ピッと尖った部分は<br/>あとで出て来ますが「佐田の前の無駄上り」です。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9607amx15.jpg" target="_blank"><img alt="RIMG9607amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9607amx15s.jpg" width="320"/></a><br/>コースの説明をしておきます。<br/>画像左が おおむね北です。<br/>一条通の交差点から徒歩圏内にある<br/>私が高校生のときからお世話になっている<br/>サイクルショップ カワハラダさんを<br/>無断で描いていますが理由はあります（後述）。<br/><br/>私の家から中央環状線（中環）に出て<br/>まっすぐ海側に走ると、<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9608amx15.jpg" target="_blank"><img alt="RIMG9608amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9608amx15s.jpg" width="320"/></a><br/>一条通の交差点で曲がるなら 府道３０号線、<br/>安井町の交差点で曲がるなら 国道２６号線、<br/>大浜の交差点で曲がるなら 府道２０４号線（旧国道２６号線）<br/>を走ることになります。<br/>この３本の道は（さらに海側の臨海線を入れると４本ですが）<br/>ほとんど平行に南北に走っています。<br/><br/>府道２０４号線の 大浜より北は国道２６号線で、<br/>大浜～安井町間でクランクになって<br/>安井町より南側に続く形となっています。<br/><br/>府道３０号線は 大阪の人は「１３号線」と通称しますが<br/>この道の正式名称が府道でも国道でも<br/>１３号であったことは無く、<br/>私の支持している説では<br/>「２６号線の半分の車線しかないから」が<br/>１３号線と呼ばれる由来です。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9609amx15.jpg" target="_blank"><img alt="RIMG9609amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9609amx15s.jpg" width="320"/></a><br/>それぞれの道を 南下していって<br/>佐田、砂川変電所、樽井の交差点で<br/>左に曲がると 風吹峠の頂上に至る道になります。<br/>このうち私が最も多く走っているルートは<br/>「２６号線ルートで 砂川変電所で曲がる」です。<br/>２０４号線の場合は樽井まで行かずに<br/>途中で２６号線に入ります。<br/>３０号線（１３号線）ルートは めったに走りません。<br/>車は少ないのですが、無駄にアップダウンがあり<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9610amx15.jpg" target="_blank"><img alt="RIMG9610amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9610amx15s.jpg" width="320"/></a><br/>とくに佐田の手前に「無駄に登ったあと<br/>頂上が しばらく平坦で さっき登った半分くらい下る」<br/>という道があるからです。<br/>これが先ほど書いた 佐田の前の無駄上りです。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/035amx15kar.jpg" target="_blank"><img alt="035amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/035amx15kars.jpg" width="320"/></a><br/>走り始めました。<br/>１ページ目の地圖のページは<br/>上に数値の項目を２個、<br/>左が速度で 右が走行した距離を選択しています。<br/>この画像含め以降の画像は 全て停車時に撮っています。<br/>５．０ｋｍ地点で すでに安井町を曲がっており<br/>２６号線を南下中ですが、<br/>ナビは２７３ｍ先で右に曲がって<br/>２０４号線に出て走れと指示してきます。<br/>ちなみに上の画像の地圖 左上にある<br/>正方形のような土地は クボタの堺工場ですが、<br/>その右にある Ｌ字型の土地はシマノの本社／工場です。<br/>ここから 曲がれという指示を無視して直進すると・・・<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/036amx15kar.jpg" target="_blank"><img alt="036amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/036amx15kars.jpg" width="320"/></a><br/>先ほどの地点から ０．８ｋｍほど直進しました。<br/>シマノの横あたりです。<br/>ルートを無視したことに めげずに<br/>０．５ｋｍ先で右に曲がって２０４号線に入れという<br/>新しいルートを即座に提案してきました。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/037amx15kar.jpg" target="_blank"><img alt="037amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/037amx15kars.jpg" width="320"/></a><br/>１０．１ｋｍ地点です。<br/>地圖の縮尺を ズームアウトして確認したところ<br/>以後ずっと２０４号線をオススメしています。<br/><br/>曲がるところまで１５０ｍを切ると、<br/>クソでかい警告音とともに<br/>ナビの黄色いタブが 自動で持ち上がり<br/>「そろそろ曲がるところやぞ」と教えてくれます。<br/>走りながらだと 初めて出る残り距離が<br/>すでに１３５ｍくらいになっていることが多いですが。.<br/>上の画像ではタブの中の紫のバーが<br/>残り２５ｍとなっていますが、<br/>紫のバーは「１５０ｍに対する進捗」を表していて<br/>すでに進んだ部分は濃い紫になって<br/>左から伸びてきます。<br/>上の画像だと１２５ｍぶんが濃い紫で<br/>残りの２５ｍが薄い紫というわけです。<br/><br/>この「曲がるところまで あと１５０ｍの注意喚起」の<br/>残り距離ですが、マイナス２０ｍ見当で<br/>把握したほうがいいです。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/038amx15kar.jpg" target="_blank"><img alt="038amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/038amx15kars.jpg" width="320"/></a><br/>その話の前に。<br/>現在地点の黄色い矢印の先にある<br/>黄色い道が２６号線で、<br/>ナビがオススメする それより右のルートが<br/>２０４号線です。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/040amx15kar.jpg" target="_blank"><img alt="040amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/040amx15kars.jpg" width="320"/></a><br/>１３．３ｋｍ地点。<br/>泉大津のイズミヤ（デイリーカナート）のあたりですが<br/>なぜか この少し前からナビが より山側の<br/>３０号線（１３号線）をオススメするようになってきました。<br/>ナビを無視すると めげずに 次に曲がるポイントを<br/>即座に修正して出してきますが、<br/>そこまで残り１５０ｍを切ると クソでかい警告音で<br/>お知らせしてきます。<br/>つまり、ナビを無視した回数だけ<br/>余計に クソでかい警告音を聞かされるわけです。<br/>それもあって これ以降はナビに従うことにしました。<br/><br/>上の画像では あと２１ｍで左折となっていますが、<br/>これは 信号待ちで止まった箇所で<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/042amx15kar.jpg" target="_blank"><img alt="042amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/042amx15kars.jpg" width="320"/></a><br/>↑この左折が「あと２１ｍ」ということです。<br/>これについては 左折と右折で<br/>目の前に横切っている道を渡るかどうかが<br/>違うことが関係しているかもしれません。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/044amx15kar.jpg" target="_blank"><img alt="044amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/044amx15kars.jpg" width="320"/></a><br/>時系列が飛びますが<br/>３０．１ｋｍ地点の この「３３ｍ先を右折」ですが<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/045amx15kar.jpg" target="_blank"><img alt="045amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/045amx15kars.jpg" width="320"/></a><br/>それを表示した地点の 実際の画像です。<br/>右折で だいたい「曲がるところまでの距離」が<br/>合うくらいでしょうか。<br/>いや、それでも心持ちマイナス気味です やっぱり。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/039amx15kar.jpg" target="_blank"><img alt="039amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/039amx15kars.jpg" width="320"/></a><br/>↑これは１１．３ｋｍ走った時点での画像ですが、<br/>画面一番下の残り標高／距離のグラフが<br/>２２０ｍのうち２４ｍ上り<br/>３９．５ｋｍのうち１．５ｋｍ走った時点で<br/>フリーズしています。<br/>以後 ルートを走破するまで<br/>この状態から全く変わりませんでした。<br/><br/>なぜ こんなことになったのかというと、<br/>ナビを無視しまくったからです。<br/>家から中環に出るまでの カルーがオススメするルートが<br/>土地勘のある者には非効率なルートだったので、<br/>ナビを無視して スタートから１．５ｋｍ走った地点で<br/>「言うこと聞かんのなら もうええわ！」と<br/>キレて終了しています。<br/>以後 私は これを表示項目に選んでいませんが<br/>走行ルートを カルーの自動生成ではなく<br/>手動生成したブルベのルートなどを丁寧になぞるぶんには<br/>使える表示項目だと思います。<br/>多少 ナビを無視したり、曲がるところを曲がりそこねて<br/>元のナビしている道に戻る程度では フリーズはしません。<br/>逆に言うと、フリーズさせるようであれば<br/>自分に合った表示項目ではないと思ったほうがいいです。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/043amx15kar.jpg" target="_blank"><img alt="043amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/043amx15kars.jpg" width="320"/></a><br/>泉大津で左折し その先をすぐに右折し、<br/>和泉府中の駅前のロータリーで さらに左折し<br/>その先のＴ字路を右折すると（ここで おおむね南向き）<br/>残り１０．１ｋｍと出ました。<br/>そこが 停車できるタイミングではなかったので<br/>上の画像では 次の曲がるところまで<br/>残り９．７ｋｍとなっています。<br/>これは、しばらくの間 クソでかい警告音から<br/>開放されることを意味していますが<br/>画面下にあるタブのうち 真ん中のグレーのタブは<br/>スマホとのリンクで、スマホに通知が届くと<br/>真ん中のグレーのタブが自動で持ち上がり<br/>走行の状況と関係ないタイミングで<br/>クソでかい警告音が鳴ってビビらされます。<br/><br/>曲がるポイントでの矢印のバリエーションは<br/>非常に多く、上の画像の矢印は<br/>貝田という交差点で 自分から見て<br/>Ｙ字の下から来る形になるので<br/>左を選べという状況に合った形です。<br/>ちなみに、そこで右に曲がると ２６号線に至ります。<br/><br/>ここいらで「つどつど修正」について書いておきます。<br/>上の画像の表示項目のうち<br/>２つの数値の「残り距離」と「残り標高」と<br/>「アップカミングの標高グラフ」の３つは<br/>ナビをしているルートから外れるたびに<br/>「以後 ナビに従った場合の残り距離／標高」に<br/>そのつど適宜 修正されます。<br/>これが 私がカルーのナビ関係で<br/>最も すごいと思った部分です。<br/>実際、当初の残り距離は３９．５ｋｍだったはずですが<br/>上の画像の進捗１６．３ｋｍと残り２３．５ｋｍを足すと<br/>３９．８ｋｍと増えているのは そのためです。<br/>実際に走った道が ナビに対して近道であれば<br/>逆に ゴールまでの距離は つどつど修正されて縮みます。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/049amx15kar.jpg" target="_blank"><img alt="049amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/049amx15kars.jpg" width="320"/></a><br/>３６．９ｋｍ地点です。<br/>つどつど修正が積み重なって<br/>進捗と残りの距離を足すと 当初の３９．５ｋｍが<br/>４１．０ｋｍに伸びていました。<br/>それはいいとして、青のタブが自動で持ち上がりました。<br/>これは 以前の記事にも書いていますが<br/>「カルーが上りと認めた道」のことで、<br/>そのスタート地点に近づくと<br/>勝手にタブが持ち上がり<br/>詳細な標高のデータを表示します。<br/><br/>これはナビをしている最中以外でも、<br/>いま走っている道の先に<br/>カルーが上りと認めた道があれば<br/>そのスタート地点で勝手に青タブを生成して<br/>クソでかい警告音と共に告知してくれます。<br/><br/>右端の紫のタブは 押し間違えて作ってしまった<br/>ラップタイムのタグです。<br/><br/>上の画像のアップカミングのグラフの<br/>縮尺では分かりにくいので<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/050amx15kar.jpg" target="_blank"><img alt="050amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/050amx15kars.jpg" width="320"/></a><br/>縮尺を変えました。<br/>はい、これが佐田の前の無駄上りです。<br/>頂上まで あと０．３ｋｍで、<br/>ここの瞬間を拾ってか 斜度は１２％となっていますが<br/>実際は７％くらいです。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/052amx15kar.jpg" target="_blank"><img alt="052amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/052amx15kars.jpg" width="320"/></a><br/>３９．２ｋｍ地点です。<br/>地元の人にしか伝わらないでしょうが<br/>金熊寺の交差点です。<br/>初めに書いていますが ゴール地点を風吹峠の頂上、<br/>厳密な私の定義では<br/>新風吹トンネルに入った瞬間の地点ではなく<br/>それより手前にしてしまっています。<br/><br/>上の画像で ルートが青い線になっていて<br/>スタートの三角の白い旗と<br/>ゴールを意味するチェッカーフラッグのマークがあるのは<br/>カルーが上りと認定したルートで、<br/>ゴールの旗は新風吹トンネルを抜けた地点です。<br</div>
+    <div class="affiliate-box">
+      <p class="affiliate-title">Related Products on Amazon</p>
+      <ul>
+        <li><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=ロードバイク+ホイール+完組" target="_blank" rel="noopener sponsored">🛒 Road Bike Wheelsets</a></li>
+        <li><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=サイクルコンピューター+GPS" target="_blank" rel="noopener sponsored">🛒 Cycling Computers & GPS</a></li>
+      </ul>
+      <p class="affiliate-note">* Amazon affiliate links — prices may vary</p>
+    </div>
+  </article>
+</div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="/favicon.ico">
+<title>將BMC的SL01配線改裝為內裝式 — 野村工房日記</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #2d3748; background: #f7fafc; line-height: 1.75;
+}
+a { color: #2b6cb0; }
+a:hover { text-decoration: underline; }
+
+/* Header */
+.site-header {
+  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+  color: white; padding: 28px 0;
+}
+.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
+.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+
+/* Main layout */
+.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
+
+/* Index: article cards */
+.card-grid { display: grid; gap: 16px; }
+.card {
+  background: white; border-radius: 10px;
+  padding: 22px 24px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  transition: box-shadow .15s;
+}
+.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.card h2 { font-size: 1.05rem; margin-bottom: 6px; }
+.card h2 a { text-decoration: none; color: #1a365d; }
+.card h2 a:hover { color: #2b6cb0; }
+.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 10px; }
+.card .excerpt { font-size: 0.88rem; color: #718096; line-height: 1.6; }
+
+/* Post page */
+.post-wrap {
+  background: white; border-radius: 10px;
+  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+.back-link { margin-bottom: 20px; font-size: 0.88rem; }
+.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
+.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
+.post-body { font-size: 0.97rem; line-height: 1.85; }
+.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.post-body p { margin-bottom: 14px; }
+.post-body br { line-height: 2; }
+
+/* Amazon アフィリエイトボックス */
+.affiliate-box {
+  margin-top: 36px; padding: 20px 24px;
+  background: #fffbeb; border: 1px solid #f6e05e;
+  border-radius: 10px;
+}
+.affiliate-box .affiliate-title {
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+}
+.affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.affiliate-box li a {
+  display: inline-block; padding: 6px 14px;
+  background: #ff9900; color: white; border-radius: 6px;
+  text-decoration: none; font-size: 0.88rem; font-weight: 600;
+}
+.affiliate-box li a:hover { background: #e68900; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+
+/* Sort controls */
+.sort-bar {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+}
+.sort-btn {
+  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
+  background: white; color: #2d3748; font-size: 0.85rem;
+  cursor: pointer; transition: background .15s, border-color .15s;
+}
+.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
+.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+
+/* Language toggle */
+.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-btn {
+  padding:3px 11px; border-radius:4px; font-size:0.8rem;
+  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  text-decoration:none;
+}
+.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
+.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .post-wrap { padding: 22px 18px; }
+  .site-header h1 { font-size: 1.4rem; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <h1><a href="../index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
+    <p>自行車工房 — 繁體中文版</p>
+    <div class="lang-toggle"><a class="lang-btn" href="/posts/1501.html">EN</a><span class="lang-btn active">繁中</span></div>
+  </div>
+</header>
+<div class="page-wrap">
+  <p class="back-link"><a href="../index.html">← 所有文章</a></p>
+  <article class="post-wrap">
+    <h1>將BMC的SL01配線改裝為內裝式</h1>
+    <p class="post-meta">October 28, 2014</p>
+    <ins class="adsbygoogle"
+     style="display:block;margin:24px 0"
+     data-ad-client="ca-pub-2988824672029852"
+     data-ad-slot="auto"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="post-body"><div class="entrytext">電鑽在尖叫！<br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05325amx3.jpg" target="_blank"><img alt="DSC05325amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05325amx3s.jpg" width="300"/></a><br/>客人託我保管一個BMC（不支援電動）的車架。<br/>他希望在改裝為電動變速器時，<br/>也把配線改成內裝式。<br/>為了判斷是否可行，<br/>我拆下了五通和坐管去檢查，但看起來不行。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05404amx3.jpg" target="_blank"><img alt="DSC05404amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05404amx3s.jpg" width="300"/></a><br/>經過調查發現，<br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05405amx3.jpg" target="_blank"><img alt="DSC05405amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05405amx3s.jpg" width="300"/></a><br/>五通室是密閉的。<br/>本來的計畫是，如果內裝化可行的話就聯絡客人<br/>請他寄來全套變速器，<br/>但現在看來得打電話拒絕了。<br/>結果我卻不知為何說了「應該可以」。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05327amx3.jpg" target="_blank"><img alt="DSC05327amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05327amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05328amx3.jpg" target="_blank"><img alt="DSC05328amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05328amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05330amx3.jpg" target="_blank"><img alt="DSC05330amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05330amx3s.jpg" width="300"/></a><br/>↑密閉室。<br/>拆下線路端子螺絲的話會有M5螺孔，<br/>但除此之外整個五通就是密閉的。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05406amx3.jpg" target="_blank"><img alt="DSC05406amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05406amx3s.jpg" width="300"/></a><br/>進一步調查後發現，坐管、下管和右鏈條線之間<br/>完全沒有通路。<br/>這表示得從五通孔分別向各管體鑽孔。<br/>上圖的數字代表穿過各孔的線路數量。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05409amx3.jpg" target="_blank"><img alt="DSC05409amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05409amx3s.jpg" width="300"/></a><br/>除了右鏈條線外都要穿過2根以上的線，<br/>所以最少得鑽出如上圖的長孔。<br/>無法再拒絕了！看著寄來的全套零件只能認命。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05407amx3.jpg" target="_blank"><img alt="DSC05407amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05407amx3s.jpg" width="300"/></a><br/>↑最後會變成這樣。<br/>採用的是內裝電池，但說「應該可以」的人是我自己。<br/>這部分之後再寫，<br/>但如果車架尺寸更小的話，成功的可能性會大大降低。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05345amx3.jpg" target="_blank"><img alt="DSC05345amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05345amx3s.jpg" width="300"/></a><br/>首先在右鏈條線上鑽了孔。<br/>然後我用探測線通過，看看內部有多少空心部分，<br/>以及線路是否能通過。<br/>結果沒問題。<br/>這是我最大的擔憂。<br/>磁鐵貼在鏈條線上，<br/>是在對線路起反應。<br/>拉線的時候……<br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05346amx3.jpg" target="_blank"><img alt="DSC05346amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05346amx3s.jpg" width="300"/></a><br/>滑溜溜地動了。<br/>（千萬別想鋼鐵車架會怎樣）<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05408amx3.jpg" target="_blank"><img alt="DSC05408amx3.jpg" border="0" height="300" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05408amx3s.jpg" width="225"/></a><br/>線路長度是託給客人決定的，所以收到的是一般規格。<br/>除了上下接線器間的2條350mm線路外，<br/>還有1200、800、750、300mm各1條。<br/>其中1200mm是上下接線器的連接，已確定，<br/>300mm是前變速器，也已確定。<br/>800mm和750mm則根據實際情況再決定。<br/><br/>內裝用的下接線器要把各線路卡入<br/>只能在車架外進行，<br/>但由於無法從五通孔把下接線器放進去，<br/>老方法是在頭管外做好再拉進下管。<br/>此時300mm這條線比下管還短，<br/>所以得裝一個導線。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05354amx3.jpg" target="_blank"><img alt="DSC05354amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05354amx3s.jpg" width="300"/></a><br/>穿過下管了。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05367amx3.jpg" target="_blank"><img alt="DSC05367amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05367amx3s.jpg" width="300"/></a><br/>然後分別通往右鏈條線和坐管。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05369amx3.jpg" target="_blank"><img alt="DSC05369amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05369amx3s.jpg" width="300"/></a><br/>↑大致是這樣<br/>幸運的是五通殼內部是外翻的，<br/>所以能輕鬆避開五通的防水套管。<br/>就算沒有外翻也基本沒問題（→<a href="http://pass13.blog.fc2.com/blog-entry-807.html" target="_blank" title="這裡">這裡</a>），<br/>但那樣會有點困難。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05358amx3.jpg" target="_blank"><img alt="DSC05358amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05358amx3s.jpg" width="300"/></a><br/>時間順序有點亂，<br/>這是拉到底後並排的750mm和800mm。<br/>怎麼看都沒有50mm的差距。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05410amx3.jpg" target="_blank"><img alt="DSC05410amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05410amx3s.jpg" width="300"/></a><br/>這是因為，考慮到下接線器的接線配置，<br/>除了1200mm外，其他3條中有1條要折返。<br/>經過各種考慮我覺得這是最佳方案，<br/>但長度能否足夠……。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05363amx3.jpg" target="_blank"><img alt="DSC05363amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05363amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05366amx3.jpg" target="_blank"><img alt="DSC05366amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05366amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05364amx3.jpg" target="_blank"><img alt="DSC05364amx3.jpg" border="0" height="300" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05364amx3s.jpg" width="225"/></a><br/>完全綽綽有餘。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05362amx3.jpg" target="_blank"><img alt="DSC05362amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05362amx3s.jpg" width="300"/></a><br/>後變速器那邊的孔在鏈條線上側。<br/>由於是楔形斷面，下側是尖的，所以只能從側面或上方鑽。<br/>因為擔心鏈條飛躍造成干擾所以不想從上方鑽，<br/>但側面也有不得已的理由，所以這樣決定了。<br/>線路要再往鏈條線內拉進去。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05379amx3.jpg" target="_blank"><img alt="DSC05379amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05379amx3s.jpg" width="300"/></a><br/>前變速器的孔在坐管前側。<br/>如我之前寫過的，相比從後面鑽，<br/>這邊的線路不容易亂或飄移。<br/>但支座螺栓或底座容易夾住或壓扁線路，<br/>這點要特別小心。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05380amx3.jpg" target="_blank"><img alt="DSC05380amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05380amx3s.jpg" width="300"/></a><br/>坐管內的內裝電池是下一個問題。<br/>車架附帶的專用坐管相當長，<br/>無法裁剪。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05381amx3.jpg" target="_blank"><img alt="DSC05381amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05381amx3s.jpg" width="300"/></a><br/>如果把坐管裁成斜管同樣的角度，<br/>再重新製作拉杆配合的話也許可以，<br/>但……這雖然不是完全不可能，但難度很高，<br/>所以先當做最後手段。<br/>往坐管內放電池在尺寸上是不可行的。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05384amx3.jpg" target="_blank"><img alt="DSC05384amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05384amx3s.jpg" width="300"/></a><br/>內裝用電池在坐管內部<br/>某個地方卡住了。<br/>就算從上面再塞進坐管也幾乎進不去。<br/>當時是這種狀態，但我還是想辦法搞定了。<br/>「想辦法」的部分無法寫出來。<br/>如果車架尺寸比這個小一號，恐怕就不行了。<br/>無法安裝的話……得先問客人意見，<br/>再決定是要改坐管、<br/>把電池塞進下管、<br/>還是放棄內裝式改用外掛式。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05356amx3.jpg" target="_blank"><img alt="DSC05356amx3.jpg" border="0" height="300" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05356amx3s.jpg" width="225"/></a><br/>連接上下接線器的1200mm線路<br/>裝上防飄移部件後<br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05371amx3.jpg" target="_blank"><img alt="DSC05371amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05371amx3s.jpg" width="300"/></a><br/>從這裡引出。位置是客人要求的，<br/>但這是<span style="font-size:large;">極其難鑽孔的位置。</span><br/>（文字變大的原因不明）<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05372amx3.jpg" target="_blank"><img alt="DSC05372amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05372amx3s.jpg" width="300"/></a><br/>沿著後煞車外管固定的話，這裡是絕佳位置。<br/>與其說是巧合，倒不如說這就是選擇這裡的原因。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05375amx3.jpg" target="_blank"><img alt="DSC05375amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05375amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05376amx3.jpg" target="_blank"><img alt="DSC05376amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05376amx3s.jpg" width="300"/></a><br/>拆下的零件，無論是否立刻重裝，<br/>我都把它們全部洗淨。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05389amx3.jpg" target="_blank"><img alt="DSC05389amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05389amx3s.jpg" width="300"/></a><br/>BMC的頭管蓋<br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05386amx3.jpg" target="_blank"><img alt="DSC05386amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05386amx3s.jpg" width="300"/></a><br/>背面有扣緊尺寸標注。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05387amx3.jpg" target="_blank"><img alt="DSC05387amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05387amx3s.jpg" width="300"/></a><br/>多虧如此即使頭管上端跟把立齊平，<br/>或者露出1mm，也還是能對頭碗施加預緊力。<br/>這是想展示的特色吧，所以完成車的頭管長度也設定得齊平。<br/>大多數頭管蓋在這個狀態下無法施加預緊力。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05388amx3.jpg" target="_blank"><img alt="DSC05388amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05388amx3s.jpg" width="300"/></a><br/>還有，完成車出廠時頭管端面的處理異常光滑。<br/>看起來是用了好工具。<br/>應該說，規模可能大到稱不上「工具」。
+</div></div>
+    <div class="affiliate-box">
+      <p class="affiliate-title">Related Products on Amazon</p>
+      <ul>
+        <li><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=自転車+工具+メンテナンス" target="_blank" rel="noopener sponsored">🛒 Bike Repair Tools</a></li>
+      </ul>
+      <p class="affiliate-note">* Amazon affiliate links — prices may vary</p>
+    </div>
+  </article>
+</div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="/favicon.ico">
+<title>用Boondock 3的轂和輪圈組裝前輪 — 野村工房日記</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #2d3748; background: #f7fafc; line-height: 1.75;
+}
+a { color: #2b6cb0; }
+a:hover { text-decoration: underline; }
+
+/* Header */
+.site-header {
+  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+  color: white; padding: 28px 0;
+}
+.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
+.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+
+/* Main layout */
+.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
+
+/* Index: article cards */
+.card-grid { display: grid; gap: 16px; }
+.card {
+  background: white; border-radius: 10px;
+  padding: 22px 24px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  transition: box-shadow .15s;
+}
+.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.card h2 { font-size: 1.05rem; margin-bottom: 6px; }
+.card h2 a { text-decoration: none; color: #1a365d; }
+.card h2 a:hover { color: #2b6cb0; }
+.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 10px; }
+.card .excerpt { font-size: 0.88rem; color: #718096; line-height: 1.6; }
+
+/* Post page */
+.post-wrap {
+  background: white; border-radius: 10px;
+  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+.back-link { margin-bottom: 20px; font-size: 0.88rem; }
+.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
+.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
+.post-body { font-size: 0.97rem; line-height: 1.85; }
+.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.post-body p { margin-bottom: 14px; }
+.post-body br { line-height: 2; }
+
+/* Amazon アフィリエイトボックス */
+.affiliate-box {
+  margin-top: 36px; padding: 20px 24px;
+  background: #fffbeb; border: 1px solid #f6e05e;
+  border-radius: 10px;
+}
+.affiliate-box .affiliate-title {
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+}
+.affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.affiliate-box li a {
+  display: inline-block; padding: 6px 14px;
+  background: #ff9900; color: white; border-radius: 6px;
+  text-decoration: none; font-size: 0.88rem; font-weight: 600;
+}
+.affiliate-box li a:hover { background: #e68900; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+
+/* Sort controls */
+.sort-bar {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+}
+.sort-btn {
+  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
+  background: white; color: #2d3748; font-size: 0.85rem;
+  cursor: pointer; transition: background .15s, border-color .15s;
+}
+.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
+.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+
+/* Language toggle */
+.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-btn {
+  padding:3px 11px; border-radius:4px; font-size:0.8rem;
+  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  text-decoration:none;
+}
+.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
+.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .post-wrap { padding: 22px 18px; }
+  .site-header h1 { font-size: 1.4rem; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <h1><a href="../index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
+    <p>自行車工房 — 繁體中文版</p>
+    <div class="lang-toggle"><a class="lang-btn" href="/posts/6979.html">EN</a><span class="lang-btn active">繁中</span></div>
+  </div>
+</header>
+<div class="page-wrap">
+  <p class="back-link"><a href="../index.html">← 所有文章</a></p>
+  <article class="post-wrap">
+    <h1>用Boondock 3的轂和輪圈組裝前輪</h1>
+    <p class="post-meta">January 15, 2024</p>
+    <ins class="adsbygoogle"
+     style="display:block;margin:24px 0"
+     data-ad-client="ca-pub-2988824672029852"
+     data-ad-slot="auto"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="post-body"><div class="entrytext">今天也是輪子（以下省略）。在那之前。<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7318amx15.jpg" target="_blank"><img alt="RIMG7318amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7318amx15s.jpg" width="320"/></a><br/>有一個叫６９０２的軸承規格，<br/>如果列舉內徑／外徑／厚度（㎜），<br/>就是１５／２８／７。<br/>Novatec（美國輪組製造商）等飛輪體<br/>以前也採用過６９０２，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7319amx15.jpg" target="_blank"><img alt="RIMG7319amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7319amx15s.jpg" width="320"/></a><br/>但外徑２８㎜的話，軸承壓入部分的肉厚<br/>就會變得非常薄。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7320amx15.jpg" target="_blank"><img alt="RIMG7320amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7320amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7321amx15.jpg" target="_blank"><img alt="RIMG7321amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7321amx15s.jpg" width="320"/></a><br/>所以，想要一個只把６９０２的外徑縮小２㎜的軸承，<br/>這樣就誕生了非標規格的１５２６７。<br/>這個型號就是用同樣的方式表記６９０２尺寸的３個數字，<br/>１５／２６／７直接拿來當名字。<br/>１５２６７的起源是運動自行車用軸承。<br/>如果Shimano的HG飛輪體尺寸稍微再大一點的話，<br/>用６９０２就沒問題了，１５２６７可能就不會誕生。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7325amx15.jpg" target="_blank"><img alt="RIMG7325amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7325amx15s.jpg" width="320"/></a><br/>但如果再往前追溯的話，鏈條１節連接釘的間距<br/>是１／２英吋也就是１２．７㎜，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7326amx15.jpg" target="_blank"><img alt="RIMG7326amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7326amx15s.jpg" width="320"/></a><br/>用這個尺寸的鏈條齒輪<br/>如果要製作１１T飛輪的話，<br/>HG飛輪體的尺寸就必然是這樣的了。<br/><s>最初的HG飛輪體預想的<br/>最小齒數是１２T。</s><br/><br/><br/>今天也是輪子（以下省略）。<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7311amx15.jpg" target="_blank"><img alt="RIMG7311amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7311amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7312amx15.jpg" target="_blank"><img alt="RIMG7312amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7312amx15s.jpg" width="320"/></a><br/>從客人那裡收到了ALEXRIMS完組輪子<br/>Boondock 3拆下的轂芯和輪圈。<br/>今天要組的是前輪，<br/>但前轂的轉動有點澀澀的。<br/>圖片上方是右側，下方是左側（碟盤座台側），<br/>兩邊都有問題，右側軸承更糟。<br/>可能是快速夾過度夾緊導致的。<br/>把軸承從轂芯上取出來，用手指轉動軸承本身，<br/>右側軸承是澀澀的，<br/>左側軸承被壓入轂芯時雖然有點滑滑的感覺，但取出來之後<br/>軸承單體看不出異常。<br/>對於筒狀軸承來說這是很常見的事。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7322amx15.jpg" target="_blank"><img alt="RIMG7322amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7322amx15s.jpg" width="320"/></a><br/>取下來的軸承擋圈上標記著<br/>６９０３－１８　２RS<br/>（２RS表示兩面都是橡膠擋圈）。<br/>６９０３用開頭的表記法來說<br/>尺寸是１７／３０／７，<br/>但外徑１２㎜快速夾通過的<br/>內徑１２㎜轂軸的外徑是１７㎜，<br/>感覺有點單薄～於是<br/>把６９０３只改變內徑改成１８㎜的<br/>就是１８３０７軸承。<br/>順帶一提，內徑１８㎜的軸承<br/>標準規格中是不存在的。<br/><br/>這個１８３０７，像這次這樣擋圈標記為<br/>６９０３－１８也就是「６９０３只改內徑１８㎜」<br/>這樣標記的我是第一次看到。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7313amx15.jpg" target="_blank"><img alt="RIMG7313amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7313amx15s.jpg" width="320"/></a><br/>↑這個標記為１８３０７的１８３０７，<br/>但有些則是直接沿用６９０３的擋圈<br/>只標６９０３的１８３０７軸承<br/>有時也會看到。<br/>１５２６７的情況下，看過６９０２的標記或６９０２－２６這樣的標記，<br/>但６９０３的１８３０７看起來滿常見的，<br/>所以只要看到轂軸承標６９０３<br/>我就養成了懷疑是不是１８３０７的習慣。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7314amx15.jpg" target="_blank"><img alt="RIMG7314amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7314amx15s.jpg" width="320"/></a><br/>↑從圖片左邊開始<br/>普通的６９０３、這次轂中裝的１８３０７、<br/>本店準備的１８３０７。<br/>中間軸承的內圈非常厚，<br/>另一側變薄了，我以為是角接觸軸承，<br/>不過兩側厚度相同，所以不是。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7316amx15.jpg" target="_blank"><img alt="RIMG7316amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7316amx15s.jpg" width="320"/></a><br/>輪子組好了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7317amx15.jpg" target="_blank"><img alt="RIMG7317amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7317amx15s.jpg" width="320"/></a><br/>２４H　半逆交叉反義大利式編織法。<br/>結線等等再做。<br/>這個轂體，不是巧合<br/>完全抄襲了Crisking R45D前轂的<br/>轂體尺寸。<br/>轂體形狀不同，<br/>但法蘭孔距和法蘭寬度等都一樣。<br/><br/><br/>追記：<br/>我剛才查了一下<br/>DT的MTB完組輪子的<br/>BOOST前轂<br/>快速夾直徑是１５㎜，<br/>交叉賽車型號（XRC1200）的<br/>轂軸承用的是６８０２<br/>也就是１７／２６／５。<br/>軸承內徑１７mm的差值<br/>用１mm厚的轂軸就夠了的判斷。<br/>但到了自由騎乘／速降用的型號（FR1500）<br/>前轂的軸承就變成１８３０７了。<br/>所內含軸承外徑是２６㎜還是３０㎜<br/>轂體外觀會差滿多，<br/>可能也考慮到了那些。<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7327amx15.jpg" target="_blank"><img alt="RIMG7327amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7327amx15s.jpg" width="320"/></a><br/>XRC1200前輪的標稱重量是６４９ｇ，<br/>假設實際是６８５ｇ的話<br/>６８０２和１８３０７一個軸承的重量差<br/>是１０ｇ，２個軸承就是２０ｇ差，<br/>採用的軸承大小會影響<br/>輪子重量到底是６００ｇ台還是７００ｇ台<br/>會跨越那個分界線，<br/>對只看輪子整體重量資訊來買東西的客群<br/>銷售吸引力會改變。<br/>⋯⋯我想廠商也考慮過這一點<br/>所以才把軸承尺寸縮小，<br/>所以我量了一下本店的６８０２和１８３０７的重量<br/>６８０２是１５．８ｇ，１８３０７是１５．２ｇ<br/>結果反而大的軸承更輕了。<br/>可能內圈厚度或保持架的球間隔（球的數量）<br/>不同吧。<br/>圖片中的２個軸承來自不同廠商，<br/>所以用DT的６８０２和DT的１８３０７<br/>是否會有相同結果就不清楚了。
+</div></div>
+    <div class="affiliate-box">
+      <p class="affiliate-title">Related Products on Amazon</p>
+      <ul>
+        <li><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=ロードバイク+ホイール+完組" target="_blank" rel="noopener sponsored">🛒 Road Bike Wheelsets</a></li>
+      </ul>
+      <p class="affiliate-note">* Amazon affiliate links — prices may vary</p>
+    </div>
+  </article>
+</div>
+</body>
+</html>

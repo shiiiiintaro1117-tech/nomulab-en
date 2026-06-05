@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="/favicon.ico">
+<title>關於2:1輻條以及其他左右異數輻條輪組 — 野村工房日記</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #2d3748; background: #f7fafc; line-height: 1.75;
+}
+a { color: #2b6cb0; }
+a:hover { text-decoration: underline; }
+
+/* Header */
+.site-header {
+  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+  color: white; padding: 28px 0;
+}
+.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
+.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+
+/* Main layout */
+.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
+
+/* Index: article cards */
+.card-grid { display: grid; gap: 16px; }
+.card {
+  background: white; border-radius: 10px;
+  padding: 22px 24px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  transition: box-shadow .15s;
+}
+.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.card h2 { font-size: 1.05rem; margin-bottom: 6px; }
+.card h2 a { text-decoration: none; color: #1a365d; }
+.card h2 a:hover { color: #2b6cb0; }
+.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 10px; }
+.card .excerpt { font-size: 0.88rem; color: #718096; line-height: 1.6; }
+
+/* Post page */
+.post-wrap {
+  background: white; border-radius: 10px;
+  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+.back-link { margin-bottom: 20px; font-size: 0.88rem; }
+.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
+.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
+.post-body { font-size: 0.97rem; line-height: 1.85; }
+.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.post-body p { margin-bottom: 14px; }
+.post-body br { line-height: 2; }
+
+/* Amazon アフィリエイトボックス */
+.affiliate-box {
+  margin-top: 36px; padding: 20px 24px;
+  background: #fffbeb; border: 1px solid #f6e05e;
+  border-radius: 10px;
+}
+.affiliate-box .affiliate-title {
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+}
+.affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.affiliate-box li a {
+  display: inline-block; padding: 6px 14px;
+  background: #ff9900; color: white; border-radius: 6px;
+  text-decoration: none; font-size: 0.88rem; font-weight: 600;
+}
+.affiliate-box li a:hover { background: #e68900; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+
+/* Sort controls */
+.sort-bar {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+}
+.sort-btn {
+  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
+  background: white; color: #2d3748; font-size: 0.85rem;
+  cursor: pointer; transition: background .15s, border-color .15s;
+}
+.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
+.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+
+/* Language toggle */
+.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-btn {
+  padding:3px 11px; border-radius:4px; font-size:0.8rem;
+  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  text-decoration:none;
+}
+.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
+.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .post-wrap { padding: 22px 18px; }
+  .site-header h1 { font-size: 1.4rem; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <h1><a href="../index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
+    <p>自行車工房 — 繁體中文版</p>
+    <div class="lang-toggle"><a class="lang-btn" href="/posts/939.html">EN</a><span class="lang-btn active">繁中</span></div>
+  </div>
+</header>
+<div class="page-wrap">
+  <p class="back-link"><a href="../index.html">← 所有文章</a></p>
+  <article class="post-wrap">
+    <h1>關於2:1輻條以及其他左右異數輻條輪組</h1>
+    <p class="post-meta">January 26, 2014</p>
+    <ins class="adsbygoogle"
+     style="display:block;margin:24px 0"
+     data-ad-client="ca-pub-2988824672029852"
+     data-ad-slot="auto"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="post-body"><div class="entrytext">前陣子在本店用Novatech(一家輪組製造商)的2:1輻條花鼓組了輪組。<br/>我也做過Bora(高階輪組品牌)的中心校正，也從零件開始組過初代Racing 1。<br/>因此收到了大約五則留言，內容都類似於「你對2:1輻條輪組有什麼看法？」，所以我想寫下自己的想法。<br/><a href="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08913amx2.jpg" target="_blank"><img alt="DSC08913amx2.jpg" border="0" height="225" src="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08913amx2s.jpg" width="300"/></a><br/>在此之前。談到輪組校正時，<br/>想像一下圖上那樣的輞需要往中心靠的狀況。<br/>要往中間靠的話，要嘛鎖緊尼普爾把輞往外拉，<br/>要嘛鬆開另一側的尼普爾把輞推出來。<br/>關於橫向的偏擺，鎖和放鬆看起來效果是一樣的。<br/><br/>圖上的紅色和藍色箭頭其實是重疊的，<br/>但為了方便看清楚，我把它稍微畫開了。<br/><br/><a href="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08915amx2.jpg" target="_blank"><img alt="DSC08915amx2.jpg" border="0" height="225" src="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08915amx2s.jpg" width="300"/></a><br/>尼普爾無論鎖或放鬆，對橫向偏擺的影響是一樣的，<br/>但對縱向偏擺就不同了。<br/>鎖緊的話輞會向內周方向彎曲，放鬆的話會向外周方向彎曲。<br/>所以輞的移動量會是橫向和縱向的合成，<br/>會像上圖虛線那樣的感覺。<br/><br/><a href="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08917amx2.jpg" target="_blank"><img alt="DSC08917amx2.jpg" border="0" height="225" src="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08917amx2s.jpg" width="300"/></a><br/>在校正橫向偏擺時，如果只調整偏擺最大部位的尼普爾，<br/>會產生縱向偏擺，所以通常會同時調整前後的尼普爾來平衡縱向偏擺。<br/>我認為這種微妙的拿捏只有組過輪組的人才能理解，<br/>所以「雖然不會組輪組但會校正」這種說法，<br/>我不太認為算是真的會校正。<br/>把快要組好的輪組帶到個人覺得「組好了！」的妥協點，<br/>和輪組校正這兩件事基本上應該是同一個作業。<br/><br/><a href="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08921amx2.jpg" target="_blank"><img alt="DSC08921amx2.jpg" border="0" height="225" src="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08921amx2s.jpg" width="300"/></a><br/>如果想要盡可能高精度的縱向偏擺校正，<br/>最好的方式是輞孔間距均等，且輻條拉力方向交替進行。<br/>也就是說普通的輪組是最佳的。<br/>在上圖2:1輪組中，有兩根連續的飛輪側輻條（藍色）的部分，<br/>如果要往反飛輪側靠輞，<br/>除了放鬆飛輪側的尼普爾別無他法。<br/>那個部位的輞會向外周移動，<br/>但沒有辦法（不產生橫向偏擺的前提下）把它推回內周。<br/>完組輪組的情況下輻條張力通常很高，<br/>所以2:1輻條輪組用的輞，最好是輻條張力難以反映在縱向偏擺上<br/>＝堅固≒較重的輞。<br/>由於沒有完全剛體的輞，<br/>2:1輻條輪組實質上必須放棄嚴格的縱向偏擺校正。<br/>「縱向偏擺量只要在輪胎接地面的變形量以下就看不出來，所以沒關係」<br/>可能是某種妥協點，但我無法接受這一點。<br/><br/><a href="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08922amx2.jpg" target="_blank"><img alt="DSC08922amx2.jpg" border="0" height="225" src="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08922amx2s.jpg" width="300"/></a><br/>輞在橫向也不是完全剛體，所以反飛輪側的徑向組<br/>最好要對著飛輪側切向組的交叉點。<br/><br/><a href="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08923amx2.jpg" target="_blank"><img alt="DSC08923amx2.jpg" border="0" height="225" src="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08923amx2s.jpg" width="300"/></a><br/>讓輞的變形盡量在左右相互平衡的狀態，<br/>橫向偏擺才不容易產生（或較少）。<br/><br/>反飛輪側決定採用徑向組，<br/>是因為在2:1輻條中，如果反飛輪側用切向組<br/>（視條件而定）輻條張力有可能會左右反轉。<br/><br/><a href="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08924amx2.jpg" target="_blank"><img alt="DSC08924amx2.jpg" border="0" height="225" src="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08924amx2s.jpg" width="300"/></a><br/>從這裡開始想對照圖片來比較輻條本數的比例，<br/>所以我用「左：右」的表達方式。<br/>如果24孔做成1:2輻條的話是8:16根。<br/>用「飛輪側是16根時」來比較的話會和16:16的32孔輪組比較，<br/>但因為想合齊左右全部輻條本數，<br/>所以改成12:12的24孔輪組來比較。<br/>組法方面繼續用反飛輪側徑向組、飛輪側切向組來思考。<br/><br/>1:2輻條的優點是左右的輻條張力會非常接近<br/>（縱然要放棄縱向偏擺校正才能得到），<br/>而且從「飛輪側輵條數增加」這點也很優秀。<br/><br/><a href="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08925amx2.jpg" target="_blank"><img alt="DSC08925amx2.jpg" border="0" height="225" src="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08925amx2s.jpg" width="300"/></a><br/>把踏板動力傳遞到輞和輪胎的，主要是飛輪側的輵條，<br/>更進一步說，是那當中朝向刺蝟方向的輵條（上圖的紅色輵條）。<br/>我的想法是，極端地說，就在用力踩踏板的那一瞬間，<br/>駕駛效率來說只有朝向刺蝟方向的輵條才存在。<br/>照著這個邏輯推，朝向刺蝟方向的輵條越多<br/>駕駛效率就越高。<br/>12:12的24孔裡，那是6根。<br/><a href="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08926amx2.jpg" target="_blank"><img alt="DSC08926amx2.jpg" border="0" height="225" src="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08926amx2s.jpg" width="300"/></a><br/>8:16的24孔裡，那變成了8根。<br/>這點應該也可以當作左右異數輵條的優點考慮吧。<br/>但是，我也有「輪組單側的輵條張力總和用該側的本數來平均分擔」<br/>這樣的想法，按照這個邏輯反飛輪側8根就有點少了吧？<br/>會不會（特別是用首折輵條的話）更容易輵條斷裂？這是我的擔憂。<br/>輞側的負擔應該也會變大。<br/>用這個部落格的說法就是RK（尼普爾啃咬輞的力量）。<br/><br/>關於這點，<br/>「RK的話，假如忽視輞孔位置誤差，<br/>既然左右張力接近相等，<br/>如果輞能承受飛輪側的張力，<br/>那只要別超過那個張力，<br/>輞側應該沒問題吧？」<br/>我收到了這樣的留言。<br/>比如說，1:2輵條中左右輵條張力都是120kgf，<br/>輞的公稱極限是130kgf的話應該沒問題，這個意思吧。<br/><br/>嚴格來說，輞會壞是因為輵條的張力超過了輞的耐RK值。<br/>但即使廠商標示RK的極限值，<br/>對組輪組的人來說根本測不了RK，<br/>所以才用輵條張力作為偽替代的參考值。<br/><br/>假設用24孔、左右異數輵條來組，在左＜右的條件下最大差異的情況。<br/>輵輪能成立的最小輵條數是單側3根。<br/>所以24孔的話是3:21，<br/>但飛輪側的21根是奇數，無法做切向組。<br/>所以4:20就成了24孔左右輵條本數最大差異的情況。<br/><br/><a href="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08927amx2.jpg" target="_blank"><img alt="DSC08927amx2.jpg" border="0" height="225" src="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08927amx2s.jpg" width="300"/></a><br/>飛輪側朝向刺蝟方向的輵條變成了10根。<br/>在24孔裡這是理論上最多的本數。<br/>假設左右的輵條粗度一樣（左右等徑組），<br/>如果只嚴格調整左右花鼓法蘭盤的直徑，<br/>即使在這種輵條數的條件下也應該能做到左右輵條張力相等。<br/>但就算在輞標示的「輵條張力閾值」以下，<br/>輵條的耐斷裂性和RK，我真的很難相信會和12:12的24孔一樣。<br/>按照我之前說的「輪組單側的負擔用輵條本數平均分擔」，<br/>反飛輪側只用4根就要擔當這個責任。<br/><br/>即使減少反飛輪側的輵條本數，<br/>只要「輵條張力」一樣就OK的話，<br/>那4:20的24孔應該也是可以的才對。<br/>看起來像極論，<br/>但12:12→8:16→4:20的演變，<br/>其實就只是在24孔的前提下，<br/>飛輪側朝向刺蝟方向的輵條一次增加2根而已。<br/><br/>這三個中，<br/>「8:16才是權衡優缺點後24孔的最佳折衷點」<br/>我手邊沒有確實的根據能這樣說。<br/>我的看法只是「8:16在12:12（普通輪組）和4:20之間擺盪」。<br/>那樣的話我平時組的輪組倒不如就直接用12:12做左右異徑異本組這種歪招了....<br/>這個想法會隨著設計完組輪組的立場而改變。<br/>「我找到了8:16最適化的花鼓尺寸和輞孔間距！」<br/>如果做到這個程度就有可能。<br/>但用市售均間距孔的花鼓和輞來做1:2組，<br/>我認為至少優點沒有超過缺點。<br/><br/>長話短說，左右異數組<br/>特殊設計的完組輪組或許可以考慮，<br/>手工組的話，我勸你還是別了。<br/>這是我的結論。<br/><br/><br/>額外補充<br/><a href="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08928amx2.jpg" target="_blank"><img alt="DSC08928amx2.jpg" border="0" height="225" src="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08928amx2s.jpg" width="300"/></a><br/>4:20的話，無論怎樣都無法均勻分配輵條的拉力間距。<br/><br/>說到非1:2的左右異數輵條，<br/>Colima(一家輪組製造商)有20孔的後輪。8:12。<br/>從輞側的孔一周看下去，<br/>孔位會是RRLRLRRLRLRRLRRLRLRL這樣的排列，<br/>而且孔間距也不均等。<br/>這個輪組的偏擺（縱向和橫向都是）特別難校。<br/>我也試過校正中心偏移，<br/>橫向偏擺還好，縱向偏擺的妥協點必須放得相當寬鬆。<br/>（雖然有達到觸碰前看到的縱向偏擺同等或更少的程度）
+</div></div>
+    <div class="affiliate-box">
+      <p class="affiliate-title">Related Products on Amazon</p>
+      <ul>
+        <li><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=ロードバイク+パーツ" target="_blank" rel="noopener sponsored">🛒 Road Bikes & Accessories</a></li>
+      </ul>
+      <p class="affiliate-note">* Amazon affiliate links — prices may vary</p>
+    </div>
+  </article>
+</div>
+</body>
+</html>

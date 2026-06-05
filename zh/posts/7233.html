@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="/favicon.ico">
+<title>Karoの上り認定の挙動について（後編） — 野村工房日記</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #2d3748; background: #f7fafc; line-height: 1.75;
+}
+a { color: #2b6cb0; }
+a:hover { text-decoration: underline; }
+
+/* Header */
+.site-header {
+  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+  color: white; padding: 28px 0;
+}
+.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
+.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+
+/* Main layout */
+.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
+
+/* Index: article cards */
+.card-grid { display: grid; gap: 16px; }
+.card {
+  background: white; border-radius: 10px;
+  padding: 22px 24px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  transition: box-shadow .15s;
+}
+.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.card h2 { font-size: 1.05rem; margin-bottom: 6px; }
+.card h2 a { text-decoration: none; color: #1a365d; }
+.card h2 a:hover { color: #2b6cb0; }
+.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 10px; }
+.card .excerpt { font-size: 0.88rem; color: #718096; line-height: 1.6; }
+
+/* Post page */
+.post-wrap {
+  background: white; border-radius: 10px;
+  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+.back-link { margin-bottom: 20px; font-size: 0.88rem; }
+.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
+.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
+.post-body { font-size: 0.97rem; line-height: 1.85; }
+.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.post-body p { margin-bottom: 14px; }
+.post-body br { line-height: 2; }
+
+/* Amazon アフィリエイトボックス */
+.affiliate-box {
+  margin-top: 36px; padding: 20px 24px;
+  background: #fffbeb; border: 1px solid #f6e05e;
+  border-radius: 10px;
+}
+.affiliate-box .affiliate-title {
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+}
+.affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.affiliate-box li a {
+  display: inline-block; padding: 6px 14px;
+  background: #ff9900; color: white; border-radius: 6px;
+  text-decoration: none; font-size: 0.88rem; font-weight: 600;
+}
+.affiliate-box li a:hover { background: #e68900; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+
+/* Sort controls */
+.sort-bar {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+}
+.sort-btn {
+  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
+  background: white; color: #2d3748; font-size: 0.85rem;
+  cursor: pointer; transition: background .15s, border-color .15s;
+}
+.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
+.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+
+/* Language toggle */
+.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-btn {
+  padding:3px 11px; border-radius:4px; font-size:0.8rem;
+  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  text-decoration:none;
+}
+.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
+.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .post-wrap { padding: 22px 18px; }
+  .site-header h1 { font-size: 1.4rem; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <h1><a href="../index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
+    <p>自行車工房 — 繁體中文版</p>
+    <div class="lang-toggle"><a class="lang-btn" href="/posts/7233.html">EN</a><span class="lang-btn active">繁中</span></div>
+  </div>
+</header>
+<div class="page-wrap">
+  <p class="back-link"><a href="../index.html">← 所有文章</a></p>
+  <article class="post-wrap">
+    <h1>Karoの上り認定の挙動について（後編）</h1>
+    <p class="post-meta">September 05, 2024</p>
+    <ins class="adsbygoogle"
+     style="display:block;margin:24px 0"
+     data-ad-client="ca-pub-2988824672029852"
+     data-ad-slot="auto"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="post-body"><div class="entrytext">先日の記事（→<a href="http://pass13.blog.fc2.com/blog-entry-7214.html" target="_blank" title="こちら">こちら</a>）の続きです。<br/>スラムのカルーが 上りルートとして認定したにも関わらず<br/>それを取り下げるケースなどについて書きます。<br/>地名やルートについては<br/>地元じゃない人には さっぱり分からない内容を含みますが<br/>ご了承ください。<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0355msn6.jpg" target="_blank"><img alt="RIMG0355msn6.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0355msn6s.jpg" width="320"/></a><br/>↑これは私の六甲山周りの脳内地図です。<br/>上の地図でいうと 大阪方面から国道２号線を<br/>夙川（しゅくがわ）あたりまで走り、<br/>神楽町という交差点で右折，<br/>地図にある県道８２号線は鷲林寺（じゅうりんじ）という<br/>お寺が道中にあって 周辺の地名にもなっており，<br/>私は「鷲林寺ルート」と呼んでいます。<br/>甲寿橋（こうじゅばし）という交差点で左折して以降は<br/>舗装路の範疇での頂上である一軒茶屋までは<br/>一本道です。<br/><br/>しかし，六甲山のタイムを測るルートとして<br/>一般に合意が得られているのは<br/>逆瀬川駅～甲寿橋～一軒茶屋という<br/>「逆瀬川ルート」です。<br/>鷲林寺から上る場合ですが，<br/>スタート地点として複数人が溜まれる場所がなく<br/>甲寿橋までの道が狭いうえに 車通りが多いので，<br/>追い抜きのタイミングが交通量に左右されます。<br/>しかも けっこうな激坂で，甲寿橋までの平均勾配は<br/>逆瀬川ルートより はるかにきついです。<br/><br/>なぜ逆瀬川ルートから上らないのかというと，<br/>私が 逆瀬川駅までの行き方を知らないからです。<br/>逆瀬川ルートから上ったことは<br/>生涯で５回くらいはありますが，<br/>いずれも甲寿橋から下ってきたのを<br/>上り返したというルートになります。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0354msn6.jpg" target="_blank"><img alt="RIMG0354msn6.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0354msn6s.jpg" width="320"/></a><br/>↑逆瀬川ルートの甲寿橋付近に<br/>緑の網掛けを描いていますが，<br/>これは ゴルフ場のコースを分断するように<br/>道が通っているので<br/>ゴルフボールが道行く車などに当たらないように<br/>道の上にネットをかけている区間です。<br/>そこから ちょっと下ったあたりに<br/>宝塚に本店がある「パンネル」というパン屋さんの<br/>逆瀬川店が 道沿いのマンションの<br/>１階に入っており，「行けっ！パンネル！」などと<br/>ハマーン・カーンのようなことを言いながら<br/>寄ったものですが，六甲山に詳しいお客さんに<br/>その話をしたら そのパンネルは<br/>とっくの昔に閉店していると言われました。<br/>・・・調べたら 平成２２年（２０１０年）の１０月に<br/>閉店していました。<br/>どれくらい 逆瀬川ルートを上っていないかってことです。<br/><br/>逆瀬川駅から帰る場合は 甲寿橋まで上って<br/>鷲林寺ルートを下るか，<br/>東のほうに テキトーに走って<br/>国道１７６号線（イナロク）の 見覚えがあるところに出たら<br/>十三に向かって南に走るという<br/>再現性が低く 遠回りなルートで帰っていました。<br/>鷲林寺ルートを下って神楽町で曲がって<br/>大阪に向かって少し走った瓦木という交差点のあたりに<br/>（帰りの場合は対向車線側になりますが）<br/>夜来香（イエライシャン）という中華料理店があり<br/>よく そこで皿うどんを食べたものですが<br/>こちらも ２０２０年の１０月に閉店しています。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0356msn6.jpg" target="_blank"><img alt="RIMG0356msn6.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0356msn6s.jpg" width="320"/></a><br/>全くコンセンサスが得られていない鷲林寺ルートですが，<br/>神楽町を曲がって ＪＲ神戸線のさくら夙川駅の<br/>高架をくぐり その先の若松町という交差点で<br/>阪急神戸線の高架をくぐった先にある<br/>阪急甲陽線の踏み切り（高架化していない）を<br/>私は スタート地点にしていました<br/>（上の図の 赤で描いた踏み切り）。<br/><br/>若松町のひとつ先の交差点にセブンイレブンがあり，<br/>そこで補給が出来ましたが<br/>いま調べたらグーグルマップで追える限界の<br/>２００９年１１月時点で すでに閉店しており，<br/>現在は内科のクリニックが入っていました。<br/><br/>夙川とか西宮付近に お住まいの方でも，<br/>近所の鷲林寺ルートではなく<br/>誰かと上りタイムの話をするときに<br/>話が通じる逆瀬川駅ルートを上るのでしょうか？<br/><br/>で，６月２８日の早朝３時３１分スタートで<br/>のむラボから「カルーのナビに１００％従う」というルールで<br/>逆瀬川駅まで行き，以降は甲寿橋まで上り<br/>鷲林寺を下って帰るというルートを走りました。<br/>走り始めは大粒の雨がバタバタと降り続けるという天気で，<br/>日の出あたりからは小雨になりましたが<br/>終始 路面は濡れていました。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/saka011msn6.jpg" target="_blank"><img alt="saka011msn6.jpg" border="0" height="250" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/saka011msn6s.jpg" width="320"/></a><br/>↑というルートの ハンマーヘッドダッシュボードの<br/>ログが こちらです。<br/>淀川の手前にある紫色の丸は<br/>帰りの道中に ラップタイムのボタンを<br/>誤って押したものです。<br/>私の カルーにおけるラップライムの記録は<br/>９９％ 誤タップによるものです。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0355msn6.jpg" target="_blank"><img alt="RIMG0355msn6.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0355msn6s.jpg" width="320"/></a><br/>冒頭の脳内地図を もう一度。<br/>カルーのナビにより<br/>２号線の武庫大橋西詰という交差点を<br/>北に曲がり 県道１１４号線という道を走りました。<br/>本当に 初めて走る道です。<br/>この道は 武庫川に沿っている道ですが<br/>片側一車線ずつの狭い道で，<br/>時間が時間なので 車通りは少ないものの<br/>車がトラックである確率が非常に高く，<br/>道が狭いので トラックは見通しのいいところで<br/>センターラインを割りながら<br/>私を大きく避けて追い抜いていきます。<br/>その際，悪気が無いのは確かですが<br/>タイヤからの強烈な水はねを 何度も かぶりました。<br/>先ほどの「パンネル もう無いで」と言った人とは<br/>別の人から 後日，「逆瀬川駅へは 河川敷に降りて<br/>ギリギリまで河川敷を走ったほうがいいぞ」<br/>と教えてもらいました。<br/><br/>この道は狭いのとは別に 高架を何度もくぐる道でもあり，<br/>そのたびに道が 小学校のプールの授業の前に<br/>腰まで浸かりながら通る消毒槽のように<br/>（最近は あれ やらないらしいですね，<br/>新設校だと そもそもプールに設けてないとか）<br/>凹んでいて，冠水路とまではいかないものの<br/>まあまあ大きな水たまりが出来ていました。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0357msn6.jpg" target="_blank"><img alt="RIMG0357msn6.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0357msn6s.jpg" width="320"/></a><br/>逆瀬川駅の直前まで１１４号線を走り，<br/>最後に左折をするのかと思っていたら<br/>ある分岐で武庫川から離れるように<br/>ぐわーんと 左に丸く曲がれと指示されました。<br/>上の図の描き足した点線が それで，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/saka012msn6.jpg" target="_blank"><img alt="saka012msn6.jpg" border="0" height="265" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/saka012msn6s.jpg" width="320"/></a><br/>↑カルーのログでは こうなっています。<br/>画像にある グレー枠の白い丸は<br/>逆瀬川駅として打っているピンです。<br/>この住宅地を抜けるルート，<br/>昼間なら ママチャリやスクーターの飛び出しに気をつけて<br/>走るような 狭いというより見通しが悪い道でしたが<br/>「カルーのナビに１００％従う」というルールなので<br/>その通りに走りました。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/IMG_6732msn5.jpg" target="_blank"><img alt="IMG_6732msn5.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/IMG_6732msn5s.jpg" width="320"/></a><br/>逆瀬川駅から甲寿橋まで上ります。<br/>上の画像は駅に近い，スタートしてすぐのところですが<br/>自動車の轍で 道が凹んでおり，<br/>そこに出来た水たまりが けっこう はねるので<br/>左タイヤの轍と 白線の間の ごく細い部分を<br/>気を遣いながら 走りました。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/IMG_6730msn5.jpg" target="_blank"><img alt="IMG_6730msn5.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/IMG_6730msn5s.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/IMG_6731msn5.jpg" target="_blank"><img alt="IMG_6731msn5.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/IMG_6731msn5s.jpg" width="320"/></a><br/>逆瀬川の このあたりですが，<br/>雨上がりを別として 晴れているときに<br/>こんなに ごうごうと滝のように<br/>水が流れていることはありません。<br/><br/>逆瀬川駅をスタートして すぐに，<br/>六甲山の標高が 下りに転じる手前まで<br/>（つまり一軒茶屋のあたりまで）を<br/>カルー認定のクライム１として<br/>自動生成したフォルダが<br/>画面下から出てきました。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/IMG_6733msn5.jpg" target="_blank"><img alt="IMG_6733msn5.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/IMG_6733msn5s.jpg" width="320"/></a><br/>逆瀬川は武庫側の支流で，<br/>逆瀬川駅からの上り始めは<br/>道の左側に沿って流れていますが<br/>しばらく走ると 道が川から離れる形で右に曲がり，<br/>その少し先の白瀬川橋という橋で<br/>川が道の下をくぐるので<br/>今度は 道の右側に見えるようになります。<br/><br/>上の画像は<br/>道から見える範囲の最後の逆瀬川で，<br/>左側に 謎のモニュメントがあるところですが<br/>この写真を撮ろうとして反対車線にＵターンした瞬間に<br/>クライム１の計測が終了しました。<br/>あと どーでもいいことですが<br/>ここが段々の滝になっていて 水が流れている光景は<br/>雨上がりを除いて 晴れの日には見られません。<br/><br/>カルーのクライム認定ルートを走行中に<br/>ルートから外れる（別の道に行く）だけでなく<br/>Ｕターンをしただけでも その瞬間に<br/>クライムが一旦 完了となる，<br/>という挙動を示すことがわかりました。<br/>このクライムは「完了（complete）」であり，<br/>無かったことにはなりません。<br/><br/>それから また上り始めると，<br/>ゴルフ場の網のあたりで 再び六甲山の上までの<br/>クライム２を自動生成しましたが，<br/>すでに甲寿橋の手前であり<br/>直進（六甲山）ではなく 左折（鷲林寺ルート）した瞬間に<br/>クライム２も 完了となりました。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/IMG_6736msn5.jpg" target="_blank"><img alt="IMG_6736msn5.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/IMG_6736msn5s.jpg" width="320"/></a><br/>甲寿橋の交差点です。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/IMG_6737msn5.jpg" target="_blank"><img alt="IMG_6737msn5.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/IMG_6737msn5s.jpg" width="320"/></a><br/>鷲林寺からの六甲山上りルートだと<br/>上の画像 左下から来て<br/>左上の道に左折する形になるので，<br/>歩道を走ってますアピールにより<br/>信号には 実質ひっかかりません。<br/><br/>この走りの直前に 前輪のディスクローターを<br/>１４０ｍｍにしていて，<br/>それのベッディング（あたり出し）に<br/>鷲林寺の激坂下りが有用だと<br/>思っていたのですが<br/>新品のローター＋雨天という条件で下ったところ<br/>「減速は出来るが 即停止は出来ない」という状態が<br/>ディスクブレーキでも起こりました。<br/>ちょっと ブレーキを開ける（レバーを握らない）だけで<br/>時速５０ｋｍとか すぐ出るぜ ヒャッハァ<br/><br/>ここまでの話を ハンマーヘッドダッシュボードの<br/>ログで見てみます。<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/saka013.png" target="_blank"><img alt="saka013.png" border="0" height="216" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/saka013s.png" width="320"/></a><br/>↑右上の白い丸は 逆瀬川駅で，<br/>左にある白い丸は 六甲山の一軒茶屋です。<br/>走ったルートの標高グラフが下にありますが<br/>これの最高点は甲寿橋です。<br/>その下にある青いバーは<br/>カルーが上りと認定した クライムの記録，<br/>その下の紫色のバーはラップタイムで，<br/>帰りのところで 誤タップしています。<br/><br/>誤りとはいえ ラップタイムを取ったことによって<br/>そこまでをラップ１，そこからがラップ２となりましたが<br/>もしラップタイムを一切 取らなかったログの場合は<br/>この紫のバー自体が表示されません。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/saka014msn6.jpg" target="_blank"><img alt="saka014msn6.jpg" border="0" height="232" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/saka014msn6s.jpg" width="320"/></a><br/>クライム１の部分をクリックすると，<br/>ルート上のクライム１に相当する部分が<br/>黒から青色の線になりました。<br/><br/>ここから，クライム１の始点と終点を<br/>拡大して見てみます。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/saka015msn6.jpg" target="_blank"><img alt="saka015msn6.jpg" border="0" height="234" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/saka015msn6s.jpg" width="320"/></a><br/>↑始点です。<br/>駅の自販機で缶コーヒーを買って<br/>最初の橋の前で記念撮影してから<br/>スタートした軌跡が残っていますが，<br/>それはいいとして 少し走り出した辺りから<br/>クライム１が始まっています。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/saka016bmsn6.jpg" target="_blank"><img alt="saka016bmsn6.jpg" border="0" height="231" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/saka016bmsn6s.jpg" width="320"/></a><br/>↑終点です。<br/>段々の滝を撮るために橋のところまで<br/>Ｕターンした軌跡が分かりますが，<br/>Ｕターンをした地点でクライム１が<br/>打ち切られています。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/saka017bmsn6.jpg" target="_blank"><img alt="saka017bmsn6.jpg" border="0" height="232" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/saka017bmsn6s.jpg" width="320"/></a><br/>クライム１完了後に 少し走ると<br/>その地点から六甲山の頂上までを<br/>めげずに再び クライム２として出していきましたが，<br/>すぐに甲寿橋で曲がったので<br/>曲がった地点で完了となりました。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/saka018msn6.jpg" target="_blank"><img alt="saka018msn6.jpg" border="0" height="229" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/saka018msn6s.jpg" width="320"/></a><br/>標高のグラフの上に マウスカーソルを重ねると<br/>その時点で採っていたデータが全て出ます。<br/>あと，場所がどこだったのかが<br/>地図のルートの線上に 黄色い点として出ます。<br/>勾配がマイナス１２％で スピードが時速３６．３ｋｍとあるのは<br/>これでも ブレーキを必要以上にかけて減速しているところです。<br/>ディスクローターのベッディングを下り一発で出したかったので。<br/>フロント４２Ｔシングルで リヤの歯数が１０Ｔや１１Ｔではなく<br/>１４Ｔにかけているのは下りでペダリングをしていないということです。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/IMG_7298msn6.jpg" target="_blank"><img alt="IMG_7298msn6.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/IMG_7298msn6s.jpg" width="320"/></a><br/>クソデカビープ音とともに<br/>自動生成されたクライム１のフォルダが<br/>画面の下から出てきたときに，<br/>川の写真を撮るのと 走り始めが大雨だったので<br/>完全防備していたレインウェアを 一部 脱いで<br/>軽装にするのに カルーの計測を手動で止めました。<br/>その間は一切 走行していません。<br/>何分も止めたわけではありませんが，<br/>同じ地点のまま 気圧の変動があったようで<br/>標高が断崖絶壁で変わっています。<br/>ここのログを拡大して<br/>１秒ごとに記録された斜度を見ていくと<br/>ある０％から０％までの間で<br/>０％　２３．６％　３０．４％　３９．３％　４７．１％<br/>５３．５％　５８．５％　５４．２％　０％と変動しており，<br/>この最大値の５８．５％が この日の最大斜度として<br/>記録されていました。<br/>必ず起こるわけではありませんが，<br/>カルーの計測を手動で止めた覚えがある日は<br/>最大斜度のデータに とんでもない数値が出ることがあります。<br/><br/>私は以前，ポラールの心拍計の<br/>走行時の斜度の表示は<br/>直近で走った標高のデータから算出しているので<br/>数秒前に走っていた道の斜度を出す感じで 遅れがある，<br/>対してカルーは 元から知っている地図のデータから<br/>現在地の斜度を表示しているようで<br/>ポラールにみられる遅れが無い，<br/>というようなことを書きました。<br/>しかし それなら この手の斜度表記のバグが<br/>起きるのは おかしいはずです。<br/><br/>もうひとつ 分かっていることとして，<br/>たとえば マンションの５階で<br/>ポラールとカルーで それぞれＧＰＳ信号を捕捉させてから<br/>ほとんどＧＰＳ上での位置を変えずに（エレベーターや階段）<br/>１階に移動した場合，ポラールは標高が１５ｍほど下がるものの<br/>カルーは５階で出たままの標高の数値が変わりません。<br/>が，１階に下りたばかりの時点では<br/>とんでもなくマイナスの斜度を表示することがあります。<br/><br/>では カルーは 現在の標高は地図のデータからの引用，<br/>斜度の表記は 気圧計準拠になるのかというと<br/>そうも言い切れないことを確認しました。<br/>階段ではなくスロープになっていて<br/>自転車も上がれる歩道橋に上ると<br/>カルーの標高が ６ｍほど上がり，<br/>歩道橋から降りると ６ｍほど下がります。<br/>これは標高も 気圧計のデータを参考にしているということです。<br/>この場合は階段やエレベーターと違い<br/>数十ｍは移動しているので<br/>ＧＰＳ的には はっきりと動いていることになります。<br/>ＧＰＳのデータに地表ではなく，歩道橋の正確な位置まで<br/>入っているとすれば 歩道橋の真下に入ると<br/>その間だけ標高が６ｍほど上がることになりますが<br/>さ</div>
+    <div class="affiliate-box">
+      <p class="affiliate-title">Related Products on Amazon</p>
+      <ul>
+        <li><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=ロードバイク+ホイール+完組" target="_blank" rel="noopener sponsored">🛒 Road Bike Wheelsets</a></li>
+        <li><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=ロードバイク+タイヤ+チューブ" target="_blank" rel="noopener sponsored">🛒 Road Bike Tires & Tubes</a></li>
+        <li><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=ロードバイク+ブレーキ" target="_blank" rel="noopener sponsored">🛒 Brakes & Levers</a></li>
+      </ul>
+      <p class="affiliate-note">* Amazon affiliate links — prices may vary</p>
+    </div>
+  </article>
+</div>
+</body>
+</html>

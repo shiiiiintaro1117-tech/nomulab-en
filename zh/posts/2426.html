@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="/favicon.ico">
+<title>自製TIME車架頭管軸承調整工具 — 野村工房日記</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #2d3748; background: #f7fafc; line-height: 1.75;
+}
+a { color: #2b6cb0; }
+a:hover { text-decoration: underline; }
+
+/* Header */
+.site-header {
+  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+  color: white; padding: 28px 0;
+}
+.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
+.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+
+/* Main layout */
+.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
+
+/* Index: article cards */
+.card-grid { display: grid; gap: 16px; }
+.card {
+  background: white; border-radius: 10px;
+  padding: 22px 24px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  transition: box-shadow .15s;
+}
+.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.card h2 { font-size: 1.05rem; margin-bottom: 6px; }
+.card h2 a { text-decoration: none; color: #1a365d; }
+.card h2 a:hover { color: #2b6cb0; }
+.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 10px; }
+.card .excerpt { font-size: 0.88rem; color: #718096; line-height: 1.6; }
+
+/* Post page */
+.post-wrap {
+  background: white; border-radius: 10px;
+  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+.back-link { margin-bottom: 20px; font-size: 0.88rem; }
+.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
+.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
+.post-body { font-size: 0.97rem; line-height: 1.85; }
+.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.post-body p { margin-bottom: 14px; }
+.post-body br { line-height: 2; }
+
+/* Amazon アフィリエイトボックス */
+.affiliate-box {
+  margin-top: 36px; padding: 20px 24px;
+  background: #fffbeb; border: 1px solid #f6e05e;
+  border-radius: 10px;
+}
+.affiliate-box .affiliate-title {
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+}
+.affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.affiliate-box li a {
+  display: inline-block; padding: 6px 14px;
+  background: #ff9900; color: white; border-radius: 6px;
+  text-decoration: none; font-size: 0.88rem; font-weight: 600;
+}
+.affiliate-box li a:hover { background: #e68900; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+
+/* Sort controls */
+.sort-bar {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+}
+.sort-btn {
+  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
+  background: white; color: #2d3748; font-size: 0.85rem;
+  cursor: pointer; transition: background .15s, border-color .15s;
+}
+.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
+.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+
+/* Language toggle */
+.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-btn {
+  padding:3px 11px; border-radius:4px; font-size:0.8rem;
+  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  text-decoration:none;
+}
+.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
+.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .post-wrap { padding: 22px 18px; }
+  .site-header h1 { font-size: 1.4rem; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <h1><a href="../index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
+    <p>自行車工房 — 繁體中文版</p>
+    <div class="lang-toggle"><a class="lang-btn" href="/posts/2426.html">EN</a><span class="lang-btn active">繁中</span></div>
+  </div>
+</header>
+<div class="page-wrap">
+  <p class="back-link"><a href="../index.html">← 所有文章</a></p>
+  <article class="post-wrap">
+    <h1>自製TIME車架頭管軸承調整工具</h1>
+    <p class="post-meta">December 22, 2015</p>
+    <ins class="adsbygoogle"
+     style="display:block;margin:24px 0"
+     data-ad-client="ca-pub-2988824672029852"
+     data-ad-slot="auto"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="post-body"><div class="entrytext">TIME車架的頭管軸承調整工具，<br/><a href="https://blog-imgs-88-origin.fc2.com/p/a/s/pass13/DSC06662amx5.jpg" target="_blank"><img alt="DSC06662amx5.jpg" border="0" height="225" src="https://blog-imgs-88-origin.fc2.com/p/a/s/pass13/DSC06662amx5s.jpg" width="300"/></a><br/>車架組件會隨附這樣的棒子，<br/><a href="https://blog-imgs-88-origin.fc2.com/p/a/s/pass13/DSC06661amx5.jpg" target="_blank"><img alt="DSC06661amx5.jpg" border="0" height="225" src="https://blog-imgs-88-origin.fc2.com/p/a/s/pass13/DSC06661amx5s.jpg" width="300"/></a><br/>就是這樣插進去，然後擰緊。<br/>只不過這個棒子長度太短，沒辦法好好地用力擰。<br/>雖然不是我做的，但我也見過有人用金屬蟹鉗扳手之類的東西去轉它，<br/>結果把它刮傷了。<br/>所以隨意嘗試原廠以外的工具也不太好。<br/><br/>但是既然短棒確實不好調整，<br/>為了不傷害頭管軸承，<br/>我一直都是自己做工具來轉動這個地方。<br/><br/>這個棒子的直徑是3毫米，所以<br/><a href="https://blog-imgs-88-origin.fc2.com/p/a/s/pass13/DSC06645amx5.jpg" target="_blank"><img alt="DSC06645amx5.jpg" border="0" height="225" src="https://blog-imgs-88-origin.fc2.com/p/a/s/pass13/DSC06645amx5s.jpg" width="300"/></a><br/>我準備了盡量長的3毫米鐵螺栓，<br/>以及不銹鋼和塑膠的3毫米螺帽。<br/><a href="https://blog-imgs-88-origin.fc2.com/p/a/s/pass13/DSC06646amx5.jpg" target="_blank"><img alt="DSC06646amx5.jpg" border="0" height="225" src="https://blog-imgs-88-origin.fc2.com/p/a/s/pass13/DSC06646amx5s.jpg" width="300"/></a><br/>選擇長的是因為，當長度達到一定以上時，<br/>螺栓頸下的部分直徑不會被螺紋削弱，<br/>這部分的直徑和原廠棒子是一樣的。<br/><br/><a href="https://blog-imgs-88-origin.fc2.com/p/a/s/pass13/DSC06663amx5.jpg" target="_blank"><img alt="DSC06663amx5.jpg" border="0" height="225" src="https://blog-imgs-88-origin.fc2.com/p/a/s/pass13/DSC06663amx5s.jpg" width="300"/></a><br/>將塑膠螺帽、接著不銹鋼螺帽依序套在螺栓上，<br/>用雙螺帽的方式對接擰緊。<br/><br/><a href="https://blog-imgs-88-origin.fc2.com/p/a/s/pass13/DSC06647amx5.jpg" target="_blank"><img alt="DSC06647amx5.jpg" border="0" height="225" src="https://blog-imgs-88-origin.fc2.com/p/a/s/pass13/DSC06647amx5s.jpg" width="300"/></a><br/>另外，我也要先量好頭管軸承孔的深度。<br/><br/><a href="https://blog-imgs-88-origin.fc2.com/p/a/s/pass13/DSC06648amx5.jpg" target="_blank"><img alt="DSC06648amx5.jpg" border="0" height="225" src="https://blog-imgs-88-origin.fc2.com/p/a/s/pass13/DSC06648amx5s.jpg" width="300"/></a><br/>輕輕地轉動螺帽，<br/>從接觸到孔底的位置開始往外測，就是孔的深度。<br/><br/><a href="https://blog-imgs-88-origin.fc2.com/p/a/s/pass13/DSC06649amx5.jpg" target="_blank"><img alt="DSC06649amx5.jpg" border="0" height="225" src="https://blog-imgs-88-origin.fc2.com/p/a/s/pass13/DSC06649amx5s.jpg" width="300"/></a><br/>把剛才那個螺栓的頭去掉，<br/>把軸的長度調整到和測量出的孔深度一樣，<br/>然後用十字夾（ピンバイス）固定。<br/><br/><a href="https://blog-imgs-88-origin.fc2.com/p/a/s/pass13/DSC06650amx5.jpg" target="_blank"><img alt="DSC06650amx5.jpg" border="0" height="225" src="https://blog-imgs-88-origin.fc2.com/p/a/s/pass13/DSC06650amx5s.jpg" width="300"/></a><br/>十字夾是用田宮（Tamiya）的，<br/>能夾到3.2毫米直徑的那種。<br/><br/><a href="https://blog-imgs-88-origin.fc2.com/p/a/s/pass13/DSC06651amx5.jpg" target="_blank"><img alt="DSC06651amx5.jpg" border="0" height="225" src="https://blog-imgs-88-origin.fc2.com/p/a/s/pass13/DSC06651amx5s.jpg" width="300"/></a><br/>這樣的話，到快要調整完的時候就能「吱」一聲地擰緊，<br/>比原廠的短棒子輕鬆多了。<br/><br/><a href="https://blog-imgs-88-origin.fc2.com/p/a/s/pass13/DSC06652amx5.jpg" target="_blank"><img alt="DSC06652amx5.jpg" border="0" height="225" src="https://blog-imgs-88-origin.fc2.com/p/a/s/pass13/DSC06652amx5s.jpg" width="300"/></a><br/>之前我說「一直都在自己做」，<br/>是因為當本店組裝TIME車架時，<br/>我會把這個工具送給客人。<br/><br/><a href="https://blog-imgs-88-origin.fc2.com/p/a/s/pass13/DSC06653amx5.jpg" target="_blank"><img alt="DSC06653amx5.jpg" border="0" height="225" src="https://blog-imgs-88-origin.fc2.com/p/a/s/pass13/DSC06653amx5s.jpg" width="300"/></a><br/>接觸頭管軸承的一側用塑膠螺帽是為了防止刮傷。<br/>這個ZXRS上的刮痕不是我造成的，特此說明。<br/><br/><a href="https://blog-imgs-88-origin.fc2.com/p/a/s/pass13/DSC06654amx5.jpg" target="_blank"><img alt="DSC06654amx5.jpg" border="0" height="225" src="https://blog-imgs-88-origin.fc2.com/p/a/s/pass13/DSC06654amx5s.jpg" width="300"/></a><br/>TIME的頭管軸承啊，<br/>下側的軸承球是（大概是自家規格的）<br/>特殊設計，<br/><br/><a href="https://blog-imgs-88-origin.fc2.com/p/a/s/pass13/DSC06656amx5.jpg" target="_blank"><img alt="DSC06656amx5.jpg" border="0" height="225" src="https://blog-imgs-88-origin.fc2.com/p/a/s/pass13/DSC06656amx5s.jpg" width="300"/></a><br/>軸承球從軟質半透明材質的保持架中稍微露出來的構造。<br/>露出的部分當然是和滾道接觸的地方。<br/>因為軸承球的直徑比較小的緣故，<br/>TIME頭管的調整非常敏感，<br/>會出現「稍微擰緊一點把手就變重，稍微鬆一點又有間隙」這樣的情況。<br/>即使調到沒有間隙的那一瞬間，把手轉向也會有點沉重，<br/>所以很多人可能就是把這當作是這個東西的特性，<br/>無奈地繼續使用。<br/><br/>話說回來，這個軸承感覺像是什麼東西，<br/>但我想不起來是什麼了。<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><a href="https://blog-imgs-88-origin.fc2.com/p/a/s/pass13/DSC06660amx5.jpg" target="_blank"><img alt="DSC06660amx5.jpg" border="0" height="225" src="https://blog-imgs-88-origin.fc2.com/p/a/s/pass13/DSC06660amx5s.jpg" width="300"/></a><br/>
+</div></div>
+    <div class="affiliate-box">
+      <p class="affiliate-title">Related Products on Amazon</p>
+      <ul>
+        <li><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=自転車+工具+メンテナンス" target="_blank" rel="noopener sponsored">🛒 Bike Repair Tools</a></li>
+      </ul>
+      <p class="affiliate-note">* Amazon affiliate links — prices may vary</p>
+    </div>
+  </article>
+</div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="/favicon.ico">
+<title>回收SRAM XX1 Eagle DUB曲柄上的斷裂螺栓 — 野村工房日記</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #2d3748; background: #f7fafc; line-height: 1.75;
+}
+a { color: #2b6cb0; }
+a:hover { text-decoration: underline; }
+
+/* Header */
+.site-header {
+  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+  color: white; padding: 28px 0;
+}
+.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
+.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+
+/* Main layout */
+.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
+
+/* Index: article cards */
+.card-grid { display: grid; gap: 16px; }
+.card {
+  background: white; border-radius: 10px;
+  padding: 22px 24px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  transition: box-shadow .15s;
+}
+.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.card h2 { font-size: 1.05rem; margin-bottom: 6px; }
+.card h2 a { text-decoration: none; color: #1a365d; }
+.card h2 a:hover { color: #2b6cb0; }
+.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 10px; }
+.card .excerpt { font-size: 0.88rem; color: #718096; line-height: 1.6; }
+
+/* Post page */
+.post-wrap {
+  background: white; border-radius: 10px;
+  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+.back-link { margin-bottom: 20px; font-size: 0.88rem; }
+.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
+.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
+.post-body { font-size: 0.97rem; line-height: 1.85; }
+.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.post-body p { margin-bottom: 14px; }
+.post-body br { line-height: 2; }
+
+/* Amazon アフィリエイトボックス */
+.affiliate-box {
+  margin-top: 36px; padding: 20px 24px;
+  background: #fffbeb; border: 1px solid #f6e05e;
+  border-radius: 10px;
+}
+.affiliate-box .affiliate-title {
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+}
+.affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.affiliate-box li a {
+  display: inline-block; padding: 6px 14px;
+  background: #ff9900; color: white; border-radius: 6px;
+  text-decoration: none; font-size: 0.88rem; font-weight: 600;
+}
+.affiliate-box li a:hover { background: #e68900; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+
+/* Sort controls */
+.sort-bar {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+}
+.sort-btn {
+  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
+  background: white; color: #2d3748; font-size: 0.85rem;
+  cursor: pointer; transition: background .15s, border-color .15s;
+}
+.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
+.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+
+/* Language toggle */
+.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-btn {
+  padding:3px 11px; border-radius:4px; font-size:0.8rem;
+  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  text-decoration:none;
+}
+.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
+.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .post-wrap { padding: 22px 18px; }
+  .site-header h1 { font-size: 1.4rem; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <h1><a href="../index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
+    <p>自行車工房 — 繁體中文版</p>
+    <div class="lang-toggle"><a class="lang-btn" href="/posts/6010.html">EN</a><span class="lang-btn active">繁中</span></div>
+  </div>
+</header>
+<div class="page-wrap">
+  <p class="back-link"><a href="../index.html">← 所有文章</a></p>
+  <article class="post-wrap">
+    <h1>回收SRAM XX1 Eagle DUB曲柄上的斷裂螺栓</h1>
+    <p class="post-meta">December 17, 2021</p>
+    <ins class="adsbygoogle"
+     style="display:block;margin:24px 0"
+     data-ad-client="ca-pub-2988824672029852"
+     data-ad-slot="auto"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="post-body"><div class="entrytext">鑽頭在尖叫！<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06385amx14.jpg" target="_blank"><img alt="DSC06385amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06385amx14s.jpg" width="320"/></a><br/>客人送來了SRAM的XX1 Eagle右曲柄。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05960amx14.jpg" target="_blank"><img alt="DSC05960amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05960amx14s.jpg" width="320"/></a><br/>固定牙盤的8顆M4螺栓中，有5顆已經幾乎齊平斷裂了，<br/>他希望我能夠把它們取出來。<br/>這個曲柄好像沒有單邊販售，<br/>同樣的曲柄組根據規格來說<br/>含稅定價要將近9萬日元，<br/>所以他拜託我想辦法取出來……。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06373amx14.jpg" target="_blank"><img alt="DSC06373amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06373amx14s.jpg" width="320"/></a><br/>因為洞口帶有錐度，<br/>沒辦法像普通螺釘一樣夾住螺栓。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06375amx14.jpg" target="_blank"><img alt="DSC06375amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06375amx14s.jpg" width="320"/></a><br/>吱吱吱。<br/>我盡可能地在中心鑽孔，用超硬鑽頭。<br/>大多數情況下鑽到一半就夠了，但必要時會鑽穿。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06376amx14.jpg" target="_blank"><img alt="DSC06376amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06376amx14s.jpg" width="320"/></a><br/>↑就像這樣<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06396amx14.jpg" target="_blank"><img alt="DSC06396amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06396amx14s.jpg" width="320"/></a><br/>在螺栓中央鑽好的孔裡插入我自製的起子型工具<br/>「普通螺釘鬆動君」，然後逆時鐘方向轉動推壓，<br/>螺栓就會跟著轉出來。<br/>普通螺釘鬆動君的先端形狀是梅花槽。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06377amx14.jpg" target="_blank"><img alt="DSC06377amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06377amx14s.jpg" width="320"/></a><br/>鬆動了。<br/>螺紋上塗有藍色的防鬆膠，<br/>但這不是太大的問題。<br/>這次沒有碰到，但如果因為生鏽而完全固著就會很困難。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06378amx14.jpg" target="_blank"><img alt="DSC06378amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06378amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06379amx14.jpg" target="_blank"><img alt="DSC06379amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06379amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06380amx14.jpg" target="_blank"><img alt="DSC06380amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06380amx14s.jpg" width="320"/></a><br/>取出來了。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06381amx14.jpg" target="_blank"><img alt="DSC06381amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06381amx14s.jpg" width="320"/></a><br/>這是另一處的情況。<br/>鑽的孔即使偏離中心多少也沒問題，<br/>但不能偏斜到削掉螺紋孔一側的螺紋牙。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06382amx14.jpg" target="_blank"><img alt="DSC06382amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06382amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06383amx14.jpg" target="_blank"><img alt="DSC06383amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06383amx14s.jpg" width="320"/></a><br/>取出來了。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06386amx14.jpg" target="_blank"><img alt="DSC06386amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06386amx14s.jpg" width="320"/></a><br/>5顆全都取出來了。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06384amx14.jpg" target="_blank"><img alt="DSC06384amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06384amx14s.jpg" width="320"/></a><br/>我在全部8個孔都攻了M4的牙。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06394amx14.jpg" target="_blank"><img alt="DSC06394amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06394amx14s.jpg" width="320"/></a><br/>↑取出的螺栓<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06395amx14.jpg" target="_blank"><img alt="DSC06395amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06395amx14s.jpg" width="320"/></a><br/>4顆是鑽到一半就解決了，<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06390amx14.jpg" target="_blank"><img alt="DSC06390amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06390amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06398amx14.jpg" target="_blank"><img alt="DSC06398amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06398amx14s.jpg" width="320"/></a><br/>這一顆的斷面像歇山屋頂一樣，<br/>鑽頭刃尖容易滑動，難以捕捉中心，<br/>所以我先鑽到一半為止，用幾乎與螺紋谷徑相等的大鑽頭，<br/>然後用較小的鑽頭鑽穿另一半。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06391amx14.jpg" target="_blank"><img alt="DSC06391amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06391amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06392amx14.jpg" target="_blank"><img alt="DSC06392amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06392amx14s.jpg" width="320"/></a><br/>↑先端側<br/>如果螺栓再長一點就危險了。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06393amx14.jpg" target="_blank"><img alt="DSC06393amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06393amx14s.jpg" width="320"/></a><br/>這個螺栓的材質不知道是鋼還是鉻鉬鋼，<br/>但磁石對它非常有吸附力。<br/>超硬鑽頭是用新的，<br/>但在這項作業中明顯地變鈍了，可見材質的硬度有多高。
+</div></div>
+    <div class="affiliate-box">
+      <p class="affiliate-title">Related Products on Amazon</p>
+      <ul>
+        <li><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=自転車+工具+メンテナンス" target="_blank" rel="noopener sponsored">🛒 Bike Repair Tools</a></li>
+      </ul>
+      <p class="affiliate-note">* Amazon affiliate links — prices may vary</p>
+    </div>
+  </article>
+</div>
+</body>
+</html>

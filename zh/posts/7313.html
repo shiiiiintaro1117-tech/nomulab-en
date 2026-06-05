@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="/favicon.ico">
+<title>用R90SL輞圈和PowerTap花鼓組裝後輪 — 野村工房日記</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #2d3748; background: #f7fafc; line-height: 1.75;
+}
+a { color: #2b6cb0; }
+a:hover { text-decoration: underline; }
+
+/* Header */
+.site-header {
+  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+  color: white; padding: 28px 0;
+}
+.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
+.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+
+/* Main layout */
+.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
+
+/* Index: article cards */
+.card-grid { display: grid; gap: 16px; }
+.card {
+  background: white; border-radius: 10px;
+  padding: 22px 24px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  transition: box-shadow .15s;
+}
+.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.card h2 { font-size: 1.05rem; margin-bottom: 6px; }
+.card h2 a { text-decoration: none; color: #1a365d; }
+.card h2 a:hover { color: #2b6cb0; }
+.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 10px; }
+.card .excerpt { font-size: 0.88rem; color: #718096; line-height: 1.6; }
+
+/* Post page */
+.post-wrap {
+  background: white; border-radius: 10px;
+  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+.back-link { margin-bottom: 20px; font-size: 0.88rem; }
+.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
+.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
+.post-body { font-size: 0.97rem; line-height: 1.85; }
+.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.post-body p { margin-bottom: 14px; }
+.post-body br { line-height: 2; }
+
+/* Amazon アフィリエイトボックス */
+.affiliate-box {
+  margin-top: 36px; padding: 20px 24px;
+  background: #fffbeb; border: 1px solid #f6e05e;
+  border-radius: 10px;
+}
+.affiliate-box .affiliate-title {
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+}
+.affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.affiliate-box li a {
+  display: inline-block; padding: 6px 14px;
+  background: #ff9900; color: white; border-radius: 6px;
+  text-decoration: none; font-size: 0.88rem; font-weight: 600;
+}
+.affiliate-box li a:hover { background: #e68900; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+
+/* Sort controls */
+.sort-bar {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+}
+.sort-btn {
+  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
+  background: white; color: #2d3748; font-size: 0.85rem;
+  cursor: pointer; transition: background .15s, border-color .15s;
+}
+.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
+.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+
+/* Language toggle */
+.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-btn {
+  padding:3px 11px; border-radius:4px; font-size:0.8rem;
+  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  text-decoration:none;
+}
+.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
+.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .post-wrap { padding: 22px 18px; }
+  .site-header h1 { font-size: 1.4rem; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <h1><a href="../index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
+    <p>自行車工房 — 繁體中文版</p>
+    <div class="lang-toggle"><a class="lang-btn" href="/posts/7313.html">EN</a><span class="lang-btn active">繁中</span></div>
+  </div>
+</header>
+<div class="page-wrap">
+  <p class="back-link"><a href="../index.html">← 所有文章</a></p>
+  <article class="post-wrap">
+    <h1>用R90SL輞圈和PowerTap花鼓組裝後輪</h1>
+    <p class="post-meta">November 03, 2024</p>
+    <ins class="adsbygoogle"
+     style="display:block;margin:24px 0"
+     data-ad-client="ca-pub-2988824672029852"
+     data-ad-slot="auto"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="post-body"><div class="entrytext">今天又是輪子（以下略）。<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0143amxx15x.jpg" target="_blank"><img alt="RIMG0143amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0143amxx15xs.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0144amxx15x.jpg" target="_blank"><img alt="RIMG0144amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0144amxx15xs.jpg" width="320"/></a><br/>從客人那裡接到了 伊斯頓的管胎式輞圈，<br/>R90SL。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0145amxx15x.jpg" target="_blank"><img alt="RIMG0145amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0145amxx15xs.jpg" width="320"/></a><br/>過去用這個輞圈組輪子時<br/>曾經被某位愛公開秤重量的人批評過<br/>（→<a href="http://pass13.blog.fc2.com/blog-entry-2615.html" target="_blank" title="這裡">這裡</a>）（→<a href="http://pass13.blog.fc2.com/blog-entry-5544.html" target="_blank" title="這裡">這裡</a>），<br/>但這次文章的重點不在那裡<br/>所以先把重量公開了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0152amxx15x.jpg" target="_blank"><img alt="RIMG0152amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0152amxx15xs.jpg" width="320"/></a><br/>組好了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0153amxx15x.jpg" target="_blank"><img alt="RIMG0153amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0153amxx15xs.jpg" width="320"/></a><br/>PowerTap G3花鼓 24幅 黑色半競賽246編織<br/>帶訊號線，黑色鋁合金錐形螺帽。<br/><br/>這個輪子，如果是內藏錐形螺帽的規格<br/>可能無法做反牙盤側的輻條式構法<br/>（通常不會這樣做，但牙盤側的輻條式構法也不會）。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0146amxx15x.jpg" target="_blank"><img alt="RIMG0146amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0146amxx15xs.jpg" width="320"/></a><br/>時間順序回到輞圈單體的狀態，<br/>如同過去的文章提到的<br/>輞圈外周側的孔在正孔振的狀態下左右振動很大。<br/><br/>而且不只如此，<br/>從側面看輞圈時，從氣門孔開始順時鐘方向<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0147amxx15x.jpg" target="_blank"><img alt="RIMG0147amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0147amxx15xs.jpg" width="320"/></a><br/>相隔1個的輞圈孔和<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0148amxx15x.jpg" target="_blank"><img alt="RIMG0148amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0148amxx15xs.jpg" width="320"/></a><br/>相隔3個的輞圈孔比較的話<br/>相對於內周側的孔，外周側的孔<br/>有正切編織的方向性。<br/>由於是正孔振，如果下方是牙盤側的話<br/>這是反牙盤側的輻條。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0150amxx15x.jpg" target="_blank"><img alt="RIMG0150amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0150amxx15xs.jpg" width="320"/></a><br/>同樣地，從氣門孔順時鐘方向相隔2個和<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0151amxx15x.jpg" target="_blank"><img alt="RIMG0151amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0151amxx15xs.jpg" width="320"/></a><br/>相隔4個的輞圈孔，相對於內周側的孔<br/>外周側的孔也是錯位的。<br/>這樣的話，從外周側用錐形螺帽工具旋轉<br/>進行輻條式構法或與輞圈孔方向性相反的<br/>正切編織時<br/>工具的軸部會持續在輞圈孔旁摩擦，<br/>或者工具根本無法卡住錐形螺帽的卡槽。<br/>如果是從內周側卡住通用型錐形螺帽的話<br/>由於內周側的孔沒有方向性<br/>只要螺帽能通過<br/>就算進行輻條式構法或搞錯輞圈孔的振動方向<br/>也是可以組輪子的。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0160amxx15x.jpg" target="_blank"><img alt="RIMG0160amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0160amxx15xs.jpg" width="320"/></a><br/>在這種情況下，內周側的孔和外周側的孔中<br/>有一個應該是等間距的，另一個遵循一定的規律<br/>呈現疏密間距，<br/>當然內周側的孔是等間距的。<br/>到現在為止已經寫過<br/>「相對於內周側的孔，外周側的孔<br/>有正切編織的方向性」。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0162amxx15x.jpg" target="_blank"><img alt="RIMG0162amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0162amxx15xs.jpg" width="320"/></a><br/>也就是說，這個輞圈如果<br/>從牙盤側（右側）看的話<br/>通過內周側輞圈孔的<br/>從花鼓中心出發的輻條線相對<br/>正常輞圈的反牙盤側正切編織<br/>最終交叉的2本輻條通過的孔<br/>如上圖所示，氣門孔的<br/>順時鐘相隔1個孔的外周側孔向反時鐘偏移，<br/>相隔3個孔的外周側孔向順時鐘偏移。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0163amxx15x.jpg" target="_blank"><img alt="RIMG0163amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0163amxx15xs.jpg" width="320"/></a><br/>同樣地，牙盤側最終交叉的2本輻條的<br/>外周側輞圈孔也畫上去的話就是這樣。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0164amxx15x.jpg" target="_blank"><img alt="RIMG0164amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0164amxx15xs.jpg" width="320"/></a><br/>所以，從氣門孔開始相隔1個和2個的<br/>外周側孔邊緣的最短距離<br/>用游標卡尺夾住，記下這個尺寸（上圖①），<br/>試著對2個和3個孔做同樣的動作時<br/>游標卡尺的測量臂有一邊<br/>應該無法進入孔內（上圖②）。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0154amxx15x.jpg" target="_blank"><img alt="RIMG0154amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0154amxx15xs.jpg" width="320"/></a><br/>輪子組好之後<br/>我驗證了一下。<br/>上面的圖片就是剛才做①的狀態。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0155amxx15x.jpg" target="_blank"><img alt="RIMG0155amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0155amxx15xs.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0156amxx15x.jpg" target="_blank"><img alt="RIMG0156amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0156amxx15xs.jpg" width="320"/></a><br/>↑就是這樣的感覺<br/>接著保存這個尺寸<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0159amxx15x.jpg" target="_blank"><img alt="RIMG0159amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0159amxx15xs.jpg" width="320"/></a><br/>試著做②的時候<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0157amxx15x.jpg" target="_blank"><img alt="RIMG0157amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0157amxx15xs.jpg" width="320"/></a><br/>卡住相隔2個孔邊緣的那一邊的話<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0158amxx15x.jpg" target="_blank"><img alt="RIMG0158amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0158amxx15xs.jpg" width="320"/></a><br/>相隔3個孔的邊緣就↑空出這麼多。<br/><s>真是</s>費盡心思的設計。<br/><br/>只要錐形螺帽能通過<br/>用內周側的卡槽進行調整的話<br/>這種「前後方向也有的孔振」對工作沒有影響，<br/>但這個輞圈卻是很難進行微調的。<br/>從氣門孔的順時鐘方向隔鄰開始<br/>・偏向遠端和左側<br/>・偏向近端和左側<br/>・偏向遠端和右側<br/>・偏向近端和右側<br/>以此反復來覆蓋最終交叉的輵條左右各1對共4本<br/>（24幅的話就重複6次），<br/>鑽頭如果沒有充分傾斜<br/>無法卡住內周側的孔。</div></div>
+    <div class="affiliate-box">
+      <p class="affiliate-title">Related Products on Amazon</p>
+      <ul>
+        <li><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=ロードバイク+ホイール+完組" target="_blank" rel="noopener sponsored">🛒 Road Bike Wheelsets</a></li>
+        <li><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=自転車+工具+メンテナンス" target="_blank" rel="noopener sponsored">🛒 Bike Repair Tools</a></li>
+      </ul>
+      <p class="affiliate-note">* Amazon affiliate links — prices may vary</p>
+    </div>
+  </article>
+</div>
+</body>
+</html>

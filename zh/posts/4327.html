@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="/favicon.ico">
+<title>今後多用することになるかもしれない仕様的習作輪組（前編） — 野村工房日記</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #2d3748; background: #f7fafc; line-height: 1.75;
+}
+a { color: #2b6cb0; }
+a:hover { text-decoration: underline; }
+
+/* Header */
+.site-header {
+  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+  color: white; padding: 28px 0;
+}
+.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
+.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+
+/* Main layout */
+.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
+
+/* Index: article cards */
+.card-grid { display: grid; gap: 16px; }
+.card {
+  background: white; border-radius: 10px;
+  padding: 22px 24px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  transition: box-shadow .15s;
+}
+.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.card h2 { font-size: 1.05rem; margin-bottom: 6px; }
+.card h2 a { text-decoration: none; color: #1a365d; }
+.card h2 a:hover { color: #2b6cb0; }
+.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 10px; }
+.card .excerpt { font-size: 0.88rem; color: #718096; line-height: 1.6; }
+
+/* Post page */
+.post-wrap {
+  background: white; border-radius: 10px;
+  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+.back-link { margin-bottom: 20px; font-size: 0.88rem; }
+.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
+.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
+.post-body { font-size: 0.97rem; line-height: 1.85; }
+.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.post-body p { margin-bottom: 14px; }
+.post-body br { line-height: 2; }
+
+/* Amazon アフィリエイトボックス */
+.affiliate-box {
+  margin-top: 36px; padding: 20px 24px;
+  background: #fffbeb; border: 1px solid #f6e05e;
+  border-radius: 10px;
+}
+.affiliate-box .affiliate-title {
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+}
+.affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.affiliate-box li a {
+  display: inline-block; padding: 6px 14px;
+  background: #ff9900; color: white; border-radius: 6px;
+  text-decoration: none; font-size: 0.88rem; font-weight: 600;
+}
+.affiliate-box li a:hover { background: #e68900; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+
+/* Sort controls */
+.sort-bar {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+}
+.sort-btn {
+  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
+  background: white; color: #2d3748; font-size: 0.85rem;
+  cursor: pointer; transition: background .15s, border-color .15s;
+}
+.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
+.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+
+/* Language toggle */
+.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-btn {
+  padding:3px 11px; border-radius:4px; font-size:0.8rem;
+  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  text-decoration:none;
+}
+.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
+.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .post-wrap { padding: 22px 18px; }
+  .site-header h1 { font-size: 1.4rem; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <h1><a href="../index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
+    <p>自行車工房 — 繁體中文版</p>
+    <div class="lang-toggle"><a class="lang-btn" href="/posts/4327.html">EN</a><span class="lang-btn active">繁中</span></div>
+  </div>
+</header>
+<div class="page-wrap">
+  <p class="back-link"><a href="../index.html">← 所有文章</a></p>
+  <article class="post-wrap">
+    <h1>今後多用することになるかもしれない仕様的習作輪組（前編）</h1>
+    <p class="post-meta">October 23, 2018</p>
+    <ins class="adsbygoogle"
+     style="display:block;margin:24px 0"
+     data-ad-client="ca-pub-2988824672029852"
+     data-ad-slot="auto"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="post-body"><div class="entrytext"><span style="color:#FF0000">道歉及更正<br/>關於這個輪組的組法<br/>文章中有「輻條的相位扭轉並未發生」的敘述<br/>這是錯誤的。非常抱歉。<br/>雖然我寫了更正文章（→<a href="http://pass13.blog.fc2.com/blog-entry-4873.html" target="_blank" title="這裡">這裡</a>）<br/>但本文原文保持不變。<br/></span><br/>今天也是輪子（以下略）。在那之前。<br/>R7000即新105，在普通快扣式和<br/>12mm通軸這兩種花鼓設定上有所區別。<br/>快扣式是HB/FH-R7000，通軸式則是HB/FH-R7070。<br/><br/>無關緊要的話題，但7000系列不是Dura-Ace這一點<br/>讓我感到非常違和。<br/>將7900系列之後的Dura-Ace設為R7000、<br/>Ultegra設為R6000、105設為R5000的話<br/>Ultegra原本就有「600→600 Ultegra→Ultegra」（※）<br/>這樣的發展脈絡，這樣會更合乎邏輯。<br/><br/>※與「宇宙猿人Gori→宇宙猿人Gori對決Spectreman→Spectreman」的流程<br/>並無特殊關聯。<br/><br/>於是，我立刻進貨了那個通軸花鼓。<br/>因為它在RS770花鼓的弟弟位置上<br/>尺寸規格幾乎完全相同。<br/><a href="https://blog-imgs-92-origin.fc2.com/p/a/s/pass13/DSC07417amx9.jpg" target="_blank"><img alt="DSC07417amx9.jpg" border="0" height="240" src="https://blog-imgs-92-origin.fc2.com/p/a/s/pass13/DSC07417amx9s.jpg" width="320"/></a><br/><a href="https://blog-imgs-92-origin.fc2.com/p/a/s/pass13/DSC07419amx9.jpg" target="_blank"><img alt="DSC07419amx9.jpg" border="0" height="240" src="https://blog-imgs-92-origin.fc2.com/p/a/s/pass13/DSC07419amx9s.jpg" width="320"/></a><br/>↑RS770花鼓<br/><br/><a href="https://blog-imgs-92-origin.fc2.com/p/a/s/pass13/DSC07421amx9.jpg" target="_blank"><img alt="DSC07421amx9.jpg" border="0" height="240" src="https://blog-imgs-92-origin.fc2.com/p/a/s/pass13/DSC07421amx9s.jpg" width="320"/></a><br/><a href="https://blog-imgs-92-origin.fc2.com/p/a/s/pass13/DSC07422amx9.jpg" target="_blank"><img alt="DSC07422amx9.jpg" border="0" height="240" src="https://blog-imgs-92-origin.fc2.com/p/a/s/pass13/DSC07422amx9s.jpg" width="320"/></a><br/>↑R7070花鼓<br/>重量差異的大部分來自軸管的材質。<br/>規格上的差異在於球軸承的研磨處理或<br/>防水密封的結構等，但沒有顯著的差異。<br/>前花鼓的尺寸完全相同，後花鼓的杯差異雖然有0.05mm，<br/>但視為相同也不成問題。<br/>令我驚訝的並不是這些，而是<br/><br/><a href="https://blog-imgs-92-origin.fc2.com/p/a/s/pass13/DSC07420amx9.jpg" target="_blank"><img alt="DSC07420amx9.jpg" border="0" height="240" src="https://blog-imgs-92-origin.fc2.com/p/a/s/pass13/DSC07420amx9s.jpg" width="320"/></a><br/>RS770花鼓有28、32、36H孔數的配置，但<br/><a href="https://blog-imgs-92-origin.fc2.com/p/a/s/pass13/DSC07423amx9.jpg" target="_blank"><img alt="DSC07423amx9.jpg" border="0" height="240" src="https://blog-imgs-92-origin.fc2.com/p/a/s/pass13/DSC07423amx9s.jpg" width="320"/></a><br/>R7070花鼓卻只有32、36H<br/>這是個完全與時代脫節、<span style="color:#FF0000">零售意願的爛規格</span>。<br/>36H碟煞車圈到底在哪裡啊。<br/>至少競賽用輕量車圈幾乎沒有36H的。<br/>與其只做32、36H規格<br/>不如像CX75那樣只做28H還更實用得多。<br/><br/>配備105組件的完成車搭載這種32H花鼓<br/>手組輪組的情況根本無法想像，<br/>反而Joytech或Formula（台灣輪轂品牌，與碟煞Formula品牌不同）這種<br/>便宜的碟煞花鼓手組輪組或<br/>低價位的完組輪組應該是更常見的採用方案。<br/><br/>那麼為什麼這次要進貨36H花鼓呢？理由是<br/>它可以作為疏密法蘭孔的24H花鼓來使用。<br/><a href="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC01245amx6.jpg" target="_blank"><img alt="DSC01245amx6.jpg" border="0" height="225" src="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC01245amx6s.jpg" width="300"/></a><br/>當法蘭孔位置並非等間距而是疏密排列時<br/><a href="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC01247amx6.jpg" target="_blank"><img alt="DSC01247amx6.jpg" border="0" height="225" src="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC01247amx6s.jpg" width="300"/></a><br/>若將輻條的線段向內側延長<br/>就能在更小的直徑位置獲得等間距孔法蘭（→<a href="http://pass13.blog.fc2.com/blog-entry-2945.html" target="_blank" title="這裡">這裡</a>）<br/>所以從36H單側18H中取出三分之二就能形成疏密孔。<br/><br/><a href="https://blog-imgs-92-origin.fc2.com/p/a/s/pass13/DSC07424amx9.jpg" target="_blank"><img alt="DSC07424amx9.jpg" border="0" height="240" src="https://blog-imgs-92-origin.fc2.com/p/a/s/pass13/DSC07424amx9s.jpg" width="320"/></a><br/>組好了。<br/>車圈是DT的RR411db 24H。<br/><br/><a href="https://blog-imgs-92-origin.fc2.com/p/a/s/pass13/DSC07425amx9.jpg" target="_blank"><img alt="DSC07425amx9.jpg" border="0" height="240" src="https://blog-imgs-92-origin.fc2.com/p/a/s/pass13/DSC07425amx9s.jpg" width="320"/></a><br/>HB-R7070 36H CX-RAY 以孔數計算是八六組，<br/>以交叉數計算是3交叉/2交叉所以相當於六四組的<br/>反義大利式組法。結線容後再做。<br/><br/><a href="https://blog-imgs-92-origin.fc2.com/p/a/s/pass13/DSC07426amx9.jpg" target="_blank"><img alt="DSC07426amx9.jpg" border="0" height="240" src="https://blog-imgs-92-origin.fc2.com/p/a/s/pass13/DSC07426amx9s.jpg" width="320"/></a><br/>右側（反碟盤側）<br/><a href="https://blog-imgs-92-origin.fc2.com/p/a/s/pass13/DSC07427amx9.jpg" target="_blank"><img alt="DSC07427amx9.jpg" border="0" height="240" src="https://blog-imgs-92-origin.fc2.com/p/a/s/pass13/DSC07427amx9s.jpg" width="320"/></a><br/>左側（碟盤側）<br/>花鼓中心與最終交叉相連的直線與輻向線重合。<br/>也就是說，輻條的相位扭轉並未發生。<br/>有篇描寫類似情況的實踐例文章（→<a href="http://pass13.blog.fc2.com/blog-entry-3907.html" target="_blank" title="這裡">這裡</a>）<br/>但因為今後有可能經常使用這種組法<br/>所以想建立一些相關的經驗，才作為習作來組的。<br/>順便一提，完成後打算作為懸掛式成品輪組來販售。<br/><br/>因為用銀輻條銀鼓芯組的<br/>這個車圈應該使用Squorx鼓芯才對，<br/>但我刻意用普通的銀鋁鼓芯組裝。<br/>除了普通鼓芯相比Squorx鼓芯會減少與墊圈的摩擦阻力<br/>這個原因外<br/><br/><a href="https://blog-imgs-92-origin.fc2.com/p/a/s/pass13/DSC07428amx9.jpg" target="_blank"><img alt="DSC07428amx9.jpg" border="0" height="240" src="https://blog-imgs-92-origin.fc2.com/p/a/s/pass13/DSC07428amx9s.jpg" width="320"/></a><br/><a href="https://blog-imgs-92-origin.fc2.com/p/a/s/pass13/DSC07429amx9.jpg" target="_blank"><img alt="DSC07429amx9.jpg" border="0" height="240" src="https://blog-imgs-92-origin.fc2.com/p/a/s/pass13/DSC07429amx9s.jpg" width="320"/></a><br/>↑反碟盤側<br/><br/><a href="https://blog-imgs-92-origin.fc2.com/p/a/s/pass13/DSC07430amx9.jpg" target="_blank"><img alt="DSC07430amx9.jpg" border="0" height="240" src="https://blog-imgs-92-origin.fc2.com/p/a/s/pass13/DSC07430amx9s.jpg" width="320"/></a><br/><a href="https://blog-imgs-92-origin.fc2.com/p/a/s/pass13/DSC07431amx9.jpg" target="_blank"><img alt="DSC07431amx9.jpg" border="0" height="240" src="https://blog-imgs-92-origin.fc2.com/p/a/s/pass13/DSC07431amx9s.jpg" width="320"/></a><br/>↑碟盤側<br/>我想確認的是24H車圈搭配36H花鼓組裝時<br/>輻條長度的計算是否正確。<br/><br/>墊圈上沒有標示前後方向的點，是因為<br/><a href="https://blog-imgs-92-origin.fc2.com/p/a/s/pass13/DSC07432amx9.jpg" target="_blank"><img alt="DSC07432amx9.jpg" border="0" height="240" src="https://blog-imgs-92-origin.fc2.com/p/a/s/pass13/DSC07432amx9s.jpg" width="320"/></a><br/>24H車圈銷售情況不太理想，<br/>配件中附帶的是無點墊圈。<br/><br/><a href="https://blog-imgs-92-origin.fc2.com/p/a/s/pass13/DSC07433amx9.jpg" target="_blank"><img alt="DSC07433amx9.jpg" border="0" height="240" src="https://blog-imgs-92-origin.fc2.com/p/a/s/pass13/DSC07433amx9s.jpg" width="320"/></a><br/>Squorx鼓芯不但通常會有剩餘（每條車圈配34個），<br/>用彩色鼓芯組裝時完全用不到<br/>所以已經累積到能種一點小黃蘿蔔的程度了。<br/><br/>這次為了抑制價格使用了105的花鼓（銀輻條也是同樣理由），<br/>但RS770也有36H花鼓，所以同樣的組法也是可以的。<br/><br/>這次的輪組是24H，所以不是半競賽而是全CX-RAY，<br/>刻意做成比較偏向碟煞公路而非越野車款的規格。<br/>當然，用在越野車上也沒問題。<br/><br/>也許會有人說別做這種不成體統的事，用24H花鼓啦<br/>但Tni的花鼓有碟盤用6螺栓固定和<br/>後花鼓為低法蘭這些缺點<br/>DT和Chris King則會讓錢包快速輕量化，<br/>所以很難找到真正好用的花鼓。<br/><br/>還有，我有收到客人詢問<br/>想用前後都是24H碟煞輪組來組野塚實驗室輪組7號，<br/>所以這也是提案：用RS770花鼓做成這樣的規格如何？
+</div></div>
+    <div class="affiliate-box">
+      <p class="affiliate-title">Related Products on Amazon</p>
+      <ul>
+        <li><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=ロードバイク+パーツ" target="_blank" rel="noopener sponsored">🛒 Road Bikes & Accessories</a></li>
+      </ul>
+      <p class="affiliate-note">* Amazon affiliate links — prices may vary</p>
+    </div>
+  </article>
+</div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="/favicon.ico">
+<title>重新組裝Roval的C38輪組（前輪篇） — 野村工房日記</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #2d3748; background: #f7fafc; line-height: 1.75;
+}
+a { color: #2b6cb0; }
+a:hover { text-decoration: underline; }
+
+/* Header */
+.site-header {
+  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+  color: white; padding: 28px 0;
+}
+.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
+.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+
+/* Main layout */
+.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
+
+/* Index: article cards */
+.card-grid { display: grid; gap: 16px; }
+.card {
+  background: white; border-radius: 10px;
+  padding: 22px 24px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  transition: box-shadow .15s;
+}
+.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.card h2 { font-size: 1.05rem; margin-bottom: 6px; }
+.card h2 a { text-decoration: none; color: #1a365d; }
+.card h2 a:hover { color: #2b6cb0; }
+.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 10px; }
+.card .excerpt { font-size: 0.88rem; color: #718096; line-height: 1.6; }
+
+/* Post page */
+.post-wrap {
+  background: white; border-radius: 10px;
+  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+.back-link { margin-bottom: 20px; font-size: 0.88rem; }
+.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
+.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
+.post-body { font-size: 0.97rem; line-height: 1.85; }
+.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.post-body p { margin-bottom: 14px; }
+.post-body br { line-height: 2; }
+
+/* Amazon アフィリエイトボックス */
+.affiliate-box {
+  margin-top: 36px; padding: 20px 24px;
+  background: #fffbeb; border: 1px solid #f6e05e;
+  border-radius: 10px;
+}
+.affiliate-box .affiliate-title {
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+}
+.affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.affiliate-box li a {
+  display: inline-block; padding: 6px 14px;
+  background: #ff9900; color: white; border-radius: 6px;
+  text-decoration: none; font-size: 0.88rem; font-weight: 600;
+}
+.affiliate-box li a:hover { background: #e68900; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+
+/* Sort controls */
+.sort-bar {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+}
+.sort-btn {
+  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
+  background: white; color: #2d3748; font-size: 0.85rem;
+  cursor: pointer; transition: background .15s, border-color .15s;
+}
+.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
+.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+
+/* Language toggle */
+.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-btn {
+  padding:3px 11px; border-radius:4px; font-size:0.8rem;
+  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  text-decoration:none;
+}
+.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
+.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .post-wrap { padding: 22px 18px; }
+  .site-header h1 { font-size: 1.4rem; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <h1><a href="../index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
+    <p>自行車工房 — 繁體中文版</p>
+    <div class="lang-toggle"><a class="lang-btn" href="/posts/5664.html">EN</a><span class="lang-btn active">繁中</span></div>
+  </div>
+</header>
+<div class="page-wrap">
+  <p class="back-link"><a href="../index.html">← 所有文章</a></p>
+  <article class="post-wrap">
+    <h1>重新組裝Roval的C38輪組（前輪篇）</h1>
+    <p class="post-meta">April 10, 2021</p>
+    <ins class="adsbygoogle"
+     style="display:block;margin:24px 0"
+     data-ad-client="ca-pub-2988824672029852"
+     data-ad-slot="auto"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="post-body"><div class="entrytext">真·今天也是轉啊轉（以下省略）。<br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC02269amx14.jpg" target="_blank"><img alt="DSC02269amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC02269amx14s.jpg" width="320"/></a><br/>從客人那裡接到了Roval的C38輪組。<br/>聽說原本是完成車附贈的輪組，<br/>不過也有單獨販售的版本。<br/>我好像有問過他對這個輪組哪裡不滿，<br/>但現在已經忘了。<br/>撇開那個不說，在排除品牌和價格等先入觀的<br/>野村Lab式輪組觀點中，這就是個爛輪組。<br/>說到Shimano輪組時我也這樣講過，<br/>但我並不是在說因為是某個特定品牌就不行，<br/>我的評價不是基於那種標準。<br/><br/>話題轉一下，<br/>前陣子我接到一份反饋報告，說「在附近的店家被告知已經無法再改善、會摩擦煞車皮的ENVE輪組」<br/>在我重新組裝後就不會摩擦了。<br/>太棒了。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC02270amx14.jpg" target="_blank"><img alt="DSC02270amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC02270amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC02271amx14.jpg" target="_blank"><img alt="DSC02271amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC02271amx14s.jpg" width="320"/></a><br/>外觀設計很簡潔。<br/>這個是印刷而不是貼紙，<br/>所以在這一點上反而比上位款式更費工夫。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC02278amx14.jpg" target="_blank"><img alt="DSC02278amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC02278amx14s.jpg" width="320"/></a><br/>在前一張圖片中的ROVAL標誌的另一個位置，<br/>在氣嘴孔相位的右側，ROVAL字樣中的<br/>V的部分開了一個孔，<br/>但位置太靠近內周所以作為排水孔的功能不大，<br/>主要目的應該是當無內胎輪胎的內壓洩漏進輞內部時的<br/>洩氣孔。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC02272amx14.jpg" target="_blank"><img alt="DSC02272amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC02272amx14s.jpg" width="320"/></a><br/>轂是DT的350，用於折領輻條，<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC02273amx14.jpg" target="_blank"><img alt="DSC02273amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC02273amx14s.jpg" width="320"/></a><br/>採用ROVAL與DT的雙品牌規格，<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC02274amx14.jpg" target="_blank"><img alt="DSC02274amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC02274amx14s.jpg" width="320"/></a><br/>採用不符合製造商設計理念的左右同數組法。<br/>而且是24H零四組法，相當於後輪中的<br/>反飛輪側幅向組。<br/>這種在20世紀就已經得出不好結論的組法，<br/>為什麼要在進入21世紀已經20多年後還要用，我真的想不通。<br/>XTRA在950系的時代，26吋山地車碟煞前輪<br/>手組版本好像有一瞬間流行過，但也只是如此。<br/><br/>也許是故意把下位款式做成不好的組法，<br/>好讓客人升級到上位款時能更凸顯性能差異<br/>的戰略吧。<br/>不過Roval連上位款式都沒有特別聰慧的組法，<br/>所以這個策略似乎也沒什麼意義。<br/><br/>這個輪組的輻條是DT的「Competition Lace」。<br/>不是Competition。<br/>DT的Comp和Sapim的Race相比，<br/>如果是14號為基礎的話<br/>直徑是2.0-1.8-2.0mm<br/>號數是14-15-14號。<br/>如果是15號為基礎的話<br/>則是1.8-1.6-1.8mm和15-16-15號。<br/><br/>Competition Lace是<br/>把Comp的梭形部分改成16號的款式，<br/>尺寸為2.0-1.6-2.0mm。<br/>DT的Revolution和Sapim的Lazer<br/>梭形部分是17號<br/>尺寸為2.0-1.5-2.0mm，所以這個比較接近。<br/>這個如果拉得夠緊的話，可能會出現搖晃現象。<br/>另外，除非Specialized有常備庫存，<br/>否則目前很難買到備用輻條。<br/><br/><br/>說個無關的事情，<br/>24H碟煞前輪如果在轉子台座側採用4本組法，<br/>而前煞車卡鉗是SRAM的話，<br/>SRAM的軟管連接因為是通過banjo bolt從側面安裝的，<br/>所以和輻條之間的間隔會非常緊湊，最糟的情況會干涉。<br/>我自己也曾經在CX Sprint還沒有穩定供應的時代，<br/>用半Comp組的前輪就因為和SRAM的banjo bolt干涉，<br/>所以免費重新用全CX-RAY組了一次。<br/>另外前陣子也看過Kona完成車的例子，<br/>原本附屬的前輪輵條會很日常地<br/>卡卡卡地碰到SRAM的banjo bolt。<br/><br/>如果是Competition Lace的話，即使是圓斷面輻條<br/>干涉的可能性也會大大降低，<br/>不過碟煞公路車前輪還是最好不要用圓輵條組。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC02275amx14.jpg" target="_blank"><img alt="DSC02275amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC02275amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC02276amx14.jpg" target="_blank"><img alt="DSC02276amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC02276amx14s.jpg" width="320"/></a><br/>反正要拆，所以中心怎樣都無所謂，不過確實是中心對的。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC02277amx14.jpg" target="_blank"><img alt="DSC02277amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC02277amx14s.jpg" width="320"/></a><br/>螺帽是從外側也能用對邊6mm六角扳手轉動的類型，<br/>不過是黃銅製的，所以重新組裝後會換成通用的黑色鋁合金螺帽。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC02279amx14.jpg" target="_blank"><img alt="DSC02279amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC02279amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC02280amx14.jpg" target="_blank"><img alt="DSC02280amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC02280amx14s.jpg" width="320"/></a><br/>拆卸過程中......<br/>呀！我把輵條間引掉改成有XI型休息相位的<br/>2:1組法了！<br/>原本是24H所以現在這個狀態是18H，先別管這個<br/>Campagnolo和Fulcrum的做法是<br/>・採用超高低法蘭且大法蘭側儘可能最切線組，<br/>把最終交叉的夾角弄鈍<br/>・不會無謂地縮小輵條比重<br/>・根據輞高有時會採用左右異逕組<br/>這些點有差別。<br/>細說起來還有很多，<br/>但你不會聽到「Bora的少輵條側輵條比重變大、<br/>多輵條側最終交叉結線的話<br/>會一直摩擦煞車皮、下坡和彎道時搖晃到無法使用」<br/>這樣的聲音，應該就是有它的理由。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC02301amx14.jpg" target="_blank"><img alt="DSC02301amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC02301amx14s.jpg" width="320"/></a><br/>組好了。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC02303amx14.jpg" target="_blank"><img alt="DSC02303amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC02303amx14s.jpg" width="320"/></a><br/>24H全黑CX-RAY 64組反意大利組左右全結線。<br/>其實想用半CX Sprint，<br/>但CX Sprint的某些長度長期缺貨中，<br/>雖然我掌握了進貨預定時期但還要等，<br/>所以我想了一個不是「等日後再換成CX Sprint的臨時應急方案」的組法，<br/>先用全CX-RAY組，再只把反轉子台座側結線，<br/>但後來覺得還是全結線比較好，<br/>所以左右兩邊都結線了。
+</div></div>
+    <div class="affiliate-box">
+      <p class="affiliate-title">Related Products on Amazon</p>
+      <ul>
+        <li><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=ロードバイク+パーツ" target="_blank" rel="noopener sponsored">🛒 Road Bikes & Accessories</a></li>
+      </ul>
+      <p class="affiliate-note">* Amazon affiliate links — prices may vary</p>
+    </div>
+  </article>
+</div>
+</body>
+</html>

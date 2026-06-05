@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="/favicon.ico">
+<title>讀者留言回覆（關於無負荷時的居中調整） — 野村工房日記</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #2d3748; background: #f7fafc; line-height: 1.75;
+}
+a { color: #2b6cb0; }
+a:hover { text-decoration: underline; }
+
+/* Header */
+.site-header {
+  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+  color: white; padding: 28px 0;
+}
+.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
+.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+
+/* Main layout */
+.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
+
+/* Index: article cards */
+.card-grid { display: grid; gap: 16px; }
+.card {
+  background: white; border-radius: 10px;
+  padding: 22px 24px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  transition: box-shadow .15s;
+}
+.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.card h2 { font-size: 1.05rem; margin-bottom: 6px; }
+.card h2 a { text-decoration: none; color: #1a365d; }
+.card h2 a:hover { color: #2b6cb0; }
+.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 10px; }
+.card .excerpt { font-size: 0.88rem; color: #718096; line-height: 1.6; }
+
+/* Post page */
+.post-wrap {
+  background: white; border-radius: 10px;
+  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+.back-link { margin-bottom: 20px; font-size: 0.88rem; }
+.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
+.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
+.post-body { font-size: 0.97rem; line-height: 1.85; }
+.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.post-body p { margin-bottom: 14px; }
+.post-body br { line-height: 2; }
+
+/* Amazon アフィリエイトボックス */
+.affiliate-box {
+  margin-top: 36px; padding: 20px 24px;
+  background: #fffbeb; border: 1px solid #f6e05e;
+  border-radius: 10px;
+}
+.affiliate-box .affiliate-title {
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+}
+.affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.affiliate-box li a {
+  display: inline-block; padding: 6px 14px;
+  background: #ff9900; color: white; border-radius: 6px;
+  text-decoration: none; font-size: 0.88rem; font-weight: 600;
+}
+.affiliate-box li a:hover { background: #e68900; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+
+/* Sort controls */
+.sort-bar {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+}
+.sort-btn {
+  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
+  background: white; color: #2d3748; font-size: 0.85rem;
+  cursor: pointer; transition: background .15s, border-color .15s;
+}
+.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
+.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+
+/* Language toggle */
+.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-btn {
+  padding:3px 11px; border-radius:4px; font-size:0.8rem;
+  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  text-decoration:none;
+}
+.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
+.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .post-wrap { padding: 22px 18px; }
+  .site-header h1 { font-size: 1.4rem; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <h1><a href="../index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
+    <p>自行車工房 — 繁體中文版</p>
+    <div class="lang-toggle"><a class="lang-btn" href="/posts/2741.html">EN</a><span class="lang-btn active">繁中</span></div>
+  </div>
+</header>
+<div class="page-wrap">
+  <p class="back-link"><a href="../index.html">← 所有文章</a></p>
+  <article class="post-wrap">
+    <h1>讀者留言回覆（關於無負荷時的居中調整）</h1>
+    <p class="post-meta">May 21, 2016</p>
+    <ins class="adsbygoogle"
+     style="display:block;margin:24px 0"
+     data-ad-client="ca-pub-2988824672029852"
+     data-ad-slot="auto"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="post-body"><div class="entrytext">關於我平時進行的居中調整作業<br/>收到了一則留言：<br/>「你總是在無負荷狀態下精確調整輪子的居中位置，<br/>但充氣後輪胎對居中位置的影響你就忽視了嗎？」<br/>哦，這真是個很好的問題啊（冷汗）。<br/>感謝你。<br/><br/>是的，我確實在忽視它。這樣說的話有點不負責任，所以我詳細解釋一下。<br/>首先關於輪胎氣壓，<br/>充入數倍於外氣壓的空氣時，輪圈會被壓縮，<br/>（特別是公路車更明顯）輻條張力就會下降。<br/>輪圈對輪胎氣壓不會表現出完全剛體一樣的行為。<br/>（輪胎充氣之前就已經組裝好輪子了，<br/>相對於那個輻條張力，輪圈也不是完全剛性的。<br/>某些輪圈內周側的壓縮量大到不容忽視，<br/>所以我們知道有些輪圈需要比計算值短０．５毫米或１毫米的輻條）<br/>此時，如果輪子有偏心現象，<br/>輪圈就會朝著輻條角度陡峭的一側偏移。<br/>有時能用居中量規觀察到這現象。<br/>即使觀察不到，微量的偏移也會發生。<br/>偏移量會隨著輪圈剛性而變化，<br/>根據經驗，較重的輪圈偏移量較小，高幀輪圈的偏移量也較小。<br/>但實際上，相比輪圈剛性，輪胎與輪圈的型式<br/>似乎是更大的影響因素。<br/>對某個氣壓下發生的難易程度（偏移傾向）來說，<br/>順序是：無內胎 > 有內胎（WO與HE） > 管狀胎。<br/>具體來說，使用Shimano的WH-6800或Easton的舊款EA90RT時，<br/>無內胎輪胎在８bar時會產生「大約一張紙厚度」以上的居中偏移。<br/>關於舊款EA90RT的情況，有位客人曾要求我在他常用的輪胎、<br/>常用的氣壓狀態下進行居中調整。<br/><br/><span style="color:#FF0000">精確調整出的無負荷居中位置<br/>在裝胎並充氣後的實際使用狀況中也能保持<br/>這一點我很清楚並非事實</span>，但既然不知道使用者的輪胎和氣壓條件，<br/>無負荷時精確居中就成了作業的基本標準。<br/>如果被要求「用我現在用的輪胎、現在用的氣壓狀態下調整」，<br/>我當然可以這樣做，<br/>但以某種WO輪胎為例，經年使用會從２３毫米寬度膨脹到２５毫米，<br/>膨脹後在相同氣壓下<br/>輪圈的偏移量就會減少。<br/>所以要盡可能嚴格地在實際使用條件下<br/>進行居中調整，這在實務上極其困難。<br/>（並非技術問題，而是條件本身會變化）<br/><br/>另外，我使用的那種裝胎狀態下能用的居中量規<br/>作為測量工具不太可信。<br/>有人會說「買好用的量規啊！」，<br/>但據我所知不存在這樣的產品。<br/>如果有的話請告訴我。我會買的。<br/><br/>還有，R-SYS以外的後輪會因經年使用<br/>輪圈朝飛輪側偏移。<br/>（原因改天從另一個角度寫）<br/>我用的nomulab輪組４號<br/>無負荷時有著微妙的反飛輪側偏移，<br/>但每次換輪胎時用居中量規檢查，<br/>確實看到了朝飛輪側偏移的現象。<br/>這種偏移量在騎乘時察覺不出來，<br/>但偏移量本身會大於輪胎氣壓造成的偏移。<br/>經年使用朝飛輪側偏移的現象，在２：１交叉編織等<br/>左右異數輻條的後輪上，偏移得更快，<br/>這點我也有經驗性的了解。<br/><br/>那麼問題就變成了，我平時進行的無負荷居中調整<br/>究竟有沒有意義？<br/>把輪子居中偏差達１円硬幣厚度以上的吊掛輪組，<br/>至少調到該時點的無負荷完美居中，<br/>相比帶來前的狀況肯定好得多，<br/>所以在排除那種粗糙精度的輪子方面，<br/>無負荷居中調整還是有意義的。<br/><br/>如我之前說過的，<br/>如果被要求在現在使用的輪胎＋這個氣壓狀態下調整，<br/>我會照做。<br/>但輪胎一旦更換（包括膨脹變寬），<br/>實際使用時的完美居中就無法保證了。<br/><br/>經年使用的後輪輪圈朝飛輪側偏移這個現象確實存在，<br/>我有經驗可以證明。<br/>無論是nomulab輪組還是完組輪組，<br/>我過去調整過的後輪，日後進行輻條調整時，<br/>經常會做反飛輪側的加緊「追加居中調整」。<br/>過去沒怎麼寫這事，是因為一旦同行知道了，<br/>就會把所有飛輪側的居中偏移都推給「經年使用」當藉口，感覺很煩。<br/>我在輻條調整時盡可能地拆下輪胎進行作業，<br/>那是為了順便也調整無負荷居中。<br/>最新款的Campagnolo Bora管狀胎版本，<br/>因為是寬輪圈，某些寬度下輪胎裝上時<br/>也能無干涉地放上居中量規，<br/>而且用的是外部尖頭螺釘，不用撕掉輪胎就能調整。<br/>那種情況我會在裝胎狀態下檢查。<br/><br/><a href="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC00203amx5.jpg" target="_blank"><img alt="DSC00203amx5.jpg" border="0" height="225" src="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC00203amx5s.jpg" width="300"/></a><br/>趁這個機會<br/>講講WH-6800後輪與無內胎輪胎的居中偏移。<br/>上面的照片是之前存著為文章用的，<br/>拍攝時間是２０１５年３月１４日。<br/><br/><a href="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC09492amx5.jpg" target="_blank"><img alt="DSC09492amx5.jpg" border="0" height="225" src="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC09492amx5s.jpg" width="300"/></a><br/>這是我之前說的，裝上輪胎也能用的居中量規。<br/>（這張照片是今天拍的，特此說明）<br/>兩端靠在輪圈上的部分可以滑動，<br/>所以即使輪胎的側壁從輪圈寬度超出，<br/>也能避免和輪胎干涉而放上去。<br/><br/><a href="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC09493amx5.jpg" target="_blank"><img alt="DSC09493amx5.jpg" border="0" height="225" src="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC09493amx5s.jpg" width="300"/></a><br/>靠在立管上部分的整體形狀是這樣的<br/><a href="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC09494amx5.jpg" target="_blank"><img alt="DSC09494amx5.jpg" border="0" height="225" src="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC09494amx5s.jpg" width="300"/></a><br/>尖端是鈍角而不是直角。<br/><a href="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC09495amx5.jpg" target="_blank"><img alt="DSC09495amx5.jpg" border="0" height="225" src="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC09495amx5s.jpg" width="300"/></a><br/>用這個阿蓮螺栓來固定，但是……<br/><br/><a href="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC09496amx5.jpg" target="_blank"><img alt="DSC09496amx5.jpg" border="0" height="225" src="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC09496amx5s.jpg" width="300"/></a><br/>擰阿蓮螺栓時<br/>儘管尖端被重重地按在立管上<br/><a href="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC09498amx5.jpg" target="_blank"><img alt="DSC09498amx5.jpg" border="0" height="225" src="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC09498amx5s.jpg" width="300"/></a><br/>螺栓一擰緊，尖端就斜著往上翹起來了。<s>這破工具！</s><br/><br/><a href="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC09500amx5.jpg" target="_blank"><img alt="DSC09500amx5.jpg" border="0" height="225" src="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC09500amx5s.jpg" width="300"/></a><br/>所以就想到了用法。<br/>首先是用法１：「尖端從立管翹起是沒辦法的」，<br/>記住那個間隙，和另一側比較。<br/>或者，即使另一側更貼合，只要沒有接觸立管，<br/>「騎了也察覺不了多少偏移，沒問題」可能就是這個意思。<br/>我個人的底線比這稍高一點，<br/>平時用的居中量規的照片應該能讓人信服吧。<br/><br/><a href="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC09502amx5.jpg" target="_blank"><img alt="DSC09502amx5.jpg" border="0" height="225" src="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC09502amx5s.jpg" width="300"/></a><br/>再來是用法２。<br/>把尖端放到低於立管的位置，擰緊阿蓮螺栓時<br/>調整到和立管端面對齊才使用。<br/>這個量規在不得已時才用，我就這樣做，<br/>下面的照片就是用用法１拍的。<br/><br/><a href="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC00204amx5.jpg" target="_blank"><img alt="DSC00204amx5.jpg" border="0" height="225" src="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC00204amx5s.jpg" width="300"/></a><br/>無輪胎無負荷的居中調整。<br/>工具尖端離立管有一點點距離，<br/>飛輪側也是同樣的距離。<br/><br/><a href="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC00207amx5.jpg" target="_blank"><img alt="DSC00207amx5.jpg" border="0" height="225" src="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC00207amx5s.jpg" width="300"/></a><br/>為了讓偏移量盡可能地明顯，<br/>用無內胎輪胎（順帶一提是IRC製）充到９bar。<br/>之前位置沒有動過的工具尖端現在接觸了。<br/>這程度的偏移是有可能發生的，<br/>輪胎側的條件確實會改變偏移量，<br/>雖然我不是不知道這個現象，<br/>但平時調整時就採取了忽視的做法。<br/><br/><s>文中不小心寫了違反業界內規的內容，<br/>但因為沒有指明是哪一條，應該沒問題（大概）</s>
+</div></div>
+    <div class="affiliate-box">
+      <p class="affiliate-title">Related Products on Amazon</p>
+      <ul>
+        <li><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=自転車+工具+メンテナンス" target="_blank" rel="noopener sponsored">🛒 Bike Repair Tools</a></li>
+      </ul>
+      <p class="affiliate-note">* Amazon affiliate links — prices may vary</p>
+    </div>
+  </article>
+</div>
+</body>
+</html>
