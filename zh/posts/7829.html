@@ -81,6 +81,24 @@ a:hover { text-decoration: underline; }
 .affiliate-box li a:hover { background: #e68900; }
 .affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
 
+/* Category badge */
+.cat-badge {
+  display:inline-block; font-size:0.72rem; padding:2px 9px;
+  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+}
+
+/* Category filter */
+.filter-bar {
+  display:flex; flex-wrap:wrap; gap:7px; margin-bottom:14px;
+}
+.filter-btn {
+  padding:4px 13px; border-radius:20px; border:1px solid #cbd5e0;
+  background:white; color:#718096; font-size:0.82rem;
+  cursor:pointer; transition:all .15s; white-space:nowrap;
+}
+.filter-btn:hover { border-color:#2b6cb0; color:#2b6cb0; }
+.filter-btn.active { background:#2b6cb0; color:white; border-color:#2b6cb0; }
+
 /* Sort controls */
 .sort-bar {
   display: flex; align-items: center; gap: 10px;
