@@ -35,6 +35,40 @@ a:hover { text-decoration: underline; }
 
 /* Main layout */
 .page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
+.page-wrap.wide { max-width: 1200px; }
+
+/* Sidebar layout (index) */
+.layout { display: flex; gap: 20px; align-items: flex-start; }
+.sidebar {
+  width: 230px; flex-shrink: 0;
+  background: white; border-radius: 10px; padding: 18px 14px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  position: sticky; top: 16px;
+  max-height: calc(100vh - 32px); overflow-y: auto;
+}
+.sidebar h2 {
+  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
+  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+}
+.cat-list { list-style: none; }
+.cat-list button {
+  display: flex; justify-content: space-between; align-items: center; gap: 8px;
+  width: 100%; padding: 7px 10px; margin-bottom: 2px;
+  border: none; border-radius: 6px; background: none;
+  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  transition: background .12s;
+}
+.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
+.cat-list button.active { background: #2b6cb0; color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
+.main-col { flex: 1; min-width: 0; }
+@media (max-width: 800px) {
+  .layout { flex-direction: column; }
+  .sidebar { width: 100%; position: static; max-height: none; }
+  .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .cat-list button { width: auto; margin-bottom: 0; }
+}
 
 /* Index: article cards */
 .card-grid { display: grid; gap: 14px; }
@@ -112,18 +146,6 @@ a:hover { text-decoration: underline; }
   background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
 }
 
-/* Category filter */
-.filter-bar {
-  display:flex; flex-wrap:wrap; gap:7px; margin-bottom:14px;
-}
-.filter-btn {
-  padding:4px 13px; border-radius:20px; border:1px solid #cbd5e0;
-  background:white; color:#718096; font-size:0.82rem;
-  cursor:pointer; transition:all .15s; white-space:nowrap;
-}
-.filter-btn:hover { border-color:#2b6cb0; color:#2b6cb0; }
-.filter-btn.active { background:#2b6cb0; color:white; border-color:#2b6cb0; }
-
 /* Sort controls */
 .sort-bar {
   display: flex; align-items: center; gap: 10px;
@@ -166,7 +188,7 @@ a.amz-inline:hover { border-bottom-style:solid; }
     <div class="lang-toggle"><a class="lang-btn" href="/index.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
-<div class="page-wrap">
+<div class="page-wrap wide">
   <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -174,42 +196,47 @@ a.amz-inline:hover { border-bottom-style:solid; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-  <div class="search-bar">
-    <input type="text" id="search-input" placeholder="搜尋文章…" oninput="applyFilters()">
-  </div>
-  <div class="filter-bar">
-    <button class="filter-btn active" onclick="filterCards('all', this)">全部</button>
-    <button class="filter-btn" onclick="filterCards('Nomu Lab Diary', this)">Nomu Lab Diary</button>
-    <button class="filter-btn" onclick="filterCards('Nomu Lab Wheel', this)">Nomu Lab Wheel</button>
-    <button class="filter-btn" onclick="filterCards('Beginner Cycling Tips', this)">Beginner Cycling Tips</button>
-    <button class="filter-btn" onclick="filterCards('Other Equipment', this)">Other Equipment</button>
-    <button class="filter-btn" onclick="filterCards('News &amp; Updates', this)">News &amp; Updates</button>
-    <button class="filter-btn" onclick="filterCards('Wheel Building', this)">Wheel Building</button>
-    <button class="filter-btn" onclick="filterCards('Drilling Work', this)">Drilling Work</button>
-    <button class="filter-btn" onclick="filterCards('Spoke Talk', this)">Spoke Talk</button>
-    <button class="filter-btn" onclick="filterCards('Headphones &amp; Watches', this)">Headphones &amp; Watches</button>
-    <button class="filter-btn" onclick="filterCards('SRAM Calu', this)">SRAM Calu</button>
-    <button class="filter-btn" onclick="filterCards('Gravel Bike First Year', this)">Gravel Bike First Year</button>
-    <button class="filter-btn" onclick="filterCards('Chainring Fix', this)">Chainring Fix</button>
-    <button class="filter-btn" onclick="filterCards('CatEye Products', this)">CatEye Products</button>
-    <button class="filter-btn" onclick="filterCards('Nomu Lab Wheel List', this)">Nomu Lab Wheel List</button>
-    <button class="filter-btn" onclick="filterCards('High Win-Rate Builds', this)">High Win-Rate Builds</button>
-    <button class="filter-btn" onclick="filterCards('Spoke Tension', this)">Spoke Tension</button>
-    <button class="filter-btn" onclick="filterCards('Hand-Built vs Factory Wheels', this)">Hand-Built vs Factory Wheels</button>
-    <button class="filter-btn" onclick="filterCards('Spoke Phase / Angle', this)">Spoke Phase / Angle</button>
-    <button class="filter-btn" onclick="filterCards('Quick Tips', this)">Quick Tips</button>
-    <button class="filter-btn" onclick="filterCards('Spoke (Advanced)', this)">Spoke (Advanced)</button>
-    <button class="filter-btn" onclick="filterCards('Mixed Lacing', this)">Mixed Lacing</button>
-    <button class="filter-btn" onclick="filterCards('11-Speed Compatibility', this)">11-Speed Compatibility</button>
-    <button class="filter-btn" onclick="filterCards('Q Factor', this)">Q Factor</button>
+  <div class="layout">
+    <aside class="sidebar">
+      <h2>分類</h2>
+      <ul class="cat-list">
+        <li><button class="active" onclick="filterCards('all', this)">全部 <span class="cnt">4930</span></button></li>
+        <li><button onclick="filterCards('Nomu Lab Diary', this)">Nomu Lab Diary <span class="cnt">3170</span></button></li>
+        <li><button onclick="filterCards('Nomu Lab Wheel', this)">Nomu Lab Wheel <span class="cnt">1188</span></button></li>
+        <li><button onclick="filterCards('Beginner Cycling Tips', this)">Beginner Cycling Tips <span class="cnt">129</span></button></li>
+        <li><button onclick="filterCards('Other Equipment', this)">Other Equipment <span class="cnt">94</span></button></li>
+        <li><button onclick="filterCards('News &amp; Updates', this)">News &amp; Updates <span class="cnt">86</span></button></li>
+        <li><button onclick="filterCards('Wheel Building', this)">Wheel Building <span class="cnt">66</span></button></li>
+        <li><button onclick="filterCards('Drilling Work', this)">Drilling Work <span class="cnt">65</span></button></li>
+        <li><button onclick="filterCards('Spoke Talk', this)">Spoke Talk <span class="cnt">39</span></button></li>
+        <li><button onclick="filterCards('Headphones &amp; Watches', this)">Headphones &amp; Watches <span class="cnt">15</span></button></li>
+        <li><button onclick="filterCards('SRAM Calu', this)">SRAM Calu <span class="cnt">12</span></button></li>
+        <li><button onclick="filterCards('Gravel Bike First Year', this)">Gravel Bike First Year <span class="cnt">11</span></button></li>
+        <li><button onclick="filterCards('Chainring Fix', this)">Chainring Fix <span class="cnt">8</span></button></li>
+        <li><button onclick="filterCards('CatEye Products', this)">CatEye Products <span class="cnt">7</span></button></li>
+        <li><button onclick="filterCards('Nomu Lab Wheel List', this)">Nomu Lab Wheel List <span class="cnt">6</span></button></li>
+        <li><button onclick="filterCards('High Win-Rate Builds', this)">High Win-Rate Builds <span class="cnt">6</span></button></li>
+        <li><button onclick="filterCards('Spoke Tension', this)">Spoke Tension <span class="cnt">6</span></button></li>
+        <li><button onclick="filterCards('Hand-Built vs Factory Wheels', this)">Hand-Built vs Factory Wheels <span class="cnt">4</span></button></li>
+        <li><button onclick="filterCards('Spoke Phase / Angle', this)">Spoke Phase / Angle <span class="cnt">4</span></button></li>
+        <li><button onclick="filterCards('Quick Tips', this)">Quick Tips <span class="cnt">4</span></button></li>
+        <li><button onclick="filterCards('Spoke (Advanced)', this)">Spoke (Advanced) <span class="cnt">4</span></button></li>
+        <li><button onclick="filterCards('Mixed Lacing', this)">Mixed Lacing <span class="cnt">3</span></button></li>
+        <li><button onclick="filterCards('11-Speed Compatibility', this)">11-Speed Compatibility <span class="cnt">2</span></button></li>
+        <li><button onclick="filterCards('Q Factor', this)">Q Factor <span class="cnt">1</span></button></li>
 
-  </div>
-  <div class="sort-bar">
-    <span>排序：</span>
-    <button class="sort-btn active" id="btn-new" onclick="sortCards('new')">最新優先</button>
-    <button class="sort-btn" id="btn-old" onclick="sortCards('old')">最舊優先</button>
-  </div>
-  <div class="card-grid" id="card-grid">
+      </ul>
+    </aside>
+    <div class="main-col">
+      <div class="search-bar">
+        <input type="text" id="search-input" placeholder="搜尋文章…" oninput="applyFilters()">
+      </div>
+      <div class="sort-bar">
+        <span>排序：</span>
+        <button class="sort-btn active" id="btn-new" onclick="sortCards('new')">最新優先</button>
+        <button class="sort-btn" id="btn-old" onclick="sortCards('old')">最舊優先</button>
+      </div>
+      <div class="card-grid" id="card-grid">
   <div class="card" data-date="2026/06/11 Thu. 11:31" data-category="Nomu Lab Diary" data-search="關於equal品牌的輪轂 近日我預計要用gro tack（一家日本自行車零件品牌）旗下equal品牌的輪轂來 組裝輪組 查看了我之前的輻條長度計算公式記錄後 發現之前用過的輪轂 型號是hbf-x101-j24 這次的輪轂型號是x102，型號有所進展 所以我在製造商網站上查詢了尺寸 結果發現尺寸沒有變化。 關於法蘭寬度，法蘭側的測量位置是 法蘭部…">
     <div class="card-inner">
       <a href="posts/7935.html"><img class="card-thumb" src="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/RIMG0737amx17s.jpg" alt="" loading="lazy"></a>
@@ -54440,13 +54467,15 @@ a.amz-inline:hover { border-bottom-style:solid; }
       </div>
     </div>
   </div>
+      </div>
+    </div>
   </div>
 </div>
 <script>
 let _cat = 'all', _sort = 'new';
 function filterCards(cat, btn) {
   _cat = cat;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.cat-list button').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   applyFilters();
 }
