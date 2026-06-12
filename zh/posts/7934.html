@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="/favicon.ico">
+<title>關於SRAM的12速飛輪 — 野村工房日記</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TCJ5CJ4XYR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-TCJ5CJ4XYR');
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #2d3748; background: #f7fafc; line-height: 1.75;
+}
+a { color: #2b6cb0; }
+a:hover { text-decoration: underline; }
+
+/* Header */
+.site-header {
+  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+  color: white; padding: 28px 0;
+}
+.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
+.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+
+/* Main layout */
+.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
+
+/* Index: article cards */
+.card-grid { display: grid; gap: 14px; }
+.card {
+  background: white; border-radius: 10px;
+  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  transition: box-shadow .15s;
+}
+.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.card-inner { display: flex; align-items: stretch; }
+.card-thumb {
+  width: 130px; min-height: 100px; object-fit: cover;
+  flex-shrink: 0; display: block;
+}
+.card-thumb-placeholder {
+  width: 130px; min-height: 100px; background: #e2e8f0;
+  flex-shrink: 0;
+}
+.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
+.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
+.card h2 a { text-decoration: none; color: #1a365d; }
+.card h2 a:hover { color: #2b6cb0; }
+.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
+.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+@media (max-width: 500px) {
+  .card-inner { flex-direction: column; }
+  .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+}
+
+/* Search bar */
+.search-bar {
+  margin-bottom: 14px;
+}
+.search-bar input {
+  width: 100%; padding: 9px 14px; font-size: 0.92rem;
+  border: 1px solid #cbd5e0; border-radius: 8px;
+  outline: none; transition: border-color .15s;
+}
+.search-bar input:focus { border-color: #2b6cb0; }
+
+/* Post page */
+.post-wrap {
+  background: white; border-radius: 10px;
+  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+.back-link { margin-bottom: 20px; font-size: 0.88rem; }
+.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
+.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
+.post-body { font-size: 0.97rem; line-height: 1.85; }
+.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.post-body p { margin-bottom: 14px; }
+.post-body br { line-height: 2; }
+
+/* Amazon アフィリエイトボックス */
+.affiliate-box {
+  margin-top: 36px; padding: 20px 24px;
+  background: #fffbeb; border: 1px solid #f6e05e;
+  border-radius: 10px;
+}
+.affiliate-box .affiliate-title {
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+}
+.affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.affiliate-box li a {
+  display: inline-block; padding: 6px 14px;
+  background: #ff9900; color: white; border-radius: 6px;
+  text-decoration: none; font-size: 0.88rem; font-weight: 600;
+}
+.affiliate-box li a:hover { background: #e68900; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+
+/* Category badge */
+.cat-badge {
+  display:inline-block; font-size:0.72rem; padding:2px 9px;
+  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+}
+
+/* Category filter */
+.filter-bar {
+  display:flex; flex-wrap:wrap; gap:7px; margin-bottom:14px;
+}
+.filter-btn {
+  padding:4px 13px; border-radius:20px; border:1px solid #cbd5e0;
+  background:white; color:#718096; font-size:0.82rem;
+  cursor:pointer; transition:all .15s; white-space:nowrap;
+}
+.filter-btn:hover { border-color:#2b6cb0; color:#2b6cb0; }
+.filter-btn.active { background:#2b6cb0; color:white; border-color:#2b6cb0; }
+
+/* Sort controls */
+.sort-bar {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+}
+.sort-btn {
+  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
+  background: white; color: #2d3748; font-size: 0.85rem;
+  cursor: pointer; transition: background .15s, border-color .15s;
+}
+.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
+.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+
+/* Language toggle */
+.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-btn {
+  padding:3px 11px; border-radius:4px; font-size:0.8rem;
+  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  text-decoration:none;
+}
+.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
+.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+
+/* Amazon inline affiliate links */
+a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline:hover { border-bottom-style:solid; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .post-wrap { padding: 22px 18px; }
+  .site-header h1 { font-size: 1.4rem; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <h1><a href="../index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
+    <p>自行車工房 — 繁體中文版</p>
+    <div class="lang-toggle"><a class="lang-btn" href="/posts/7934.html">EN</a><span class="lang-btn active">繁中</span></div>
+  </div>
+</header>
+<div class="page-wrap">
+  <p class="back-link"><a href="../index.html">← 所有文章</a></p>
+  <article class="post-wrap">
+    <h1>關於SRAM的12速飛輪</h1>
+    <p class="post-meta">June 10, 2026</p>
+    <ins class="adsbygoogle"
+     style="display:block;margin:24px 0"
+     data-ad-client="ca-pub-2988824672029852"
+     data-ad-slot="auto"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="post-body"><div class="entrytext"><a href="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/RIMG0618aamx16.jpg" target="_blank"><img alt="RIMG0618aamx16.jpg" border="0" height="240" src="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/RIMG0618aamx16s.jpg" width="320"/></a><br/>↑這是前幾天勞瓦爾後輪<br/>重新組裝時配的<br/><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=SRAM+Force+groupset" target="_blank" rel="noopener sponsored" class="amz-inline">SRAM Force</a> 12速的10-33T飛輪。<br/>SRAM的XDR規格12速飛輪<br/>Red和Force有<br/>10-28T、10-30T、10-33T、10-36T共4種，<br/>Rival的話齒數組成相同，但<br/>只有10-30T和10-36T共2種<br/>這樣的配置。<br/><br/>這4種齒數組成當中<br/>如果被問到<br/>最接近密齒比和最寬齒比的<br/>分別是哪一種，<br/>一般來說應該會說<br/>從大盤／小盤的齒數差來看<br/>密齒比是10-28T，<br/>寬齒比是10-36T吧，<br/>但從另一個角度想的話<br/>密齒比是10-30T，<br/>寬齒比是10-33T<br/>這樣的解釋也不是不可能。<br/>今天就來寫關於這個。<br/><br/><a href="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/RIMG0684aamx16.jpg" target="_blank"><img alt="RIMG0684aamx16.jpg" border="0" height="240" src="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/RIMG0684aamx16s.jpg" width="320"/></a><br/>我列出了齒數構成的摘要。<br/>在17T以下的範圍裡<br/>只有10-28T有16T，<br/>只有10-36T缺少14T。<br/>17-19-21-24T的部分<br/>在所有構成中都是共通的，<br/>之後的齒輪片數量<br/>10-28T因為有16T所以少一片<br/>10-36T因為缺少14T所以多一片。<br/><br/><a href="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/RIMG0687aamx16.jpg" target="_blank"><img alt="RIMG0687aamx16.jpg" border="0" height="240" src="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/RIMG0687aamx16s.jpg" width="320"/></a><br/>注意小盤部分。<br/>我用紅字標出<br/>各飛輪之間的齒數差。<br/>這裡，各構成的<br/>小盤側4片齒輪的齒數差是<br/>10-28T　2-3-4<br/>10-30T　3-3-3<br/>10-33T　3-4-5<br/>10-36T　4-4-4<br/>這樣的情況。<br/><br/>SRAM的前變雙盤<br/>所有都是13T差的齒數構成，<br/>50-37T，以及從那開始每次小2T<br/>48-35T、46-33T共3種類，<br/>如果前變內盤是33T的話<br/>只要不是「硬要飛輪最大齒數36T不可！」的人，<br/>自己能應付的<br/>最輕檔位比<br/>33×36更重的話，<br/>就能有更充裕的空間<br/>更有效地使用飛輪的齒數。<br/><br/>我會說10-30T<br/>是最接近密齒比的原因，<br/>是因為變速到小盤時<br/>只有10-30T是唯一3T差的。<br/>同樣地，我說10-33T<br/>是最寬齒比的原因，<br/>是因為它是唯一包含5T差變速的齒數構成。<br/><br/>假設在某段上坡路上<br/>以時速14km騎著小盤下一片齒輪，<br/>在保持那個速度的同時<br/>想要更用力踩的話<br/>換到重一點的齒輪，<br/>或是想要以更高的迴轉速踩的話<br/>換到輕一點的齒輪（小盤）時<br/>迴轉速的變化，讓我來調查一下。<br/>輪徑用Cat Eye和Garmin的表<br/>700×28C都是2136mm，<br/>所以我用2136mm。<br/><br/><a href="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/RIMG0723amx17.jpg" target="_blank"><img alt="RIMG0723amx17.jpg" border="0" height="240" src="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/RIMG0723amx17s.jpg" width="320"/></a><br/>10-30T的27T和10-33T的28T。<br/><br/><a href="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/RIMG0732amx17.jpg" target="_blank"><img alt="RIMG0732amx17.jpg" border="0" height="240" src="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/RIMG0732amx17s.jpg" width="320"/></a><br/>再加上兩側的齒輪。<br/>理所當然地<br/>24T時的迴轉速都一樣。<br/>還有，例如28T和33T的迴轉速差，<br/>從表的數字計算的話是14.7，<br/>但變成14.8是因為<br/>Excel在有效位數小數第1位表記時<br/>數值的四捨五入方式的問題，<br/>請不用在意。<br/><br/>迴轉速之間的數字是<br/>在保持速度（時速14km）不變的情況下變速時的<br/>迴轉速差。<br/><br/>前變內盤兩邊都設為37T，<br/>但把10-30T的那邊設為35T的話<br/>35×27T時速14km時會是84.3迴轉速<br/>在前一個表中迴轉速會更接近，<br/>但我想避免讓人覺得<br/>我在自己的主張裡混入了什麼主觀意見，<br/>所以統一用37T。<br/><br/>上表有奇怪空白是為了<br/><a href="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/RIMG0731amx17.jpg" target="_blank"><img alt="RIMG0731amx17.jpg" border="0" height="240" src="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/RIMG0731amx17s.jpg" width="320"/></a><br/>也寫上35T和33T的情況。<br/>從這裡能看出的傾向是<br/>內盤的齒數變小的話<br/>變速後也保持速度（時速14km）的前提下<br/>每一片齒輪的迴轉速差會變大。<br/>從小盤下一片齒輪<br/>「稍微用力一點」「稍微高迴轉一點」的情況下<br/>關於變重和變輕的程度，<br/>看這個不能說10-30T比10-33T更輕鬆。<br/><br/>我想說的是在這個區域變速時<br/>迴轉速差較小的構成<br/>才是真正意義上的密齒比。<br/>個人看法是，SRAM的12速飛輪<br/>前變13T差（Shimano最大16T差），<br/>平地能接受的外盤齒數，<br/>和用小盤30T能在日常騎乘範圍內應付的<br/>內盤齒數經過好好思考的話<br/>（更好的話傾向37T這邊比較好）<br/>選擇10-30T比較好<br/>我是這麼想的。<br/><br/>10-28T和10-33T是<br/>10-11-12-13-14-15-17-19-21-24-28T<br/>這個11速飛輪<br/>加上16T還是加上33T的構成。<br/><br/>我不否認有人會說<br/>小盤4T間隔比16T存在更重要！，<br/>或是喜歡像MTB飛輪最後的間隔<br/>42-52T的10T間隔那樣<br/>28T+激坂用應急齒輪<br/>33T這種構成的人。<br/><br/>或者是乾脆就只要選<br/>變速機容量允許範圍內<br/>廠商推出的最大小盤齒數<br/>的人（10-36T）<br/>也是有的。<br/><br/>這次我想寫的是，SRAM 12速<br/>在上坡時在小盤附近進行變速時<br/>如果要使疲勞最少的話，<br/>某個齒數的內盤或前變單盤齒輪<br/>×小盤30T就足夠的話<br/>在3T間隔內的10-30T<br/>我推薦這樣的話。<br/><br/>順帶一提我用的是舊12速Force<br/>最初就是前變單盤齒輪的曲柄組，<br/>順便說的話還有功率表，<br/>想把原本配的40T<br/>換成42T但還是40T，<br/>飛輪用的是10-30T。<br/><br/>補充<br/><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+bicycle+components" target="_blank" rel="noopener sponsored" class="amz-inline">Shimano</a> CUES（CUES）的廉價版<br/>有個叫ESSA（ESSA）的1×8速變速組。<br/>平把規格的話用油壓碟煞，<br/>下把規格的話用公路用的STI變速桿搭配<br/>線拉式機械式碟煞，<br/>前變單盤有32T和40T兩種。<br/>飛輪是CS-HG400-8這<br/>高階等級的產品的話有11-40T或11-45T，<br/>簡易仕上的CS-HG-300-8<br/>只有11-45T，<br/>所以推薦的應該是11-45T。<br/><span style="font-size:large;">8速就11-45T！</span><br/><br/>SRAM有個叫XPLR（XPLR）的<br/>需搭配專用後變速器選擇的<br/>超寬齒比的前變單盤用<br/>飛輪，<br/>最新的Red、Force、Rival是<br/>前變單盤時為1×13，<br/>飛輪齒數為10-46T。<br/>舊12速時是10-44T。<br/>Apex在推出機械式變速組時<br/>也能選前變雙盤，<br/>但變成無線電動的eTap AXS後<br/>就被廠商強加思想<br/>只有前變單盤的XPLR規格。<br/>Apex不是XDR而是HG花鼓，<br/>所以是11T頂端的11-44T<br/>這樣的12速飛輪。<br/><br/>Shimano的ESSA<br/>用8速做著和XPLR一樣的事，<br/>所以小盤側齒數間隔<br/>變得相當誇張。<br/>具體寫出來的話<br/>11-13-15-18-22-27-35-45T<br/>這樣的構成，齒數間隔是<br/>2-2-3-4-5-8-10。<br/><br/>其中小盤側5片<br/>用和之前一樣的表，前盤40T的情況下<br/><s>難得做出來的計算式太可惜了</s><br/>來試試看。<br/><a href="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/RIMG0734amx17.jpg" target="_blank"><img alt="RIMG0734amx17.jpg" border="0" height="240" src="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/RIMG0734amx17s.jpg" width="320"/></a><br/>5片當中的正中間，27T。<br/>沒有什麼特別奇怪的地方。<br/><br/><a href="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/RIMG0735amx17.jpg" target="_blank"><img alt="RIMG0735amx17.jpg" border="0" height="240" src="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/RIMG0735amx17s.jpg" width="320"/></a><br/>補上剩下的部分。<br/>太強悍了 這個。
+</div></div>
+    <div class="affiliate-box">
+      <p class="affiliate-title">Related Products on Amazon</p>
+      <ul>
+        <li><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=%E3%83%AD%E3%83%BC%E3%83%89%E3%83%90%E3%82%A4%E3%82%AF+%E3%83%9B%E3%82%A4%E3%83%BC%E3%83%AB+%E5%AE%8C%E7%B5%84" target="_blank" rel="noopener sponsored">🛒 Road Bike Wheelsets</a></li>
+        <li><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=%E3%82%B5%E3%82%A4%E3%82%AF%E3%83%AB%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%E3%83%BC+GPS" target="_blank" rel="noopener sponsored">🛒 Cycling Computers & GPS</a></li>
+      </ul>
+      <p class="affiliate-note">* Amazon affiliate links — prices may vary</p>
+    </div>
+  </article>
+</div>
+</body>
+</html>
