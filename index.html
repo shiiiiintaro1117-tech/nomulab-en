@@ -186,10 +186,32 @@ a.amz-inline:hover { border-bottom-style:solid; }
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
 ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
+/* Footer */
+.site-footer {
+  background: #1a365d; color: rgba(255,255,255,0.75);
+  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+}
+.site-footer .inner {
+  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
+}
+.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a:hover { color: white; text-decoration: none; }
+.site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
+
+/* Source link (original JP article) */
+.source-link {
+  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid #e2e8f0;
+}
+.source-link a { color: #a0aec0; }
+.source-link a:hover { color: #718096; }
+
 /* Responsive */
 @media (max-width: 600px) {
   .post-wrap { padding: 22px 18px; }
   .site-header h1 { font-size: 1.4rem; }
+  .site-footer .attribution { margin-left: 0; }
 }
 </style>
 </head>
@@ -54514,5 +54536,14 @@ function applyFilters() {
   });
 }
 </script>
+<footer class="site-footer">
+  <div class="inner">
+    <span>© 2007–2026 Nomu Lab Diary</span>
+    <a href="/about.html">About</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/sitemap.xml">Sitemap</a>
+    <span class="attribution">Translation of <a href="http://pass13.blog.fc2.com" target="_blank" rel="noopener">のむラボ日記</a> (Japanese original)</span>
+  </div>
+</footer>
 </body>
 </html>
