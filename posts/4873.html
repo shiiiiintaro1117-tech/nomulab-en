@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Not just with a 36H hub and 24H rim, but I&#x27;m writing about the phase offset that occurs when building wheels with different hole counts on the hub and rim. My b…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="About Phase Offset When Building Wheels with Different Hub and Rim Hole Counts">
+<meta property="og:description" content="Not just with a 36H hub and 24H rim, but I&#x27;m writing about the phase offset that occurs when building wheels with different hole counts on the hub and rim. My b…">
+<meta property="og:url" content="https://nomulabworkshop.com/posts/4873.html">
+<meta property="og:site_name" content="Nomu Lab Diary">
+<link rel="icon" href="/favicon.ico">
+<link rel="canonical" href="https://nomulabworkshop.com/posts/4873.html">
+<link rel="alternate" hreflang="en" href="https://nomulabworkshop.com/posts/4873.html">
+<link rel="alternate" hreflang="zh-TW" href="https://nomulabworkshop.com/zh/posts/4873.html">
+<link rel="alternate" hreflang="x-default" href="https://nomulabworkshop.com/posts/4873.html">
+<title>About Phase Offset When Building Wheels with Different Hub and Rim Hole Counts — Nomu Lab Diary</title>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "About Phase Offset When Building Wheels with Different Hub and Rim Hole Counts", "description": "Not just with a 36H hub and 24H rim, but I'm writing about the phase offset that occurs when building wheels with different hole counts on the hub and rim. My black marker ran out of ink, so I've draw…", "url": "https://nomulabworkshop.com/posts/4873.html", "datePublished": "2019-10-05", "author": {"@type": "Person", "name": "Nomura"}, "publisher": {"@type": "Organization", "name": "Nomu Lab Diary", "url": "https://nomulabworkshop.com"}, "inLanguage": "en", "isBasedOn": "http://pass13.blog.fc2.com/blog-entry-4873.html"}</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TCJ5CJ4XYR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-TCJ5CJ4XYR');
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #2d3748; background: #f7fafc; line-height: 1.75;
+}
+a { color: #2b6cb0; }
+a:hover { text-decoration: underline; }
+
+/* Header */
+.site-header {
+  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+  color: white; padding: 28px 0;
+}
+.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
+.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+
+/* Main layout */
+.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
+.page-wrap.wide { max-width: 1200px; }
+
+/* Sidebar layout (index) */
+.layout { display: flex; gap: 20px; align-items: flex-start; }
+.sidebar {
+  width: 230px; flex-shrink: 0;
+  background: white; border-radius: 10px; padding: 18px 14px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  position: sticky; top: 16px;
+  max-height: calc(100vh - 32px); overflow-y: auto;
+}
+.sidebar h2 {
+  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
+  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+}
+.cat-list { list-style: none; }
+.cat-list button {
+  display: flex; justify-content: space-between; align-items: center; gap: 8px;
+  width: 100%; padding: 7px 10px; margin-bottom: 2px;
+  border: none; border-radius: 6px; background: none;
+  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  transition: background .12s;
+}
+.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
+.cat-list button.active { background: #2b6cb0; color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
+.main-col { flex: 1; min-width: 0; }
+@media (max-width: 800px) {
+  .layout { flex-direction: column; }
+  .sidebar { width: 100%; position: static; max-height: none; }
+  .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .cat-list button { width: auto; margin-bottom: 0; }
+}
+
+/* Index: article cards */
+.card-grid { display: grid; gap: 14px; }
+.card {
+  background: white; border-radius: 10px;
+  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  transition: box-shadow .15s;
+}
+.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.card-inner { display: flex; align-items: stretch; }
+.card-thumb {
+  width: 130px; min-height: 100px; object-fit: cover;
+  flex-shrink: 0; display: block;
+}
+.card-thumb-placeholder {
+  width: 130px; min-height: 100px; background: #e2e8f0;
+  flex-shrink: 0;
+}
+.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
+.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
+.card h2 a { text-decoration: none; color: #1a365d; }
+.card h2 a:hover { color: #2b6cb0; }
+.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
+.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+@media (max-width: 500px) {
+  .card-inner { flex-direction: column; }
+  .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+}
+
+/* Search bar */
+.search-bar {
+  margin-bottom: 14px;
+}
+.search-bar input {
+  width: 100%; padding: 9px 14px; font-size: 0.92rem;
+  border: 1px solid #cbd5e0; border-radius: 8px;
+  outline: none; transition: border-color .15s;
+}
+.search-bar input:focus { border-color: #2b6cb0; }
+
+/* Post page */
+.post-wrap {
+  background: white; border-radius: 10px;
+  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+.back-link { margin-bottom: 20px; font-size: 0.88rem; }
+.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
+.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
+.post-body { font-size: 0.97rem; line-height: 1.85; }
+.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.post-body p { margin-bottom: 14px; }
+.post-body br { line-height: 2; }
+
+/* Amazon アフィリエイトボックス */
+.affiliate-box {
+  margin-top: 36px; padding: 20px 24px;
+  background: #fffbeb; border: 1px solid #f6e05e;
+  border-radius: 10px;
+}
+.affiliate-box .affiliate-title {
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+}
+.affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.affiliate-box li a {
+  display: inline-block; padding: 6px 14px;
+  background: #ff9900; color: white; border-radius: 6px;
+  text-decoration: none; font-size: 0.88rem; font-weight: 600;
+}
+.affiliate-box li a:hover { background: #e68900; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+
+/* Category badge */
+.cat-badge {
+  display:inline-block; font-size:0.72rem; padding:2px 9px;
+  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+}
+
+/* Sort controls */
+.sort-bar {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+}
+.sort-btn {
+  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
+  background: white; color: #2d3748; font-size: 0.85rem;
+  cursor: pointer; transition: background .15s, border-color .15s;
+}
+.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
+.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+
+/* Language toggle */
+.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-btn {
+  padding:3px 11px; border-radius:4px; font-size:0.8rem;
+  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  text-decoration:none;
+}
+.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
+.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+
+/* Amazon inline affiliate links */
+a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline:hover { border-bottom-style:solid; }
+
+/* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
+ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
+
+/* Footer */
+.site-footer {
+  background: #1a365d; color: rgba(255,255,255,0.75);
+  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+}
+.site-footer .inner {
+  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
+}
+.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a:hover { color: white; text-decoration: none; }
+.site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
+
+/* Source link (original JP article) */
+.source-link {
+  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid #e2e8f0;
+}
+.source-link a { color: #a0aec0; }
+.source-link a:hover { color: #718096; }
+
+/* Related posts */
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related h2 {
+  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+}
+.related ul { list-style: none; display: grid; gap: 10px; }
+.related li a {
+  display: block; padding: 12px 16px; background: #f7fafc;
+  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  font-size: 0.9rem; line-height: 1.45; transition: background .12s;
+}
+.related li a:hover { background: #ebf8ff; text-decoration: none; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .post-wrap { padding: 22px 18px; }
+  .site-header h1 { font-size: 1.4rem; }
+  .site-footer .attribution { margin-left: 0; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <h1><a href="/index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
+    <p>Bicycle Workshop — English Edition</p>
+    <div class="lang-toggle"><span class="lang-btn active">EN</span><a class="lang-btn" href="/zh/posts/4873.html">繁中</a></div>
+  </div>
+</header>
+<div class="page-wrap">
+  <p class="back-link"><a href="/index.html">← All posts</a></p>
+  <article class="post-wrap">
+    <h1>About Phase Offset When Building Wheels with Different Hub and Rim Hole Counts</h1>
+    <p class="post-meta">October 05, 2019</p>
+    <ins class="adsbygoogle"
+     style="display:block;margin:24px 0"
+     data-ad-client="ca-pub-2988824672029852"
+     data-ad-slot="auto"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="post-body"><div class="entrytext">Not just with a 36H hub and 24H rim, but<br/>I'm writing about the phase offset that occurs when building wheels with different hole counts on the hub and rim.<br/>My black marker ran out of ink, so<br/>I've drawn in green where I normally use black.<br/>Sorry if it's hard to see.<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03631amx12.jpg" target="_blank"><img alt="DSC03631amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03631amx12s.jpg" width="320"/></a><br/>First, let's talk about what happens when you build a radial-laced front wheel with a 36H hub and 18H rim.<br/>I've actually seen wheels built with that combination.<br/>The hub hole count is double the rim hole count (2:1 ratio).<br/>With that relationship, it's easier to draw if we reduce the hole count, so<br/>I've drawn it with a 12H hub and 6H rim, but<br/>first I drew it with a 6H hub and 6H rim in the image above.<br/>Looking at the wheel from one side, I've drawn the spokes on the flange closer to me in blue<br/>and the ones on the far side in red.<br/>These 0-cross spokes<br/>overlap with the path of radial lines (which I'll call "radial lines" hereafter)<br/>extending radially from the hub.<br/>Since this is normally how it works, based on spoke calculation formulas,<br/>what I call "0-cross lacing" is called "radial lacing."<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03633amx12.jpg" target="_blank"><img alt="DSC03633amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03633amx12s.jpg" width="320"/></a><br/>I've shown only the 3H on the blue spoke side.<br/>Next to it, I've drawn a development diagram of a rim-hub-rim type wheel.<br/>In the development diagram of a radially laced wheel, the spokes become<br/>perpendicular lines to the horizontal lines.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03634amx12.jpg" target="_blank"><img alt="DSC03634amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03634amx12s.jpg" width="320"/></a><br/>From here, I've added flange holes showing that this hub is actually 12H (6H per side), not 6H.<br/>At this point, the spokes' paths still lie on the radial lines.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03635amx12.jpg" target="_blank"><img alt="DSC03635amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03635amx12s.jpg" width="320"/></a><br/>I've added holes for the red spoke side at 6H per side, offset at even intervals in phase.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03636amx12.jpg" target="_blank"><img alt="DSC03636amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03636amx12s.jpg" width="320"/></a><br/>From here, I want to connect the red hub hole to the red rim hole with a red spoke, but<br/>as drawn with the red dashed line above, I can't achieve a 0-cross lacing that overlaps on a radial line.<br/>So I'm forced to create a phase offset and<br/>connect whichever is closest—either a red hub hole or a red rim hole.<br/>Which one I choose determines the direction of the twist, but<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03637amx12.jpg" target="_blank"><img alt="DSC03637amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03637amx12s.jpg" width="320"/></a><br/>I've chosen the rim hole going clockwise.<br/>In the wheel's development diagram too, the red spokes aren't perpendicular to the horizontal lines,<br/>so they represent a 0-cross that isn't radial lacing.<br/>This is still pre-tensioning, with no spoke tension applied, but<br/>as we tension from here<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03707amx12.jpg" target="_blank"><img alt="DSC03707amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03707amx12s.jpg" width="320"/></a><br/>the blue spokes twist in the opposite direction to the red spokes.<br/><br/>The amount of twist is the same on both sides, and in the wheel's development diagram too,<br/>the angle deviation from perpendicular is the same on both sides.<br/><br/>Theoretically this wheel isn't ideal,<br/>but in terms of usability, if you're careful with spoke tension and<br/>nipple thread-locking compound, it's definitely practical.<br/>If you really want to keep wheel-building costs down or<br/>want to get by with materials you have on hand,<br/>I'd say it's an option as a stopgap measure.<br/>But I won't actively build it as a product for sale.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03623amx12.jpg" target="_blank"><img alt="DSC03623amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03623amx12s.jpg" width="320"/></a><br/>Next, I've drawn a 24H hub and 24H rim with tangent lacing.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03625amx12.jpg" target="_blank"><img alt="DSC03625amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03625amx12s.jpg" width="320"/></a><br/>I've drawn a radial line in blue passing through the final cross of the spokes<br/>(the composite of the two spokes at final cross).<br/>Think of this as similar to the blue spokes from before.<br/>Normally, this line is the bisector of the final cross.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03626amx12.jpg" target="_blank"><img alt="DSC03626amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03626amx12s.jpg" width="320"/></a><br/>In the image above, it still says 24H,<br/>but when building a wheel with a 36H hub and 24H rim,<br/>the hub hole count is 1.5 times the rim hole count (3:2 ratio),<br/>and similarly, phase offset occurs.<br/>At this point, the difference between tangent lacing spokes<br/>and radial lacing spokes is<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03627amx12.jpg" target="_blank"><img alt="DSC03627amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03627amx12s.jpg" width="320"/></a><br/>that spokes in the "porcupine direction" and "anti-porcupine direction"<br/>reach different points on the rim even with the same spoke length.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03628amx12.jpg" target="_blank"><img alt="DSC03628amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03628amx12s.jpg" width="320"/></a><br/>In addition to that, like the wheel at the beginning,<br/>the composite line of the spokes causes twist in opposite directions on each side.<br/>In the image above, drawing the actual spokes rather than the composite line<br/>would be extremely messy visually, so I've expressed it this way.<br/>The final cross spokes on each side differ not only in length but also<br/>in spoke tension when accounting for radial and lateral runout.<br/><br/>When pre-tensioning a wheel, if you equalize the tightness based on<br/>the number of threads on the spokes,<br/>you get more efficient wheel building, but<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03630amx12.jpg" target="_blank"><img alt="DSC03630amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03630amx12s.jpg" width="320"/></a><br/>if you do that on this wheel the way you would on a normal wheel,<br/>lateral runout appears on the outer edge in the inner two of the four spokes<br/>when combining the final cross from both sides.<br/>This is something to watch out for when building with a 36H hub and 24H rim.<br/><br/>The two spokes at final cross require different effective lengths, but<br/>using the nipple end face as reference for flush,<br/>you can calculate it so a single spoke length works for both—<br/>with the longer side slightly protruding and the shorter side slightly recessed.<br/>And along with that, for a 24H rim,<br/>comparing something like "6-cross with a 24H hub" versus "8-cross nominally with a 36H hub,"<br/>the latter requires longer spokes,<br/>so you need to account for both factors when determining spoke length.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03644amx12.jpg" target="_blank"><img alt="DSC03644amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03644amx12s.jpg" width="320"/></a><br/>Here's a wheel built with a <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+105+disc+hub+36H" target="_blank" rel="noopener sponsored" class="amz-inline">current 105 disc hub</a> at 36H and<br/>a <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+Swiss+RR411db+rim+24H" target="_blank" rel="noopener sponsored" class="amz-inline">DT RR411db rim</a> at 24H<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03646amx12.jpg" target="_blank"><img alt="DSC03646amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03646amx12s.jpg" width="320"/></a><br/>↑built with skip-spoke pattern<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03647amx12.jpg" target="_blank"><img alt="DSC03647amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03647amx12s.jpg" width="320"/></a><br/>Nominally 6-cross, but if I draw a radial line that bisects the six flange holes<br/>through which the final-cross spokes pass (the spokes in the image above),<br/>as you can see, the final cross doesn't sit on it.<br/>Phase twist has occurred.<br/>I apologize for writing that phase twist doesn't occur.<br/>I won't correct the original article (→<a href="/posts/4327.html" target="_blank" title="here">here</a>), but I'll add a note at the top.<br/><br/>If someone asks whether a "tangent-laced wheel with final cross offset from radial line"<br/>has problems in practice, I'll answer: as I wrote before,<br/>if you're careful with tension and thread-locking compound,<br/>there are no practical issues.<br/><br/>Why I built such a wheel in the first place is that<br/>when building 24H wheels for front and rear 12mm thru-axle disc road/cyclocross,<br/>there simply weren't relatively affordable hubs available.<br/>(Chris King doesn't count, right?)<br/>Shimano's RS770 hub comes in 36H, 32H, and 28H,<br/>and the current 105 disc hub, which is essentially the same finish variation,<br/>only comes in 32H and 36H.<br/>As I've written before, finding a 36H rim is actually harder!<br/>With a 32H hub and 24H rim, you can do 2:1 lacing, but<br/>doing that on a hand-built rear wheel with a disc hub is way too risky.<br/>With a 36H hub and 24H rim, you can do tangent lacing on both sides, so<br/>I thought maybe I could build an affordable 12mm thru-axle hub<br/>24H rim wheel set using the current 105 disc hub,<br/>and I built this wheel as an experimental test.<br/>Of course, if 105 made a disc hub in 24H spec,<br/>I wouldn't need to resort to such stopgap measures.<br/><br/>However, these days the Toni Revo disc hub is available as a relatively affordable<br/>12mm thru-axle spec 24H hub, so there's no longer a need to<br/>build a 36H hub and 24H rim wheel that I wrote "might become common in the future."<br/>Thanks, Toni.<br/>By the way, the 24H wheel I recently built with a Revo disc hub and AL22W disc rim<br/>was originally planned to be built with a 105 36H hub too.<br/><br/>Yesterday I was building a rear wheel with a Deore LX 36H hub and<br/>RR411db 24H rim, but that was the result of prioritizing the customer's request<br/>to reuse a hub.<br/>At that point I'd already noticed the phase offset issue, so<br/>I got the customer's approval.<br/><br/>Regarding this phase offset matter,<br/>I've gotten triumphant-sounding comments from what I call "that Kanagawa idiot"<br/>who's always nitpicking in comments, but<br/>I do these knowing they're unconventional wheels and weighing the merits anyway, or<br/>to fulfill a customer's wishes.<br/>You just keep building rear wheels with the free side massively offset, you idiot (→<a href="/posts/4658.html" target="_blank" title="here">here</a>).<br/><br/>Next, an actual example of wheels<br/>other than hand-built ones where the final cross position is offset<br/>despite the rim and hub having matching hole counts.<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC00629amx12.jpg" target="_blank"><img alt="DSC00629amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC00629amx12s.jpg" width="320"/></a><br/>With this Bontrager wheel,<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC00630amx12.jpg" target="_blank"><img alt="DSC00630amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC00630amx12s.jpg" width="320"/></a><br/>the two final cross spokes are "high-low flange on one hub side,"<br/>and on the free side, the porcupine direction goes through the small flange<br/>while the anti-porcupine direction goes through the large flange,<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC00631amx12.jpg" target="_blank"><img alt="DSC00631amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC00631amx12s.jpg" width="320"/></a><br/>so the final cross position is offset.<br/>Strictly speaking, spoke tensions differ too, but<br/>if this works (actually gets sold),<br/>then regarding the tension difference of the two final cross spokes<br/>in a 36H hub 24H rim build—<br/>there shouldn't be a problem, right?<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03648amx12.jpg" target="_blank"><img alt="DSC03648amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03648amx12s.jpg" width="320"/></a><br/>This is the front wheel from a WH-7701,<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03649amx12.jpg" target="_blank"><img alt="DSC03649amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03649amx12s.jpg" width="320"/></a><br/>this too is "high-low flange on one hub side" and looks like this.<br/>For wheels of this type, I have different angles I want to write about,<br/>but I've been putting it off for about five years now. I do intend to write it.<br/><br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC01722amx12.jpg" target="_blank"><img alt="DSC01722amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC01722amx12s.jpg" width="320"/></a><br/>An example of phase offset that's similar to but slightly different from<br/>the radial front wheel at the beginning.<br/>This is an image I took June 19th of this year, but<br/>at least at that point I was thinking<br/>"I need to take a picture of pre-tensioning just one side deliberately<br/>for the phase offset explanation."<br/>In the image above, I've pre-tensioned just one side of the 9H<br/>on an 18H radial laced front wheel.<br/>As you can see, there's no phase twist.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC01727amx12.jpg" target="_blank"><img alt="DSC01727amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC01727amx12s.jpg" width="320"/></a><br/>I've pointed out the rim holes on the other side with an arrow.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC01724amx12.jpg" target="_blank"><img alt="DSC01724amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC01724amx12s.jpg" width="320"/></a><br/>Not exactly centered between the other side's rim holes.<br/>This is because this is a pair-spoke rim.<br/>Naturally, the hub side holes are also positioned for pair-spoke.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03640amx12.jpg" target="_blank"><img alt="DSC03640amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03640amx12s.jpg" width="320"/></a><br/>The rim holes look like this,<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03641amx12.jpg" target="_blank"><img alt="DSC03641amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03641amx12s.jpg" width="320"/></a><br/>but if I run the red spokes through a normal 18H hub,<br/>it would create a phase twist like this.<br/>The red dashed line is the radial line through the evenly-spaced holes of a normal hub.<br/>Once I tension up from here, like the wheel at the beginning,<br/>it becomes a 0-cross wheel with opposite twist directions on each side.<br/><br/>Supposing there's this much phase twist (normal hub with pair-spoke rim)<br/>and it were 20H with tangent lacing on both sides,<br/>the difference in length and tension of the two final cross spokes<br/>would exceed what's manageable in wheel building, I think.<br/>So if someone asked me to build such a wheel, I'd decline,<br/>but with a 36H hub and 24H rim it's more like "depending on circumstances..."<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03642amx12.jpg" target="_blank"><img alt="DSC03642amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03642amx12s.jpg" width="320"/></a><br/>With this actual Kolima hub,<br/>the red hub holes are positioned on the radial line with the red rim holes,<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03643amx12.jpg" target="_blank"><img alt="DSC03643amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03643amx12s.jpg" width="320"/></a><br/>so the pair-spoke 0-cross becomes radial lacing.<br/><br/><br/>The 36H hub 24H rim build is also a combination you see "reluctantly" done<br/>when building wheels with dynamo front hubs or internal-gear rear hubs<br/>where there are limited choices for 24H hubs despite 24H rims existing.<br/>I remember building such wheels, so<br/>I looked and found them.<br/>In that article it says<br/><br/>"The reason I built a 36H hub 24H rim wheel despite saying<br/>it causes phase offset and won't be properly built is<br/>because the customer already bought the rim.<br/>And they asked me to make it work somehow."<br/><br/>And there's also written board work about phase offset—<br/>nearly the same as what I'm describing here (→here).<br/>It mentions the tension difference of the two final cross spokes too,<br/>and even writes that trying to account for it with spoke weight ratio differences<br/>is practically impossible.<br/><br/>But this is before that RR411db rim wheel...<br/>So why did I misunderstand that phase offset doesn't happen with the RR411db?<br/>Anyway, I'm very sorry.<br/><br/>Note:<br/>Pair-spoke-hole rims being built with even-spaced-hole hubs (normal hubs)<br/>is a lazy wheel you see on Merida and Bianchi complete bikes,<br/>but when spoke count is high like 28H or 32H,<br/>the phase twist isn't visually obvious.<br/>I had an example of rebuilding such wheels (→here).<br/>I mention that the lower-tension side of phase-twisted wheel spokes<br/>needs to be tensioned sufficiently to avoid loosening,<br/>and I also write with pictures about how the thread engagement looks different<br/>from the nipple end face when the two spokes have equal length.<br/>In this article, I noted the ends of the two spokes as slightly plus/minus from the nipple end face,<br/>but in the linked article it's slightly shorter—<br/>the short side has its slot at the bottom and the long side is flush with the nipple end,<br/>both assembled that way.<br/><br/>Often when I try to research something about wheels, I end up at this blog and think<br/>"why do I have to read my own stuff," but sometimes it actually proves useful.
+</div></div>
+    <div class="affiliate-box">
+      <p class="affiliate-title">Products Mentioned in This Article</p>
+      <ul>
+        <li><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+105+disc+hub+36H" target="_blank" rel="noopener sponsored">🛒 Shimano 105 disc hub 36H</a></li>
+        <li><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+Swiss+RR411db+rim+24H" target="_blank" rel="noopener sponsored">🛒 DT Swiss RR411db rim 24H</a></li>
+      </ul>
+      <p class="affiliate-note">* Amazon affiliate links — prices may vary</p>
+    </div>
+    <nav class="related"><h2>Related Posts</h2><ul><li><a href="/posts/6234.html">Moving the Rim on the Previous Article&#x27;s Wheel</a></li><li><a href="/posts/7564.html">So There Actually Exists Such a Thing as a Reverse-Rim Dedicated Left-Right 2-Cross Disc Hub</a></li><li><a href="/posts/322.html">Spoke Phasing Part 2</a></li><li><a href="/posts/313.html">About Spoke Phase — Part 1</a></li></ul></nav>
+    <p class="source-link">Original Japanese post: <a href="http://pass13.blog.fc2.com/blog-entry-4873.html" target="_blank" rel="noopener">のむラボ日記 #4873</a></p>
+  </article>
+</div>
+<footer class="site-footer">
+  <div class="inner">
+    <span>© 2007–2026 Nomu Lab Diary</span>
+    <a href="/about.html">About</a>
+    <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+    <a href="/glossary.html">Glossary</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/sitemap.xml">Sitemap</a>
+    <span class="attribution">Translation of <a href="http://pass13.blog.fc2.com" target="_blank" rel="noopener">のむラボ日記</a> (Japanese original)</span>
+  </div>
+</footer>
+</body>
+</html>
