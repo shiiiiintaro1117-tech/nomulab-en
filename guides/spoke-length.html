@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="How to calculate bicycle spoke length the way a Japanese wheel-building workshop does it: the three measurements you need (ERD, flange width, flange diameter), how rear-wheel dish works, why manufacturer ERD charts can't be trusted, and what a correctly-sized spoke looks like — with source links.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Calculate Bicycle Spoke Length: Hub Dimensions, ERD &amp; Wheel Dish">
+<meta property="og:description" content="How to calculate bicycle spoke length the way a Japanese wheel-building workshop does it: the three measurements you need (ERD, flange width, flange diameter), how rear-wheel dish works, why manufacturer ERD charts can't be trusted, and what a correctly-sized spoke looks like — with source links.">
+<meta property="og:url" content="https://nomulabworkshop.com/guides/spoke-length.html">
+<meta property="og:site_name" content="Nomu Lab Diary">
+<link rel="icon" href="/favicon.ico">
+<link rel="canonical" href="https://nomulabworkshop.com/guides/spoke-length.html">
+<title>How to Calculate Bicycle Spoke Length — Hub Dimensions, ERD &amp; Dish — Nomu Lab Diary</title>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How to Calculate Bicycle Spoke Length: Hub Dimensions, ERD & Wheel Dish", "description": "How to calculate bicycle spoke length the way a Japanese wheel-building workshop does it: the three measurements you need (ERD, flange width, flange diameter), how rear-wheel dish works, why manufacturer ERD charts can't be trusted, and what a correctly-sized spoke looks like — with source links.", "url": "https://nomulabworkshop.com/guides/spoke-length.html", "author": {"@type": "Organization", "name": "Nomu Lab Diary"}, "publisher": {"@type": "Organization", "name": "Nomu Lab Diary", "url": "https://nomulabworkshop.com"}, "inLanguage": "en"}</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TCJ5CJ4XYR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-TCJ5CJ4XYR');
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#2d3748;background:#f7fafc;line-height:1.78;margin:0}
+.site-header{background:linear-gradient(135deg,#1a365d 0%,#2c5282 100%);color:white;padding:28px 0}
+.site-header .inner{max-width:900px;margin:0 auto;padding:0 20px}
+.site-header h1{font-size:1.9rem;font-weight:700}
+.site-header h1 a{color:white;text-decoration:none}
+.wrap{max-width:820px;margin:40px auto;padding:0 20px}
+.card{background:white;border-radius:10px;padding:40px 44px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.card>h1{font-size:2rem;color:#1a365d;line-height:1.25;margin-bottom:10px}
+.lead{color:#4a5568;font-size:1.05rem;margin-bottom:8px}
+h2{font-size:1.35rem;color:#1a365d;margin:36px 0 12px;border-bottom:2px solid #e2e8f0;padding-bottom:6px}
+p{margin-bottom:14px}
+ul,ol{margin:0 0 16px 22px}
+li{margin-bottom:7px}
+a{color:#2b6cb0}
+.toc{background:#f7fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px 20px;margin:20px 0 28px}
+.toc strong{display:block;color:#1a365d;margin-bottom:8px;font-size:.92rem;text-transform:uppercase;letter-spacing:.04em}
+.toc ol{margin:0 0 0 20px}
+.toc li{margin-bottom:3px;font-size:.95rem}
+a.amz-inline{color:#c05621;border-bottom:1px dotted #c05621;text-decoration:none;font-weight:600}
+a.amz-inline:hover{border-bottom-style:solid}
+.tip{background:#fffbeb;border-left:4px solid #f6c343;border-radius:6px;padding:12px 18px;margin:16px 0;font-size:.94rem;color:#744210}
+.worked{background:#ebf8ff;border-left:4px solid #4299e1;border-radius:6px;padding:12px 18px;margin:16px 0;font-size:.94rem;color:#2a4365}
+.src{font-size:.82rem;color:#718096}
+.src a{color:#718096}
+.cta{margin-top:40px;padding:24px 26px;background:#1a365d;border-radius:10px;color:#e2e8f0}
+.cta h2{color:white;border:none;margin:0 0 8px;padding:0;font-size:1.2rem}
+.cta a{color:#90cdf4;font-weight:600}
+.footer-nav{margin-top:32px;padding-top:20px;border-top:1px solid #e2e8f0;font-size:.88rem}
+.footer-nav a{margin-right:16px;color:#718096}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <h1><a href="/">Nomu Lab Diary</a></h1>
+    <p>Bicycle Workshop Blog</p>
+  </div>
+</header>
+<div class="wrap">
+  <article class="card">
+    <h1>How to Calculate Bicycle Spoke Length: Hub Dimensions, ERD &amp; Wheel Dish</h1>
+    <p class="lead">The method used in a Japanese wheel-building workshop with nearly two decades of builds — with links to the original posts so you can check the source.</p>
+
+    <div class="toc">
+      <strong>Contents</strong>
+      <ol>
+        <li><a href="#three">The three measurements you actually need</a></li>
+        <li><a href="#dish">Hub flange width and wheel dish</a></li>
+        <li><a href="#whydish">Why dish matters more than the spec sheet suggests</a></li>
+        <li><a href="#erd">ERD: don't trust the chart</a></li>
+        <li><a href="#correct">What a correctly-sized spoke looks like</a></li>
+        <li><a href="#inpoke">A subtlety: inpoke vs outpoke length</a></li>
+      </ol>
+    </div>
+
+    <p>Spoke length is the single most consequential number in a wheel build. Too short, and the nipple can't grip enough thread — the joint is weak. Too long, and the spoke bottoms out, or pokes past the nipple into the rim bed and becomes a puncture risk. This guide distills the method one workshop has refined over thousands of builds. Every figure below comes from a specific build write-up, linked at the end of each section so you can verify it yourself.</p>
+
+    <h2 id="three">1. The three measurements you actually need</h2>
+    <p>To calculate spoke length you need exactly three numbers:</p>
+    <ol>
+      <li>The rim's effective measurement — its <a href="/glossary.html">ERD</a>, derived from the rim's support length (the diameter at which the nipple seats).</li>
+      <li><strong>Hub flange width</strong> — the distance from the outer face of one flange to the outer face of the other.</li>
+      <li><strong>Hub flange diameter</strong> — the pitch circle the spoke holes sit on.</li>
+    </ol>
+    <p>Feed these into any reputable spoke calculator, per side, and it returns a length. The whole craft is in measuring them correctly — a quality <a class="amz-inline" href="https://www.amazon.com/s?tag=nomulabworksh-20&k=digital+caliper+150mm" target="_blank" rel="noopener sponsored">digital caliper</a> is the one tool that makes this reliable — and in understanding two subtleties: how a rear hub's two sides differ, and what the calculated number actually represents (covered below).</p>
+    <p class="src">Source: <a href="/posts/227.html">Nomu Lab #227 — On wheel dish</a></p>
+
+    <h2 id="dish">2. Hub flange width and wheel dish</h2>
+    <p>On a front rim-brake wheel or a track hub, the two flanges sit symmetrically about the centre. A rear wheel is different: the cassette forces the drive-side (right) flange inward, so the left flange ends up farther from the centre than the right. That asymmetry is the <strong>dish</strong> (Japanese: <em>ochoko</em>).</p>
+    <p>Call the hub's total flange width <strong>W</strong>, the left (non-drive) flange's distance from centre <strong>L</strong>, and the right (drive) flange's distance <strong>R</strong>. On a dished rear wheel L &gt; R, and the true dish is L − R.</p>
+    <p>Here is a trap that catches many builders. Shimano's catalogs (since 2012) don't print L and R directly — they print flange width and a "dish amount" that is actually <strong>(L − R) / 2</strong>, i.e. half the real dish. To recover the numbers you need from a Shimano spec:</p>
+    <ul>
+      <li>half = W ÷ 2</li>
+      <li>L = half + (catalog dish)</li>
+      <li>R = half − (catalog dish)</li>
+    </ul>
+    <div class="worked">Worked example — Shimano FH-6700: catalog gives W = 59.2&nbsp;mm, dish = 8.9&nbsp;mm. So half = 29.6, L = 38.5&nbsp;mm, R = 20.7&nbsp;mm, and the true dish (L − R) = 17.8&nbsp;mm — exactly twice the catalog figure.</div>
+    <p class="src">Source: <a href="/posts/227.html">Nomu Lab #227 — On wheel dish</a></p>
+
+    <h2 id="whydish">3. Why dish matters more than the spec sheet suggests</h2>
+    <p>A bigger dish increases the left/right spoke-tension imbalance: the drive side is tensioned hard while the non-drive side runs slack. But tension imbalance is <em>recoverable</em> — you can claw it back with lacing choices (different spoke counts or gauges per side). What you <em>cannot</em> fix by lacing is a hub whose left flange doesn't protrude far enough: narrow flange spacing gives a laterally flexible wheel, full stop.</p>
+    <p>So the workshop's rule for judging a rear hub is to look at <strong>how far the left flange protrudes</strong>, not just the headline flange width. And beware spec-sheet games: Shimano's move to 11-speed narrowed the freehub-side flange by about 2&nbsp;mm, which inflates the apparent dish number while actually reducing total flange width — worse for stiffness, not better.</p>
+    <p class="src">Source: <a href="/posts/227.html">Nomu Lab #227 — On wheel dish</a></p>
+
+    <h2 id="erd">4. ERD: don't trust the chart</h2>
+    <p>The effective rim diameter has the biggest effect on the result, and it's also the number most often gotten wrong — because manufacturers define and publish it inconsistently. The workshop's rule: measure your own rim, and for critical builds, verify by test-building.</p>
+    <p>A real example: when a customer needed to order carbon spokes — which, unlike steel, can't be re-cut if wrong — the workshop test-built the wheel with sacrificial spokes rather than trust the rim maker's chart. The maker's ERD definition was idiosyncratic and, even after accounting for that, still off. The discrepancy wasn't a rounding question of whether 285.5 becomes 285 or 286; it was large enough to make the wheel unbuildable on one side.</p>
+    <p class="tip">If you can re-cut steel spokes, an error is recoverable. If you're committing to a fixed length (carbon, or a bulk order), measure twice — ideally with a test build.</p>
+    <p class="src">Source: <a href="/posts/6134.html">Nomu Lab #6134 — Determining spoke length for certain</a></p>
+
+    <h2 id="correct">5. What a correctly-sized spoke looks like</h2>
+    <p>The workshop's standard is simple: the spoke should finish <strong>flush with the end face of the nipple</strong>, or barely showing. If you must err, err long — one thread too long is better (or at least less bad) than one thread too short. Two or more threads short is a sign of sloppiness or a calculation error.</p>
+    <p>Counter-examples abound on factory wheels. Some Campagnolo wheels show spokes poking three or more threads past the nipple, which looks wrong but isn't — those spokes simply have longer-than-standard thread, so the calculation is fine. Other factory wheels genuinely are miscalculated: some disc-brake fronts use the same length on both sides of a hub that needs two different lengths.</p>
+    <p>On rounding, the workshop rounds at the half-millimetre (285.49 → 285, 285.50 → 286), but because a 0.01&nbsp;mm difference shouldn't swing the result a whole millimetre, anything in the 285.4–285.6 band is often just cut at 285.5 — possible because they cut every spoke from 315&nbsp;mm <a class="amz-inline" href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+Swiss+Champion+spokes" target="_blank" rel="noopener sponsored">plain-gauge stock</a>, giving any length in 0.5&nbsp;mm steps.</p>
+    <p class="src">Source: <a href="/posts/7000.html">Nomu Lab #7000 — On spoke length</a>, <a href="/posts/6134.html">#6134</a></p>
+
+    <h2 id="inpoke">6. A subtlety: inpoke vs outpoke length</h2>
+    <p>The length your calculator returns, from flange-<em>outer</em>-face measurements, is strictly the <a href="/glossary.html"><em>inpoke</em></a> length — the spoke laced from inside the flange outward. An <em>outpoke</em> spoke (laced outside-in) should, in principle, be calculated to the <em>inner</em> face of the flange. In practice the difference is small enough to be absorbed by the nipple's thread length, so you don't need to calculate two lengths per flange.</p>
+    <p class="src">Source: <a href="/posts/7000.html">Nomu Lab #7000 — On spoke length</a> · see also the <a href="/glossary.html">glossary entry for inpoke / outpoke</a></p>
+
+    <div class="cta">
+      <h2>This is one piece of the build</h2>
+      <p>For the full process — tools, parts, lacing, tensioning — see the <a href="/guides/wheel-building.html">Wheel Building Guide</a>. To verify any claim here, follow the source links into the <a href="/">Nomu Lab Diary archive</a>: every figure above comes from a real build write-up.</p>
+    </div>
+
+    <div class="footer-nav">
+      <a href="/guides/wheel-building.html">← Wheel Building Guide</a>
+      <a href="/glossary.html">Glossary</a>
+      <a href="/">All posts</a>
+    </div>
+  </article>
+</div>
+<footer class="site-footer">
+  <div class="inner">
+    <span>© 2007–2026 Nomu Lab Diary</span>
+    <a href="/about.html">About</a>
+    <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+    <a href="/glossary.html">Glossary</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/sitemap.xml">Sitemap</a>
+    <span class="attribution">Translation of <a href="http://pass13.blog.fc2.com" target="_blank" rel="noopener">のむラボ日記</a> (Japanese original)</span>
+  </div>
+</footer>
+</body>
+</html>
