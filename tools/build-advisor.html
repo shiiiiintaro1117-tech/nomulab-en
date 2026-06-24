@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="A Nomu-Lab-style wheel build advisor: enter the wheel and the hub/rim numbers and get a recommended lacing pattern, spoke gauges (half-Competition logic) and spoke length — each tied to the workshop's guides. Runs entirely in your browser.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Wheel Build Advisor — lacing, spoke gauge &amp; spoke length">
+<meta property="og:description" content="A Nomu-Lab-style wheel build advisor: enter the wheel and the hub/rim numbers and get a recommended lacing pattern, spoke gauges (half-Competition logic) and spoke length — each tied to the workshop's guides. Runs entirely in your browser.">
+<meta property="og:url" content="https://nomulabworkshop.com/tools/build-advisor.html">
+<meta property="og:site_name" content="Nomu Lab Diary">
+<link rel="icon" href="/favicon.ico">
+<link rel="canonical" href="https://nomulabworkshop.com/tools/build-advisor.html">
+<title>Wheel Build Advisor — Lacing, Spoke Gauge &amp; Spoke Length — Nomu Lab Diary</title>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Nomu Lab Wheel Build Advisor", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0"}, "description": "A Nomu-Lab-style wheel build advisor: enter the wheel and the hub/rim numbers and get a recommended lacing pattern, spoke gauges (half-Competition logic) and spoke length — each tied to the workshop's guides. Runs entirely in your browser.", "url": "https://nomulabworkshop.com/tools/build-advisor.html", "inLanguage": "en"}</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TCJ5CJ4XYR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-TCJ5CJ4XYR');
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#252321;background:#f5f1e8;line-height:1.7;margin:0}
+.site-header{background:#fffdfa;color:#252321;padding:24px 0;border-bottom:1px solid #d8d0c2}
+.site-header .inner{max-width:880px;margin:0 auto;padding:0 20px}
+.site-header h1{font-size:1.9rem;font-weight:700}
+.site-header h1 a{color:#252321;text-decoration:none}
+.wrap{max-width:880px;margin:40px auto;padding:0 20px}
+.card{background:#fffdfa;border:1px solid #d8d0c2;border-radius:8px;padding:36px 40px}
+.card>h1{font-size:2rem;color:#252321;line-height:1.25;margin-bottom:10px}
+.lead{color:#4a5568;font-size:1.05rem;margin-bottom:8px}
+h2{font-size:1.25rem;color:#252321;margin:28px 0 12px;border-bottom:2px solid #d8d0c2;padding-bottom:6px}
+p{margin-bottom:14px}
+a{color:#3f5966}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 20px}
+.fld{display:flex;flex-direction:column;font-size:.9rem}
+.fld label{font-weight:600;margin-bottom:4px;color:#3a3733}
+.fld .hint{font-weight:400;color:#8d8a83;font-size:.8rem}
+select,input[type=number]{padding:9px 11px;font-size:1rem;border:1px solid #d8d0c2;border-radius:7px;background:#fffdfa;color:#252321}
+.sub{font-size:.82rem;color:#6d706a;margin:2px 0 0}
+.geo{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px 16px}
+.geo .fld{font-size:.85rem}
+.btn{margin-top:22px;background:#252321;color:#f5f1e8;border:none;border-radius:8px;padding:13px 26px;font-size:1.02rem;font-weight:600;cursor:pointer}
+.btn:hover{background:#3a3733}
+#out{margin-top:8px}
+.rec{background:#f7f2e8;border:1px solid #e3d9c6;border-left:4px solid #d6b676;border-radius:6px;padding:14px 18px;margin:14px 0}
+.rec h3{font-size:1.02rem;margin:0 0 6px;color:#252321}
+.rec p{margin:0 0 8px;font-size:.95rem}
+.rec .links{font-size:.82rem;color:#6d706a}
+.rec .links a{margin-right:12px}
+.spokebox{background:#efe7d8;border-left:4px solid #4299e1;border-radius:6px;padding:14px 18px;margin:14px 0;color:#2a4365}
+.lenbox{background:#fffdfa;border:1px solid #d8d0c2;border-radius:6px;padding:16px 18px;margin:14px 0}
+.lenbox table{border-collapse:collapse;width:100%;font-size:.95rem;margin-top:6px}
+.lenbox th,.lenbox td{border:1px solid #e3d9c6;padding:7px 10px;text-align:left}
+.lenbox th{background:#f7f2e8}
+.big{font-size:1.45rem;font-weight:700;color:#252321}
+.disc{font-size:.84rem;color:#6d706a;margin-top:18px;background:#f4efe4;border-radius:6px;padding:12px 16px}
+.footer-nav{margin-top:32px;padding-top:20px;border-top:1px solid #d8d0c2;font-size:.88rem}
+.footer-nav a{margin-right:16px;color:#6d706a}
+@media(max-width:560px){.grid{grid-template-columns:1fr}.geo{grid-template-columns:1fr 1fr}.card{padding:26px 22px}}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <h1><a href="/">Nomu Lab Diary</a></h1>
+    <p>Bicycle Workshop Blog</p>
+  </div>
+</header>
+<div class="wrap">
+  <article class="card">
+    <h1>Wheel Build Advisor</h1>
+    <p class="lead">Tell it what you're building and it returns a recommended lacing pattern, spoke gauges and spoke length — the way one workshop would call it, with the reasoning linked.</p>
+
+    <h2>The build</h2>
+    <div class="grid">
+      <div class="fld"><label for="position">Wheel</label>
+        <select id="position"><option value="rear">Rear</option><option value="front">Front</option></select></div>
+      <div class="fld"><label for="brake">Brake</label>
+        <select id="brake"><option value="rim">Rim brake</option><option value="disc">Disc brake</option></select></div>
+      <div class="fld"><label for="hub">Hub spoke attachment</label>
+        <select id="hub"><option value="jbend">J-bend (elbowed)</option><option value="straightpull">Straight-pull</option></select></div>
+      <div class="fld"><label for="count">Total spoke count</label>
+        <input type="number" id="count" min="8" max="48" step="2" value="24"></div>
+    </div>
+
+    <h2>Hub &amp; rim measurements <span style="font-weight:400;font-size:.85rem;color:#6d706a">— optional, for spoke length</span></h2>
+    <p class="sub">Leave blank if you only want the build recommendation. "Right" = drive (freehub) side. Flange diameter is to the spoke-hole centres; centre-to-flange is the distance from the wheel centreline to each flange.</p>
+    <div class="geo">
+      <div class="fld"><label for="erd">ERD (mm)</label><input type="number" id="erd" step="0.1" placeholder="e.g. 600"></div>
+      <div class="fld"><label for="holed">Spoke hole &oslash; (mm)</label><input type="number" id="holed" step="0.1" value="2.6"></div>
+      <div></div>
+      <div class="fld"><label for="flL">Left flange &oslash; (mm)</label><input type="number" id="flL" step="0.1" placeholder="e.g. 45"></div>
+      <div class="fld"><label for="offL">Left centre&rarr;flange (mm)</label><input type="number" id="offL" step="0.1" placeholder="e.g. 37"></div>
+      <div class="fld"><label for="crossL">Left cross</label><input type="number" id="crossL" min="0" max="4" step="1" placeholder="0–4"></div>
+      <div class="fld"><label for="flR">Right flange &oslash; (mm)</label><input type="number" id="flR" step="0.1" placeholder="e.g. 45"></div>
+      <div class="fld"><label for="offR">Right centre&rarr;flange (mm)</label><input type="number" id="offR" step="0.1" placeholder="e.g. 18"></div>
+      <div class="fld"><label for="crossR">Right cross</label><input type="number" id="crossR" min="0" max="4" step="1" placeholder="0–4"></div>
+    </div>
+
+    <button class="btn" id="go">Get recommendation</button>
+
+    <div id="out"></div>
+
+    <div class="disc"><strong>Read me:</strong> the recommendations encode the rules the Nomu Lab guides set out (each linked below the advice); they are a starting point, not a substitute for checking against your actual hub and rim. Spoke length uses the standard geometric formula, rounded to 0.5&nbsp;mm (the workshop cuts in 0.5&nbsp;mm steps); for crossed wheels the inpoke/outpoke difference is negligible. <strong>Always double-check a length before cutting.</strong></div>
+
+    <div class="footer-nav">
+      <a href="/guides/spoke-length.html">← Spoke length guide</a>
+      <a href="/guides/asymmetric-wheel.html">Asymmetric wheel</a>
+      <a href="/guides/choosing-spokes.html">Choosing spokes</a>
+      <a href="/">All posts</a>
+    </div>
+  </article>
+</div>
+<footer class="site-footer">
+  <div class="inner">
+    <span>© 2007–2026 Nomu Lab Diary</span>
+    <a href="/about.html">About</a>
+    <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+    <a href="/glossary.html">Glossary</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/sitemap.xml">Sitemap</a>
+    <span class="attribution">Translation of <a href="http://pass13.blog.fc2.com" target="_blank" rel="noopener">のむラボ日記</a> (Japanese original)</span>
+  </div>
+</footer>
+<script>
+(function(){
+  function val(id){ var e=document.getElementById(id); var v=parseFloat(e.value); return isNaN(v)?null:v; }
+  function sel(id){ return document.getElementById(id).value; }
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+
+  function spokeLen(erd, flangeDia, offset, cross, N, holeD){
+    var R=erd/2, F=flangeDia/2;
+    var theta=(720*cross/N)*Math.PI/180;
+    var chord2=R*R+F*F-2*R*F*Math.cos(theta);
+    var L=Math.sqrt(chord2+offset*offset)-holeD/2;
+    return L;
+  }
+  function round05(x){ return Math.round(x*2)/2; }
+
+  function recCard(t,b,links){
+    var l=links.map(function(x){return '<a href="'+x[1]+'">'+x[0]+'</a>';}).join('');
+    return '<div class="rec"><h3>'+esc(t)+'</h3><p>'+b+'</p><div class="links">Why: '+l+'</div></div>';
+  }
+
+  document.getElementById('go').addEventListener('click', function(){
+    var position=sel('position'), brake=sel('brake'), hub=sel('hub');
+    var count=val('count')||0;
+    var recs=[], spokeRec='';
+
+    if(position==='front'){
+      if(brake==='rim'){
+        recs.push(recCard('Lacing: radial (0\u00d7), both sides',
+          'A rim-brake front transmits no drive or braking torque and has no dish, so a radial build works well and saves spokes and weight. Tangential is also valid if you prefer it.',
+          [['Wheel building','/guides/wheel-building.html'],['Choosing spokes','/guides/choosing-spokes.html']]));
+        spokeRec='A light bladed spoke throughout \u2014 e.g. <strong>CX-Ray / Aerolite</strong> (cross-section &#8776;64, against a plain Champion at 100). With no torque to carry, the lightest spoke is appropriate.';
+      } else {
+        recs.push(recCard('Lacing: tangential (crossed), both sides',
+          'A disc front carries braking torque through the spokes, so the rotor side must be crossed \u2014 do not lace it radial. Cross both sides (e.g. 2\u00d7). A disc front is also slightly dished toward the rotor, giving a mild left/right tension imbalance, so the rear-wheel levers apply in gentler form.',
+          [['Wheel building','/guides/wheel-building.html'],['Spoke tension','/guides/spoke-tension.html']]));
+        spokeRec='Tangential both sides with a light spoke is fine; treat the rotor side like a drive side. A slightly heavier spoke on the rotor side mirrors the rear-wheel logic if you want to push it.';
+      }
+    } else {
+      recs.push(recCard('Lacing: tangential drive side \u2014 and tangential non-drive side too',
+        'Always cross the drive side. On a hand-built rear, cross the non-drive side as well: avoid non-drive radial, which adds little and costs lateral stiffness.',
+        [['Non-drive radial','/guides/non-drive-radial.html'],['Asymmetric wheel','/guides/asymmetric-wheel.html']]));
+      spokeRec='<strong>Half-Competition.</strong> Heavier double-butted spoke on the drive side (Competition, cross-section &#8776;86); lighter bladed spoke on the non-drive side (CX-Ray, &#8776;64). The heavier spoke always goes on the drive side \u2014 never the reverse.';
+      if(hub==='jbend'){
+        recs.push(recCard('Consider an asymmetric spoke count',
+          'More spokes on the drive side than the non-drive side fights the slack non-drive side \u2014 e.g. 4:6, or 2:1 on a 24-spoke wheel (16 drive : 8 non-drive). A J-bend hub gives you this freedom; only use a split your hub actually drills.',
+          [['Asymmetric wheel','/guides/asymmetric-wheel.html']]));
+      } else {
+        recs.push(recCard('Hub note: straight-pull limits your options',
+          'Most straight-pull rear hubs only lace symmetric counts (4:4 or 4:0) and cannot do an asymmetric count \u2014 the main lever against a slack non-drive side. If performance is the goal, a J-bend hub usually builds a better rear.',
+          [['Straight-pull vs J-bend','/guides/straight-pull.html']]));
+      }
+      recs.push(recCard('Even the angle with an offset rim or hi-lo flange',
+        'An offset (asymmetric) rim or a hi-lo flange brings the left and right spoke angles closer together, easing the tension imbalance without narrowing the flange.',
+        [['Spoke tension','/guides/spoke-tension.html'],['Rear hub','/guides/rear-hub.html']]));
+      if(count && count<=24){
+        recs.push(recCard('Tying & soldering helps at this spoke count',
+          'At low spoke counts (around 20\u201324) tying and soldering the crossings evens out how the spokes share load \u2014 near-essential around 20 spokes.',
+          [['Spoke tying','/guides/spoke-tying.html']]));
+      }
+    }
+
+    // spoke length
+    var erd=val('erd'), holeD=val('holed')||2.6;
+    var flL=val('flL'), offL=val('offL'), flR=val('flR'), offR=val('offR');
+    var cL=val('crossL'), cR=val('crossR');
+    var defCross=(position==='front'&&brake==='rim')?0:3;
+    if(cL===null) cL=defCross;
+    if(cR===null) cR=defCross;
+    var lenHtml='';
+    if(erd && flL && offL && flR && offR && count){
+      var LL=spokeLen(erd,flL,offL,cL,count,holeD);
+      var LR=spokeLen(erd,flR,offR,cR,count,holeD);
+      lenHtml='<div class="lenbox"><strong>Spoke length</strong> (standard formula, rounded to 0.5&nbsp;mm)'
+        +'<table><tr><th>Side</th><th>Cross</th><th>Cut to</th><th>Raw</th></tr>'
+        +'<tr><td>Left (non-drive)</td><td>'+cL+'\u00d7</td><td class="big">'+round05(LL).toFixed(1)+'&nbsp;mm</td><td>'+LL.toFixed(2)+'</td></tr>'
+        +'<tr><td>Right (drive)</td><td>'+cR+'\u00d7</td><td class="big">'+round05(LR).toFixed(1)+'&nbsp;mm</td><td>'+LR.toFixed(2)+'</td></tr>'
+        +'</table><p class="sub" style="margin-top:8px">Cut to = rounded to the nearest 0.5&nbsp;mm. Hole &oslash; '+holeD+'&nbsp;mm subtracted as &frac12;.</p></div>';
+    } else {
+      lenHtml='<div class="lenbox"><strong>Spoke length</strong><p class="sub" style="margin:6px 0 0">Fill in ERD, both flange diameters and both centre&rarr;flange distances (and spoke count) to get left/right lengths.</p></div>';
+    }
+
+    var html='<h2>Recommendation</h2>'+recs.join('')
+      +'<h2>Spokes</h2><div class="spokebox">'+spokeRec+'</div>'
+      +'<h2>Length</h2>'+lenHtml;
+    document.getElementById('out').innerHTML=html;
+    document.getElementById('out').scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+</script>
+
+</body>
+</html>
