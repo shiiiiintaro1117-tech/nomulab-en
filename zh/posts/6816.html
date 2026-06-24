@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/6816.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>用多功能清潔液洗過鏈條</h1>
     <p class="post-meta">August 25, 2023</p>
+    <div class="post-body"><div class="entrytext">最近 買了<br/>和興(Wako's)出的多功能清潔液。<br/>但在那之前。<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5306amx15.jpg" target="_blank"><img alt="RIMG5306amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5306amx15s.jpg" width="320"/></a><br/>看護(LOOK)的KeO踏板鞋片，<br/>普通的鞋片已經停產了。<br/>流通庫存還有，但現在只有後來推出的<br/>行走時防滑的<br/>防滑踏板鞋片在販售。<br/>據我所知，不喜歡防滑鞋片的人<br/>有兩個主要問題：<br/>「踩進踏板後的動作有點軟綿綿且卡頓」<br/>和「雖然盡量不走路，但踩踏時鞋片磨損導致<br/>防滑膠皮翹起來」。<br/>我自己用的是黑色固定式鞋片，所以<br/>踩進踏板後的手感無所謂，但<br/>膠皮翹起的問題確實讓人在意。<br/>不過既然已經囤了不少舊KeO黑色鞋片，<br/>短期內應該沒問題。<br/>話說回來，我們店裡把防滑鞋片<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5307amx15.jpg" target="_blank"><img alt="RIMG5307amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5307amx15s.jpg" width="320"/></a><br/>當作「不會滑」的商品，<br/>也有想過讓考生來買做為考試助運。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG0732amx15.jpg" target="_blank"><img alt="RIMG0732amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG0732amx15s.jpg" width="320"/></a><br/>話題轉向，我個人買了願望骨(Wishbone)的導輪。<br/>上面的圖是去年11月18日拍的。<br/>以前也用過願望骨的導輪（→<a href="/zh/posts/3860.html" target="_blank" title="這裡">這裡</a>），<br/>那時導輪只有一種型號，<br/>所以「願望骨導輪」這個名字就夠了，<br/>但現在出了另一個型號，<br/>連結文章裡的是「空氣動力導輪」，<br/>上面圖片的是「動力導輪」，<br/>用型號名稱販售。<br/><br/>動力導輪似乎是針對R9100系以後的<br/>禧瑪諾(Shimano)單張力後變速器設計，<br/>現行(R9200系)禧瑪諾公路車組的後變速器<br/>也是11T導輪，所以我用的<br/>坎帕尼奧羅(Campagnolo)雙張力後變速器<br/>原廠導輪是11T的，大概能用，<br/>所以就買了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG0733amx15.jpg" target="_blank"><img alt="RIMG0733amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG0733amx15s.jpg" width="320"/></a><br/>上導輪的齒很高，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG0734amx15.jpg" target="_blank"><img alt="RIMG0734amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG0734amx15s.jpg" width="320"/></a><br/>背面有點異常凸起是它的特色。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5129amx15.jpg" target="_blank"><img alt="RIMG5129amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5129amx15s.jpg" width="320"/></a><br/>進入主題。<br/>買了和興的多功能清潔液<br/>洗浄剤。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5130amx15.jpg" target="_blank"><img alt="RIMG5130amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5130amx15s.jpg" width="320"/></a><br/>品號V433，10公升裝。<br/>紙箱和塑膠束帶保護著有水龍頭的袋子。<br/>這個容量不是針對一般零售，<br/>但最近出了1公升版的V430多功能清潔液。<br/>我問過和興的工作人員，<br/>內容物是一樣的。<br/>順便說，1公升版的<br/>定價是稅前/稅後3600/3960日圓。<br/>很多人可能覺得「好貴！」，<br/>但這是成分很強的中性洗劑，<br/>如果用於洗車精的用途，像洗車架，<br/>稀釋50～100倍，<br/>所以如果想成是數十公升分的洗車精，<br/>可能也沒那麼貴。<br/><br/>可以當洗車精、脫脂洗淨、<br/>油污處理劑使用。<br/>洗車精的話<br/>如前所述是50～100倍稀釋，<br/>脫脂洗淨是原液～2倍稀釋，<br/>油污處理劑是地板漏油的處理，<br/>用油吸紙或布擦到能擦的程度後<br/>再用50倍稀釋。<br/><br/>關於脫脂洗淨這部分，<br/>說明書上寫說也可以當鏈條清潔劑用，<br/>所以我也問過和興的工作人員，<br/>他說可以（過去式）。<br/>但這個多功能清潔液是中性洗劑。<br/>從作用機制來看，我不認為能進行鏈條脫脂洗淨。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5126amx15.jpg" target="_blank"><img alt="RIMG5126amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5126amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5128amx15.jpg" target="_blank"><img alt="RIMG5128amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5128amx15s.jpg" width="320"/></a><br/>在雨中騎行，只持續加鏈條油<br/>導致油汙厚厚的我的自行車後變周圍。<br/>鏈條油是和興的防水置換型鏈條潤滑油。<br/>為了這個測試，我沒有特別塗上<br/>什麼特殊鏈條油。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5132amx15.jpg" target="_blank"><img alt="RIMG5132amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5132amx15s.jpg" width="320"/></a><br/>公園工具(Park Tool)的鏈條清潔機CM5.2<br/>（現行品是CM5.3）<br/>裡面放了V433原液。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5133amx15.jpg" target="_blank"><img alt="RIMG5133amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5133amx15s.jpg" width="320"/></a><br/>鏈條上下各有齒輪狀的刷子，<br/>下面2個上面1個，<br/>夾著鏈條，浸在洗淨劑裡<br/>上下蛇形移動清洗。<br/><br/>反轉曲軸也不會卡住，<br/>所以換到鏈線接近直線的齒輪組合，<br/>反轉曲軸。<br/>不是正轉是為了避免後輪旋轉濺起泥水。<br/>機器上也有反轉曲軸的指示圖。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5136amx15.jpg" target="_blank"><img alt="RIMG5136amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5136amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5137amx15.jpg" target="_blank"><img alt="RIMG5137amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5137amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5138amx15.jpg" target="_blank"><img alt="RIMG5138amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5138amx15s.jpg" width="320"/></a><br/>轉了相當久。<br/>反轉的話大約20轉速吧。<br/>雖然起了泡，<br/>但鏈條油沒有被分解的跡象。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5139amx15.jpg" target="_blank"><img alt="RIMG5139amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5139amx15s.jpg" width="320"/></a><br/>用水沖掉洗劑。<br/>鏈條側面稍微乾淨了一些，<br/>但這是因為3個刷子中<br/>有1個刷著鏈條的側面，<br/>以這種清洗程度來看，CM5.2裡面放水<br/>應該也差不多。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5140amx15.jpg" target="_blank"><img alt="RIMG5140amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5140amx15s.jpg" width="320"/></a><br/>打開CM5.2倒到地上。<br/>因為鏈條油沒被分解，<br/>透明洗劑和其他地方的界線模糊不清。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5141amx15.jpg" target="_blank"><img alt="RIMG5141amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5141amx15s.jpg" width="320"/></a><br/>油污結塊有掉下來一些，<br/>但這主要是刷子的功勞。<br/>如前所述，CM5.2裡面放水<br/>應該也會有幾乎相同的結果。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5309amx15.jpg" target="_blank"><img alt="RIMG5309amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5309amx15s.jpg" width="320"/></a><br/>我們店裡有和興以前推出現在已停產的<br/>濾清器清潔劑。<br/>這是強力脫脂洗淨劑，顧名思義<br/>用來清洗濕式空氣濾芯，也就是油污沾的海綿，<br/>把它浸在裡面脫脂洗淨。<br/>這個產品有一種裡技般的用法是<br/>用來脫脂洗淨公路車的曲軸、飛輪、鏈條等，<br/>一陣子很流行，<br/>但因為不是原本設想的用途，<br/>脫脂後處理沒做好的人（主要是業餘人士）<br/>說「鏈條（和飛輪的鋼製部分）生銹了！」<br/>而無理取鬧，我經常看到。<br/><br/>有人會問「脫脂後処理是什麼鬼」，<br/>所以先說明一下，<br/>濾清器清潔劑能用水簡單沖掉，<br/>沖掉後乾拭再加油。<br/>雖然乾拭，但要完全把<br/>鏈條軸承內部的水分逼出相當困難，<br/>所以簡單的方法是<br/>用和興的防水置換型鏈條油，<br/>用布包住鏈條的塗布部分以免飛濺，<br/>邊噴邊輕輕擦掉。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5142amx15.jpg" target="_blank"><img alt="RIMG5142amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5142amx15s.jpg" width="320"/></a><br/>話說回來，與其用絕版品，<br/>CM5.2裡面放和興的零件除油劑。<br/>初次使用這個產品的人可能會想「油污掉得超乾淨！」，<br/>但對知道濾清器清潔劑效果的人來說，<br/>會覺得濾清器清潔劑的性能加上稀釋物質<br/>導致洗淨性能下降了。<br/>那個稀釋物質是防銹劑，新聞稿裡<br/>5個特徵的第3點原文是<br/>「即使用水沖洗，防銹劑也會殘留在金屬面上防止生銹。」<br/>順便說，濾清器清潔劑停產的理由<br/>不是無謂的低級無理取鬧投訴・・・而是<br/>廢液的環境負荷太高。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5143amx15.jpg" target="_blank"><img alt="RIMG5143amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5143amx15s.jpg" width="320"/></a><br/>零件除油劑，<br/>大約5轉速就是這樣。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5144amx15.jpg" target="_blank"><img alt="RIMG5144amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5144amx15s.jpg" width="320"/></a><br/>↑用水沖鏈條是這樣<br/>油污已經分解到<br/>能用水簡單沖掉的狀態。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5145amx15.jpg" target="_blank"><img alt="RIMG5145amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5145amx15s.jpg" width="320"/></a><br/>跟之前一樣打開CM5.2<br/>倒到地上。<br/>這些黑色污垢已經分解，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5146amx15.jpg" target="_blank"><img alt="RIMG5146amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5146amx15s.jpg" width="320"/></a><br/>用花灑簡單沖掉就沒了。<br/><br/>從以上結果來看，V433或V430多功能清潔液<br/>能當鏈條清潔劑用這說法勉強不了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5155amx15.jpg" target="_blank"><img alt="RIMG5155amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5155amx15s.jpg" width="320"/></a><br/>在泡沫槍裡<br/>放稀釋數十倍的V433，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5154amx15.jpg" target="_blank"><img alt="RIMG5154amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5154amx15s.jpg" width="320"/></a><br/>噴出來是這樣。<br/>作為洗車精用途<br/>濃度能控制，成本也不錯。<br/><br/>類似外觀的產品，<br/>和興還有泡沫多功能清潔劑（品號A402），<br/>是慕斯狀洗淨液，用擦布乾拭，<br/>適合沒辦法沖水的地方或情況，<br/>弱鹼性讓我有點在意（我們店裡也有賣）。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5157amx15.jpg" target="_blank"><img alt="RIMG5157amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5157amx15s.jpg" width="320"/></a><br/>導輪周圍閃閃發亮。<br/>除了用CM5.2，還有用浸濕零件除油劑的<br/>刷子仔細刷過。<br/>之後乾拭再加防水置換型鏈條油。<br/><br/>之後，我問和興的工作人員，<br/>V433對鏈條油污<br/>完全沒效果怎麼回事？<br/>一開始自信滿滿說能當鏈條清潔劑的<br/>語氣漸漸軟弱了。<br/><br/>但，<span style="color:#FF0000">「原液也清不掉！」</span><br/>像開頭的KeO防滑踏板鞋片一樣<br/>也許可以當做考生助運商品<br/>來期待銷售呢。<br/><br/>我跟和興的工作人員說要寫這篇文章，<br/>他說「請手下留情」。<br/>我已經盡力了。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">最近 買了<br/>和興(Wako's)出的多功能清潔液。<br/>但在那之前。<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5306amx15.jpg" target="_blank"><img alt="RIMG5306amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5306amx15s.jpg" width="320"/></a><br/>看護(LOOK)的KeO踏板鞋片，<br/>普通的鞋片已經停產了。<br/>流通庫存還有，但現在只有後來推出的<br/>行走時防滑的<br/>防滑踏板鞋片在販售。<br/>據我所知，不喜歡防滑鞋片的人<br/>有兩個主要問題：<br/>「踩進踏板後的動作有點軟綿綿且卡頓」<br/>和「雖然盡量不走路，但踩踏時鞋片磨損導致<br/>防滑膠皮翹起來」。<br/>我自己用的是黑色固定式鞋片，所以<br/>踩進踏板後的手感無所謂，但<br/>膠皮翹起的問題確實讓人在意。<br/>不過既然已經囤了不少舊KeO黑色鞋片，<br/>短期內應該沒問題。<br/>話說回來，我們店裡把防滑鞋片<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5307amx15.jpg" target="_blank"><img alt="RIMG5307amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5307amx15s.jpg" width="320"/></a><br/>當作「不會滑」的商品，<br/>也有想過讓考生來買做為考試助運。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG0732amx15.jpg" target="_blank"><img alt="RIMG0732amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG0732amx15s.jpg" width="320"/></a><br/>話題轉向，我個人買了願望骨(Wishbone)的導輪。<br/>上面的圖是去年11月18日拍的。<br/>以前也用過願望骨的導輪（→<a href="/zh/posts/3860.html" target="_blank" title="這裡">這裡</a>），<br/>那時導輪只有一種型號，<br/>所以「願望骨導輪」這個名字就夠了，<br/>但現在出了另一個型號，<br/>連結文章裡的是「空氣動力導輪」，<br/>上面圖片的是「動力導輪」，<br/>用型號名稱販售。<br/><br/>動力導輪似乎是針對R9100系以後的<br/>禧瑪諾(Shimano)單張力後變速器設計，<br/>現行(R9200系)禧瑪諾公路車組的後變速器<br/>也是11T導輪，所以我用的<br/>坎帕尼奧羅(Campagnolo)雙張力後變速器<br/>原廠導輪是11T的，大概能用，<br/>所以就買了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG0733amx15.jpg" target="_blank"><img alt="RIMG0733amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG0733amx15s.jpg" width="320"/></a><br/>上導輪的齒很高，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG0734amx15.jpg" target="_blank"><img alt="RIMG0734amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG0734amx15s.jpg" width="320"/></a><br/>背面有點異常凸起是它的特色。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5129amx15.jpg" target="_blank"><img alt="RIMG5129amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5129amx15s.jpg" width="320"/></a><br/>進入主題。<br/>買了和興的多功能清潔液<br/>洗浄剤。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5130amx15.jpg" target="_blank"><img alt="RIMG5130amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5130amx15s.jpg" width="320"/></a><br/>品號V433，10公升裝。<br/>紙箱和塑膠束帶保護著有水龍頭的袋子。<br/>這個容量不是針對一般零售，<br/>但最近出了1公升版的V430多功能清潔液。<br/>我問過和興的工作人員，<br/>內容物是一樣的。<br/>順便說，1公升版的<br/>定價是稅前/稅後3600/3960日圓。<br/>很多人可能覺得「好貴！」，<br/>但這是成分很強的中性洗劑，<br/>如果用於洗車精的用途，像洗車架，<br/>稀釋50～100倍，<br/>所以如果想成是數十公升分的洗車精，<br/>可能也沒那麼貴。<br/><br/>可以當洗車精、脫脂洗淨、<br/>油污處理劑使用。<br/>洗車精的話<br/>如前所述是50～100倍稀釋，<br/>脫脂洗淨是原液～2倍稀釋，<br/>油污處理劑是地板漏油的處理，<br/>用油吸紙或布擦到能擦的程度後<br/>再用50倍稀釋。<br/><br/>關於脫脂洗淨這部分，<br/>說明書上寫說也可以當鏈條清潔劑用，<br/>所以我也問過和興的工作人員，<br/>他說可以（過去式）。<br/>但這個多功能清潔液是中性洗劑。<br/>從作用機制來看，我不認為能進行鏈條脫脂洗淨。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5126amx15.jpg" target="_blank"><img alt="RIMG5126amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5126amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5128amx15.jpg" target="_blank"><img alt="RIMG5128amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5128amx15s.jpg" width="320"/></a><br/>在雨中騎行，只持續加鏈條油<br/>導致油汙厚厚的我的自行車後變周圍。<br/>鏈條油是和興的防水置換型鏈條潤滑油。<br/>為了這個測試，我沒有特別塗上<br/>什麼特殊鏈條油。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5132amx15.jpg" target="_blank"><img alt="RIMG5132amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5132amx15s.jpg" width="320"/></a><br/>公園工具(Park Tool)的鏈條清潔機CM5.2<br/>（現行品是CM5.3）<br/>裡面放了V433原液。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5133amx15.jpg" target="_blank"><img alt="RIMG5133amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5133amx15s.jpg" width="320"/></a><br/>鏈條上下各有齒輪狀的刷子，<br/>下面2個上面1個，<br/>夾著鏈條，浸在洗淨劑裡<br/>上下蛇形移動清洗。<br/><br/>反轉曲軸也不會卡住，<br/>所以換到鏈線接近直線的齒輪組合，<br/>反轉曲軸。<br/>不是正轉是為了避免後輪旋轉濺起泥水。<br/>機器上也有反轉曲軸的指示圖。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5136amx15.jpg" target="_blank"><img alt="RIMG5136amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5136amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5137amx15.jpg" target="_blank"><img alt="RIMG5137amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5137amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5138amx15.jpg" target="_blank"><img alt="RIMG5138amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5138amx15s.jpg" width="320"/></a><br/>轉了相當久。<br/>反轉的話大約20轉速吧。<br/>雖然起了泡，<br/>但鏈條油沒有被分解的跡象。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5139amx15.jpg" target="_blank"><img alt="RIMG5139amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5139amx15s.jpg" width="320"/></a><br/>用水沖掉洗劑。<br/>鏈條側面稍微乾淨了一些，<br/>但這是因為3個刷子中<br/>有1個刷著鏈條的側面，<br/>以這種清洗程度來看，CM5.2裡面放水<br/>應該也差不多。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5140amx15.jpg" target="_blank"><img alt="RIMG5140amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5140amx15s.jpg" width="320"/></a><br/>打開CM5.2倒到地上。<br/>因為鏈條油沒被分解，<br/>透明洗劑和其他地方的界線模糊不清。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5141amx15.jpg" target="_blank"><img alt="RIMG5141amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5141amx15s.jpg" width="320"/></a><br/>油污結塊有掉下來一些，<br/>但這主要是刷子的功勞。<br/>如前所述，CM5.2裡面放水<br/>應該也會有幾乎相同的結果。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5309amx15.jpg" target="_blank"><img alt="RIMG5309amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5309amx15s.jpg" width="320"/></a><br/>我們店裡有和興以前推出現在已停產的<br/>濾清器清潔劑。<br/>這是強力脫脂洗淨劑，顧名思義<br/>用來清洗濕式空氣濾芯，也就是油污沾的海綿，<br/>把它浸在裡面脫脂洗淨。<br/>這個產品有一種裡技般的用法是<br/>用來脫脂洗淨公路車的曲軸、飛輪、鏈條等，<br/>一陣子很流行，<br/>但因為不是原本設想的用途，<br/>脫脂後處理沒做好的人（主要是業餘人士）<br/>說「鏈條（和飛輪的鋼製部分）生銹了！」<br/>而無理取鬧，我經常看到。<br/><br/>有人會問「脫脂後処理是什麼鬼」，<br/>所以先說明一下，<br/>濾清器清潔劑能用水簡單沖掉，<br/>沖掉後乾拭再加油。<br/>雖然乾拭，但要完全把<br/>鏈條軸承內部的水分逼出相當困難，<br/>所以簡單的方法是<br/>用和興的防水置換型鏈條油，<br/>用布包住鏈條的塗布部分以免飛濺，<br/>邊噴邊輕輕擦掉。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5142amx15.jpg" target="_blank"><img alt="RIMG5142amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5142amx15s.jpg" width="320"/></a><br/>話說回來，與其用絕版品，<br/>CM5.2裡面放和興的零件除油劑。<br/>初次使用這個產品的人可能會想「油污掉得超乾淨！」，<br/>但對知道濾清器清潔劑效果的人來說，<br/>會覺得濾清器清潔劑的性能加上稀釋物質<br/>導致洗淨性能下降了。<br/>那個稀釋物質是防銹劑，新聞稿裡<br/>5個特徵的第3點原文是<br/>「即使用水沖洗，防銹劑也會殘留在金屬面上防止生銹。」<br/>順便說，濾清器清潔劑停產的理由<br/>不是無謂的低級無理取鬧投訴・・・而是<br/>廢液的環境負荷太高。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5143amx15.jpg" target="_blank"><img alt="RIMG5143amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5143amx15s.jpg" width="320"/></a><br/>零件除油劑，<br/>大約5轉速就是這樣。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5144amx15.jpg" target="_blank"><img alt="RIMG5144amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5144amx15s.jpg" width="320"/></a><br/>↑用水沖鏈條是這樣<br/>油污已經分解到<br/>能用水簡單沖掉的狀態。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5145amx15.jpg" target="_blank"><img alt="RIMG5145amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5145amx15s.jpg" width="320"/></a><br/>跟之前一樣打開CM5.2<br/>倒到地上。<br/>這些黑色污垢已經分解，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5146amx15.jpg" target="_blank"><img alt="RIMG5146amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5146amx15s.jpg" width="320"/></a><br/>用花灑簡單沖掉就沒了。<br/><br/>從以上結果來看，V433或V430多功能清潔液<br/>能當鏈條清潔劑用這說法勉強不了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5155amx15.jpg" target="_blank"><img alt="RIMG5155amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5155amx15s.jpg" width="320"/></a><br/>在泡沫槍裡<br/>放稀釋數十倍的V433，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5154amx15.jpg" target="_blank"><img alt="RIMG5154amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5154amx15s.jpg" width="320"/></a><br/>噴出來是這樣。<br/>作為洗車精用途<br/>濃度能控制，成本也不錯。<br/><br/>類似外觀的產品，<br/>和興還有泡沫多功能清潔劑（品號A402），<br/>是慕斯狀洗淨液，用擦布乾拭，<br/>適合沒辦法沖水的地方或情況，<br/>弱鹼性讓我有點在意（我們店裡也有賣）。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5157amx15.jpg" target="_blank"><img alt="RIMG5157amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5157amx15s.jpg" width="320"/></a><br/>導輪周圍閃閃發亮。<br/>除了用CM5.2，還有用浸濕零件除油劑的<br/>刷子仔細刷過。<br/>之後乾拭再加防水置換型鏈條油。<br/><br/>之後，我問和興的工作人員，<br/>V433對鏈條油污<br/>完全沒效果怎麼回事？<br/>一開始自信滿滿說能當鏈條清潔劑的<br/>語氣漸漸軟弱了。<br/><br/>但，<span style="color:#FF0000">「原液也清不掉！」</span><br/>像開頭的KeO防滑踏板鞋片一樣<br/>也許可以當做考生助運商品<br/>來期待銷售呢。<br/><br/>我跟和興的工作人員說要寫這篇文章，<br/>他說「請手下留情」。<br/>我已經盡力了。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
-    <p>Bicycle Workshop — English Edition</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/index.html">
+        <span class="brand-title">Nomu Lab Diary</span>
+        <span class="brand-subtitle">Bicycle Workshop Archive</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/index.html">Archive</a>
+      <a href="/guides/wheel-building.html">Wheel Guide</a>
+      <a href="/glossary.html">Glossary</a>
+      <a href="/about.html">About</a>
+    </nav>
     <div class="lang-toggle"><span class="lang-btn active">EN</span><a class="lang-btn" href="/zh/posts/3077.html">繁中</a></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/index.html">← All posts</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">News &amp; Updates</p>
     <h1>I Bought Glico&#x27;s New Protein and LOOK&#x27;s New Bottle</h1>
     <p class="post-meta">November 18, 2016</p>
+    <div class="post-body"><div class="entrytext">I came up with a groundbreaking approach to simultaneously promote new products from both Glico and LOOK.<br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02444amx6.jpg" target="_blank"><img alt="DSC02444amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02444amx6s.jpg" width="300"/></a><br/>I procured Glico's new "Oxydrive" series product called<br/>Oxydrive Supplement.<br/><br/>It's formulated with paprika xanthophyll, which apparently increases respiratory endurance.<br/>But just writing that doesn't really explain what it is.<br/><br/>Paprika xanthophyll refers to the xanthophyll found in paprika.<br/>The natural pigments in plants and animals are called carotenoids,<br/>and the reason tomatoes and shrimp are red is because of carotenoid coloration.<br/>Among carotenoids, those composed of carbon and hydrogen are called carotenes,<br/>while those composed of carbon, hydrogen, and oxygen are called xanthophylls.<br/>(Beta-carotene is the familiar term for carotene,<br/>and there are many spelling variations like "carotin,"<br/>but I'm using carotene since the etymology of the "carot" part comes from carrot.<br/>The "xanth" in xanthophyll means yellow,<br/>and since animals can't synthesize xanthophyll on their own, they have to get it from food.<br/>The reason egg yolks are yellow is because of xanthophyll coloration.)<br/><br/>According to a press release from Glico about half a year ago,<br/>they extracted and refined paprika xanthophyll from Spanish paprika,<br/>named it "Paprikax," and successfully developed and mass-produced it in-house.<br/>They claim that the effect of seven xanthophylls contained in Paprikax<br/>increases antioxidant power in the blood and improves motor function,<br/>which is something only food companies or pharmaceutical companies can state based on testing.<br/>According to clinical trials, when measuring oxygen uptake and heart rate during 30 minutes of exercise on a treadmill,<br/>those who took Paprikax were able to perform the same intensity of exercise with lower oxygen uptake and lower heart rate,<br/>and this is their basis for claiming it can increase respiratory endurance.<br/><br/>Actually, the Glico catalog for user-facing supplements contains not a single character mentioning Paprikax,<br/>but based on keywords like "paprika xanthophyll" and "oxygen transport,"<br/>it's definitely a supplement containing Paprikax.<br/><br/>The Oxydrive series currently has three products,<br/>and the Oxydrive Supplement mentioned at the beginning<br/>is a soft capsule tablet, with recommended intake timing<br/>before bed and after waking.<br/>Whether developing a habit of taking this will make you think<br/>"Ahh, my oxygen transport capacity is really improving!"<br/>I don't know.<br/>That's supposedly the effect it has.<br/>If you're curious, give it a try.<br/><br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02445amx6.jpg" target="_blank"><img alt="DSC02445amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02445amx6s.jpg" width="300"/></a><br/>Among all supplements, not just Glico's,<br/>the one I can definitively say has an effect you can actually feel in your body,<br/>despite ultimately being "personal opinion,"<br/>is this "Extra Amino Acid," commonly known as "Gold Glico" or "Gold Guri."<br/>If you have a habit of taking it before bed and forget one morning,<br/>you'll know from the sluggish grogginess upon waking.<br/>There's one other supplement I can say definitely works,<br/>but it's not from Glico and it's somewhat sketchy, so I can't write about it here.<br/><br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02446amx6.jpg" target="_blank"><img alt="DSC02446amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02446amx6s.jpg" width="300"/></a><br/>I bought a new LOOK bottle.<br/>From right in the image: <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Z%C3%A9fal+bicycle+water+bottle" target="_blank" rel="noopener sponsored" class="amz-inline">Zéfal</a>, Zéfal, TA, TA, and <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Cobra+bicycle+water+bottle" target="_blank" rel="noopener sponsored" class="amz-inline">Cobra</a>,<br/>but the one I bought this time is the one on the far right.<br/><br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02447amx6.jpg" target="_blank"><img alt="DSC02447amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02447amx6s.jpg" width="300"/></a><br/>Cobra is an Italian bottle and bottle cage manufacturer,<br/>and back in the day they also made bottles for Campagnolo.<br/>A Campagnolo bottle from the early 1980s has the same shape as this bottle,<br/>and since LOOK's bicycle division was founded in 1986,<br/>it's possible this bottle might be the original LOOK bottle.<br/>For more on Cobra (→<a href="/posts/220.html" target="_blank" title="here">here</a>).<br/><br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02452amx6.jpg" target="_blank"><img alt="DSC02452amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02452amx6s.jpg" width="300"/></a><br/>↑There were non-clear white bottles during these eras too,<br/>but at some point I basically stopped using anything but clear bottles.<br/>The exception is probably when using an insulated bottle.<br/>With clear bottles, you can immediately spot stains like tea discoloration,<br/>even if not quite moldy.<br/>Plus, I feel like the new bottle "plastic smell" is less noticeable.<br/><br/>Both of the bottles above are Zéfal brand,<br/>but the latest one handles differently than the previous ones.<br/><br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC01983amx6.jpg" target="_blank"><img alt="DSC01983amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC01983amx6s.jpg" width="300"/></a><br/>Besides the supplement, the Oxydrive series also has<br/>"Whey Protein" and "Hypertonic Drink,"<br/>but I personally bought the protein.<br/>Grapefruit flavor.<br/>Some people make protein with milk instead of water,<br/>but grapefruit flavor doesn't go well with milk.<br/><br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC01984amx6.jpg" target="_blank"><img alt="DSC01984amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC01984amx6s.jpg" width="300"/></a><br/>Perhaps because of that, the package instructions only say<br/>to make it with water.<br/>As for the taste, it's closer to a sports drink than typical protein,<br/>so it contradicts the instruction "④ Drink immediately,"<br/>but I use it as a drink for my bike bottle instead of a shaker.<br/><br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02454amx6.jpg" target="_blank"><img alt="DSC02454amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02454amx6s.jpg" width="300"/></a><br/>↑Notably, "during exercise" is listed among Glico's recommended intake timings,<br/>and since this icon isn't seen on other protein products from the company,<br/>it might be the intended usage.<br/><br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02456amx6.jpg" target="_blank"><img alt="DSC02456amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02456amx6s.jpg" width="300"/></a><br/>As for the LOOK bottle,<br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02458amx6.jpg" target="_blank"><img alt="DSC02458amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02458amx6s.jpg" width="300"/></a><br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02459amx6.jpg" target="_blank"><img alt="DSC02459amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02459amx6s.jpg" width="300"/></a><br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02460amx6.jpg" target="_blank"><img alt="DSC02460amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02460amx6s.jpg" width="300"/></a><br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02462amx6.jpg" target="_blank"><img alt="DSC02462amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02462amx6s.jpg" width="300"/></a><br/>Except for the latest Zéfal, the diameter when the cap is removed<br/>is noticeably smaller than the spoon that comes with the protein,<br/>so you can't pour it in without spilling.<br/>In this regard, the latest LOOK bottle is extremely useful.<br/><br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02464amx6.jpg" target="_blank"><img alt="DSC02464amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02464amx6s.jpg" width="300"/></a><br/>The serving instructions say<br/>3 spoonfuls for 200-300cc of water,<br/>but I added more water than that.<br/>From the perspective of osmotic pressure and absorption efficiency, making it thinner shouldn't be a problem.<br/><br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02465amx6.jpg" target="_blank"><img alt="DSC02465amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02465amx6s.jpg" width="300"/></a><br/>When dissolved, it becomes this color.<br/>Apparently the color of paprika xanthophyll.<br/><br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02468amx6.jpg" target="_blank"><img alt="DSC02468amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02468amx6s.jpg" width="300"/></a><br/>The cap on the new bottle has a curved arc for some reason,<br/>and from this direction it drinks fine,<br/><br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02469amx6.jpg" target="_blank"><img alt="DSC02469amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02469amx6s.jpg" width="300"/></a><br/>but from this angle, when you drink,<br/>the edge of the cap hits your upper lip.<br/>If you're not used to it, you have to check the cap orientation before drinking,<br/>and during a race when your mind is foggy and you want to avoid wasting energy on unnecessary things<br/>and focus only on your legs, this doesn't seem like the right bottle,<br/>but as a LOOK fanatic, that doesn't concern me at all ha ha.<br/>The new bottle looks so cool—(sponsored content)<br/><br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02470amx6.jpg" target="_blank"><img alt="DSC02470amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02470amx6s.jpg" width="300"/></a><br/>By the way, a recent issue of Tarzan magazine (not the latest one)<br/>also had an article about paprika xanthophyll.<br/>What they wrote is somewhat of a leap, but the thrust seems similar.<br/>On the edge of the page there are two types of paprika,<br/>and apparently shishito pepper-shaped varieties have stronger antioxidant power<br/>than bell pepper-shaped varieties.<br/>Shishito-shaped paprika is Spanish origin, so<br/>now I understand why Glico<br/>uses Spanish paprika.<br/>The bell pepper-shaped paprika commonly seen in supermarkets<br/>is almost 100% Korean-grown, but it's originally an Dutch breed.
+</div></div>
+    <aside class="post-guides">
+      <strong>Technical archive</strong>
+      <nav aria-label="Technical guides">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">I came up with a groundbreaking approach to simultaneously promote new products from both Glico and LOOK.<br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02444amx6.jpg" target="_blank"><img alt="DSC02444amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02444amx6s.jpg" width="300"/></a><br/>I procured Glico's new "Oxydrive" series product called<br/>Oxydrive Supplement.<br/><br/>It's formulated with paprika xanthophyll, which apparently increases respiratory endurance.<br/>But just writing that doesn't really explain what it is.<br/><br/>Paprika xanthophyll refers to the xanthophyll found in paprika.<br/>The natural pigments in plants and animals are called carotenoids,<br/>and the reason tomatoes and shrimp are red is because of carotenoid coloration.<br/>Among carotenoids, those composed of carbon and hydrogen are called carotenes,<br/>while those composed of carbon, hydrogen, and oxygen are called xanthophylls.<br/>(Beta-carotene is the familiar term for carotene,<br/>and there are many spelling variations like "carotin,"<br/>but I'm using carotene since the etymology of the "carot" part comes from carrot.<br/>The "xanth" in xanthophyll means yellow,<br/>and since animals can't synthesize xanthophyll on their own, they have to get it from food.<br/>The reason egg yolks are yellow is because of xanthophyll coloration.)<br/><br/>According to a press release from Glico about half a year ago,<br/>they extracted and refined paprika xanthophyll from Spanish paprika,<br/>named it "Paprikax," and successfully developed and mass-produced it in-house.<br/>They claim that the effect of seven xanthophylls contained in Paprikax<br/>increases antioxidant power in the blood and improves motor function,<br/>which is something only food companies or pharmaceutical companies can state based on testing.<br/>According to clinical trials, when measuring oxygen uptake and heart rate during 30 minutes of exercise on a treadmill,<br/>those who took Paprikax were able to perform the same intensity of exercise with lower oxygen uptake and lower heart rate,<br/>and this is their basis for claiming it can increase respiratory endurance.<br/><br/>Actually, the Glico catalog for user-facing supplements contains not a single character mentioning Paprikax,<br/>but based on keywords like "paprika xanthophyll" and "oxygen transport,"<br/>it's definitely a supplement containing Paprikax.<br/><br/>The Oxydrive series currently has three products,<br/>and the Oxydrive Supplement mentioned at the beginning<br/>is a soft capsule tablet, with recommended intake timing<br/>before bed and after waking.<br/>Whether developing a habit of taking this will make you think<br/>"Ahh, my oxygen transport capacity is really improving!"<br/>I don't know.<br/>That's supposedly the effect it has.<br/>If you're curious, give it a try.<br/><br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02445amx6.jpg" target="_blank"><img alt="DSC02445amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02445amx6s.jpg" width="300"/></a><br/>Among all supplements, not just Glico's,<br/>the one I can definitively say has an effect you can actually feel in your body,<br/>despite ultimately being "personal opinion,"<br/>is this "Extra Amino Acid," commonly known as "Gold Glico" or "Gold Guri."<br/>If you have a habit of taking it before bed and forget one morning,<br/>you'll know from the sluggish grogginess upon waking.<br/>There's one other supplement I can say definitely works,<br/>but it's not from Glico and it's somewhat sketchy, so I can't write about it here.<br/><br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02446amx6.jpg" target="_blank"><img alt="DSC02446amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02446amx6s.jpg" width="300"/></a><br/>I bought a new LOOK bottle.<br/>From right in the image: <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Z%C3%A9fal+bicycle+water+bottle" target="_blank" rel="noopener sponsored" class="amz-inline">Zéfal</a>, Zéfal, TA, TA, and <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Cobra+bicycle+water+bottle" target="_blank" rel="noopener sponsored" class="amz-inline">Cobra</a>,<br/>but the one I bought this time is the one on the far right.<br/><br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02447amx6.jpg" target="_blank"><img alt="DSC02447amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02447amx6s.jpg" width="300"/></a><br/>Cobra is an Italian bottle and bottle cage manufacturer,<br/>and back in the day they also made bottles for Campagnolo.<br/>A Campagnolo bottle from the early 1980s has the same shape as this bottle,<br/>and since LOOK's bicycle division was founded in 1986,<br/>it's possible this bottle might be the original LOOK bottle.<br/>For more on Cobra (→<a href="/posts/220.html" target="_blank" title="here">here</a>).<br/><br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02452amx6.jpg" target="_blank"><img alt="DSC02452amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02452amx6s.jpg" width="300"/></a><br/>↑There were non-clear white bottles during these eras too,<br/>but at some point I basically stopped using anything but clear bottles.<br/>The exception is probably when using an insulated bottle.<br/>With clear bottles, you can immediately spot stains like tea discoloration,<br/>even if not quite moldy.<br/>Plus, I feel like the new bottle "plastic smell" is less noticeable.<br/><br/>Both of the bottles above are Zéfal brand,<br/>but the latest one handles differently than the previous ones.<br/><br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC01983amx6.jpg" target="_blank"><img alt="DSC01983amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC01983amx6s.jpg" width="300"/></a><br/>Besides the supplement, the Oxydrive series also has<br/>"Whey Protein" and "Hypertonic Drink,"<br/>but I personally bought the protein.<br/>Grapefruit flavor.<br/>Some people make protein with milk instead of water,<br/>but grapefruit flavor doesn't go well with milk.<br/><br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC01984amx6.jpg" target="_blank"><img alt="DSC01984amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC01984amx6s.jpg" width="300"/></a><br/>Perhaps because of that, the package instructions only say<br/>to make it with water.<br/>As for the taste, it's closer to a sports drink than typical protein,<br/>so it contradicts the instruction "④ Drink immediately,"<br/>but I use it as a drink for my bike bottle instead of a shaker.<br/><br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02454amx6.jpg" target="_blank"><img alt="DSC02454amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02454amx6s.jpg" width="300"/></a><br/>↑Notably, "during exercise" is listed among Glico's recommended intake timings,<br/>and since this icon isn't seen on other protein products from the company,<br/>it might be the intended usage.<br/><br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02456amx6.jpg" target="_blank"><img alt="DSC02456amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02456amx6s.jpg" width="300"/></a><br/>As for the LOOK bottle,<br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02458amx6.jpg" target="_blank"><img alt="DSC02458amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02458amx6s.jpg" width="300"/></a><br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02459amx6.jpg" target="_blank"><img alt="DSC02459amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02459amx6s.jpg" width="300"/></a><br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02460amx6.jpg" target="_blank"><img alt="DSC02460amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02460amx6s.jpg" width="300"/></a><br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02462amx6.jpg" target="_blank"><img alt="DSC02462amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02462amx6s.jpg" width="300"/></a><br/>Except for the latest Zéfal, the diameter when the cap is removed<br/>is noticeably smaller than the spoon that comes with the protein,<br/>so you can't pour it in without spilling.<br/>In this regard, the latest LOOK bottle is extremely useful.<br/><br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02464amx6.jpg" target="_blank"><img alt="DSC02464amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02464amx6s.jpg" width="300"/></a><br/>The serving instructions say<br/>3 spoonfuls for 200-300cc of water,<br/>but I added more water than that.<br/>From the perspective of osmotic pressure and absorption efficiency, making it thinner shouldn't be a problem.<br/><br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02465amx6.jpg" target="_blank"><img alt="DSC02465amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02465amx6s.jpg" width="300"/></a><br/>When dissolved, it becomes this color.<br/>Apparently the color of paprika xanthophyll.<br/><br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02468amx6.jpg" target="_blank"><img alt="DSC02468amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02468amx6s.jpg" width="300"/></a><br/>The cap on the new bottle has a curved arc for some reason,<br/>and from this direction it drinks fine,<br/><br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02469amx6.jpg" target="_blank"><img alt="DSC02469amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02469amx6s.jpg" width="300"/></a><br/>but from this angle, when you drink,<br/>the edge of the cap hits your upper lip.<br/>If you're not used to it, you have to check the cap orientation before drinking,<br/>and during a race when your mind is foggy and you want to avoid wasting energy on unnecessary things<br/>and focus only on your legs, this doesn't seem like the right bottle,<br/>but as a LOOK fanatic, that doesn't concern me at all ha ha.<br/>The new bottle looks so cool—(sponsored content)<br/><br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02470amx6.jpg" target="_blank"><img alt="DSC02470amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02470amx6s.jpg" width="300"/></a><br/>By the way, a recent issue of Tarzan magazine (not the latest one)<br/>also had an article about paprika xanthophyll.<br/>What they wrote is somewhat of a leap, but the thrust seems similar.<br/>On the edge of the page there are two types of paprika,<br/>and apparently shishito pepper-shaped varieties have stronger antioxidant power<br/>than bell pepper-shaped varieties.<br/>Shishito-shaped paprika is Spanish origin, so<br/>now I understand why Glico<br/>uses Spanish paprika.<br/>The bell pepper-shaped paprika commonly seen in supermarkets<br/>is almost 100% Korean-grown, but it's originally an Dutch breed.
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">Products Mentioned in This Article</p>
       <ul>

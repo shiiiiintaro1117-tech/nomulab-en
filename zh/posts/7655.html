@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/7655.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>輪圈重新組裝的前期準備</h1>
     <p class="post-meta">September 25, 2025</p>
+    <div class="post-body"><div class="entrytext">今天不是組輪圈。<br/>而是為此做前期準備。<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3638amx16.jpg" target="_blank"><img alt="RIMG3638amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3638amx16s.jpg" width="320"/></a><br/>客人把山地車的前後輪託付給我。<br/>他希望更換轂。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3639amx16.jpg" target="_blank"><img alt="RIMG3639amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3639amx16s.jpg" width="320"/></a><br/>前後輪都是用銀色氣動直形輻條<br/>和黑色鋁合金副頭組裝的<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3640amx16.jpg" target="_blank"><img alt="RIMG3640amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3640amx16s.jpg" width="320"/></a><br/>外周側除了氣門孔外沒有其他孔的輪圈。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3641amx16.jpg" target="_blank"><img alt="RIMG3641amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3641amx16s.jpg" width="320"/></a><br/>前後轂都不是BOOST轂，<br/>但他希望把它們改為BOOST轂，<br/>同時把後轂的飛輪體從Sram（速聯）XD<br/>換成Shimano（禧瑪諾）微槽卡口。<br/><br/>前後輪都是28H，<br/>最近推出的現行XT的M8200系轂<br/>只有折頸輻條用的轂，<br/>而前一代的M8100系則有<br/>HB/FH-8110-BS<br/>（B→BOOST　S→直形輵條）這樣<br/>直形輵條用的轂，<br/>如果用這個的話 現有的輵條<br/>有可能可以繼續使用。<br/><br/>最初的方案是以控制預算為優先，<br/>用折頸輵條的XT轂搭全套平頭輵條，<br/>嚴格來說是「用平頭輵條就可以」，<br/>不過把兩側輵條都換成平頭輵條<br/>和只在一側新購CX Sprint輵條<br/>的金額幾乎相同。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3642amx16.jpg" target="_blank"><img alt="RIMG3642amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3642amx16s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3643amx16.jpg" target="_blank"><img alt="RIMG3643amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3643amx16s.jpg" width="320"/></a><br/>原輪的狀態，<br/>左右兩側都是，特別是反飛輪側鬆得很厲害。<br/>輵條張力當然是越緊越好，<br/>但這真的鬆過頭了。<br/>沒有要求原來的組裝者重新調整的原因<br/>可能就是因為這個。<br/><br/>不點名的話，組裝這個輪的組裝者名字<br/>貼在了氣門孔旁邊的貼紙上。<br/>哎呀，真是丟臉。<br/><br/>跟這個輪的主人無關的，<br/>某個會組輪的客人看到這個輪時<br/>說「如果這個是邊緣剎車用的話應該會摩擦吧」<br/>我想他說得沒錯。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3644amx16.jpg" target="_blank"><img alt="RIMG3644amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3644amx16s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3645amx16.jpg" target="_blank"><img alt="RIMG3645amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3645amx16s.jpg" width="320"/></a><br/>輪心倒是居中的。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3646amx16.jpg" target="_blank"><img alt="RIMG3646amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3646amx16s.jpg" width="320"/></a><br/>接著是前輪。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3648amx16.jpg" target="_blank"><img alt="RIMG3648amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3648amx16s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3649amx16.jpg" target="_blank"><img alt="RIMG3649amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3649amx16s.jpg" width="320"/></a><br/>果然鬆得離譜。<br/>如果是因為長期使用而鬆弛的話<br/>會伴隨著由此引起的輻跳和心偏，<br/>看起來就是一開始就鬆得很厲害。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3650amx16.jpg" target="_blank"><img alt="RIMG3650amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3650amx16s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3652amx16.jpg" target="_blank"><img alt="RIMG3652amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3652amx16s.jpg" width="320"/></a><br/>暫時的心位。<br/>這是什麼啦。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3651amx16.jpg" target="_blank"><img alt="RIMG3651amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3651amx16s.jpg" width="320"/></a><br/>實際上轂的左端<br/>纏著膠帶，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3654amx16.jpg" target="_blank"><img alt="RIMG3654amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3654amx16s.jpg" width="320"/></a><br/>用墊圈簡單地增加軸間距<br/>來對應BOOST，<br/>所以心位就大幅偏離了。<br/>墊圈的厚度是5mm，<br/>應該是左右都放的，<br/>但託付時只有左側<br/>用膠帶暫時固定的狀態。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3655amx16.jpg" target="_blank"><img alt="RIMG3655amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3655amx16s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3656amx16.jpg" target="_blank"><img alt="RIMG3656amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3656amx16s.jpg" width="320"/></a><br/>去掉墊圈後再看心位，<br/>輪圈向左側偏移了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3657amx16.jpg" target="_blank"><img alt="RIMG3657amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3657amx16s.jpg" width="320"/></a><br/>↑大概這麼多<br/>按照椀形理論，會往這一側偏移，<br/>所以組裝輪時<br/>有可能心位是對的。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3653amx16.jpg" target="_blank"><img alt="RIMG3653amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3653amx16s.jpg" width="320"/></a><br/>在氣門孔兩側的輵條的<br/>副頭內周側邊面部分<br/>貼了標記膠帶。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3658amx16.jpg" target="_blank"><img alt="RIMG3658amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3658amx16s.jpg" width="320"/></a><br/>塗布了片狀防鬆劑，<br/>但如你所見，幾乎對螺紋沒有效果，<br/>只是填補副頭的牙周袋，<br/>所以只能多少防止初期鬆動。<br/><br/>有人會說效果還是有的！，<br/>但如上圖所示 即使鬆到前面3～4圈的地方<br/>也能用手指夾住副頭轉動它。<br/>如果用正確有效的防鬆劑，<br/>即使鬆到上圖的位置<br/>也幾乎無法用手指夾住副頭轉動。<br/><br/>關於填補副頭牙周袋這點，<br/>有著防止細沙進入的效果<br/>這一點無法否認。<br/>對Racing Zero和Shamal Ultra的副頭<br/>（廠商是否有意為之不明），<br/>似乎有著延遲膠着狀態的效果。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3659amx16.jpg" target="_blank"><img alt="RIMG3659amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3659amx16s.jpg" width="320"/></a><br/>轂法蘭，前轂是通軸式，<br/>後轂是掛鈎式，<br/>所以前輪貼著標記膠帶的狀態下<br/>無法抽出輵條。<br/>所以撕掉之前先調查<br/>輵條相對於副頭的長度感。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3660amx16.jpg" target="_blank"><img alt="RIMG3660amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3660amx16s.jpg" width="320"/></a><br/>前輪左側是這樣。<br/>輵條沒有達到副頭的邊面，<br/>但有達到槽口的底面，<br/>所以是適正範圍。<br/>相反，換我的話 從原輪的狀態<br/>要改進的話<br/>大概還要增加擰緊1圈半左右，<br/>考慮到這點輵條長度正好合適。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3662amx16.jpg" target="_blank"><img alt="RIMG3662amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3662amx16s.jpg" width="320"/></a><br/>前輪右側也是<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3663amx16.jpg" target="_blank"><img alt="RIMG3663amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3663amx16s.jpg" width="320"/></a><br/>類似的狀況。<br/><br/>後輪的輵條，<br/>不需要貼標記膠帶。<br/>副頭長度是14mm，<br/>與其的關係基本上能分辨。<br/>為什麼呢，因為後輪只有<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=SAPIM+CX-RAY+spoke" target="_blank" rel="noopener sponsored" class="amz-inline">Sapim</a>（賽比姆）輵條<br/>如果是Sapim的話 螺紋側素面部分的長度幾乎一定<br/>所以從外觀能判別。<br/><br/>前輪是在輵條頭和其他部分都沒有任何刻字<br/>不太清楚來源的輵條。<br/>實際上如果回到之前的圖像看<br/>雖然與副頭的長度感幾乎相同，<br/>但前輪左的輵條 膠帶的一半左右<br/>蓋住了扁平變截部分，<br/>前輪右的輵條 膠帶幾乎只<br/>蓋住素面部分。<br/><br/>有可能輵條長度被加工過。<br/>銀輵條的話即使看切面<br/>也難以判別加工與否，<br/>所以前輪左輵條有可能是後來切過的。<br/><br/>前輪右的螺紋側素面部分<br/>如果那個長度作為廠商出貨品的話就太長了，<br/>所以的意思是，<br/>即使是可以切割成300mm卻能切到270mm<br/>之類具有通用性的輵條，<br/>對於生產○○mm！這樣特定長度<br/>廠商製造的氣動輵條來說<br/>螺紋側的素面部分太長了。<br/><br/>之前說前輪的無刻輵條是<br/>不太清楚來源，<br/>但從另外的事情來看，<br/>這個前輪的組裝者<br/>對輵條和輪根本不了解<br/>是個大白癡，這點也暴露了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3661amx16.jpg" target="_blank"><img alt="RIMG3661amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3661amx16s.jpg" width="320"/></a><br/>前輪右側296mm的輵條。<br/>28H一側14本，<br/>所以輵條比重是 76.3÷14÷296÷0.0257＝<br/>0.71642...，約72%。<br/>概算值Sapim的CX-RAY是65%，<br/>CX Sprint是78%，<br/>DT的Aerolite（65%）和<br/>Aerocomp（78%）也分別相同，<br/>但在穩定供應的主流廠商的<br/>氣動輵條中沒有72%左右輵條比重的，<br/>所以這個輵條要補修的話<br/>CX-RAY和CX Sprint都用不了。<br/>6～7%的差距不是<br/>可以混用的輵條比重差。<br/><br/>順便說一下，前輪的輵條<br/>左右都是方形氣動形狀。<br/>扁平變截部分斷面<br/>接近四角形的叫方形氣動，<br/>邊界尖銳接近橢圓形的叫<br/>楕圓氣動。<br/>例如CX-RAY就是楕圓氣動。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3662amx16.jpg" target="_blank"><img alt="RIMG3662amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3662amx16s.jpg" width="320"/></a><br/>前輪右側295mm的輵條。<br/>輵條比重是 71.0÷14÷295÷0.0257＝<br/>0.66892...，約67%。<br/><br/>這個輵條比重的話，<br/>即使形狀不同，補修也可以勉強<br/>混用CX-RAY。<br/><br/>不過，重要的不是這個。<br/>相差1mm的14本輵條束與束之間<br/>輵條比重相差近5%的理由。<br/>前輪右是76.3g，<br/>所以每本重量是5.45g，<br/>從76.3g減去它，也就是變成13本時<br/>變成70.85g，<br/>這幾乎與前輪左14本相同重量。<br/>如果真的左右都是同樣輵條的話<br/>14本輵條束之間<br/>不可能發生1本輵條的重量差。<br/><br/>調查的結果 我用卡尺實測<br/>前輪右的輵條是 2.2×1.0mm，<br/>前輪左的輵條是 2.0×1.0mm。<br/><br/>這裡很多人可能已經察覺到了<br/>這個前輪是反向異徑組裝。<br/>左右差4.75%不能說是<br/>左右同徑組裝。<br/>這當然不是組裝者的執著<br/>（要是對輵條張力左右差有什麼執著<br/>導致特意選這樣的輵條的話請告訴我），<br/>而是對輵條不了解的白癡<br/>沒有調查尺寸<br/>以為是同樣輵條組輪的結果<br/>碰巧變成了反向異徑組裝。<br/><br/>要是反過來碰巧變成了左右異徑組裝的話<br/>我會以為是有意的設計而讚賞的。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3665amx16.jpg" target="_blank"><img alt="RIMG3665amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3665amx16s.jpg" width="320"/></a><br/>後輪右側294mm CX-RAY。<br/>輵條比重是 67.2÷14÷294÷0.0257＝<br/>0.63527...，約64%。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3667amx16.jpg" target="_blank"><img alt="RIMG3667amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3667amx16s.jpg" width="320"/></a><br/>後輪左側296mm CX-RAY。<br/>輵條比重是 68.3÷14÷296÷0.0257＝<br/>0.64130...，約64%。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3666amx16.jpg" target="_blank"><img alt="RIMG3666amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3666amx16s.jpg" width="320"/></a><br/>↑不知道什麼輵條（圖左）和<br/>CX-RAY（圖右）的輵條頭部分。<br/>CX-RAY的螺紋側不同，<br/>輵條頭側素面部分的長度也有些許偏差，<br/>會因變截部分較輕<br/>而影響輵條比重。<br/><br/>這次的前輪右輵條<br/>輵條比重66.7%，<br/>如果輵條頭側素面部分的長度<br/>短得像Sapim一樣的話<br/>應該是65%左右。<br/><br/>我對CX-RAY的輵條比重<br/>概算值用65%，<br/>正式計算時用64.5%，<br/>但這是折頸輵條的情況。<br/>從輵條長度的測量範圍來看<br/>要排除的部分體積<br/>折頸輵條比較大，<br/>所以直形輵條傾向於<br/>輵條比重比折頸輵條小。<br/>CX-RAY的折頸輵條下限大約<br/>63.5%左右是可能的，<br/>所以直形輵條也有62%台的可能。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3668amx16.jpg" target="_blank"><img alt="RIMG3668amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3668amx16s.jpg" width="320"/></a><br/>↑Sapim的刻字<br/>前輪要是正向異徑組裝<br/>本想「改成正向異徑就會不同」的話，<br/>椀形量更大的後輪<br/>卻做CX-RAY的左右同徑組裝<br/>沒有意義，<br/>所以也只能得出結論<br/>輵條管理很馬虎<br/>加上組裝者是白癡。<br/><br/>養成了查所有陌生輵條<br/>輵條比重的習慣<br/>真是太好了。<br/>差點也要成為白癡的一員。<br/><br/>這篇文章中沒有組輪，<br/>但這樣的流程 儘管通常不寫<br/>但經常在做。<br/><br/>啊，本來的題目<br/>「如果輵條能重用的話<br/>引進M8100系直形輵條用轂，<br/>要是不行就用M8200系的通用輵條用轂」<br/>這個 看起來是前者可行。<br/>新前輪 原前輪左側放到前輪右側，<br/>原後輪右側放到前輪左側，<br/>後輪右側用新的CX Sprint，<br/>後輪左側保持原樣，<br/>這樣的話 左側／右側輵條比重就會<br/>前輪　71.0（實測）／63.5（實測）<br/>後輪　64.1（實測）／78（概算）<br/>成為不錯的左右異徑組裝。<br/><br/>轂的含稅定價<br/><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+XT+M8110-BS+hub+BOOST+straight+spoke" target="_blank" rel="noopener sponsored" class="amz-inline">HB/FH-M8110-BS</a>的話<br/>前輪 13599円<br/>後輪　 21814円<br/>合計　 35413円，<br/>HB/FH-M8210-B的話<br/>前輪 12058円<br/>後輪　 28057円<br/>合計　 40115円，<br/>前輪轂的價格反轉了，<br/>但前後合計M8200系反而更貴，<br/>用M8200系組裝的情況下<br/>輵條全部要新購，<br/>所以用M8100系直形輵條轂<br/>盡量重用輵條在<br/>壓低金額這點來說<br/>也更划算。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">今天不是組輪圈。<br/>而是為此做前期準備。<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3638amx16.jpg" target="_blank"><img alt="RIMG3638amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3638amx16s.jpg" width="320"/></a><br/>客人把山地車的前後輪託付給我。<br/>他希望更換轂。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3639amx16.jpg" target="_blank"><img alt="RIMG3639amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3639amx16s.jpg" width="320"/></a><br/>前後輪都是用銀色氣動直形輻條<br/>和黑色鋁合金副頭組裝的<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3640amx16.jpg" target="_blank"><img alt="RIMG3640amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3640amx16s.jpg" width="320"/></a><br/>外周側除了氣門孔外沒有其他孔的輪圈。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3641amx16.jpg" target="_blank"><img alt="RIMG3641amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3641amx16s.jpg" width="320"/></a><br/>前後轂都不是BOOST轂，<br/>但他希望把它們改為BOOST轂，<br/>同時把後轂的飛輪體從Sram（速聯）XD<br/>換成Shimano（禧瑪諾）微槽卡口。<br/><br/>前後輪都是28H，<br/>最近推出的現行XT的M8200系轂<br/>只有折頸輻條用的轂，<br/>而前一代的M8100系則有<br/>HB/FH-8110-BS<br/>（B→BOOST　S→直形輵條）這樣<br/>直形輵條用的轂，<br/>如果用這個的話 現有的輵條<br/>有可能可以繼續使用。<br/><br/>最初的方案是以控制預算為優先，<br/>用折頸輵條的XT轂搭全套平頭輵條，<br/>嚴格來說是「用平頭輵條就可以」，<br/>不過把兩側輵條都換成平頭輵條<br/>和只在一側新購CX Sprint輵條<br/>的金額幾乎相同。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3642amx16.jpg" target="_blank"><img alt="RIMG3642amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3642amx16s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3643amx16.jpg" target="_blank"><img alt="RIMG3643amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3643amx16s.jpg" width="320"/></a><br/>原輪的狀態，<br/>左右兩側都是，特別是反飛輪側鬆得很厲害。<br/>輵條張力當然是越緊越好，<br/>但這真的鬆過頭了。<br/>沒有要求原來的組裝者重新調整的原因<br/>可能就是因為這個。<br/><br/>不點名的話，組裝這個輪的組裝者名字<br/>貼在了氣門孔旁邊的貼紙上。<br/>哎呀，真是丟臉。<br/><br/>跟這個輪的主人無關的，<br/>某個會組輪的客人看到這個輪時<br/>說「如果這個是邊緣剎車用的話應該會摩擦吧」<br/>我想他說得沒錯。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3644amx16.jpg" target="_blank"><img alt="RIMG3644amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3644amx16s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3645amx16.jpg" target="_blank"><img alt="RIMG3645amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3645amx16s.jpg" width="320"/></a><br/>輪心倒是居中的。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3646amx16.jpg" target="_blank"><img alt="RIMG3646amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3646amx16s.jpg" width="320"/></a><br/>接著是前輪。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3648amx16.jpg" target="_blank"><img alt="RIMG3648amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3648amx16s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3649amx16.jpg" target="_blank"><img alt="RIMG3649amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3649amx16s.jpg" width="320"/></a><br/>果然鬆得離譜。<br/>如果是因為長期使用而鬆弛的話<br/>會伴隨著由此引起的輻跳和心偏，<br/>看起來就是一開始就鬆得很厲害。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3650amx16.jpg" target="_blank"><img alt="RIMG3650amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3650amx16s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3652amx16.jpg" target="_blank"><img alt="RIMG3652amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3652amx16s.jpg" width="320"/></a><br/>暫時的心位。<br/>這是什麼啦。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3651amx16.jpg" target="_blank"><img alt="RIMG3651amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3651amx16s.jpg" width="320"/></a><br/>實際上轂的左端<br/>纏著膠帶，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3654amx16.jpg" target="_blank"><img alt="RIMG3654amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3654amx16s.jpg" width="320"/></a><br/>用墊圈簡單地增加軸間距<br/>來對應BOOST，<br/>所以心位就大幅偏離了。<br/>墊圈的厚度是5mm，<br/>應該是左右都放的，<br/>但託付時只有左側<br/>用膠帶暫時固定的狀態。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3655amx16.jpg" target="_blank"><img alt="RIMG3655amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3655amx16s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3656amx16.jpg" target="_blank"><img alt="RIMG3656amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3656amx16s.jpg" width="320"/></a><br/>去掉墊圈後再看心位，<br/>輪圈向左側偏移了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3657amx16.jpg" target="_blank"><img alt="RIMG3657amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3657amx16s.jpg" width="320"/></a><br/>↑大概這麼多<br/>按照椀形理論，會往這一側偏移，<br/>所以組裝輪時<br/>有可能心位是對的。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3653amx16.jpg" target="_blank"><img alt="RIMG3653amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3653amx16s.jpg" width="320"/></a><br/>在氣門孔兩側的輵條的<br/>副頭內周側邊面部分<br/>貼了標記膠帶。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3658amx16.jpg" target="_blank"><img alt="RIMG3658amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3658amx16s.jpg" width="320"/></a><br/>塗布了片狀防鬆劑，<br/>但如你所見，幾乎對螺紋沒有效果，<br/>只是填補副頭的牙周袋，<br/>所以只能多少防止初期鬆動。<br/><br/>有人會說效果還是有的！，<br/>但如上圖所示 即使鬆到前面3～4圈的地方<br/>也能用手指夾住副頭轉動它。<br/>如果用正確有效的防鬆劑，<br/>即使鬆到上圖的位置<br/>也幾乎無法用手指夾住副頭轉動。<br/><br/>關於填補副頭牙周袋這點，<br/>有著防止細沙進入的效果<br/>這一點無法否認。<br/>對Racing Zero和Shamal Ultra的副頭<br/>（廠商是否有意為之不明），<br/>似乎有著延遲膠着狀態的效果。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3659amx16.jpg" target="_blank"><img alt="RIMG3659amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3659amx16s.jpg" width="320"/></a><br/>轂法蘭，前轂是通軸式，<br/>後轂是掛鈎式，<br/>所以前輪貼著標記膠帶的狀態下<br/>無法抽出輵條。<br/>所以撕掉之前先調查<br/>輵條相對於副頭的長度感。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3660amx16.jpg" target="_blank"><img alt="RIMG3660amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3660amx16s.jpg" width="320"/></a><br/>前輪左側是這樣。<br/>輵條沒有達到副頭的邊面，<br/>但有達到槽口的底面，<br/>所以是適正範圍。<br/>相反，換我的話 從原輪的狀態<br/>要改進的話<br/>大概還要增加擰緊1圈半左右，<br/>考慮到這點輵條長度正好合適。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3662amx16.jpg" target="_blank"><img alt="RIMG3662amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3662amx16s.jpg" width="320"/></a><br/>前輪右側也是<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3663amx16.jpg" target="_blank"><img alt="RIMG3663amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3663amx16s.jpg" width="320"/></a><br/>類似的狀況。<br/><br/>後輪的輵條，<br/>不需要貼標記膠帶。<br/>副頭長度是14mm，<br/>與其的關係基本上能分辨。<br/>為什麼呢，因為後輪只有<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=SAPIM+CX-RAY+spoke" target="_blank" rel="noopener sponsored" class="amz-inline">Sapim</a>（賽比姆）輵條<br/>如果是Sapim的話 螺紋側素面部分的長度幾乎一定<br/>所以從外觀能判別。<br/><br/>前輪是在輵條頭和其他部分都沒有任何刻字<br/>不太清楚來源的輵條。<br/>實際上如果回到之前的圖像看<br/>雖然與副頭的長度感幾乎相同，<br/>但前輪左的輵條 膠帶的一半左右<br/>蓋住了扁平變截部分，<br/>前輪右的輵條 膠帶幾乎只<br/>蓋住素面部分。<br/><br/>有可能輵條長度被加工過。<br/>銀輵條的話即使看切面<br/>也難以判別加工與否，<br/>所以前輪左輵條有可能是後來切過的。<br/><br/>前輪右的螺紋側素面部分<br/>如果那個長度作為廠商出貨品的話就太長了，<br/>所以的意思是，<br/>即使是可以切割成300mm卻能切到270mm<br/>之類具有通用性的輵條，<br/>對於生產○○mm！這樣特定長度<br/>廠商製造的氣動輵條來說<br/>螺紋側的素面部分太長了。<br/><br/>之前說前輪的無刻輵條是<br/>不太清楚來源，<br/>但從另外的事情來看，<br/>這個前輪的組裝者<br/>對輵條和輪根本不了解<br/>是個大白癡，這點也暴露了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3661amx16.jpg" target="_blank"><img alt="RIMG3661amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3661amx16s.jpg" width="320"/></a><br/>前輪右側296mm的輵條。<br/>28H一側14本，<br/>所以輵條比重是 76.3÷14÷296÷0.0257＝<br/>0.71642...，約72%。<br/>概算值Sapim的CX-RAY是65%，<br/>CX Sprint是78%，<br/>DT的Aerolite（65%）和<br/>Aerocomp（78%）也分別相同，<br/>但在穩定供應的主流廠商的<br/>氣動輵條中沒有72%左右輵條比重的，<br/>所以這個輵條要補修的話<br/>CX-RAY和CX Sprint都用不了。<br/>6～7%的差距不是<br/>可以混用的輵條比重差。<br/><br/>順便說一下，前輪的輵條<br/>左右都是方形氣動形狀。<br/>扁平變截部分斷面<br/>接近四角形的叫方形氣動，<br/>邊界尖銳接近橢圓形的叫<br/>楕圓氣動。<br/>例如CX-RAY就是楕圓氣動。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3662amx16.jpg" target="_blank"><img alt="RIMG3662amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3662amx16s.jpg" width="320"/></a><br/>前輪右側295mm的輵條。<br/>輵條比重是 71.0÷14÷295÷0.0257＝<br/>0.66892...，約67%。<br/><br/>這個輵條比重的話，<br/>即使形狀不同，補修也可以勉強<br/>混用CX-RAY。<br/><br/>不過，重要的不是這個。<br/>相差1mm的14本輵條束與束之間<br/>輵條比重相差近5%的理由。<br/>前輪右是76.3g，<br/>所以每本重量是5.45g，<br/>從76.3g減去它，也就是變成13本時<br/>變成70.85g，<br/>這幾乎與前輪左14本相同重量。<br/>如果真的左右都是同樣輵條的話<br/>14本輵條束之間<br/>不可能發生1本輵條的重量差。<br/><br/>調查的結果 我用卡尺實測<br/>前輪右的輵條是 2.2×1.0mm，<br/>前輪左的輵條是 2.0×1.0mm。<br/><br/>這裡很多人可能已經察覺到了<br/>這個前輪是反向異徑組裝。<br/>左右差4.75%不能說是<br/>左右同徑組裝。<br/>這當然不是組裝者的執著<br/>（要是對輵條張力左右差有什麼執著<br/>導致特意選這樣的輵條的話請告訴我），<br/>而是對輵條不了解的白癡<br/>沒有調查尺寸<br/>以為是同樣輵條組輪的結果<br/>碰巧變成了反向異徑組裝。<br/><br/>要是反過來碰巧變成了左右異徑組裝的話<br/>我會以為是有意的設計而讚賞的。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3665amx16.jpg" target="_blank"><img alt="RIMG3665amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3665amx16s.jpg" width="320"/></a><br/>後輪右側294mm CX-RAY。<br/>輵條比重是 67.2÷14÷294÷0.0257＝<br/>0.63527...，約64%。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3667amx16.jpg" target="_blank"><img alt="RIMG3667amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3667amx16s.jpg" width="320"/></a><br/>後輪左側296mm CX-RAY。<br/>輵條比重是 68.3÷14÷296÷0.0257＝<br/>0.64130...，約64%。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3666amx16.jpg" target="_blank"><img alt="RIMG3666amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3666amx16s.jpg" width="320"/></a><br/>↑不知道什麼輵條（圖左）和<br/>CX-RAY（圖右）的輵條頭部分。<br/>CX-RAY的螺紋側不同，<br/>輵條頭側素面部分的長度也有些許偏差，<br/>會因變截部分較輕<br/>而影響輵條比重。<br/><br/>這次的前輪右輵條<br/>輵條比重66.7%，<br/>如果輵條頭側素面部分的長度<br/>短得像Sapim一樣的話<br/>應該是65%左右。<br/><br/>我對CX-RAY的輵條比重<br/>概算值用65%，<br/>正式計算時用64.5%，<br/>但這是折頸輵條的情況。<br/>從輵條長度的測量範圍來看<br/>要排除的部分體積<br/>折頸輵條比較大，<br/>所以直形輵條傾向於<br/>輵條比重比折頸輵條小。<br/>CX-RAY的折頸輵條下限大約<br/>63.5%左右是可能的，<br/>所以直形輵條也有62%台的可能。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3668amx16.jpg" target="_blank"><img alt="RIMG3668amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG3668amx16s.jpg" width="320"/></a><br/>↑Sapim的刻字<br/>前輪要是正向異徑組裝<br/>本想「改成正向異徑就會不同」的話，<br/>椀形量更大的後輪<br/>卻做CX-RAY的左右同徑組裝<br/>沒有意義，<br/>所以也只能得出結論<br/>輵條管理很馬虎<br/>加上組裝者是白癡。<br/><br/>養成了查所有陌生輵條<br/>輵條比重的習慣<br/>真是太好了。<br/>差點也要成為白癡的一員。<br/><br/>這篇文章中沒有組輪，<br/>但這樣的流程 儘管通常不寫<br/>但經常在做。<br/><br/>啊，本來的題目<br/>「如果輵條能重用的話<br/>引進M8100系直形輵條用轂，<br/>要是不行就用M8200系的通用輵條用轂」<br/>這個 看起來是前者可行。<br/>新前輪 原前輪左側放到前輪右側，<br/>原後輪右側放到前輪左側，<br/>後輪右側用新的CX Sprint，<br/>後輪左側保持原樣，<br/>這樣的話 左側／右側輵條比重就會<br/>前輪　71.0（實測）／63.5（實測）<br/>後輪　64.1（實測）／78（概算）<br/>成為不錯的左右異徑組裝。<br/><br/>轂的含稅定價<br/><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+XT+M8110-BS+hub+BOOST+straight+spoke" target="_blank" rel="noopener sponsored" class="amz-inline">HB/FH-M8110-BS</a>的話<br/>前輪 13599円<br/>後輪　 21814円<br/>合計　 35413円，<br/>HB/FH-M8210-B的話<br/>前輪 12058円<br/>後輪　 28057円<br/>合計　 40115円，<br/>前輪轂的價格反轉了，<br/>但前後合計M8200系反而更貴，<br/>用M8200系組裝的情況下<br/>輵條全部要新購，<br/>所以用M8100系直形輵條轂<br/>盡量重用輵條在<br/>壓低金額這點來說<br/>也更划算。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

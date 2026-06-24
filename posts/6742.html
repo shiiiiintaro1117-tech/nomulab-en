@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,37 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
-    <p>Bicycle Workshop — English Edition</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/index.html">
+        <span class="brand-title">Nomu Lab Diary</span>
+        <span class="brand-subtitle">Bicycle Workshop Archive</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/index.html">Archive</a>
+      <a href="/guides/wheel-building.html">Wheel Guide</a>
+      <a href="/glossary.html">Glossary</a>
+      <a href="/about.html">About</a>
+    </nav>
     <div class="lang-toggle"><span class="lang-btn active">EN</span><a class="lang-btn" href="/zh/posts/6742.html">繁中</a></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/index.html">← All posts</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>Changed rear tire to Continental Grand Prix 5000S TR</h1>
     <p class="post-meta">June 30, 2023</p>
+    <div class="post-body"><div class="entrytext">The <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=IRC+S-Light+bicycle+tire" target="_blank" rel="noopener sponsored" class="amz-inline">IRC S-Light</a> got a slow puncture during this morning's training ride.<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_3868msn5.jpg" target="_blank"><img alt="IMG_3868msn5.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_3868msn5s.jpg" width="320"/></a><br/>But first. This is a photo from the day I went for a ride right after putting on the tire that got the slow puncture today.<br/>It was April 30th of this year.<br/>That's exactly two months ago.<br/>The location is the intersection in Ono-cho at the foot of Nabeya Pass.<br/>It was already raining before I left home,<br/>so I put on a rain jacket—or more like a waterproof wind breaker—on top,<br/>and didn't mind my shoes getting wet, wearing waterproof socks instead,<br/>and changed my racer pants to shorts.<br/>I applied <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Wako%27s+sunscreen+water-repellent" target="_blank" rel="noopener sponsored" class="amz-inline">Wako's sunscreen</a> to my exposed knees and shins.<br/>It serves the role of a water-repellent protective coating<br/>and won't come off unless you use cleansing oil<br/>(it won't come off even with just rubbing with soap).<br/>For me, Wako's sunscreen is used more often for this purpose than as actual sunscreen,<br/>but doing this requires a temperature that won't chill your knees in the rain.<br/>That day I judged it was right at the borderline temperature where this was possible,<br/>so I didn't wear full-length rain pants.<br/>Water-repellent legs plus shorts means no pedaling interference.<br/>I intend to write an article about the POLAR's usability issues someday,<br/>but the current VANTAGE V series doesn't allow you to select "temperature" as a display option.<br/>The previous V800 series, and even older RS and S series could select it.<br/>It's not that they don't collect temperature data—they record it in the background,<br/>so you can check it afterwards when you transfer the ride data to your PC.<br/>Being able to see the temperature in real-time is convenient because you can check while riding<br/>things like "I'll need neoprene shoe covers at this temperature" or<br/>"what temperature was it when I took off my arm warmers?"<br/>Temperature gauges on roadside LED displays tend to show temperatures that are "conservative" compared to actual feel.<br/>Since the temperature sensor is located away from the ground,<br/>it probably doesn't pick up heat reflection from the ground.<br/>In summer, the cycle computer shows a higher temperature,<br/>and in winter, it seems like the cycle computer shows a lower temperature because it doesn't pick up the cold at ground level.<br/>This is especially noticeable when it's particularly hot.<br/>Right now, when I checked the temperature recorded at the time when the GPS track was at Ono-cho on April 30th, it was 16.3℃.<br/>At this kind of temperature, there seems to be no upswings or downswings.<br/><br/>Today I had some business at my master's place,<br/>so I left home at 4 AM to be able to stop by around 8-9 AM,<br/>and I figured that going out of Osaka via Fukibuki Pass and back into Osaka via Kimi Pass would work out well timing and route-wise.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4094msn5.jpg" target="_blank"><img alt="IMG_4094msn5.jpg" border="0" height="320" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4094msn5s.jpg" width="240"/></a><br/>This is today's entrance to Fukibuki Pass on the Osaka side.<br/>Though it's the "Osaka side entrance,"<br/>we're already in Wakayama Prefecture just before the tunnel,<br/>so it's Wakayama in terms of address.<br/>Incidentally, the rest stop at the tunnel entrance is also in Wakayama Prefecture.<br/>For some reason, I often see snails at this tunnel entrance.<br/>I don't think it's always the same individual, but I always see just one.<br/>It's the one in the upper part of the image above.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_409i6msn5.jpg" target="_blank"><img alt="IMG_409i6msn5.jpg" border="0" height="320" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_409i6msn5s.jpg" width="240"/></a><br/>Up close, it looks like this.<br/>Since it's defecating, I don't think it's dead,<br/>but its body is withdrawn into its shell and it doesn't move.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_2311msn5.jpg" target="_blank"><img alt="IMG_2311msn5.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_2311msn5s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_2312msn5.jpg" target="_blank"><img alt="IMG_2312msn5.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_2312msn5s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_2314msn5.jpg" target="_blank"><img alt="IMG_2314msn5.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_2314msn5s.jpg" width="320"/></a><br/>This was July 30th last year.<br/>I didn't take a photo the next day, but there was<br/>what appeared to be the same snail<br/>that had advanced about 10 meters toward the tunnel,<br/>and I wondered if it would make it back alive.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_3982msn5.jpg" target="_blank"><img alt="IMG_3982msn5.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_3982msn5s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_3983msn5.jpg" target="_blank"><img alt="IMG_3983msn5.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_3983msn5s.jpg" width="320"/></a><br/>This was June 1st this year.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_3984msn5.jpg" target="_blank"><img alt="IMG_3984msn5.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_3984msn5s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_3985msn5.jpg" target="_blank"><img alt="IMG_3985msn5.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_3985msn5s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_3986msn5.jpg" target="_blank"><img alt="IMG_3986msn5.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_3986msn5s.jpg" width="320"/></a><br/>I splashed water from my bottle on it.<br/>No response.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4097msn5.jpg" target="_blank"><img alt="IMG_4097msn5.jpg" border="0" height="320" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4097msn5s.jpg" width="240"/></a><br/>I made a slight detour (about 200 meters round trip),<br/>but this is the main gate of Kokawa Temple.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4398amx15.jpg" target="_blank"><img alt="RIMG4398amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4398amx15s.jpg" width="320"/></a><br/>↑My mental map of the area.<br/>There's Mt. Katsuragi between Nabeya Pass and Kimi Pass,<br/>but I hardly go there so I left it out.<br/>Between Fukibuki Pass and Nabeya Pass there's Inunaki Mountain (Ikeda Tunnel),<br/>which I climb sometimes, but I forgot to write it in.<br/><br/>When you descend Fukibuki Pass, there's first a wide-area agricultural road, then below that the Kokawa-Kada Line,<br/>and further down is Route 24,<br/>but the Kokawa-Kada Line, which connects Kada to Kokawa and merges with Route 24,<br/>has few cars and traffic lights and is easy to ride.<br/>If you ride the agricultural road you hit the intersection at Miyuki-Tsuji South on Kimi Pass,<br/>but the ups and downs are brutal so I pass on it.<br/>After getting to Route 24, I ride a bit to the east,<br/>but soon I cross the Kino River to the south and ride to the foot of Kimi Pass,<br/>so I barely ride on Route 24.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4399amx15.jpg" target="_blank"><img alt="RIMG4399amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4399amx15s.jpg" width="320"/></a><br/>↑Like this, I just go over it.<br/>Incidentally, from Nabeya Pass you can climb Mt. Koya from Route 480<br/>(or rather, Nabeya Pass itself is Route 480), and from Kimi Pass you can climb from Route 371<br/>(or rather, Kimi Pass itself is Route 371).<br/>From both, the routes merge at Yatate Tea House, and after that it's a single road.<br/><br/>So when crossing the Kino River on the Kokawa side,<br/>at the bridge joint which forms a W-W-W-W-W pattern,<br/>there's a place with a large gap, and I carelessly caused a pinch flat.<br/>I think it was after that when a pretty slow puncture developed,<br/>and midway up Kimi Pass on the way back I<br/>topped up the air with a portable pump.<br/>Just before that I could feel a slight pinch flat sensation even at small bumps.<br/><br/>From experience, when you notice a slow puncture and top up the air,<br/>without bursting the sealant scab with internal pressure—<br/>say, putting in about 4 bar—<br/>the higher the pressure, the faster the air leaks, and<br/>eventually it drops to about 2 bar, but<br/>it often stabilizes at an "air pressure that barely leaks any further"<br/>But this slow puncture seemed to keep leaking slowly through that threshold,<br/>on and on.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4105msn5.jpg" target="_blank"><img alt="IMG_4105msn5.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4105msn5s.jpg" width="320"/></a><br/>Separate from the midway point on Kimi Pass I mentioned earlier,<br/>I also topped up the air at the top of Kimi Pass.<br/>I pressurized it to the point where my finger couldn't dent it,<br/>but on the descent of Kimi Pass I was still getting that pinch flat feeling at bumps.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4106msn5.jpg" target="_blank"><img alt="IMG_4106msn5.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4106msn5s.jpg" width="320"/></a><br/>↑This is the sealant scab.<br/>I remembered it as "next to the round wear indicator on the tire near the valve,"<br/>but since there are three valves it's hard to find.<br/>This slow puncture doesn't seem to be from scab burst,<br/>but rather from a strong pinch flat that loosened the tire bead seal in one spot.<br/><br/>I chose Kimi Pass on the way back because it's the nearest pass to my master's workshop,<br/>and when I borrowed a floor pump there and gambled by putting in 5 bar,<br/>there was no sealant scab burst<br/>(there was no cracking sound when the bead lifted either).<br/>After chatting for about an hour, I left,<br/>and when I checked before riding off, the air hadn't lost any pressure in the hour of sitting.<br/>Then I passed in front of Brother Maintenance (→<a href="/posts/6724.html" target="_blank" title="here">here</a>)<br/>and since Route 310 has a lot of traffic, I took the backroad one block inside,<br/>the Koya Old Road (which merges with Route 310 in Sakai),<br/>but on that route the scab burst<br/>and shot out sealant with pssh-pssh-pssh! from the wound, but<br/>keeping on riding, it sealed up quickly,<br/>and it became just lower pressure than before the burst,<br/>and the sealant did its job within a few wheel rotations—this happened 3 times.<br/>When I got home, the air pressure was around 3 bar.<br/><br/>The slow puncture up to Kimi Pass wasn't from sealant scab burst.<br/>After the bridge joint buckling,<br/>there was an air leak without a lower limit, that's how it felt.<br/>Probably it would have happened even if the sealant scab was completely absent.<br/><br/>On the way back from my master's place,<br/>sealant scab burst occurred 3 times—something that didn't happen in the hour of static pressure at 5 bar—<br/>but on that route I felt no pinch flat sensation whatsoever,<br/>and I'm almost certain there was no ongoing air leak outside of scab burst times.<br/><br/>The reason air leaked before and after floor pump pressurization is different.<br/>In the state after topping up air at Kimi Pass's summit,<br/>the air probably would have kept leaking even sitting static,<br/>but after pressurization with the floor pump,<br/>unless the sealant scab opens from tire deformation under riding,<br/>air doesn't escape—that's how it felt.<br/><br/>So when I got home and looked at the bike,<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4109msn5.jpg" target="_blank"><img alt="IMG_4109msn5.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4109msn5s.jpg" width="320"/></a><br/>sealant had splattered on the back of the seat tube.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4108msn5.jpg" target="_blank"><img alt="IMG_4108msn5.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4108msn5s.jpg" width="320"/></a><br/>Even the Cateye light in a leather case hanging from the saddle got sealant on it.<br/>The forecast was for rain that day, so I put my wallet and phone in a waterproof pack<br/>and carried a waterproof wind breaker in my back pocket,<br/>but it didn't rain during the time I rode so I didn't use them.<br/>If I'd been riding in the rain, some of this sealant might have washed away.<br/>The puncture was on the right side, but the sealant splattered<br/>even to the back of the four arms of the right crank.<br/>Since it becomes a hassle when it dries completely,<br/>I rinsed it off by scrubbing with hot water shower.<br/><br/>Unrelated to this, if after riding in summer you touch the underside of the top tube<br/>and it feels gritty from salt in your sweat,<br/>it's worth making it a habit to at least rinse it quickly with water,<br/>or if that's difficult, wipe it quickly with a damp cloth or paper towel—<br/>this alone makes a huge difference in the long-term damage accumulation to the frame.<br/>The only thing you don't have to worry about this with is an unpainted titanium frame.<br/>Even then, if the top tube's derailleur cable stop is fastened with blind rivets rather than welding,<br/>it's worth doing.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4369amx15.jpg" target="_blank"><img alt="RIMG4369amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4369amx15s.jpg" width="320"/></a><br/>Customers have told me many times, "Your IRC tubeless tires puncture pretty often, don't they?"<br/>but having specifically chosen the S-Light—which was nearly one-of-a-kind for its lightness—despite knowing the puncture risk,<br/>and riding in the rain pretty readily<br/>(not getting caught in rain during the ride, but going out even when it's already raining before I leave),<br/>I'm not dissatisfied with the puncture frequency itself.<br/>I say "nearly one-of-a-kind" in past tense because similar-weight tires are now available from other manufacturers,<br/>but one of them, a certain domestic brand that's not IRC,<br/>at least regarding road bike tires, has never made a decent tire even once in the past,<br/>and I've been burned by them so many times<br/>that I'm leaving the job of being deceived to other people.<br/>If they ever made a decent tire, I'd hear about it.<br/>Until then, I'm sitting on the sidelines as a mere observer.<br/>Some actual stories I've heard include<br/>"the lightness you feel in your hands doesn't translate to rolling lightness,"<br/>"it flats constantly,"<br/>"we were supplied a tubular version, that's a crappy tire,"<br/>"they said if we wrote a report we'd get it free, so we use it, but wouldn't buy it,"<br/>"(when trying to remount a tire that was removed for inspection after work) we're going back to Grand Prix 5000, don't bother installing that tire,"<br/>and so on.<br/>Also, someone from a wholesaler who's kind of a senior to me in the business sense in this industry,<br/>when we talked on the phone before about this tire,<br/>was surprised that "if you do SNS advertising properly, it sells that much in the initial phase, regardless of repeat customers."<br/>This senior was also a former pro rider, so there was a period when he stuck to the professional approach of<br/>showing he enjoyed things offered by sponsors no matter what he really thought,<br/>and he may have had the experience of showing that he enjoyed this manufacturer's tires too (figuratively speaking).<br/><br/>So this tire that got a slow puncture today has worn tread anyway,<br/>so I decided to replace it, but I haven't bought replacement stock.<br/>In these situations, as a temporary measure I usually patch the back of the tire and use it until the same tire arrives,<br/>but this time I decided to try out the <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Continental+Grand+Prix+5000S+TR+tire" target="_blank" rel="noopener sponsored" class="amz-inline">Continental Grand Prix 5000S TR</a> (tubeless ready) that was in stock.<br/>The measured weight for the 25C is just under 260g<br/>(as you can see in the image above, I removed the instruction sheet which weighs 7-8g).<br/><br/>The 5000 TL, which was tubeless (not tubeless-ready),<br/>was discontinued at the same time the 5000S TR came out.<br/>I've never used it (and never ordered it as stock)<br/>because at 25C width with an actual measured weight of 300g, I figured<br/>even if rolling was somehow light, I just didn't need it,<br/>but people who actually used it said<br/>before they could even feel the comfort of tubeless riding,<br/>the rolling was abnormally sluggish and it was no good—most feedback was like that.<br/>Also, the tire sidewall is thick and the bead is stiff, so<br/>depending on rim internal width,<br/>at minimum it's far harder to mount on the rim than the same-width tubed 5000,<br/>and since tubular-type road UST (ultra-light sealed tubeless) tires only fit with road UST tubeless rims,<br/>Mavic bears no fault,<br/>but mounting on Mavic rims was extremely difficult,<br/>and if you forced it on, removing it at roadside became<br/>basically impossible for a normal person.<br/>It's like equipping a cursed item in Dragon Quest.<br/>You can only get it unsealed at a church.<br/>I've never ordered the TL myself, but I handle them sometimes for inspections, so<br/>when I heard it was being discontinued, I figured there must have been some embarrassing circumstances beyond just the tire's performance.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4370amx15.jpg" target="_blank"><img alt="RIMG4370amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4370amx15s.jpg" width="320"/></a><br/>The 5000S TR has a much beefier tire bead compared to IRC.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4371amx15.jpg" target="_blank"><img alt="RIMG4371amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4371amx15s.jpg" width="320"/></a><br/>There was no deformation like dents, but the rim sidewall had gotten scratched from the bridge joint buckling.<br/>This definitely wasn't there yesterday.<br/>Man, I really messed up.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4373amx15.jpg" target="_blank"><img alt="RIMG4373amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4373amx15s.jpg" width="320"/></a><br/>The bead protrusions are large.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4374amx15.jpg" target="_blank"><img alt="RIMG4374amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4374amx15s.jpg" width="320"/></a><br/>People who started road biking in the last two years or so and have never ridden a rim-brake road bike might not know,<br/>but there was a Grand Prix 4000 before the Grand Prix 5000,<br/>and it went through minor changes 4000→4000S→4000S II,<br/>but with all those models, when mounted on a rim,<br/>threads would fray and come out from<br/>the casing end just outside the tire-rim boundary—<br/>that was how they were made (→<a href="/posts/6095.html" target="_blank" title="here">here</a>).<br/>The 5000 TL came after the 5000, but<br/>that manufacturing method was oddly the same as the 4000,<br/>and those threads that stopped appearing on the 5000<br/>came back on the 5000 TL.<br/>I'm curious how the 5000S TR handles this.<br/>Since the sidewall is covered with rubber,<br/>I figure the threads probably don't come out, but.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4388msn5.jpg" target="_blank"><img alt="RIMG4388msn5.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4388msn5s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4387msn5.jpg" target="_blank"><img alt="RIMG4387msn5.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4387msn5s.jpg" width="320"/></a><br/>With the IRC S-Light, in both 23C and 25C,<br/>with my rims I can mount and remove the tire without tire levers—<br/>I know this from experience.<br/>For removal, I've confirmed that I can do it even with brand-new,<br/>basically unused tires before their first ride, with the tire mounted and bead seated up to air pressure.<br/>So for portability I carry only one small tire lever<br/>as insurance.<br/>That's either the IRC tire lever I cut short<br/>or the PB tire lever from the company famous for Allen keys.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4389msn5.jpg" target="_blank"><img alt="RIMG4389msn5.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4389msn5s.jpg" width="320"/></a><br/>In terms of pure tire lever performance, it's shorter than the ones above from<br/>Marwi or Campagnolo (Fulcrum),<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4390msn5.jpg" target="_blank"><img alt="RIMG4390msn5.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4390msn5s.jpg" width="320"/></a><br/>and since it has no bending it's excellent for portability.<br/>What concerned me was whether with the Grand Prix 5000S TR<br/>I'd need to carry one more tire lever as insurance.<br/><br/>First about mounting: hooking one bead side onto the rim required a tire lever.<br/>Hooking the other side was doable by hand,<br/>and surprisingly the final flip-up of the bead was soft despite looking thick.<br/>The bead lift with the compressor came up quite smoothly,<br/>and it was clearly easier to lift than IRC.<br/>As a side note, IRC tires get noticeably harder to lift the bead as they age.<br/>All tire makers show this tendency, but IRC is particularly marked.<br/><br/>Next, removing the tire from that state:<br/>First, getting one bead off was doable by hand.<br/>What surprised me was that the other bead also came off by hand with just light effort.<br/>Installation required a tire lever, but now I could remove without one.<br/>It's unlikely the tire sidewall stretched that much from one pressurization,<br/>so maybe I picked up the knack for it.<br/>Looks like I can keep carrying just one portable tire lever.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4375amx15.jpg" target="_blank"><img alt="RIMG4375amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4375amx15s.jpg" width="320"/></a><br/>I mounted it again.<br/>I did it without a tire lever.<br/>The second time I'm using <span style="font-size:large;">Imagery sealant</span>.<br/>The tire width is 25C, but I'll test whether 35ml is enough.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4400amx15.jpg" target="_blank"><img alt="RIMG4400amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4400amx15s.jpg" width="320"/></a><br/>↑This is a Grand Prix 4000 (on Racing Zero),<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4404amx15.jpg" target="_blank"><img alt="RIMG4404amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4404amx15s.jpg" width="320"/></a><br/>and here's how much the threads start coming out and the casing exposure looks.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4402amx15.jpg" target="_blank"><img alt="RIMG4402amx15.jpg" border="0</div>
+    <aside class="post-guides">
+      <strong>Technical archive</strong>
+      <nav aria-label="Technical guides">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,7 +405,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">The <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=IRC+S-Light+bicycle+tire" target="_blank" rel="noopener sponsored" class="amz-inline">IRC S-Light</a> got a slow puncture during this morning's training ride.<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_3868msn5.jpg" target="_blank"><img alt="IMG_3868msn5.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_3868msn5s.jpg" width="320"/></a><br/>But first. This is a photo from the day I went for a ride right after putting on the tire that got the slow puncture today.<br/>It was April 30th of this year.<br/>That's exactly two months ago.<br/>The location is the intersection in Ono-cho at the foot of Nabeya Pass.<br/>It was already raining before I left home,<br/>so I put on a rain jacket—or more like a waterproof wind breaker—on top,<br/>and didn't mind my shoes getting wet, wearing waterproof socks instead,<br/>and changed my racer pants to shorts.<br/>I applied <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Wako%27s+sunscreen+water-repellent" target="_blank" rel="noopener sponsored" class="amz-inline">Wako's sunscreen</a> to my exposed knees and shins.<br/>It serves the role of a water-repellent protective coating<br/>and won't come off unless you use cleansing oil<br/>(it won't come off even with just rubbing with soap).<br/>For me, Wako's sunscreen is used more often for this purpose than as actual sunscreen,<br/>but doing this requires a temperature that won't chill your knees in the rain.<br/>That day I judged it was right at the borderline temperature where this was possible,<br/>so I didn't wear full-length rain pants.<br/>Water-repellent legs plus shorts means no pedaling interference.<br/>I intend to write an article about the POLAR's usability issues someday,<br/>but the current VANTAGE V series doesn't allow you to select "temperature" as a display option.<br/>The previous V800 series, and even older RS and S series could select it.<br/>It's not that they don't collect temperature data—they record it in the background,<br/>so you can check it afterwards when you transfer the ride data to your PC.<br/>Being able to see the temperature in real-time is convenient because you can check while riding<br/>things like "I'll need neoprene shoe covers at this temperature" or<br/>"what temperature was it when I took off my arm warmers?"<br/>Temperature gauges on roadside LED displays tend to show temperatures that are "conservative" compared to actual feel.<br/>Since the temperature sensor is located away from the ground,<br/>it probably doesn't pick up heat reflection from the ground.<br/>In summer, the cycle computer shows a higher temperature,<br/>and in winter, it seems like the cycle computer shows a lower temperature because it doesn't pick up the cold at ground level.<br/>This is especially noticeable when it's particularly hot.<br/>Right now, when I checked the temperature recorded at the time when the GPS track was at Ono-cho on April 30th, it was 16.3℃.<br/>At this kind of temperature, there seems to be no upswings or downswings.<br/><br/>Today I had some business at my master's place,<br/>so I left home at 4 AM to be able to stop by around 8-9 AM,<br/>and I figured that going out of Osaka via Fukibuki Pass and back into Osaka via Kimi Pass would work out well timing and route-wise.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4094msn5.jpg" target="_blank"><img alt="IMG_4094msn5.jpg" border="0" height="320" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4094msn5s.jpg" width="240"/></a><br/>This is today's entrance to Fukibuki Pass on the Osaka side.<br/>Though it's the "Osaka side entrance,"<br/>we're already in Wakayama Prefecture just before the tunnel,<br/>so it's Wakayama in terms of address.<br/>Incidentally, the rest stop at the tunnel entrance is also in Wakayama Prefecture.<br/>For some reason, I often see snails at this tunnel entrance.<br/>I don't think it's always the same individual, but I always see just one.<br/>It's the one in the upper part of the image above.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_409i6msn5.jpg" target="_blank"><img alt="IMG_409i6msn5.jpg" border="0" height="320" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_409i6msn5s.jpg" width="240"/></a><br/>Up close, it looks like this.<br/>Since it's defecating, I don't think it's dead,<br/>but its body is withdrawn into its shell and it doesn't move.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_2311msn5.jpg" target="_blank"><img alt="IMG_2311msn5.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_2311msn5s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_2312msn5.jpg" target="_blank"><img alt="IMG_2312msn5.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_2312msn5s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_2314msn5.jpg" target="_blank"><img alt="IMG_2314msn5.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_2314msn5s.jpg" width="320"/></a><br/>This was July 30th last year.<br/>I didn't take a photo the next day, but there was<br/>what appeared to be the same snail<br/>that had advanced about 10 meters toward the tunnel,<br/>and I wondered if it would make it back alive.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_3982msn5.jpg" target="_blank"><img alt="IMG_3982msn5.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_3982msn5s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_3983msn5.jpg" target="_blank"><img alt="IMG_3983msn5.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_3983msn5s.jpg" width="320"/></a><br/>This was June 1st this year.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_3984msn5.jpg" target="_blank"><img alt="IMG_3984msn5.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_3984msn5s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_3985msn5.jpg" target="_blank"><img alt="IMG_3985msn5.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_3985msn5s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_3986msn5.jpg" target="_blank"><img alt="IMG_3986msn5.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_3986msn5s.jpg" width="320"/></a><br/>I splashed water from my bottle on it.<br/>No response.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4097msn5.jpg" target="_blank"><img alt="IMG_4097msn5.jpg" border="0" height="320" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4097msn5s.jpg" width="240"/></a><br/>I made a slight detour (about 200 meters round trip),<br/>but this is the main gate of Kokawa Temple.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4398amx15.jpg" target="_blank"><img alt="RIMG4398amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4398amx15s.jpg" width="320"/></a><br/>↑My mental map of the area.<br/>There's Mt. Katsuragi between Nabeya Pass and Kimi Pass,<br/>but I hardly go there so I left it out.<br/>Between Fukibuki Pass and Nabeya Pass there's Inunaki Mountain (Ikeda Tunnel),<br/>which I climb sometimes, but I forgot to write it in.<br/><br/>When you descend Fukibuki Pass, there's first a wide-area agricultural road, then below that the Kokawa-Kada Line,<br/>and further down is Route 24,<br/>but the Kokawa-Kada Line, which connects Kada to Kokawa and merges with Route 24,<br/>has few cars and traffic lights and is easy to ride.<br/>If you ride the agricultural road you hit the intersection at Miyuki-Tsuji South on Kimi Pass,<br/>but the ups and downs are brutal so I pass on it.<br/>After getting to Route 24, I ride a bit to the east,<br/>but soon I cross the Kino River to the south and ride to the foot of Kimi Pass,<br/>so I barely ride on Route 24.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4399amx15.jpg" target="_blank"><img alt="RIMG4399amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4399amx15s.jpg" width="320"/></a><br/>↑Like this, I just go over it.<br/>Incidentally, from Nabeya Pass you can climb Mt. Koya from Route 480<br/>(or rather, Nabeya Pass itself is Route 480), and from Kimi Pass you can climb from Route 371<br/>(or rather, Kimi Pass itself is Route 371).<br/>From both, the routes merge at Yatate Tea House, and after that it's a single road.<br/><br/>So when crossing the Kino River on the Kokawa side,<br/>at the bridge joint which forms a W-W-W-W-W pattern,<br/>there's a place with a large gap, and I carelessly caused a pinch flat.<br/>I think it was after that when a pretty slow puncture developed,<br/>and midway up Kimi Pass on the way back I<br/>topped up the air with a portable pump.<br/>Just before that I could feel a slight pinch flat sensation even at small bumps.<br/><br/>From experience, when you notice a slow puncture and top up the air,<br/>without bursting the sealant scab with internal pressure—<br/>say, putting in about 4 bar—<br/>the higher the pressure, the faster the air leaks, and<br/>eventually it drops to about 2 bar, but<br/>it often stabilizes at an "air pressure that barely leaks any further"<br/>But this slow puncture seemed to keep leaking slowly through that threshold,<br/>on and on.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4105msn5.jpg" target="_blank"><img alt="IMG_4105msn5.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4105msn5s.jpg" width="320"/></a><br/>Separate from the midway point on Kimi Pass I mentioned earlier,<br/>I also topped up the air at the top of Kimi Pass.<br/>I pressurized it to the point where my finger couldn't dent it,<br/>but on the descent of Kimi Pass I was still getting that pinch flat feeling at bumps.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4106msn5.jpg" target="_blank"><img alt="IMG_4106msn5.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4106msn5s.jpg" width="320"/></a><br/>↑This is the sealant scab.<br/>I remembered it as "next to the round wear indicator on the tire near the valve,"<br/>but since there are three valves it's hard to find.<br/>This slow puncture doesn't seem to be from scab burst,<br/>but rather from a strong pinch flat that loosened the tire bead seal in one spot.<br/><br/>I chose Kimi Pass on the way back because it's the nearest pass to my master's workshop,<br/>and when I borrowed a floor pump there and gambled by putting in 5 bar,<br/>there was no sealant scab burst<br/>(there was no cracking sound when the bead lifted either).<br/>After chatting for about an hour, I left,<br/>and when I checked before riding off, the air hadn't lost any pressure in the hour of sitting.<br/>Then I passed in front of Brother Maintenance (→<a href="/posts/6724.html" target="_blank" title="here">here</a>)<br/>and since Route 310 has a lot of traffic, I took the backroad one block inside,<br/>the Koya Old Road (which merges with Route 310 in Sakai),<br/>but on that route the scab burst<br/>and shot out sealant with pssh-pssh-pssh! from the wound, but<br/>keeping on riding, it sealed up quickly,<br/>and it became just lower pressure than before the burst,<br/>and the sealant did its job within a few wheel rotations—this happened 3 times.<br/>When I got home, the air pressure was around 3 bar.<br/><br/>The slow puncture up to Kimi Pass wasn't from sealant scab burst.<br/>After the bridge joint buckling,<br/>there was an air leak without a lower limit, that's how it felt.<br/>Probably it would have happened even if the sealant scab was completely absent.<br/><br/>On the way back from my master's place,<br/>sealant scab burst occurred 3 times—something that didn't happen in the hour of static pressure at 5 bar—<br/>but on that route I felt no pinch flat sensation whatsoever,<br/>and I'm almost certain there was no ongoing air leak outside of scab burst times.<br/><br/>The reason air leaked before and after floor pump pressurization is different.<br/>In the state after topping up air at Kimi Pass's summit,<br/>the air probably would have kept leaking even sitting static,<br/>but after pressurization with the floor pump,<br/>unless the sealant scab opens from tire deformation under riding,<br/>air doesn't escape—that's how it felt.<br/><br/>So when I got home and looked at the bike,<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4109msn5.jpg" target="_blank"><img alt="IMG_4109msn5.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4109msn5s.jpg" width="320"/></a><br/>sealant had splattered on the back of the seat tube.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4108msn5.jpg" target="_blank"><img alt="IMG_4108msn5.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4108msn5s.jpg" width="320"/></a><br/>Even the Cateye light in a leather case hanging from the saddle got sealant on it.<br/>The forecast was for rain that day, so I put my wallet and phone in a waterproof pack<br/>and carried a waterproof wind breaker in my back pocket,<br/>but it didn't rain during the time I rode so I didn't use them.<br/>If I'd been riding in the rain, some of this sealant might have washed away.<br/>The puncture was on the right side, but the sealant splattered<br/>even to the back of the four arms of the right crank.<br/>Since it becomes a hassle when it dries completely,<br/>I rinsed it off by scrubbing with hot water shower.<br/><br/>Unrelated to this, if after riding in summer you touch the underside of the top tube<br/>and it feels gritty from salt in your sweat,<br/>it's worth making it a habit to at least rinse it quickly with water,<br/>or if that's difficult, wipe it quickly with a damp cloth or paper towel—<br/>this alone makes a huge difference in the long-term damage accumulation to the frame.<br/>The only thing you don't have to worry about this with is an unpainted titanium frame.<br/>Even then, if the top tube's derailleur cable stop is fastened with blind rivets rather than welding,<br/>it's worth doing.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4369amx15.jpg" target="_blank"><img alt="RIMG4369amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4369amx15s.jpg" width="320"/></a><br/>Customers have told me many times, "Your IRC tubeless tires puncture pretty often, don't they?"<br/>but having specifically chosen the S-Light—which was nearly one-of-a-kind for its lightness—despite knowing the puncture risk,<br/>and riding in the rain pretty readily<br/>(not getting caught in rain during the ride, but going out even when it's already raining before I leave),<br/>I'm not dissatisfied with the puncture frequency itself.<br/>I say "nearly one-of-a-kind" in past tense because similar-weight tires are now available from other manufacturers,<br/>but one of them, a certain domestic brand that's not IRC,<br/>at least regarding road bike tires, has never made a decent tire even once in the past,<br/>and I've been burned by them so many times<br/>that I'm leaving the job of being deceived to other people.<br/>If they ever made a decent tire, I'd hear about it.<br/>Until then, I'm sitting on the sidelines as a mere observer.<br/>Some actual stories I've heard include<br/>"the lightness you feel in your hands doesn't translate to rolling lightness,"<br/>"it flats constantly,"<br/>"we were supplied a tubular version, that's a crappy tire,"<br/>"they said if we wrote a report we'd get it free, so we use it, but wouldn't buy it,"<br/>"(when trying to remount a tire that was removed for inspection after work) we're going back to Grand Prix 5000, don't bother installing that tire,"<br/>and so on.<br/>Also, someone from a wholesaler who's kind of a senior to me in the business sense in this industry,<br/>when we talked on the phone before about this tire,<br/>was surprised that "if you do SNS advertising properly, it sells that much in the initial phase, regardless of repeat customers."<br/>This senior was also a former pro rider, so there was a period when he stuck to the professional approach of<br/>showing he enjoyed things offered by sponsors no matter what he really thought,<br/>and he may have had the experience of showing that he enjoyed this manufacturer's tires too (figuratively speaking).<br/><br/>So this tire that got a slow puncture today has worn tread anyway,<br/>so I decided to replace it, but I haven't bought replacement stock.<br/>In these situations, as a temporary measure I usually patch the back of the tire and use it until the same tire arrives,<br/>but this time I decided to try out the <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Continental+Grand+Prix+5000S+TR+tire" target="_blank" rel="noopener sponsored" class="amz-inline">Continental Grand Prix 5000S TR</a> (tubeless ready) that was in stock.<br/>The measured weight for the 25C is just under 260g<br/>(as you can see in the image above, I removed the instruction sheet which weighs 7-8g).<br/><br/>The 5000 TL, which was tubeless (not tubeless-ready),<br/>was discontinued at the same time the 5000S TR came out.<br/>I've never used it (and never ordered it as stock)<br/>because at 25C width with an actual measured weight of 300g, I figured<br/>even if rolling was somehow light, I just didn't need it,<br/>but people who actually used it said<br/>before they could even feel the comfort of tubeless riding,<br/>the rolling was abnormally sluggish and it was no good—most feedback was like that.<br/>Also, the tire sidewall is thick and the bead is stiff, so<br/>depending on rim internal width,<br/>at minimum it's far harder to mount on the rim than the same-width tubed 5000,<br/>and since tubular-type road UST (ultra-light sealed tubeless) tires only fit with road UST tubeless rims,<br/>Mavic bears no fault,<br/>but mounting on Mavic rims was extremely difficult,<br/>and if you forced it on, removing it at roadside became<br/>basically impossible for a normal person.<br/>It's like equipping a cursed item in Dragon Quest.<br/>You can only get it unsealed at a church.<br/>I've never ordered the TL myself, but I handle them sometimes for inspections, so<br/>when I heard it was being discontinued, I figured there must have been some embarrassing circumstances beyond just the tire's performance.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4370amx15.jpg" target="_blank"><img alt="RIMG4370amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4370amx15s.jpg" width="320"/></a><br/>The 5000S TR has a much beefier tire bead compared to IRC.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4371amx15.jpg" target="_blank"><img alt="RIMG4371amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4371amx15s.jpg" width="320"/></a><br/>There was no deformation like dents, but the rim sidewall had gotten scratched from the bridge joint buckling.<br/>This definitely wasn't there yesterday.<br/>Man, I really messed up.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4373amx15.jpg" target="_blank"><img alt="RIMG4373amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4373amx15s.jpg" width="320"/></a><br/>The bead protrusions are large.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4374amx15.jpg" target="_blank"><img alt="RIMG4374amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4374amx15s.jpg" width="320"/></a><br/>People who started road biking in the last two years or so and have never ridden a rim-brake road bike might not know,<br/>but there was a Grand Prix 4000 before the Grand Prix 5000,<br/>and it went through minor changes 4000→4000S→4000S II,<br/>but with all those models, when mounted on a rim,<br/>threads would fray and come out from<br/>the casing end just outside the tire-rim boundary—<br/>that was how they were made (→<a href="/posts/6095.html" target="_blank" title="here">here</a>).<br/>The 5000 TL came after the 5000, but<br/>that manufacturing method was oddly the same as the 4000,<br/>and those threads that stopped appearing on the 5000<br/>came back on the 5000 TL.<br/>I'm curious how the 5000S TR handles this.<br/>Since the sidewall is covered with rubber,<br/>I figure the threads probably don't come out, but.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4388msn5.jpg" target="_blank"><img alt="RIMG4388msn5.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4388msn5s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4387msn5.jpg" target="_blank"><img alt="RIMG4387msn5.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4387msn5s.jpg" width="320"/></a><br/>With the IRC S-Light, in both 23C and 25C,<br/>with my rims I can mount and remove the tire without tire levers—<br/>I know this from experience.<br/>For removal, I've confirmed that I can do it even with brand-new,<br/>basically unused tires before their first ride, with the tire mounted and bead seated up to air pressure.<br/>So for portability I carry only one small tire lever<br/>as insurance.<br/>That's either the IRC tire lever I cut short<br/>or the PB tire lever from the company famous for Allen keys.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4389msn5.jpg" target="_blank"><img alt="RIMG4389msn5.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4389msn5s.jpg" width="320"/></a><br/>In terms of pure tire lever performance, it's shorter than the ones above from<br/>Marwi or Campagnolo (Fulcrum),<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4390msn5.jpg" target="_blank"><img alt="RIMG4390msn5.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4390msn5s.jpg" width="320"/></a><br/>and since it has no bending it's excellent for portability.<br/>What concerned me was whether with the Grand Prix 5000S TR<br/>I'd need to carry one more tire lever as insurance.<br/><br/>First about mounting: hooking one bead side onto the rim required a tire lever.<br/>Hooking the other side was doable by hand,<br/>and surprisingly the final flip-up of the bead was soft despite looking thick.<br/>The bead lift with the compressor came up quite smoothly,<br/>and it was clearly easier to lift than IRC.<br/>As a side note, IRC tires get noticeably harder to lift the bead as they age.<br/>All tire makers show this tendency, but IRC is particularly marked.<br/><br/>Next, removing the tire from that state:<br/>First, getting one bead off was doable by hand.<br/>What surprised me was that the other bead also came off by hand with just light effort.<br/>Installation required a tire lever, but now I could remove without one.<br/>It's unlikely the tire sidewall stretched that much from one pressurization,<br/>so maybe I picked up the knack for it.<br/>Looks like I can keep carrying just one portable tire lever.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4375amx15.jpg" target="_blank"><img alt="RIMG4375amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4375amx15s.jpg" width="320"/></a><br/>I mounted it again.<br/>I did it without a tire lever.<br/>The second time I'm using <span style="font-size:large;">Imagery sealant</span>.<br/>The tire width is 25C, but I'll test whether 35ml is enough.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4400amx15.jpg" target="_blank"><img alt="RIMG4400amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4400amx15s.jpg" width="320"/></a><br/>↑This is a Grand Prix 4000 (on Racing Zero),<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4404amx15.jpg" target="_blank"><img alt="RIMG4404amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4404amx15s.jpg" width="320"/></a><br/>and here's how much the threads start coming out and the casing exposure looks.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4402amx15.jpg" target="_blank"><img alt="RIMG4402amx15.jpg" border="0</div>
     <div class="affiliate-box">
       <p class="affiliate-title">Products Mentioned in This Article</p>
       <ul>

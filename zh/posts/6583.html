@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/6583.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Beginner Cycling Tips</p>
     <h1>♪（神intro）→砰 砰 砰 砰！→年輕的生命燃燒得火紅～～</h1>
     <p class="post-meta">February 22, 2023</p>
+    <div class="post-body"><div class="entrytext">前陣子換了轉鼓後重新組裝<br/>ZIPP的303 Firecrest（→<a href="/zh/posts/6552.html" target="_blank" title="こちら">這裡</a>）（→<a href="/zh/posts/6553.html" target="_blank" title="こちら">這裡</a>）的話，<br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1698amx15.jpg" target="_blank"><img alt="RIMG1698amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1698amx15s.jpg" width="320"/></a><br/>不只一個地方，而是在分散的位置完全硬化<br/>裡面進了神祕的密封膠。<br/>這款密封劑，在這個狀態下 沒有結塊的階段裡<br/>好像做不了堵補穿刺洞的工作。<br/><br/>客人在輪組重組後的輪框上<br/>作為裝配希望而帶來的是<br/>對於無鉤輪框的ZIPP輪組<br/>無鉤輪框對應輪胎的<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=IRC+Aspite+Pro+hookless+tire" target="_blank" rel="noopener sponsored" class="amz-inline">IRC Aspite Pro</a>，<br/>這個<span style="color:#FF0000">「無鉤輪框對應但不是無內胎輪胎」</span><br/>也就是說，即使未來高級輻條圈都變成<br/>全部無掛鉤規格了<br/>還是有人想用外穿方式使用<br/>IRC 預見到這種需求而販售的輪胎。<br/>就 ZIPP 而言，圈的指定最大氣壓是 5 氣壓<br/>大多數人應該會在 3.8 氣壓左右的範圍內使用<br/>要用外穿方式（除了爆胎應急處理外）常態運用的話<br/>有高風險會發生圈打爆胎，應該是不太可行的。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1736amx15.jpg" target="_blank"><img alt="RIMG1736amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1736amx15s.jpg" width="320"/></a><br/>就這樣的情況下，最終還是決定繼續使用原本的管胎<br/>持續使用的結果是<br/>要從輪胎上除去這個封膠實在是非常麻煩<br/>它貼得非常牢固，甚至讓人擔心指甲會被挖傷<br/>好不容易才把結塊剝掉以後<br/>還得進一步用鋼絲刷來刮除<br/>但還是沒有辦法完全清乾淨<br/>在還有結塊的狀態下，考慮到運作時的氣壓<br/>不只是輪組的轉動平衡<br/>好像也影響了抓地性能。<br/><br/>然後在交付重新組好的輪組時<br/>我問了一下這個密封劑是哪個牌子的<br/>結果是「Black Ox」這個品牌的產品。<br/>Black Ox 有著類似 Stans 的<br/>輪胎密封劑和比賽密封劑那樣的<br/>乾燥時間不同的 OX1 和 OX2 這兩個型號,<br/>這次的密封膠我沒有詢問是哪一種的。<br/><br/><br/><br/>比起那個，提到Black Ox的話，<br/>我想起的是出現在鐵人28號裡面的<br/>「日本最初（大概）出現在主角機器人對手的巨大對手機器人」<br/>那樣的印象<br/>（不加上「巨大」的話，鐵臂阿童木可能有先例）。<br/>關於那邊的Black Ox<br/>我想應該有很多人不認識吧。<br/>我想從我手邊的資料來介紹。<br/><br/><br/><br/><br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2248msn5.jpg" target="_blank"><img alt="RIMG2248msn5.jpg" border="0" height="320" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2248msn5s.jpg" width="240"/></a><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2249msn5.jpg" target="_blank"><img alt="RIMG2249msn5.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2249msn5s.jpg" width="320"/></a><br/>↑這就是黑色公牛。<br/>這是Revoltech山口的可動人偶，<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2254msn5.jpg" target="_blank"><img alt="RIMG2254msn5.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2254msn5s.jpg" width="320"/></a><br/>從手腕往下有替換零件。<br/>握拳、張開的手，還有4根手指可開闔的手，共3種類。<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2255msn5.jpg" target="_blank"><img alt="RIMG2255msn5.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2255msn5s.jpg" width="320"/></a><br/>不只是席洛克，原作者也<br/>「是不是內蔵了我不知道的武器呢」地說了起來，<br/>我慢吞吞地拿出蓋達○戰斧○。<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2256msn5.jpg" target="_blank"><img alt="RIMG2256msn5.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2256msn5s.jpg" width="320"/></a><br/>原作的顏色不同，<br/>可能是被某種宇宙射線之類的東西侵蝕了。<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2257msn5.jpg" target="_blank"><img alt="RIMG2257msn5.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2257msn5s.jpg" width="320"/></a><br/>↑盒子大概是這樣<br/>這是Revoltech山口的No.44，<br/>說起來同系列的No.1是蓋特○1，<br/>No.105是那個的翻新版。<br/>最先出的那個是新蓋特○的風格，<br/>對我來說還是後來出的那個比較喜歡。<br/>我想會被說『那你就買那個就好啦』，<br/>受到黑色歐克斯設計影響的<br/>後來的作品（從鐵人28號來看，幾乎所有作品都是後來的）<br/>替機器人塗上顏色這件事真的很有趣。<br/>好像還有其他類似的東西可以做，<br/>比如G鋼彈裡出現的萬能鋼彈之類的。<br/>還有，機動警察裡出現的獅鷲<br/>據說是以黑色歐克斯為原型的。<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2243msn5.jpg" target="_blank"><img alt="RIMG2243msn5.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2243msn5s.jpg" width="320"/></a><br/>本體採用ABS樹脂製，<br/>用手指強力按壓時會有輕微凹陷的觸感，<br/>所以選用了GSI Creos的Acrysion塗料<br/>（丙烯酸加乳化液的混合詞）。<br/>溶劑和工具清潔劑都需要專用產品，<br/>塗裝需要一些訣竅，這是比較麻煩的地方，<br/>因為在ABS樹脂上進行漆包會產生裂紋，<br/>所以沒辦法。<br/><br/>最後想用噴槍吹<br/>買了Acrysion的透明漆<br/>但因為用水性面漆完成了 所以沒有用。<br/>黃色上面的是延遲劑<br/>筆塗用的稀釋液，這個也是必需的。<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/DSC08282msn5.jpg" target="_blank"><img alt="DSC08282msn5.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/DSC08282msn5s.jpg" width="320"/></a><br/>外觀有稍微做了調整<br/>但因為沒完沒了，所以適可而止。<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/DSC08307msn5.jpg" target="_blank"><img alt="DSC08307msn5.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/DSC08307msn5s.jpg" width="320"/></a><br/>蓋塔○戰斧○克是用塑膠板和補土自己做的。<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/DSC08320msn5.jpg" target="_blank"><img alt="DSC08320msn5.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/DSC08320msn5s.jpg" width="320"/></a><br/>用筆塗紅色底色的狀態。<br/>Acrysion的底色就像有色的補土一樣，<br/>可以說沒有底色是無法進行塗裝的。<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/DSC08317msn5.jpg" target="_blank"><img alt="DSC08317msn5.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/DSC08317msn5s.jpg" width="320"/></a><br/>時間順序往回說，在頭部塗紅色底色之前<br/>嘴部和額頭的金屬綠<br/>是塗在白色底色上的照片。<br/>這是三度塗的第二度，但不是一次厚塗，<br/>而是疊加薄塗才是基本做法。<br/>雖然有點難看清，但此刻黃色的眼睛已經<br/>用黃色膠帶遮蔽了。<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/DSC08319msn5.jpg" target="_blank"><img alt="DSC08319msn5.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/DSC08319msn5s.jpg" width="320"/></a><br/>胸部的部分是在紅色的底色上塗了紅色之後，<br/>就直接塗上金屬綠了。<br/>金屬色對於底色的遮蓋力很強，<br/>所以沒有在紅色上面塗底色。<br/>這裡用的金屬綠雖然<br/>我已經有了，但塗料的種類不同，所以<br/>只為了臉部和胸部的部分<br/>買了Acryl Color的金屬綠色。<br/><br/>股間的黃色是白色基礎漆＋黃色<br/>黃色基礎漆＋黃色的話發色會更好<br/>竟然在奇怪的地方省錢了。<br/>噴了面漆之後意外地出現了光澤<br/>所以就算了的感覺。<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2251msn5.jpg" target="_blank"><img alt="RIMG2251msn5.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2251msn5s.jpg" width="320"/></a><br/>蓋亞○戰鬥○戰斧肩膀部分用金色<br/>我用銀色漆了肘部的突起，但根據媒體的不同<br/>前者有時會用白色或黃色，後者有時會用白色<br/>（肘部的突起是指蓋達○1前臂部橫向的<br/>鋸齒狀部分）。<br/>剛才我寫過金屬色漆對底漆的遮蓋力很強，<br/>筆塗時也不容易看出色差不勻，這也是它的特點。<br/>也就是說，這個顏色是我的妥協和退讓。<br/>只有這2種顏色，我用了GSI克利歐斯的普通水性漆來塗。<br/>完全乾燥後であれば 壓克力塗料重複塗裝是可行的。<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/IMG_3516msng5.jpg" target="_blank"><img alt="IMG_3516msng5.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/IMG_3516msng5s.jpg" width="320"/></a><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/IMG_3520msng5.jpg" target="_blank"><img alt="IMG_3520msng5.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/IMG_3520msng5s.jpg" width="320"/></a><br/>數位相機的白平衡<br/>無論如何設定 包括自動模式 都無法呈現接近肉眼的紅色<br/>用iPhone的相機反而能拍出幾乎同樣色澤的影像。<br/>蓋塔○托馬○克全部都是用普通水性塗料筆塗的<br/>棍棒部分即使沒有上透明漆<br/>卻莫名其妙地閃閃發亮。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">前陣子換了轉鼓後重新組裝<br/>ZIPP的303 Firecrest（→<a href="/zh/posts/6552.html" target="_blank" title="こちら">這裡</a>）（→<a href="/zh/posts/6553.html" target="_blank" title="こちら">這裡</a>）的話，<br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1698amx15.jpg" target="_blank"><img alt="RIMG1698amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1698amx15s.jpg" width="320"/></a><br/>不只一個地方，而是在分散的位置完全硬化<br/>裡面進了神祕的密封膠。<br/>這款密封劑，在這個狀態下 沒有結塊的階段裡<br/>好像做不了堵補穿刺洞的工作。<br/><br/>客人在輪組重組後的輪框上<br/>作為裝配希望而帶來的是<br/>對於無鉤輪框的ZIPP輪組<br/>無鉤輪框對應輪胎的<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=IRC+Aspite+Pro+hookless+tire" target="_blank" rel="noopener sponsored" class="amz-inline">IRC Aspite Pro</a>，<br/>這個<span style="color:#FF0000">「無鉤輪框對應但不是無內胎輪胎」</span><br/>也就是說，即使未來高級輻條圈都變成<br/>全部無掛鉤規格了<br/>還是有人想用外穿方式使用<br/>IRC 預見到這種需求而販售的輪胎。<br/>就 ZIPP 而言，圈的指定最大氣壓是 5 氣壓<br/>大多數人應該會在 3.8 氣壓左右的範圍內使用<br/>要用外穿方式（除了爆胎應急處理外）常態運用的話<br/>有高風險會發生圈打爆胎，應該是不太可行的。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1736amx15.jpg" target="_blank"><img alt="RIMG1736amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1736amx15s.jpg" width="320"/></a><br/>就這樣的情況下，最終還是決定繼續使用原本的管胎<br/>持續使用的結果是<br/>要從輪胎上除去這個封膠實在是非常麻煩<br/>它貼得非常牢固，甚至讓人擔心指甲會被挖傷<br/>好不容易才把結塊剝掉以後<br/>還得進一步用鋼絲刷來刮除<br/>但還是沒有辦法完全清乾淨<br/>在還有結塊的狀態下，考慮到運作時的氣壓<br/>不只是輪組的轉動平衡<br/>好像也影響了抓地性能。<br/><br/>然後在交付重新組好的輪組時<br/>我問了一下這個密封劑是哪個牌子的<br/>結果是「Black Ox」這個品牌的產品。<br/>Black Ox 有著類似 Stans 的<br/>輪胎密封劑和比賽密封劑那樣的<br/>乾燥時間不同的 OX1 和 OX2 這兩個型號,<br/>這次的密封膠我沒有詢問是哪一種的。<br/><br/><br/><br/>比起那個，提到Black Ox的話，<br/>我想起的是出現在鐵人28號裡面的<br/>「日本最初（大概）出現在主角機器人對手的巨大對手機器人」<br/>那樣的印象<br/>（不加上「巨大」的話，鐵臂阿童木可能有先例）。<br/>關於那邊的Black Ox<br/>我想應該有很多人不認識吧。<br/>我想從我手邊的資料來介紹。<br/><br/><br/><br/><br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2248msn5.jpg" target="_blank"><img alt="RIMG2248msn5.jpg" border="0" height="320" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2248msn5s.jpg" width="240"/></a><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2249msn5.jpg" target="_blank"><img alt="RIMG2249msn5.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2249msn5s.jpg" width="320"/></a><br/>↑這就是黑色公牛。<br/>這是Revoltech山口的可動人偶，<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2254msn5.jpg" target="_blank"><img alt="RIMG2254msn5.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2254msn5s.jpg" width="320"/></a><br/>從手腕往下有替換零件。<br/>握拳、張開的手，還有4根手指可開闔的手，共3種類。<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2255msn5.jpg" target="_blank"><img alt="RIMG2255msn5.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2255msn5s.jpg" width="320"/></a><br/>不只是席洛克，原作者也<br/>「是不是內蔵了我不知道的武器呢」地說了起來，<br/>我慢吞吞地拿出蓋達○戰斧○。<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2256msn5.jpg" target="_blank"><img alt="RIMG2256msn5.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2256msn5s.jpg" width="320"/></a><br/>原作的顏色不同，<br/>可能是被某種宇宙射線之類的東西侵蝕了。<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2257msn5.jpg" target="_blank"><img alt="RIMG2257msn5.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2257msn5s.jpg" width="320"/></a><br/>↑盒子大概是這樣<br/>這是Revoltech山口的No.44，<br/>說起來同系列的No.1是蓋特○1，<br/>No.105是那個的翻新版。<br/>最先出的那個是新蓋特○的風格，<br/>對我來說還是後來出的那個比較喜歡。<br/>我想會被說『那你就買那個就好啦』，<br/>受到黑色歐克斯設計影響的<br/>後來的作品（從鐵人28號來看，幾乎所有作品都是後來的）<br/>替機器人塗上顏色這件事真的很有趣。<br/>好像還有其他類似的東西可以做，<br/>比如G鋼彈裡出現的萬能鋼彈之類的。<br/>還有，機動警察裡出現的獅鷲<br/>據說是以黑色歐克斯為原型的。<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2243msn5.jpg" target="_blank"><img alt="RIMG2243msn5.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2243msn5s.jpg" width="320"/></a><br/>本體採用ABS樹脂製，<br/>用手指強力按壓時會有輕微凹陷的觸感，<br/>所以選用了GSI Creos的Acrysion塗料<br/>（丙烯酸加乳化液的混合詞）。<br/>溶劑和工具清潔劑都需要專用產品，<br/>塗裝需要一些訣竅，這是比較麻煩的地方，<br/>因為在ABS樹脂上進行漆包會產生裂紋，<br/>所以沒辦法。<br/><br/>最後想用噴槍吹<br/>買了Acrysion的透明漆<br/>但因為用水性面漆完成了 所以沒有用。<br/>黃色上面的是延遲劑<br/>筆塗用的稀釋液，這個也是必需的。<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/DSC08282msn5.jpg" target="_blank"><img alt="DSC08282msn5.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/DSC08282msn5s.jpg" width="320"/></a><br/>外觀有稍微做了調整<br/>但因為沒完沒了，所以適可而止。<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/DSC08307msn5.jpg" target="_blank"><img alt="DSC08307msn5.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/DSC08307msn5s.jpg" width="320"/></a><br/>蓋塔○戰斧○克是用塑膠板和補土自己做的。<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/DSC08320msn5.jpg" target="_blank"><img alt="DSC08320msn5.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/DSC08320msn5s.jpg" width="320"/></a><br/>用筆塗紅色底色的狀態。<br/>Acrysion的底色就像有色的補土一樣，<br/>可以說沒有底色是無法進行塗裝的。<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/DSC08317msn5.jpg" target="_blank"><img alt="DSC08317msn5.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/DSC08317msn5s.jpg" width="320"/></a><br/>時間順序往回說，在頭部塗紅色底色之前<br/>嘴部和額頭的金屬綠<br/>是塗在白色底色上的照片。<br/>這是三度塗的第二度，但不是一次厚塗，<br/>而是疊加薄塗才是基本做法。<br/>雖然有點難看清，但此刻黃色的眼睛已經<br/>用黃色膠帶遮蔽了。<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/DSC08319msn5.jpg" target="_blank"><img alt="DSC08319msn5.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/DSC08319msn5s.jpg" width="320"/></a><br/>胸部的部分是在紅色的底色上塗了紅色之後，<br/>就直接塗上金屬綠了。<br/>金屬色對於底色的遮蓋力很強，<br/>所以沒有在紅色上面塗底色。<br/>這裡用的金屬綠雖然<br/>我已經有了，但塗料的種類不同，所以<br/>只為了臉部和胸部的部分<br/>買了Acryl Color的金屬綠色。<br/><br/>股間的黃色是白色基礎漆＋黃色<br/>黃色基礎漆＋黃色的話發色會更好<br/>竟然在奇怪的地方省錢了。<br/>噴了面漆之後意外地出現了光澤<br/>所以就算了的感覺。<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2251msn5.jpg" target="_blank"><img alt="RIMG2251msn5.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2251msn5s.jpg" width="320"/></a><br/>蓋亞○戰鬥○戰斧肩膀部分用金色<br/>我用銀色漆了肘部的突起，但根據媒體的不同<br/>前者有時會用白色或黃色，後者有時會用白色<br/>（肘部的突起是指蓋達○1前臂部橫向的<br/>鋸齒狀部分）。<br/>剛才我寫過金屬色漆對底漆的遮蓋力很強，<br/>筆塗時也不容易看出色差不勻，這也是它的特點。<br/>也就是說，這個顏色是我的妥協和退讓。<br/>只有這2種顏色，我用了GSI克利歐斯的普通水性漆來塗。<br/>完全乾燥後であれば 壓克力塗料重複塗裝是可行的。<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/IMG_3516msng5.jpg" target="_blank"><img alt="IMG_3516msng5.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/IMG_3516msng5s.jpg" width="320"/></a><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/IMG_3520msng5.jpg" target="_blank"><img alt="IMG_3520msng5.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/IMG_3520msng5s.jpg" width="320"/></a><br/>數位相機的白平衡<br/>無論如何設定 包括自動模式 都無法呈現接近肉眼的紅色<br/>用iPhone的相機反而能拍出幾乎同樣色澤的影像。<br/>蓋塔○托馬○克全部都是用普通水性塗料筆塗的<br/>棍棒部分即使沒有上透明漆<br/>卻莫名其妙地閃閃發亮。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/4837.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">News &amp; Updates</p>
     <h1>大陸牌Competition限定款已到货但已售罄</h1>
     <p class="post-meta">September 13, 2019</p>
+    <div class="post-body"><div class="entrytext">大陆牌(Continental)的Competition 管状轮胎限定款，<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03024msn2.jpg" target="_blank"><img alt="DSC03024msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03024msn2s.jpg" width="320"/></a><br/>環法LTD（Tour de France Limited）已经到货。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03025msn2.jpg" target="_blank"><img alt="DSC03025msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03025msn2s.jpg" width="320"/></a><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03028msn2.jpg" target="_blank"><img alt="DSC03028msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03028msn2s.jpg" width="320"/></a><br/>这是官方授权商品。<br/>今年的环法总骑行距离为３６４０公里，据此<br/>限量生产３６４０条，<br/>但日本的批发商拿到的数量仅为１００条。<br/>虽然从全球来看日本是管状轮胎很畅销的国家，<br/>但１００条还是太少了。按２条为１对，每个都道府县分配１对的计算，<br/>基本上就会被瓜分完了。<br/>以前岛野(Shimano)曾推出过十周年纪念的<br/>以７７００为基础的限量套件，<br/>当时的职业车手在实战中大量使用。<br/>这款轮胎在３６４０条中应该也有给职业队的配额。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03029msn2.jpg" target="_blank"><img alt="DSC03029msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03029msn2s.jpg" width="320"/></a><br/>仅有２５C的宽度规格。<br/><s>要是有比这细一档的２２C的话，我也会买。</s><br/>啊，抱歉。我们店的到货部分已经售罄了。<br/>所以"想卖"不是我写这篇文章的理由。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03027msn2.jpg" target="_blank"><img alt="DSC03027msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03027msn2s.jpg" width="320"/></a><br/>胎面花纹与常规款相同，<br/>但TPI(线密度)常规款是１８０，环法LTD则为２００，<br/>正因如此，重量也从常规２５C的２８０克<br/>减轻到２５０克。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03208amx12.jpg" target="_blank"><img alt="DSC03208amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03208amx12s.jpg" width="320"/></a><br/>TPI即Thread Per Inch，每英寸的纱线条数，<br/>上图中为７TPI。<br/>TPI越高，轮胎外壳部分的纱线就越细，<br/>结果是轮胎变薄，乘坐感变好，<br/>过弯极限性能也会有提高的趋势，但<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03210amx12.jpg" target="_blank"><img alt="DSC03210amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03210amx12s.jpg" width="320"/></a><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03211amx12.jpg" target="_blank"><img alt="DSC03211amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03211amx12s.jpg" width="320"/></a><br/>↑大致就是这样（实际上外壳是由数层纤维交叉重叠）<br/>TPI单独并不能决定轮胎性能。<br/>维多利亚(Vittoria)的公路轮胎中<br/>根据型号把TPI做成２６、６０、１５０、２２０、２９０、３２０等不同规格，<br/>但维多利亚的３２０和大陆牌的１８０<br/>并不能简单地说数字大的就更优秀。<br/>不过，同一品牌内TPI不同的话，<br/>数值高的轮胎就单纯地更好，这可以作为判断标准。<br/><br/>这次的环法LTD，TPI仅差２０的程度远不足以说明<br/>与常规款相比，胎侧柔性好得多，可以说是完全不同的产品。<br/>虽然是限量款，但价格相比常规款仅高５００日元<br/>的诚心定价（１４５００日元→１５０００日元），<br/>老实说即便定价２００００日元，我也觉得会有人买。<br/>啊，我们店的到货部分已经售罄了（第二次）。<br/><br/><br/>彩蛋<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03015msn2.jpg" target="_blank"><img alt="DSC03015msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03015msn2s.jpg" width="320"/></a><br/>从客人那里接到<br/>大陆牌的Competition PRO LTD（职业版限定）的２８C。<br/>大陆牌的管状轮胎<br/>内径异常小，很难套上轮圈，<br/>不是个体差异的问题，特别是１９C的轮胎倾向于特别小。<br/>PodiumTT和Competition的１９C<br/>"用这么小的直径做轮胎"这样的尺寸<br/>与其他宽度的轮胎明显不同，<br/>Competition的２２C和２５C对初学者来说<br/>是属于很难套上轮圈的轮胎，<br/>但我个人不用轮胎伸展机（上图的工具）就<br/>能装上。<br/>按照这个趋势，更宽的２８C的Competition<br/>（市售的不同版本）<br/>应该会更容易套上轮圈才对……但实际上<br/>（虽然没１９C那么夸张）内径还是很小，<br/>而且存在个体差异，两条中有一条特别小，连我都费了很大劲。<br/>所以，客人请我把它伸展一下，托我保管的就是<br/>上面的图片。<br/>市售品之外的轮胎（日本批发商没有经营，本国网站也没有刊登）<br/>出现在这里，是因为它是职业队的退役品，<br/>客人是在法国买的。<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03016msn2.jpg" target="_blank"><img alt="DSC03016msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03016msn2s.jpg" width="320"/></a><br/>Competition PRO LTD这款轮胎<br/>标签年代（这是最新的）和胎面花纹存在多个版本。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03017msn2.jpg" target="_blank"><img alt="DSC03017msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03017msn2s.jpg" width="320"/></a><br/>大陆牌的轮胎，型号标签位于气门正下方，<br/>其对面（１８０°方向）<br/>有大陆牌或德国手工制造的标记，<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03018msn2.jpg" target="_blank"><img alt="DSC03018msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03018msn2s.jpg" width="320"/></a><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03019msn2.jpg" target="_blank"><img alt="DSC03019msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03019msn2s.jpg" width="320"/></a><br/>但这款轮胎在１２０°的位置有３处标签。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03020msn2.jpg" target="_blank"><img alt="DSC03020msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03020msn2s.jpg" width="320"/></a><br/>胎面花纹与常规款相同，<br/>但职业队似乎也有中心光滑或完全光滑的花纹。<br/>前一代的Competition PRO LTD<br/>中心光滑是标准规格。<br/>正好前后专用轮胎的"<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Continental+Attack+Comp+tubular+tire+front" target="_blank" rel="noopener sponsored" class="amz-inline">Attack Comp</a>"前轮胎和<br/>"<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Continental+Force+Comp+tubular+tire+rear" target="_blank" rel="noopener sponsored" class="amz-inline">Force Comp</a>"后轮胎也有类似的花纹。<br/><br/>为谨慎起见，我要说明，Attack和Force<br/>在管状和折叠两种规格中，胎面花纹完全不同。<br/>折叠的情况下是带有排水沟的光滑轮胎，<br/>前后轮胎的排水沟花纹不同，<br/>管状的情况下是中心光滑，侧面是锉刀纹，<br/>前后轮胎的花纹相同。<br/>而且无论折叠还是管状，前轮胎都比较窄。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03021msn2.jpg" target="_blank"><img alt="DSC03021msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03021msn2s.jpg" width="320"/></a><br/>↑这是Attack Comp 管状轮胎。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03022msn2.jpg" target="_blank"><img alt="DSC03022msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03022msn2s.jpg" width="320"/></a><br/>中心光滑，侧面锉刀纹，这个和前一代的Competition PRO LTD<br/>不完全相同，但差不多就是这样的花纹。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03023msn2.jpg" target="_blank"><img alt="DSC03023msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03023msn2s.jpg" width="320"/></a><br/>侧面的锉刀纹，<br/>Competition是椭圆形的颗粒排列，而这款<br/>是菱形的颗粒。<br/>用指甲刮过时的声音都不同，<br/>推测来看，过去的Competition PRO LTD<br/>的锉刀纹侧面应该是椭圆形的颗粒。<br/><br/>大陆牌的日本批发商<br/>并非把所有市售的大陆牌产品都作为常备商品。<br/>比如７００C折叠轮胎的轮胎内胎<br/>属于"Race２８（２８英寸≒７００C）"系列，<br/>比较厚重且包装也很大的Race２８，<br/>比它更薄更轻的Race２８ Light<br/>（这在厚度和重量上与维多利亚的UltraLight差不多），<br/>以及２５～３２C用的Race２８ Wide这３种是有经营的，<br/>但超轻量内胎Race２８ Supersonic就没有经营。<br/>（同名的超轻量折叠轮胎Grand Prix Supersonic是有经营的）。<br/>Supersonic内胎过去有气门根部脱落的问题特别多，<br/>安装轮胎时还容易卡住轮圈导致爆胎，<br/>批发商似乎就是因为这个原因而不经营的。<br/><br/>说到轮胎，Grand PrixGT、GatorHardshell<br/>以及Zonda Klasse II也都没有经营。<br/>前两款折叠轮胎<br/>应该是因为有其他型号的定位相近。<br/>Zonda Klasse II是为６天赛专用的轮胎，<br/>在日本很难想象会有销路。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03213amx12.jpg" target="_blank"><img alt="DSC03213amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03213amx12s.jpg" width="320"/></a><br/>Grand Prix４０００SII侧面贴了反光贴的<br/>"Grand Prix４０００SII Reflex"这个型号也有，<br/>但这个日本批发商也应该没有经营。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03185amx12.jpg" target="_blank"><img alt="DSC03185amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03185amx12s.jpg" width="320"/></a><br/>话题转向别的，我买了模仿台球球的<br/>法式气门盖。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03186amx12.jpg" target="_blank"><img alt="DSC03186amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03186amx12s.jpg" width="320"/></a><br/>批发商有货的只有１、２、３、５、８这５种。<br/>或许过去还有其他数字。<br/>如果只能卖一个的话，应该是９（九球）会卖得最好，<br/>所以或许那个过去有但已经售罄了。<br/>幸好剩下了１、２、３。<br/>由此<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03190amx12.jpg" target="_blank"><img alt="DSC03190amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03190amx12s.jpg" width="320"/></a><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03188amx12.jpg" target="_blank"><img alt="DSC03188amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03188amx12s.jpg" width="320"/></a><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03189amx12.jpg" target="_blank"><img alt="DSC03189amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03189amx12s.jpg" width="320"/></a><br/>能给各个气门编号。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03187amx12.jpg" target="_blank"><img alt="DSC03187amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03187amx12s.jpg" width="320"/></a><br/>但每个重１１克，所以可能不会用。<br/>回到正题（对三气门完全没有说明），<br/>我以前在WO轮圈上用的轮胎是<br/>前轮Attack II、后轮Grand Prix４０００SII，都是２３C。<br/>Attack II是前轮专用的２２C，Force II是后轮专用的２４C，<br/>但Attack/Force现在已经是III代，<br/>前轮变成２３C，后轮变成２５C，各粗了１C。<br/>而且Grand Prix４０００SII已经停产。<br/>所以现在我前轮用的是Grand Prix５０００的２３C，<br/>后轮用的是Grand PrixTT的２３C或Gator Skin的２３C，<br/>只有后轮根据情况更换。<br/>Grand PrixTT２３C的实测重量为１７７克（公称１８０克／２３C），很轻，<br/>就像在Grand Prix Supersonic（公称１５０克／２３C）里加入了防刺穿带的规格。<br/>Grand PrixTT是中心光滑加侧面薄锉刀纹，<br/>Supersonic是完全光滑，所以胎面花纹略有不同。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC01978amx12.jpg" target="_blank"><img alt="DSC01978amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC01978amx12s.jpg" width="320"/></a><br/>这是刚才画面中上一代的Grand PrixTT，<br/>侧面外壳有散线，<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC01979amx12.jpg" target="_blank"><img alt="DSC01979amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC01979amx12s.jpg" width="320"/></a><br/>胎面也有密密麻麻的小洞，<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC01980amx12.jpg" target="_blank"><img alt="DSC01980amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC01980amx12s.jpg" width="320"/></a><br/>轮胎顶部已经开始露出纱线。<br/>我是倾向于较早更换轮胎的人，但不知不觉就变成这样了。<br/>应该只用了２０００公里多一点。<br/>虽然在不至于过度谨慎、能常用的轮胎中它很轻，<br/>所以我对它作为后轮很满意。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03206amx12.jpg" target="_blank"><img alt="DSC03206amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03206amx12s.jpg" width="320"/></a><br/>重视耐久性使用的是这款Gator Skin。<br/>从胎面下方延伸到轮胎侧面的<br/>Polyex Breaker防刺穿带配备齐全，<br/>实际上对爆胎和轮胎划伤非常抵抗的型号。<br/>大陆牌的轮胎过去曾以<br/>Grand Prix３０００<br/>Sprinter２０００<br/>Sport１０００<br/>这３个型号为中心展开，<br/>Sport１０００对应现在的Ultrasport II。<br/>Grand Prix不仅有３０００→４０００→４０００S→４０００SII→５０００，<br/>现在派生型号多得离谱。<br/>Sprinter虽然在管状轮胎中还保留着这个名字，<br/>但它的Gator Skin版本有Sprinter Gator Skin这个型号，<br/>所以WO版本的Gator Skin也许是相当于Sprinter级别的规格。<br/>制造商定位为固定速飞轮、快递员、街骑爱好者向，<br/>但公称２２０克／２３C（实测２２７克），并不是特别重，<br/>作为公路车的练习轮胎完全没问题。<br/><br/>比它更高级的Grand Prix的Gator Skin版本是<br/>Grand Prix４ Seasons，<br/>重量比Gator Skin在公称值上增加１０克。<br/>因为胎面是Grand Prix级别的，<br/>４ Seasons的抓地力等性能应该更强。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03207amx12.jpg" target="_blank"><img alt="DSC03207amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03207amx12s.jpg" width="320"/></a><br/>Gator Skin也好，Grand Prix４ Seasons也好，<br/>Polyex Breaker的颜色都是茶色，<br/>有人不喜欢这一点。<br/>我不在意。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC01885amx12.jpg" target="_blank"><img alt="DSC01885amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC01885amx12s.jpg" width="320"/></a><br/>Grand Prix４ Seasons的限定款名为<br/>Black Edition。<br/>这个曾经是北美限定销售的型号，<br/>日本也曾有过少量限定特别进货（→<a href="/zh/posts/2185.html" target="_blank" title="这里">这里</a>），<br/>但现在似乎不是北美限定了。<br/>只是本国网站上没有，所以限定仕样的事实没变。<br/>不久前从日本批发商那边<s>被叫着要买</s>进了一些，<br/>不用特别宣传也能正常销售，所以没有在这里刊登。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC01887amx12.jpg" target="_blank"><img alt="DSC01887amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC01887amx12s.jpg" width="320"/></a><br/>轮胎侧面不是茶色而是黑色，这很不错，但只有２５C规格。<br/>所以我用不了。<br/>在之前提到的文章中也写过，<br/>带Polyex Breaker的轮胎<br/>不太会产生随着气压增加轮胎横向变宽的现象。<br/>除此之外，把新的Gator Skin２３C<br/>装到DT的XR３３１轮圈上，充入７气压左右时<br/>（XR３３１本来是２９英寸的山地车轮圈，公称限界气压为６．８气压），<br/>因为轮圈相对较宽，所以成为拉伸轮胎，<br/>实测宽度几乎达到２５C。<br/>所以Grand Prix４ Seasons的２５C和Gator Skin的２３C<br/>根据安装的轮圈不同，<br/>实际的轮胎宽度可能差不了多少。<br/>虽然轮胎的高度和重量不同。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">大陆牌(Continental)的Competition 管状轮胎限定款，<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03024msn2.jpg" target="_blank"><img alt="DSC03024msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03024msn2s.jpg" width="320"/></a><br/>環法LTD（Tour de France Limited）已经到货。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03025msn2.jpg" target="_blank"><img alt="DSC03025msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03025msn2s.jpg" width="320"/></a><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03028msn2.jpg" target="_blank"><img alt="DSC03028msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03028msn2s.jpg" width="320"/></a><br/>这是官方授权商品。<br/>今年的环法总骑行距离为３６４０公里，据此<br/>限量生产３６４０条，<br/>但日本的批发商拿到的数量仅为１００条。<br/>虽然从全球来看日本是管状轮胎很畅销的国家，<br/>但１００条还是太少了。按２条为１对，每个都道府县分配１对的计算，<br/>基本上就会被瓜分完了。<br/>以前岛野(Shimano)曾推出过十周年纪念的<br/>以７７００为基础的限量套件，<br/>当时的职业车手在实战中大量使用。<br/>这款轮胎在３６４０条中应该也有给职业队的配额。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03029msn2.jpg" target="_blank"><img alt="DSC03029msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03029msn2s.jpg" width="320"/></a><br/>仅有２５C的宽度规格。<br/><s>要是有比这细一档的２２C的话，我也会买。</s><br/>啊，抱歉。我们店的到货部分已经售罄了。<br/>所以"想卖"不是我写这篇文章的理由。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03027msn2.jpg" target="_blank"><img alt="DSC03027msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03027msn2s.jpg" width="320"/></a><br/>胎面花纹与常规款相同，<br/>但TPI(线密度)常规款是１８０，环法LTD则为２００，<br/>正因如此，重量也从常规２５C的２８０克<br/>减轻到２５０克。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03208amx12.jpg" target="_blank"><img alt="DSC03208amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03208amx12s.jpg" width="320"/></a><br/>TPI即Thread Per Inch，每英寸的纱线条数，<br/>上图中为７TPI。<br/>TPI越高，轮胎外壳部分的纱线就越细，<br/>结果是轮胎变薄，乘坐感变好，<br/>过弯极限性能也会有提高的趋势，但<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03210amx12.jpg" target="_blank"><img alt="DSC03210amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03210amx12s.jpg" width="320"/></a><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03211amx12.jpg" target="_blank"><img alt="DSC03211amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03211amx12s.jpg" width="320"/></a><br/>↑大致就是这样（实际上外壳是由数层纤维交叉重叠）<br/>TPI单独并不能决定轮胎性能。<br/>维多利亚(Vittoria)的公路轮胎中<br/>根据型号把TPI做成２６、６０、１５０、２２０、２９０、３２０等不同规格，<br/>但维多利亚的３２０和大陆牌的１８０<br/>并不能简单地说数字大的就更优秀。<br/>不过，同一品牌内TPI不同的话，<br/>数值高的轮胎就单纯地更好，这可以作为判断标准。<br/><br/>这次的环法LTD，TPI仅差２０的程度远不足以说明<br/>与常规款相比，胎侧柔性好得多，可以说是完全不同的产品。<br/>虽然是限量款，但价格相比常规款仅高５００日元<br/>的诚心定价（１４５００日元→１５０００日元），<br/>老实说即便定价２００００日元，我也觉得会有人买。<br/>啊，我们店的到货部分已经售罄了（第二次）。<br/><br/><br/>彩蛋<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03015msn2.jpg" target="_blank"><img alt="DSC03015msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03015msn2s.jpg" width="320"/></a><br/>从客人那里接到<br/>大陆牌的Competition PRO LTD（职业版限定）的２８C。<br/>大陆牌的管状轮胎<br/>内径异常小，很难套上轮圈，<br/>不是个体差异的问题，特别是１９C的轮胎倾向于特别小。<br/>PodiumTT和Competition的１９C<br/>"用这么小的直径做轮胎"这样的尺寸<br/>与其他宽度的轮胎明显不同，<br/>Competition的２２C和２５C对初学者来说<br/>是属于很难套上轮圈的轮胎，<br/>但我个人不用轮胎伸展机（上图的工具）就<br/>能装上。<br/>按照这个趋势，更宽的２８C的Competition<br/>（市售的不同版本）<br/>应该会更容易套上轮圈才对……但实际上<br/>（虽然没１９C那么夸张）内径还是很小，<br/>而且存在个体差异，两条中有一条特别小，连我都费了很大劲。<br/>所以，客人请我把它伸展一下，托我保管的就是<br/>上面的图片。<br/>市售品之外的轮胎（日本批发商没有经营，本国网站也没有刊登）<br/>出现在这里，是因为它是职业队的退役品，<br/>客人是在法国买的。<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03016msn2.jpg" target="_blank"><img alt="DSC03016msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03016msn2s.jpg" width="320"/></a><br/>Competition PRO LTD这款轮胎<br/>标签年代（这是最新的）和胎面花纹存在多个版本。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03017msn2.jpg" target="_blank"><img alt="DSC03017msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03017msn2s.jpg" width="320"/></a><br/>大陆牌的轮胎，型号标签位于气门正下方，<br/>其对面（１８０°方向）<br/>有大陆牌或德国手工制造的标记，<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03018msn2.jpg" target="_blank"><img alt="DSC03018msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03018msn2s.jpg" width="320"/></a><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03019msn2.jpg" target="_blank"><img alt="DSC03019msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03019msn2s.jpg" width="320"/></a><br/>但这款轮胎在１２０°的位置有３处标签。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03020msn2.jpg" target="_blank"><img alt="DSC03020msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03020msn2s.jpg" width="320"/></a><br/>胎面花纹与常规款相同，<br/>但职业队似乎也有中心光滑或完全光滑的花纹。<br/>前一代的Competition PRO LTD<br/>中心光滑是标准规格。<br/>正好前后专用轮胎的"<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Continental+Attack+Comp+tubular+tire+front" target="_blank" rel="noopener sponsored" class="amz-inline">Attack Comp</a>"前轮胎和<br/>"<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Continental+Force+Comp+tubular+tire+rear" target="_blank" rel="noopener sponsored" class="amz-inline">Force Comp</a>"后轮胎也有类似的花纹。<br/><br/>为谨慎起见，我要说明，Attack和Force<br/>在管状和折叠两种规格中，胎面花纹完全不同。<br/>折叠的情况下是带有排水沟的光滑轮胎，<br/>前后轮胎的排水沟花纹不同，<br/>管状的情况下是中心光滑，侧面是锉刀纹，<br/>前后轮胎的花纹相同。<br/>而且无论折叠还是管状，前轮胎都比较窄。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03021msn2.jpg" target="_blank"><img alt="DSC03021msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03021msn2s.jpg" width="320"/></a><br/>↑这是Attack Comp 管状轮胎。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03022msn2.jpg" target="_blank"><img alt="DSC03022msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03022msn2s.jpg" width="320"/></a><br/>中心光滑，侧面锉刀纹，这个和前一代的Competition PRO LTD<br/>不完全相同，但差不多就是这样的花纹。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03023msn2.jpg" target="_blank"><img alt="DSC03023msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03023msn2s.jpg" width="320"/></a><br/>侧面的锉刀纹，<br/>Competition是椭圆形的颗粒排列，而这款<br/>是菱形的颗粒。<br/>用指甲刮过时的声音都不同，<br/>推测来看，过去的Competition PRO LTD<br/>的锉刀纹侧面应该是椭圆形的颗粒。<br/><br/>大陆牌的日本批发商<br/>并非把所有市售的大陆牌产品都作为常备商品。<br/>比如７００C折叠轮胎的轮胎内胎<br/>属于"Race２８（２８英寸≒７００C）"系列，<br/>比较厚重且包装也很大的Race２８，<br/>比它更薄更轻的Race２８ Light<br/>（这在厚度和重量上与维多利亚的UltraLight差不多），<br/>以及２５～３２C用的Race２８ Wide这３种是有经营的，<br/>但超轻量内胎Race２８ Supersonic就没有经营。<br/>（同名的超轻量折叠轮胎Grand Prix Supersonic是有经营的）。<br/>Supersonic内胎过去有气门根部脱落的问题特别多，<br/>安装轮胎时还容易卡住轮圈导致爆胎，<br/>批发商似乎就是因为这个原因而不经营的。<br/><br/>说到轮胎，Grand PrixGT、GatorHardshell<br/>以及Zonda Klasse II也都没有经营。<br/>前两款折叠轮胎<br/>应该是因为有其他型号的定位相近。<br/>Zonda Klasse II是为６天赛专用的轮胎，<br/>在日本很难想象会有销路。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03213amx12.jpg" target="_blank"><img alt="DSC03213amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03213amx12s.jpg" width="320"/></a><br/>Grand Prix４０００SII侧面贴了反光贴的<br/>"Grand Prix４０００SII Reflex"这个型号也有，<br/>但这个日本批发商也应该没有经营。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03185amx12.jpg" target="_blank"><img alt="DSC03185amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03185amx12s.jpg" width="320"/></a><br/>话题转向别的，我买了模仿台球球的<br/>法式气门盖。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03186amx12.jpg" target="_blank"><img alt="DSC03186amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03186amx12s.jpg" width="320"/></a><br/>批发商有货的只有１、２、３、５、８这５种。<br/>或许过去还有其他数字。<br/>如果只能卖一个的话，应该是９（九球）会卖得最好，<br/>所以或许那个过去有但已经售罄了。<br/>幸好剩下了１、２、３。<br/>由此<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03190amx12.jpg" target="_blank"><img alt="DSC03190amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03190amx12s.jpg" width="320"/></a><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03188amx12.jpg" target="_blank"><img alt="DSC03188amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03188amx12s.jpg" width="320"/></a><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03189amx12.jpg" target="_blank"><img alt="DSC03189amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03189amx12s.jpg" width="320"/></a><br/>能给各个气门编号。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03187amx12.jpg" target="_blank"><img alt="DSC03187amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03187amx12s.jpg" width="320"/></a><br/>但每个重１１克，所以可能不会用。<br/>回到正题（对三气门完全没有说明），<br/>我以前在WO轮圈上用的轮胎是<br/>前轮Attack II、后轮Grand Prix４０００SII，都是２３C。<br/>Attack II是前轮专用的２２C，Force II是后轮专用的２４C，<br/>但Attack/Force现在已经是III代，<br/>前轮变成２３C，后轮变成２５C，各粗了１C。<br/>而且Grand Prix４０００SII已经停产。<br/>所以现在我前轮用的是Grand Prix５０００的２３C，<br/>后轮用的是Grand PrixTT的２３C或Gator Skin的２３C，<br/>只有后轮根据情况更换。<br/>Grand PrixTT２３C的实测重量为１７７克（公称１８０克／２３C），很轻，<br/>就像在Grand Prix Supersonic（公称１５０克／２３C）里加入了防刺穿带的规格。<br/>Grand PrixTT是中心光滑加侧面薄锉刀纹，<br/>Supersonic是完全光滑，所以胎面花纹略有不同。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC01978amx12.jpg" target="_blank"><img alt="DSC01978amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC01978amx12s.jpg" width="320"/></a><br/>这是刚才画面中上一代的Grand PrixTT，<br/>侧面外壳有散线，<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC01979amx12.jpg" target="_blank"><img alt="DSC01979amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC01979amx12s.jpg" width="320"/></a><br/>胎面也有密密麻麻的小洞，<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC01980amx12.jpg" target="_blank"><img alt="DSC01980amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC01980amx12s.jpg" width="320"/></a><br/>轮胎顶部已经开始露出纱线。<br/>我是倾向于较早更换轮胎的人，但不知不觉就变成这样了。<br/>应该只用了２０００公里多一点。<br/>虽然在不至于过度谨慎、能常用的轮胎中它很轻，<br/>所以我对它作为后轮很满意。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03206amx12.jpg" target="_blank"><img alt="DSC03206amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03206amx12s.jpg" width="320"/></a><br/>重视耐久性使用的是这款Gator Skin。<br/>从胎面下方延伸到轮胎侧面的<br/>Polyex Breaker防刺穿带配备齐全，<br/>实际上对爆胎和轮胎划伤非常抵抗的型号。<br/>大陆牌的轮胎过去曾以<br/>Grand Prix３０００<br/>Sprinter２０００<br/>Sport１０００<br/>这３个型号为中心展开，<br/>Sport１０００对应现在的Ultrasport II。<br/>Grand Prix不仅有３０００→４０００→４０００S→４０００SII→５０００，<br/>现在派生型号多得离谱。<br/>Sprinter虽然在管状轮胎中还保留着这个名字，<br/>但它的Gator Skin版本有Sprinter Gator Skin这个型号，<br/>所以WO版本的Gator Skin也许是相当于Sprinter级别的规格。<br/>制造商定位为固定速飞轮、快递员、街骑爱好者向，<br/>但公称２２０克／２３C（实测２２７克），并不是特别重，<br/>作为公路车的练习轮胎完全没问题。<br/><br/>比它更高级的Grand Prix的Gator Skin版本是<br/>Grand Prix４ Seasons，<br/>重量比Gator Skin在公称值上增加１０克。<br/>因为胎面是Grand Prix级别的，<br/>４ Seasons的抓地力等性能应该更强。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03207amx12.jpg" target="_blank"><img alt="DSC03207amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03207amx12s.jpg" width="320"/></a><br/>Gator Skin也好，Grand Prix４ Seasons也好，<br/>Polyex Breaker的颜色都是茶色，<br/>有人不喜欢这一点。<br/>我不在意。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC01885amx12.jpg" target="_blank"><img alt="DSC01885amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC01885amx12s.jpg" width="320"/></a><br/>Grand Prix４ Seasons的限定款名为<br/>Black Edition。<br/>这个曾经是北美限定销售的型号，<br/>日本也曾有过少量限定特别进货（→<a href="/zh/posts/2185.html" target="_blank" title="这里">这里</a>），<br/>但现在似乎不是北美限定了。<br/>只是本国网站上没有，所以限定仕样的事实没变。<br/>不久前从日本批发商那边<s>被叫着要买</s>进了一些，<br/>不用特别宣传也能正常销售，所以没有在这里刊登。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC01887amx12.jpg" target="_blank"><img alt="DSC01887amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC01887amx12s.jpg" width="320"/></a><br/>轮胎侧面不是茶色而是黑色，这很不错，但只有２５C规格。<br/>所以我用不了。<br/>在之前提到的文章中也写过，<br/>带Polyex Breaker的轮胎<br/>不太会产生随着气压增加轮胎横向变宽的现象。<br/>除此之外，把新的Gator Skin２３C<br/>装到DT的XR３３１轮圈上，充入７气压左右时<br/>（XR３３１本来是２９英寸的山地车轮圈，公称限界气压为６．８气压），<br/>因为轮圈相对较宽，所以成为拉伸轮胎，<br/>实测宽度几乎达到２５C。<br/>所以Grand Prix４ Seasons的２５C和Gator Skin的２３C<br/>根据安装的轮圈不同，<br/>实际的轮胎宽度可能差不了多少。<br/>虽然轮胎的高度和重量不同。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

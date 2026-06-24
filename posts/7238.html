@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
-    <p>Bicycle Workshop — English Edition</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/index.html">
+        <span class="brand-title">Nomu Lab Diary</span>
+        <span class="brand-subtitle">Bicycle Workshop Archive</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/index.html">Archive</a>
+      <a href="/guides/wheel-building.html">Wheel Guide</a>
+      <a href="/glossary.html">Glossary</a>
+      <a href="/about.html">About</a>
+    </nav>
     <div class="lang-toggle"><span class="lang-btn active">EN</span><a class="lang-btn" href="/zh/posts/7238.html">繁中</a></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/index.html">← All posts</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Other Equipment</p>
     <h1>About Kool-Stop Brake Shoes</h1>
     <p class="post-meta">August 27, 2024</p>
+    <div class="post-body"><div class="entrytext">The other day I built my personal front wheel with an RR411 rim,<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0637amx15x.jpg" target="_blank"><img alt="RIMG0637amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0637amx15xs.jpg" width="320"/></a><br/>↑this is the Campagnolo Neutron Ultra front wheel<br/>I'd been using up until then<br/><s>which I converted from internal nipple spec to universal nipple spec and<br/>rebuilt with rainbow-colored nipples</s>.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0639amx15x.jpg" target="_blank"><img alt="RIMG0639amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0639amx15xs.jpg" width="320"/></a><br/>Like the "white socks from the dyer," the brake zone is seriously worn.<br/>If I have planned rides and time, I'll ride out in nearly full protection rain or shine<br/>（except in winter since the cold rain is brutal）,<br/>so I keep <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Kool-Stop+BXP+brake+shoes+Campagnolo" target="_blank" rel="noopener sponsored" class="amz-inline">Kool-Stop's blue shoes, the BXP</a>, which work well even in rain, installed permanently,<br/>and the decisive factor is that I only use the front brake,<br/>so the front rim wears out quickly.<br/><br/>The BXP has noticeably less loss of braking power in wet conditions,<br/>but the shoes are hard enough to work as non-original shoes for the Shamal Mille and Racing Zero Night,<br/>and also Mavic's Exalith, so consequently the aggressiveness toward the rim is high.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0641amx15x.jpg" target="_blank"><img alt="RIMG0641amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0641amx15xs.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0642amx15x.jpg" target="_blank"><img alt="RIMG0642amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0642amx15xs.jpg" width="320"/></a><br/>I have spare front rim stock for the Neutron Ultra.<br/>I had the last one in Campagnolo headquarters sent over.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0643amx15x.jpg" target="_blank"><img alt="RIMG0643amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0643amx15xs.jpg" width="320"/></a><br/>It's not that processing the rim holes is a hassle...<br/>but I'm not ready to rebuild this wheel yet for other reasons,<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8315amx15.jpg" target="_blank"><img alt="RIMG8315amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8315amx15s.jpg" width="320"/></a><br/>so I had a front wheel with a brake zone that's Oxic,<br/>the old model DT PR1400 from before it became Exalith knock-off,<br/>come in at a special price, and I stocked it,<br/>but it sold, so I built a front wheel with the RR411 rim.<br/>By the way, even if I'd bought this front wheel for myself,<br/>I was planning to rebuild it with silver <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=CX+Sprint+Straight+bicycle+spokes" target="_blank" rel="noopener sponsored" class="amz-inline">CX Sprint Straight spokes</a> anyway.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0593amx15x.jpg" target="_blank"><img alt="RIMG0593amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0593amx15xs.jpg" width="320"/></a><br/>↑these are the brake shoes I was using last<br/>on the Neutron front wheel.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0592amx15x.jpg" target="_blank"><img alt="RIMG0592amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0592amx15xs.jpg" width="320"/></a><br/>The manufacturer is <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Kool-Stop+salmon+brake+shoes" target="_blank" rel="noopener sponsored" class="amz-inline">Kool-Stop</a>,<br/>an American brake shoe veteran.<br/>This color compound<br/>is called "salmon" by the company,<br/>and supposedly works well in the rain while being gentle on rims,<br/>but such a combination is basically impossible,<br/>so the former is somewhat true, the latter is pretty much a lie.<br/><br/>When you take a brand-new brake shoe by itself<br/>and bend it gently without snapping it,<br/>you can figure out the shoe's characteristics pretty well from the hardness,<br/>and the salmon is on the harder side.<br/>Even all-black rubber shoes vary in hardness,<br/>but salmon is harder than the harder black shoes.<br/><br/>According to <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Kool-Stop+black+brake+shoes" target="_blank" rel="noopener sponsored" class="amz-inline">Kool-Stop</a>'s manufacturer website explanation,<br/>the salmon compound is<br/>"one of the most aggressive compounds for handling<br/>harsh wet conditions," and it clearly says<br/>aggressive. I'm also curious about the phrasing "one of the most,"<br/>but I'll write about that later.<br/><br/>In contrast, the black rubber shoes that Kool-Stop also makes<br/>are described as<br/>"our standard compound that works in all weather conditions,<br/>but is designed for riding in dry conditions,"<br/>basically saying it can be used in rain but is meant for sunny days.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0595amx15x.jpg" target="_blank"><img alt="RIMG0595amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0595amx15xs.jpg" width="320"/></a><br/>This is the left shoe, but it's hardly picked up any metal debris.<br/><br/>It's a characteristic of the shoe, so it's not bad per se,<br/>but Shimano's R55C4 shoes pick up metal debris like chocolate chip cookies.<br/><br/>The black streak running slightly above the middle of this salmon shoe<br/>has a hole that's a trace of when metal debris was caught<br/>near the rear end（on the left side in the image）,<br/>and when particles were once embedded here,<br/>they created a black streak running forward.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0597amx15x.jpg" target="_blank"><img alt="RIMG0597amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0597amx15xs.jpg" width="320"/></a><br/>The right shoe also has a black streak toward the bottom,<br/>and there's faint metal debris embedded in the darkest part of the streak,<br/>but overall there's hardly any metal debris visible.<br/>This is a phenomenon unique to harder shoes.<br/><br/>Since I'm the type who rides regardless of rain,<br/>considering that, this scarcity of metal debris is remarkable.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0645amx15x.jpg" target="_blank"><img alt="RIMG0645amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0645amx15xs.jpg" width="320"/></a><br/>↑these are Kool-Stop's BXP shoes for Campagnolo.<br/><br/>This year I built a disc road bike,<br/>partly to address the situation of "touching disc roads at work without owning one,"<br/>but its purpose is for wet-weather riding.<br/>So aside from being caught in rain while out,<br/>I've decided not to use rim brake bikes going forward in situations where it's raining from the start.<br/><br/>This means going forward, I won't need to use<br/>brake shoes with high rim aggressiveness designed for wet riding on rim brake bikes.<br/>Even with hard shoes and wet riding,<br/>the Neutron rim lasted about 10 years, so<br/>with Campagnolo's original shoes or Kool-Stop's black shoes<br/>plus the policy of not riding in the rain except for unavoidable circumstances,<br/>they should work as a lifetime investment<br/>（excluding external factors like accidents）.<br/><br/>But since I still have plenty of hard shoe stock,<br/>I decided to build a front wheel for consuming hard shoes on a rim<br/>that's not as precious as the Neutron.<br/>The RR411 has actually become a hard-to-find rim,<br/>but since it can be relocated with the Noma Lab Wheel No. 5 rim,<br/>as a rim for the "urchin state" of just hub and spokes,<br/>there are other things being supplied.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0646amx15x.jpg" target="_blank"><img alt="RIMG0646amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0646amx15xs.jpg" width="320"/></a><br/>↑this is Kool-Stop's<br/>Triple Compound I bought<br/>at the same time as the salmon shoes.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0647amx15x.jpg" target="_blank"><img alt="RIMG0647amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0647amx15xs.jpg" width="320"/></a><br/>They trademarked the phrase "gentle on rims" and all,<br/>but from my personal take, the rim aggressiveness of the salmon shoe is<br/>only slightly better than the BXP,<br/>and clearly worse on rims than the black shoe.<br/><br/>But changing perspective,<br/>maybe it's not a lie either.<br/>For users who neglect brake shoe maintenance（digging out metal debris）,<br/>it's possible that hard shoes that barely pick up debris<br/>could actually do less rim damage than<br/>black shoes that pick up debris like crazy.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0648amx15x.jpg" target="_blank"><img alt="RIMG0648amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0648amx15xs.jpg" width="320"/></a><br/>The Triple Compound consists of<br/>grey / salmon / black.<br/>In the upper image, the upper shoe<br/>has grey on the left side of the image,<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0649amx15x.jpg" target="_blank"><img alt="RIMG0649amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0649amx15xs.jpg" width="320"/></a><br/>but the lower shoe is oriented the other way<br/>and packed in a blister pack.<br/>Pretty careless there.<br/><br/>Separately from this, Kool-Stop also makes<br/>a Dual Compound shoe, but<br/>of the three tooth-like brake shoe blocks,<br/>one is black and the other two are salmon,<br/>and when the shoe is installed correctly,<br/>black faces forward.<br/>"The softer compound goes to the front side."<br/><br/>According to Kool-Stop's manufacturer website explanation,<br/>the Triple Compound is<br/>"the most aggressive compound that achieves<br/>excellent braking in all weather conditions."<br/><br/>The packaging had them alternating,<br/>but I could identify the orientation from the shape of the part touching the rim,<br/>and when I checked the compound order,<br/>as I thought, it was black / salmon / grey from front to back.<br/>That means the grey compound is<br/>even more aggressive than the salmon,<br/>which they position as one of the most aggressive compounds.<br/>And a salmon / grey dual compound or<br/>grey-only compound doesn't exist<br/>in Kool-Stop's road brake shoes.<br/>I suspect this is because the rim aggressiveness is too high.<br/><br/>There is a grey compound called "Electric"<br/>that comes only in E-bike exclusive V-brake shoe form,<br/>and while I can't say for certain, that grey shoe and<br/>the grey part of the Triple might be the same compound.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0598amx15x.jpg" target="_blank"><img alt="RIMG0598amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0598amx15xs.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0599amx15x.jpg" target="_blank"><img alt="RIMG0599amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0599amx15xs.jpg" width="320"/></a><br/>Based on the title and the flow of the story so far,<br/>the plan was to test the Triple Compound<br/>on a rim that wasn't precious,<br/>but since I have lots of BXP, I went with BXP first.
+</div></div>
+    <aside class="post-guides">
+      <strong>Technical archive</strong>
+      <nav aria-label="Technical guides">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">The other day I built my personal front wheel with an RR411 rim,<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0637amx15x.jpg" target="_blank"><img alt="RIMG0637amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0637amx15xs.jpg" width="320"/></a><br/>↑this is the Campagnolo Neutron Ultra front wheel<br/>I'd been using up until then<br/><s>which I converted from internal nipple spec to universal nipple spec and<br/>rebuilt with rainbow-colored nipples</s>.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0639amx15x.jpg" target="_blank"><img alt="RIMG0639amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0639amx15xs.jpg" width="320"/></a><br/>Like the "white socks from the dyer," the brake zone is seriously worn.<br/>If I have planned rides and time, I'll ride out in nearly full protection rain or shine<br/>（except in winter since the cold rain is brutal）,<br/>so I keep <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Kool-Stop+BXP+brake+shoes+Campagnolo" target="_blank" rel="noopener sponsored" class="amz-inline">Kool-Stop's blue shoes, the BXP</a>, which work well even in rain, installed permanently,<br/>and the decisive factor is that I only use the front brake,<br/>so the front rim wears out quickly.<br/><br/>The BXP has noticeably less loss of braking power in wet conditions,<br/>but the shoes are hard enough to work as non-original shoes for the Shamal Mille and Racing Zero Night,<br/>and also Mavic's Exalith, so consequently the aggressiveness toward the rim is high.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0641amx15x.jpg" target="_blank"><img alt="RIMG0641amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0641amx15xs.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0642amx15x.jpg" target="_blank"><img alt="RIMG0642amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0642amx15xs.jpg" width="320"/></a><br/>I have spare front rim stock for the Neutron Ultra.<br/>I had the last one in Campagnolo headquarters sent over.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0643amx15x.jpg" target="_blank"><img alt="RIMG0643amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0643amx15xs.jpg" width="320"/></a><br/>It's not that processing the rim holes is a hassle...<br/>but I'm not ready to rebuild this wheel yet for other reasons,<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8315amx15.jpg" target="_blank"><img alt="RIMG8315amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8315amx15s.jpg" width="320"/></a><br/>so I had a front wheel with a brake zone that's Oxic,<br/>the old model DT PR1400 from before it became Exalith knock-off,<br/>come in at a special price, and I stocked it,<br/>but it sold, so I built a front wheel with the RR411 rim.<br/>By the way, even if I'd bought this front wheel for myself,<br/>I was planning to rebuild it with silver <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=CX+Sprint+Straight+bicycle+spokes" target="_blank" rel="noopener sponsored" class="amz-inline">CX Sprint Straight spokes</a> anyway.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0593amx15x.jpg" target="_blank"><img alt="RIMG0593amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0593amx15xs.jpg" width="320"/></a><br/>↑these are the brake shoes I was using last<br/>on the Neutron front wheel.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0592amx15x.jpg" target="_blank"><img alt="RIMG0592amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0592amx15xs.jpg" width="320"/></a><br/>The manufacturer is <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Kool-Stop+salmon+brake+shoes" target="_blank" rel="noopener sponsored" class="amz-inline">Kool-Stop</a>,<br/>an American brake shoe veteran.<br/>This color compound<br/>is called "salmon" by the company,<br/>and supposedly works well in the rain while being gentle on rims,<br/>but such a combination is basically impossible,<br/>so the former is somewhat true, the latter is pretty much a lie.<br/><br/>When you take a brand-new brake shoe by itself<br/>and bend it gently without snapping it,<br/>you can figure out the shoe's characteristics pretty well from the hardness,<br/>and the salmon is on the harder side.<br/>Even all-black rubber shoes vary in hardness,<br/>but salmon is harder than the harder black shoes.<br/><br/>According to <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Kool-Stop+black+brake+shoes" target="_blank" rel="noopener sponsored" class="amz-inline">Kool-Stop</a>'s manufacturer website explanation,<br/>the salmon compound is<br/>"one of the most aggressive compounds for handling<br/>harsh wet conditions," and it clearly says<br/>aggressive. I'm also curious about the phrasing "one of the most,"<br/>but I'll write about that later.<br/><br/>In contrast, the black rubber shoes that Kool-Stop also makes<br/>are described as<br/>"our standard compound that works in all weather conditions,<br/>but is designed for riding in dry conditions,"<br/>basically saying it can be used in rain but is meant for sunny days.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0595amx15x.jpg" target="_blank"><img alt="RIMG0595amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0595amx15xs.jpg" width="320"/></a><br/>This is the left shoe, but it's hardly picked up any metal debris.<br/><br/>It's a characteristic of the shoe, so it's not bad per se,<br/>but Shimano's R55C4 shoes pick up metal debris like chocolate chip cookies.<br/><br/>The black streak running slightly above the middle of this salmon shoe<br/>has a hole that's a trace of when metal debris was caught<br/>near the rear end（on the left side in the image）,<br/>and when particles were once embedded here,<br/>they created a black streak running forward.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0597amx15x.jpg" target="_blank"><img alt="RIMG0597amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0597amx15xs.jpg" width="320"/></a><br/>The right shoe also has a black streak toward the bottom,<br/>and there's faint metal debris embedded in the darkest part of the streak,<br/>but overall there's hardly any metal debris visible.<br/>This is a phenomenon unique to harder shoes.<br/><br/>Since I'm the type who rides regardless of rain,<br/>considering that, this scarcity of metal debris is remarkable.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0645amx15x.jpg" target="_blank"><img alt="RIMG0645amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0645amx15xs.jpg" width="320"/></a><br/>↑these are Kool-Stop's BXP shoes for Campagnolo.<br/><br/>This year I built a disc road bike,<br/>partly to address the situation of "touching disc roads at work without owning one,"<br/>but its purpose is for wet-weather riding.<br/>So aside from being caught in rain while out,<br/>I've decided not to use rim brake bikes going forward in situations where it's raining from the start.<br/><br/>This means going forward, I won't need to use<br/>brake shoes with high rim aggressiveness designed for wet riding on rim brake bikes.<br/>Even with hard shoes and wet riding,<br/>the Neutron rim lasted about 10 years, so<br/>with Campagnolo's original shoes or Kool-Stop's black shoes<br/>plus the policy of not riding in the rain except for unavoidable circumstances,<br/>they should work as a lifetime investment<br/>（excluding external factors like accidents）.<br/><br/>But since I still have plenty of hard shoe stock,<br/>I decided to build a front wheel for consuming hard shoes on a rim<br/>that's not as precious as the Neutron.<br/>The RR411 has actually become a hard-to-find rim,<br/>but since it can be relocated with the Noma Lab Wheel No. 5 rim,<br/>as a rim for the "urchin state" of just hub and spokes,<br/>there are other things being supplied.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0646amx15x.jpg" target="_blank"><img alt="RIMG0646amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0646amx15xs.jpg" width="320"/></a><br/>↑this is Kool-Stop's<br/>Triple Compound I bought<br/>at the same time as the salmon shoes.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0647amx15x.jpg" target="_blank"><img alt="RIMG0647amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0647amx15xs.jpg" width="320"/></a><br/>They trademarked the phrase "gentle on rims" and all,<br/>but from my personal take, the rim aggressiveness of the salmon shoe is<br/>only slightly better than the BXP,<br/>and clearly worse on rims than the black shoe.<br/><br/>But changing perspective,<br/>maybe it's not a lie either.<br/>For users who neglect brake shoe maintenance（digging out metal debris）,<br/>it's possible that hard shoes that barely pick up debris<br/>could actually do less rim damage than<br/>black shoes that pick up debris like crazy.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0648amx15x.jpg" target="_blank"><img alt="RIMG0648amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0648amx15xs.jpg" width="320"/></a><br/>The Triple Compound consists of<br/>grey / salmon / black.<br/>In the upper image, the upper shoe<br/>has grey on the left side of the image,<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0649amx15x.jpg" target="_blank"><img alt="RIMG0649amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0649amx15xs.jpg" width="320"/></a><br/>but the lower shoe is oriented the other way<br/>and packed in a blister pack.<br/>Pretty careless there.<br/><br/>Separately from this, Kool-Stop also makes<br/>a Dual Compound shoe, but<br/>of the three tooth-like brake shoe blocks,<br/>one is black and the other two are salmon,<br/>and when the shoe is installed correctly,<br/>black faces forward.<br/>"The softer compound goes to the front side."<br/><br/>According to Kool-Stop's manufacturer website explanation,<br/>the Triple Compound is<br/>"the most aggressive compound that achieves<br/>excellent braking in all weather conditions."<br/><br/>The packaging had them alternating,<br/>but I could identify the orientation from the shape of the part touching the rim,<br/>and when I checked the compound order,<br/>as I thought, it was black / salmon / grey from front to back.<br/>That means the grey compound is<br/>even more aggressive than the salmon,<br/>which they position as one of the most aggressive compounds.<br/>And a salmon / grey dual compound or<br/>grey-only compound doesn't exist<br/>in Kool-Stop's road brake shoes.<br/>I suspect this is because the rim aggressiveness is too high.<br/><br/>There is a grey compound called "Electric"<br/>that comes only in E-bike exclusive V-brake shoe form,<br/>and while I can't say for certain, that grey shoe and<br/>the grey part of the Triple might be the same compound.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0598amx15x.jpg" target="_blank"><img alt="RIMG0598amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0598amx15xs.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0599amx15x.jpg" target="_blank"><img alt="RIMG0599amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0599amx15xs.jpg" width="320"/></a><br/>Based on the title and the flow of the story so far,<br/>the plan was to test the Triple Compound<br/>on a rim that wasn't precious,<br/>but since I have lots of BXP, I went with BXP first.
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">Products Mentioned in This Article</p>
       <ul>

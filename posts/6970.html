@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
-    <p>Bicycle Workshop — English Edition</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/index.html">
+        <span class="brand-title">Nomu Lab Diary</span>
+        <span class="brand-subtitle">Bicycle Workshop Archive</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/index.html">Archive</a>
+      <a href="/guides/wheel-building.html">Wheel Guide</a>
+      <a href="/glossary.html">Glossary</a>
+      <a href="/about.html">About</a>
+    </nav>
     <div class="lang-toggle"><span class="lang-btn active">EN</span><a class="lang-btn" href="/zh/posts/6970.html">繁中</a></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/index.html">← All posts</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>I Converted My Daily Bike to 7-Speed</h1>
     <p class="post-meta">January 03, 2024</p>
+    <div class="post-body"><div class="entrytext">SRAM's MTB component parts include<br/>a PG-720 downhill-spec<br/>7-speed sprocket compatible with HG freebody.<br/>The tooth count is 11-13-15-17-19 in 2T increments,<br/>then -22-25 in 3T increments,<br/>making it an 11-25T configuration.<br/>Even though it's called 7-speed, the tooth spacing<br/>is the same as 11-speed, with the four cogs on the low end<br/>filled in with plastic spacers.<br/>Since it's an entry-level model, apparently,<br/>the sprocket doesn't use spider arms—<br/>it's designed with spacers and cogs alternating one by one.<br/>The material is steel (chromoly according to the maker).<br/>The retail price including tax is ¥6,600, and the stated weight is 224g,<br/>but considering Shimano Dura-Ace R9200's<br/>11-30T is listed at 223g<br/>and 11-34T at 253g,<br/>you could say it's light.<br/>There's a higher-end version of this 7-speed sprocket concept<br/>called the <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=SRAM+XG-795+7-speed+cassette+sprocket+XD" target="_blank" rel="noopener sponsored" class="amz-inline">XG-795</a>, compatible with XD freebody,<br/>with a tooth count of 10-24T,<br/>one tooth smaller across the board compared to the PG-720,<br/>and the material is listed as chromoly with<br/>extreme machining—a stated weight of just 136g, super lightweight.<br/>But the retail price is a staggering ¥71,500,<br/>making your wallet lighter too.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7056amx15.jpg" target="_blank"><img alt="RIMG7056amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7056amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7057amx15.jpg" target="_blank"><img alt="RIMG7057amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7057amx15s.jpg" width="320"/></a><br/>↑Like this (PG-720)<br/>The rear hub is an <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+FH-9000+rear+hub" target="_blank" rel="noopener sponsored" class="amz-inline">FH-9000</a>,<br/>which uses 11-speed road splines,<br/>so I've installed an 1.85mm spacer<br/>before the plastic spacers.<br/><br/>After adjusting the shifting, I thought it might work<br/>if I just screwed the low-side adjust bolt all the way in,<br/>but as expected, it's beyond the range the rear derailleur was designed for,<br/>and the bolt tip has come off the projection it's supposed to rest against,<br/>so I need to do something about it.<br/>When I tried to shift to the 8th cog from the top,<br/>it easily tried to override the spacer,<br/>so while I haven't actually done it, the chain could easily drop inward.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7022amx15.jpg" target="_blank"><img alt="RIMG7022amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7022amx15s.jpg" width="320"/></a><br/>The rear derailleur is a <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Campagnolo+Athena+11-speed+rear+derailleur" target="_blank" rel="noopener sponsored" class="amz-inline">Campagnolo Athena 11-speed</a>,<br/>and from the moment I opened the box (※), the parallelogram plates<br/>have lightening holes on both inner and outer sides. The inner plate has<br/>a round hole and a U-shaped cross-section,<br/>so I'll use this to create a "bolt resting point."<br/><br/>※I didn't write "from the moment I opened the box"<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7042amx15.jpg" target="_blank"><img alt="RIMG7042amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7042amx15s.jpg" width="320"/></a><br/>With the rear wheel off, positioning the adjust bolt<br/>roughly where the parallelogram would be<br/>when shifted to low on 11-speed looks like this.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7043amx15.jpg" target="_blank"><img alt="RIMG7043amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7043amx15s.jpg" width="320"/></a><br/>I installed the rear wheel and shifted to 7-speed low.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7044amx15.jpg" target="_blank"><img alt="RIMG7044amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7044amx15s.jpg" width="320"/></a><br/>At that parallelogram position,<br/>there's no projection to catch the bolt tip.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7045amx15.jpg" target="_blank"><img alt="RIMG7045amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7045amx15s.jpg" width="320"/></a><br/>This is a non-standard longer bolt,<br/>and as I tighten it, this happens.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7046amx15.jpg" target="_blank"><img alt="RIMG7046amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7046amx15s.jpg" width="320"/></a><br/>The bolt's threads just barely scrape<br/>the underside of the inner parallelogram plate.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7025amx15.jpg" target="_blank"><img alt="RIMG7025amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7025amx15s.jpg" width="320"/></a><br/>I cut out the flat section from the end of<br/>a modern Ridley fork column with D-shaped cross-section<br/>(used for routing disc brake hoses)<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7023amx15.jpg" target="_blank"><img alt="RIMG7023amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7023amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7024amx15.jpg" target="_blank"><img alt="RIMG7024amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7024amx15s.jpg" width="320"/></a><br/>↑and made something like this.<br/>Two carbon plates were<br/>glued together.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7026amx15.jpg" target="_blank"><img alt="RIMG7026amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7026amx15s.jpg" width="320"/></a><br/>The stepped section is designed to fit<br/>into the U-shaped form of the inner parallelogram plate.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7027amx15.jpg" target="_blank"><img alt="RIMG7027amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7027amx15s.jpg" width="320"/></a><br/>Well, this was a failed attempt.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7038amx15.jpg" target="_blank"><img alt="RIMG7038amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7038amx15s.jpg" width="320"/></a><br/>Materials are limited, but I still have some.<br/>Colnago fork columns are also D-shaped,<br/>but they have threaded holes for the top cap bolt embedded<br/>and reinforcement material filled inside—<br/>they're not hollow.<br/>Either way, this type of D-section column has weak<br/>clamping force against stem clamp bolt torque, and with a stem<br/>that has a narrow clamp gap, you sometimes can't secure the stem<br/>until the clamp is nearly completely closed.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7040amx15.jpg" target="_blank"><img alt="RIMG7040amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7040amx15s.jpg" width="320"/></a><br/>↑Finished version.<br/>The right part has unnecessary holes from<br/>trial and error—the "error" part—but I'll lie and say<br/>they're for weight reduction and to improve adhesive grip.<br/>The left part is basically a huge square washer.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7041amx15.jpg" target="_blank"><img alt="RIMG7041amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7041amx15s.jpg" width="320"/></a><br/>The back side of the right part looks like this<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7051amx15.jpg" target="_blank"><img alt="RIMG7051amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7051amx15s.jpg" width="320"/></a><br/>The low-side adjust bolt's threads are<br/>standard M4, but I needed it longer than stock,<br/>so I bought a stainless bolt and machined it.<br/>As-is, the bolt head diameter was too large<br/>to fit in the parallelogram hole, so I filed it down.<br/>In the image above, left is original, right is after machining.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7053amx15.jpg" target="_blank"><img alt="RIMG7053amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7053amx15s.jpg" width="320"/></a><br/>I secured the part with an M5 bolt.<br/>Fortunately, for practical purposes,<br/>there was a huge hole in the outer plate.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7054amx15.jpg" target="_blank"><img alt="RIMG7054amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7054amx15s.jpg" width="320"/></a><br/>With it shifted to 7-speed low,<br/>I tightened the adjust bolt until it hit the carbon plate.<br/>The ErgoShift lever clicks into 8-speed, but the chain clatters,<br/>so I can just shift back to 7-speed immediately—OK.<br/>There's no way it'll go into 9-speed.<br/>Unlike before I made this, the derailleur no longer tries<br/>to override the plastic spacer.<br/>The adjust bolt is doing its job.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7055amx15.jpg" target="_blank"><img alt="RIMG7055amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7055amx15s.jpg" width="320"/></a><br/>↑This is shifted to top 11T.<br/>The carbon plate's protrusion doesn't interfere<br/>with any other part of the rear derailleur<br/>except in low gear.<br/><br/>The reason I did all this<br/>comes from a fanatical conviction that<br/>road bikes are more honorable the less surface area they have—<br/>a kind of puristic primitivism taken to extremes.<br/><br/>By the way, the crankside has a 44T single chainring,<br/>which in terms of gear ratios equates to<br/>39×22.1T or 34T×19.3T.<br/>Unless the climb is a seriously steep pass,<br/>you can generally still get up it.<br/>The previous sprocket had 11T as the smallest,<br/>then all 2T jumps after that:<br/>11-12-14-16-18-<br/>20-22-24-26-28-30T<br/>on an 11-speed cassette,<br/>but I barely used the 30T, mostly stuck to 26T,<br/>and only occasionally hit 28T.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7062amx15.jpg" target="_blank"><img alt="RIMG7062amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7062amx15s.jpg" width="320"/></a><br/>I cleaned the old sprocket.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7063amx15.jpg" target="_blank"><img alt="RIMG7063amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7063amx15s.jpg" width="320"/></a><br/>From the top gear onward, it's all 2T jumps,<br/>so the line of tooth tips forms<br/>a single straight line.<br/>Not a sombrero shape.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7064amx15.jpg" target="_blank"><img alt="RIMG7064amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7064amx15s.jpg" width="320"/></a><br/>I must have done quite a bit of climbing,<br/>but looking at the valleys of the low gear,<br/>the color hasn't rubbed off—<br/>there's barely any wear at all.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7065amx15.jpg" target="_blank"><img alt="RIMG7065amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7065amx15s.jpg" width="320"/></a><br/>↑Bottom right in the image is the 11T top gear,<br/>but the three sprockets I use most on flat terrain—14, 16, and 18T—<br/>show ω-shaped wear in the valleys from the chain rollers.<br/>The reason I bought this sprocket in the first place was<br/>because of a severe supply shortage of Shimano components—<br/>everything from Dura-Ace down to 105<br/>was completely unavailable—<br/>but as a result, I got something interesting.<br/>According to the maker, the high-durability chromoly material<br/>supposedly offers 2.5 to 3 times the durability<br/>of Dura-Ace sprockets.<br/>If that figure was comparing to just the titanium low gear section,<br/>I thought that was a sleazy way to phrase it,<br/>but in actual use, even comparing steel sections to steel,<br/>the durability is clearly at least double.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4377amx15.jpg" target="_blank"><img alt="RIMG4377amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4377amx15s.jpg" width="320"/></a><br/>This is from a past post, but this sprocket<br/>only engages the splines at the very back and front.<br/>This hub's freebody is titanium,<br/>but if it were aluminum, it might wear in an unpleasant way.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4378amx15.jpg" target="_blank"><img alt="RIMG4378amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4378amx15s.jpg" width="320"/></a><br/>I removed the sprocket.<br/>Directly below the sprocket's hollow section,<br/>black metal dust mixed with chain oil is caked on,<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4379amx15.jpg" target="_blank"><img alt="RIMG4379amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4379amx15s.jpg" width="320"/></a><br/>but it wipes away easily.<br/>As for what this dust actually is,<br/>I believe it's mostly chain roller shavings worn away<br/>by the sprocket's superior hardness.<br/>The sprocket's high durability is real,<br/>but the chain roller wear rate is definitely not normal.<br/><br/>Shimano and other component makers could presumably<br/>make harder sprockets—<br/><s>third-party makers manage to do it</s>—<br/>but they presumably select an appropriate hardness<br/>for a mutually balanced wear relationship with the chain.<br/>The same applies to brake shoes and rims;<br/>brake shoes harder than the stock specification<br/>accelerate rim wear.<br/>I'm not saying that's bad—<br/>SwissStop BXP's rain braking performance<br/>is outstanding compared to other shoes.<br/>But complaining about rim wear as the price for that<br/>would just be wrong. That's all I mean.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7070amx15.jpg" target="_blank"><img alt="RIMG7070amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7070amx15s.jpg" width="320"/></a><br/>The crank is a Campagnolo Ekar,<br/>and the chainring is the stock narrow-wide 44T,<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7067amx15.jpg" target="_blank"><img alt="RIMG7067amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7067amx15s.jpg" width="320"/></a><br/>but I've installed a homemade chain watcher.<br/>Ekar chainrings are resistant to dropping,<br/>but on the Osaka side descent through Yamagata-Kei valley,<br/>at a specific gap midway down, the chain<br/>almost always drops, so I installed this.<br/>After that, in that one situation where it used to drop,<br/>it never drops, and it hasn't dropped<br/>in any other situation either.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7068amx15.jpg" target="_blank"><img alt="RIMG7068amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7068amx15s.jpg" width="320"/></a><br/>But looking at this,<br/>it's clearly doing heavy work...<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7069amx15.jpg" target="_blank"><img alt="RIMG7069amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7069amx15s.jpg" width="320"/></a><br/>↑This is with it on 11T top gear,<br/>but when in low 30T, the chain's upper run<br/>comes much closer to the watcher.<br/><br/>That gap that almost always causes drops—<br/>the chain doesn't drop if you're running it in low gear territory<br/>because there's high chain tension.<br/>But shifting to low gear on a descent isn't normal.<br/><br/>This time, the low gear went from 30T to 25T.<br/>When I checked by virtually tightening the chain until it was taut,<br/>I could shorten it by 7 links.<br/>So if I were to cut the chain,<br/>6 links (3 pitches) would be a bit tight,<br/>but 4 links (2 pitches) I could definitely remove.<br/>The fact that 25T isn't at the normal low-gear position<br/>but 7th from the bottom might also be related<br/>to how many links can be shortened.<br/><br/>With the Ekar crank, the chain originally<br/>barely dropped even without the watcher<br/>in all but extreme specific situations,<br/>so instead of "44×11T chain length calculated for 30T,"<br/>with "25T as the actual limit on 44×11T chain length,"<br/>there's a possibility it'll work fine without this.<br/><br/>So I decided to remove it.<br/>If I ever reinstall it,<br/>it'll be mounted lower than before.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7074amxv15.jpg" target="_blank"><img alt="RIMG7074amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7074amxv15s.jpg" width="320"/></a><br/>With a round seat tube lacking a direct-mount bracket<br/>and absolutely nothing front derailleur-like attached,<br/>it has a very clean appearance.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7075amxv15.jpg" target="_blank"><img alt="RIMG7075amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7075amxv15s.jpg" width="320"/></a><br/>I wiped it clean and applied basic coating.<br/>You can faintly see the band marks,<br/>but if I really went for it, those could be removed.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7071amxv15.jpg" target="_blank"><img alt="RIMG7071amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7071amxv15s.jpg" width="320"/></a><br/>↑The removed chain watcher<br/>The carbon seat tube's outer diameter is 30mm.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7072amxv15.jpg" target="_blank"><img alt="RIMG7072amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7072amxv15s.jpg" width="320"/></a><br/>So with an inner-outer diameter difference of 2mm,<br/>I cut a seatpost shim with 1mm radius and thickness<br/>and installed it inside a 31.8mm inner diameter E-type front derailleur band.<br/>But when I actually tightened it,<br/>the clamp was closing before full tightness,<br/>so I applied thin aluminum tape<br/>and adjusted it by sanding smooth.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7073amxv15.jpg" target="_blank"><img alt="RIMG7073amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7073amxv15s.jpg" width="320"/></a><br/>Looking at this, I have a feeling<br/>I'll be needing its help again pretty soon...
+</div></div>
+    <aside class="post-guides">
+      <strong>Technical archive</strong>
+      <nav aria-label="Technical guides">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">SRAM's MTB component parts include<br/>a PG-720 downhill-spec<br/>7-speed sprocket compatible with HG freebody.<br/>The tooth count is 11-13-15-17-19 in 2T increments,<br/>then -22-25 in 3T increments,<br/>making it an 11-25T configuration.<br/>Even though it's called 7-speed, the tooth spacing<br/>is the same as 11-speed, with the four cogs on the low end<br/>filled in with plastic spacers.<br/>Since it's an entry-level model, apparently,<br/>the sprocket doesn't use spider arms—<br/>it's designed with spacers and cogs alternating one by one.<br/>The material is steel (chromoly according to the maker).<br/>The retail price including tax is ¥6,600, and the stated weight is 224g,<br/>but considering Shimano Dura-Ace R9200's<br/>11-30T is listed at 223g<br/>and 11-34T at 253g,<br/>you could say it's light.<br/>There's a higher-end version of this 7-speed sprocket concept<br/>called the <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=SRAM+XG-795+7-speed+cassette+sprocket+XD" target="_blank" rel="noopener sponsored" class="amz-inline">XG-795</a>, compatible with XD freebody,<br/>with a tooth count of 10-24T,<br/>one tooth smaller across the board compared to the PG-720,<br/>and the material is listed as chromoly with<br/>extreme machining—a stated weight of just 136g, super lightweight.<br/>But the retail price is a staggering ¥71,500,<br/>making your wallet lighter too.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7056amx15.jpg" target="_blank"><img alt="RIMG7056amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7056amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7057amx15.jpg" target="_blank"><img alt="RIMG7057amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7057amx15s.jpg" width="320"/></a><br/>↑Like this (PG-720)<br/>The rear hub is an <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+FH-9000+rear+hub" target="_blank" rel="noopener sponsored" class="amz-inline">FH-9000</a>,<br/>which uses 11-speed road splines,<br/>so I've installed an 1.85mm spacer<br/>before the plastic spacers.<br/><br/>After adjusting the shifting, I thought it might work<br/>if I just screwed the low-side adjust bolt all the way in,<br/>but as expected, it's beyond the range the rear derailleur was designed for,<br/>and the bolt tip has come off the projection it's supposed to rest against,<br/>so I need to do something about it.<br/>When I tried to shift to the 8th cog from the top,<br/>it easily tried to override the spacer,<br/>so while I haven't actually done it, the chain could easily drop inward.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7022amx15.jpg" target="_blank"><img alt="RIMG7022amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7022amx15s.jpg" width="320"/></a><br/>The rear derailleur is a <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Campagnolo+Athena+11-speed+rear+derailleur" target="_blank" rel="noopener sponsored" class="amz-inline">Campagnolo Athena 11-speed</a>,<br/>and from the moment I opened the box (※), the parallelogram plates<br/>have lightening holes on both inner and outer sides. The inner plate has<br/>a round hole and a U-shaped cross-section,<br/>so I'll use this to create a "bolt resting point."<br/><br/>※I didn't write "from the moment I opened the box"<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7042amx15.jpg" target="_blank"><img alt="RIMG7042amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7042amx15s.jpg" width="320"/></a><br/>With the rear wheel off, positioning the adjust bolt<br/>roughly where the parallelogram would be<br/>when shifted to low on 11-speed looks like this.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7043amx15.jpg" target="_blank"><img alt="RIMG7043amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7043amx15s.jpg" width="320"/></a><br/>I installed the rear wheel and shifted to 7-speed low.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7044amx15.jpg" target="_blank"><img alt="RIMG7044amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7044amx15s.jpg" width="320"/></a><br/>At that parallelogram position,<br/>there's no projection to catch the bolt tip.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7045amx15.jpg" target="_blank"><img alt="RIMG7045amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7045amx15s.jpg" width="320"/></a><br/>This is a non-standard longer bolt,<br/>and as I tighten it, this happens.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7046amx15.jpg" target="_blank"><img alt="RIMG7046amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7046amx15s.jpg" width="320"/></a><br/>The bolt's threads just barely scrape<br/>the underside of the inner parallelogram plate.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7025amx15.jpg" target="_blank"><img alt="RIMG7025amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7025amx15s.jpg" width="320"/></a><br/>I cut out the flat section from the end of<br/>a modern Ridley fork column with D-shaped cross-section<br/>(used for routing disc brake hoses)<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7023amx15.jpg" target="_blank"><img alt="RIMG7023amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7023amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7024amx15.jpg" target="_blank"><img alt="RIMG7024amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7024amx15s.jpg" width="320"/></a><br/>↑and made something like this.<br/>Two carbon plates were<br/>glued together.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7026amx15.jpg" target="_blank"><img alt="RIMG7026amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7026amx15s.jpg" width="320"/></a><br/>The stepped section is designed to fit<br/>into the U-shaped form of the inner parallelogram plate.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7027amx15.jpg" target="_blank"><img alt="RIMG7027amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7027amx15s.jpg" width="320"/></a><br/>Well, this was a failed attempt.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7038amx15.jpg" target="_blank"><img alt="RIMG7038amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7038amx15s.jpg" width="320"/></a><br/>Materials are limited, but I still have some.<br/>Colnago fork columns are also D-shaped,<br/>but they have threaded holes for the top cap bolt embedded<br/>and reinforcement material filled inside—<br/>they're not hollow.<br/>Either way, this type of D-section column has weak<br/>clamping force against stem clamp bolt torque, and with a stem<br/>that has a narrow clamp gap, you sometimes can't secure the stem<br/>until the clamp is nearly completely closed.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7040amx15.jpg" target="_blank"><img alt="RIMG7040amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7040amx15s.jpg" width="320"/></a><br/>↑Finished version.<br/>The right part has unnecessary holes from<br/>trial and error—the "error" part—but I'll lie and say<br/>they're for weight reduction and to improve adhesive grip.<br/>The left part is basically a huge square washer.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7041amx15.jpg" target="_blank"><img alt="RIMG7041amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7041amx15s.jpg" width="320"/></a><br/>The back side of the right part looks like this<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7051amx15.jpg" target="_blank"><img alt="RIMG7051amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7051amx15s.jpg" width="320"/></a><br/>The low-side adjust bolt's threads are<br/>standard M4, but I needed it longer than stock,<br/>so I bought a stainless bolt and machined it.<br/>As-is, the bolt head diameter was too large<br/>to fit in the parallelogram hole, so I filed it down.<br/>In the image above, left is original, right is after machining.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7053amx15.jpg" target="_blank"><img alt="RIMG7053amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7053amx15s.jpg" width="320"/></a><br/>I secured the part with an M5 bolt.<br/>Fortunately, for practical purposes,<br/>there was a huge hole in the outer plate.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7054amx15.jpg" target="_blank"><img alt="RIMG7054amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7054amx15s.jpg" width="320"/></a><br/>With it shifted to 7-speed low,<br/>I tightened the adjust bolt until it hit the carbon plate.<br/>The ErgoShift lever clicks into 8-speed, but the chain clatters,<br/>so I can just shift back to 7-speed immediately—OK.<br/>There's no way it'll go into 9-speed.<br/>Unlike before I made this, the derailleur no longer tries<br/>to override the plastic spacer.<br/>The adjust bolt is doing its job.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7055amx15.jpg" target="_blank"><img alt="RIMG7055amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7055amx15s.jpg" width="320"/></a><br/>↑This is shifted to top 11T.<br/>The carbon plate's protrusion doesn't interfere<br/>with any other part of the rear derailleur<br/>except in low gear.<br/><br/>The reason I did all this<br/>comes from a fanatical conviction that<br/>road bikes are more honorable the less surface area they have—<br/>a kind of puristic primitivism taken to extremes.<br/><br/>By the way, the crankside has a 44T single chainring,<br/>which in terms of gear ratios equates to<br/>39×22.1T or 34T×19.3T.<br/>Unless the climb is a seriously steep pass,<br/>you can generally still get up it.<br/>The previous sprocket had 11T as the smallest,<br/>then all 2T jumps after that:<br/>11-12-14-16-18-<br/>20-22-24-26-28-30T<br/>on an 11-speed cassette,<br/>but I barely used the 30T, mostly stuck to 26T,<br/>and only occasionally hit 28T.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7062amx15.jpg" target="_blank"><img alt="RIMG7062amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7062amx15s.jpg" width="320"/></a><br/>I cleaned the old sprocket.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7063amx15.jpg" target="_blank"><img alt="RIMG7063amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7063amx15s.jpg" width="320"/></a><br/>From the top gear onward, it's all 2T jumps,<br/>so the line of tooth tips forms<br/>a single straight line.<br/>Not a sombrero shape.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7064amx15.jpg" target="_blank"><img alt="RIMG7064amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7064amx15s.jpg" width="320"/></a><br/>I must have done quite a bit of climbing,<br/>but looking at the valleys of the low gear,<br/>the color hasn't rubbed off—<br/>there's barely any wear at all.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7065amx15.jpg" target="_blank"><img alt="RIMG7065amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7065amx15s.jpg" width="320"/></a><br/>↑Bottom right in the image is the 11T top gear,<br/>but the three sprockets I use most on flat terrain—14, 16, and 18T—<br/>show ω-shaped wear in the valleys from the chain rollers.<br/>The reason I bought this sprocket in the first place was<br/>because of a severe supply shortage of Shimano components—<br/>everything from Dura-Ace down to 105<br/>was completely unavailable—<br/>but as a result, I got something interesting.<br/>According to the maker, the high-durability chromoly material<br/>supposedly offers 2.5 to 3 times the durability<br/>of Dura-Ace sprockets.<br/>If that figure was comparing to just the titanium low gear section,<br/>I thought that was a sleazy way to phrase it,<br/>but in actual use, even comparing steel sections to steel,<br/>the durability is clearly at least double.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4377amx15.jpg" target="_blank"><img alt="RIMG4377amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4377amx15s.jpg" width="320"/></a><br/>This is from a past post, but this sprocket<br/>only engages the splines at the very back and front.<br/>This hub's freebody is titanium,<br/>but if it were aluminum, it might wear in an unpleasant way.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4378amx15.jpg" target="_blank"><img alt="RIMG4378amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4378amx15s.jpg" width="320"/></a><br/>I removed the sprocket.<br/>Directly below the sprocket's hollow section,<br/>black metal dust mixed with chain oil is caked on,<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4379amx15.jpg" target="_blank"><img alt="RIMG4379amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4379amx15s.jpg" width="320"/></a><br/>but it wipes away easily.<br/>As for what this dust actually is,<br/>I believe it's mostly chain roller shavings worn away<br/>by the sprocket's superior hardness.<br/>The sprocket's high durability is real,<br/>but the chain roller wear rate is definitely not normal.<br/><br/>Shimano and other component makers could presumably<br/>make harder sprockets—<br/><s>third-party makers manage to do it</s>—<br/>but they presumably select an appropriate hardness<br/>for a mutually balanced wear relationship with the chain.<br/>The same applies to brake shoes and rims;<br/>brake shoes harder than the stock specification<br/>accelerate rim wear.<br/>I'm not saying that's bad—<br/>SwissStop BXP's rain braking performance<br/>is outstanding compared to other shoes.<br/>But complaining about rim wear as the price for that<br/>would just be wrong. That's all I mean.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7070amx15.jpg" target="_blank"><img alt="RIMG7070amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7070amx15s.jpg" width="320"/></a><br/>The crank is a Campagnolo Ekar,<br/>and the chainring is the stock narrow-wide 44T,<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7067amx15.jpg" target="_blank"><img alt="RIMG7067amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7067amx15s.jpg" width="320"/></a><br/>but I've installed a homemade chain watcher.<br/>Ekar chainrings are resistant to dropping,<br/>but on the Osaka side descent through Yamagata-Kei valley,<br/>at a specific gap midway down, the chain<br/>almost always drops, so I installed this.<br/>After that, in that one situation where it used to drop,<br/>it never drops, and it hasn't dropped<br/>in any other situation either.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7068amx15.jpg" target="_blank"><img alt="RIMG7068amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7068amx15s.jpg" width="320"/></a><br/>But looking at this,<br/>it's clearly doing heavy work...<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7069amx15.jpg" target="_blank"><img alt="RIMG7069amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7069amx15s.jpg" width="320"/></a><br/>↑This is with it on 11T top gear,<br/>but when in low 30T, the chain's upper run<br/>comes much closer to the watcher.<br/><br/>That gap that almost always causes drops—<br/>the chain doesn't drop if you're running it in low gear territory<br/>because there's high chain tension.<br/>But shifting to low gear on a descent isn't normal.<br/><br/>This time, the low gear went from 30T to 25T.<br/>When I checked by virtually tightening the chain until it was taut,<br/>I could shorten it by 7 links.<br/>So if I were to cut the chain,<br/>6 links (3 pitches) would be a bit tight,<br/>but 4 links (2 pitches) I could definitely remove.<br/>The fact that 25T isn't at the normal low-gear position<br/>but 7th from the bottom might also be related<br/>to how many links can be shortened.<br/><br/>With the Ekar crank, the chain originally<br/>barely dropped even without the watcher<br/>in all but extreme specific situations,<br/>so instead of "44×11T chain length calculated for 30T,"<br/>with "25T as the actual limit on 44×11T chain length,"<br/>there's a possibility it'll work fine without this.<br/><br/>So I decided to remove it.<br/>If I ever reinstall it,<br/>it'll be mounted lower than before.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7074amxv15.jpg" target="_blank"><img alt="RIMG7074amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7074amxv15s.jpg" width="320"/></a><br/>With a round seat tube lacking a direct-mount bracket<br/>and absolutely nothing front derailleur-like attached,<br/>it has a very clean appearance.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7075amxv15.jpg" target="_blank"><img alt="RIMG7075amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7075amxv15s.jpg" width="320"/></a><br/>I wiped it clean and applied basic coating.<br/>You can faintly see the band marks,<br/>but if I really went for it, those could be removed.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7071amxv15.jpg" target="_blank"><img alt="RIMG7071amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7071amxv15s.jpg" width="320"/></a><br/>↑The removed chain watcher<br/>The carbon seat tube's outer diameter is 30mm.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7072amxv15.jpg" target="_blank"><img alt="RIMG7072amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7072amxv15s.jpg" width="320"/></a><br/>So with an inner-outer diameter difference of 2mm,<br/>I cut a seatpost shim with 1mm radius and thickness<br/>and installed it inside a 31.8mm inner diameter E-type front derailleur band.<br/>But when I actually tightened it,<br/>the clamp was closing before full tightness,<br/>so I applied thin aluminum tape<br/>and adjusted it by sanding smooth.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7073amxv15.jpg" target="_blank"><img alt="RIMG7073amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7073amxv15s.jpg" width="320"/></a><br/>Looking at this, I have a feeling<br/>I'll be needing its help again pretty soon...
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">Products Mentioned in This Article</p>
       <ul>

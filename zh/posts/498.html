@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/498.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>我重新組裝了張力不足的輪組（前篇）</h1>
     <p class="post-meta">May 20, 2013</p>
+    <div class="post-body"><div class="entrytext">今天也是輪組（以下省略）。<br/>今天我重新組裝了張力不足的輪組。<br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04412amx.jpg" target="_blank"><img alt="DSC04412amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04412amxs.jpg" width="300"/></a><br/>組裝前<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04414amx.jpg" target="_blank"><img alt="DSC04414amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04414amxs.jpg" width="300"/></a><br/>配慮桑 漂亮救駕<br/>最近這家店的重新組裝業務滿多的。<br/>當然不能說是哪一家。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04418amx.jpg" target="_blank"><img alt="DSC04418amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04418amxs.jpg" width="300"/></a><br/>重新組裝前的輻條是 DT Revolution。<br/>「拿起來輕的輪組」有個簡單明瞭的宣傳點，就是秤量的數字很小。<br/>但「踩踏感好」或「踩下去就跑」這類的優點<br/>就很難用數據來表現。<br/>如果只要求「拿起來輕」，Revolution 確實是最棒的輻條，<br/>不過這種輻條對於邊組和組法很挑剔。<br/>改天會再寫，但用 Revolution 來組裝的話<br/>在現代的邊上往往會<br/>造成輻條在伸長方向產生塑性變形。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04417amx.jpg" target="_blank"><img alt="DSC04417amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04417amxs.jpg" width="300"/></a><br/>我在輻條編織交點處貼了一條標記膠帶，然後邊看邊調整。<br/>如你所見，張力鬆得太離譜了。<br/>拉緊也不是什麼都能解決，但這確實太鬆了。<br/>原因再簡單不過，因為在 <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Open+Pro+rim" target="_blank" rel="noopener sponsored" class="amz-inline">Open Pro</a> 上再拉緊的話輻條會產生伸長，<br/>所以才會在不產生伸長的範圍內進行組裝。<br/>我根本看不出非得用 Revolution 不可的道理。<br/>雖然會重幾十克，但用 Competition 規格好好組裝的話<br/>輪組品質可能會更好。<br/>（不過重量這一點在一般溝通上確實缺乏說服力啦）<br/><br/>客人的需求就是「能不能組得更緊實」，所以託付給我們的時候<br/>應該沒有特別要求「要用 Revolution 組」。<br/>說到底，這就是組手的自我滿足啊。<br/>只是想組出拿起來輕的輪組。<br/>既然一開始就鎖定 Revolution，<br/>根本沒考慮到騎手的體重和實際用途。<br/>這是前輪，後輪問題更大。<br/>（今天沒時間，明天之後再組）<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04427amx.jpg" target="_blank"><img alt="DSC04427amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04427amxs.jpg" width="300"/></a><br/>輻條選擇和組法是交給我們全權決定，但我猶豫了很久。<br/>我用 <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Sapim+CX-RAY+aero+spoke" target="_blank" rel="noopener sponsored" class="amz-inline">Sapim CX-RAY</a> 的外穿輻向組進行組裝，<br/>不過除此之外還有很多組法都能比組裝前的狀態更好。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04425amx.jpg" target="_blank"><img alt="DSC04425amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04425amxs.jpg" width="300"/></a><br/>Vittoria 的 15mm 寬邊膠帶跟 Open Pro 不搭。<br/>就算一開始貼得很居中，也遲早會偏移。<br/>拆下輪胎時是這個情況，內胎爆胎早就不遠了。<br/>太危險了。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04428amx.jpg" target="_blank"><img alt="DSC04428amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04428amxs.jpg" width="300"/></a><br/>所以換成了 18mm 寬的。<br/><br/><br/><span style="font-size:large;">後記：覺得不該再拖延了，<br/>所以來寫一下 DT Revolution。</span><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04431amx.jpg" target="_blank"><img alt="DSC04431amx.jpg" border="0" height="300" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04431amxs.jpg" width="225"/></a><br/>鐵絲（輻條）彎曲時，只要彎曲量不大，就會恢復到原來的狀態。<br/>這種變形叫做彈性變形。<br/>彎曲得太厲害的話，就會保持變形後的形狀，回不到原狀。<br/>這種無法恢復的變形叫做塑性變形。<br/><br/>在輻條伸長方向發生，所以眼睛看不太出來，<br/>但過度拉緊輻條張力會導致輵條產生伸長（塑性變形）。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04432amx.jpg" target="_blank"><img alt="DSC04432amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04432amxs.jpg" width="300"/></a><br/>或者想像一下軟年糕。<br/>被拉長的年糕回不到原來的長度。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04433amx.jpg" target="_blank"><img alt="DSC04433amx.jpg" border="0" height="300" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04433amxs.jpg" width="225"/></a><br/>DT 圓形輵條中，代表性的 3 款尺寸如上所述（單位：mm）。<br/>Revolution 不僅漸變部分很細，<br/>而且在整個輵條長度中漸變部分佔的比例較長，<br/>這也是它輕量的原因之一。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04434amx.jpg" target="_blank"><img alt="DSC04434amx.jpg" border="0" height="300" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04434amxs.jpg" width="225"/></a><br/>以 2.0mm 直線 Champion 為 100% 的情況下，<br/>同一輵條長度下其他輵條的比重如上（本店實測）。<br/><br/>這事我已經寫過好多次了，<br/>輵條長度在 50mm 和 1000mm 時<br/>比重會有很大不同。<br/>50mm 的 Revolution 幾乎沒有 1.5mm 的部分，<br/>1000mm 的 Revolution 基本上全都是 1.5mm 的部分。<br/>但實際 700C 輪組的輵條長度大約在 240mm 到 306mm 之間。<br/>在這個範圍內，差異不會大到改變個位數。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04435amx.jpg" target="_blank"><img alt="DSC04435amx.jpg" border="0" height="300" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04435amxs.jpg" width="225"/></a><br/>Sapim CX 和 CX-RAY 如上所述。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04436amx.jpg" target="_blank"><img alt="DSC04436amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04436amxs.jpg" width="300"/></a><br/>雖然廠牌不同，但比重幾乎相同，<br/>所以可以說 CX 是把 Champion 鍛打變扁的產品，<br/>CX-RAY 是把 Revolution 鍛打變扁的產品。<br/><br/>題外話，完組輪組的直形輵條中有 Sapim 製的產品，<br/>其中比重相當於 Competition 的特製空氣動力輵條也有。<br/>如果能用首穿輵條製造那種規格就好了……<br/><br/>言歸正傳，這裡說的「鍛打加工」不是比喻，<br/>而是實際上 CX 和 CX-RAY 都是經過沖壓加工製造的，我想是這樣。<br/>CX-RAY 的拉伸強度比 Sapim 其他款式都強，<br/>磁石吸附得也更牢。<br/>磁石吸附的難易度不是材質差異，<br/>而是加工硬化時磁性發生了變化，我是這麼認為的。<br/>至於加工硬化，<br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04437amx.jpg" target="_blank"><img alt="DSC04437amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04437amxs.jpg" width="300"/></a><br/>「拉伸強度強」的圖表如上所示。<br/>CX-RAY 的輵條斷裂張力比較高，就是這個意思。<br/>加工硬化變硬這件事<br/>同時也是朝「硬＝脆」的方向改變。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04438amx.jpg" target="_blank"><img alt="DSC04438amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04438amxs.jpg" width="300"/></a><br/>以 Revolution 來說，隨著輵條張力上升<br/>先前說的「伸長」就會發生。<br/>伸長出現後還繼續轉動樓牙，<br/>輵條就會越來越從樓牙往外飛出。<br/>最終可能伸長好幾毫米。<br/>樓牙在樓牙裡面被用完之前輵條不會斷，<br/>但就是會伸到這種程度。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04439amx.jpg" target="_blank"><img alt="DSC04439amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04439amxs.jpg" width="300"/></a><br/>反觀 CX-RAY，斷裂的臨界點較高，但材質脆，<br/>所以隨著張力上升幾乎不會產生伸長，<br/>而是很乾脆地「啪」一聲就斷了。<br/>斷裂的位置通常在樓牙側的圓形和空氣動力部分的交界附近。<br/>上圖我把伸長區間畫得滿寬的，<br/>但實際上應該幾乎沒有。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04440amx.jpg" target="_blank"><img alt="DSC04440amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04440amxs.jpg" width="300"/></a><br/>花鼓是地板，邊是天花板，輵條勾在地板上<br/>用天花板上的樓牙來連接的狀況，試著想像一下。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04441amx.jpg" target="_blank"><img alt="DSC04441amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04441amxs.jpg" width="300"/></a><br/>轉動樓牙時輵條長度會縮短，<br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04443amx.jpg" target="_blank"><img alt="DSC04443amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04443amxs.jpg" width="300"/></a><br/>這時，如果邊很硬，就像完全硬的天花板，邊不會變形。<br/>如果邊很軟，就扛不住輵條張力<br/>而向地板方向變形。<br/><br/>這是我的看法，我認為軟邊（會變形的天花板）是把輵條張力<br/>分散在輵條和邊上承受，<br/>而硬邊（不變形的天花板）是輵條張力<br/>全部由輵條承受。<br/>想說的是，硬邊搭 Revolution 的話<br/>相較軟邊更容易產生伸長現象。<br/>根據我的經驗，這事確實成立。<br/>這裡說的「軟邊」具體是什麼無法明確界定，<br/>但舉例來說 Mavic 的 GEL280 這類輕量管狀邊就符合。<br/>Revolution 在伸長產生之前就能把輪組組好的感覺。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04444amx.jpg" target="_blank"><img alt="DSC04444amx.jpg" border="0" height="300" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04444amxs.jpg" width="225"/></a><br/>↑就是這樣啦。<br/>最近的鋁邊幾乎都屬於「硬」的一類，包括 Open Pro，<br/>所以這類邊會在完成輪組前<br/>就陷入 Revolution 的「伸長區間」。<br/><br/>開頭那個前輪，輵條張力低的原因<br/>應該是想在伸長區間之下進行組裝吧。<br/>但現在不像從前，Revolution 與比重幾乎相同、<br/>在幾乎所有手組輪組的組法範圍內都不會產生伸長的<br/>CX-RAY 這種輵條都有了，<br/>我搞不懂為什麼還要執著於 Revolution。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04446amx.jpg" target="_blank"><img alt="DSC04446amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04446amxs.jpg" width="300"/></a><br/>另個話題，不久前間接從同業者那裡<br/>聽到「用 Revolution 組 Ambrosio Formula Crono 20<br/>輵條一直伸長，組不起來」的提問。<br/>代為轉述的人平常照顧我很多，<br/>所以不得不講出包括業界黑幕在內的說法。<br/>Crono 20 在輕量的前提下應該屬於「硬邊」。<br/>因為跑入期間的邊變形量相對於邊的重量來說非常少。<br/>這要是不解釋就講一句「邊和輵條相性不合」<br/>客人也不一定會接受，但要真的接受了<br/>早就應該自己解決了。<br/><br/>以上，就是我不用 Revolution 的理由。<br/>那如果有和 Competition 比重相當、加工硬化過的輵條<br/>是不是就比 Competition 更好呢？要是有的話我應該會用，<br/>不過 Competition 很難產生伸長，<br/>所以特別沒什麼問題。產生的情況說法（→<a href="/zh/posts/409.html" target="_blank" title="這邊">這邊</a>）<br/>寫的基本上是同樣的事。<br/>連結頁面裡我寫的 Revolution 比重是 64.2%，<br/>這篇文章是 63.5%，數字不同，<br/>但比重是常在實測，所以偶爾會變。<br/><br/>我認為分界線大約是<br/>相對 2.0mm 直線輵條比重 70% 以下，<br/>那以下沒加工硬化的輵條<br/>容易產生伸長（Sapim Laser 也一樣），<br/>所以我基本上不用。<br/>說「容易產生」的話聽起來像是機率問題，<br/>好像「可能不會產生」一樣。<br/>不是這樣，而是超過某個閾值就 100% 會產生，那個閾值很低，<br/>這是我說「容易產生」的意思。<br/><br/>我採用 CX-RAY 不是期待它的空氣動力性能。<br/>除了客人要多花錢（價錢超貴！）這點以外，<br/>我覺得 CX-RAY 沒有比 Revolution 差的地方。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">今天也是輪組（以下省略）。<br/>今天我重新組裝了張力不足的輪組。<br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04412amx.jpg" target="_blank"><img alt="DSC04412amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04412amxs.jpg" width="300"/></a><br/>組裝前<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04414amx.jpg" target="_blank"><img alt="DSC04414amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04414amxs.jpg" width="300"/></a><br/>配慮桑 漂亮救駕<br/>最近這家店的重新組裝業務滿多的。<br/>當然不能說是哪一家。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04418amx.jpg" target="_blank"><img alt="DSC04418amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04418amxs.jpg" width="300"/></a><br/>重新組裝前的輻條是 DT Revolution。<br/>「拿起來輕的輪組」有個簡單明瞭的宣傳點，就是秤量的數字很小。<br/>但「踩踏感好」或「踩下去就跑」這類的優點<br/>就很難用數據來表現。<br/>如果只要求「拿起來輕」，Revolution 確實是最棒的輻條，<br/>不過這種輻條對於邊組和組法很挑剔。<br/>改天會再寫，但用 Revolution 來組裝的話<br/>在現代的邊上往往會<br/>造成輻條在伸長方向產生塑性變形。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04417amx.jpg" target="_blank"><img alt="DSC04417amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04417amxs.jpg" width="300"/></a><br/>我在輻條編織交點處貼了一條標記膠帶，然後邊看邊調整。<br/>如你所見，張力鬆得太離譜了。<br/>拉緊也不是什麼都能解決，但這確實太鬆了。<br/>原因再簡單不過，因為在 <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Open+Pro+rim" target="_blank" rel="noopener sponsored" class="amz-inline">Open Pro</a> 上再拉緊的話輻條會產生伸長，<br/>所以才會在不產生伸長的範圍內進行組裝。<br/>我根本看不出非得用 Revolution 不可的道理。<br/>雖然會重幾十克，但用 Competition 規格好好組裝的話<br/>輪組品質可能會更好。<br/>（不過重量這一點在一般溝通上確實缺乏說服力啦）<br/><br/>客人的需求就是「能不能組得更緊實」，所以託付給我們的時候<br/>應該沒有特別要求「要用 Revolution 組」。<br/>說到底，這就是組手的自我滿足啊。<br/>只是想組出拿起來輕的輪組。<br/>既然一開始就鎖定 Revolution，<br/>根本沒考慮到騎手的體重和實際用途。<br/>這是前輪，後輪問題更大。<br/>（今天沒時間，明天之後再組）<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04427amx.jpg" target="_blank"><img alt="DSC04427amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04427amxs.jpg" width="300"/></a><br/>輻條選擇和組法是交給我們全權決定，但我猶豫了很久。<br/>我用 <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Sapim+CX-RAY+aero+spoke" target="_blank" rel="noopener sponsored" class="amz-inline">Sapim CX-RAY</a> 的外穿輻向組進行組裝，<br/>不過除此之外還有很多組法都能比組裝前的狀態更好。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04425amx.jpg" target="_blank"><img alt="DSC04425amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04425amxs.jpg" width="300"/></a><br/>Vittoria 的 15mm 寬邊膠帶跟 Open Pro 不搭。<br/>就算一開始貼得很居中，也遲早會偏移。<br/>拆下輪胎時是這個情況，內胎爆胎早就不遠了。<br/>太危險了。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04428amx.jpg" target="_blank"><img alt="DSC04428amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04428amxs.jpg" width="300"/></a><br/>所以換成了 18mm 寬的。<br/><br/><br/><span style="font-size:large;">後記：覺得不該再拖延了，<br/>所以來寫一下 DT Revolution。</span><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04431amx.jpg" target="_blank"><img alt="DSC04431amx.jpg" border="0" height="300" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04431amxs.jpg" width="225"/></a><br/>鐵絲（輻條）彎曲時，只要彎曲量不大，就會恢復到原來的狀態。<br/>這種變形叫做彈性變形。<br/>彎曲得太厲害的話，就會保持變形後的形狀，回不到原狀。<br/>這種無法恢復的變形叫做塑性變形。<br/><br/>在輻條伸長方向發生，所以眼睛看不太出來，<br/>但過度拉緊輻條張力會導致輵條產生伸長（塑性變形）。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04432amx.jpg" target="_blank"><img alt="DSC04432amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04432amxs.jpg" width="300"/></a><br/>或者想像一下軟年糕。<br/>被拉長的年糕回不到原來的長度。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04433amx.jpg" target="_blank"><img alt="DSC04433amx.jpg" border="0" height="300" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04433amxs.jpg" width="225"/></a><br/>DT 圓形輵條中，代表性的 3 款尺寸如上所述（單位：mm）。<br/>Revolution 不僅漸變部分很細，<br/>而且在整個輵條長度中漸變部分佔的比例較長，<br/>這也是它輕量的原因之一。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04434amx.jpg" target="_blank"><img alt="DSC04434amx.jpg" border="0" height="300" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04434amxs.jpg" width="225"/></a><br/>以 2.0mm 直線 Champion 為 100% 的情況下，<br/>同一輵條長度下其他輵條的比重如上（本店實測）。<br/><br/>這事我已經寫過好多次了，<br/>輵條長度在 50mm 和 1000mm 時<br/>比重會有很大不同。<br/>50mm 的 Revolution 幾乎沒有 1.5mm 的部分，<br/>1000mm 的 Revolution 基本上全都是 1.5mm 的部分。<br/>但實際 700C 輪組的輵條長度大約在 240mm 到 306mm 之間。<br/>在這個範圍內，差異不會大到改變個位數。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04435amx.jpg" target="_blank"><img alt="DSC04435amx.jpg" border="0" height="300" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04435amxs.jpg" width="225"/></a><br/>Sapim CX 和 CX-RAY 如上所述。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04436amx.jpg" target="_blank"><img alt="DSC04436amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04436amxs.jpg" width="300"/></a><br/>雖然廠牌不同，但比重幾乎相同，<br/>所以可以說 CX 是把 Champion 鍛打變扁的產品，<br/>CX-RAY 是把 Revolution 鍛打變扁的產品。<br/><br/>題外話，完組輪組的直形輵條中有 Sapim 製的產品，<br/>其中比重相當於 Competition 的特製空氣動力輵條也有。<br/>如果能用首穿輵條製造那種規格就好了……<br/><br/>言歸正傳，這裡說的「鍛打加工」不是比喻，<br/>而是實際上 CX 和 CX-RAY 都是經過沖壓加工製造的，我想是這樣。<br/>CX-RAY 的拉伸強度比 Sapim 其他款式都強，<br/>磁石吸附得也更牢。<br/>磁石吸附的難易度不是材質差異，<br/>而是加工硬化時磁性發生了變化，我是這麼認為的。<br/>至於加工硬化，<br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04437amx.jpg" target="_blank"><img alt="DSC04437amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04437amxs.jpg" width="300"/></a><br/>「拉伸強度強」的圖表如上所示。<br/>CX-RAY 的輵條斷裂張力比較高，就是這個意思。<br/>加工硬化變硬這件事<br/>同時也是朝「硬＝脆」的方向改變。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04438amx.jpg" target="_blank"><img alt="DSC04438amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04438amxs.jpg" width="300"/></a><br/>以 Revolution 來說，隨著輵條張力上升<br/>先前說的「伸長」就會發生。<br/>伸長出現後還繼續轉動樓牙，<br/>輵條就會越來越從樓牙往外飛出。<br/>最終可能伸長好幾毫米。<br/>樓牙在樓牙裡面被用完之前輵條不會斷，<br/>但就是會伸到這種程度。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04439amx.jpg" target="_blank"><img alt="DSC04439amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04439amxs.jpg" width="300"/></a><br/>反觀 CX-RAY，斷裂的臨界點較高，但材質脆，<br/>所以隨著張力上升幾乎不會產生伸長，<br/>而是很乾脆地「啪」一聲就斷了。<br/>斷裂的位置通常在樓牙側的圓形和空氣動力部分的交界附近。<br/>上圖我把伸長區間畫得滿寬的，<br/>但實際上應該幾乎沒有。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04440amx.jpg" target="_blank"><img alt="DSC04440amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04440amxs.jpg" width="300"/></a><br/>花鼓是地板，邊是天花板，輵條勾在地板上<br/>用天花板上的樓牙來連接的狀況，試著想像一下。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04441amx.jpg" target="_blank"><img alt="DSC04441amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04441amxs.jpg" width="300"/></a><br/>轉動樓牙時輵條長度會縮短，<br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04443amx.jpg" target="_blank"><img alt="DSC04443amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04443amxs.jpg" width="300"/></a><br/>這時，如果邊很硬，就像完全硬的天花板，邊不會變形。<br/>如果邊很軟，就扛不住輵條張力<br/>而向地板方向變形。<br/><br/>這是我的看法，我認為軟邊（會變形的天花板）是把輵條張力<br/>分散在輵條和邊上承受，<br/>而硬邊（不變形的天花板）是輵條張力<br/>全部由輵條承受。<br/>想說的是，硬邊搭 Revolution 的話<br/>相較軟邊更容易產生伸長現象。<br/>根據我的經驗，這事確實成立。<br/>這裡說的「軟邊」具體是什麼無法明確界定，<br/>但舉例來說 Mavic 的 GEL280 這類輕量管狀邊就符合。<br/>Revolution 在伸長產生之前就能把輪組組好的感覺。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04444amx.jpg" target="_blank"><img alt="DSC04444amx.jpg" border="0" height="300" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04444amxs.jpg" width="225"/></a><br/>↑就是這樣啦。<br/>最近的鋁邊幾乎都屬於「硬」的一類，包括 Open Pro，<br/>所以這類邊會在完成輪組前<br/>就陷入 Revolution 的「伸長區間」。<br/><br/>開頭那個前輪，輵條張力低的原因<br/>應該是想在伸長區間之下進行組裝吧。<br/>但現在不像從前，Revolution 與比重幾乎相同、<br/>在幾乎所有手組輪組的組法範圍內都不會產生伸長的<br/>CX-RAY 這種輵條都有了，<br/>我搞不懂為什麼還要執著於 Revolution。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04446amx.jpg" target="_blank"><img alt="DSC04446amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04446amxs.jpg" width="300"/></a><br/>另個話題，不久前間接從同業者那裡<br/>聽到「用 Revolution 組 Ambrosio Formula Crono 20<br/>輵條一直伸長，組不起來」的提問。<br/>代為轉述的人平常照顧我很多，<br/>所以不得不講出包括業界黑幕在內的說法。<br/>Crono 20 在輕量的前提下應該屬於「硬邊」。<br/>因為跑入期間的邊變形量相對於邊的重量來說非常少。<br/>這要是不解釋就講一句「邊和輵條相性不合」<br/>客人也不一定會接受，但要真的接受了<br/>早就應該自己解決了。<br/><br/>以上，就是我不用 Revolution 的理由。<br/>那如果有和 Competition 比重相當、加工硬化過的輵條<br/>是不是就比 Competition 更好呢？要是有的話我應該會用，<br/>不過 Competition 很難產生伸長，<br/>所以特別沒什麼問題。產生的情況說法（→<a href="/zh/posts/409.html" target="_blank" title="這邊">這邊</a>）<br/>寫的基本上是同樣的事。<br/>連結頁面裡我寫的 Revolution 比重是 64.2%，<br/>這篇文章是 63.5%，數字不同，<br/>但比重是常在實測，所以偶爾會變。<br/><br/>我認為分界線大約是<br/>相對 2.0mm 直線輵條比重 70% 以下，<br/>那以下沒加工硬化的輵條<br/>容易產生伸長（Sapim Laser 也一樣），<br/>所以我基本上不用。<br/>說「容易產生」的話聽起來像是機率問題，<br/>好像「可能不會產生」一樣。<br/>不是這樣，而是超過某個閾值就 100% 會產生，那個閾值很低，<br/>這是我說「容易產生」的意思。<br/><br/>我採用 CX-RAY 不是期待它的空氣動力性能。<br/>除了客人要多花錢（價錢超貴！）這點以外，<br/>我覺得 CX-RAY 沒有比 Revolution 差的地方。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

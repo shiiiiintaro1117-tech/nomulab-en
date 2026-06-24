@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/3366.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>用ENVE和EDGE的45mm高圈組輪組</h1>
     <p class="post-meta">April 14, 2017</p>
+    <div class="post-body"><div class="entrytext">今天也是輪組（以下略）。<br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05212amx6.jpg" target="_blank"><img alt="DSC05212amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05212amx6s.jpg" width="320"/></a><br/>從客人那裡 <s>接了FF山口的F2R同製造商的</s>Planet X圈組。<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05213amx6.jpg" target="_blank"><img alt="DSC05213amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05213amx6s.jpg" width="320"/></a><br/>根據客人的換組要求，<br/>需要用到的只有這個Chris King花鼓。<br/><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Sapim+CX-RAY+spoke" target="_blank" rel="noopener sponsored" class="amz-inline">CX-RAY</a>外穿輻條式組法，<br/>張力還可以，但還能再張。<br/>還有，從圈的標記方向來看，前花鼓的方向是反的。<br/>White Industries和ExtraLite的前花鼓，<br/>當球心調整機構設置在左側時<br/>花鼓印字也會反過來的型號也存在<br/>（ExtraLite的情況下甚至有要把這邊放在左側的說明），<br/>但即使遵循那個規則，上面那張圖的方向還是反了。<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05214amx6.jpg" target="_blank"><img alt="DSC05214amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05214amx6s.jpg" width="320"/></a><br/>接著是後輪。<br/>這個圈，客人以為是Gigantex，<br/>實際上是Equinox的WH-005。<br/>除了制動區的加工和圈側的光澤有無外，<br/>和野村Lab輪組2.5號的圈是同一款。<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05215amx6.jpg" target="_blank"><img alt="DSC05215amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05215amx6s.jpg" width="320"/></a><br/>這個是24孔 CX-RAY46組法。<br/>圈稍微向副齒盤側偏移了，<br/>但前輪完全對正了，<br/>組好時前後都完全對正，後輪在長期使用中偏移了，<br/>感覺應該是這樣。<br/>和前輪一樣張力適中，用等直徑花鼓做46組法時，<br/>副齒盤側張力合適，但反副齒盤側會這麼鬆，<br/>這是難得一見的例子（因為我從不用這種組法）。<br/><br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05222amx6.jpg" target="_blank"><img alt="DSC05222amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05222amx6s.jpg" width="320"/></a><br/>拆前輪前，從外周側往裡看，<br/>輻條非常短。<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05223amx6.jpg" target="_blank"><img alt="DSC05223amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05223amx6s.jpg" width="320"/></a><br/>從邊上開始逐個拆下來，保留了約4根完全沒轉過銅帽的輻條。<br/>從這個狀態就能把銅帽拉出圈來觀察，<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05224amx6.jpg" target="_blank"><img alt="DSC05224amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05224amx6s.jpg" width="320"/></a><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05225amx6.jpg" target="_blank"><img alt="DSC05225amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05225amx6s.jpg" width="320"/></a><br/>不管怎麼看都太短了。<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05218amx6.jpg" target="_blank"><img alt="DSC05218amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05218amx6s.jpg" width="320"/></a><br/>後輪是用反面圈組的。<br/>圈內周側的孔沒有穴偏移，<br/>所以用外露銅帽的話問題不大，<br/>但用內藏銅帽就有問題。<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05216amx6.jpg" target="_blank"><img alt="DSC05216amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05216amx6s.jpg" width="320"/></a><br/>讓工具在輻條角度的延長線上咬住，<br/>外周側有相當的穴偏移。<br/>這也和圈高有關，這是50mm高的圈，<br/>同款的38mm版本穴偏移就不會這麼明顯。<br/>這個穴偏移是在正面圈上開的，所以<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05217amx6.jpg" target="_blank"><img alt="DSC05217amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05217amx6s.jpg" width="320"/></a><br/>比如上面那張圖，輻條向右邊伸展，<br/>圈孔也向右偏移，<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05219amx6.jpg" target="_blank"><img alt="DSC05219amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05219amx6s.jpg" width="320"/></a><br/>↑就會變成這樣。<br/>即使在仿組時就把穴偏移反向了，<br/>工具也會因為卡不住而放棄吧，<br/>但他們硬是無視這個繼續組了。<br/>因為轉鬆銅帽開始時工具卡得很苦，<br/>但組的時候，尤其是最後怎麼才能卡上工具的真的很神秘。<br/>應該不可能沒發現有問題的。<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05220amx6.jpg" target="_blank"><img alt="DSC05220amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05220amx6s.jpg" width="320"/></a><br/>有一個地方，我覺得輻條有點晃，<br/>但一旦放鬆張力，那個位置的輻條就彎了。<br/><br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05221amx6.jpg" target="_blank"><img alt="DSC05221amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05221amx6s.jpg" width="320"/></a><br/>這也是最後保留的，完全沒轉過的銅帽，<br/>銅帽方向是對的，但輻條太長了，<br/>幾乎不能增擰。<br/>用正確的銅帽方向時，內周側有一定的尺寸餘量，<br/>看起來好像螺紋用盡了也沒問題，<br/>但這個太長了。輵條從銅帽突出4～5個螺紋。<br/>如果輵條長度以銅帽端面和圈齊平為適正的話，<br/>在張力夠的組好輪組上，<br/>之後還要增擰4圈是不可能的，<br/>所以不會用盡螺紋。<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05226amx6.jpg" target="_blank"><img alt="DSC05226amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05226amx6s.jpg" width="320"/></a><br/>接著是要換圈的前輪。<br/>ENVE的1-45圈，和<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05227amx6.jpg" target="_blank"><img alt="DSC05227amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05227amx6s.jpg" width="320"/></a><br/>花鼓是DT的240S，<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05228amx6.jpg" target="_blank"><img alt="DSC05228amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05228amx6s.jpg" width="320"/></a><br/>輵條是CN輵條的品牌，<br/>Mac輵條的14號素面。<br/>作為輪組能成立的下限，相當鬆地組著，<br/>但勉強還是可以騎的。<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05229amx6.jpg" target="_blank"><img alt="DSC05229amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05229amx6s.jpg" width="320"/></a><br/>輵條長度看起來適正，但有不祥的預感・・・。<br/>從外周側看到六邊形是・・・<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05231amx6.jpg" target="_blank"><img alt="DSC05231amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05231amx6s.jpg" width="320"/></a><br/>果然銅帽反了。<br/>從這邊看就立刻是螺紋，<br/>最多還能再擰一圈左右。<br/>其他地方可能也有用盡螺紋的地方，<br/>這可能就是為什麼得組得這麼鬆（被迫這樣做）的原因，<br/>但首先銅帽方向就錯了，這根本不行。<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05232amx6.jpg" target="_blank"><img alt="DSC05232amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05232amx6s.jpg" width="320"/></a><br/>接著是後輪。<br/>這個是EDGE的45。<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05233amx6.jpg" target="_blank"><img alt="DSC05233amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05233amx6s.jpg" width="320"/></a><br/>24孔 黑色CX-RAY46組法，這是少見的組法。<br/>輵條長度在「這個狀態下」是適正的，銅帽方向也沒問題。<br/>但總之，張力比能成立的前輪還要鬆得多，<br/>即便有人說這是未完成的輪組也不會有違和感。<br/>如果從這個狀態繼續按這種組法的邏輯來張，<br/>銅帽突出輵條是無疑的，<br/>所以輵條長度並非適正，而是偏長或太長。<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05234amx6.jpg" target="_blank"><img alt="DSC05234amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05234amx6s.jpg" width="320"/></a><br/>從充氣孔往裡看花鼓的相位，<br/>logo要麼完全看得到、要麼是相反的180°，<br/>這被認為是手組輪組的規範，雖然和性能無關，<br/>但這個中途半端的感覺很不專業。<br/>沒詳細問過，不知道，<br/>要是客人或他朋友組的就抱歉了。<br/>對業餘人士怎麼搞錯一點都不在意。<br/><s>要是同行的話去死吧。</s><br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05235amx6.jpg" target="_blank"><img alt="DSC05235amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05235amx6s.jpg" width="320"/></a><br/>銅帽是上面那張圖左邊EDGE初期附送的<br/>帶塑膠防鬆的產品。<br/>從EDGE到ENVE，圈附帶的銅帽<br/>經歷過多次變更，現在是第4代。<br/>詳細情況請看第1代到第3代（當時最新）的總結<br/>以及銅帽反向會怎樣的說明文章（→<a href="/zh/posts/994.html" target="_blank" title="這裡">這裡</a>）。<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05237amx6.jpg" target="_blank"><img alt="DSC05237amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05237amx6s.jpg" width="320"/></a><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05236amx6.jpg" target="_blank"><img alt="DSC05236amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05236amx6s.jpg" width="320"/></a><br/>客人要求測量圈和輪組的重量，<br/>所以寫在這裡。<br/>ENVE的1-45圈平均值295g，EDGE的45圈平均值274g左右，<br/>所以ENVE稍輕，EDGE是相當重的個體。<br/>但EDGE這邊用的是ENVE最終版本貼紙換過來的可能性也不能排除，<br/>因為想到各種各樣的事，但<br/>因為用了初代銅帽<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05238amx6.jpg" target="_blank"><img alt="DSC05238amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05238amx6s.jpg" width="320"/></a><br/>果然後圈是EDGE時期的產品，沒有問題。<br/>45mm高圈的「45」在輕薄的1-45和<br/>堅固的<s>（重的婉轉表達法）</s>2-45分化之前的標籤，就是這個原因。<br/>還有，如圖所示，沒有圈膠層的床面，<br/>所以那部分重量也沒有。<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05239amx6.jpg" target="_blank"><img alt="DSC05239amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05239amx6s.jpg" width="320"/></a><br/>組好了。組法由我隨便組。<br/>雖然除了瞎搞的實驗性組法外，<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05240amx6.jpg" target="_blank"><img alt="DSC05240amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05240amx6s.jpg" width="320"/></a><br/>前輪是20孔 CX-RAY外穿輻條式，<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05242amx6.jpg" target="_blank"><img alt="DSC05242amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05242amx6s.jpg" width="320"/></a><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05243amx6.jpg" target="_blank"><img alt="DSC05243amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05243amx6s.jpg" width="320"/></a><br/>後輪是24孔 半超級46組法、有結線銀色輵條<br/>的結論就是相對認真的做法。<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05241amx6.jpg" target="_blank"><img alt="DSC05241amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05241amx6s.jpg" width="320"/></a><br/>前輪<br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05244amx6.jpg" target="_blank"><img alt="DSC05244amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05244amx6s.jpg" width="320"/></a><br/>後輪<br/>輪組的重量。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">今天也是輪組（以下略）。<br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05212amx6.jpg" target="_blank"><img alt="DSC05212amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05212amx6s.jpg" width="320"/></a><br/>從客人那裡 <s>接了FF山口的F2R同製造商的</s>Planet X圈組。<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05213amx6.jpg" target="_blank"><img alt="DSC05213amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05213amx6s.jpg" width="320"/></a><br/>根據客人的換組要求，<br/>需要用到的只有這個Chris King花鼓。<br/><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Sapim+CX-RAY+spoke" target="_blank" rel="noopener sponsored" class="amz-inline">CX-RAY</a>外穿輻條式組法，<br/>張力還可以，但還能再張。<br/>還有，從圈的標記方向來看，前花鼓的方向是反的。<br/>White Industries和ExtraLite的前花鼓，<br/>當球心調整機構設置在左側時<br/>花鼓印字也會反過來的型號也存在<br/>（ExtraLite的情況下甚至有要把這邊放在左側的說明），<br/>但即使遵循那個規則，上面那張圖的方向還是反了。<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05214amx6.jpg" target="_blank"><img alt="DSC05214amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05214amx6s.jpg" width="320"/></a><br/>接著是後輪。<br/>這個圈，客人以為是Gigantex，<br/>實際上是Equinox的WH-005。<br/>除了制動區的加工和圈側的光澤有無外，<br/>和野村Lab輪組2.5號的圈是同一款。<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05215amx6.jpg" target="_blank"><img alt="DSC05215amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05215amx6s.jpg" width="320"/></a><br/>這個是24孔 CX-RAY46組法。<br/>圈稍微向副齒盤側偏移了，<br/>但前輪完全對正了，<br/>組好時前後都完全對正，後輪在長期使用中偏移了，<br/>感覺應該是這樣。<br/>和前輪一樣張力適中，用等直徑花鼓做46組法時，<br/>副齒盤側張力合適，但反副齒盤側會這麼鬆，<br/>這是難得一見的例子（因為我從不用這種組法）。<br/><br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05222amx6.jpg" target="_blank"><img alt="DSC05222amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05222amx6s.jpg" width="320"/></a><br/>拆前輪前，從外周側往裡看，<br/>輻條非常短。<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05223amx6.jpg" target="_blank"><img alt="DSC05223amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05223amx6s.jpg" width="320"/></a><br/>從邊上開始逐個拆下來，保留了約4根完全沒轉過銅帽的輻條。<br/>從這個狀態就能把銅帽拉出圈來觀察，<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05224amx6.jpg" target="_blank"><img alt="DSC05224amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05224amx6s.jpg" width="320"/></a><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05225amx6.jpg" target="_blank"><img alt="DSC05225amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05225amx6s.jpg" width="320"/></a><br/>不管怎麼看都太短了。<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05218amx6.jpg" target="_blank"><img alt="DSC05218amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05218amx6s.jpg" width="320"/></a><br/>後輪是用反面圈組的。<br/>圈內周側的孔沒有穴偏移，<br/>所以用外露銅帽的話問題不大，<br/>但用內藏銅帽就有問題。<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05216amx6.jpg" target="_blank"><img alt="DSC05216amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05216amx6s.jpg" width="320"/></a><br/>讓工具在輻條角度的延長線上咬住，<br/>外周側有相當的穴偏移。<br/>這也和圈高有關，這是50mm高的圈，<br/>同款的38mm版本穴偏移就不會這麼明顯。<br/>這個穴偏移是在正面圈上開的，所以<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05217amx6.jpg" target="_blank"><img alt="DSC05217amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05217amx6s.jpg" width="320"/></a><br/>比如上面那張圖，輻條向右邊伸展，<br/>圈孔也向右偏移，<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05219amx6.jpg" target="_blank"><img alt="DSC05219amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05219amx6s.jpg" width="320"/></a><br/>↑就會變成這樣。<br/>即使在仿組時就把穴偏移反向了，<br/>工具也會因為卡不住而放棄吧，<br/>但他們硬是無視這個繼續組了。<br/>因為轉鬆銅帽開始時工具卡得很苦，<br/>但組的時候，尤其是最後怎麼才能卡上工具的真的很神秘。<br/>應該不可能沒發現有問題的。<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05220amx6.jpg" target="_blank"><img alt="DSC05220amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05220amx6s.jpg" width="320"/></a><br/>有一個地方，我覺得輻條有點晃，<br/>但一旦放鬆張力，那個位置的輻條就彎了。<br/><br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05221amx6.jpg" target="_blank"><img alt="DSC05221amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05221amx6s.jpg" width="320"/></a><br/>這也是最後保留的，完全沒轉過的銅帽，<br/>銅帽方向是對的，但輻條太長了，<br/>幾乎不能增擰。<br/>用正確的銅帽方向時，內周側有一定的尺寸餘量，<br/>看起來好像螺紋用盡了也沒問題，<br/>但這個太長了。輵條從銅帽突出4～5個螺紋。<br/>如果輵條長度以銅帽端面和圈齊平為適正的話，<br/>在張力夠的組好輪組上，<br/>之後還要增擰4圈是不可能的，<br/>所以不會用盡螺紋。<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05226amx6.jpg" target="_blank"><img alt="DSC05226amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05226amx6s.jpg" width="320"/></a><br/>接著是要換圈的前輪。<br/>ENVE的1-45圈，和<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05227amx6.jpg" target="_blank"><img alt="DSC05227amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05227amx6s.jpg" width="320"/></a><br/>花鼓是DT的240S，<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05228amx6.jpg" target="_blank"><img alt="DSC05228amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05228amx6s.jpg" width="320"/></a><br/>輵條是CN輵條的品牌，<br/>Mac輵條的14號素面。<br/>作為輪組能成立的下限，相當鬆地組著，<br/>但勉強還是可以騎的。<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05229amx6.jpg" target="_blank"><img alt="DSC05229amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05229amx6s.jpg" width="320"/></a><br/>輵條長度看起來適正，但有不祥的預感・・・。<br/>從外周側看到六邊形是・・・<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05231amx6.jpg" target="_blank"><img alt="DSC05231amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05231amx6s.jpg" width="320"/></a><br/>果然銅帽反了。<br/>從這邊看就立刻是螺紋，<br/>最多還能再擰一圈左右。<br/>其他地方可能也有用盡螺紋的地方，<br/>這可能就是為什麼得組得這麼鬆（被迫這樣做）的原因，<br/>但首先銅帽方向就錯了，這根本不行。<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05232amx6.jpg" target="_blank"><img alt="DSC05232amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05232amx6s.jpg" width="320"/></a><br/>接著是後輪。<br/>這個是EDGE的45。<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05233amx6.jpg" target="_blank"><img alt="DSC05233amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05233amx6s.jpg" width="320"/></a><br/>24孔 黑色CX-RAY46組法，這是少見的組法。<br/>輵條長度在「這個狀態下」是適正的，銅帽方向也沒問題。<br/>但總之，張力比能成立的前輪還要鬆得多，<br/>即便有人說這是未完成的輪組也不會有違和感。<br/>如果從這個狀態繼續按這種組法的邏輯來張，<br/>銅帽突出輵條是無疑的，<br/>所以輵條長度並非適正，而是偏長或太長。<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05234amx6.jpg" target="_blank"><img alt="DSC05234amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05234amx6s.jpg" width="320"/></a><br/>從充氣孔往裡看花鼓的相位，<br/>logo要麼完全看得到、要麼是相反的180°，<br/>這被認為是手組輪組的規範，雖然和性能無關，<br/>但這個中途半端的感覺很不專業。<br/>沒詳細問過，不知道，<br/>要是客人或他朋友組的就抱歉了。<br/>對業餘人士怎麼搞錯一點都不在意。<br/><s>要是同行的話去死吧。</s><br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05235amx6.jpg" target="_blank"><img alt="DSC05235amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05235amx6s.jpg" width="320"/></a><br/>銅帽是上面那張圖左邊EDGE初期附送的<br/>帶塑膠防鬆的產品。<br/>從EDGE到ENVE，圈附帶的銅帽<br/>經歷過多次變更，現在是第4代。<br/>詳細情況請看第1代到第3代（當時最新）的總結<br/>以及銅帽反向會怎樣的說明文章（→<a href="/zh/posts/994.html" target="_blank" title="這裡">這裡</a>）。<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05237amx6.jpg" target="_blank"><img alt="DSC05237amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05237amx6s.jpg" width="320"/></a><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05236amx6.jpg" target="_blank"><img alt="DSC05236amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05236amx6s.jpg" width="320"/></a><br/>客人要求測量圈和輪組的重量，<br/>所以寫在這裡。<br/>ENVE的1-45圈平均值295g，EDGE的45圈平均值274g左右，<br/>所以ENVE稍輕，EDGE是相當重的個體。<br/>但EDGE這邊用的是ENVE最終版本貼紙換過來的可能性也不能排除，<br/>因為想到各種各樣的事，但<br/>因為用了初代銅帽<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05238amx6.jpg" target="_blank"><img alt="DSC05238amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05238amx6s.jpg" width="320"/></a><br/>果然後圈是EDGE時期的產品，沒有問題。<br/>45mm高圈的「45」在輕薄的1-45和<br/>堅固的<s>（重的婉轉表達法）</s>2-45分化之前的標籤，就是這個原因。<br/>還有，如圖所示，沒有圈膠層的床面，<br/>所以那部分重量也沒有。<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05239amx6.jpg" target="_blank"><img alt="DSC05239amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05239amx6s.jpg" width="320"/></a><br/>組好了。組法由我隨便組。<br/>雖然除了瞎搞的實驗性組法外，<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05240amx6.jpg" target="_blank"><img alt="DSC05240amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05240amx6s.jpg" width="320"/></a><br/>前輪是20孔 CX-RAY外穿輻條式，<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05242amx6.jpg" target="_blank"><img alt="DSC05242amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05242amx6s.jpg" width="320"/></a><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05243amx6.jpg" target="_blank"><img alt="DSC05243amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05243amx6s.jpg" width="320"/></a><br/>後輪是24孔 半超級46組法、有結線銀色輵條<br/>的結論就是相對認真的做法。<br/><br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05241amx6.jpg" target="_blank"><img alt="DSC05241amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05241amx6s.jpg" width="320"/></a><br/>前輪<br/><a href="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05244amx6.jpg" target="_blank"><img alt="DSC05244amx6.jpg" border="0" height="240" src="https://blog-imgs-102-origin.fc2.com/p/a/s/pass13/DSC05244amx6s.jpg" width="320"/></a><br/>後輪<br/>輪組的重量。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

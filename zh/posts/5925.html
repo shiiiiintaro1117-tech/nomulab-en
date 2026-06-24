@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/5925.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>買了萊德牌的滑軌架</h1>
     <p class="post-meta">October 17, 2021</p>
+    <div class="post-body"><div class="entrytext">機車無內胎輪胎的補胎工具包<br/>被各個廠商縮小化推出了。<br/>來自 RYDER（萊德）品牌的<br/><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=RYDER+SLUG+PLUG+tubeless+tire+repair+kit" target="_blank" rel="noopener sponsored" class="amz-inline">SLUG PLUG</a>（蛞蝓栓）就是其中之一，<br/>雖然它是否真的長得像蛞蝓（slug）還有待商榷，<br/>但它是一種粘稠的管狀修補材料，<br/>用類似縫紉工具拆線刀的工具從中間對折，<br/>然後直接戳進輪胎的破洞裡<br/>來堵住漏氣。<br/><br/>補記：關於 slug 這個詞<br/>「這種情況下的 slug 其實更多指的是用力戳進去的意思，<br/>而不是指蛞蝓。<br/>slug 有金屬塊或強力打擊的意思。<br/>散彈槍的彈藥中有一種叫 slug 彈的，<br/>不是細小的散彈，而是發射一整塊大金屬塊的彈種。」<br/>我收到了這樣的留言。<br/>我其實後來也才注意到，趕來補記時發現留言已經先到了，<br/>但我覺得 SLUG PLUG 的容器<br/>其實很像某種 slug 彈頭，<br/>所以很可能是因此命名的。<br/><br/>SLUG PLUG 未使用時被裝在像藥膠囊一樣的<br/>容器裡，廠商推出了<br/>可以安裝在變速線管孔上的專用夾架，<br/>一側裝 SLUG PLUG 的容器，<br/>另一側可以插入<br/>裝 CO₂ 充氣罐的夾架。<br/><br/>SLUG PLUG 能用於補胎應急的前提是<br/>必須是無內胎且低壓，輪胎內部容積要夠大，<br/>所以公路車根本用不了。<br/>MTB 和較粗的砂礫車可能勉強能用。<br/><br/>剛才提到的專用夾架<br/>有雙側都能裝 CO₂ 充氣罐的規格，<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05117amx14.jpg" target="_blank"><img alt="DSC05117amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05117amx14s.jpg" width="320"/></a><br/>這次我就個人買了一個。<br/>萊德牌的滑軌架這個商品。<br/>共締變速線管孔用的 CO₂ 充氣罐底座<br/>幾乎相同的規格有巴比埃里（Barbieri）和美諾烏拉（Minoura）在販售，<br/>但因為是金屬製很重，外觀也很吵雜（←個人主觀），<br/>所以我一直沒買過。<br/>另外，掛著兩支罐子的外觀我不太喜歡，<br/>所以一直在找有沒有單支架的好東西。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05118amx14.jpg" target="_blank"><img alt="DSC05118amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05118amx14s.jpg" width="320"/></a><br/>萊德（RYDER）牌的「SLYDER」。<br/>看起來沒有用品牌名加工來讀成滑軌架（SLYDER）的玩心。<br/>SLUG PLUG 倒是個很有韻腳的商品名。<br/><br/>扯遠了，有個叫布羅迪（BRODIE）的品牌在製造鉻鉬鋼和鈦合金車架，<br/>主要推出 MTB 系列車架，<br/>下把手的車型目前只有砂礫車。<br/>在布羅迪那邊，2017 年車型之前存在過<br/>一個叫 RODIE 的鈦合金公路車車架型號，<br/>這是把品牌名裡的 B 去掉來讀成<br/>「ローディー」（公路騎士）的型號名。<br/>正確的公路騎士英文是 roadie，<br/>但這明顯不是誤字而是故意諧音。<br/>我之前也寫過，洛克肖克斯（RockShox）的前置避震叉<br/>「SID」有雪梨奧運紀念型號<br/>叫「SIDNEY」的，<br/>但雪梨的正確英文是 sydney。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05119amx14.jpg" target="_blank"><img alt="DSC05119amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05119amx14s.jpg" width="320"/></a><br/>在變速線管孔安裝底座板，<br/>然後把充氣罐夾架滑進那個板子裡的結構。<br/>據說有專利，這個設計相當不錯。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05122amx14.jpg" target="_blank"><img alt="DSC05122amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05122amx14s.jpg" width="320"/></a><br/>在充氣罐夾架上裝上 CO₂ 充氣罐。<br/>夾架上的 RYDER 標記必須和螺紋方向相反<br/>才能安裝。<br/>這個夾架的夾持感有點緊，<br/>安裝時甚至會把貼在罐上的貼紙撕掉，<br/>但反面來說毫無鬆動或搖晃。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05123amx14.jpg" target="_blank"><img alt="DSC05123amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05123amx14s.jpg" width="320"/></a><br/>把帶著充氣罐的夾架<br/>插進底座板的狹槽深處<br/>會發出咔嗒聲，然後牢牢固定。<br/><br/>為什麼我說「帶著充氣罐的」呢，因為<br/>起初打開包裝時，底座板和夾架的<br/>插入感很鬆散，<br/>我心想這種東西振動時肯定會咔咔作響，甚至會飛出來吧！<br/>但是……<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05128amx14.jpg" target="_blank"><img alt="DSC05128amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05128amx14s.jpg" width="320"/></a><br/>單獨的夾架和狹槽間確實有間隙，<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05127amx14.jpg" target="_blank"><img alt="DSC05127amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05127amx14s.jpg" width="320"/></a><br/>但帶上充氣罐後，夾架會<br/>精妙地變形來卡住狹槽，<br/>間隙就消失了。<br/>這應該是刻意設計的，<br/>但手感變化太大了，我著實感動了一下。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05126amx14.jpg" target="_blank"><img alt="DSC05126amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05126amx14s.jpg" width="320"/></a><br/>狹槽的深處是死角，<br/>所以插入方向是固定的，<br/>但夾架的上下可以自己選擇。<br/><br/>另外，這個夾架在使用充氣罐時還兼具<br/>防止表面冷卻結冰而傷皮膚的<br/>套筒功能。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05121amx14.jpg" target="_blank"><img alt="DSC05121amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05121amx14s.jpg" width="320"/></a><br/>按包裝上的圖示，充氣罐的一側<br/>要一直裝著充氣適配器，<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05124amx14.jpg" target="_blank"><img alt="DSC05124amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05124amx14s.jpg" width="320"/></a><br/>但如果只是螺進去不穿孔充氣罐<br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05125amx14.jpg" target="_blank"><img alt="DSC05125amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05125amx14s.jpg" width="320"/></a><br/>就會像這樣一直轉，沒辦法固定。<br/>這是 Toni（托尼）推送式的，但除此之外<br/>有沒有不穿孔還能固定的適配器呢？<br/>不會是圖裡的狀態是穿孔狀態下<br/>在携帶的吧……應該不是。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05139amx14.jpg" target="_blank"><img alt="DSC05139amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05139amx14s.jpg" width="320"/></a><br/>裝上了。<br/>底座板彎曲得很厲害。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05140amx14.jpg" target="_blank"><img alt="DSC05140amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05140amx14s.jpg" width="320"/></a><br/>這是 Topeak（拓普克）的<br/>變速線管孔上方可以架攜帶式打氣筒的（也就是不能和變速線管共用）<br/>類型的適配器，<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05141amx14.jpg" target="_blank"><img alt="DSC05141amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05141amx14s.jpg" width="320"/></a><br/>和車架接觸的面是圓形的，<br/>硬是擰緊會導致底座板變形。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05174amx14.jpg" target="_blank"><img alt="DSC05174amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05174amx14s.jpg" width="320"/></a><br/>我把圓弧磨平了讓它直的。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05120amx14.jpg" target="_blank"><img alt="DSC05120amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05120amx14s.jpg" width="320"/></a><br/>按包裝圖示，要把有 RYDER 標記的一側<br/>朝外裝。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05175amx14.jpg" target="_blank"><img alt="DSC05175amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05175amx14s.jpg" width="320"/></a><br/>↑原本應該是這面朝外，<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05176amx14.jpg" target="_blank"><img alt="DSC05176amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05176amx14s.jpg" width="320"/></a><br/>和車架接觸的那側有個<br/>配合變速線管孔鉚釘突起的凹陷，<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05177amx14.jpg" target="_blank"><img alt="DSC05177amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05177amx14s.jpg" width="320"/></a><br/>我用大小適合的金屬墊圈填平了<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05178amx14.jpg" target="_blank"><img alt="DSC05178amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05178amx14s.jpg" width="320"/></a><br/>然後用相反的方向裝底座板。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05190amx14.jpg" target="_blank"><img alt="DSC05190amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05190amx14s.jpg" width="320"/></a><br/>↑底座板沒有彎曲。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05180amx14.jpg" target="_blank"><img alt="DSC05180amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05180amx14s.jpg" width="320"/></a><br/>因為我只打算裝一支充氣罐，<br/>所以把底座板往右邊推到底。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05147amx14.jpg" target="_blank"><img alt="DSC05147amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05147amx14s.jpg" width="320"/></a><br/>↑就是這樣<br/>左邊曲柄臂的間隙多到不行。<br/>就算貼著功率表也不會干涉。<br/><br/>额外補充<br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05191amx14.jpg" target="_blank"><img alt="DSC05191amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05191amx14s.jpg" width="320"/></a><br/>↑這是 <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Profile+Design+CO2+Mount+Kit+Air+Cartridge+Adapter" target="_blank" rel="noopener sponsored" class="amz-inline">Profile Design</a>（普羅菲爾設計）的<br/>CO₂ 安裝套件氣罐適配器這個商品。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05192amx14.jpg" target="_blank"><img alt="DSC05192amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05192amx14s.jpg" width="320"/></a><br/>一個適配器可以裝一支充氣罐，<br/>在變速線管孔上<br/>以上圖那樣的方式安裝，<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05193amx14.jpg" target="_blank"><img alt="DSC05193amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05193amx14s.jpg" width="320"/></a><br/>如果只用一支的話<br/>會附上厚度相同的墊片<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05194amx14.jpg" target="_blank"><img alt="DSC05194amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05194amx14s.jpg" width="320"/></a><br/>↑就這樣裝。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05195amx14.jpg" target="_blank"><img alt="DSC05195amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05195amx14s.jpg" width="320"/></a><br/>問題是這東西只用一根螺栓固定<br/>所以會從固定位置轉動。<br/>上圖用了齒紋墊圈來對付這個問題。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">機車無內胎輪胎的補胎工具包<br/>被各個廠商縮小化推出了。<br/>來自 RYDER（萊德）品牌的<br/><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=RYDER+SLUG+PLUG+tubeless+tire+repair+kit" target="_blank" rel="noopener sponsored" class="amz-inline">SLUG PLUG</a>（蛞蝓栓）就是其中之一，<br/>雖然它是否真的長得像蛞蝓（slug）還有待商榷，<br/>但它是一種粘稠的管狀修補材料，<br/>用類似縫紉工具拆線刀的工具從中間對折，<br/>然後直接戳進輪胎的破洞裡<br/>來堵住漏氣。<br/><br/>補記：關於 slug 這個詞<br/>「這種情況下的 slug 其實更多指的是用力戳進去的意思，<br/>而不是指蛞蝓。<br/>slug 有金屬塊或強力打擊的意思。<br/>散彈槍的彈藥中有一種叫 slug 彈的，<br/>不是細小的散彈，而是發射一整塊大金屬塊的彈種。」<br/>我收到了這樣的留言。<br/>我其實後來也才注意到，趕來補記時發現留言已經先到了，<br/>但我覺得 SLUG PLUG 的容器<br/>其實很像某種 slug 彈頭，<br/>所以很可能是因此命名的。<br/><br/>SLUG PLUG 未使用時被裝在像藥膠囊一樣的<br/>容器裡，廠商推出了<br/>可以安裝在變速線管孔上的專用夾架，<br/>一側裝 SLUG PLUG 的容器，<br/>另一側可以插入<br/>裝 CO₂ 充氣罐的夾架。<br/><br/>SLUG PLUG 能用於補胎應急的前提是<br/>必須是無內胎且低壓，輪胎內部容積要夠大，<br/>所以公路車根本用不了。<br/>MTB 和較粗的砂礫車可能勉強能用。<br/><br/>剛才提到的專用夾架<br/>有雙側都能裝 CO₂ 充氣罐的規格，<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05117amx14.jpg" target="_blank"><img alt="DSC05117amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05117amx14s.jpg" width="320"/></a><br/>這次我就個人買了一個。<br/>萊德牌的滑軌架這個商品。<br/>共締變速線管孔用的 CO₂ 充氣罐底座<br/>幾乎相同的規格有巴比埃里（Barbieri）和美諾烏拉（Minoura）在販售，<br/>但因為是金屬製很重，外觀也很吵雜（←個人主觀），<br/>所以我一直沒買過。<br/>另外，掛著兩支罐子的外觀我不太喜歡，<br/>所以一直在找有沒有單支架的好東西。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05118amx14.jpg" target="_blank"><img alt="DSC05118amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05118amx14s.jpg" width="320"/></a><br/>萊德（RYDER）牌的「SLYDER」。<br/>看起來沒有用品牌名加工來讀成滑軌架（SLYDER）的玩心。<br/>SLUG PLUG 倒是個很有韻腳的商品名。<br/><br/>扯遠了，有個叫布羅迪（BRODIE）的品牌在製造鉻鉬鋼和鈦合金車架，<br/>主要推出 MTB 系列車架，<br/>下把手的車型目前只有砂礫車。<br/>在布羅迪那邊，2017 年車型之前存在過<br/>一個叫 RODIE 的鈦合金公路車車架型號，<br/>這是把品牌名裡的 B 去掉來讀成<br/>「ローディー」（公路騎士）的型號名。<br/>正確的公路騎士英文是 roadie，<br/>但這明顯不是誤字而是故意諧音。<br/>我之前也寫過，洛克肖克斯（RockShox）的前置避震叉<br/>「SID」有雪梨奧運紀念型號<br/>叫「SIDNEY」的，<br/>但雪梨的正確英文是 sydney。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05119amx14.jpg" target="_blank"><img alt="DSC05119amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05119amx14s.jpg" width="320"/></a><br/>在變速線管孔安裝底座板，<br/>然後把充氣罐夾架滑進那個板子裡的結構。<br/>據說有專利，這個設計相當不錯。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05122amx14.jpg" target="_blank"><img alt="DSC05122amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05122amx14s.jpg" width="320"/></a><br/>在充氣罐夾架上裝上 CO₂ 充氣罐。<br/>夾架上的 RYDER 標記必須和螺紋方向相反<br/>才能安裝。<br/>這個夾架的夾持感有點緊，<br/>安裝時甚至會把貼在罐上的貼紙撕掉，<br/>但反面來說毫無鬆動或搖晃。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05123amx14.jpg" target="_blank"><img alt="DSC05123amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05123amx14s.jpg" width="320"/></a><br/>把帶著充氣罐的夾架<br/>插進底座板的狹槽深處<br/>會發出咔嗒聲，然後牢牢固定。<br/><br/>為什麼我說「帶著充氣罐的」呢，因為<br/>起初打開包裝時，底座板和夾架的<br/>插入感很鬆散，<br/>我心想這種東西振動時肯定會咔咔作響，甚至會飛出來吧！<br/>但是……<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05128amx14.jpg" target="_blank"><img alt="DSC05128amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05128amx14s.jpg" width="320"/></a><br/>單獨的夾架和狹槽間確實有間隙，<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05127amx14.jpg" target="_blank"><img alt="DSC05127amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05127amx14s.jpg" width="320"/></a><br/>但帶上充氣罐後，夾架會<br/>精妙地變形來卡住狹槽，<br/>間隙就消失了。<br/>這應該是刻意設計的，<br/>但手感變化太大了，我著實感動了一下。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05126amx14.jpg" target="_blank"><img alt="DSC05126amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05126amx14s.jpg" width="320"/></a><br/>狹槽的深處是死角，<br/>所以插入方向是固定的，<br/>但夾架的上下可以自己選擇。<br/><br/>另外，這個夾架在使用充氣罐時還兼具<br/>防止表面冷卻結冰而傷皮膚的<br/>套筒功能。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05121amx14.jpg" target="_blank"><img alt="DSC05121amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05121amx14s.jpg" width="320"/></a><br/>按包裝上的圖示，充氣罐的一側<br/>要一直裝著充氣適配器，<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05124amx14.jpg" target="_blank"><img alt="DSC05124amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05124amx14s.jpg" width="320"/></a><br/>但如果只是螺進去不穿孔充氣罐<br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05125amx14.jpg" target="_blank"><img alt="DSC05125amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05125amx14s.jpg" width="320"/></a><br/>就會像這樣一直轉，沒辦法固定。<br/>這是 Toni（托尼）推送式的，但除此之外<br/>有沒有不穿孔還能固定的適配器呢？<br/>不會是圖裡的狀態是穿孔狀態下<br/>在携帶的吧……應該不是。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05139amx14.jpg" target="_blank"><img alt="DSC05139amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05139amx14s.jpg" width="320"/></a><br/>裝上了。<br/>底座板彎曲得很厲害。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05140amx14.jpg" target="_blank"><img alt="DSC05140amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05140amx14s.jpg" width="320"/></a><br/>這是 Topeak（拓普克）的<br/>變速線管孔上方可以架攜帶式打氣筒的（也就是不能和變速線管共用）<br/>類型的適配器，<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05141amx14.jpg" target="_blank"><img alt="DSC05141amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05141amx14s.jpg" width="320"/></a><br/>和車架接觸的面是圓形的，<br/>硬是擰緊會導致底座板變形。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05174amx14.jpg" target="_blank"><img alt="DSC05174amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05174amx14s.jpg" width="320"/></a><br/>我把圓弧磨平了讓它直的。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05120amx14.jpg" target="_blank"><img alt="DSC05120amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05120amx14s.jpg" width="320"/></a><br/>按包裝圖示，要把有 RYDER 標記的一側<br/>朝外裝。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05175amx14.jpg" target="_blank"><img alt="DSC05175amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05175amx14s.jpg" width="320"/></a><br/>↑原本應該是這面朝外，<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05176amx14.jpg" target="_blank"><img alt="DSC05176amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05176amx14s.jpg" width="320"/></a><br/>和車架接觸的那側有個<br/>配合變速線管孔鉚釘突起的凹陷，<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05177amx14.jpg" target="_blank"><img alt="DSC05177amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05177amx14s.jpg" width="320"/></a><br/>我用大小適合的金屬墊圈填平了<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05178amx14.jpg" target="_blank"><img alt="DSC05178amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05178amx14s.jpg" width="320"/></a><br/>然後用相反的方向裝底座板。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05190amx14.jpg" target="_blank"><img alt="DSC05190amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05190amx14s.jpg" width="320"/></a><br/>↑底座板沒有彎曲。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05180amx14.jpg" target="_blank"><img alt="DSC05180amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05180amx14s.jpg" width="320"/></a><br/>因為我只打算裝一支充氣罐，<br/>所以把底座板往右邊推到底。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05147amx14.jpg" target="_blank"><img alt="DSC05147amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05147amx14s.jpg" width="320"/></a><br/>↑就是這樣<br/>左邊曲柄臂的間隙多到不行。<br/>就算貼著功率表也不會干涉。<br/><br/>额外補充<br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05191amx14.jpg" target="_blank"><img alt="DSC05191amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05191amx14s.jpg" width="320"/></a><br/>↑這是 <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Profile+Design+CO2+Mount+Kit+Air+Cartridge+Adapter" target="_blank" rel="noopener sponsored" class="amz-inline">Profile Design</a>（普羅菲爾設計）的<br/>CO₂ 安裝套件氣罐適配器這個商品。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05192amx14.jpg" target="_blank"><img alt="DSC05192amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05192amx14s.jpg" width="320"/></a><br/>一個適配器可以裝一支充氣罐，<br/>在變速線管孔上<br/>以上圖那樣的方式安裝，<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05193amx14.jpg" target="_blank"><img alt="DSC05193amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05193amx14s.jpg" width="320"/></a><br/>如果只用一支的話<br/>會附上厚度相同的墊片<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05194amx14.jpg" target="_blank"><img alt="DSC05194amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05194amx14s.jpg" width="320"/></a><br/>↑就這樣裝。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05195amx14.jpg" target="_blank"><img alt="DSC05195amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05195amx14s.jpg" width="320"/></a><br/>問題是這東西只用一根螺栓固定<br/>所以會從固定位置轉動。<br/>上圖用了齒紋墊圈來對付這個問題。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/6974.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>CLX50的後輪進行了各種修理</h1>
     <p class="post-meta">January 11, 2024</p>
+    <div class="post-body"><div class="entrytext">從客戶那裡接收了一個Rovéal的CLX50後輪。<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7170amxv15.jpg" target="_blank"><img alt="RIMG7170amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7170amxv15s.jpg" width="320"/></a><br/>雖然在另一家車店進行了大修，<br/>但轉動感變得沉重，並出現了異音。<br/>據說只在晴天使用，里程數不足2000km。<br/>考慮到相當的使用痕跡，2000km<br/>應該是大修之後的里程數而非全新的。<br/>不過這不是什麼大問題。<br/>真正的問題是他們做了許多不可能的事情。<br/>在進行了一系列的作業之後，我打電話給客戶說：<br/>「我不是在懷疑什麼，<br/>但這不是您自己弄的吧？」<br/>就這樣問了。<br/>之後才得知，這家車店<br/>曾經三次收過這個輪組，<br/>每次拿回來都會出現某種問題。<br/><br/>關於花鼓的轉動，用手指轉動抱軸快速脫卸螺帽時，<br/>轉動感不是渾濁而是<br/>像保險箱轉盤那樣有卡頓感，<br/>或者說有種澀澀的觸感。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7171amxv15.jpg" target="_blank"><img alt="RIMG7171amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7171amxv15s.jpg" width="320"/></a><br/>這個Rovéal的花鼓<br/>是DT製的星棘輪規格花鼓，<br/>為了更換花鼓體右側的軸承，<br/>需要專用工具，那裡的軸承也<br/>被更換過了。<br/>由於個人很少會買這種工具，<br/>所以確實是那家車店做的。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7172amxv15.jpg" target="_blank"><img alt="RIMG7172amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7172amxv15s.jpg" width="320"/></a><br/>拆下左邊的抱軸快速脫卸螺帽。<br/>油和金屬碎屑混合成膏狀的污垢<br/>附著在軸承的密封圈周圍。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7173amxv15.jpg" target="_blank"><img alt="RIMG7173amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7173amxv15s.jpg" width="320"/></a><br/>左邊抱軸快速脫卸螺帽朝向內側的面。<br/>除了只按住內圈的台階外的部分有磨損痕跡，<br/>洗淨後的圖片稍後會刊載。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7177amxv15.jpg" target="_blank"><img alt="RIMG7177amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7177amxv15s.jpg" width="320"/></a><br/>拆下右邊的抱軸快速脫卸螺帽。<br/>自由輪體的軸承和齊平面的橙色<br/>看起來特別光亮，<br/>那是因為沾了油。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7178amxv15.jpg" target="_blank"><img alt="RIMG7178amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7178amxv15s.jpg" width="320"/></a><br/>這裡也附著了膏狀的污垢。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7179amxv15.jpg" target="_blank"><img alt="RIMG7179amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7179amxv15s.jpg" width="320"/></a><br/>星棘輪的面棘輪部分<br/>沒有專用潤滑脂塗布的痕跡。<br/>如果在大修時正確塗布了的話，<br/>晴天使用2000km左右<br/>不可能完全沒有痕跡。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7180amxv15.jpg" target="_blank"><img alt="RIMG7180amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7180amxv15s.jpg" width="320"/></a><br/>抽出自由輪體後變成「前輪花鼓狀態」，<br/>轉動仍然很澀。<br/>所以原因還在這一側。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7181amxv15.jpg" target="_blank"><img alt="RIMG7181amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7181amxv15s.jpg" width="320"/></a><br/>用星棘輪花鍵拆卸專用工具<br/>鬆開花鍵。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7182amxv15.jpg" target="_blank"><img alt="RIMG7182amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7182amxv15s.jpg" width="320"/></a><br/>在花鍵之前，「為了在自由輪體之間<br/>形成迷宮密封而具有U字槽的圓環」<br/>先拔出來了。日本批發商的<br/>稱呼是「防水防塵密封」。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7183amxv15.jpg" target="_blank"><img alt="RIMG7183amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7183amxv15s.jpg" width="320"/></a><br/>拆下了花鍵。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7185amxv15.jpg" target="_blank"><img alt="RIMG7185amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7185amxv15s.jpg" width="320"/></a><br/>敲出了花鼓軸和花鼓體右側軸承。<br/>敲出也需要專用工具。<br/>原來的大修假裝作業裡，<br/>灰色粗糙感的潤滑脂<br/>被塗得到處都是。<br/>大概就像店裡的「特殊潤滑脂」（笑）那樣。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7186amxv15.jpg" target="_blank"><img alt="RIMG7186amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7186amxv15s.jpg" width="320"/></a><br/>拆出花鼓體右側軸承後的狀態。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7187amxv15.jpg" target="_blank"><img alt="RIMG7187amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7187amxv15s.jpg" width="320"/></a><br/>從外面插入花鼓軸到花鼓體左側軸承，<br/>用手轉動的話，有澀澀的感覺。<br/>軸承方面的主要問題就是這個。<br/><br/>而且這個軸承用普通方法<br/>紋絲不動。<br/>工具裝好的話，用塑膠錘的<br/>衝擊荷重應該可以拔出。<br/>這個軸承的裝配位置很深，<br/>但好像軸承在敲進去時歪斜了，<br/>被硬生生敲入，圓柱形孔的中途<br/>出現了毛邊或卡刺。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7188amxv15.jpg" target="_blank"><img alt="RIMG7188amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7188amxv15s.jpg" width="320"/></a><br/>為了不傷花鼓體，<br/>在中軸碟式制動座上擰入一個廢棄的鎖環，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7189amxv15.jpg" target="_blank"><img alt="RIMG7189amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7189amxv15s.jpg" width="320"/></a><br/>用DT的花鼓軸敲出的方法以外，<br/>安裝軸承拔出治具，<br/>用鐵錘多次敲擊，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7190amxv15.jpg" target="_blank"><img alt="RIMG7190amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7190amxv15s.jpg" width="320"/></a><br/>雖然有損傷但還是回收了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7192amxv15.jpg" target="_blank"><img alt="RIMG7192amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7192amxv15s.jpg" width="320"/></a><br/>DT花鼓的軸承，<br/>為了筆直敲入其中之一需要導向，保留一個，<br/>用專用工具進行衝擊荷重來裝配。但對於<br/>沒有花鼓軸通過的花鼓體，<br/>可以用這個專用工具作為靜荷重治具<br/>用壓入方式裝入。<br/>選擇哪邊進行的話，<br/>這種情況下花鼓體左側比較好。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7195amxv15.jpg" target="_blank"><img alt="RIMG7195amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7195amxv15s.jpg" width="320"/></a><br/>花鼓體左側軸承壓入完成。<br/>在那之前，卡刺已用砂紙磨掉。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7196amxv15.jpg" target="_blank"><img alt="RIMG7196amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7196amxv15s.jpg" width="320"/></a><br/>從左抱軸快速脫卸螺帽的接觸面上擦掉污垢。<br/>除了只按住內圈的台階外的面也有磨損痕跡。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7194amxv15.jpg" target="_blank"><img alt="RIMG7194amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7194amxv15s.jpg" width="320"/></a><br/>左抱軸快速脫卸螺帽的溝槽減肉部分也<br/>塗滿了灰色的潤滑脂。<br/>粘著了類似紅色油漆的東西，<br/>但不太清楚那是什麼。<br/>這個抱軸快速脫卸螺帽<br/>沒有配備防水功能的橡膠O環之類的，<br/>所以進水的情況下軸承密封<br/>就成了最後防線。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7197amxv15.jpg" target="_blank"><img alt="RIMG7197amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7197amxv15s.jpg" width="320"/></a><br/>那麼，原來的大修假裝作業中更換的<br/>花鼓體和自由輪體的軸承共4個，<br/>全部裝的都是金屬密封軸承。<br/>如果用油而不是潤滑脂來運作的話，<br/>只要不考慮壽命，轉動倒是會輕一些。<br/>也就是說，內容就是這樣。<br/>我問客戶是否知道這一點<br/>在開頭的電話裡，但客戶不知道。<br/>經客戶同意，告訴他雖然這是和壽命的取捨，<br/>但也有這樣的調整方法。如果事先有同意<br/>的話倒也無妨。不過這是自作聰明做的。<br/>「陶瓷軸承這種貴的東西不一定要用，<br/>用這種軸承的話可以更便宜、轉動更輕」<br/>這樣想著做的吧，真是個蠢蛋。<br/><br/>花鼓體左側軸承沒有進水或生鏽，<br/>所以不是浸水造成的。但是<br/>晴天走行只有2000km未滿這麼短期<br/>就轉動卡住了這個事實擺在那裡。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7198amxv15.jpg" target="_blank"><img alt="RIMG7198amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7198amxv15s.jpg" width="320"/></a><br/>軸承是同一家<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=NTN+6902LB+bearing+non-contact+rubber+seal" target="_blank" rel="noopener sponsored" class="amz-inline">NTN</a>的，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7199amxv15.jpg" target="_blank"><img alt="RIMG7199amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7199amxv15s.jpg" width="320"/></a><br/>金屬密封的是6902Z，<br/>非接觸橡膠密封的是6902LB。<br/>根據製造商不同，<br/>Z或ZZ代表金屬密封，LB或LLB代表非接觸橡膠密封，<br/>LU或LLU代表接觸橡膠密封。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7200amxv15.jpg" target="_blank"><img alt="RIMG7200amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7200amxv15s.jpg" width="320"/></a><br/>接觸橡膠密封的情況下，密封的顏色<br/>應該是橙色或棕色，<br/>這是個完全不被遵守的規則，但<br/>NTN是橙色的。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7201amxv15.jpg" target="_blank"><img alt="RIMG7201amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7201amxv15s.jpg" width="320"/></a><br/>↑6902LU的與內圈接觸的地方可以看到有褶皺。<br/>這次全部更換成非接觸橡膠密封軸承。<br/>金屬密封也是非接觸式，<br/>在非接觸式的分類中，<br/>Z的防水性能不如LB。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7203amxv15.jpg" target="_blank"><img alt="RIMG7203amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7203amxv15s.jpg" width="320"/></a><br/>通過左軸承的花鼓軸<br/>成為筆直敲入的導向，<br/>將專用工具對準<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7204amxv15.jpg" target="_blank"><img alt="RIMG7204amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7204amxv15s.jpg" width="320"/></a><br/>軸承就位。<br/>從花鼓體背面稍微凸出，<br/>這是正常狀態。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7206amxv15.jpg" target="_blank"><img alt="RIMG7206amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7206amxv15s.jpg" width="320"/></a><br/>↑這是星棘輪花鍵<br/>朝向花鼓體的面，但<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7207amxv15.jpg" target="_blank"><img alt="RIMG7207amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7207amxv15s.jpg" width="320"/></a><br/>凹陷的部分需要裝上墊片。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7208amxv15.jpg" target="_blank"><img alt="RIMG7208amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7208amxv15s.jpg" width="320"/></a><br/>這個，要是歪掉狀態下擰緊花鍵的話<br/>就會出大事（雖然沒試過）。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7209amxv15.jpg" target="_blank"><img alt="RIMG7209amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7209amxv15s.jpg" width="320"/></a><br/>擰緊工具的先端面有和墊片內徑相符的<br/>台階，但擰緊的時候<br/>不是自動引導的，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7210amxv15.jpg" target="_blank"><img alt="RIMG7210amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7210amxv15s.jpg" width="320"/></a><br/>要在用力擰緊前確認是否正確裝配。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7212amxv15.jpg" target="_blank"><img alt="RIMG7212amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7212amxv15s.jpg" width="320"/></a><br/>這是防水防塵密封朝向花鼓體的面，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7213amxv15.jpg" target="_blank"><img alt="RIMG7213amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7213amxv15s.jpg" width="320"/></a><br/>有U字槽的一側朝外。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7214amxv15.jpg" target="_blank"><img alt="RIMG7214amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7214amxv15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7215amxv15.jpg" target="_blank"><img alt="RIMG7215amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7215amxv15s.jpg" width="320"/></a><br/>這個也有筆直敲入的專用工具，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7216amxv15.jpg" target="_blank"><img alt="RIMG7216amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7216amxv15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7217amxv15.jpg" target="_blank"><img alt="RIMG7217amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7217amxv15s.jpg" width="320"/></a><br/>就這樣裝配。<br/>原來的大修假裝作業有這個工具卻沒有<br/>星棘輪專用潤滑脂，真是奇怪。<br/>算了，沒必要理解。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7218amxv15.jpg" target="_blank"><img alt="RIMG7218amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7218amxv15s.jpg" width="320"/></a><br/>再次變成了前輪花鼓狀態。<br/>用手轉動花鼓軸，轉動順暢沒有渾濁感。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7223amxv15.jpg" target="_blank"><img alt="RIMG7223amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7223amxv15s.jpg" width="320"/></a><br/>花鼓體右側軸承內圈接觸的<br/>自由輪體防衝撞墊片<br/>有超短期不該出現的磨損痕跡。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7224amxv15.jpg" target="_blank"><img alt="RIMG7224amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7224amxv15s.jpg" width="320"/></a><br/>這個墊片正下方，星棘輪零件<br/>就是這樣裝配的，但<br/>要是花鼓軸沒有間隙或偏心的話，<br/>短期內不可能出現剛才那樣的磨損痕跡。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7225amxv15.jpg" target="_blank"><img alt="RIMG7225amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7225amxv15s.jpg" width="320"/></a><br/>星棘輪零件是有減肉孔的版本。<br/>DT品牌的輪組買的是中高級的時候和<br/>事後單獨訂購這個零件的時候<br/>會收到這個版本。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7269amxv15.jpg" target="_blank"><img alt="RIMG7269amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7269amxv15s.jpg" width="320"/></a><br/>↑這個棘輪齒數多<br/>更高級的版本，當然有減肉。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7270amxv15.jpg" target="_blank"><img alt="RIMG7270amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7270amxv15s.jpg" width="320"/></a><br/>而低價位輪組的花鼓裡<br/>裝的是沒有減肉的。<br/>這個零件單獨無法購買。<br/><br/>星棘輪零件的減肉部分，<br/>再怎麼長期使用，<br/>粉紅色的星棘輪專用潤滑脂<br/>也會保持漂亮的顏色。<br/>這次的輪組連那都沒有，<br/>灰色的潤滑脂滲了進去。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7272amxv15.jpg" target="_blank"><img alt="RIMG7272amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7272amxv15s.jpg" width="320"/></a><br/>DT除了星棘輪專用潤滑脂外<br/>還有多功能潤滑脂（上圖左），但<br/>用的不是這個潤滑脂。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7222amxv15.jpg" target="_blank"><img alt="RIMG7222amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7222amxv15s.jpg" width="320"/></a><br/>自由輪體軸承也被更換成6802Z。<br/>關於這個軸承，內外都沒有異常，但<br/>經和客戶商量決定要更換。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7226amxv15.jpg" target="_blank"><img alt="RIMG7226amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7226amxv15s.jpg" width="320"/></a><br/>拆下了內側軸承和按住內圈的墊片。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7227amxv15.jpg" target="_blank"><img alt="RIMG7227amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7227amxv15s.jpg" width="320"/></a><br/>灰色潤滑脂混著污垢<br/>變成了棉花般的觸感，<br/>用鑷子夾出來。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7228amxv15.jpg" target="_blank"><img alt="RIMG7228amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7228amxv15s.jpg" width="320"/></a><br/>拆下了外側軸承。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7230amxv15.jpg" target="_blank"><img alt="RIMG7230amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7230amxv15s.jpg" width="320"/></a><br/>對這個潤滑脂感到憤怒，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7231amxv15.jpg" target="_blank"><img alt="RIMG7231amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7231amxv15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7233amxv15.jpg" target="_blank"><img alt="RIMG7233amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7233amxv15s.jpg" width="320"/></a><br/>連同星棘輪零件的減肉部分<br/>徹底進行了清洗。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7234amxv15.jpg" target="_blank"><img alt="RIMG7234amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7234amxv15s.jpg" width="320"/></a><br/>花鼓體上壓入的U字槽圓環和<br/>這個自由輪體側的突起形成迷宮隙縫。<br/>橡膠O環會因老化而斷裂，但<br/>迷宮密封只用金屬素材成立，<br/>零件不會老化。<br/>要是灰塵卡進去會產生阻力，<br/>高壓清洗水的水壓也會貫通，但。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7235amxv15.jpg" target="_blank"><img alt="RIMG7235amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7235amxv15s.jpg" width="320"/></a><br/>自由輪體2處和花鼓體左側6802軸承<br/>也使用NTN的。<br/>雖然看不太清楚，但上圖<br/>左下附近可以確認NTN標記。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7236amxv15.jpg" target="_blank"><img alt="RIMG7236amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7236amxv15s.jpg" width="320"/></a><br/>塗上星棘輪專用潤滑脂<br/>安裝自由輪體。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7237amxv15.jpg" target="_blank"><img alt="RIMG7237amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7237amxv15s.jpg" width="320"/></a><br/>右側快速脫卸螺帽和軸承接觸面擦淨，但<br/>和左側不同沒有偏磨痕。<br/><br/>以左側快速脫卸螺帽為圓錐底的感覺<br/>是偏心間隙。話說回來，例的潤滑脂還在裡面，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7238amxv15.jpg" target="_blank"><img alt="RIMG7238amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7238amxv15s.jpg" width="320"/></a><br/>清洗了。<br/><br/>軸承更換作業完成了，但<br/>自由輪側的輻條張力感很鬆。<br/>這不是組裝等等的問題，<br/>是低於吊起範圍外的張力。<br/>做了這麼不像樣的軸承更換假裝作業的傢伙，<br/>不可能沒做過技量不相符的振動修正假裝作業。<br/>所以決定也檢查輪組。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7239amxv15.jpg" target="_blank"><img alt="RIMG7239amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7239amxv15s.jpg" width="320"/></a><br/>放出密封液無內胎輪胎的空氣，<br/>用手按住輪胎邊，解除邊的提起後<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7240amxv15.jpg" target="_blank"><img alt="RIMG7240amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7240amxv15s.jpg" width="320"/></a><br/>貼雙層的輪胎帶<br/>有翹起的位相，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7241amxv15.jpg" target="_blank"><img alt="RIMG7241amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7241amxv15s.jpg" width="320"/></a><br/>和密封液黏著而翹起的位相也有。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7242amxv15.jpg" target="_blank"><img alt="RIMG7242amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7242amxv15s.jpg" width="320"/></a><br/>↑這是膠帶貼完的地方，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7243amxv15.jpg" target="_blank"><img alt="RIMG7243amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7243amxv15s.jpg" width="320"/></a><br/>從那裡有相當長的範圍<br/>密封液滲進了上下膠帶之間，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7245amxv15.jpg" target="_blank"><img alt="RIMG7245amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7245amxv15s.jpg" width="320"/></a><br/>輪圈1/3以上在橫向翹起了。<br/>從Rovéal純正膠帶換到別的理由<br/>後面就明白了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7246amxv15.jpg" target="_blank"><img alt="RIMG7246amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7246amxv15s.jpg" width="320"/></a><br/>輪胎密封液大概是Café Latex，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7247amxv15.jpg" target="_blank"><img alt="RIMG7247amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7247amxv15s.jpg" width="320"/></a><br/>形成了相當牢固的膠質。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7248amxv15.jpg" target="_blank"><img alt="RIMG7248amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7248amxv15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7249amxv15.jpg" target="_blank"><img alt="RIMG7249amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7249amxv15s.jpg" width="320"/></a><br/>暫定中心是輪圈右側偏移，<br/>明顯有經過修弄出來的縱向振動，<br/>狀況相當糟糕，但<br/>比起這個更在意的是之前提到的<br/>自由輪側的低張力。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7250amxv15.jpg" target="_blank"><img alt="RIMG7250amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7250amxv15s.jpg" width="320"/></a><br/>↑這個棘輪螺帽，內周側的卡握處有磨損痕，但<br/>用外周側的卡握處轉動的話，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7251amxv15.jpg" target="_blank"><img alt="RIMG7251amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7251amxv15s.jpg" width="320"/></a><br/>齒周邊和輻條不是非接觸而是<br/>擦著有沉重感覺，所以<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7253amxv15.jpg" target="_blank"><img alt="RIMG7253amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7253amxv15s.jpg" width="320"/></a><br/>拆下來了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7254amxv15.jpg" target="_blank"><img alt="RIMG7254amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7254amxv15s.jpg" width="320"/></a><br/>↑變形就是這樣<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7260amxv15.jpg" target="_blank"><img alt="RIMG7260amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7260amxv15s.jpg" width="320"/></a><br/>本店關於Rovéal輪組，<br/>雖不太情願但組裝外<br/>也備好了修復到純正狀態的體制。<br/>所以備用棘輪螺帽也有庫存。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7255amxv15.jpg" target="_blank"><img alt="RIMG7255amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7255amxv15s.jpg" width="320"/></a><br/>↑這是另外地方的棘輪螺帽，<br/>沒問題的比較圖，但<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7256amxv15.jpg" target="_blank"><img alt="RIMG7256amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7256amxv15s.jpg" width="320"/></a><br/>隔壁輪圈孔的棘輪螺帽<br/>明顯裝的是非純正品。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7257amxv15.jpg" target="_blank"><img alt="RIMG7257amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7257amxv15s.jpg" width="320"/></a><br/>拆下來了。<br/>是Sapim的14mm鋁合金棘輪螺帽。<br/><br/>用純正棘輪螺帽更換後<br/>大致進行了橫向振動修正，<br/>輪圈橫位置和輻條張力<br/>和周圍基本對齊的地方<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7258amxv15.jpg" target="_blank"><img alt="RIMG7258amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7258amxv15s.jpg" width="320"/></a><br/>輻條螺紋<br/>露出棘輪螺帽2山左右。<br/>這是CLX50的後輪自由輪側。<br/>調查後，這個輵條是249mm，<br/>不是Aero Lite或CX-RAY的店內加工品，<br/>而是Rovéal的純正輵條。<br/>249mm是CLX50後輪自由輪側的長度。<br/>不過，是輪圈制動用的！<br/>花鼓法蘭直徑和輪圈內徑基本相同，但<br/>碟式制動後輪是自由輪側16孔<br/>輪圈制動用是14孔，所以輵條長度不同。<br/>這種情況的正確長度是252mm。<br/>大概是，棘輪螺帽磨損然後<br/>輵條也扭曲了，為了能嵌入螺紋<br/>隨便用了手邊短3mm的輵條代替。<br/>用Sapim的14mm長棘輪螺帽<br/>是為了隱藏螺紋，我認為<br/>這是出於惡意（法律用語意義上的）而刻意為之。<br/><br/>Rovéal輪組<br/>不小心把棘輪螺帽掉進輪圈內或<br/>更換的情況，我的話全部都不管，<br/>2~3個的話<br/>用磁鐵吸向輪圈孔的方法<br/>不剝輪胎帶就更換棘輪螺帽，但<br/>這種技量或想法都沒有的傢伙<br/>應該是剝掉了輪胎帶。<br/>這一帶都是推測，不過。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7263amxv15.jpg" target="_blank"><img alt="RIMG7263amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7263amxv15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7262amxv15.jpg" target="_blank"><img alt="RIMG7262amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7262amxv15s.jpg" width="320"/></a><br/>加上原本的中心偏移<br/>自由輪側過度增緊<br/>追蹤進行了縱橫向振動修正。<br/>振動幾乎沒有，輪圈在右側嚴重偏移的狀態。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7264amxv15.jpg" target="_blank"><img alt="RIMG7264amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7264amxv15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7265amxv15.jpg" target="_blank"><img alt="RIMG7265amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7265amxv15s.jpg" width="320"/></a><br/>從那裡修出了中心。<br/>最後微細振動修正調整<br/>自由輪側輕微放鬆等也有做，<br/>基本上是用反自由輪側增緊修出的。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7267amxv15.jpg" target="_blank"><img alt="RIMG7267amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7267amxv15s.jpg" width="320"/></a><br/>修好了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7268amxv15.jpg" target="_blank"><img alt="RIMG7268amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7268amxv15s.jpg" width="320"/></a><br/>貼膠帶的2處是更換壓扁棘輪螺帽的地方和<br/>更換錯誤輵條和棘輪螺帽的地方。<br/>252mm輵條用了Rovéal的純正品。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7274amx15.jpg" target="_blank"><img alt="RIMG7274amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7274amx15s.jpg" width="320"/></a><br/>↑更換的零件<br/>這些會作為證據交給客戶。<br/>我認為，這次的零件費和工資<br/>應該由進行這場大修假裝作業的車店支付…。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">從客戶那裡接收了一個Rovéal的CLX50後輪。<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7170amxv15.jpg" target="_blank"><img alt="RIMG7170amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7170amxv15s.jpg" width="320"/></a><br/>雖然在另一家車店進行了大修，<br/>但轉動感變得沉重，並出現了異音。<br/>據說只在晴天使用，里程數不足2000km。<br/>考慮到相當的使用痕跡，2000km<br/>應該是大修之後的里程數而非全新的。<br/>不過這不是什麼大問題。<br/>真正的問題是他們做了許多不可能的事情。<br/>在進行了一系列的作業之後，我打電話給客戶說：<br/>「我不是在懷疑什麼，<br/>但這不是您自己弄的吧？」<br/>就這樣問了。<br/>之後才得知，這家車店<br/>曾經三次收過這個輪組，<br/>每次拿回來都會出現某種問題。<br/><br/>關於花鼓的轉動，用手指轉動抱軸快速脫卸螺帽時，<br/>轉動感不是渾濁而是<br/>像保險箱轉盤那樣有卡頓感，<br/>或者說有種澀澀的觸感。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7171amxv15.jpg" target="_blank"><img alt="RIMG7171amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7171amxv15s.jpg" width="320"/></a><br/>這個Rovéal的花鼓<br/>是DT製的星棘輪規格花鼓，<br/>為了更換花鼓體右側的軸承，<br/>需要專用工具，那裡的軸承也<br/>被更換過了。<br/>由於個人很少會買這種工具，<br/>所以確實是那家車店做的。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7172amxv15.jpg" target="_blank"><img alt="RIMG7172amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7172amxv15s.jpg" width="320"/></a><br/>拆下左邊的抱軸快速脫卸螺帽。<br/>油和金屬碎屑混合成膏狀的污垢<br/>附著在軸承的密封圈周圍。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7173amxv15.jpg" target="_blank"><img alt="RIMG7173amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7173amxv15s.jpg" width="320"/></a><br/>左邊抱軸快速脫卸螺帽朝向內側的面。<br/>除了只按住內圈的台階外的部分有磨損痕跡，<br/>洗淨後的圖片稍後會刊載。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7177amxv15.jpg" target="_blank"><img alt="RIMG7177amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7177amxv15s.jpg" width="320"/></a><br/>拆下右邊的抱軸快速脫卸螺帽。<br/>自由輪體的軸承和齊平面的橙色<br/>看起來特別光亮，<br/>那是因為沾了油。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7178amxv15.jpg" target="_blank"><img alt="RIMG7178amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7178amxv15s.jpg" width="320"/></a><br/>這裡也附著了膏狀的污垢。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7179amxv15.jpg" target="_blank"><img alt="RIMG7179amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7179amxv15s.jpg" width="320"/></a><br/>星棘輪的面棘輪部分<br/>沒有專用潤滑脂塗布的痕跡。<br/>如果在大修時正確塗布了的話，<br/>晴天使用2000km左右<br/>不可能完全沒有痕跡。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7180amxv15.jpg" target="_blank"><img alt="RIMG7180amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7180amxv15s.jpg" width="320"/></a><br/>抽出自由輪體後變成「前輪花鼓狀態」，<br/>轉動仍然很澀。<br/>所以原因還在這一側。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7181amxv15.jpg" target="_blank"><img alt="RIMG7181amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7181amxv15s.jpg" width="320"/></a><br/>用星棘輪花鍵拆卸專用工具<br/>鬆開花鍵。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7182amxv15.jpg" target="_blank"><img alt="RIMG7182amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7182amxv15s.jpg" width="320"/></a><br/>在花鍵之前，「為了在自由輪體之間<br/>形成迷宮密封而具有U字槽的圓環」<br/>先拔出來了。日本批發商的<br/>稱呼是「防水防塵密封」。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7183amxv15.jpg" target="_blank"><img alt="RIMG7183amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7183amxv15s.jpg" width="320"/></a><br/>拆下了花鍵。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7185amxv15.jpg" target="_blank"><img alt="RIMG7185amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7185amxv15s.jpg" width="320"/></a><br/>敲出了花鼓軸和花鼓體右側軸承。<br/>敲出也需要專用工具。<br/>原來的大修假裝作業裡，<br/>灰色粗糙感的潤滑脂<br/>被塗得到處都是。<br/>大概就像店裡的「特殊潤滑脂」（笑）那樣。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7186amxv15.jpg" target="_blank"><img alt="RIMG7186amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7186amxv15s.jpg" width="320"/></a><br/>拆出花鼓體右側軸承後的狀態。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7187amxv15.jpg" target="_blank"><img alt="RIMG7187amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7187amxv15s.jpg" width="320"/></a><br/>從外面插入花鼓軸到花鼓體左側軸承，<br/>用手轉動的話，有澀澀的感覺。<br/>軸承方面的主要問題就是這個。<br/><br/>而且這個軸承用普通方法<br/>紋絲不動。<br/>工具裝好的話，用塑膠錘的<br/>衝擊荷重應該可以拔出。<br/>這個軸承的裝配位置很深，<br/>但好像軸承在敲進去時歪斜了，<br/>被硬生生敲入，圓柱形孔的中途<br/>出現了毛邊或卡刺。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7188amxv15.jpg" target="_blank"><img alt="RIMG7188amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7188amxv15s.jpg" width="320"/></a><br/>為了不傷花鼓體，<br/>在中軸碟式制動座上擰入一個廢棄的鎖環，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7189amxv15.jpg" target="_blank"><img alt="RIMG7189amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7189amxv15s.jpg" width="320"/></a><br/>用DT的花鼓軸敲出的方法以外，<br/>安裝軸承拔出治具，<br/>用鐵錘多次敲擊，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7190amxv15.jpg" target="_blank"><img alt="RIMG7190amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7190amxv15s.jpg" width="320"/></a><br/>雖然有損傷但還是回收了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7192amxv15.jpg" target="_blank"><img alt="RIMG7192amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7192amxv15s.jpg" width="320"/></a><br/>DT花鼓的軸承，<br/>為了筆直敲入其中之一需要導向，保留一個，<br/>用專用工具進行衝擊荷重來裝配。但對於<br/>沒有花鼓軸通過的花鼓體，<br/>可以用這個專用工具作為靜荷重治具<br/>用壓入方式裝入。<br/>選擇哪邊進行的話，<br/>這種情況下花鼓體左側比較好。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7195amxv15.jpg" target="_blank"><img alt="RIMG7195amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7195amxv15s.jpg" width="320"/></a><br/>花鼓體左側軸承壓入完成。<br/>在那之前，卡刺已用砂紙磨掉。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7196amxv15.jpg" target="_blank"><img alt="RIMG7196amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7196amxv15s.jpg" width="320"/></a><br/>從左抱軸快速脫卸螺帽的接觸面上擦掉污垢。<br/>除了只按住內圈的台階外的面也有磨損痕跡。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7194amxv15.jpg" target="_blank"><img alt="RIMG7194amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7194amxv15s.jpg" width="320"/></a><br/>左抱軸快速脫卸螺帽的溝槽減肉部分也<br/>塗滿了灰色的潤滑脂。<br/>粘著了類似紅色油漆的東西，<br/>但不太清楚那是什麼。<br/>這個抱軸快速脫卸螺帽<br/>沒有配備防水功能的橡膠O環之類的，<br/>所以進水的情況下軸承密封<br/>就成了最後防線。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7197amxv15.jpg" target="_blank"><img alt="RIMG7197amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7197amxv15s.jpg" width="320"/></a><br/>那麼，原來的大修假裝作業中更換的<br/>花鼓體和自由輪體的軸承共4個，<br/>全部裝的都是金屬密封軸承。<br/>如果用油而不是潤滑脂來運作的話，<br/>只要不考慮壽命，轉動倒是會輕一些。<br/>也就是說，內容就是這樣。<br/>我問客戶是否知道這一點<br/>在開頭的電話裡，但客戶不知道。<br/>經客戶同意，告訴他雖然這是和壽命的取捨，<br/>但也有這樣的調整方法。如果事先有同意<br/>的話倒也無妨。不過這是自作聰明做的。<br/>「陶瓷軸承這種貴的東西不一定要用，<br/>用這種軸承的話可以更便宜、轉動更輕」<br/>這樣想著做的吧，真是個蠢蛋。<br/><br/>花鼓體左側軸承沒有進水或生鏽，<br/>所以不是浸水造成的。但是<br/>晴天走行只有2000km未滿這麼短期<br/>就轉動卡住了這個事實擺在那裡。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7198amxv15.jpg" target="_blank"><img alt="RIMG7198amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7198amxv15s.jpg" width="320"/></a><br/>軸承是同一家<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=NTN+6902LB+bearing+non-contact+rubber+seal" target="_blank" rel="noopener sponsored" class="amz-inline">NTN</a>的，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7199amxv15.jpg" target="_blank"><img alt="RIMG7199amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7199amxv15s.jpg" width="320"/></a><br/>金屬密封的是6902Z，<br/>非接觸橡膠密封的是6902LB。<br/>根據製造商不同，<br/>Z或ZZ代表金屬密封，LB或LLB代表非接觸橡膠密封，<br/>LU或LLU代表接觸橡膠密封。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7200amxv15.jpg" target="_blank"><img alt="RIMG7200amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7200amxv15s.jpg" width="320"/></a><br/>接觸橡膠密封的情況下，密封的顏色<br/>應該是橙色或棕色，<br/>這是個完全不被遵守的規則，但<br/>NTN是橙色的。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7201amxv15.jpg" target="_blank"><img alt="RIMG7201amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7201amxv15s.jpg" width="320"/></a><br/>↑6902LU的與內圈接觸的地方可以看到有褶皺。<br/>這次全部更換成非接觸橡膠密封軸承。<br/>金屬密封也是非接觸式，<br/>在非接觸式的分類中，<br/>Z的防水性能不如LB。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7203amxv15.jpg" target="_blank"><img alt="RIMG7203amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7203amxv15s.jpg" width="320"/></a><br/>通過左軸承的花鼓軸<br/>成為筆直敲入的導向，<br/>將專用工具對準<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7204amxv15.jpg" target="_blank"><img alt="RIMG7204amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7204amxv15s.jpg" width="320"/></a><br/>軸承就位。<br/>從花鼓體背面稍微凸出，<br/>這是正常狀態。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7206amxv15.jpg" target="_blank"><img alt="RIMG7206amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7206amxv15s.jpg" width="320"/></a><br/>↑這是星棘輪花鍵<br/>朝向花鼓體的面，但<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7207amxv15.jpg" target="_blank"><img alt="RIMG7207amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7207amxv15s.jpg" width="320"/></a><br/>凹陷的部分需要裝上墊片。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7208amxv15.jpg" target="_blank"><img alt="RIMG7208amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7208amxv15s.jpg" width="320"/></a><br/>這個，要是歪掉狀態下擰緊花鍵的話<br/>就會出大事（雖然沒試過）。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7209amxv15.jpg" target="_blank"><img alt="RIMG7209amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7209amxv15s.jpg" width="320"/></a><br/>擰緊工具的先端面有和墊片內徑相符的<br/>台階，但擰緊的時候<br/>不是自動引導的，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7210amxv15.jpg" target="_blank"><img alt="RIMG7210amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7210amxv15s.jpg" width="320"/></a><br/>要在用力擰緊前確認是否正確裝配。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7212amxv15.jpg" target="_blank"><img alt="RIMG7212amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7212amxv15s.jpg" width="320"/></a><br/>這是防水防塵密封朝向花鼓體的面，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7213amxv15.jpg" target="_blank"><img alt="RIMG7213amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7213amxv15s.jpg" width="320"/></a><br/>有U字槽的一側朝外。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7214amxv15.jpg" target="_blank"><img alt="RIMG7214amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7214amxv15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7215amxv15.jpg" target="_blank"><img alt="RIMG7215amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7215amxv15s.jpg" width="320"/></a><br/>這個也有筆直敲入的專用工具，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7216amxv15.jpg" target="_blank"><img alt="RIMG7216amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7216amxv15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7217amxv15.jpg" target="_blank"><img alt="RIMG7217amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7217amxv15s.jpg" width="320"/></a><br/>就這樣裝配。<br/>原來的大修假裝作業有這個工具卻沒有<br/>星棘輪專用潤滑脂，真是奇怪。<br/>算了，沒必要理解。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7218amxv15.jpg" target="_blank"><img alt="RIMG7218amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7218amxv15s.jpg" width="320"/></a><br/>再次變成了前輪花鼓狀態。<br/>用手轉動花鼓軸，轉動順暢沒有渾濁感。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7223amxv15.jpg" target="_blank"><img alt="RIMG7223amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7223amxv15s.jpg" width="320"/></a><br/>花鼓體右側軸承內圈接觸的<br/>自由輪體防衝撞墊片<br/>有超短期不該出現的磨損痕跡。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7224amxv15.jpg" target="_blank"><img alt="RIMG7224amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7224amxv15s.jpg" width="320"/></a><br/>這個墊片正下方，星棘輪零件<br/>就是這樣裝配的，但<br/>要是花鼓軸沒有間隙或偏心的話，<br/>短期內不可能出現剛才那樣的磨損痕跡。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7225amxv15.jpg" target="_blank"><img alt="RIMG7225amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7225amxv15s.jpg" width="320"/></a><br/>星棘輪零件是有減肉孔的版本。<br/>DT品牌的輪組買的是中高級的時候和<br/>事後單獨訂購這個零件的時候<br/>會收到這個版本。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7269amxv15.jpg" target="_blank"><img alt="RIMG7269amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7269amxv15s.jpg" width="320"/></a><br/>↑這個棘輪齒數多<br/>更高級的版本，當然有減肉。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7270amxv15.jpg" target="_blank"><img alt="RIMG7270amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7270amxv15s.jpg" width="320"/></a><br/>而低價位輪組的花鼓裡<br/>裝的是沒有減肉的。<br/>這個零件單獨無法購買。<br/><br/>星棘輪零件的減肉部分，<br/>再怎麼長期使用，<br/>粉紅色的星棘輪專用潤滑脂<br/>也會保持漂亮的顏色。<br/>這次的輪組連那都沒有，<br/>灰色的潤滑脂滲了進去。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7272amxv15.jpg" target="_blank"><img alt="RIMG7272amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7272amxv15s.jpg" width="320"/></a><br/>DT除了星棘輪專用潤滑脂外<br/>還有多功能潤滑脂（上圖左），但<br/>用的不是這個潤滑脂。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7222amxv15.jpg" target="_blank"><img alt="RIMG7222amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7222amxv15s.jpg" width="320"/></a><br/>自由輪體軸承也被更換成6802Z。<br/>關於這個軸承，內外都沒有異常，但<br/>經和客戶商量決定要更換。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7226amxv15.jpg" target="_blank"><img alt="RIMG7226amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7226amxv15s.jpg" width="320"/></a><br/>拆下了內側軸承和按住內圈的墊片。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7227amxv15.jpg" target="_blank"><img alt="RIMG7227amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7227amxv15s.jpg" width="320"/></a><br/>灰色潤滑脂混著污垢<br/>變成了棉花般的觸感，<br/>用鑷子夾出來。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7228amxv15.jpg" target="_blank"><img alt="RIMG7228amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7228amxv15s.jpg" width="320"/></a><br/>拆下了外側軸承。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7230amxv15.jpg" target="_blank"><img alt="RIMG7230amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7230amxv15s.jpg" width="320"/></a><br/>對這個潤滑脂感到憤怒，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7231amxv15.jpg" target="_blank"><img alt="RIMG7231amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7231amxv15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7233amxv15.jpg" target="_blank"><img alt="RIMG7233amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7233amxv15s.jpg" width="320"/></a><br/>連同星棘輪零件的減肉部分<br/>徹底進行了清洗。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7234amxv15.jpg" target="_blank"><img alt="RIMG7234amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7234amxv15s.jpg" width="320"/></a><br/>花鼓體上壓入的U字槽圓環和<br/>這個自由輪體側的突起形成迷宮隙縫。<br/>橡膠O環會因老化而斷裂，但<br/>迷宮密封只用金屬素材成立，<br/>零件不會老化。<br/>要是灰塵卡進去會產生阻力，<br/>高壓清洗水的水壓也會貫通，但。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7235amxv15.jpg" target="_blank"><img alt="RIMG7235amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7235amxv15s.jpg" width="320"/></a><br/>自由輪體2處和花鼓體左側6802軸承<br/>也使用NTN的。<br/>雖然看不太清楚，但上圖<br/>左下附近可以確認NTN標記。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7236amxv15.jpg" target="_blank"><img alt="RIMG7236amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7236amxv15s.jpg" width="320"/></a><br/>塗上星棘輪專用潤滑脂<br/>安裝自由輪體。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7237amxv15.jpg" target="_blank"><img alt="RIMG7237amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7237amxv15s.jpg" width="320"/></a><br/>右側快速脫卸螺帽和軸承接觸面擦淨，但<br/>和左側不同沒有偏磨痕。<br/><br/>以左側快速脫卸螺帽為圓錐底的感覺<br/>是偏心間隙。話說回來，例的潤滑脂還在裡面，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7238amxv15.jpg" target="_blank"><img alt="RIMG7238amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7238amxv15s.jpg" width="320"/></a><br/>清洗了。<br/><br/>軸承更換作業完成了，但<br/>自由輪側的輻條張力感很鬆。<br/>這不是組裝等等的問題，<br/>是低於吊起範圍外的張力。<br/>做了這麼不像樣的軸承更換假裝作業的傢伙，<br/>不可能沒做過技量不相符的振動修正假裝作業。<br/>所以決定也檢查輪組。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7239amxv15.jpg" target="_blank"><img alt="RIMG7239amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7239amxv15s.jpg" width="320"/></a><br/>放出密封液無內胎輪胎的空氣，<br/>用手按住輪胎邊，解除邊的提起後<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7240amxv15.jpg" target="_blank"><img alt="RIMG7240amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7240amxv15s.jpg" width="320"/></a><br/>貼雙層的輪胎帶<br/>有翹起的位相，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7241amxv15.jpg" target="_blank"><img alt="RIMG7241amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7241amxv15s.jpg" width="320"/></a><br/>和密封液黏著而翹起的位相也有。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7242amxv15.jpg" target="_blank"><img alt="RIMG7242amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7242amxv15s.jpg" width="320"/></a><br/>↑這是膠帶貼完的地方，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7243amxv15.jpg" target="_blank"><img alt="RIMG7243amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7243amxv15s.jpg" width="320"/></a><br/>從那裡有相當長的範圍<br/>密封液滲進了上下膠帶之間，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7245amxv15.jpg" target="_blank"><img alt="RIMG7245amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7245amxv15s.jpg" width="320"/></a><br/>輪圈1/3以上在橫向翹起了。<br/>從Rovéal純正膠帶換到別的理由<br/>後面就明白了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7246amxv15.jpg" target="_blank"><img alt="RIMG7246amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7246amxv15s.jpg" width="320"/></a><br/>輪胎密封液大概是Café Latex，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7247amxv15.jpg" target="_blank"><img alt="RIMG7247amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7247amxv15s.jpg" width="320"/></a><br/>形成了相當牢固的膠質。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7248amxv15.jpg" target="_blank"><img alt="RIMG7248amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7248amxv15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7249amxv15.jpg" target="_blank"><img alt="RIMG7249amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7249amxv15s.jpg" width="320"/></a><br/>暫定中心是輪圈右側偏移，<br/>明顯有經過修弄出來的縱向振動，<br/>狀況相當糟糕，但<br/>比起這個更在意的是之前提到的<br/>自由輪側的低張力。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7250amxv15.jpg" target="_blank"><img alt="RIMG7250amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7250amxv15s.jpg" width="320"/></a><br/>↑這個棘輪螺帽，內周側的卡握處有磨損痕，但<br/>用外周側的卡握處轉動的話，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7251amxv15.jpg" target="_blank"><img alt="RIMG7251amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7251amxv15s.jpg" width="320"/></a><br/>齒周邊和輻條不是非接觸而是<br/>擦著有沉重感覺，所以<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7253amxv15.jpg" target="_blank"><img alt="RIMG7253amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7253amxv15s.jpg" width="320"/></a><br/>拆下來了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7254amxv15.jpg" target="_blank"><img alt="RIMG7254amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7254amxv15s.jpg" width="320"/></a><br/>↑變形就是這樣<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7260amxv15.jpg" target="_blank"><img alt="RIMG7260amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7260amxv15s.jpg" width="320"/></a><br/>本店關於Rovéal輪組，<br/>雖不太情願但組裝外<br/>也備好了修復到純正狀態的體制。<br/>所以備用棘輪螺帽也有庫存。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7255amxv15.jpg" target="_blank"><img alt="RIMG7255amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7255amxv15s.jpg" width="320"/></a><br/>↑這是另外地方的棘輪螺帽，<br/>沒問題的比較圖，但<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7256amxv15.jpg" target="_blank"><img alt="RIMG7256amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7256amxv15s.jpg" width="320"/></a><br/>隔壁輪圈孔的棘輪螺帽<br/>明顯裝的是非純正品。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7257amxv15.jpg" target="_blank"><img alt="RIMG7257amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7257amxv15s.jpg" width="320"/></a><br/>拆下來了。<br/>是Sapim的14mm鋁合金棘輪螺帽。<br/><br/>用純正棘輪螺帽更換後<br/>大致進行了橫向振動修正，<br/>輪圈橫位置和輻條張力<br/>和周圍基本對齊的地方<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7258amxv15.jpg" target="_blank"><img alt="RIMG7258amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7258amxv15s.jpg" width="320"/></a><br/>輻條螺紋<br/>露出棘輪螺帽2山左右。<br/>這是CLX50的後輪自由輪側。<br/>調查後，這個輵條是249mm，<br/>不是Aero Lite或CX-RAY的店內加工品，<br/>而是Rovéal的純正輵條。<br/>249mm是CLX50後輪自由輪側的長度。<br/>不過，是輪圈制動用的！<br/>花鼓法蘭直徑和輪圈內徑基本相同，但<br/>碟式制動後輪是自由輪側16孔<br/>輪圈制動用是14孔，所以輵條長度不同。<br/>這種情況的正確長度是252mm。<br/>大概是，棘輪螺帽磨損然後<br/>輵條也扭曲了，為了能嵌入螺紋<br/>隨便用了手邊短3mm的輵條代替。<br/>用Sapim的14mm長棘輪螺帽<br/>是為了隱藏螺紋，我認為<br/>這是出於惡意（法律用語意義上的）而刻意為之。<br/><br/>Rovéal輪組<br/>不小心把棘輪螺帽掉進輪圈內或<br/>更換的情況，我的話全部都不管，<br/>2~3個的話<br/>用磁鐵吸向輪圈孔的方法<br/>不剝輪胎帶就更換棘輪螺帽，但<br/>這種技量或想法都沒有的傢伙<br/>應該是剝掉了輪胎帶。<br/>這一帶都是推測，不過。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7263amxv15.jpg" target="_blank"><img alt="RIMG7263amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7263amxv15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7262amxv15.jpg" target="_blank"><img alt="RIMG7262amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7262amxv15s.jpg" width="320"/></a><br/>加上原本的中心偏移<br/>自由輪側過度增緊<br/>追蹤進行了縱橫向振動修正。<br/>振動幾乎沒有，輪圈在右側嚴重偏移的狀態。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7264amxv15.jpg" target="_blank"><img alt="RIMG7264amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7264amxv15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7265amxv15.jpg" target="_blank"><img alt="RIMG7265amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7265amxv15s.jpg" width="320"/></a><br/>從那裡修出了中心。<br/>最後微細振動修正調整<br/>自由輪側輕微放鬆等也有做，<br/>基本上是用反自由輪側增緊修出的。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7267amxv15.jpg" target="_blank"><img alt="RIMG7267amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7267amxv15s.jpg" width="320"/></a><br/>修好了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7268amxv15.jpg" target="_blank"><img alt="RIMG7268amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7268amxv15s.jpg" width="320"/></a><br/>貼膠帶的2處是更換壓扁棘輪螺帽的地方和<br/>更換錯誤輵條和棘輪螺帽的地方。<br/>252mm輵條用了Rovéal的純正品。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7274amx15.jpg" target="_blank"><img alt="RIMG7274amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7274amx15s.jpg" width="320"/></a><br/>↑更換的零件<br/>這些會作為證據交給客戶。<br/>我認為，這次的零件費和工資<br/>應該由進行這場大修假裝作業的車店支付…。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

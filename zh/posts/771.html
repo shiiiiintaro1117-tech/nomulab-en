@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/771.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Headphones &amp; Watches</p>
     <h1>留言回覆（耳機的話題等等）</h1>
     <p class="post-meta">October 17, 2013</p>
+    <div class="post-body"><div class="entrytext">我本來沒打算深入談論耳機相關的話題，<br/>不過收到了各式各樣的留言。<br/><br/>關於Teac（日本老牌音響品牌）和Ratoc（日本音頻設備廠商）的部分，<br/>收到了兩條留言說並不是完全的OEM關係，<br/>而是供應部分零件之類的合作關係。<br/><br/>一般的擴大機我可以斷言Teac的產品陣容非常優秀，<br/>但在USB DAC內建耳機擴大機這個領域，<br/>如果只看廉價機種的話，Ratoc的產品選擇更豐富。<br/>那種「金屬感十足的長方體，上面只裝著耳機插孔和旋鈕」<br/>這樣簡潔的設計，我個人很喜歡。<br/><br/>最近Fostex要推出HP-A4，Audio Technica要推出AT-HA90USB。<br/>如果這些機種的音質不錯的話，我可能會買。<br/><br/>Audio Technica現在的AT-HA70USB，<br/>表面銀色的涂裝似乎容易被弄髒，試聽機或中古商品上<br/>經常能看到那種怎麼擦都擦不掉的暗沉（刮痕狀的）污漬，<br/>所以黑色版本的AT-HA90USB在這點看起來更不錯。<br/>↑跟音質沒關係啦<br/><br/>但70和90除了顏色幾乎外觀一樣，卻差了5000日元，<br/>所以實質上就像是改款一樣呢。<br/><br/>還有人留言說開放式的AKG也不錯……。<br/>哦天哪，危險，那個品牌名很危險啦，會讓我想買K702<br/>當初買AD2000X的時候，有比較過Q701的黑色款，<br/>印象深刻呢。<br/>密閉式（偽裝版）的話據說Beyer的DT880不錯。<br/>我本身喜歡開放式，但密閉型的話，即使是不那麼昂貴的機種<br/>低音也不會流失，音質表現得蠻好的。<br/>不過說不絕對，高價開放式機種解析度高，<br/>所以低音也能聽得不錯，只是聽起來像是有解析度在幫襯罷了。<br/>我平常用的Sennheiser HD700是開放式裡低音輸出算不錯的了……。<br/><br/><br/>有位擁有STAX（日本靜電耳機品牌）的人向我推薦STAX。<br/><br/>呃，STAX並不是「耳機」。<br/>就像STAX自稱的那樣，它是名叫「耳揚聲器」的別的什麼東西。<br/>而耳揚聲器是神。<br/>但用PC音頻的話配線有點……。<br/>而且還要另外新買一整套靜電式的機材……。<br/>（不是買不了，而是貴到買不起，老子得誠實承認啦！）<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC07215amx.jpg" target="_blank"><img alt="DSC07215amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC07215amxs.jpg" width="300"/></a><br/>話說回來，今天我又衝動買了一個耳機。<br/>Audio Technica的ATH-BB500。<br/>不是什麼超迷你耳機啦。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC07216amx.jpg" target="_blank"><img alt="DSC07216amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC07216amxs.jpg" width="300"/></a><br/>是從後頸部掛起的類型。<br/>側壓也相當強。<br/>外殼不是從側面平行的，而是八字形地支撐著，這也是它不容易滑落的原因。<br/>我一直在找即使在三輪滾筒台上亂動也不會滑落的耳機，<br/>試戴結果就選定了這款。<br/>如果採取前傾姿勢的話，幾乎就變成從上方戴著的樣子了。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC07217amx.jpg" target="_blank"><img alt="DSC07217amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC07217amxs.jpg" width="300"/></a><br/>↑就算拉到最長也只能這樣<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC07219amx.jpg" target="_blank"><img alt="DSC07219amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC07219amxs.jpg" width="300"/></a><br/>↑外殼可以180°旋轉，似乎也有考慮DJ用途的使用。<br/>但對我來說無所謂啦。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC07222amx.jpg" target="_blank"><img alt="DSC07222amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC07222amxs.jpg" width="300"/></a><br/>三輪滾筒台用耳機密閉式比較好。<br/>這樣滾筒的噪音會被消除得更徹底。<br/><br/>還有一點。耳墊如果是絨布絨面或海綿材質就不適合。<br/>因為會吸汗。<br/><br/>還有一點。滾筒台用不適合用螺旋線纜（很重要）。<br/>我是直接把耳機插進放在眼前的DVD播放機裡，<br/>如果把線完全拉直的話線會下垂，會跟前輪干涉，<br/>所以我是繞過天花板再連接的。<br/>雖然也用延長線，但無論如何螺旋線纜都會一直處於拉緊的狀態。<br/>這時「螺旋線纜想要縮回的力」對滾筒台來說不太有利，<br/>所以我不推薦。<br/>但「密閉型、外殼大、側壓強」這樣搜尋的話，經常會找到DJ型號，<br/>那些耳機多半都是螺旋線纜。<br/><br/><br/>這款用的是數位花紋浮雕設計，涼爽手感的合成皮革耳墊。<br/>這種花紋在把帶（PRO啦LOOK啦OGK Kabuto啦這些牌子）<br/>和手套（Intro啦）上經常看得到。<br/>Intro的手套是真皮所以沒問題，<br/>但把帶的話，在變速桿支架的後面就會一層層掉皮，爛成一團。<br/>這款的展示機耳墊也確實是那樣爛掉的。<br/>我是知道遲早會那樣才買的，想著只要個人小心使用的話<br/>劣化也許能延緩一點，但這點還是讓我有點在意。<br/>反正沒有試聽，只是一直試戴，光憑甩頭時的固定力「只有這」<br/>來選擇的話，這款最佳，所以無可奈何啦。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/ha-xm30x_prod_lamx.jpg" target="_blank"><img alt="ha-xm30x_prod_lamx.jpg" border="0" height="300" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/ha-xm30x_prod_lamxs.jpg" width="300"/></a><br/>本來是去看Victor的HA-XM30X的……。<br/>這個，照片上看不太出來，但異常地沉重。<br/>不過實際側壓沒有看起來那麼強，所以就放棄了。<br/>試戴很重要啊（←你也聽聽音啦）。<br/><br/>這個HA-XM30X和這次買的ATH-BB500，<br/>兩者都是密閉型裡漏音比較大的。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/koss_pro4aaat_3amx.jpg" target="_blank"><img alt="koss_pro4aaat_3amx.jpg" border="0" height="150" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/koss_pro4aaat_3amxs.jpg" width="300"/></a><br/>↑這是Koss的PRO4AAAT這個型號，<br/>有著吸附般獨特的耳罩。<br/>防汗性能也不錯，音質實際上也蠻好的，可惜是螺旋線纜。<br/>我剛查了一下，阻抗是250Ω。<br/>感度雖然有98dB，但直插要調出音量好像會很吃力。<br/><br/>寫到這裡都過了丑三點時分，<br/>但休息日我就專心回覆郵件和留言。<br/>上次甚至關店三天來處理這個，但還是沒辦法全部回覆。<br/>實在抱歉。現在我人手不足。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">我本來沒打算深入談論耳機相關的話題，<br/>不過收到了各式各樣的留言。<br/><br/>關於Teac（日本老牌音響品牌）和Ratoc（日本音頻設備廠商）的部分，<br/>收到了兩條留言說並不是完全的OEM關係，<br/>而是供應部分零件之類的合作關係。<br/><br/>一般的擴大機我可以斷言Teac的產品陣容非常優秀，<br/>但在USB DAC內建耳機擴大機這個領域，<br/>如果只看廉價機種的話，Ratoc的產品選擇更豐富。<br/>那種「金屬感十足的長方體，上面只裝著耳機插孔和旋鈕」<br/>這樣簡潔的設計，我個人很喜歡。<br/><br/>最近Fostex要推出HP-A4，Audio Technica要推出AT-HA90USB。<br/>如果這些機種的音質不錯的話，我可能會買。<br/><br/>Audio Technica現在的AT-HA70USB，<br/>表面銀色的涂裝似乎容易被弄髒，試聽機或中古商品上<br/>經常能看到那種怎麼擦都擦不掉的暗沉（刮痕狀的）污漬，<br/>所以黑色版本的AT-HA90USB在這點看起來更不錯。<br/>↑跟音質沒關係啦<br/><br/>但70和90除了顏色幾乎外觀一樣，卻差了5000日元，<br/>所以實質上就像是改款一樣呢。<br/><br/>還有人留言說開放式的AKG也不錯……。<br/>哦天哪，危險，那個品牌名很危險啦，會讓我想買K702<br/>當初買AD2000X的時候，有比較過Q701的黑色款，<br/>印象深刻呢。<br/>密閉式（偽裝版）的話據說Beyer的DT880不錯。<br/>我本身喜歡開放式，但密閉型的話，即使是不那麼昂貴的機種<br/>低音也不會流失，音質表現得蠻好的。<br/>不過說不絕對，高價開放式機種解析度高，<br/>所以低音也能聽得不錯，只是聽起來像是有解析度在幫襯罷了。<br/>我平常用的Sennheiser HD700是開放式裡低音輸出算不錯的了……。<br/><br/><br/>有位擁有STAX（日本靜電耳機品牌）的人向我推薦STAX。<br/><br/>呃，STAX並不是「耳機」。<br/>就像STAX自稱的那樣，它是名叫「耳揚聲器」的別的什麼東西。<br/>而耳揚聲器是神。<br/>但用PC音頻的話配線有點……。<br/>而且還要另外新買一整套靜電式的機材……。<br/>（不是買不了，而是貴到買不起，老子得誠實承認啦！）<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC07215amx.jpg" target="_blank"><img alt="DSC07215amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC07215amxs.jpg" width="300"/></a><br/>話說回來，今天我又衝動買了一個耳機。<br/>Audio Technica的ATH-BB500。<br/>不是什麼超迷你耳機啦。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC07216amx.jpg" target="_blank"><img alt="DSC07216amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC07216amxs.jpg" width="300"/></a><br/>是從後頸部掛起的類型。<br/>側壓也相當強。<br/>外殼不是從側面平行的，而是八字形地支撐著，這也是它不容易滑落的原因。<br/>我一直在找即使在三輪滾筒台上亂動也不會滑落的耳機，<br/>試戴結果就選定了這款。<br/>如果採取前傾姿勢的話，幾乎就變成從上方戴著的樣子了。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC07217amx.jpg" target="_blank"><img alt="DSC07217amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC07217amxs.jpg" width="300"/></a><br/>↑就算拉到最長也只能這樣<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC07219amx.jpg" target="_blank"><img alt="DSC07219amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC07219amxs.jpg" width="300"/></a><br/>↑外殼可以180°旋轉，似乎也有考慮DJ用途的使用。<br/>但對我來說無所謂啦。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC07222amx.jpg" target="_blank"><img alt="DSC07222amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC07222amxs.jpg" width="300"/></a><br/>三輪滾筒台用耳機密閉式比較好。<br/>這樣滾筒的噪音會被消除得更徹底。<br/><br/>還有一點。耳墊如果是絨布絨面或海綿材質就不適合。<br/>因為會吸汗。<br/><br/>還有一點。滾筒台用不適合用螺旋線纜（很重要）。<br/>我是直接把耳機插進放在眼前的DVD播放機裡，<br/>如果把線完全拉直的話線會下垂，會跟前輪干涉，<br/>所以我是繞過天花板再連接的。<br/>雖然也用延長線，但無論如何螺旋線纜都會一直處於拉緊的狀態。<br/>這時「螺旋線纜想要縮回的力」對滾筒台來說不太有利，<br/>所以我不推薦。<br/>但「密閉型、外殼大、側壓強」這樣搜尋的話，經常會找到DJ型號，<br/>那些耳機多半都是螺旋線纜。<br/><br/><br/>這款用的是數位花紋浮雕設計，涼爽手感的合成皮革耳墊。<br/>這種花紋在把帶（PRO啦LOOK啦OGK Kabuto啦這些牌子）<br/>和手套（Intro啦）上經常看得到。<br/>Intro的手套是真皮所以沒問題，<br/>但把帶的話，在變速桿支架的後面就會一層層掉皮，爛成一團。<br/>這款的展示機耳墊也確實是那樣爛掉的。<br/>我是知道遲早會那樣才買的，想著只要個人小心使用的話<br/>劣化也許能延緩一點，但這點還是讓我有點在意。<br/>反正沒有試聽，只是一直試戴，光憑甩頭時的固定力「只有這」<br/>來選擇的話，這款最佳，所以無可奈何啦。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/ha-xm30x_prod_lamx.jpg" target="_blank"><img alt="ha-xm30x_prod_lamx.jpg" border="0" height="300" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/ha-xm30x_prod_lamxs.jpg" width="300"/></a><br/>本來是去看Victor的HA-XM30X的……。<br/>這個，照片上看不太出來，但異常地沉重。<br/>不過實際側壓沒有看起來那麼強，所以就放棄了。<br/>試戴很重要啊（←你也聽聽音啦）。<br/><br/>這個HA-XM30X和這次買的ATH-BB500，<br/>兩者都是密閉型裡漏音比較大的。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/koss_pro4aaat_3amx.jpg" target="_blank"><img alt="koss_pro4aaat_3amx.jpg" border="0" height="150" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/koss_pro4aaat_3amxs.jpg" width="300"/></a><br/>↑這是Koss的PRO4AAAT這個型號，<br/>有著吸附般獨特的耳罩。<br/>防汗性能也不錯，音質實際上也蠻好的，可惜是螺旋線纜。<br/>我剛查了一下，阻抗是250Ω。<br/>感度雖然有98dB，但直插要調出音量好像會很吃力。<br/><br/>寫到這裡都過了丑三點時分，<br/>但休息日我就專心回覆郵件和留言。<br/>上次甚至關店三天來處理這個，但還是沒辦法全部回覆。<br/>實在抱歉。現在我人手不足。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">Related Products on Amazon</p>
       <ul>

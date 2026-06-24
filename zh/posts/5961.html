@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/5961.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>Cosmic Carbon UST</h1>
     <p class="post-meta">November 15, 2021</p>
+    <div class="post-body"><div class="entrytext">我從顧客那裡收到了一台Cosmic Carbon UST。<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05621amx14.jpg" target="_blank"><img alt="DSC05621amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05621amx14s.jpg" width="320"/></a><br/>這是從遠方寄送過來的車子，<br/>但在此之前，顧客向我諮詢了一些症狀<br/>自由輪體用手無法拔出，還有<br/>後花鼓軸在左右方向有鬆動。<br/>Instant Drive 360是採用敲擊式的結構<br/>沒有像旋緊螺紋那樣的球面接觸調整機制，<br/>正常來說不應該會產生橫向鬆動。<br/>但是，實際上卡在車軸左端側凹槽裡的止動環<br/>一旦因某個拍子脫落，就會出現左右晃動。<br/>因為知道這種情況，我就建議「試試懷疑止動環」，<br/>給了這樣的建議……。<br/><br/>結果還是被送到了我們店裡。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05622amx14.jpg" target="_blank"><img alt="DSC05622amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05622amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05623amx14.jpg" target="_blank"><img alt="DSC05623amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05623amx14s.jpg" width="320"/></a><br/>左右都是敲擊式的飛輪座。<br/>前代的FTS-L飛輪體<br/>飛輪體外側軸承的<br/>（說來這個飛輪體內側也是個特殊構造，根本沒有軸承）<br/>內徑是９ｍｍ。<br/>要裝１２ｍｍ的通軸的話<br/>花鼓軸的內徑當然要是１２ｍｍ，<br/>外徑則要做成１５ｍｍ或１７ｍｍ。<br/>這也就成了花鼓體和飛輪體軸承的內徑。<br/>這個花鼓也可以靠更換快拆端蓋<br/>從快拆轉換成通軸，<br/>這是用於立管煞車的輪組，所以<br/>我想應該不太會改成快拆軸心。<br/><br/>除了改成快拆軸心很簡單這一點之外<br/>作為 Instant Drive 360 的特徵<br/>可以舉出像 DT 星形棘輪那樣的面棘輪結構，<br/>但這種結構初期性能維持的時間非常短<br/>考慮到專用膏狀潤滑脂的價格和取得容易度（或說取得困難度），<br/>以及要保持理想狀態的話保養頻率的問題<br/>根本上維持保養本身就不太現實。<br/>實際上，送來的輪組大多數<br/>棘輪上的潤滑油都已經乾涸，可以說狀態堪慮。<br/>所以依我看來這是有缺陷的規格。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05624amx14.jpg" target="_blank"><img alt="DSC05624amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05624amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05625amx14.jpg" target="_blank"><img alt="DSC05625amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05625amx14s.jpg" width="320"/></a><br/>我拆下了左邊的碗組墊圈。<br/>做的就只有那樣，其他什麼都沒有做。<br/>因為怕拍漏掉，所以也從其他角度拍了。<br/>客人寄來的信上寫著「卡簧的部分是<br/>「似乎是組裝得很仔細」這樣說著<br/>果然 這裡組裝得不夠仔細才是原因。<br/><br/>明明指出了原因和處理方法<br/>卻說話不通 這確實讓人心裡有些難受，<br/>這也不是第一次了 想必也不會是最後一次<br/>實際上 滿常發生的。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05626amx14.jpg" target="_blank"><img alt="DSC05626amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05626amx14s.jpg" width="320"/></a><br/>我確信卡簧沒有好好卡進去<br/>所以用塑膠榔頭 輕輕敲一下<br/>裝有飛輪體的轂軸從右側拔出來了。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05627amx14.jpg" target="_blank"><img alt="DSC05627amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05627amx14s.jpg" width="320"/></a><br/>↑就是這樣的感覺<br/>卡簧和軸承之間夾著波形墊圈，<br/>因為這個的張力，卡簧<br/>很難裝進溝槽裡，這是事實。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05628amx14.jpg" target="_blank"><img alt="DSC05628amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05628amx14s.jpg" width="320"/></a><br/>↑拆下來的物體<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05629amx14.jpg" target="_blank"><img alt="DSC05629amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05629amx14s.jpg" width="320"/></a><br/>轂軸的左側有兩個溝槽，<br/>內側是軸承正下方的O形環，<br/>外側是那個卡簧用的溝。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05630amx14.jpg" target="_blank"><img alt="DSC05630amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05630amx14s.jpg" width="320"/></a><br/>飛輪體用手無法拔出，<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05631amx14.jpg" target="_blank"><img alt="DSC05631amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05631amx14s.jpg" width="320"/></a><br/>DT的敲擊拔出用治具剛好合適，<br/>所以裝上它，<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05632amx14.jpg" target="_blank"><img alt="DSC05632amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05632amx14s.jpg" width="320"/></a><br/>敲了出來。<br/>軸承正下方的部分有附著鏽，<br/>不過飛輪體據說是最近在附近店家換的，<br/>軸承沒有損傷。<br/>即使如此，如果輪轂軸側生鏽且髒汙的話<br/>似乎會變成接近固著的狀態。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05633amx14.jpg" target="_blank"><img alt="DSC05633amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05633amx14s.jpg" width="320"/></a><br/>我擦掉了髒汙的潤滑脂。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05634amx14.jpg" target="_blank"><img alt="DSC05634amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05634amx14s.jpg" width="320"/></a><br/>改善前<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05635amx14.jpg" target="_blank"><img alt="DSC05635amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05635amx14s.jpg" width="320"/></a><br/>改善後<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05636amx14.jpg" target="_blank"><img alt="DSC05636amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05636amx14s.jpg" width="320"/></a><br/>輪轂軸右側用來固定輪轂體右側軸承的C形環，<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05637amx14.jpg" target="_blank"><img alt="DSC05637amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05637amx14s.jpg" width="320"/></a><br/>以及輪轂軸左側的橡膠O形環先拆下來<br/>盡可能地進行了拋光。<br/><br/>轂心的內部生滿了鏽<br/>後來我問客人「是不是用了高壓洗淨機」<br/>他說沒有。嗯～<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05638amx14.jpg" target="_blank"><img alt="DSC05638amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05638amx14s.jpg" width="320"/></a><br/>轂心體的內部也是鏽得一塌糊涂。<br/>雖然看起來這樣，但轂心體右側的軸承<br/>我當時以為損傷不大，不需要更換。<br/>當時是這樣想的。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05639amx14.jpg" target="_blank"><img alt="DSC05639amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05639amx14s.jpg" width="320"/></a><br/>軸承的密封件，轂心體右側的<br/>雖然在圖片中看不太清楚,但有被翻開的痕跡。<br/>也有辦法讓人看不出被翻開過。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05640amx14.jpg" target="_blank"><img alt="DSC05640amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05640amx14s.jpg" width="320"/></a><br/>這邊是花鼓左側的軸承。<br/>封條上有被翻開的痕跡,而且凹凸不平。<br/>這邊的軸承轉動起來很澀,需要更換。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05642amx14.jpg" target="_blank"><img alt="DSC05642amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05642amx14s.jpg" width="320"/></a><br/>上面寫著 NTN TAIWAN SC03838LB,<br/>量一下尺寸的話,內徑17mm、外徑28mm、厚度7mm,所以<br/>把那些數值排列起來的17287,就是同樣尺寸的軸承。<br/>原始軸承型號末尾的LB代表<br/>非接觸式（如果是接觸式就是LU），<br/>右側的軸承是橙色的接觸式密封墊，<br/>我不知道是否是原廠製造的。<br/>而且，我也只能準備非接觸式的軸承。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05643amx14.jpg" target="_blank"><img alt="DSC05643amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05643amx14s.jpg" width="320"/></a><br/>↑拆下的軸承<br/>噴潤滑油噴霧時，生鏽的液體一直流出來。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05749amx14.jpg" target="_blank"><img alt="DSC05749amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05749amx14s.jpg" width="320"/></a><br/>我訂購了軸承。<br/>１５２８７因為常用，所以備有庫存，<br/>１７２８７因為不常用，所以只特地訂購了一個。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05750amx14.jpg" target="_blank"><img alt="DSC05750amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05750amx14s.jpg" width="320"/></a><br/>密封圈的標記也是１７２８７，<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05751amx14.jpg" target="_blank"><img alt="DSC05751amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05751amx14s.jpg" width="320"/></a><br/>尺寸也是一樣的。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05752amx14.jpg" target="_blank"><img alt="DSC05752amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05752amx14s.jpg" width="320"/></a><br/>在輪轂軸的左側裝上波形墊圈和卡簧，<br/>「確實」裝上了。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05753amx14.jpg" target="_blank"><img alt="DSC05753amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05753amx14s.jpg" width="320"/></a><br/>左邊敲擊挡板，但能夠插入到經過巴特處理的細徑深處<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05755amx14.jpg" target="_blank"><img alt="DSC05755amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05755amx14s.jpg" width="320"/></a><br/>像這樣就可以了。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05756amx14.jpg" target="_blank"><img alt="DSC05756amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05756amx14s.jpg" width="320"/></a><br/>飛輪體固著無法拔出，所以<br/>從輪子的左側敲擊飛輪的低齒輪位置<br/>用力敲擊會導致發生這種情況，<br/>卡簧會脫落並接觸到定位端帽。<br/>在這種狀態下，轂軸會左右晃動。<br/>回過頭再看就能明白，<br/>開頭「只拆下左定位端帽的狀態」下<br/>卡簧並不是在溝槽裡<br/>它坐在跟上面圖片一樣的位置。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05757amx14.jpg" target="_blank"><img alt="DSC05757amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05757amx14s.jpg" width="320"/></a><br/>在轂體的右側，但從裡面的情況來看<br/>防水防塵密封圈已經沒有好好發揮作用<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05758amx14.jpg" target="_blank"><img alt="DSC05758amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05758amx14s.jpg" width="320"/></a><br/>我把它拆了下來。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05759amx14.jpg" target="_blank"><img alt="DSC05759amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05759amx14s.jpg" width="320"/></a><br/>把髒汙的油脂快速擦掉。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05760amx14.jpg" target="_blank"><img alt="DSC05760amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05760amx14s.jpg" width="320"/></a><br/>棘輪座的止動裝置的<br/>C形環的缺口現在看得清楚了，所以<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05761amx14.jpg" target="_blank"><img alt="DSC05761amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05761amx14s.jpg" width="320"/></a><br/>我把C形環外面。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05762amx14.jpg" target="_blank"><img alt="DSC05762amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05762amx14s.jpg" width="320"/></a><br/>也拆下了棘輪的底座,<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05763amx14.jpg" target="_blank"><img alt="DSC05763amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05763amx14s.jpg" width="320"/></a><br/>只有右培林被壓入的輪轂本體<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05764amx14.jpg" target="_blank"><img alt="DSC05764amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05764amx14s.jpg" width="320"/></a><br/>盡可能地進行了清洗。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05766amx14.jpg" target="_blank"><img alt="DSC05766amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05766amx14s.jpg" width="320"/></a><br/>壓入了左培林。<br/>後來才發現,當這邊變成新品時<br/>右培林的 還不到非得更換程度的磨損<br/>就變得很明顯了。<br/>不過,這次我沒有更換右培林。<br/>如果我事先進了2個以上的軸承<br/>應該會問過客人之後，把左右兩邊都換掉了。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05767amx14.jpg" target="_blank"><img alt="DSC05767amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05767amx14s.jpg" width="320"/></a><br/>關於卡簧，<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05768amx14.jpg" target="_blank"><img alt="DSC05768amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05768amx14s.jpg" width="320"/></a><br/>為了加強安裝時的夾緊力道，我把形狀縮小了。<br/>或者說原本的狀態應該比正常狀態更寬鬆才對。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05769amx14.jpg" target="_blank"><img alt="DSC05769amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05769amx14s.jpg" width="320"/></a><br/>這裡，先把花鼓軸左側的零件裝上去<br/>再穿過花鼓體<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05770amx14.jpg" target="_blank"><img alt="DSC05770amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05770amx14s.jpg" width="320"/></a><br/>把接觸著右側軸承內輪的C形環滑動過去<br/>我試著裝上去<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05779amx14.jpg" target="_blank"><img alt="DSC05779amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05779amx14s.jpg" width="320"/></a><br/>但是沒有卡進去。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05777amx14.jpg" target="_blank"><img alt="DSC05777amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05777amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05778amx14.jpg" target="_blank"><img alt="DSC05778amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05778amx14s.jpg" width="320"/></a><br/>順帶一提，到這個階段為止<br/>轂軸在上面影像的範圍內會移動。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05780amx14.jpg" target="_blank"><img alt="DSC05780amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05780amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05781amx14.jpg" target="_blank"><img alt="DSC05781amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05781amx14s.jpg" width="320"/></a><br/>裝上右側的C卡環之後<br/>把轂軸從轂體右側穿過去，<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05784amx14.jpg" target="_blank"><img alt="DSC05784amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05784amx14s.jpg" width="320"/></a><br/>裝上了止動環。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05789amx14.jpg" target="_blank"><img alt="DSC05789amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05789amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05791amx14.jpg" target="_blank"><img alt="DSC05791amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05791amx14s.jpg" width="320"/></a><br/><span style="color:#FF0000">↑如果在這個狀態下轂軸左右會動的話<br/>卡簧沒有正確卡住。</span><br/>當然，上面圖片的狀態下左右沒有搖晃。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05787amx14.jpg" target="_blank"><img alt="DSC05787amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05787amx14s.jpg" width="320"/></a><br/>輪圈內進入了許多異物，搖動輪組時會發出聲音，所以<br/>我想在不撕掉輪框膠帶的情況下把它們清除掉<br/>氣門螺帽不只用手力擰過，還用工具擰過的痕跡，<br/>用手力根本無法鬆開。<br/>也就是說，如果在外面發生了密封膠無法防止的爆胎<br/>想改成有內胎的話就會卡住了。<br/>從車衣口袋探出頭的<br/>要是說要隨身攜帶那種長尺寸的老虎鉗的話，那又另當別論。<br/><br/>用老虎鉗夾住拆下螺帽的時候，<br/>螺紋損傷只有螺帽那一邊<br/>普通黃銅氣嘴螺帽就順順利利地套上了，<br/>所以後來換成了那個。<br/>即使這樣也對無內胎輪胎的性能沒有造成不便。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05788amx14.jpg" target="_blank"><img alt="DSC05788amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05788amx14s.jpg" width="320"/></a><br/>這個程度的話還沒有，<br/>輪圈內堆積了各式各樣的灰塵。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05799amx14.jpg" target="_blank"><img alt="DSC05799amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05799amx14s.jpg" width="320"/></a><br/>Mavic 面層棘輪的齒峰，<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05801amx14.jpg" target="_blank"><img alt="DSC05801amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05801amx14s.jpg" width="320"/></a><br/>外周側特別容易磨損。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05802amx14.jpg" target="_blank"><img alt="DSC05802amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05802amx14s.jpg" width="320"/></a><br/>我安裝了零件。<br/>在拍照的時候還沒有安裝<br/>防水密封圈是後來才安裝的。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05803amx14.jpg" target="_blank"><img alt="DSC05803amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05803amx14s.jpg" width="320"/></a><br/>飛輪體側沒有沾染生鏽的情況。<br/>因為這是客人最近在附近的店裡剛換的。<br/><br/>過去に別件で東京から直接帶來的<br/>關於修理Instant Drive 360轉轂鬆動的事<br/>在左側擋圈外側<br/>曾經放入過波形墊圈，<br/>考慮到客人本身沒有碰過輪組，<br/>加上前陣子才在某間車店寄放做過大保養，<br/>一定是那裡搞砸的，<br/>只是拔出左邊的快速脫卸端蓋，擋圈還留在那裡<br/>我解釋說波形墊片掉出來是不對勁的<br/>我也印出了馬維克的展開圖，拿給客人看<br/>按照展開圖組裝之後，間隙就消失了（這是當然的）<br/>因為有過這種經驗，如果要去那間車店說的話<br/>我說可以提起我們店的名字<br/>當時的那間車店和這次更換飛輪體的車店<br/>是同一個店號的地方<br/>因為有多店鋪展開，不確定是不是同一間店<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05813amx14.jpg" target="_blank"><img alt="DSC05813amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05813amx14s.jpg" width="320"/></a><br/>Mavic 的專用油脂也（不知道為什麼）有庫存，<br/>我故意使用了 DT 星形棘輪專用的油脂。<br/>塗上相當厚重的油脂後安裝飛輪體，<br/>轉動了一下後再拆下飛輪體，就是上面的圖片。<br/>不清楚是密封不夠導致進水，還是面棘輪的特性造成的<br/>（不過 DT 星形棘輪的保養周期不會這麼短），<br/>就像開頭提到的，Instant Drive 360<br/>維持初期性能的時間非常短。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05811amx14.jpg" target="_blank"><img alt="DSC05811amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05811amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05812amx14.jpg" target="_blank"><img alt="DSC05812amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05812amx14s.jpg" width="320"/></a><br/>就在這一刻，飛輪體用手就能拆下來。<br/>我在轂軸上滴了黏度較高的機油，<br/>但這能維持多久就不得而知了。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05804amx14.jpg" target="_blank"><img alt="DSC05804amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05804amx14s.jpg" width="320"/></a><br/>話題轉一下，DT的棘輪用潤滑脂，<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05806amx14.jpg" target="_blank"><img alt="DSC05806amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05806amx14s.jpg" width="320"/></a><br/>原本是圓筒形容器裝25ml，<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05807amx14.jpg" target="_blank"><img alt="DSC05807amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05807amx14s.jpg" width="320"/></a><br/>現在價格不變，改成20g裝的軟管提供。<br/>因為單位不同，所以我搞不清楚是增量還是減量。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05805amx14.jpg" target="_blank"><img alt="DSC05805amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05805amx14s.jpg" width="320"/></a><br/>↑這是舊販售形式的未使用品，<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05808amx14.jpg" target="_blank"><img alt="DSC05808amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05808amx14s.jpg" width="320"/></a><br/>・・・微妙的地方。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05810amx14.jpg" target="_blank"><img alt="DSC05810amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05810amx14s.jpg" width="320"/></a><br/>差不多空的容器在那邊，所以要是把軟管裡的全量倒進去的話<br/>大致上應該能理解，但因為改成了軟管提供<br/>棘輪的齒山變得容易塗布了，這是個優點<br/>沒辦法把軟管裡的內容物倒出來。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05815amx14.jpg" target="_blank"><img alt="DSC05815amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05815amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05816amx14.jpg" target="_blank"><img alt="DSC05816amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05816amx14s.jpg" width="320"/></a><br/>有中心偏移。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05817amx14.jpg" target="_blank"><img alt="DSC05817amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05817amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05818amx14.jpg" target="_blank"><img alt="DSC05818amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05818amx14s.jpg" width="320"/></a><br/>修正了。<br/>除了錐形鉤的變形之外，晃動幾乎沒有。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05819amx14.jpg" target="_blank"><img alt="DSC05819amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05819amx14s.jpg" width="320"/></a><br/>輪圈外穿側的胎珠鉤部分，<br/>因為在受熱狀態下踩到了洞或落差而產生變形。<br/>有沒有做過這種事無關緊要。<br/>確實是之後才變形的。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05820amx14.jpg" target="_blank"><img alt="DSC05820amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05820amx14s.jpg" width="320"/></a><br/>↑圖片可能很難傳達，<br/>胎珠鉤向外膨脹了。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05821amx14.jpg" target="_blank"><img alt="DSC05821amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05821amx14s.jpg" width="320"/></a><br/>↑我可以斬釘截鐵地說，絕對不是這樣。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05822amx14.jpg" target="_blank"><img alt="DSC05822amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05822amx14s.jpg" width="320"/></a><br/>接下來是前輪。<br/>據說沒有特別感到什麼問題，<br/>不過還是希望我幫忙檢查一下。<br/>之所以裝著輪胎是因為無管輪胎<br/>無法解除對輪圈的咬合，<br/>寄到店裡也延遲了，是因為<br/>指甲留長後重新嘗試的期間，<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05823amx14.jpg" target="_blank"><img alt="DSC05823amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05823amx14s.jpg" width="320"/></a><br/>一下子就掉下來了。<br/>用大拇指腹部按壓輪胎側面的力度是關鍵<br/>指甲的長度無關。<br/>並不是完全不需要力氣，但重點是技巧和方法，而不是蠻力。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05824amx14.jpg" target="_blank"><img alt="DSC05824amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05824amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05825amx14.jpg" target="_blank"><img alt="DSC05825amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05825amx14s.jpg" width="320"/></a><br/>後輪的偏擺比較明顯。<br/>還有中心偏移的問題。<br/>實際上組過輪子的人應該能理解。<br/>沒有轆轆的前輪出現這麼多問題真的很糟糕。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05826amx14.jpg" target="_blank"><img alt="DSC05826amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05826amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05827amx14.jpg" target="_blank"><img alt="DSC05827amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05827amx14s.jpg" width="320"/></a><br/>我把偏擺和中心偏移都修正了。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">我從顧客那裡收到了一台Cosmic Carbon UST。<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05621amx14.jpg" target="_blank"><img alt="DSC05621amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05621amx14s.jpg" width="320"/></a><br/>這是從遠方寄送過來的車子，<br/>但在此之前，顧客向我諮詢了一些症狀<br/>自由輪體用手無法拔出，還有<br/>後花鼓軸在左右方向有鬆動。<br/>Instant Drive 360是採用敲擊式的結構<br/>沒有像旋緊螺紋那樣的球面接觸調整機制，<br/>正常來說不應該會產生橫向鬆動。<br/>但是，實際上卡在車軸左端側凹槽裡的止動環<br/>一旦因某個拍子脫落，就會出現左右晃動。<br/>因為知道這種情況，我就建議「試試懷疑止動環」，<br/>給了這樣的建議……。<br/><br/>結果還是被送到了我們店裡。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05622amx14.jpg" target="_blank"><img alt="DSC05622amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05622amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05623amx14.jpg" target="_blank"><img alt="DSC05623amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05623amx14s.jpg" width="320"/></a><br/>左右都是敲擊式的飛輪座。<br/>前代的FTS-L飛輪體<br/>飛輪體外側軸承的<br/>（說來這個飛輪體內側也是個特殊構造，根本沒有軸承）<br/>內徑是９ｍｍ。<br/>要裝１２ｍｍ的通軸的話<br/>花鼓軸的內徑當然要是１２ｍｍ，<br/>外徑則要做成１５ｍｍ或１７ｍｍ。<br/>這也就成了花鼓體和飛輪體軸承的內徑。<br/>這個花鼓也可以靠更換快拆端蓋<br/>從快拆轉換成通軸，<br/>這是用於立管煞車的輪組，所以<br/>我想應該不太會改成快拆軸心。<br/><br/>除了改成快拆軸心很簡單這一點之外<br/>作為 Instant Drive 360 的特徵<br/>可以舉出像 DT 星形棘輪那樣的面棘輪結構，<br/>但這種結構初期性能維持的時間非常短<br/>考慮到專用膏狀潤滑脂的價格和取得容易度（或說取得困難度），<br/>以及要保持理想狀態的話保養頻率的問題<br/>根本上維持保養本身就不太現實。<br/>實際上，送來的輪組大多數<br/>棘輪上的潤滑油都已經乾涸，可以說狀態堪慮。<br/>所以依我看來這是有缺陷的規格。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05624amx14.jpg" target="_blank"><img alt="DSC05624amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05624amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05625amx14.jpg" target="_blank"><img alt="DSC05625amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05625amx14s.jpg" width="320"/></a><br/>我拆下了左邊的碗組墊圈。<br/>做的就只有那樣，其他什麼都沒有做。<br/>因為怕拍漏掉，所以也從其他角度拍了。<br/>客人寄來的信上寫著「卡簧的部分是<br/>「似乎是組裝得很仔細」這樣說著<br/>果然 這裡組裝得不夠仔細才是原因。<br/><br/>明明指出了原因和處理方法<br/>卻說話不通 這確實讓人心裡有些難受，<br/>這也不是第一次了 想必也不會是最後一次<br/>實際上 滿常發生的。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05626amx14.jpg" target="_blank"><img alt="DSC05626amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05626amx14s.jpg" width="320"/></a><br/>我確信卡簧沒有好好卡進去<br/>所以用塑膠榔頭 輕輕敲一下<br/>裝有飛輪體的轂軸從右側拔出來了。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05627amx14.jpg" target="_blank"><img alt="DSC05627amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05627amx14s.jpg" width="320"/></a><br/>↑就是這樣的感覺<br/>卡簧和軸承之間夾著波形墊圈，<br/>因為這個的張力，卡簧<br/>很難裝進溝槽裡，這是事實。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05628amx14.jpg" target="_blank"><img alt="DSC05628amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05628amx14s.jpg" width="320"/></a><br/>↑拆下來的物體<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05629amx14.jpg" target="_blank"><img alt="DSC05629amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05629amx14s.jpg" width="320"/></a><br/>轂軸的左側有兩個溝槽，<br/>內側是軸承正下方的O形環，<br/>外側是那個卡簧用的溝。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05630amx14.jpg" target="_blank"><img alt="DSC05630amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05630amx14s.jpg" width="320"/></a><br/>飛輪體用手無法拔出，<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05631amx14.jpg" target="_blank"><img alt="DSC05631amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05631amx14s.jpg" width="320"/></a><br/>DT的敲擊拔出用治具剛好合適，<br/>所以裝上它，<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05632amx14.jpg" target="_blank"><img alt="DSC05632amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05632amx14s.jpg" width="320"/></a><br/>敲了出來。<br/>軸承正下方的部分有附著鏽，<br/>不過飛輪體據說是最近在附近店家換的，<br/>軸承沒有損傷。<br/>即使如此，如果輪轂軸側生鏽且髒汙的話<br/>似乎會變成接近固著的狀態。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05633amx14.jpg" target="_blank"><img alt="DSC05633amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05633amx14s.jpg" width="320"/></a><br/>我擦掉了髒汙的潤滑脂。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05634amx14.jpg" target="_blank"><img alt="DSC05634amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05634amx14s.jpg" width="320"/></a><br/>改善前<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05635amx14.jpg" target="_blank"><img alt="DSC05635amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05635amx14s.jpg" width="320"/></a><br/>改善後<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05636amx14.jpg" target="_blank"><img alt="DSC05636amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05636amx14s.jpg" width="320"/></a><br/>輪轂軸右側用來固定輪轂體右側軸承的C形環，<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05637amx14.jpg" target="_blank"><img alt="DSC05637amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05637amx14s.jpg" width="320"/></a><br/>以及輪轂軸左側的橡膠O形環先拆下來<br/>盡可能地進行了拋光。<br/><br/>轂心的內部生滿了鏽<br/>後來我問客人「是不是用了高壓洗淨機」<br/>他說沒有。嗯～<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05638amx14.jpg" target="_blank"><img alt="DSC05638amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05638amx14s.jpg" width="320"/></a><br/>轂心體的內部也是鏽得一塌糊涂。<br/>雖然看起來這樣，但轂心體右側的軸承<br/>我當時以為損傷不大，不需要更換。<br/>當時是這樣想的。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05639amx14.jpg" target="_blank"><img alt="DSC05639amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05639amx14s.jpg" width="320"/></a><br/>軸承的密封件，轂心體右側的<br/>雖然在圖片中看不太清楚,但有被翻開的痕跡。<br/>也有辦法讓人看不出被翻開過。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05640amx14.jpg" target="_blank"><img alt="DSC05640amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05640amx14s.jpg" width="320"/></a><br/>這邊是花鼓左側的軸承。<br/>封條上有被翻開的痕跡,而且凹凸不平。<br/>這邊的軸承轉動起來很澀,需要更換。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05642amx14.jpg" target="_blank"><img alt="DSC05642amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05642amx14s.jpg" width="320"/></a><br/>上面寫著 NTN TAIWAN SC03838LB,<br/>量一下尺寸的話,內徑17mm、外徑28mm、厚度7mm,所以<br/>把那些數值排列起來的17287,就是同樣尺寸的軸承。<br/>原始軸承型號末尾的LB代表<br/>非接觸式（如果是接觸式就是LU），<br/>右側的軸承是橙色的接觸式密封墊，<br/>我不知道是否是原廠製造的。<br/>而且，我也只能準備非接觸式的軸承。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05643amx14.jpg" target="_blank"><img alt="DSC05643amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05643amx14s.jpg" width="320"/></a><br/>↑拆下的軸承<br/>噴潤滑油噴霧時，生鏽的液體一直流出來。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05749amx14.jpg" target="_blank"><img alt="DSC05749amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05749amx14s.jpg" width="320"/></a><br/>我訂購了軸承。<br/>１５２８７因為常用，所以備有庫存，<br/>１７２８７因為不常用，所以只特地訂購了一個。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05750amx14.jpg" target="_blank"><img alt="DSC05750amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05750amx14s.jpg" width="320"/></a><br/>密封圈的標記也是１７２８７，<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05751amx14.jpg" target="_blank"><img alt="DSC05751amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05751amx14s.jpg" width="320"/></a><br/>尺寸也是一樣的。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05752amx14.jpg" target="_blank"><img alt="DSC05752amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05752amx14s.jpg" width="320"/></a><br/>在輪轂軸的左側裝上波形墊圈和卡簧，<br/>「確實」裝上了。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05753amx14.jpg" target="_blank"><img alt="DSC05753amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05753amx14s.jpg" width="320"/></a><br/>左邊敲擊挡板，但能夠插入到經過巴特處理的細徑深處<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05755amx14.jpg" target="_blank"><img alt="DSC05755amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05755amx14s.jpg" width="320"/></a><br/>像這樣就可以了。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05756amx14.jpg" target="_blank"><img alt="DSC05756amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05756amx14s.jpg" width="320"/></a><br/>飛輪體固著無法拔出，所以<br/>從輪子的左側敲擊飛輪的低齒輪位置<br/>用力敲擊會導致發生這種情況，<br/>卡簧會脫落並接觸到定位端帽。<br/>在這種狀態下，轂軸會左右晃動。<br/>回過頭再看就能明白，<br/>開頭「只拆下左定位端帽的狀態」下<br/>卡簧並不是在溝槽裡<br/>它坐在跟上面圖片一樣的位置。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05757amx14.jpg" target="_blank"><img alt="DSC05757amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05757amx14s.jpg" width="320"/></a><br/>在轂體的右側，但從裡面的情況來看<br/>防水防塵密封圈已經沒有好好發揮作用<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05758amx14.jpg" target="_blank"><img alt="DSC05758amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05758amx14s.jpg" width="320"/></a><br/>我把它拆了下來。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05759amx14.jpg" target="_blank"><img alt="DSC05759amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05759amx14s.jpg" width="320"/></a><br/>把髒汙的油脂快速擦掉。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05760amx14.jpg" target="_blank"><img alt="DSC05760amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05760amx14s.jpg" width="320"/></a><br/>棘輪座的止動裝置的<br/>C形環的缺口現在看得清楚了，所以<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05761amx14.jpg" target="_blank"><img alt="DSC05761amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05761amx14s.jpg" width="320"/></a><br/>我把C形環外面。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05762amx14.jpg" target="_blank"><img alt="DSC05762amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05762amx14s.jpg" width="320"/></a><br/>也拆下了棘輪的底座,<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05763amx14.jpg" target="_blank"><img alt="DSC05763amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05763amx14s.jpg" width="320"/></a><br/>只有右培林被壓入的輪轂本體<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05764amx14.jpg" target="_blank"><img alt="DSC05764amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05764amx14s.jpg" width="320"/></a><br/>盡可能地進行了清洗。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05766amx14.jpg" target="_blank"><img alt="DSC05766amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05766amx14s.jpg" width="320"/></a><br/>壓入了左培林。<br/>後來才發現,當這邊變成新品時<br/>右培林的 還不到非得更換程度的磨損<br/>就變得很明顯了。<br/>不過,這次我沒有更換右培林。<br/>如果我事先進了2個以上的軸承<br/>應該會問過客人之後，把左右兩邊都換掉了。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05767amx14.jpg" target="_blank"><img alt="DSC05767amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05767amx14s.jpg" width="320"/></a><br/>關於卡簧，<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05768amx14.jpg" target="_blank"><img alt="DSC05768amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05768amx14s.jpg" width="320"/></a><br/>為了加強安裝時的夾緊力道，我把形狀縮小了。<br/>或者說原本的狀態應該比正常狀態更寬鬆才對。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05769amx14.jpg" target="_blank"><img alt="DSC05769amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05769amx14s.jpg" width="320"/></a><br/>這裡，先把花鼓軸左側的零件裝上去<br/>再穿過花鼓體<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05770amx14.jpg" target="_blank"><img alt="DSC05770amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05770amx14s.jpg" width="320"/></a><br/>把接觸著右側軸承內輪的C形環滑動過去<br/>我試著裝上去<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05779amx14.jpg" target="_blank"><img alt="DSC05779amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05779amx14s.jpg" width="320"/></a><br/>但是沒有卡進去。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05777amx14.jpg" target="_blank"><img alt="DSC05777amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05777amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05778amx14.jpg" target="_blank"><img alt="DSC05778amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05778amx14s.jpg" width="320"/></a><br/>順帶一提，到這個階段為止<br/>轂軸在上面影像的範圍內會移動。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05780amx14.jpg" target="_blank"><img alt="DSC05780amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05780amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05781amx14.jpg" target="_blank"><img alt="DSC05781amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05781amx14s.jpg" width="320"/></a><br/>裝上右側的C卡環之後<br/>把轂軸從轂體右側穿過去，<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05784amx14.jpg" target="_blank"><img alt="DSC05784amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05784amx14s.jpg" width="320"/></a><br/>裝上了止動環。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05789amx14.jpg" target="_blank"><img alt="DSC05789amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05789amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05791amx14.jpg" target="_blank"><img alt="DSC05791amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05791amx14s.jpg" width="320"/></a><br/><span style="color:#FF0000">↑如果在這個狀態下轂軸左右會動的話<br/>卡簧沒有正確卡住。</span><br/>當然，上面圖片的狀態下左右沒有搖晃。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05787amx14.jpg" target="_blank"><img alt="DSC05787amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05787amx14s.jpg" width="320"/></a><br/>輪圈內進入了許多異物，搖動輪組時會發出聲音，所以<br/>我想在不撕掉輪框膠帶的情況下把它們清除掉<br/>氣門螺帽不只用手力擰過，還用工具擰過的痕跡，<br/>用手力根本無法鬆開。<br/>也就是說，如果在外面發生了密封膠無法防止的爆胎<br/>想改成有內胎的話就會卡住了。<br/>從車衣口袋探出頭的<br/>要是說要隨身攜帶那種長尺寸的老虎鉗的話，那又另當別論。<br/><br/>用老虎鉗夾住拆下螺帽的時候，<br/>螺紋損傷只有螺帽那一邊<br/>普通黃銅氣嘴螺帽就順順利利地套上了，<br/>所以後來換成了那個。<br/>即使這樣也對無內胎輪胎的性能沒有造成不便。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05788amx14.jpg" target="_blank"><img alt="DSC05788amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05788amx14s.jpg" width="320"/></a><br/>這個程度的話還沒有，<br/>輪圈內堆積了各式各樣的灰塵。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05799amx14.jpg" target="_blank"><img alt="DSC05799amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05799amx14s.jpg" width="320"/></a><br/>Mavic 面層棘輪的齒峰，<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05801amx14.jpg" target="_blank"><img alt="DSC05801amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05801amx14s.jpg" width="320"/></a><br/>外周側特別容易磨損。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05802amx14.jpg" target="_blank"><img alt="DSC05802amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05802amx14s.jpg" width="320"/></a><br/>我安裝了零件。<br/>在拍照的時候還沒有安裝<br/>防水密封圈是後來才安裝的。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05803amx14.jpg" target="_blank"><img alt="DSC05803amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05803amx14s.jpg" width="320"/></a><br/>飛輪體側沒有沾染生鏽的情況。<br/>因為這是客人最近在附近的店裡剛換的。<br/><br/>過去に別件で東京から直接帶來的<br/>關於修理Instant Drive 360轉轂鬆動的事<br/>在左側擋圈外側<br/>曾經放入過波形墊圈，<br/>考慮到客人本身沒有碰過輪組，<br/>加上前陣子才在某間車店寄放做過大保養，<br/>一定是那裡搞砸的，<br/>只是拔出左邊的快速脫卸端蓋，擋圈還留在那裡<br/>我解釋說波形墊片掉出來是不對勁的<br/>我也印出了馬維克的展開圖，拿給客人看<br/>按照展開圖組裝之後，間隙就消失了（這是當然的）<br/>因為有過這種經驗，如果要去那間車店說的話<br/>我說可以提起我們店的名字<br/>當時的那間車店和這次更換飛輪體的車店<br/>是同一個店號的地方<br/>因為有多店鋪展開，不確定是不是同一間店<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05813amx14.jpg" target="_blank"><img alt="DSC05813amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05813amx14s.jpg" width="320"/></a><br/>Mavic 的專用油脂也（不知道為什麼）有庫存，<br/>我故意使用了 DT 星形棘輪專用的油脂。<br/>塗上相當厚重的油脂後安裝飛輪體，<br/>轉動了一下後再拆下飛輪體，就是上面的圖片。<br/>不清楚是密封不夠導致進水，還是面棘輪的特性造成的<br/>（不過 DT 星形棘輪的保養周期不會這麼短），<br/>就像開頭提到的，Instant Drive 360<br/>維持初期性能的時間非常短。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05811amx14.jpg" target="_blank"><img alt="DSC05811amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05811amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05812amx14.jpg" target="_blank"><img alt="DSC05812amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05812amx14s.jpg" width="320"/></a><br/>就在這一刻，飛輪體用手就能拆下來。<br/>我在轂軸上滴了黏度較高的機油，<br/>但這能維持多久就不得而知了。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05804amx14.jpg" target="_blank"><img alt="DSC05804amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05804amx14s.jpg" width="320"/></a><br/>話題轉一下，DT的棘輪用潤滑脂，<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05806amx14.jpg" target="_blank"><img alt="DSC05806amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05806amx14s.jpg" width="320"/></a><br/>原本是圓筒形容器裝25ml，<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05807amx14.jpg" target="_blank"><img alt="DSC05807amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05807amx14s.jpg" width="320"/></a><br/>現在價格不變，改成20g裝的軟管提供。<br/>因為單位不同，所以我搞不清楚是增量還是減量。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05805amx14.jpg" target="_blank"><img alt="DSC05805amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05805amx14s.jpg" width="320"/></a><br/>↑這是舊販售形式的未使用品，<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05808amx14.jpg" target="_blank"><img alt="DSC05808amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05808amx14s.jpg" width="320"/></a><br/>・・・微妙的地方。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05810amx14.jpg" target="_blank"><img alt="DSC05810amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05810amx14s.jpg" width="320"/></a><br/>差不多空的容器在那邊，所以要是把軟管裡的全量倒進去的話<br/>大致上應該能理解，但因為改成了軟管提供<br/>棘輪的齒山變得容易塗布了，這是個優點<br/>沒辦法把軟管裡的內容物倒出來。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05815amx14.jpg" target="_blank"><img alt="DSC05815amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05815amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05816amx14.jpg" target="_blank"><img alt="DSC05816amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05816amx14s.jpg" width="320"/></a><br/>有中心偏移。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05817amx14.jpg" target="_blank"><img alt="DSC05817amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05817amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05818amx14.jpg" target="_blank"><img alt="DSC05818amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05818amx14s.jpg" width="320"/></a><br/>修正了。<br/>除了錐形鉤的變形之外，晃動幾乎沒有。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05819amx14.jpg" target="_blank"><img alt="DSC05819amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05819amx14s.jpg" width="320"/></a><br/>輪圈外穿側的胎珠鉤部分，<br/>因為在受熱狀態下踩到了洞或落差而產生變形。<br/>有沒有做過這種事無關緊要。<br/>確實是之後才變形的。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05820amx14.jpg" target="_blank"><img alt="DSC05820amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05820amx14s.jpg" width="320"/></a><br/>↑圖片可能很難傳達，<br/>胎珠鉤向外膨脹了。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05821amx14.jpg" target="_blank"><img alt="DSC05821amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05821amx14s.jpg" width="320"/></a><br/>↑我可以斬釘截鐵地說，絕對不是這樣。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05822amx14.jpg" target="_blank"><img alt="DSC05822amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05822amx14s.jpg" width="320"/></a><br/>接下來是前輪。<br/>據說沒有特別感到什麼問題，<br/>不過還是希望我幫忙檢查一下。<br/>之所以裝著輪胎是因為無管輪胎<br/>無法解除對輪圈的咬合，<br/>寄到店裡也延遲了，是因為<br/>指甲留長後重新嘗試的期間，<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05823amx14.jpg" target="_blank"><img alt="DSC05823amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05823amx14s.jpg" width="320"/></a><br/>一下子就掉下來了。<br/>用大拇指腹部按壓輪胎側面的力度是關鍵<br/>指甲的長度無關。<br/>並不是完全不需要力氣，但重點是技巧和方法，而不是蠻力。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05824amx14.jpg" target="_blank"><img alt="DSC05824amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05824amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05825amx14.jpg" target="_blank"><img alt="DSC05825amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05825amx14s.jpg" width="320"/></a><br/>後輪的偏擺比較明顯。<br/>還有中心偏移的問題。<br/>實際上組過輪子的人應該能理解。<br/>沒有轆轆的前輪出現這麼多問題真的很糟糕。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05826amx14.jpg" target="_blank"><img alt="DSC05826amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05826amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05827amx14.jpg" target="_blank"><img alt="DSC05827amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05827amx14s.jpg" width="320"/></a><br/>我把偏擺和中心偏移都修正了。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

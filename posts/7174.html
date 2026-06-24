@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,37 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
-    <p>Bicycle Workshop — English Edition</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/index.html">
+        <span class="brand-title">Nomu Lab Diary</span>
+        <span class="brand-subtitle">Bicycle Workshop Archive</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/index.html">Archive</a>
+      <a href="/guides/wheel-building.html">Wheel Guide</a>
+      <a href="/glossary.html">Glossary</a>
+      <a href="/about.html">About</a>
+    </nav>
     <div class="lang-toggle"><span class="lang-btn active">EN</span><a class="lang-btn" href="/zh/posts/7174.html">繁中</a></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/index.html">← All posts</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>The Rear Wheel of the WAKE6560</h1>
     <p class="post-meta">July 06, 2024</p>
+    <div class="post-body"><div class="entrytext">A customer brought in the rear wheel of a <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Princeton+WAKE6560+bicycle+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">Princeton WAKE6560</a> for me to work on.<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9761hmr15.jpg" target="_blank"><img alt="RIMG9761hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9761hmr15s.jpg" width="320"/></a><br/>I had previously replaced the front wheel bearings (→<a href="/posts/6845.html" target="_blank" title="here">here</a>),<br/>and the rear wheel has play in the hub axle.<br/>From what I could see, rather than lateral play,<br/>the hub rotation itself was rough,<br/>and I suspected that at least one of the four bearings—<br/>the left and right sides of the hub body and the front and rear of the freebody—<br/>had gone bad.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9762hmr15.jpg" target="_blank"><img alt="RIMG9762hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9762hmr15s.jpg" width="320"/></a><br/>WAKE is the model name,<br/>and 6560 refers to the wavy profile shape with 65mm and 60mm heights.<br/>Recently Fulcrum has released wheels that look like they might upset Princeton,<br/>but I wonder if that's okay.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9763hmr15.jpg" target="_blank"><img alt="RIMG9763hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9763hmr15s.jpg" width="320"/></a><br/>The customer mentioned that when they tried to apply grease to the freebody,<br/>they disassembled the hub and found an O-ring had snapped,<br/>and asked me to prepare a replacement for it as well.<br/>When I looked at the linked front wheel article, there were still things I didn't fully understand,<br/>but ultra-thin spacers and this O-ring turned out to be critical functional parts.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9764hmr15.jpg" target="_blank"><img alt="RIMG9764hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9764hmr15s.jpg" width="320"/></a><br/><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Tactic+Racing+bicycle+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Tactic Racing</a> is a hub brand, and on Princeton's maker website,<br/>when you select wheel specifications,<br/>it sits quietly among well-known hub makers like<br/><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+bicycle+hub" target="_blank" rel="noopener sponsored" class="amz-inline">DT</a>, <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Chris+King+bicycle+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Chris King</a>, and White Industries,<br/>but it's actually a hub brand of Princeton Carbon Works.<br/>Product-wise, rather than being quality-built and robust,<br/>they're obsessed with cheap weight reduction that ignores durability,<br/>and while the vector is slightly different, they have the same odor as ExtraLite hubs.<br/>The problems occurring in this hub<br/>wouldn't almost certainly happen with DT or Chris King hubs under the same usage conditions.<br/>If I knew about this hub's structure beforehand<br/>and ordered a Princeton wheel, I wouldn't choose Tactic hubs.<br/>While it's true that Tactic hubs are light in weight,<br/>I'd probably choose DT instead.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9765hmr15.jpg" target="_blank"><img alt="RIMG9765hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9765hmr15s.jpg" width="320"/></a><br/>The gap around the left pinned end is already rust-colored.<br/>I called it a pinned end, but the dimensional tolerance between<br/>the hub axle's outer diameter and the pinned end's inner diameter<br/>is tight enough to be called an interference fit.<br/>Unless it's right after the pinned end is set up,<br/>it often can't be removed without proper tools.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9766hmr15.jpg" target="_blank"><img alt="RIMG9766hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9766hmr15s.jpg" width="320"/></a><br/>I removed the left pinned end.<br/>There's rust bloom on the surface that was against the bearing.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9767hmr15.jpg" target="_blank"><img alt="RIMG9767hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9767hmr15s.jpg" width="320"/></a><br/>↑Hub body left side after removing the end<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9770hmr15.jpg" target="_blank"><img alt="RIMG9770hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9770hmr15s.jpg" width="320"/></a><br/>Rust, oil, and sand had accumulated as a clay-like dirt.<br/>In the image above, I've wiped it away only on the left half.<br/><br/><br/>～About Non-Standard Bearings～<br/>The bearing in the image above is the standard bearing 6803.<br/>Using the notation for non-standard bearings where you list inner diameter/outer diameter/width in millimeters: 172265.<br/>"Sports cycling" being the mechanical sport that frequently uses bearings with outer diameters up to about 30mm,<br/>various non-standard bearings have emerged from the sports cycling world<br/>that slightly modify either the inner or outer diameter from standard bearings.<br/>Most industrial products choose their dimensions based on existing standard bearings for cost reasons,<br/>but in the sports cycling world, non-standard bearings are sometimes made<br/>because the demand justifies the cost, or the dimensions are special.<br/><br/>Shimano's HG freebody uses a structure in Shimano hubs that's like an extension of the Freewheel Hub<br/>(or rather, that's how it originated),<br/>but with almost all other manufacturers, two cartridge bearings are installed.<br/>These were initially often 6902—that is, 152287—<br/>but with an outer diameter of 28mm, the wall thickness of the valley of the freebody's spline becomes extremely thin,<br/>so they thought "I wish there was a bearing that was 6902 but with just the outer diameter changed to 26mm,<br/>but there's no such standard bearing,"<br/>and that's how 152267 was made.<br/>This was definitely first developed because the bicycle world demanded it.<br/><br/>Since a 12mm outer diameter through-axle passes through the rear hub axle,<br/>the hub axle's inner diameter is 12mm, and with a 12mm inner diameter hub axle,<br/>15mm outer diameter isn't impossible but 17mm is preferable,<br/>so 6903—that is, 173307—is often used.<br/>However, <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Mavic+Instant+Drive+360+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Mavic's Instant Drive 360</a> hub has a portion of the hub axle that's outboard at 18mm,<br/>and a bearing 183307 made from 6903 but with just the inner diameter changed to 18mm is used.<br/>Incidentally, an inner diameter of 18mm is a dimension that doesn't naturally exist in any standard bearing.<br/><br/>What's in Shimano's original Hollowtech II BB is 6805—that is, 253377.<br/>A plastic cover is placed over this 25mm inner diameter<br/>to reduce the inner diameter to 24mm, allowing the 24mm outer diameter crankshaft<br/>to pass through without metal-to-metal contact.<br/>With Campagnolo's UltraTorque, the crankshaft outer diameter is 25mm<br/>and appears to pass directly through 6805,<br/>but the bearing in UltraTorque's crankarm root is<br/>"6805 but with just the width changed to 6mm"—<br/>in other words, 253376.<br/>They must have had some design constraint that absolutely required reducing the thickness by 1mm.<br/>I don't think it was meant to prevent repair with generic bearings—<br/>it's just how it is.<br/>Recently I was surprised to see<br/>a bearing in a T47 spec BB where they've made 243377—<br/>6805 with just the inner diameter changed to 24mm—<br/>and the Shimano crankshaft passes through it in direct contact with the bearing's inner race.<br/>BB30 comes from the 30mm crankshaft outer diameter,<br/>and Cannondale's original BB30, which pressed standard bearings directly into the frame and held them with C-rings,<br/>used 6806—that is, 304277 bearing.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9769hmr15.jpg" target="_blank"><img alt="RIMG9769hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9769hmr15s.jpg" width="320"/></a><br/>In this Tactic hub, the hub body right side bearing is 172287—<br/>6903, which is 173307, but with the outer diameter reduced by 2mm.<br/>It's quite special, but obtainable.<br/>The other three bearings are 6803, with a 17mm outer diameter hub axle<br/>running straight through them.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9768hmr15.jpg" target="_blank"><img alt="RIMG9768hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9768hmr15s.jpg" width="320"/></a><br/>If the bearing's outer diameter were larger by 1mm in radius (2mm in diameter),<br/>it seems the ratchet mechanism around here couldn't work.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9772hmr15.jpg" target="_blank"><img alt="RIMG9772hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9772hmr15s.jpg" width="320"/></a><br/>The face ratchet spring is single-acting,<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9773hmr15.jpg" target="_blank"><img alt="RIMG9773hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9773hmr15s.jpg" width="320"/></a><br/>and is inside the hub body<br/>(incidentally, DT's Ratchet EXP is on the freebody side).<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9775hmr15.jpg" target="_blank"><img alt="RIMG9775hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9775hmr15s.jpg" width="320"/></a><br/>The face ratchet contact surface is tapered.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9939msn5.jpg" target="_blank"><img alt="RIMG9939msn5.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9939msn5s.jpg" width="320"/></a><br/>↑This is a Novatech freebody, and there's a spacer that slightly protrudes dimensionally<br/>so the freebody doesn't make face contact with the hub body bearing<br/>(doesn't press on anything but the inner race).<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9938msn5.jpg" target="_blank"><img alt="RIMG9938msn5.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9938msn5s.jpg" width="320"/></a><br/>↑When removed, it looks like this<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9774hmr15.jpg" target="_blank"><img alt="RIMG9774hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9774hmr15s.jpg" width="320"/></a><br/>The corresponding part on Tactic was plastic.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9776hmr15.jpg" target="_blank"><img alt="RIMG9776hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9776hmr15s.jpg" width="320"/></a><br/>The freebody bearings aren't both inserted from the outside;<br/>the rear bearing is inserted from the inside.<br/>Only this bearing had loose dimensional tolerance that didn't constitute an interference fit,<br/>allowing hand removal and installation.<br/>This doesn't seem to be because the freebody side has worn down.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9777hmr15.jpg" target="_blank"><img alt="RIMG9777hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9777hmr15s.jpg" width="320"/></a><br/>The spacer supporting the inner races of the freebody bearings on the inside is omitted.<br/>With Neumann hubs, the pinned end is flush against the hub axle (making it stronger against through-axle over-tightening),<br/>but there's an example where the freebody outside and hub body left side bearings fail quickly (→<a href="/posts/6967.html" target="_blank" title="here">here</a>).<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9778hmr15.jpg" target="_blank"><img alt="RIMG9778hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9778hmr15s.jpg" width="320"/></a><br/>The freebody looks like this from the outside<br/><br/>For the bearings, the three 6803s other than the 172287 on the hub body right side<br/>were all damaged to varying degrees, so they needed to be replaced.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9847amx15.jpg" target="_blank"><img alt="RIMG9847amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9847amx15s.jpg" width="320"/></a><br/>I removed the thin spacers that fit inside the left and right pinned ends.<br/>In the image above, what's dirty is the left side surface that faced outward,<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9848amx15.jpg" target="_blank"><img alt="RIMG9848amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9848amx15s.jpg" width="320"/></a><br/>↑and the surface facing inward looks like this.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9854amx15.jpg" target="_blank"><img alt="RIMG9854amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9854amx15s.jpg" width="320"/></a><br/>I cleaned the rust as much as possible, but<br/>interestingly, the left side actually had two stacked.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9851amx15.jpg" target="_blank"><img alt="RIMG9851amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9851amx15s.jpg" width="320"/></a><br/>There are several holes in the hub axle,<br/>but these aren't drain holes; when the hub axle is inserted,<br/>they're more likely air holes to prevent the air from becoming pressurized<br/>due to telescoping.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9853amx15.jpg" target="_blank"><img alt="RIMG9853amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9853amx15s.jpg" width="320"/></a><br/>There are two at 180° phase, so<br/>looking straight through, you can see they go all the way.<br/>This same hole isn't found on cartridge bearings, so<br/>the bearing's inner diameter and the hub axle's outer diameter aren't<br/>perfectly sealed together. Cup-and-cone style Shimano complete wheels' hub axles also have these holes,<br/>and even then, the through-axle and hub axle relationship is a tight telescoping fit,<br/>so the hole might be made with the through-axle-to-hub-axle relationship in mind<br/>rather than the hub axle-to-hub-body relationship.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9856amx15.jpg" target="_blank"><img alt="RIMG9856amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9856amx15s.jpg" width="320"/></a><br/>Both left and right ends are flush-mounted to the pinned relationship,<br/>so the hub axle plus right end shown in the image above should be separable,<br/>but they're pressed at an interference fit level and aren't easily removed.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9857amx15.jpg" target="_blank"><img alt="RIMG9857amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9857amx15s.jpg" width="320"/></a><br/>↑The cleaned left end as viewed from the hub body contact face.<br/>There's a protrusion that presses only the bearing's inner race, but<br/>in reality, there's also a groove elsewhere where an O-ring attaches and an ultra-thin spacer also fits between,<br/>so this end doesn't directly contact the bearing's inner race.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9858amx15.jpg" target="_blank"><img alt="RIMG9858amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9858amx15s.jpg" width="320"/></a><br/>On the inside of the right end,<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9859amx15.jpg" target="_blank"><img alt="RIMG9859amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9859amx15s.jpg" width="320"/></a><br/>the original O-ring remained unbroken.<br/>I didn't realize the importance of this when looking at the front wheel article linked before,<br/>but it's an essential functional part of the hub structure.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9863amx15.jpg" target="_blank"><img alt="RIMG9863amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9863amx15s.jpg" width="320"/></a><br/>↑The original is in the center of the image,<br/>on the right is a generic part I found with the same wire diameter and inner/outer diameters,<br/>and on the left is what I stocked just in case—<br/>same wire diameter but inner/outer diameter 1mm larger than the one on the right.<br/>In the image, only the original's wire diameter appears thinner,<br/>but they're originally the same.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9860amx15.jpg" target="_blank"><img alt="RIMG9860amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9860amx15s.jpg" width="320"/></a><br/>The ultra-thin spacer was dimensioned to just barely not touch the bearing's outer race.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9861amx15.jpg" target="_blank"><img alt="RIMG9861amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9861amx15s.jpg" width="320"/></a><br/>↑Shifted slightly, it looks like this<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9865amx15.jpg" target="_blank"><img alt="RIMG9865amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9865amx15s.jpg" width="320"/></a><br/>I fit the generic O-ring with the same inner/outer diameter as the original into the groove.<br/>It looks like it's sticking out,<br/>but it ends up fitting properly.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9866amx15.jpg" target="_blank"><img alt="RIMG9866amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9866amx15s.jpg" width="320"/></a><br/>I inserted the ultra-thin spacer.<br/>On the right side, so just one, like the original.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9867amx15.jpg" target="_blank"><img alt="RIMG9867amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9867amx15s.jpg" width="320"/></a><br/>↑The spacer blends into the background and is hard to see, but<br/>when the O-ring isn't shrunken, it looks like this.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9926amx15.jpg" target="_blank"><img alt="RIMG9926amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9926amx15s.jpg" width="320"/></a><br/>With this hub, the two side ends are first flush-mounted to the hub axle<br/>so that even under the compression force of a through-axle,<br/>the distance between the left and right ends doesn't change.<br/>This eliminates the need for a spacer inside the freebody or hub body<br/>to restrain the bearing's inner race, and allows it to endure even<br/>a foolish specification like making the freebody flush-mount stop spacer plastic.<br/><br/>The distance between the left and right ends<br/>is longer than the outer-to-outer dimension of the bearings<br/>from the hub body left side to the freebody right side.<br/>If the former were smaller, it would excessively press the bearing's inner race,<br/>making the hub rotation abnormally heavy or stopping it entirely.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9925amx15.jpg" target="_blank"><img alt="RIMG9925amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9925amx15s.jpg" width="320"/></a><br/>So the O-ring and ultra-thin spacer<br/>work like the wave washers in play-adjustment crank sets<br/>where the crankshaft and one crankarm are connected by bolt,<br/>applying just the right amount of pressure to the bearing's inner race—<br/>that's the foolish structure of this hub.<br/><br/>When the bearings, especially the outer two, wear and the inner race develops play<br/>(lateral play) relative to the outer race,<br/>and the amount of this lateral play exceeds what the O-ring and ultra-thin spacer can absorb,<br/>then the hub axle develops play.<br/><br/>When I received it, I was more concerned with the rotation being rough overall<br/>than with the hub axle play the customer mentioned,<br/>so I didn't carefully examine the play itself,<br/>but with this structure, even just the O-ring snapping<br/>could cause play to appear.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9868amx15.jpg" target="_blank"><img alt="RIMG9868amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9868amx15s.jpg" width="320"/></a><br/>When I was working on the front wheel, the customer had sent me<br/>bearing from Tactic Racing saying "If you find a bearing that seems bad, use this,"<br/>and I also have that bearing this time.<br/>The 172287 on the hub body right side had no roughness in rotation,<br/>so I didn't replace it this time.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9869amx15.jpg" target="_blank"><img alt="RIMG9869amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9869amx15s.jpg" width="320"/></a><br/>All the other 6803s I replaced.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9872amx15.jpg" target="_blank"><img alt="RIMG9872amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9872amx15s.jpg" width="320"/></a><br/>I replaced the most severely damaged hub body left side last,<br/>but I ran out of the 6803 bearings the customer provided,<br/>so I used a bearing from our shop inventory for this one.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9871amx15.jpg" target="_blank"><img alt="RIMG9871amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9871amx15s.jpg" width="320"/></a><br/>↑The most severely damaged hub body left side bearing.<br/>The insides are completely rusted.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9870amx15.jpg" target="_blank"><img alt="RIMG9870amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9870amx15s.jpg" width="320"/></a><br/>When I pulled out the hub axle, there was some resistance in the freebody bearings,<br/>and I wondered if it was rust-seizure or just tight dimensional tolerance,</div>
+    <aside class="post-guides">
+      <strong>Technical archive</strong>
+      <nav aria-label="Technical guides">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,7 +405,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">A customer brought in the rear wheel of a <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Princeton+WAKE6560+bicycle+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">Princeton WAKE6560</a> for me to work on.<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9761hmr15.jpg" target="_blank"><img alt="RIMG9761hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9761hmr15s.jpg" width="320"/></a><br/>I had previously replaced the front wheel bearings (→<a href="/posts/6845.html" target="_blank" title="here">here</a>),<br/>and the rear wheel has play in the hub axle.<br/>From what I could see, rather than lateral play,<br/>the hub rotation itself was rough,<br/>and I suspected that at least one of the four bearings—<br/>the left and right sides of the hub body and the front and rear of the freebody—<br/>had gone bad.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9762hmr15.jpg" target="_blank"><img alt="RIMG9762hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9762hmr15s.jpg" width="320"/></a><br/>WAKE is the model name,<br/>and 6560 refers to the wavy profile shape with 65mm and 60mm heights.<br/>Recently Fulcrum has released wheels that look like they might upset Princeton,<br/>but I wonder if that's okay.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9763hmr15.jpg" target="_blank"><img alt="RIMG9763hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9763hmr15s.jpg" width="320"/></a><br/>The customer mentioned that when they tried to apply grease to the freebody,<br/>they disassembled the hub and found an O-ring had snapped,<br/>and asked me to prepare a replacement for it as well.<br/>When I looked at the linked front wheel article, there were still things I didn't fully understand,<br/>but ultra-thin spacers and this O-ring turned out to be critical functional parts.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9764hmr15.jpg" target="_blank"><img alt="RIMG9764hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9764hmr15s.jpg" width="320"/></a><br/><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Tactic+Racing+bicycle+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Tactic Racing</a> is a hub brand, and on Princeton's maker website,<br/>when you select wheel specifications,<br/>it sits quietly among well-known hub makers like<br/><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+bicycle+hub" target="_blank" rel="noopener sponsored" class="amz-inline">DT</a>, <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Chris+King+bicycle+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Chris King</a>, and White Industries,<br/>but it's actually a hub brand of Princeton Carbon Works.<br/>Product-wise, rather than being quality-built and robust,<br/>they're obsessed with cheap weight reduction that ignores durability,<br/>and while the vector is slightly different, they have the same odor as ExtraLite hubs.<br/>The problems occurring in this hub<br/>wouldn't almost certainly happen with DT or Chris King hubs under the same usage conditions.<br/>If I knew about this hub's structure beforehand<br/>and ordered a Princeton wheel, I wouldn't choose Tactic hubs.<br/>While it's true that Tactic hubs are light in weight,<br/>I'd probably choose DT instead.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9765hmr15.jpg" target="_blank"><img alt="RIMG9765hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9765hmr15s.jpg" width="320"/></a><br/>The gap around the left pinned end is already rust-colored.<br/>I called it a pinned end, but the dimensional tolerance between<br/>the hub axle's outer diameter and the pinned end's inner diameter<br/>is tight enough to be called an interference fit.<br/>Unless it's right after the pinned end is set up,<br/>it often can't be removed without proper tools.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9766hmr15.jpg" target="_blank"><img alt="RIMG9766hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9766hmr15s.jpg" width="320"/></a><br/>I removed the left pinned end.<br/>There's rust bloom on the surface that was against the bearing.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9767hmr15.jpg" target="_blank"><img alt="RIMG9767hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9767hmr15s.jpg" width="320"/></a><br/>↑Hub body left side after removing the end<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9770hmr15.jpg" target="_blank"><img alt="RIMG9770hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9770hmr15s.jpg" width="320"/></a><br/>Rust, oil, and sand had accumulated as a clay-like dirt.<br/>In the image above, I've wiped it away only on the left half.<br/><br/><br/>～About Non-Standard Bearings～<br/>The bearing in the image above is the standard bearing 6803.<br/>Using the notation for non-standard bearings where you list inner diameter/outer diameter/width in millimeters: 172265.<br/>"Sports cycling" being the mechanical sport that frequently uses bearings with outer diameters up to about 30mm,<br/>various non-standard bearings have emerged from the sports cycling world<br/>that slightly modify either the inner or outer diameter from standard bearings.<br/>Most industrial products choose their dimensions based on existing standard bearings for cost reasons,<br/>but in the sports cycling world, non-standard bearings are sometimes made<br/>because the demand justifies the cost, or the dimensions are special.<br/><br/>Shimano's HG freebody uses a structure in Shimano hubs that's like an extension of the Freewheel Hub<br/>(or rather, that's how it originated),<br/>but with almost all other manufacturers, two cartridge bearings are installed.<br/>These were initially often 6902—that is, 152287—<br/>but with an outer diameter of 28mm, the wall thickness of the valley of the freebody's spline becomes extremely thin,<br/>so they thought "I wish there was a bearing that was 6902 but with just the outer diameter changed to 26mm,<br/>but there's no such standard bearing,"<br/>and that's how 152267 was made.<br/>This was definitely first developed because the bicycle world demanded it.<br/><br/>Since a 12mm outer diameter through-axle passes through the rear hub axle,<br/>the hub axle's inner diameter is 12mm, and with a 12mm inner diameter hub axle,<br/>15mm outer diameter isn't impossible but 17mm is preferable,<br/>so 6903—that is, 173307—is often used.<br/>However, <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Mavic+Instant+Drive+360+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Mavic's Instant Drive 360</a> hub has a portion of the hub axle that's outboard at 18mm,<br/>and a bearing 183307 made from 6903 but with just the inner diameter changed to 18mm is used.<br/>Incidentally, an inner diameter of 18mm is a dimension that doesn't naturally exist in any standard bearing.<br/><br/>What's in Shimano's original Hollowtech II BB is 6805—that is, 253377.<br/>A plastic cover is placed over this 25mm inner diameter<br/>to reduce the inner diameter to 24mm, allowing the 24mm outer diameter crankshaft<br/>to pass through without metal-to-metal contact.<br/>With Campagnolo's UltraTorque, the crankshaft outer diameter is 25mm<br/>and appears to pass directly through 6805,<br/>but the bearing in UltraTorque's crankarm root is<br/>"6805 but with just the width changed to 6mm"—<br/>in other words, 253376.<br/>They must have had some design constraint that absolutely required reducing the thickness by 1mm.<br/>I don't think it was meant to prevent repair with generic bearings—<br/>it's just how it is.<br/>Recently I was surprised to see<br/>a bearing in a T47 spec BB where they've made 243377—<br/>6805 with just the inner diameter changed to 24mm—<br/>and the Shimano crankshaft passes through it in direct contact with the bearing's inner race.<br/>BB30 comes from the 30mm crankshaft outer diameter,<br/>and Cannondale's original BB30, which pressed standard bearings directly into the frame and held them with C-rings,<br/>used 6806—that is, 304277 bearing.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9769hmr15.jpg" target="_blank"><img alt="RIMG9769hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9769hmr15s.jpg" width="320"/></a><br/>In this Tactic hub, the hub body right side bearing is 172287—<br/>6903, which is 173307, but with the outer diameter reduced by 2mm.<br/>It's quite special, but obtainable.<br/>The other three bearings are 6803, with a 17mm outer diameter hub axle<br/>running straight through them.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9768hmr15.jpg" target="_blank"><img alt="RIMG9768hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9768hmr15s.jpg" width="320"/></a><br/>If the bearing's outer diameter were larger by 1mm in radius (2mm in diameter),<br/>it seems the ratchet mechanism around here couldn't work.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9772hmr15.jpg" target="_blank"><img alt="RIMG9772hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9772hmr15s.jpg" width="320"/></a><br/>The face ratchet spring is single-acting,<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9773hmr15.jpg" target="_blank"><img alt="RIMG9773hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9773hmr15s.jpg" width="320"/></a><br/>and is inside the hub body<br/>(incidentally, DT's Ratchet EXP is on the freebody side).<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9775hmr15.jpg" target="_blank"><img alt="RIMG9775hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9775hmr15s.jpg" width="320"/></a><br/>The face ratchet contact surface is tapered.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9939msn5.jpg" target="_blank"><img alt="RIMG9939msn5.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9939msn5s.jpg" width="320"/></a><br/>↑This is a Novatech freebody, and there's a spacer that slightly protrudes dimensionally<br/>so the freebody doesn't make face contact with the hub body bearing<br/>(doesn't press on anything but the inner race).<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9938msn5.jpg" target="_blank"><img alt="RIMG9938msn5.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9938msn5s.jpg" width="320"/></a><br/>↑When removed, it looks like this<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9774hmr15.jpg" target="_blank"><img alt="RIMG9774hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9774hmr15s.jpg" width="320"/></a><br/>The corresponding part on Tactic was plastic.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9776hmr15.jpg" target="_blank"><img alt="RIMG9776hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9776hmr15s.jpg" width="320"/></a><br/>The freebody bearings aren't both inserted from the outside;<br/>the rear bearing is inserted from the inside.<br/>Only this bearing had loose dimensional tolerance that didn't constitute an interference fit,<br/>allowing hand removal and installation.<br/>This doesn't seem to be because the freebody side has worn down.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9777hmr15.jpg" target="_blank"><img alt="RIMG9777hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9777hmr15s.jpg" width="320"/></a><br/>The spacer supporting the inner races of the freebody bearings on the inside is omitted.<br/>With Neumann hubs, the pinned end is flush against the hub axle (making it stronger against through-axle over-tightening),<br/>but there's an example where the freebody outside and hub body left side bearings fail quickly (→<a href="/posts/6967.html" target="_blank" title="here">here</a>).<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9778hmr15.jpg" target="_blank"><img alt="RIMG9778hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9778hmr15s.jpg" width="320"/></a><br/>The freebody looks like this from the outside<br/><br/>For the bearings, the three 6803s other than the 172287 on the hub body right side<br/>were all damaged to varying degrees, so they needed to be replaced.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9847amx15.jpg" target="_blank"><img alt="RIMG9847amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9847amx15s.jpg" width="320"/></a><br/>I removed the thin spacers that fit inside the left and right pinned ends.<br/>In the image above, what's dirty is the left side surface that faced outward,<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9848amx15.jpg" target="_blank"><img alt="RIMG9848amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9848amx15s.jpg" width="320"/></a><br/>↑and the surface facing inward looks like this.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9854amx15.jpg" target="_blank"><img alt="RIMG9854amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9854amx15s.jpg" width="320"/></a><br/>I cleaned the rust as much as possible, but<br/>interestingly, the left side actually had two stacked.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9851amx15.jpg" target="_blank"><img alt="RIMG9851amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9851amx15s.jpg" width="320"/></a><br/>There are several holes in the hub axle,<br/>but these aren't drain holes; when the hub axle is inserted,<br/>they're more likely air holes to prevent the air from becoming pressurized<br/>due to telescoping.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9853amx15.jpg" target="_blank"><img alt="RIMG9853amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9853amx15s.jpg" width="320"/></a><br/>There are two at 180° phase, so<br/>looking straight through, you can see they go all the way.<br/>This same hole isn't found on cartridge bearings, so<br/>the bearing's inner diameter and the hub axle's outer diameter aren't<br/>perfectly sealed together. Cup-and-cone style Shimano complete wheels' hub axles also have these holes,<br/>and even then, the through-axle and hub axle relationship is a tight telescoping fit,<br/>so the hole might be made with the through-axle-to-hub-axle relationship in mind<br/>rather than the hub axle-to-hub-body relationship.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9856amx15.jpg" target="_blank"><img alt="RIMG9856amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9856amx15s.jpg" width="320"/></a><br/>Both left and right ends are flush-mounted to the pinned relationship,<br/>so the hub axle plus right end shown in the image above should be separable,<br/>but they're pressed at an interference fit level and aren't easily removed.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9857amx15.jpg" target="_blank"><img alt="RIMG9857amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9857amx15s.jpg" width="320"/></a><br/>↑The cleaned left end as viewed from the hub body contact face.<br/>There's a protrusion that presses only the bearing's inner race, but<br/>in reality, there's also a groove elsewhere where an O-ring attaches and an ultra-thin spacer also fits between,<br/>so this end doesn't directly contact the bearing's inner race.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9858amx15.jpg" target="_blank"><img alt="RIMG9858amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9858amx15s.jpg" width="320"/></a><br/>On the inside of the right end,<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9859amx15.jpg" target="_blank"><img alt="RIMG9859amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9859amx15s.jpg" width="320"/></a><br/>the original O-ring remained unbroken.<br/>I didn't realize the importance of this when looking at the front wheel article linked before,<br/>but it's an essential functional part of the hub structure.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9863amx15.jpg" target="_blank"><img alt="RIMG9863amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9863amx15s.jpg" width="320"/></a><br/>↑The original is in the center of the image,<br/>on the right is a generic part I found with the same wire diameter and inner/outer diameters,<br/>and on the left is what I stocked just in case—<br/>same wire diameter but inner/outer diameter 1mm larger than the one on the right.<br/>In the image, only the original's wire diameter appears thinner,<br/>but they're originally the same.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9860amx15.jpg" target="_blank"><img alt="RIMG9860amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9860amx15s.jpg" width="320"/></a><br/>The ultra-thin spacer was dimensioned to just barely not touch the bearing's outer race.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9861amx15.jpg" target="_blank"><img alt="RIMG9861amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9861amx15s.jpg" width="320"/></a><br/>↑Shifted slightly, it looks like this<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9865amx15.jpg" target="_blank"><img alt="RIMG9865amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9865amx15s.jpg" width="320"/></a><br/>I fit the generic O-ring with the same inner/outer diameter as the original into the groove.<br/>It looks like it's sticking out,<br/>but it ends up fitting properly.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9866amx15.jpg" target="_blank"><img alt="RIMG9866amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9866amx15s.jpg" width="320"/></a><br/>I inserted the ultra-thin spacer.<br/>On the right side, so just one, like the original.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9867amx15.jpg" target="_blank"><img alt="RIMG9867amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9867amx15s.jpg" width="320"/></a><br/>↑The spacer blends into the background and is hard to see, but<br/>when the O-ring isn't shrunken, it looks like this.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9926amx15.jpg" target="_blank"><img alt="RIMG9926amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9926amx15s.jpg" width="320"/></a><br/>With this hub, the two side ends are first flush-mounted to the hub axle<br/>so that even under the compression force of a through-axle,<br/>the distance between the left and right ends doesn't change.<br/>This eliminates the need for a spacer inside the freebody or hub body<br/>to restrain the bearing's inner race, and allows it to endure even<br/>a foolish specification like making the freebody flush-mount stop spacer plastic.<br/><br/>The distance between the left and right ends<br/>is longer than the outer-to-outer dimension of the bearings<br/>from the hub body left side to the freebody right side.<br/>If the former were smaller, it would excessively press the bearing's inner race,<br/>making the hub rotation abnormally heavy or stopping it entirely.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9925amx15.jpg" target="_blank"><img alt="RIMG9925amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9925amx15s.jpg" width="320"/></a><br/>So the O-ring and ultra-thin spacer<br/>work like the wave washers in play-adjustment crank sets<br/>where the crankshaft and one crankarm are connected by bolt,<br/>applying just the right amount of pressure to the bearing's inner race—<br/>that's the foolish structure of this hub.<br/><br/>When the bearings, especially the outer two, wear and the inner race develops play<br/>(lateral play) relative to the outer race,<br/>and the amount of this lateral play exceeds what the O-ring and ultra-thin spacer can absorb,<br/>then the hub axle develops play.<br/><br/>When I received it, I was more concerned with the rotation being rough overall<br/>than with the hub axle play the customer mentioned,<br/>so I didn't carefully examine the play itself,<br/>but with this structure, even just the O-ring snapping<br/>could cause play to appear.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9868amx15.jpg" target="_blank"><img alt="RIMG9868amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9868amx15s.jpg" width="320"/></a><br/>When I was working on the front wheel, the customer had sent me<br/>bearing from Tactic Racing saying "If you find a bearing that seems bad, use this,"<br/>and I also have that bearing this time.<br/>The 172287 on the hub body right side had no roughness in rotation,<br/>so I didn't replace it this time.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9869amx15.jpg" target="_blank"><img alt="RIMG9869amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9869amx15s.jpg" width="320"/></a><br/>All the other 6803s I replaced.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9872amx15.jpg" target="_blank"><img alt="RIMG9872amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9872amx15s.jpg" width="320"/></a><br/>I replaced the most severely damaged hub body left side last,<br/>but I ran out of the 6803 bearings the customer provided,<br/>so I used a bearing from our shop inventory for this one.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9871amx15.jpg" target="_blank"><img alt="RIMG9871amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9871amx15s.jpg" width="320"/></a><br/>↑The most severely damaged hub body left side bearing.<br/>The insides are completely rusted.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9870amx15.jpg" target="_blank"><img alt="RIMG9870amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9870amx15s.jpg" width="320"/></a><br/>When I pulled out the hub axle, there was some resistance in the freebody bearings,<br/>and I wondered if it was rust-seizure or just tight dimensional tolerance,</div>
     <div class="affiliate-box">
       <p class="affiliate-title">Products Mentioned in This Article</p>
       <ul>

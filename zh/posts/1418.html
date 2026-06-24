@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/1418.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Drilling Work</p>
     <h1>柯格的奇美拉（非電動對應版）的內變速配線施工</h1>
     <p class="post-meta">September 19, 2014</p>
+    <div class="post-body"><div class="entrytext">鑽頭在呼呼作響！<br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04492amx3.jpg" target="_blank"><img alt="DSC04492amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04492amx3s.jpg" width="300"/></a><br/>從客人那裡領取了柯格（KOGA）的奇美拉。<br/>這是電動變速器不兼容的車架，<br/>但客人希望能進行內變速的配線施工。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04494amx3.jpg" target="_blank"><img alt="DSC04494amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04494amx3s.jpg" width="300"/></a><br/>中軸零件是壓入的，但我完全不動它。<br/>原因是我事先確認過中軸孔是個密閉空間，<br/>它不與任何地方相連通。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04581amx3.jpg" target="_blank"><img alt="DSC04581amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04581amx3s.jpg" width="300"/></a><br/>只要中軸孔與各個管子相連通，內變速配線就簡單了。<br/>內變速接線盒需要將信號線「卡」進去，<br/>當然這只能在車架外面進行。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04577amx3.jpg" target="_blank"><img alt="DSC04577amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04577amx3s.jpg" width="300"/></a><br/>↑即使中軸孔是密閉的，只要從坐管到下管和右鏈條叉，<br/>信號線能夠通過，就有內變速施工的可能性。<br/>這次我實際操作了，但這裡的空隙非常狹窄，真是費力啊。<br/>只能說我運氣不錯。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04578amx3.jpg" target="_blank"><img alt="DSC04578amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04578amx3s.jpg" width="300"/></a><br/>我穿過了引導用的鋼絲，從頭管下方拉出來，<br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04579amx3.jpg" target="_blank"><img alt="DSC04579amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04579amx3s.jpg" width="300"/></a><br/>然後進行配線，再從下管內把接線盒拖進去，<br/>這成了非常麻煩的工作。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04580amx3.jpg" target="_blank"><img alt="DSC04580amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04580amx3s.jpg" width="300"/></a><br/>如果所有線都是1200mm就簡單多了，<br/>但我想用客人帶來的線材長度來搞定，<br/>所以設定為上下接線盒連接1200mm、後變速器650mm、前變速器300mm、<br/>坐管電池700mm。<br/>前變速器那邊用700mm也可以，<br/>但如果650mm就能搞定的話，用更容易處理電池路由的方案，<br/>所以我選了650mm。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04498amx3.jpg" target="_blank"><img alt="DSC04498amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04498amx3s.jpg" width="300"/></a><br/>右鏈條叉上貼著磁鐵，<br/>這是因為引導鋼絲在穿過。<br/>稍微拉出鋼絲，磁鐵就會掉下來，所以沒問題。<br/>終於放心了。<br/>這證明坐管和右鏈條叉是相連的。<br/>引導鋼絲的末端直徑和電動信號線頭的直徑基本相同，<br/>所以鋼絲能通過就意味著線也能通過。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04500amx3.jpg" target="_blank"><img alt="DSC04500amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04500amx3s.jpg" width="300"/></a><br/>↑鑽孔點決定在這裡。<br/>如果在鏈條叉上面鑽孔，信號線會形成弓形，<br/>看起來很漂亮，但根據位置，鏈條飄動時可能會干涉。<br/>為了避免這種情況，需要更靠末端（後面）的位置鑽孔，<br/>但那我不敢做。<br/>實際上，這個鑽孔位置的上方，<br/>就是鏈條叉貼紙的位置。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04504amx3.jpg" target="_blank"><img alt="DSC04504amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04504amx3s.jpg" width="300"/></a><br/>鑽孔完成。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04502amx3.jpg" target="_blank"><img alt="DSC04502amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04502amx3s.jpg" width="300"/></a><br/>前變速器放在這裡。<br/>9070和6870的前變速器需要從本體後方插入信號線，<br/>所以如果位置更靠後，框體外露出的線會最短，<br/>但我採取先用變速器背面的線夾固定線，然後從前面配線的方案，<br/>這樣線就不會浮起或亂甩。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04503amx3.jpg" target="_blank"><img alt="DSC04503amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04503amx3s.jpg" width="300"/></a><br/>坐管電池的引導鋼絲<br/>只需從坐管穿進去。<br/>說得簡單，但實際穿引導鋼絲超級困難啊。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04505amx3.jpg" target="_blank"><img alt="DSC04505amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04505amx3s.jpg" width="300"/></a><br/>↑已經用鑽頭標記過了，<br/>前變速器上方接線盒的信號線會放這裡。<br/>上管左側煞車外管固定座的稍前方。<br/>這樣的話可以沿著後煞車外管配線，<br/>信號線就不會很顯眼。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04508amx3.jpg" target="_blank"><img alt="DSC04508amx3.jpg" border="0" height="300" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04508amx3s.jpg" width="225"/></a><br/>↑配線完成。<br/>加上防止線飄動的紮帶類零件後，<br/>拉動前變速器上方接線盒之外的3根引導鋼絲，<br/>把下方接線盒拖進下管裡。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04582amx3.jpg" target="_blank"><img alt="DSC04582amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04582amx3s.jpg" width="300"/></a><br/>↑上方接線盒<br/>之後沿著煞車外管用紮帶固定。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04517amx3.jpg" target="_blank"><img alt="DSC04517amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04517amx3s.jpg" width="300"/></a><br/>↑前變速器<br/>從後輪濺起泥水的角度考慮，前面鑽孔果然是正確決定。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04510amx3.jpg" target="_blank"><img alt="DSC04510amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04510amx3s.jpg" width="300"/></a><br/>BBB的前變速器夾座上支持螺栓會碰撞，所以<br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04515amx3.jpg" target="_blank"><img alt="DSC04515amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04515amx3s.jpg" width="300"/></a><br/>換成了禧瑪諾的夾座。<br/>有人可能會想，在支持螺栓末端放上金屬片<br/>就不用換前變速器夾座了，<br/>但理由不只是這樣。寫不出來。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04568amx3.jpg" target="_blank"><img alt="DSC04568amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04568amx3s.jpg" width="300"/></a><br/>↑後變速器的配線看起來像輪組拆裝時會干涉，<br/>但實際上不會。<br/>如果覺得線浮著很礙眼，<br/>在鏈條叉末端用一條紮帶或膠帶固定線就能整潔了。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04520amx3.jpg" target="_blank"><img alt="DSC04520amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04520amx3s.jpg" width="300"/></a><br/>坐管電池已經穿進去了，但固定方法還沒想好。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04529amx3.jpg" target="_blank"><img alt="DSC04529amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04529amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04589amx3.jpg" target="_blank"><img alt="DSC04589amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04589amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04496amx3.jpg" target="_blank"><img alt="DSC04496amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04496amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04575amx3.jpg" target="_blank"><img alt="DSC04575amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04575amx3s.jpg" width="300"/></a><br/>車架各處都有用布擦也掉不掉的髒污，<br/>所以順便洗了一下 ^ ^<br/><br/>對家長的話<br/>^ ^ ←如果你覺得這看起來「很像在挑釁」，<br/>那可能需要重新審視一下跟網路的相處方式。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04531amx3.jpg" target="_blank"><img alt="DSC04531amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04531amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04532amx3.jpg" target="_blank"><img alt="DSC04532amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04532amx3s.jpg" width="300"/></a><br/>再用沃克斯（WAKO'S）的夏克臘，<br/>雖然不知道效果能持續多久，<br/>不過我把它打磨得光潤潤的。<br/><br/>從出生的溪流逆流產卵而來的<br/>卡那巴鮭魚的脂肪提煉出來的極上被膜<br/>強力地為表面做了鍍膜。<br/><br/>在這裡插播廣告<br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04583amx3.jpg" target="_blank"><img alt="DSC04583amx3.jpg" border="0" height="300" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04583amx3s.jpg" width="225"/></a><br/>這次車架的光澤用的是夏克臘！<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04586amx3.jpg" target="_blank"><img alt="DSC04586amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04586amx3s.jpg" width="300"/></a><br/>對家長的話<br/>卡那巴鮭魚這種魚根本不存在。<br/>這裡用的卡那巴是指<br/>從卡那巴棕櫚（椰子科植物）提取的卡那巴蠟。<br/>請進行家庭學習，教導孩子<br/>不要輕易被網路上的資訊牽著走。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">鑽頭在呼呼作響！<br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04492amx3.jpg" target="_blank"><img alt="DSC04492amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04492amx3s.jpg" width="300"/></a><br/>從客人那裡領取了柯格（KOGA）的奇美拉。<br/>這是電動變速器不兼容的車架，<br/>但客人希望能進行內變速的配線施工。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04494amx3.jpg" target="_blank"><img alt="DSC04494amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04494amx3s.jpg" width="300"/></a><br/>中軸零件是壓入的，但我完全不動它。<br/>原因是我事先確認過中軸孔是個密閉空間，<br/>它不與任何地方相連通。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04581amx3.jpg" target="_blank"><img alt="DSC04581amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04581amx3s.jpg" width="300"/></a><br/>只要中軸孔與各個管子相連通，內變速配線就簡單了。<br/>內變速接線盒需要將信號線「卡」進去，<br/>當然這只能在車架外面進行。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04577amx3.jpg" target="_blank"><img alt="DSC04577amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04577amx3s.jpg" width="300"/></a><br/>↑即使中軸孔是密閉的，只要從坐管到下管和右鏈條叉，<br/>信號線能夠通過，就有內變速施工的可能性。<br/>這次我實際操作了，但這裡的空隙非常狹窄，真是費力啊。<br/>只能說我運氣不錯。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04578amx3.jpg" target="_blank"><img alt="DSC04578amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04578amx3s.jpg" width="300"/></a><br/>我穿過了引導用的鋼絲，從頭管下方拉出來，<br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04579amx3.jpg" target="_blank"><img alt="DSC04579amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04579amx3s.jpg" width="300"/></a><br/>然後進行配線，再從下管內把接線盒拖進去，<br/>這成了非常麻煩的工作。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04580amx3.jpg" target="_blank"><img alt="DSC04580amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04580amx3s.jpg" width="300"/></a><br/>如果所有線都是1200mm就簡單多了，<br/>但我想用客人帶來的線材長度來搞定，<br/>所以設定為上下接線盒連接1200mm、後變速器650mm、前變速器300mm、<br/>坐管電池700mm。<br/>前變速器那邊用700mm也可以，<br/>但如果650mm就能搞定的話，用更容易處理電池路由的方案，<br/>所以我選了650mm。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04498amx3.jpg" target="_blank"><img alt="DSC04498amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04498amx3s.jpg" width="300"/></a><br/>右鏈條叉上貼著磁鐵，<br/>這是因為引導鋼絲在穿過。<br/>稍微拉出鋼絲，磁鐵就會掉下來，所以沒問題。<br/>終於放心了。<br/>這證明坐管和右鏈條叉是相連的。<br/>引導鋼絲的末端直徑和電動信號線頭的直徑基本相同，<br/>所以鋼絲能通過就意味著線也能通過。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04500amx3.jpg" target="_blank"><img alt="DSC04500amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04500amx3s.jpg" width="300"/></a><br/>↑鑽孔點決定在這裡。<br/>如果在鏈條叉上面鑽孔，信號線會形成弓形，<br/>看起來很漂亮，但根據位置，鏈條飄動時可能會干涉。<br/>為了避免這種情況，需要更靠末端（後面）的位置鑽孔，<br/>但那我不敢做。<br/>實際上，這個鑽孔位置的上方，<br/>就是鏈條叉貼紙的位置。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04504amx3.jpg" target="_blank"><img alt="DSC04504amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04504amx3s.jpg" width="300"/></a><br/>鑽孔完成。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04502amx3.jpg" target="_blank"><img alt="DSC04502amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04502amx3s.jpg" width="300"/></a><br/>前變速器放在這裡。<br/>9070和6870的前變速器需要從本體後方插入信號線，<br/>所以如果位置更靠後，框體外露出的線會最短，<br/>但我採取先用變速器背面的線夾固定線，然後從前面配線的方案，<br/>這樣線就不會浮起或亂甩。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04503amx3.jpg" target="_blank"><img alt="DSC04503amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04503amx3s.jpg" width="300"/></a><br/>坐管電池的引導鋼絲<br/>只需從坐管穿進去。<br/>說得簡單，但實際穿引導鋼絲超級困難啊。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04505amx3.jpg" target="_blank"><img alt="DSC04505amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04505amx3s.jpg" width="300"/></a><br/>↑已經用鑽頭標記過了，<br/>前變速器上方接線盒的信號線會放這裡。<br/>上管左側煞車外管固定座的稍前方。<br/>這樣的話可以沿著後煞車外管配線，<br/>信號線就不會很顯眼。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04508amx3.jpg" target="_blank"><img alt="DSC04508amx3.jpg" border="0" height="300" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04508amx3s.jpg" width="225"/></a><br/>↑配線完成。<br/>加上防止線飄動的紮帶類零件後，<br/>拉動前變速器上方接線盒之外的3根引導鋼絲，<br/>把下方接線盒拖進下管裡。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04582amx3.jpg" target="_blank"><img alt="DSC04582amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04582amx3s.jpg" width="300"/></a><br/>↑上方接線盒<br/>之後沿著煞車外管用紮帶固定。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04517amx3.jpg" target="_blank"><img alt="DSC04517amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04517amx3s.jpg" width="300"/></a><br/>↑前變速器<br/>從後輪濺起泥水的角度考慮，前面鑽孔果然是正確決定。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04510amx3.jpg" target="_blank"><img alt="DSC04510amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04510amx3s.jpg" width="300"/></a><br/>BBB的前變速器夾座上支持螺栓會碰撞，所以<br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04515amx3.jpg" target="_blank"><img alt="DSC04515amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04515amx3s.jpg" width="300"/></a><br/>換成了禧瑪諾的夾座。<br/>有人可能會想，在支持螺栓末端放上金屬片<br/>就不用換前變速器夾座了，<br/>但理由不只是這樣。寫不出來。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04568amx3.jpg" target="_blank"><img alt="DSC04568amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04568amx3s.jpg" width="300"/></a><br/>↑後變速器的配線看起來像輪組拆裝時會干涉，<br/>但實際上不會。<br/>如果覺得線浮著很礙眼，<br/>在鏈條叉末端用一條紮帶或膠帶固定線就能整潔了。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04520amx3.jpg" target="_blank"><img alt="DSC04520amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04520amx3s.jpg" width="300"/></a><br/>坐管電池已經穿進去了，但固定方法還沒想好。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04529amx3.jpg" target="_blank"><img alt="DSC04529amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04529amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04589amx3.jpg" target="_blank"><img alt="DSC04589amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04589amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04496amx3.jpg" target="_blank"><img alt="DSC04496amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04496amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04575amx3.jpg" target="_blank"><img alt="DSC04575amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04575amx3s.jpg" width="300"/></a><br/>車架各處都有用布擦也掉不掉的髒污，<br/>所以順便洗了一下 ^ ^<br/><br/>對家長的話<br/>^ ^ ←如果你覺得這看起來「很像在挑釁」，<br/>那可能需要重新審視一下跟網路的相處方式。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04531amx3.jpg" target="_blank"><img alt="DSC04531amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04531amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04532amx3.jpg" target="_blank"><img alt="DSC04532amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04532amx3s.jpg" width="300"/></a><br/>再用沃克斯（WAKO'S）的夏克臘，<br/>雖然不知道效果能持續多久，<br/>不過我把它打磨得光潤潤的。<br/><br/>從出生的溪流逆流產卵而來的<br/>卡那巴鮭魚的脂肪提煉出來的極上被膜<br/>強力地為表面做了鍍膜。<br/><br/>在這裡插播廣告<br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04583amx3.jpg" target="_blank"><img alt="DSC04583amx3.jpg" border="0" height="300" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04583amx3s.jpg" width="225"/></a><br/>這次車架的光澤用的是夏克臘！<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04586amx3.jpg" target="_blank"><img alt="DSC04586amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04586amx3s.jpg" width="300"/></a><br/>對家長的話<br/>卡那巴鮭魚這種魚根本不存在。<br/>這裡用的卡那巴是指<br/>從卡那巴棕櫚（椰子科植物）提取的卡那巴蠟。<br/>請進行家庭學習，教導孩子<br/>不要輕易被網路上的資訊牽著走。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/6972.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>更換固定齒輪輪胎的管狀輪胎</h1>
     <p class="post-meta">January 09, 2024</p>
+    <div class="post-body"><div class="entrytext">從客人那裡接到用Araya（日本輪圈品牌）16B金色輪圈組成的<br/>固定齒輪前後輪。<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7076msn5a.jpg" target="_blank"><img alt="RIMG7076msn5a.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7076msn5as.jpg" width="320"/></a><br/>客人希望用輪圈膠水更換前後輪的管狀輪胎，<br/>但由於客人自己應該能用輪圈膠水黏貼輪胎，<br/>特地來我們店裡委託，<br/>這表示他大概感受到了<br/>除了純粹輪胎更換之外<br/>這次工作裡隱藏的陷阱。<br/>順帶一提，我也感受到了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7077amxv15.jpg" target="_blank"><img alt="RIMG7077amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7077amxv15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7078amxv15.jpg" target="_blank"><img alt="RIMG7078amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7078amxv15s.jpg" width="320"/></a><br/>Dura-Ace小法蘭花鼓，36孔<br/>意大利式組法。<br/>雖然這不是競輪選手的委託，<br/>但我原本以為如果不是JIS組法就無法用於競輪，<br/>原來只要所有零件都是NJS認證品，且是8孔組法<br/>檢驗就能通過。<br/>實際上我見過用意大利式組法的競輪輪子<br/>裝著競輪專用氣嘴的輪胎<br/>通過檢驗的例子。<br/><br/>從上面的圖片看，花鼓本體上Dura-Ace的<br/>刻印方向對齊時，<br/>意大利式組法的左右屬性也對齊了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7079amxv15.jpg" target="_blank"><img alt="RIMG7079amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7079amxv15s.jpg" width="320"/></a><br/>在那個狀態下<br/>從右側看前後輪<br/>後輪的標籤方向相反<s>但<br/>不用在意</s>。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7080amxv15.jpg" target="_blank"><img alt="RIMG7080amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7080amxv15s.jpg" width="320"/></a><br/>輪胎是Vittoria（意大利輪胎品牌）Rally紅邊款和<br/>Lion Tire（獅牌輪胎）GT30，<br/>但前後輪的胎紋都是反向黏貼的。<br/>不過這也是沒辦法的事，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7146amxv15.jpg" target="_blank"><img alt="RIMG7146amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7146amxv15s.jpg" width="320"/></a><br/>因為這兩條輪胎都是單側標籤設計，<br/>如果遵照「單側標籤時，標籤應在右側」的慣例<br/>就會變成反向使用。<br/>輪胎本身並沒有反向使用的指示。<br/>TUFO也有這樣的輪胎，<br/>但我會優先考慮胎紋方向，<br/>寧可讓標籤在左側。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7084amxv15.jpg" target="_blank"><img alt="RIMG7084amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7084amxv15s.jpg" width="320"/></a><br/>MOST出的管狀輪胎專用撬胎棒<br/>用起來很方便！<s>（置入性廣告）</s><br/>特別是後輪黏得非常牢固，<br/>一開始撬胎棒要插進去時費了不少力氣。<br/><br/>輪圈膠水是偏遲乾型的。<br/>我之前也提過，Panasonic牌輪圈膠水的<br/>罐子或膠管上寫著「快乾型」，<br/>但從輪圈膠水的歷史來看<br/>那已經算是超快乾型了。<br/>（盡量避免比較好）<br/>黏貼後數小時就能騎，<br/>放一天就完全沒問題。<br/>真正的遲乾型輪圈膠水<br/>需要放置約一週。<br/>你可能會想，那乾脆全都用快乾型不就好了，<br/>但遲乾型輪圈膠水的優點是<br/>輪胎和輪圈之間的膠水<br/>不會完全乾硬，而是保持適度的粘稠狀態較長時間，<br/>所以即使輪子受到劇烈衝擊<br/>輪胎也不容易從輪圈脫落。<br/>・・・理論上是這樣，<br/>但由於輪圈膠水本身也一直在進步，<br/>即使用快乾型輪圈膠水，<br/>在常用輪胎的壽命範圍內<br/>也不需要因為粘性減弱而重新黏貼。<br/>以林道自行車輪胎為例，即使幸運沒有爆胎<br/>淡季完全不用，<br/>也能撐2年（2個賽季）沒問題。<br/>當然，如果3年或5年一直在用<br/>就該重新黏貼了。<br/><br/>快乾型輪圈膠水完全乾透後<br/>會在脫落時噴出乾粉，<br/>很容易從輪圈剝離<br/>（甚至在快乾的臨界點騎行，至少在公路自行車上<br/>我沒聽說過輪胎脫落的事例），<br/>但遲乾型輪圈膠水乾透後<br/>會形成相當牢固的膠床，<br/>輪胎很難剝掉，<br/>而且管狀輪胎的內襯<br/>經常會殘留在輪圈上。<br/>客人並不是有意識地<br/>使用遲乾型輪圈膠水，<br/>而是用了放在車隊角落的<br/>大罐經濟包輪圈膠水來黏胎。<br/>那個罐子上雖然寫著快乾型，<br/>但相對於Panasonic牌快乾型輪圈膠水來說<br/>性質偏遲乾型相當多。<br/><br/>這次的輪子花鼓本體和輪圈側面<br/>都沾上了輪圈膠水，<br/>但用刷子的小罐或牙膏管容器的<br/>輪圈膠水就不容易犯這種錯誤。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7086amxv15.jpg" target="_blank"><img alt="RIMG7086amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7086amxv15s.jpg" width="320"/></a><br/>↑氣嘴孔在正上方時<br/>膠水往花鼓本體滴下來，應該就是這樣。<br/>這個花鼓只有在36孔時才是NJS認證品，<br/>但實際上是36孔，所以有NJS刻印。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7087amxv15.jpg" target="_blank"><img alt="RIMG7087amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7087amxv15s.jpg" width="320"/></a><br/>除了現在輻條的方向外<br/>還有內穿的痕跡，所以這個輪子<br/>至少組過2次以上。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7081amxv15.jpg" target="_blank"><img alt="RIMG7081amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7081amxv15s.jpg" width="320"/></a><br/>後花鼓是兩側都有齒的規格。<br/>理論上意大利式組法<br/>最好不要左右翻轉使用，<br/>但有小齒盤的安裝痕跡。<br/>只是，理論上的右側確實用得比較多，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7136amxv15.jpg" target="_blank"><img alt="RIMG7136amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7136amxv15s.jpg" width="320"/></a><br/>↑比起左法蘭<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7137amxv15.jpg" target="_blank"><img alt="RIMG7137amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7137amxv15s.jpg" width="320"/></a><br/>右法蘭更髒<br/>照片中的內穿輻條有變形。<br/>在相位上與此相關的竄動已經校正過，<br/>不過這根輻條是15號基礎圓形挖空輻條，<br/>我們店裡沒有常備同號的輻條，<br/>所以沒有更換輵條。<br/><br/>前後輪的左右輻條都<br/>是星牌（日本輵條品牌）「不鏽鋼」款。<br/>這裡說的不鏽鋼不是通用名詞<br/>而是指那個型號的輵條。<br/>頭部刻印是★記號，如圖所示，<br/>如果是Starlight的話刻印是大寫H。<br/><br/>這也是我過去反覆提過的<br/>不鏽鋼輵條對磁鐵幾乎無反應。<br/>反之Starlight輵條幾乎跟鐵一樣<br/>吸得嘎嘰一聲很牢固。<br/>這兩個型號輵條的製造分工<br/>曾經有過馬虎的時期，<br/>我問過星牌<br/>他們說「沒這回事，我們很認真」<br/>用謊言敷衍我，<br/>所以我對星牌輵條抱有巨大的不信任感。<br/>幾年前他們向我承認<br/>我說的沒錯，<br/>但那也沒讓我改變主意去用星牌輵條，<br/>所以組競輪輪子用NJS認證輵條，<br/>除了據說現在星牌已經失傳製造方法的<br/>舊版Aero Starlight外，我不用星牌輵條。<br/>現在用Aero Starlight這個型號名出的<br/>非NJS認證輵條<br/>成分上100%肯定是Starlight。<br/><br/>對於這次的輪子，<br/>前輪的★刻印輵條對磁鐵幾乎無反應，<br/>但後輪的★刻印輵條對磁鐵反應<br/>卻像Starlight一樣很強。<br/>我所謂的「假Starlight」或「爛Starlight」，<br/>是指H刻印輵條，它們對磁鐵<br/>有點點反應，<br/>不鏽鋼會反應但<br/>明顯不是Starlight的磁性，<br/>這種輵條對磁鐵的反應強度，<br/>以不鏽鋼為1、Starlight為10來比較<br/>大概是2～3。<br/>「不是不鏽鋼但幾乎是不鏽鋼」的<br/>不屬於任何一方的性質。<br/>相比之下，這次的假不鏽鋼<br/>磁性幾乎跟Starlight一樣強。<br/>用剛才的數字來說大概是9或10。<br/>想要Starlight卻買到假貨的例子<br/>過去有好幾次，但不鏽鋼本來就沒進過，<br/>所以假不鏽鋼只有在這種機會<br/>我才看得到。<br/><br/>用Dura-Ace固定齒輪花鼓和Araya 16B金色輪圈<br/>無論花鼓是小法蘭還是大法蘭<br/>8孔組法都能組成305mm，<br/>所以如果管理方式是把305mm輵條放在一個抽屜裡<br/>用完了就補充<br/>同一輪子可能會混入不鏽鋼和<br/>假不鏽鋼輵條，<br/>但這次前後輪<br/>輵條的批號不同或組裝時期不同，我不清楚<br/>前輪全部是不鏽鋼<br/>後輪除了1根外全是假不鏽鋼。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7139amxv15.jpg" target="_blank"><img alt="RIMG7139amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7139amxv15s.jpg" width="320"/></a><br/>理論上後輪的輵條不容易斷，<br/>但後輪輵條有1根斷過的歷史，<br/>補修用的是Asahi牌同號輵條<br/>（新組輪子時缺1根輵條所以混進Asahi的可能性也不是零<br/>但大概不是那樣）。<br/>刻印是大寫A。<br/>這根輵條的成分相當於星牌的不鏽鋼，<br/>所以在後輪裡<br/>只有這根輵條對磁鐵幾乎無反應。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7140amxv15.jpg" target="_blank"><img alt="RIMG7140amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7140amxv15s.jpg" width="320"/></a><br/>星牌的圓形挖空輵條<br/>在直徑變化處的台階很明顯，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7141amxv15.jpg" target="_blank"><img alt="RIMG7141amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7141amxv15s.jpg" width="320"/></a><br/>Asahi牌的邊界就不那麼清楚。<br/>DT的直徑變化斜面部分很長<br/>所以邊界更模糊，<br/>Sapim則有像切割玻璃那樣的<br/>加工痕跡。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7104amxv15.jpg" target="_blank"><img alt="RIMG7104amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7104amxv15s.jpg" width="320"/></a><br/>前輪的獅牌輪胎<br/>在長期放置時與地面接觸的那面<br/>開口側被壓扁的地方<br/>簾布層破裂了，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7105amxv15.jpg" target="_blank"><img alt="RIMG7105amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7105amxv15s.jpg" width="320"/></a><br/>輕輕一扭就能看到裡面的內胎。<br/>這是最便宜的輪胎<br/>曾經被稱為「1000日圓輪胎」。<br/><s>那真是美好的時代。</s><br/>順帶一提，Rally有相同的胎紋<br/>還有Formula Uno（F1）這個型號，<br/>再往前推，Formula Uno<br/>中央胎紋是光面圖案<br/>輪胎表面是橘色的型號。<br/>那個時代的Rally和Formula Uno也是1000日圓輪胎，<br/>25年前左右我常用橘色的Formula Uno。<br/><br/>那個時代的管狀輪胎<br/>即使在縱向跳動和胎面中心精度上<br/>不如高級WO輪胎，<br/>1000日圓管狀輪胎性能還是<br/>稍微好一點，<br/>但最近20年WO輪胎進化得驚人，<br/>WO輪胎在性能和乘坐舒適度方面<br/>已經不是「將就著用」的東西了。<br/>以Continental為例，Giro管狀輪胎的性能<br/>不如Grand Prix 5000 WO輪胎<br/>轉動輕巧，過彎極限也更高，<br/>所以常用輪組用管狀輪胎<br/>已經沒有必要了，<br/>進步到我這樣的程度。<br/>儘管如此，最高級管狀輪胎和<br/>最高級WO（包括無內胎）輪胎相比<br/>我還是認為管狀的綜合性能更強。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7106amxv15.jpg" target="_blank"><img alt="RIMG7106amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7106amxv15s.jpg" width="320"/></a><br/>好的，要回到主題了。<br/>管狀輪胎的內襯<br/>被遲乾型偏向的強固乾硬輪圈膠水<br/>在輪圈周長的很多地方殘留在輪圈上。<br/>邪推的話，客人應該預期到這一點。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7107amxv15.jpg" target="_blank"><img alt="RIMG7107amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7107amxv15s.jpg" width="320"/></a><br/>糟糕<br/>去年年底我用展開圖詳述STI變速桿時<br/>沒有分解到某個地方<br/>為了推開小止動環<br/>把鑿子工具的頭加工成那個用途<br/>了。<br/>算了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7109amxv15.jpg" target="_blank"><img alt="RIMG7109amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7109amxv15s.jpg" width="320"/></a><br/>↑這還在施工中，<br/>刮掉內襯費了相當大的工夫。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7148amxv15.jpg" target="_blank"><img alt="RIMG7148amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7148amxv15s.jpg" width="320"/></a><br/>新裝的輪胎是<br/>Panasonic牌Practice 270，<br/>名字本身就說明是練習輪胎型號。<br/>270是公稱重量，<br/>陣容中較細的22.5C的重量。<br/>另外一個尺寸是25C，<br/>該尺寸的公稱重量是320克。<br/><br/>順帶一提，這條輪胎的內襯印字和<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7110amxv15.jpg" target="_blank"><img alt="RIMG7110amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7110amxv15s.jpg" width="320"/></a><br/>胎面有1處「MADE IN THAILAND」的表記<br/>可以斷定<br/>是獅牌輪胎的代工品。<br/>原來後輪裝的Rally、<br/>先前提到Continental的Giro<br/>都是獅牌製造（→<a href="/zh/posts/1015.html" target="_blank" title="這裡">這裡</a>）。<br/><br/>裝胎前我檢查了一下是否竄動或中心偏移，<br/>前後輪都只有輕微橫向竄動，<br/>沒有中心偏移。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">從客人那裡接到用Araya（日本輪圈品牌）16B金色輪圈組成的<br/>固定齒輪前後輪。<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7076msn5a.jpg" target="_blank"><img alt="RIMG7076msn5a.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7076msn5as.jpg" width="320"/></a><br/>客人希望用輪圈膠水更換前後輪的管狀輪胎，<br/>但由於客人自己應該能用輪圈膠水黏貼輪胎，<br/>特地來我們店裡委託，<br/>這表示他大概感受到了<br/>除了純粹輪胎更換之外<br/>這次工作裡隱藏的陷阱。<br/>順帶一提，我也感受到了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7077amxv15.jpg" target="_blank"><img alt="RIMG7077amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7077amxv15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7078amxv15.jpg" target="_blank"><img alt="RIMG7078amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7078amxv15s.jpg" width="320"/></a><br/>Dura-Ace小法蘭花鼓，36孔<br/>意大利式組法。<br/>雖然這不是競輪選手的委託，<br/>但我原本以為如果不是JIS組法就無法用於競輪，<br/>原來只要所有零件都是NJS認證品，且是8孔組法<br/>檢驗就能通過。<br/>實際上我見過用意大利式組法的競輪輪子<br/>裝著競輪專用氣嘴的輪胎<br/>通過檢驗的例子。<br/><br/>從上面的圖片看，花鼓本體上Dura-Ace的<br/>刻印方向對齊時，<br/>意大利式組法的左右屬性也對齊了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7079amxv15.jpg" target="_blank"><img alt="RIMG7079amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7079amxv15s.jpg" width="320"/></a><br/>在那個狀態下<br/>從右側看前後輪<br/>後輪的標籤方向相反<s>但<br/>不用在意</s>。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7080amxv15.jpg" target="_blank"><img alt="RIMG7080amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7080amxv15s.jpg" width="320"/></a><br/>輪胎是Vittoria（意大利輪胎品牌）Rally紅邊款和<br/>Lion Tire（獅牌輪胎）GT30，<br/>但前後輪的胎紋都是反向黏貼的。<br/>不過這也是沒辦法的事，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7146amxv15.jpg" target="_blank"><img alt="RIMG7146amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7146amxv15s.jpg" width="320"/></a><br/>因為這兩條輪胎都是單側標籤設計，<br/>如果遵照「單側標籤時，標籤應在右側」的慣例<br/>就會變成反向使用。<br/>輪胎本身並沒有反向使用的指示。<br/>TUFO也有這樣的輪胎，<br/>但我會優先考慮胎紋方向，<br/>寧可讓標籤在左側。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7084amxv15.jpg" target="_blank"><img alt="RIMG7084amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7084amxv15s.jpg" width="320"/></a><br/>MOST出的管狀輪胎專用撬胎棒<br/>用起來很方便！<s>（置入性廣告）</s><br/>特別是後輪黏得非常牢固，<br/>一開始撬胎棒要插進去時費了不少力氣。<br/><br/>輪圈膠水是偏遲乾型的。<br/>我之前也提過，Panasonic牌輪圈膠水的<br/>罐子或膠管上寫著「快乾型」，<br/>但從輪圈膠水的歷史來看<br/>那已經算是超快乾型了。<br/>（盡量避免比較好）<br/>黏貼後數小時就能騎，<br/>放一天就完全沒問題。<br/>真正的遲乾型輪圈膠水<br/>需要放置約一週。<br/>你可能會想，那乾脆全都用快乾型不就好了，<br/>但遲乾型輪圈膠水的優點是<br/>輪胎和輪圈之間的膠水<br/>不會完全乾硬，而是保持適度的粘稠狀態較長時間，<br/>所以即使輪子受到劇烈衝擊<br/>輪胎也不容易從輪圈脫落。<br/>・・・理論上是這樣，<br/>但由於輪圈膠水本身也一直在進步，<br/>即使用快乾型輪圈膠水，<br/>在常用輪胎的壽命範圍內<br/>也不需要因為粘性減弱而重新黏貼。<br/>以林道自行車輪胎為例，即使幸運沒有爆胎<br/>淡季完全不用，<br/>也能撐2年（2個賽季）沒問題。<br/>當然，如果3年或5年一直在用<br/>就該重新黏貼了。<br/><br/>快乾型輪圈膠水完全乾透後<br/>會在脫落時噴出乾粉，<br/>很容易從輪圈剝離<br/>（甚至在快乾的臨界點騎行，至少在公路自行車上<br/>我沒聽說過輪胎脫落的事例），<br/>但遲乾型輪圈膠水乾透後<br/>會形成相當牢固的膠床，<br/>輪胎很難剝掉，<br/>而且管狀輪胎的內襯<br/>經常會殘留在輪圈上。<br/>客人並不是有意識地<br/>使用遲乾型輪圈膠水，<br/>而是用了放在車隊角落的<br/>大罐經濟包輪圈膠水來黏胎。<br/>那個罐子上雖然寫著快乾型，<br/>但相對於Panasonic牌快乾型輪圈膠水來說<br/>性質偏遲乾型相當多。<br/><br/>這次的輪子花鼓本體和輪圈側面<br/>都沾上了輪圈膠水，<br/>但用刷子的小罐或牙膏管容器的<br/>輪圈膠水就不容易犯這種錯誤。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7086amxv15.jpg" target="_blank"><img alt="RIMG7086amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7086amxv15s.jpg" width="320"/></a><br/>↑氣嘴孔在正上方時<br/>膠水往花鼓本體滴下來，應該就是這樣。<br/>這個花鼓只有在36孔時才是NJS認證品，<br/>但實際上是36孔，所以有NJS刻印。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7087amxv15.jpg" target="_blank"><img alt="RIMG7087amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7087amxv15s.jpg" width="320"/></a><br/>除了現在輻條的方向外<br/>還有內穿的痕跡，所以這個輪子<br/>至少組過2次以上。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7081amxv15.jpg" target="_blank"><img alt="RIMG7081amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7081amxv15s.jpg" width="320"/></a><br/>後花鼓是兩側都有齒的規格。<br/>理論上意大利式組法<br/>最好不要左右翻轉使用，<br/>但有小齒盤的安裝痕跡。<br/>只是，理論上的右側確實用得比較多，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7136amxv15.jpg" target="_blank"><img alt="RIMG7136amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7136amxv15s.jpg" width="320"/></a><br/>↑比起左法蘭<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7137amxv15.jpg" target="_blank"><img alt="RIMG7137amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7137amxv15s.jpg" width="320"/></a><br/>右法蘭更髒<br/>照片中的內穿輻條有變形。<br/>在相位上與此相關的竄動已經校正過，<br/>不過這根輻條是15號基礎圓形挖空輻條，<br/>我們店裡沒有常備同號的輻條，<br/>所以沒有更換輵條。<br/><br/>前後輪的左右輻條都<br/>是星牌（日本輵條品牌）「不鏽鋼」款。<br/>這裡說的不鏽鋼不是通用名詞<br/>而是指那個型號的輵條。<br/>頭部刻印是★記號，如圖所示，<br/>如果是Starlight的話刻印是大寫H。<br/><br/>這也是我過去反覆提過的<br/>不鏽鋼輵條對磁鐵幾乎無反應。<br/>反之Starlight輵條幾乎跟鐵一樣<br/>吸得嘎嘰一聲很牢固。<br/>這兩個型號輵條的製造分工<br/>曾經有過馬虎的時期，<br/>我問過星牌<br/>他們說「沒這回事，我們很認真」<br/>用謊言敷衍我，<br/>所以我對星牌輵條抱有巨大的不信任感。<br/>幾年前他們向我承認<br/>我說的沒錯，<br/>但那也沒讓我改變主意去用星牌輵條，<br/>所以組競輪輪子用NJS認證輵條，<br/>除了據說現在星牌已經失傳製造方法的<br/>舊版Aero Starlight外，我不用星牌輵條。<br/>現在用Aero Starlight這個型號名出的<br/>非NJS認證輵條<br/>成分上100%肯定是Starlight。<br/><br/>對於這次的輪子，<br/>前輪的★刻印輵條對磁鐵幾乎無反應，<br/>但後輪的★刻印輵條對磁鐵反應<br/>卻像Starlight一樣很強。<br/>我所謂的「假Starlight」或「爛Starlight」，<br/>是指H刻印輵條，它們對磁鐵<br/>有點點反應，<br/>不鏽鋼會反應但<br/>明顯不是Starlight的磁性，<br/>這種輵條對磁鐵的反應強度，<br/>以不鏽鋼為1、Starlight為10來比較<br/>大概是2～3。<br/>「不是不鏽鋼但幾乎是不鏽鋼」的<br/>不屬於任何一方的性質。<br/>相比之下，這次的假不鏽鋼<br/>磁性幾乎跟Starlight一樣強。<br/>用剛才的數字來說大概是9或10。<br/>想要Starlight卻買到假貨的例子<br/>過去有好幾次，但不鏽鋼本來就沒進過，<br/>所以假不鏽鋼只有在這種機會<br/>我才看得到。<br/><br/>用Dura-Ace固定齒輪花鼓和Araya 16B金色輪圈<br/>無論花鼓是小法蘭還是大法蘭<br/>8孔組法都能組成305mm，<br/>所以如果管理方式是把305mm輵條放在一個抽屜裡<br/>用完了就補充<br/>同一輪子可能會混入不鏽鋼和<br/>假不鏽鋼輵條，<br/>但這次前後輪<br/>輵條的批號不同或組裝時期不同，我不清楚<br/>前輪全部是不鏽鋼<br/>後輪除了1根外全是假不鏽鋼。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7139amxv15.jpg" target="_blank"><img alt="RIMG7139amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7139amxv15s.jpg" width="320"/></a><br/>理論上後輪的輵條不容易斷，<br/>但後輪輵條有1根斷過的歷史，<br/>補修用的是Asahi牌同號輵條<br/>（新組輪子時缺1根輵條所以混進Asahi的可能性也不是零<br/>但大概不是那樣）。<br/>刻印是大寫A。<br/>這根輵條的成分相當於星牌的不鏽鋼，<br/>所以在後輪裡<br/>只有這根輵條對磁鐵幾乎無反應。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7140amxv15.jpg" target="_blank"><img alt="RIMG7140amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7140amxv15s.jpg" width="320"/></a><br/>星牌的圓形挖空輵條<br/>在直徑變化處的台階很明顯，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7141amxv15.jpg" target="_blank"><img alt="RIMG7141amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7141amxv15s.jpg" width="320"/></a><br/>Asahi牌的邊界就不那麼清楚。<br/>DT的直徑變化斜面部分很長<br/>所以邊界更模糊，<br/>Sapim則有像切割玻璃那樣的<br/>加工痕跡。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7104amxv15.jpg" target="_blank"><img alt="RIMG7104amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7104amxv15s.jpg" width="320"/></a><br/>前輪的獅牌輪胎<br/>在長期放置時與地面接觸的那面<br/>開口側被壓扁的地方<br/>簾布層破裂了，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7105amxv15.jpg" target="_blank"><img alt="RIMG7105amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7105amxv15s.jpg" width="320"/></a><br/>輕輕一扭就能看到裡面的內胎。<br/>這是最便宜的輪胎<br/>曾經被稱為「1000日圓輪胎」。<br/><s>那真是美好的時代。</s><br/>順帶一提，Rally有相同的胎紋<br/>還有Formula Uno（F1）這個型號，<br/>再往前推，Formula Uno<br/>中央胎紋是光面圖案<br/>輪胎表面是橘色的型號。<br/>那個時代的Rally和Formula Uno也是1000日圓輪胎，<br/>25年前左右我常用橘色的Formula Uno。<br/><br/>那個時代的管狀輪胎<br/>即使在縱向跳動和胎面中心精度上<br/>不如高級WO輪胎，<br/>1000日圓管狀輪胎性能還是<br/>稍微好一點，<br/>但最近20年WO輪胎進化得驚人，<br/>WO輪胎在性能和乘坐舒適度方面<br/>已經不是「將就著用」的東西了。<br/>以Continental為例，Giro管狀輪胎的性能<br/>不如Grand Prix 5000 WO輪胎<br/>轉動輕巧，過彎極限也更高，<br/>所以常用輪組用管狀輪胎<br/>已經沒有必要了，<br/>進步到我這樣的程度。<br/>儘管如此，最高級管狀輪胎和<br/>最高級WO（包括無內胎）輪胎相比<br/>我還是認為管狀的綜合性能更強。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7106amxv15.jpg" target="_blank"><img alt="RIMG7106amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7106amxv15s.jpg" width="320"/></a><br/>好的，要回到主題了。<br/>管狀輪胎的內襯<br/>被遲乾型偏向的強固乾硬輪圈膠水<br/>在輪圈周長的很多地方殘留在輪圈上。<br/>邪推的話，客人應該預期到這一點。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7107amxv15.jpg" target="_blank"><img alt="RIMG7107amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7107amxv15s.jpg" width="320"/></a><br/>糟糕<br/>去年年底我用展開圖詳述STI變速桿時<br/>沒有分解到某個地方<br/>為了推開小止動環<br/>把鑿子工具的頭加工成那個用途<br/>了。<br/>算了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7109amxv15.jpg" target="_blank"><img alt="RIMG7109amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7109amxv15s.jpg" width="320"/></a><br/>↑這還在施工中，<br/>刮掉內襯費了相當大的工夫。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7148amxv15.jpg" target="_blank"><img alt="RIMG7148amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7148amxv15s.jpg" width="320"/></a><br/>新裝的輪胎是<br/>Panasonic牌Practice 270，<br/>名字本身就說明是練習輪胎型號。<br/>270是公稱重量，<br/>陣容中較細的22.5C的重量。<br/>另外一個尺寸是25C，<br/>該尺寸的公稱重量是320克。<br/><br/>順帶一提，這條輪胎的內襯印字和<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7110amxv15.jpg" target="_blank"><img alt="RIMG7110amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7110amxv15s.jpg" width="320"/></a><br/>胎面有1處「MADE IN THAILAND」的表記<br/>可以斷定<br/>是獅牌輪胎的代工品。<br/>原來後輪裝的Rally、<br/>先前提到Continental的Giro<br/>都是獅牌製造（→<a href="/zh/posts/1015.html" target="_blank" title="這裡">這裡</a>）。<br/><br/>裝胎前我檢查了一下是否竄動或中心偏移，<br/>前後輪都只有輕微橫向竄動，<br/>沒有中心偏移。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

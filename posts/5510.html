@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
-    <p>Bicycle Workshop — English Edition</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/index.html">
+        <span class="brand-title">Nomu Lab Diary</span>
+        <span class="brand-subtitle">Bicycle Workshop Archive</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/index.html">Archive</a>
+      <a href="/guides/wheel-building.html">Wheel Guide</a>
+      <a href="/glossary.html">Glossary</a>
+      <a href="/about.html">About</a>
+    </nav>
     <div class="lang-toggle"><span class="lang-btn active">EN</span><a class="lang-btn" href="/zh/posts/5510.html">繁中</a></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/index.html">← All posts</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>Rebuilt the CLX50DB Rear Wheel</h1>
     <p class="post-meta">December 10, 2020</p>
+    <div class="post-body"><div class="entrytext">Another day of wheel building (etc.). Not only did this fail to meet the conditions, but<br/>the work itself went way beyond just wheel building itself<br/>and was actually way more labor-intensive.<br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00351amx14.jpg" target="_blank"><img alt="DSC00351amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00351amx14s.jpg" width="320"/></a><br/>A customer brought me a <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Roval+CLX50+disc+brake+rear+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">Roval CLX50</a><br/>disc brake rear wheel for service.<br/>It's clearly sloppy, the braking feel is poor, and<br/>it wobbles in the corners during criterium racing, apparently.<br/>Go on, tell me more.<br/>But anyway...<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00352amx14.jpg" target="_blank"><img alt="DSC00352amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00352amx14s.jpg" width="320"/></a><br/>The white sticker with the R on the Roval has peeled off, so<br/>the black print underneath is showing through,<br/>but with just OVAL remaining, most people would naturally read it as "Oval,"<br/>so shouldn't ROVAL also be pronounced "Roval"<br/>like I've always called it?<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00357amx14.jpg" target="_blank"><img alt="DSC00357amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00357amx14s.jpg" width="320"/></a><br/>↑Would people in the Roval camp read this as Oval too?<br/>Well, there's a possibility it's closer to the Roval pronunciation in French.<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00388amx14.jpg" target="_blank"><img alt="DSC00388amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00388amx14s.jpg" width="320"/></a><br/>The white Roval sticker is layered over<br/>a black print underneath that has enough distinct thickness<br/>to catch your fingernail.<br/><br/>The black print has the same finish as the CLX text in the image above, and<br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00389amx14.jpg" target="_blank"><img alt="DSC00389amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00389amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00390amx14.jpg" target="_blank"><img alt="DSC00390amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00390amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00391amx14.jpg" target="_blank"><img alt="DSC00391amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00391amx14s.jpg" width="320"/></a><br/>Looking closely, the white sticker isn't perfectly aligned<br/>over the print, and it's peeling up in various places, so<br/>if it were me, I'd probably just remove all of it and go with a black label look.<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00353amx14.jpg" target="_blank"><img alt="DSC00353amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00353amx14s.jpg" width="320"/></a><br/>The Roval 2:1 lacing wheel has a sharp final cross angle on the freewheel side—that's Design Flaw #1. Even on<br/>radially-laced rim brake rear wheels on the non-drive side,<br/>the non-drive side shows less spoke deformation.<br/>If you're tensioning to the rim's limit,<br/>the non-drive side reaches its limit first—and I question how that works<br/>for a rear wheel with dish.<br/><br/>In this wheel's case, the non-drive side is single-crossed, so<br/>the left-right difference is even worse.<br/>Design Flaw #2 is that both sides have a small spoke ratio.<br/>It's built with aero spokes of equal diameter on both sides with about 65% spoke ratio, but<br/>Bora and Zonda use spokes with slightly larger spoke ratios<br/>than this.<br/>Design Flaw #3 is the hub dimensions.<br/>To be nitpicky, there are design flaws up to #7,<br/>but I won't write them because they'd be just for blog content.<br/><br/>Comparing rim brake rear wheels, both are 21H, and while<br/>you almost never hear about Bora rim brakes rubbing,<br/>Roval gets reports of shoe rub even with decent spacing between shoe and rim, so<br/>even though the wheels look similar, there's a huge gap in refinement.<br/>It's not just me saying Roval wheels are theoretically crap—<br/>the actual results reflect that too.<br/>The CLX64 front wheel that was recently vibrating on descents?<br/>That stopped when I rebuilt it.<br/>One thing to defend: with Campagnolo disc brake rims,<br/>for some reason the rim weight becomes unnecessarily heavy, so<br/>comparing similar rim heights, Roval's rim would actually be lighter.<br/><br/>This rear wheel is 24H with no dishing holes in the rim, so<br/>rebuilding it with something like a <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Toni+Rebo+disc+brake+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Toni Rebo disc hub</a> would get you<br/>a wheel vastly better than the original—honestly,<br/>it'd be harder to build a wheel with worse tension than this.<br/>But the original setup uses a DT freewheel body and Shimano 11-speed right end,<br/>so I don't want the shifting adjustment position to change, and<br/>I want to avoid the extra rear hub cost, and<br/><s>plus there's my personal desire to increase sample data for proving<br/>that you can rebuild 2:1 lacing better (fuhihi)</s><br/>so I decided to reuse the hub.<br/><br/>What needs doing is swapping the non-drive side for <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+Swiss+CX+Sprint+spokes" target="_blank" rel="noopener sponsored" class="amz-inline">CX Sprint spokes</a> and<br/>tying in the final cross on the drive side, but<br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00354amx14.jpg" target="_blank"><img alt="DSC00354amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00354amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00355amx14.jpg" target="_blank"><img alt="DSC00355amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00355amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00356amx14.jpg" target="_blank"><img alt="DSC00356amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00356amx14s.jpg" width="320"/></a><br/>from a chain drop, all the outer spokes on the drive side<br/>(non-porcupine direction) have damage, and about 4 of them are bent and need replacing,<br/>so I have to repair those too.<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00358amx14.jpg" target="_blank"><img alt="DSC00358amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00358amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00359amx14.jpg" target="_blank"><img alt="DSC00359amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00359amx14s.jpg" width="320"/></a><br/>There was runout from spoke deformation, but<br/>there was also centering offset.<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00360amx14.jpg" target="_blank"><img alt="DSC00360amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00360amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00361amx14.jpg" target="_blank"><img alt="DSC00361amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00361amx14s.jpg" width="320"/></a><br/>↑State with all replacement spokes removed.<br/>Wouldn't it actually take less time to build this from scratch<br/>with a new hub and rim? ←Exactly right<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00362amx14.jpg" target="_blank"><img alt="DSC00362amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00362amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00363amx14.jpg" target="_blank"><img alt="DSC00363amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00363amx14s.jpg" width="320"/></a><br/>I won't deny I'm deliberately doing this for article value,<br/>but this is the point during work where the centering offset is largest.<br/>With equal-diameter lacing where the non-drive side runs higher tension,<br/>you shouldn't shift toward the drive side, but<br/>because three-quarters of the original spokes remain on the drive side,<br/>I didn't want to loosen them.<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00370amx14.jpg" target="_blank"><img alt="DSC00370amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00370amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00371amx14.jpg" target="_blank"><img alt="DSC00371amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00371amx14s.jpg" width="320"/></a><br/>Center is dialed in.<br/>By this point I've also fine-tuned the radial runout.<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00368amx14.jpg" target="_blank"><img alt="DSC00368amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00368amx14s.jpg" width="320"/></a><br/>↑From the side<br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00369amx14.jpg" target="_blank"><img alt="DSC00369amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00369amx14s.jpg" width="320"/></a><br/>↑From front and rear<br/>Roval's straight spokes use a spoke head that's press-flattened from the side—<br/>a "sliced enoki mushroom" head shape—that fits into a slot in the hub flange<br/>to stop spoke rotation.<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00383amx14.jpg" target="_blank"><img alt="DSC00383amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00383amx14s.jpg" width="320"/></a><br/>The replacement spokes on the drive side have the same machining, but<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00367amx14.jpg" target="_blank"><img alt="DSC00367amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00367amx14s.jpg" width="320"/></a><br/>on the non-drive side, where the original spokes had enoki heads,<br/>the flange shape doesn't require that form and<br/>(even if machined, wouldn't provide rotation resistance), and<br/>since enoki heads would actually reduce hub contact area,<br/>I'm deliberately using them unmodified.<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00372amx14.jpg" target="_blank"><img alt="DSC00372amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00372amx14s.jpg" width="320"/></a><br/>Built.<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00373amx14.jpg" target="_blank"><img alt="DSC00373amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00373amx14s.jpg" width="320"/></a><br/>Using cross-lace counter on different spoke counts per side and reverse different-diameter lacing,<br/>drive side is original <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+Swiss+Aerolite+spokes" target="_blank" rel="noopener sponsored" class="amz-inline">Aerolite</a> with <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+Swiss+CX-RAY+spokes" target="_blank" rel="noopener sponsored" class="amz-inline">CX-RAY</a> for repairs,<br/>non-drive side is CX Sprint.<br/>I'll tie in the drive side final cross later.<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00376amx14.jpg" target="_blank"><img alt="DSC00376amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00376amx14s.jpg" width="320"/></a><br/>I used CX-RAY straight repair spokes to get lengths between<br/>310mm, 270mm, 240mm, etc., so<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00375amx14.jpg" target="_blank"><img alt="DSC00375amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00375amx14s.jpg" width="320"/></a><br/>the plain section is longer.<br/>The image above shows where the rotation-lock tool bottomed out<br/>on the plain section.<br/>Like normal CX-RAY—which has<br/>"most of the spoke length as flattened butted sections"—<br/>spokes are currently available in 2mm increments, but<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00374amx14.jpg" target="_blank"><img alt="DSC00374amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00374amx14s.jpg" width="320"/></a><br/>the OEM spokes also have an oddly long plain section by the nipple end, and<br/>it just happened that using length-specified CX-RAY straight spokes<br/>gave a spoke ratio closer to the original.<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00384amx14.jpg" target="_blank"><img alt="DSC00384amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00384amx14s.jpg" width="320"/></a><br/>↑(Spokes that were replaced because they were bent)<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00385amx14.jpg" target="_blank"><img alt="DSC00385amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00385amx14s.jpg" width="320"/></a><br/>3 out of 4 are clearly bent.<br/>I was a bit uncertain about the bottom spoke in the image, but<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00386amx14.jpg" target="_blank"><img alt="DSC00386amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00386amx14s.jpg" width="320"/></a><br/>it was gouged by the chain, so I replaced it.<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00387amx14.jpg" target="_blank"><img alt="DSC00387amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00387amx14s.jpg" width="320"/></a><br/>Addendum: I've tied it in.<br/>The finish is good enough I want to keep it as a sample. Fuhihi.
+</div></div>
+    <aside class="post-guides">
+      <strong>Technical archive</strong>
+      <nav aria-label="Technical guides">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">Another day of wheel building (etc.). Not only did this fail to meet the conditions, but<br/>the work itself went way beyond just wheel building itself<br/>and was actually way more labor-intensive.<br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00351amx14.jpg" target="_blank"><img alt="DSC00351amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00351amx14s.jpg" width="320"/></a><br/>A customer brought me a <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Roval+CLX50+disc+brake+rear+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">Roval CLX50</a><br/>disc brake rear wheel for service.<br/>It's clearly sloppy, the braking feel is poor, and<br/>it wobbles in the corners during criterium racing, apparently.<br/>Go on, tell me more.<br/>But anyway...<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00352amx14.jpg" target="_blank"><img alt="DSC00352amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00352amx14s.jpg" width="320"/></a><br/>The white sticker with the R on the Roval has peeled off, so<br/>the black print underneath is showing through,<br/>but with just OVAL remaining, most people would naturally read it as "Oval,"<br/>so shouldn't ROVAL also be pronounced "Roval"<br/>like I've always called it?<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00357amx14.jpg" target="_blank"><img alt="DSC00357amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00357amx14s.jpg" width="320"/></a><br/>↑Would people in the Roval camp read this as Oval too?<br/>Well, there's a possibility it's closer to the Roval pronunciation in French.<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00388amx14.jpg" target="_blank"><img alt="DSC00388amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00388amx14s.jpg" width="320"/></a><br/>The white Roval sticker is layered over<br/>a black print underneath that has enough distinct thickness<br/>to catch your fingernail.<br/><br/>The black print has the same finish as the CLX text in the image above, and<br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00389amx14.jpg" target="_blank"><img alt="DSC00389amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00389amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00390amx14.jpg" target="_blank"><img alt="DSC00390amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00390amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00391amx14.jpg" target="_blank"><img alt="DSC00391amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00391amx14s.jpg" width="320"/></a><br/>Looking closely, the white sticker isn't perfectly aligned<br/>over the print, and it's peeling up in various places, so<br/>if it were me, I'd probably just remove all of it and go with a black label look.<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00353amx14.jpg" target="_blank"><img alt="DSC00353amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00353amx14s.jpg" width="320"/></a><br/>The Roval 2:1 lacing wheel has a sharp final cross angle on the freewheel side—that's Design Flaw #1. Even on<br/>radially-laced rim brake rear wheels on the non-drive side,<br/>the non-drive side shows less spoke deformation.<br/>If you're tensioning to the rim's limit,<br/>the non-drive side reaches its limit first—and I question how that works<br/>for a rear wheel with dish.<br/><br/>In this wheel's case, the non-drive side is single-crossed, so<br/>the left-right difference is even worse.<br/>Design Flaw #2 is that both sides have a small spoke ratio.<br/>It's built with aero spokes of equal diameter on both sides with about 65% spoke ratio, but<br/>Bora and Zonda use spokes with slightly larger spoke ratios<br/>than this.<br/>Design Flaw #3 is the hub dimensions.<br/>To be nitpicky, there are design flaws up to #7,<br/>but I won't write them because they'd be just for blog content.<br/><br/>Comparing rim brake rear wheels, both are 21H, and while<br/>you almost never hear about Bora rim brakes rubbing,<br/>Roval gets reports of shoe rub even with decent spacing between shoe and rim, so<br/>even though the wheels look similar, there's a huge gap in refinement.<br/>It's not just me saying Roval wheels are theoretically crap—<br/>the actual results reflect that too.<br/>The CLX64 front wheel that was recently vibrating on descents?<br/>That stopped when I rebuilt it.<br/>One thing to defend: with Campagnolo disc brake rims,<br/>for some reason the rim weight becomes unnecessarily heavy, so<br/>comparing similar rim heights, Roval's rim would actually be lighter.<br/><br/>This rear wheel is 24H with no dishing holes in the rim, so<br/>rebuilding it with something like a <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Toni+Rebo+disc+brake+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Toni Rebo disc hub</a> would get you<br/>a wheel vastly better than the original—honestly,<br/>it'd be harder to build a wheel with worse tension than this.<br/>But the original setup uses a DT freewheel body and Shimano 11-speed right end,<br/>so I don't want the shifting adjustment position to change, and<br/>I want to avoid the extra rear hub cost, and<br/><s>plus there's my personal desire to increase sample data for proving<br/>that you can rebuild 2:1 lacing better (fuhihi)</s><br/>so I decided to reuse the hub.<br/><br/>What needs doing is swapping the non-drive side for <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+Swiss+CX+Sprint+spokes" target="_blank" rel="noopener sponsored" class="amz-inline">CX Sprint spokes</a> and<br/>tying in the final cross on the drive side, but<br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00354amx14.jpg" target="_blank"><img alt="DSC00354amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00354amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00355amx14.jpg" target="_blank"><img alt="DSC00355amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00355amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00356amx14.jpg" target="_blank"><img alt="DSC00356amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00356amx14s.jpg" width="320"/></a><br/>from a chain drop, all the outer spokes on the drive side<br/>(non-porcupine direction) have damage, and about 4 of them are bent and need replacing,<br/>so I have to repair those too.<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00358amx14.jpg" target="_blank"><img alt="DSC00358amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00358amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00359amx14.jpg" target="_blank"><img alt="DSC00359amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00359amx14s.jpg" width="320"/></a><br/>There was runout from spoke deformation, but<br/>there was also centering offset.<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00360amx14.jpg" target="_blank"><img alt="DSC00360amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00360amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00361amx14.jpg" target="_blank"><img alt="DSC00361amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00361amx14s.jpg" width="320"/></a><br/>↑State with all replacement spokes removed.<br/>Wouldn't it actually take less time to build this from scratch<br/>with a new hub and rim? ←Exactly right<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00362amx14.jpg" target="_blank"><img alt="DSC00362amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00362amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00363amx14.jpg" target="_blank"><img alt="DSC00363amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00363amx14s.jpg" width="320"/></a><br/>I won't deny I'm deliberately doing this for article value,<br/>but this is the point during work where the centering offset is largest.<br/>With equal-diameter lacing where the non-drive side runs higher tension,<br/>you shouldn't shift toward the drive side, but<br/>because three-quarters of the original spokes remain on the drive side,<br/>I didn't want to loosen them.<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00370amx14.jpg" target="_blank"><img alt="DSC00370amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00370amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00371amx14.jpg" target="_blank"><img alt="DSC00371amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00371amx14s.jpg" width="320"/></a><br/>Center is dialed in.<br/>By this point I've also fine-tuned the radial runout.<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00368amx14.jpg" target="_blank"><img alt="DSC00368amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00368amx14s.jpg" width="320"/></a><br/>↑From the side<br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00369amx14.jpg" target="_blank"><img alt="DSC00369amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00369amx14s.jpg" width="320"/></a><br/>↑From front and rear<br/>Roval's straight spokes use a spoke head that's press-flattened from the side—<br/>a "sliced enoki mushroom" head shape—that fits into a slot in the hub flange<br/>to stop spoke rotation.<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00383amx14.jpg" target="_blank"><img alt="DSC00383amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00383amx14s.jpg" width="320"/></a><br/>The replacement spokes on the drive side have the same machining, but<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00367amx14.jpg" target="_blank"><img alt="DSC00367amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00367amx14s.jpg" width="320"/></a><br/>on the non-drive side, where the original spokes had enoki heads,<br/>the flange shape doesn't require that form and<br/>(even if machined, wouldn't provide rotation resistance), and<br/>since enoki heads would actually reduce hub contact area,<br/>I'm deliberately using them unmodified.<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00372amx14.jpg" target="_blank"><img alt="DSC00372amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00372amx14s.jpg" width="320"/></a><br/>Built.<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00373amx14.jpg" target="_blank"><img alt="DSC00373amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00373amx14s.jpg" width="320"/></a><br/>Using cross-lace counter on different spoke counts per side and reverse different-diameter lacing,<br/>drive side is original <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+Swiss+Aerolite+spokes" target="_blank" rel="noopener sponsored" class="amz-inline">Aerolite</a> with <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+Swiss+CX-RAY+spokes" target="_blank" rel="noopener sponsored" class="amz-inline">CX-RAY</a> for repairs,<br/>non-drive side is CX Sprint.<br/>I'll tie in the drive side final cross later.<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00376amx14.jpg" target="_blank"><img alt="DSC00376amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00376amx14s.jpg" width="320"/></a><br/>I used CX-RAY straight repair spokes to get lengths between<br/>310mm, 270mm, 240mm, etc., so<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00375amx14.jpg" target="_blank"><img alt="DSC00375amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00375amx14s.jpg" width="320"/></a><br/>the plain section is longer.<br/>The image above shows where the rotation-lock tool bottomed out<br/>on the plain section.<br/>Like normal CX-RAY—which has<br/>"most of the spoke length as flattened butted sections"—<br/>spokes are currently available in 2mm increments, but<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00374amx14.jpg" target="_blank"><img alt="DSC00374amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00374amx14s.jpg" width="320"/></a><br/>the OEM spokes also have an oddly long plain section by the nipple end, and<br/>it just happened that using length-specified CX-RAY straight spokes<br/>gave a spoke ratio closer to the original.<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00384amx14.jpg" target="_blank"><img alt="DSC00384amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00384amx14s.jpg" width="320"/></a><br/>↑(Spokes that were replaced because they were bent)<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00385amx14.jpg" target="_blank"><img alt="DSC00385amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00385amx14s.jpg" width="320"/></a><br/>3 out of 4 are clearly bent.<br/>I was a bit uncertain about the bottom spoke in the image, but<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00386amx14.jpg" target="_blank"><img alt="DSC00386amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00386amx14s.jpg" width="320"/></a><br/>it was gouged by the chain, so I replaced it.<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00387amx14.jpg" target="_blank"><img alt="DSC00387amx14.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00387amx14s.jpg" width="320"/></a><br/>Addendum: I've tied it in.<br/>The finish is good enough I want to keep it as a sample. Fuhihi.
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">Products Mentioned in This Article</p>
       <ul>

@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,37 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
-    <p>Bicycle Workshop — English Edition</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/index.html">
+        <span class="brand-title">Nomu Lab Diary</span>
+        <span class="brand-subtitle">Bicycle Workshop Archive</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/index.html">Archive</a>
+      <a href="/guides/wheel-building.html">Wheel Guide</a>
+      <a href="/glossary.html">Glossary</a>
+      <a href="/about.html">About</a>
+    </nav>
     <div class="lang-toggle"><span class="lang-btn active">EN</span><a class="lang-btn" href="/zh/posts/4658.html">繁中</a></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/index.html">← All posts</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Wheel Building</p>
     <h1>On Intentional Wheel Center Offset</h1>
     <p class="post-meta">May 24, 2019</p>
+    <div class="post-body"><div class="entrytext">I wrote something the other day about whether to accept wheel center offset,<br/>and I received the following comment:<br/><br/>You say wheel center offset isn't something you can feel while riding,<br/>but in cases where the freewheel side is a dead-end with non-serviceable radial spoking,<br/>is there merit in offsetting the center somewhat to increase tension on the freewheel side?<br/>It seems like increasing freewheel-side tension would be the greater factor.<br/>And I'm not sure it's fair to dismiss wheels adjusted with such thinking as "wheel truing play-acting."<br/><br/>I'd appreciate your thoughts.<br/><br/>That's the comment. I won't quibble over the term "half-freewheel."<br/><br/>If you want me to spell it out that clearly, then I will:<br/>an equal-spoke-count radial-spoking rear wheel on the non-freewheel side is,<br/>within any realistic range you can imagine, nearly the worst possible build method,<br/>and in response to that idiotic build method,<br/>using the expedient measure of prioritizing non-freewheel-side tension over wheel center—saying the offset doesn't matter as long as it's tensioned—<br/>is nothing more than foolish half-wit thinking.<br/>Let me spell it out clearly once more: that's foolish half-wit thinking, wheel truing play-acting, and wheel-building play-acting.<br/>How many millimeters exactly would you have to offset it<br/>to make it better than a wheel with proper center?<br/>Ah, don't bother answering—I'm about to explain it in detail.<br/><br/>With brands like <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Zentrisch+rear+wheel+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Zentrisch</a> and some earlier <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Reynolds+rear+wheel+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Reynolds</a> models,<br/>there are rear wheels with straight-spoke hubs and 40-spoke builds—<br/>meaning 40-spoke radial spoking on the non-freewheel side<br/>with no option to change the rear hub.<br/>People often say things like "it's loose, tension it more."<br/>But there's nothing we can do about it.<br/>A rear wheel that has "proper wheel center" and "dead-end freewheel-side tension"<br/>cannot have its tension increased while maintaining proper wheel center.<br/><br/>I did write the other day that wheel center offset isn't perceptible while riding,<br/>but I also wrote "unless it's considerably offset."<br/>When I say "considerably," there's no set definition,<br/>but I'd say about 1mm, or at most 2mm.<br/>If the wheel were offset that much,<br/>it would interfere with brake setup before the question of whether you'd notice it while riding comes up—<br/>you'd notice the offset and try to correct it.<br/><br/>Alternatively, with the rear wheel installed on the frame,<br/>if you look at the gap between the chainstay and the tire sidewall visually,<br/>with a wheel whose center is "considerably" offset<br/>you can actually determine the offset just by looking<br/>(except on frames with asymmetrical chainstays).<br/><br/>When looking at the gap between the seatstay or fork blade and the rim or tire,<br/>suppose the gap between a properly-centered wheel and the frame is<br/>10mm on each side (left and right),<br/>and the rim shifts 1mm to the left—<br/>then the left-side gap becomes 9mm (10mm minus 1mm),<br/>and the right-side gap becomes 11mm (10mm plus 1mm),<br/>a difference of 2mm, which you can actually spot visually.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01097amx12.jpg" target="_blank"><img alt="DSC01097amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01097amx12s.jpg" width="320"/></a><br/>The standard flange dimensions for current 11-speed freewheel bodies<br/>are 19mm on the freewheel side and 38mm on the non-freewheel side,<br/>measuring from the hub center to the outer edge of the flange.<br/>When you measure the flange with calipers, it comes to 57mm.<br/>Aside from <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+hub+rear+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">DT</a> (which has a slightly narrower left flange) and brands like American Classic or Gokiso with extreme dimensions,<br/>Shimano, Campagnolo, <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Chris+King+rear+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Chris King</a>, and Novatec all stay pretty close to these figures.<br/>The <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Evo+Lite+rear+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Evo Lite hub</a>'s nominal flange widths are 16.35mm on the freewheel side<br/>and 36.93mm on the non-freewheel side,<br/>which add up to 53.28mm,<br/>but when you set calipers to 53.3mm and place them on the hub flange,<br/>you find this is the flange-center-to-flange-center dimension.<br/>For outer-edge-to-outer-edge measurement, it comes to about 56.5mm,<br/>so the Evo Lite hub also falls into the "approximately 57mm flange-width hub" category.<br/><br/>Unrelated to this discussion,<br/>the Evo Lite hub's nominal over-locknut dimension is 130mm.<br/>You might think that's obvious, but I doubt there's a single specimen that actually measures 130mm.<br/>They all measure around 130.5mm or so.<br/>According to inspection sheets from several frame manufacturers,<br/>rear end width is specified as 130mm with a tolerance of +2mm/-0mm,<br/>meaning 130–132mm is acceptable,<br/>and when actually measured, many frames are around 131mm,<br/>so I've never heard of trouble getting an Evo Lite hub rear wheel into a frame without widening the dropouts.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01099amx12.jpg" target="_blank"><img alt="DSC01099amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01099amx12s.jpg" width="320"/></a><br/>So if this rear hub had equal-diameter flanges on both sides<br/>instead of high-low flanges,<br/>and you built it with equal-diameter spokes in equal numbers,<br/>the point where left and right spoke tensions balance<br/>is where the rim sits at the center of the flange width.<br/>In that state, if you place a centering gauge on the freewheel side, note the dimension,<br/>then place it on the non-freewheel side,<br/>the gap between the centering gauge and the left dropout would be—<br/>to give the answer first, 19mm—but let me work through the roundabout addition:<br/><br/>The distance from the flange's outer edge to the hub's end is<br/>46mm on the freewheel side and 27mm on the non-freewheel side.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01100amx12.jpg" target="_blank"><img alt="DSC01100amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01100amx12s.jpg" width="320"/></a><br/>If you divide the 57mm hub flange width equally into 28.5mm on each side,<br/>and position the rim directly above (or below) that center,<br/>with rim width assumed as zero, the distance from the right dropout to the rim is 74.5mm,<br/>and from the left dropout to the rim is 55.5mm,<br/>a difference of 19mm.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01101amx12.jpg" target="_blank"><img alt="DSC01101amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01101amx12s.jpg" width="320"/></a><br/>Let's say rim width is 20mm.<br/>In that case, the distances from left and right dropouts to the rim<br/>each get 10mm closer, but the difference remains 19mm.<br/>What I'm getting at is: with a rear wheel built on a hub with standard dimensions,<br/>using equal-diameter spokes in a 44 or 66 build,<br/>when the gap between the left dropout and the centering gauge reaches about 19mm,<br/>the spoke tension difference between left and right disappears.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01047amx12.jpg" target="_blank"><img alt="DSC01047amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01047amx12s.jpg" width="320"/></a><br/>Two posts back, while building the rear wheel for Nomu Lab Wheel #5,<br/>I did a little experiment.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01048amx12.jpg" target="_blank"><img alt="DSC01048amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01048amx12s.jpg" width="320"/></a><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01049amx12.jpg" target="_blank"><img alt="DSC01049amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01049amx12s.jpg" width="320"/></a><br/>Evo Lite hub, all Campagnolo spokes, 46-spoke build.<br/>The hub has high-low flanges, and I'm using unequal spoke counts (asymmetrical),<br/>so the conditions are actually better than in that diagram above.<br/>In theory, before this rear wheel reaches 19mm center offset,<br/>the left and right spoke tensions should either equalize or reverse.<br/><br/>I went with all Campagnolo spokes because with identical spokes,<br/>I can reliably compare the relative magnitudes of first and second spoke tensions.<br/><br/>With identical spokes,<br/>if first spoke tension is freewheel side > non-freewheel side,<br/>then second spoke tension will also be freewheel side > non-freewheel side,<br/>and if first spoke tension is equal left-right, second will also be equal.<br/>If I use Campagnolo/Shimano or Shimano/CX-RAY (half-Campagnolo) combinations,<br/>I can't make that comparison.<br/>Importantly, the relationship between first and second spoke tension isn't linear,<br/>so even if first spoke tension is "freewheel side at 120% of non-freewheel side,"<br/>that doesn't mean second spoke tension will also be 120%.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01028amx12.jpg" target="_blank"><img alt="DSC01028amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01028amx12s.jpg" width="320"/></a><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01029amx12.jpg" target="_blank"><img alt="DSC01029amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01029amx12s.jpg" width="320"/></a><br/>I offset the gap between the gauge and dropout to about 2.5mm.<br/>I'm not setting a specific number of millimeters to aim for.<br/>I'm just gradually tightening the non-freewheel side<br/>while keeping the wheel true (both radially and laterally).<br/>As I mentioned, this is "considerable" offset,<br/>it interferes with brake setup, and<br/>with the rear wheel installed on the frame, you can see the offset with your eyes.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01030amx12.jpg" target="_blank"><img alt="DSC01030amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01030amx12s.jpg" width="320"/></a><br/>Using a Hozan tension meter, first spoke tension on the freewheel side: 127<br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01033amx12.jpg" target="_blank"><img alt="DSC01033amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01033amx12s.jpg" width="320"/></a><br/>and non-freewheel side just under 99,<br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01036amx12.jpg" target="_blank"><img alt="DSC01036amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01036amx12s.jpg" width="320"/></a><br/>freewheel side 125,<br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01035amx12.jpg" target="_blank"><img alt="DSC01035amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01035amx12s.jpg" width="320"/></a><br/>non-freewheel side just under 94.<br/>If you've built wheels before, you know that's reasonably well-tensioned—not bad—<br/>but at low tension, the non-freewheel-side readings become much more scattered.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01037amx12.jpg" target="_blank"><img alt="DSC01037amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01037amx12s.jpg" width="320"/></a><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01038amx12.jpg" target="_blank"><img alt="DSC01038amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01038amx12s.jpg" width="320"/></a><br/>I tensioned the non-freewheel side further.<br/>The gap between gauge and dropout is now about 8.5mm.<br/>At this point, it's unusable as a wheel, the offset is that severe.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01040amx12.jpg" target="_blank"><img alt="DSC01040amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01040amx12s.jpg" width="320"/></a><br/>Freewheel side just over 135.<br/>Since the 2.5mm offset point, I haven't tensioned the freewheel side at all.<br/>When you tension the non-freewheel side, the freewheel side tension increases a bit too.<br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01042amx12.jpg" target="_blank"><img alt="DSC01042amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01042amx12s.jpg" width="320"/></a><br/>Non-freewheel side just under 127.<br/>But that's one spoke that happened to be particularly tense in the scatter,<br/>and the other 11 spokes are hovering around 120 or so.<br/><br/>Since the freewheel side is a dead-end, from here I'll loosen the freewheel side. I loosened it by three-quarters turn.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01043amx12.jpg" target="_blank"><img alt="DSC01043amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01043amx12s.jpg" width="320"/></a><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01044amx12.jpg" target="_blank"><img alt="DSC01044amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01044amx12s.jpg" width="320"/></a><br/>The gap between left dropout and gauge is now about 11.5mm.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01045amx12.jpg" target="_blank"><img alt="DSC01045amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01045amx12s.jpg" width="320"/></a><br/>Minimum on the freewheel side<br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01046amx12.jpg" target="_blank"><img alt="DSC01046amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01046amx12s.jpg" width="320"/></a><br/>and maximum on the non-freewheel side<br/>On average, it's still freewheel side > non-freewheel side, but<br/>between the minimum freewheel value and maximum non-freewheel value, we finally see a reversal.<br/>If I tensioned a bit more, the average would probably reverse too,<br/>but to go further and bring the freewheel maximum to below the non-freewheel minimum<br/>seemed like it would probably be impossible,<br/>so I disassembled the wheel at that point.<br/>Thanks to the high-low flanges and 46-spoke build,<br/>it's certain that balanced left-right tension will be reached<br/>before the dropout-to-gauge gap reaches the theoretical 19mm.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01057amx12.jpg" target="_blank"><img alt="DSC01057amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01057amx12s.jpg" width="320"/></a><br/>I did the 46-build instead of 40-build because<br/>I'll be converting to a half-Campagnolo 46-build later.<br/>I didn't want to unnecessarily multiply the spoke marks on the hub flanges of finished wheels.<br/><br/>Now, with a 40-spoke build, even if the hub dimensions were slightly better,<br/>achieving 19mm dropout-to-gauge gap wouldn't bring balanced tension,<br/>and offsetting the rim left by 1mm—which shouldn't interfere with brake setup—<br/>wouldn't allow you to feel the difference in non-freewheel-side tension,<br/>and considering the relative factors, tensioning the non-freewheel side more<br/>isn't a smart move.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01102amx12.jpg" target="_blank"><img alt="DSC01102amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01102amx12s.jpg" width="320"/></a><br/>This does depend on frame and fork accuracy as well,<br/>but I can't understand the mindset of saying it's fine if the rim is offset<br/>as long as it gains a marginal amount of tension,<br/>while all the other components are centered.<br/><br/>Is it really so wrong to call it "wheel truing play-acting"<br/>if someone insists on offsetting despite knowing this?<br/>This person has always given me petty nitpicks and pointless complaints,<br/>but I didn't expect them to be this intellectually dishonest.<br/><br/>It occurred to me that cutting into sleep time like this to write articles<br/>while nearly pulling all-nighters might not be the best idea,<br/>but I'm writing with the aim of making readable content nonetheless.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01058amx12.jpg" target="_blank"><img alt="DSC01058amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01058amx12s.jpg" width="320"/></a><br/>This isn't cherry-picked; it's just how it is, but<br/>I'm currently building up a LOOK 785 Huez frame,<br/>fitted with the rear wheel from Nomu Lab Wheel #5 (dead-center),<br/>shod with Continental 23C tires,<br/>and the gap between the widest part of the tire and the chainstay is about 6mm.<br/><br/>In other words, depending on the frame,<br/>intentional rear-wheel offset isn't really feasible on any significant scale anyway,<br/>so it makes more sense to think about how to tension the non-freewheel side more<br/>while maintaining proper wheel center.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01105amx12.jpg" target="_blank"><img alt="DSC01105amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01105amx12s.jpg" width="320"/></a><br/>"Tightening only the non-freewheel side even if it means offsetting wheel center"<br/>was discussed in the comment from the standpoint of increasing non-freewheel spoke tension,<br/>but comparing the relative magnitude of<br/>"brake pads getting closer to the rim from the offset, making them more prone to rub"<br/>versus<br/>"increased non-freewheel tension making rubbing less likely,"<br/>the gap-narrowing effect is the larger factor when it comes to brake rub.<br/>In other words, the wheel becomes more prone to brake rub.<br/>If it's not direct-mount and you can just bend the brake caliper a bit by hand, sure?<br/><br/>To borrow words from the original comment,<br/>well, if you can be "satisfied" with that, fine.<br/>If you think marginal non-freewheel tension gains are more important than wheel center,<br/>and if that's what gives you greater "satisfaction," that's your business,<br/>but I'll say outright: you're underestimating the relative importance of the factors.<br/>If the person who left the comment is a hobbyist,<br/>the matter ends with "wheel-building play-acting" (knock yourself out offsetting),<br/>but if they're in the same business as me, I'd have to justify<br/>rear-wheel offsetting to my customers with some explanation.<br/><br/>Actually, I suspect this person would snap back at me<br/>even if I wrote something like:<br/>"Nomu Lab considers increased non-freewheel tension the primary factor,<br/>so we intentionally offset the rear rim to the left."<br/><br/>As an aside,<br/>there are wheels out there that are dead-center,<br/>have dead-end freewheel-side tension,<br/>and then experience not just brake rub but actual frame rub<br/>(→ <a href="/posts/3760.html" target="_blank" title="here">here</a>),<br/>so problems that can't be solved by spoke tension<br/>require changing the build method itself.<br/>Oh right, the rear wheel at that link was non-freewheel-side radial,<br/>but it was a 2:1 build, not equal-spoke-count.<br/>I follow up where I can, and I've confirmed that after I rebuilt it,<br/>both brake rub and frame rub disappeared.<br/><br/><br/><br/>Now I'll write about intentional wheel center offset<br/>for reasons other than "to tension the non-freewheel side even a bit."<br/>The ideal state is<br/>"the exact center of the front and rear wheels align perfectly<br/>with the centerline of the frame,"<br/>but taking the frame and fork as a given,<br/>I center my wheels as standalone units.<br/>Strictly speaking, frame and fork accuracy is often far more questionable<br/>than most people realize, and I'm probably more aware of this than most,<br/>but I'm not going into that here.<br/>If you worry about every detail, you can't ride off-the-rack frames.<br/><br/>If you mount a frame or fork on a surface plate,<br/>discern the centerline deviation in 0.1mm increments,<br/>and deliberately offset front or rear wheels based on that data—<br/>well, if it were feasible, I'd say it could work.<br/>Of course, a wheel offset for a specific frame can't be used with another frame,<br/>and with a rim-brake front wheel, you also can't flip it and install it on the paired fork.<br/>But this isn't a practical scenario.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01106amx12.jpg" target="_blank"><img alt="DSC01106amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01106amx12s.jpg" width="320"/></a><br/>Some Cannondale frames have<br/>12mm thru-axle rear dropouts nominally at 148mm,<br/>but not actually following 12×148mm BOOST spec—<br/>rather, "extending only the right side by 6mm from 12×142mm"<br/>to reduce or nearly eliminate rear wheel dish.<br/>In this case, the frame's centerline—the center of the saddle, stem, and BB—<br/>is at the center of the 142mm span, excluding the 6mm extension.<br/>This is "the way it is," so you need to build<br/>a rear wheel that's offset as a standalone unit.<br/><br/>Also, when I build my personal rear wheels,<br/>I often offset the rim leftward by about the thickness of a sheet of paper<br/>(less than "considerable," well within the undetectable range),<br/>but that's for tracking long-term lateral rim position drift,<br/>not in any way expecting increased non-freewheel-side tension.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01091amx12.jpg" target="_blank"><img alt="DSC01091amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01091amx12s.jpg" width="320"/></a><br/>Which brings me to the Dansco frame from my previous post.<br/>This frame—<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01104amx12.jpg" target="_blank"><img alt="DSC01104amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01104amx12s.jpg" width="320"/></a><br/>—visually, by any standard, has its head tube shifted to the right.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01107amx12.jpg" target="_blank"><img alt="DSC01107amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01107amx12s.jpg" width="320"/></a><br/>↑Front view of frame and fork<br/>So if I center the wheel as a standalone unit,<br/>the rim center will be offset to the right of the frame's centerline.<br/>That will probably be visually detectable, so even without measuring on a surface plate,<br/>whether by visual assessment or another appropriate method,<br/>I'm thinking of offsetting the rim leftward to a degree<br/>that the offset becomes undetectable or imperceptible.<br/>I'm planning a disc-brake front wheel,<br/>so there's no possibility of reversing it and installing it on a different fork.<br/>With this frame, actually bringing the rim to the frame centerline<br/>would worsen the left-right spoke tension difference,<br/>but I consider the front wheel's center aligning<br/>with the center of the saddle, crankset, and handlebar<br/>to be the more important primary factor,<br/>so I'll build a front wheel that's not centered as a standalone unit.<br/><br/>I mean, if wheel center is less important than non-freewheel-side tension increases,<br/>then shouldn't you also offset front wheel rims to the right a bit<br/>on disc hubs, which have less dish than freewheel hubs?<br/>If I actually built it that way, with the rim and tire visibly shifted to the right,<br/>would customers really be "satisfied"<br/>with a front wheel that's clearly offset?<br/><br/>"I'm only discussing intentional center offset<br/>for 'rear wheels with no choice but non-freewheel-side radial spoking'!<br/>Don't extrapolate to wheels in general!"<br/>I can already hear that objection, so let me address that too:<br/>When completed wheels use straight spokes in 40-spoke builds,<br/>the freewheel-side spoke percentage is hardly ever near 100%.<br/>So if I tension the freewheel side to 14-gauge plain<br/>and center it properly, I can build a fully-CX-RAY<br/>(or slightly higher-spoke-ratio square-aero)<br/>40-spoke rear wheel that's far more solid<br/>than an intentionally-offset rear</div>
+    <aside class="post-guides">
+      <strong>Technical archive</strong>
+      <nav aria-label="Technical guides">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,7 +405,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">I wrote something the other day about whether to accept wheel center offset,<br/>and I received the following comment:<br/><br/>You say wheel center offset isn't something you can feel while riding,<br/>but in cases where the freewheel side is a dead-end with non-serviceable radial spoking,<br/>is there merit in offsetting the center somewhat to increase tension on the freewheel side?<br/>It seems like increasing freewheel-side tension would be the greater factor.<br/>And I'm not sure it's fair to dismiss wheels adjusted with such thinking as "wheel truing play-acting."<br/><br/>I'd appreciate your thoughts.<br/><br/>That's the comment. I won't quibble over the term "half-freewheel."<br/><br/>If you want me to spell it out that clearly, then I will:<br/>an equal-spoke-count radial-spoking rear wheel on the non-freewheel side is,<br/>within any realistic range you can imagine, nearly the worst possible build method,<br/>and in response to that idiotic build method,<br/>using the expedient measure of prioritizing non-freewheel-side tension over wheel center—saying the offset doesn't matter as long as it's tensioned—<br/>is nothing more than foolish half-wit thinking.<br/>Let me spell it out clearly once more: that's foolish half-wit thinking, wheel truing play-acting, and wheel-building play-acting.<br/>How many millimeters exactly would you have to offset it<br/>to make it better than a wheel with proper center?<br/>Ah, don't bother answering—I'm about to explain it in detail.<br/><br/>With brands like <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Zentrisch+rear+wheel+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Zentrisch</a> and some earlier <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Reynolds+rear+wheel+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Reynolds</a> models,<br/>there are rear wheels with straight-spoke hubs and 40-spoke builds—<br/>meaning 40-spoke radial spoking on the non-freewheel side<br/>with no option to change the rear hub.<br/>People often say things like "it's loose, tension it more."<br/>But there's nothing we can do about it.<br/>A rear wheel that has "proper wheel center" and "dead-end freewheel-side tension"<br/>cannot have its tension increased while maintaining proper wheel center.<br/><br/>I did write the other day that wheel center offset isn't perceptible while riding,<br/>but I also wrote "unless it's considerably offset."<br/>When I say "considerably," there's no set definition,<br/>but I'd say about 1mm, or at most 2mm.<br/>If the wheel were offset that much,<br/>it would interfere with brake setup before the question of whether you'd notice it while riding comes up—<br/>you'd notice the offset and try to correct it.<br/><br/>Alternatively, with the rear wheel installed on the frame,<br/>if you look at the gap between the chainstay and the tire sidewall visually,<br/>with a wheel whose center is "considerably" offset<br/>you can actually determine the offset just by looking<br/>(except on frames with asymmetrical chainstays).<br/><br/>When looking at the gap between the seatstay or fork blade and the rim or tire,<br/>suppose the gap between a properly-centered wheel and the frame is<br/>10mm on each side (left and right),<br/>and the rim shifts 1mm to the left—<br/>then the left-side gap becomes 9mm (10mm minus 1mm),<br/>and the right-side gap becomes 11mm (10mm plus 1mm),<br/>a difference of 2mm, which you can actually spot visually.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01097amx12.jpg" target="_blank"><img alt="DSC01097amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01097amx12s.jpg" width="320"/></a><br/>The standard flange dimensions for current 11-speed freewheel bodies<br/>are 19mm on the freewheel side and 38mm on the non-freewheel side,<br/>measuring from the hub center to the outer edge of the flange.<br/>When you measure the flange with calipers, it comes to 57mm.<br/>Aside from <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+hub+rear+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">DT</a> (which has a slightly narrower left flange) and brands like American Classic or Gokiso with extreme dimensions,<br/>Shimano, Campagnolo, <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Chris+King+rear+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Chris King</a>, and Novatec all stay pretty close to these figures.<br/>The <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Evo+Lite+rear+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Evo Lite hub</a>'s nominal flange widths are 16.35mm on the freewheel side<br/>and 36.93mm on the non-freewheel side,<br/>which add up to 53.28mm,<br/>but when you set calipers to 53.3mm and place them on the hub flange,<br/>you find this is the flange-center-to-flange-center dimension.<br/>For outer-edge-to-outer-edge measurement, it comes to about 56.5mm,<br/>so the Evo Lite hub also falls into the "approximately 57mm flange-width hub" category.<br/><br/>Unrelated to this discussion,<br/>the Evo Lite hub's nominal over-locknut dimension is 130mm.<br/>You might think that's obvious, but I doubt there's a single specimen that actually measures 130mm.<br/>They all measure around 130.5mm or so.<br/>According to inspection sheets from several frame manufacturers,<br/>rear end width is specified as 130mm with a tolerance of +2mm/-0mm,<br/>meaning 130–132mm is acceptable,<br/>and when actually measured, many frames are around 131mm,<br/>so I've never heard of trouble getting an Evo Lite hub rear wheel into a frame without widening the dropouts.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01099amx12.jpg" target="_blank"><img alt="DSC01099amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01099amx12s.jpg" width="320"/></a><br/>So if this rear hub had equal-diameter flanges on both sides<br/>instead of high-low flanges,<br/>and you built it with equal-diameter spokes in equal numbers,<br/>the point where left and right spoke tensions balance<br/>is where the rim sits at the center of the flange width.<br/>In that state, if you place a centering gauge on the freewheel side, note the dimension,<br/>then place it on the non-freewheel side,<br/>the gap between the centering gauge and the left dropout would be—<br/>to give the answer first, 19mm—but let me work through the roundabout addition:<br/><br/>The distance from the flange's outer edge to the hub's end is<br/>46mm on the freewheel side and 27mm on the non-freewheel side.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01100amx12.jpg" target="_blank"><img alt="DSC01100amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01100amx12s.jpg" width="320"/></a><br/>If you divide the 57mm hub flange width equally into 28.5mm on each side,<br/>and position the rim directly above (or below) that center,<br/>with rim width assumed as zero, the distance from the right dropout to the rim is 74.5mm,<br/>and from the left dropout to the rim is 55.5mm,<br/>a difference of 19mm.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01101amx12.jpg" target="_blank"><img alt="DSC01101amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01101amx12s.jpg" width="320"/></a><br/>Let's say rim width is 20mm.<br/>In that case, the distances from left and right dropouts to the rim<br/>each get 10mm closer, but the difference remains 19mm.<br/>What I'm getting at is: with a rear wheel built on a hub with standard dimensions,<br/>using equal-diameter spokes in a 44 or 66 build,<br/>when the gap between the left dropout and the centering gauge reaches about 19mm,<br/>the spoke tension difference between left and right disappears.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01047amx12.jpg" target="_blank"><img alt="DSC01047amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01047amx12s.jpg" width="320"/></a><br/>Two posts back, while building the rear wheel for Nomu Lab Wheel #5,<br/>I did a little experiment.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01048amx12.jpg" target="_blank"><img alt="DSC01048amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01048amx12s.jpg" width="320"/></a><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01049amx12.jpg" target="_blank"><img alt="DSC01049amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01049amx12s.jpg" width="320"/></a><br/>Evo Lite hub, all Campagnolo spokes, 46-spoke build.<br/>The hub has high-low flanges, and I'm using unequal spoke counts (asymmetrical),<br/>so the conditions are actually better than in that diagram above.<br/>In theory, before this rear wheel reaches 19mm center offset,<br/>the left and right spoke tensions should either equalize or reverse.<br/><br/>I went with all Campagnolo spokes because with identical spokes,<br/>I can reliably compare the relative magnitudes of first and second spoke tensions.<br/><br/>With identical spokes,<br/>if first spoke tension is freewheel side > non-freewheel side,<br/>then second spoke tension will also be freewheel side > non-freewheel side,<br/>and if first spoke tension is equal left-right, second will also be equal.<br/>If I use Campagnolo/Shimano or Shimano/CX-RAY (half-Campagnolo) combinations,<br/>I can't make that comparison.<br/>Importantly, the relationship between first and second spoke tension isn't linear,<br/>so even if first spoke tension is "freewheel side at 120% of non-freewheel side,"<br/>that doesn't mean second spoke tension will also be 120%.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01028amx12.jpg" target="_blank"><img alt="DSC01028amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01028amx12s.jpg" width="320"/></a><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01029amx12.jpg" target="_blank"><img alt="DSC01029amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01029amx12s.jpg" width="320"/></a><br/>I offset the gap between the gauge and dropout to about 2.5mm.<br/>I'm not setting a specific number of millimeters to aim for.<br/>I'm just gradually tightening the non-freewheel side<br/>while keeping the wheel true (both radially and laterally).<br/>As I mentioned, this is "considerable" offset,<br/>it interferes with brake setup, and<br/>with the rear wheel installed on the frame, you can see the offset with your eyes.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01030amx12.jpg" target="_blank"><img alt="DSC01030amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01030amx12s.jpg" width="320"/></a><br/>Using a Hozan tension meter, first spoke tension on the freewheel side: 127<br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01033amx12.jpg" target="_blank"><img alt="DSC01033amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01033amx12s.jpg" width="320"/></a><br/>and non-freewheel side just under 99,<br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01036amx12.jpg" target="_blank"><img alt="DSC01036amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01036amx12s.jpg" width="320"/></a><br/>freewheel side 125,<br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01035amx12.jpg" target="_blank"><img alt="DSC01035amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01035amx12s.jpg" width="320"/></a><br/>non-freewheel side just under 94.<br/>If you've built wheels before, you know that's reasonably well-tensioned—not bad—<br/>but at low tension, the non-freewheel-side readings become much more scattered.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01037amx12.jpg" target="_blank"><img alt="DSC01037amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01037amx12s.jpg" width="320"/></a><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01038amx12.jpg" target="_blank"><img alt="DSC01038amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01038amx12s.jpg" width="320"/></a><br/>I tensioned the non-freewheel side further.<br/>The gap between gauge and dropout is now about 8.5mm.<br/>At this point, it's unusable as a wheel, the offset is that severe.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01040amx12.jpg" target="_blank"><img alt="DSC01040amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01040amx12s.jpg" width="320"/></a><br/>Freewheel side just over 135.<br/>Since the 2.5mm offset point, I haven't tensioned the freewheel side at all.<br/>When you tension the non-freewheel side, the freewheel side tension increases a bit too.<br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01042amx12.jpg" target="_blank"><img alt="DSC01042amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01042amx12s.jpg" width="320"/></a><br/>Non-freewheel side just under 127.<br/>But that's one spoke that happened to be particularly tense in the scatter,<br/>and the other 11 spokes are hovering around 120 or so.<br/><br/>Since the freewheel side is a dead-end, from here I'll loosen the freewheel side. I loosened it by three-quarters turn.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01043amx12.jpg" target="_blank"><img alt="DSC01043amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01043amx12s.jpg" width="320"/></a><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01044amx12.jpg" target="_blank"><img alt="DSC01044amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01044amx12s.jpg" width="320"/></a><br/>The gap between left dropout and gauge is now about 11.5mm.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01045amx12.jpg" target="_blank"><img alt="DSC01045amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01045amx12s.jpg" width="320"/></a><br/>Minimum on the freewheel side<br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01046amx12.jpg" target="_blank"><img alt="DSC01046amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01046amx12s.jpg" width="320"/></a><br/>and maximum on the non-freewheel side<br/>On average, it's still freewheel side > non-freewheel side, but<br/>between the minimum freewheel value and maximum non-freewheel value, we finally see a reversal.<br/>If I tensioned a bit more, the average would probably reverse too,<br/>but to go further and bring the freewheel maximum to below the non-freewheel minimum<br/>seemed like it would probably be impossible,<br/>so I disassembled the wheel at that point.<br/>Thanks to the high-low flanges and 46-spoke build,<br/>it's certain that balanced left-right tension will be reached<br/>before the dropout-to-gauge gap reaches the theoretical 19mm.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01057amx12.jpg" target="_blank"><img alt="DSC01057amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01057amx12s.jpg" width="320"/></a><br/>I did the 46-build instead of 40-build because<br/>I'll be converting to a half-Campagnolo 46-build later.<br/>I didn't want to unnecessarily multiply the spoke marks on the hub flanges of finished wheels.<br/><br/>Now, with a 40-spoke build, even if the hub dimensions were slightly better,<br/>achieving 19mm dropout-to-gauge gap wouldn't bring balanced tension,<br/>and offsetting the rim left by 1mm—which shouldn't interfere with brake setup—<br/>wouldn't allow you to feel the difference in non-freewheel-side tension,<br/>and considering the relative factors, tensioning the non-freewheel side more<br/>isn't a smart move.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01102amx12.jpg" target="_blank"><img alt="DSC01102amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01102amx12s.jpg" width="320"/></a><br/>This does depend on frame and fork accuracy as well,<br/>but I can't understand the mindset of saying it's fine if the rim is offset<br/>as long as it gains a marginal amount of tension,<br/>while all the other components are centered.<br/><br/>Is it really so wrong to call it "wheel truing play-acting"<br/>if someone insists on offsetting despite knowing this?<br/>This person has always given me petty nitpicks and pointless complaints,<br/>but I didn't expect them to be this intellectually dishonest.<br/><br/>It occurred to me that cutting into sleep time like this to write articles<br/>while nearly pulling all-nighters might not be the best idea,<br/>but I'm writing with the aim of making readable content nonetheless.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01058amx12.jpg" target="_blank"><img alt="DSC01058amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01058amx12s.jpg" width="320"/></a><br/>This isn't cherry-picked; it's just how it is, but<br/>I'm currently building up a LOOK 785 Huez frame,<br/>fitted with the rear wheel from Nomu Lab Wheel #5 (dead-center),<br/>shod with Continental 23C tires,<br/>and the gap between the widest part of the tire and the chainstay is about 6mm.<br/><br/>In other words, depending on the frame,<br/>intentional rear-wheel offset isn't really feasible on any significant scale anyway,<br/>so it makes more sense to think about how to tension the non-freewheel side more<br/>while maintaining proper wheel center.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01105amx12.jpg" target="_blank"><img alt="DSC01105amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01105amx12s.jpg" width="320"/></a><br/>"Tightening only the non-freewheel side even if it means offsetting wheel center"<br/>was discussed in the comment from the standpoint of increasing non-freewheel spoke tension,<br/>but comparing the relative magnitude of<br/>"brake pads getting closer to the rim from the offset, making them more prone to rub"<br/>versus<br/>"increased non-freewheel tension making rubbing less likely,"<br/>the gap-narrowing effect is the larger factor when it comes to brake rub.<br/>In other words, the wheel becomes more prone to brake rub.<br/>If it's not direct-mount and you can just bend the brake caliper a bit by hand, sure?<br/><br/>To borrow words from the original comment,<br/>well, if you can be "satisfied" with that, fine.<br/>If you think marginal non-freewheel tension gains are more important than wheel center,<br/>and if that's what gives you greater "satisfaction," that's your business,<br/>but I'll say outright: you're underestimating the relative importance of the factors.<br/>If the person who left the comment is a hobbyist,<br/>the matter ends with "wheel-building play-acting" (knock yourself out offsetting),<br/>but if they're in the same business as me, I'd have to justify<br/>rear-wheel offsetting to my customers with some explanation.<br/><br/>Actually, I suspect this person would snap back at me<br/>even if I wrote something like:<br/>"Nomu Lab considers increased non-freewheel tension the primary factor,<br/>so we intentionally offset the rear rim to the left."<br/><br/>As an aside,<br/>there are wheels out there that are dead-center,<br/>have dead-end freewheel-side tension,<br/>and then experience not just brake rub but actual frame rub<br/>(→ <a href="/posts/3760.html" target="_blank" title="here">here</a>),<br/>so problems that can't be solved by spoke tension<br/>require changing the build method itself.<br/>Oh right, the rear wheel at that link was non-freewheel-side radial,<br/>but it was a 2:1 build, not equal-spoke-count.<br/>I follow up where I can, and I've confirmed that after I rebuilt it,<br/>both brake rub and frame rub disappeared.<br/><br/><br/><br/>Now I'll write about intentional wheel center offset<br/>for reasons other than "to tension the non-freewheel side even a bit."<br/>The ideal state is<br/>"the exact center of the front and rear wheels align perfectly<br/>with the centerline of the frame,"<br/>but taking the frame and fork as a given,<br/>I center my wheels as standalone units.<br/>Strictly speaking, frame and fork accuracy is often far more questionable<br/>than most people realize, and I'm probably more aware of this than most,<br/>but I'm not going into that here.<br/>If you worry about every detail, you can't ride off-the-rack frames.<br/><br/>If you mount a frame or fork on a surface plate,<br/>discern the centerline deviation in 0.1mm increments,<br/>and deliberately offset front or rear wheels based on that data—<br/>well, if it were feasible, I'd say it could work.<br/>Of course, a wheel offset for a specific frame can't be used with another frame,<br/>and with a rim-brake front wheel, you also can't flip it and install it on the paired fork.<br/>But this isn't a practical scenario.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01106amx12.jpg" target="_blank"><img alt="DSC01106amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01106amx12s.jpg" width="320"/></a><br/>Some Cannondale frames have<br/>12mm thru-axle rear dropouts nominally at 148mm,<br/>but not actually following 12×148mm BOOST spec—<br/>rather, "extending only the right side by 6mm from 12×142mm"<br/>to reduce or nearly eliminate rear wheel dish.<br/>In this case, the frame's centerline—the center of the saddle, stem, and BB—<br/>is at the center of the 142mm span, excluding the 6mm extension.<br/>This is "the way it is," so you need to build<br/>a rear wheel that's offset as a standalone unit.<br/><br/>Also, when I build my personal rear wheels,<br/>I often offset the rim leftward by about the thickness of a sheet of paper<br/>(less than "considerable," well within the undetectable range),<br/>but that's for tracking long-term lateral rim position drift,<br/>not in any way expecting increased non-freewheel-side tension.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01091amx12.jpg" target="_blank"><img alt="DSC01091amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01091amx12s.jpg" width="320"/></a><br/>Which brings me to the Dansco frame from my previous post.<br/>This frame—<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01104amx12.jpg" target="_blank"><img alt="DSC01104amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01104amx12s.jpg" width="320"/></a><br/>—visually, by any standard, has its head tube shifted to the right.<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01107amx12.jpg" target="_blank"><img alt="DSC01107amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01107amx12s.jpg" width="320"/></a><br/>↑Front view of frame and fork<br/>So if I center the wheel as a standalone unit,<br/>the rim center will be offset to the right of the frame's centerline.<br/>That will probably be visually detectable, so even without measuring on a surface plate,<br/>whether by visual assessment or another appropriate method,<br/>I'm thinking of offsetting the rim leftward to a degree<br/>that the offset becomes undetectable or imperceptible.<br/>I'm planning a disc-brake front wheel,<br/>so there's no possibility of reversing it and installing it on a different fork.<br/>With this frame, actually bringing the rim to the frame centerline<br/>would worsen the left-right spoke tension difference,<br/>but I consider the front wheel's center aligning<br/>with the center of the saddle, crankset, and handlebar<br/>to be the more important primary factor,<br/>so I'll build a front wheel that's not centered as a standalone unit.<br/><br/>I mean, if wheel center is less important than non-freewheel-side tension increases,<br/>then shouldn't you also offset front wheel rims to the right a bit<br/>on disc hubs, which have less dish than freewheel hubs?<br/>If I actually built it that way, with the rim and tire visibly shifted to the right,<br/>would customers really be "satisfied"<br/>with a front wheel that's clearly offset?<br/><br/>"I'm only discussing intentional center offset<br/>for 'rear wheels with no choice but non-freewheel-side radial spoking'!<br/>Don't extrapolate to wheels in general!"<br/>I can already hear that objection, so let me address that too:<br/>When completed wheels use straight spokes in 40-spoke builds,<br/>the freewheel-side spoke percentage is hardly ever near 100%.<br/>So if I tension the freewheel side to 14-gauge plain<br/>and center it properly, I can build a fully-CX-RAY<br/>(or slightly higher-spoke-ratio square-aero)<br/>40-spoke rear wheel that's far more solid<br/>than an intentionally-offset rear</div>
     <div class="affiliate-box">
       <p class="affiliate-title">Products Mentioned in This Article</p>
       <ul>

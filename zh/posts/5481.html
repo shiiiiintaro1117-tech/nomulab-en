@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/5481.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>三輪車的輪子重新組裝了（後輪，但是前篇）</h1>
     <p class="post-meta">November 20, 2020</p>
+    <div class="post-body"><div class="entrytext">今天又是輪子（以下省略）。<br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09934msn3.jpg" target="_blank"><img alt="DSC09934msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09934msn3s.jpg" width="320"/></a><br/>從客人那裡接下了一個１２０mm高的管狀輪轂組成的後輪。<br/>這是三輪車的後輪，這裡說的三輪車（３輪車）是指<br/>前面２輪、後面１輪的躺姿自行車。<br/>客人有允許，或者說根本希望我寫出來，<br/>所以我就提一下，組裝這個輪子的是一家叫ＨＣ Works的<br/>主要經營躺姿自行車和三輪車的蠢貨店。<br/>至於哪裡蠢我會慢慢寫，但考慮到<br/>可能存在其他騎著同樣爛東西的輪子，<br/>這篇也當作是一種警告。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09937msn3.jpg" target="_blank"><img alt="DSC09937msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09937msn3s.jpg" width="320"/></a><br/>ＢＣＴ品牌的２：１組合花鼓 ２４幅<br/>全黑 Campagnolo １４號 從讀數來看是４０交叉組。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09935msn3.jpg" target="_blank"><img alt="DSC09935msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09935msn3s.jpg" width="320"/></a><br/>這個輪轂，由於輪轂高度高，所以輻條短，<br/>但從輪轂孔內側的結構體來看，<br/>和２０寸HE的低高度輪轂基本一樣（輻條長度幾乎相同）。<br/>輵條這麼短的時候，張緊到一定程度後，<br/>握輻條時的變形就幾乎不動了，但<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09936msn3.jpg" target="_blank"><img alt="DSC09936msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09936msn3s.jpg" width="320"/></a><br/>↑就像這樣，從自由輪側來看異常鬆弛。<br/>跳動和中心偏移幾乎沒有。<br/>就是從暫組開始稍微鬆鬆地張了一下就組好的。<br/>後面拆解時，<br/>所有螺帽只要鬆開２圈，<br/>之後就能用手轉鬆了。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09941msn3.jpg" target="_blank"><img alt="DSC09941msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09941msn3s.jpg" width="320"/></a><br/>用 Hozan 張力計的測量頭按下去的話⋯⋯<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09942msn3.jpg" target="_blank"><img alt="DSC09942msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09942msn3s.jpg" width="320"/></a><br/>輻條就會像這樣彎曲。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09943msn3.jpg" target="_blank"><img alt="DSC09943msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09943msn3s.jpg" width="320"/></a><br/>檢查了自由輪側的所有輻條。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09944msn3.jpg" target="_blank"><img alt="DSC09944msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09944msn3s.jpg" width="320"/></a><br/>這裡的 Ｈ１ＳＴ 是７４。隔壁是７２。<br/>大多數地方都在８０以下，稍高一點的地方大約９０左右。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09945msn3.jpg" target="_blank"><img alt="DSC09945msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09945msn3s.jpg" width="320"/></a><br/>最高的地方是１０９．５。<br/>張力越低，<br/>輻條張力的分散就越大。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00017msn4.jpg" target="_blank"><img alt="DSC00017msn4.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00017msn4s.jpg" width="320"/></a><br/>平端輻條的 Ｈ１ＳＴ 和第２ＳＴ 的關係<br/>沒特別寫成飯桌話題，所以也列表了，<br/>Ｈ１ＳＴ 在８０以下就代表第２ＳＴ 在１５０Ｎ以下<br/>「低到測不了」的程度。<br/>Ｈ１ＳＴ 最高的１０９．５ 大約是５００Ｎ，<br/>但超過１００的只有最後交叉的那２根。<br/><br/>特別說一下，這不是這篇文章的重點。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09940msn3.jpg" target="_blank"><img alt="DSC09940msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09940msn3s.jpg" width="320"/></a><br/>這個後輪，非自由輪側的０交叉組沒有成為徑向組。<br/>位相錯位或者說發生了扭轉。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09939msn3.jpg" target="_blank"><img alt="DSC09939msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09939msn3s.jpg" width="320"/></a><br/>↑斜著看可能更清楚<br/><br/>如果輪子組完都沒察覺到這一點，那簡直不可思議，所以<br/>對ＨＣ Works 來說，這大概就是「理所當然的事」吧。<br/>「用這個花鼓和這個輪轂就必然會這樣」<br/>之類的藉口我預先堵住了，<br/>下面列舉反證。<br/><br/>小徑車輪子中，<br/>３６幅花鼓配２４幅輪轂，左右同數組的時候<br/>確實有無法避免的情況<br/>（比如用 Alfine 內變速花鼓組的時候）<br/>但這次的後輪是可以不產生位相錯位的方式組裝的。<br/><br/>Colnago 有個叫 ＭＣＣ 的輪子，<br/>那輪前後的左右都是０交叉的碳纖輻條。<br/>前輪是徑向組，<br/>但後輪左右都把輵條軌跡向著豪豬方向傾斜。<br/>因為是驅動輪，踩踏時飛輪芯要承受強烈的擠壓，<br/>應該是有考慮到力的方向。<br/>這個後輪，假如必須這樣組，<br/>非自由輪側的０交叉組應該向豪豬方向，<br/>但實際上反過來了。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09949msn3.jpg" target="_blank"><img alt="DSC09949msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09949msn3s.jpg" width="320"/></a><br/>一開始我以為非自由輪側的輵條<br/>是「一個個錯開到隔壁孔」，但不是。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09950msn3.jpg" target="_blank"><img alt="DSC09950msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09950msn3s.jpg" width="320"/></a><br/>從０交叉凸緣孔<br/>沿著徑向線放銀色輵條⋯⋯<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09951msn3.jpg" target="_blank"><img alt="DSC09951msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09951msn3s.jpg" width="320"/></a><br/>延長線上的輪轂孔已經被自由輪側的輵條佔了。<br/>看到這裡會覺得「這輪子確實只能這樣組」，但根本不是這樣。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09952msn3.jpg" target="_blank"><img alt="DSC09952msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09952msn3s.jpg" width="320"/></a><br/>自由輪側是４交叉（２重交叉）<br/>从２重交叉（最後交叉）下方的位相<br/>沿著花鼓軸平行放銀色輵條<br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09953msn3.jpg" target="_blank"><img alt="DSC09953msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09953msn3s.jpg" width="320"/></a><br/>非自由輪側的位相就會和凸緣孔重合。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09954msn3.jpg" target="_blank"><img alt="DSC09954msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09954msn3s.jpg" width="320"/></a><br/>在１重交叉下方做同樣的事<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09955msn3.jpg" target="_blank"><img alt="DSC09955msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09955msn3s.jpg" width="320"/></a><br/>非自由輪側的位相就會正好在凸緣孔的正中間。<br/>上面的圖輵條是銀色的，不是紅色，<br/>只是花鼓的顏色映進去了，特別說一下。<br/><br/>也就是說，這個花鼓是從３２幅通用花鼓<br/>把非自由輪側的凸緣孔間引一半的位相。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09956msn3.jpg" target="_blank"><img alt="DSC09956msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09956msn3s.jpg" width="320"/></a><br/>店裡的白板一面是空白，另一面是方眼，<br/>用方眼一側的話，即使徒手畫圖也相當準確。<br/>把方眼的一格當成<br/>輪子展開圖的４５°，<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09957msn3.jpg" target="_blank"><img alt="DSC09957msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09957msn3s.jpg" width="320"/></a><br/>３２幅輪轂的４５°就是４個輪轂孔。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09959msn3.jpg" target="_blank"><img alt="DSC09959msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09959msn3s.jpg" width="320"/></a><br/>延長到１８０°。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09960msn3.jpg" target="_blank"><img alt="DSC09960msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09960msn3s.jpg" width="320"/></a><br/>從這裡開始，按照３２幅通用花鼓組法<br/>畫出花鼓～輪轂～花鼓的輪子展開圖。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09962msn3.jpg" target="_blank"><img alt="DSC09962msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09962msn3s.jpg" width="320"/></a><br/>試著用左右都０交叉組的方式。<br/>如果輵條軌跡不發生位相錯位，<br/>且在展開圖上對輪轂和輪孔的線垂直，<br/>那０交叉的輵條就沿著徑向線走，<br/>也就是徑向組。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09963msn3.jpg" target="_blank"><img alt="DSC09963msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09963msn3s.jpg" width="320"/></a><br/>輵條消掉了。<br/>現在的花鼓，非自由輪側的凸緣孔<br/>每兩個就有一個停用、被封住，<br/>所以圖上也封起來。<br/>這樣花鼓就成了１６：８幅的２４幅<br/>（圖上只有１８０°的部分）。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09964msn3.jpg" target="_blank"><img alt="DSC09964msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09964msn3s.jpg" width="320"/></a><br/>把輪轂改成２４幅。４５°有３個輪轂孔。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09966msn3.jpg" target="_blank"><img alt="DSC09966msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09966msn3s.jpg" width="320"/></a><br/>２４幅輪轂孔加上２：１組的左右分配。<br/><span style="color:#FF0000">這裡的根本錯誤是，事先決定了非自由輪側的徑向組，<br/>卻沒有讓輪轂和左凸緣的孔位相對齊。</span><br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09967msn3.jpg" target="_blank"><img alt="DSC09967msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09967msn3s.jpg" width="320"/></a><br/>自由輪側０交叉組。<br/>所有輵條都離開了徑向線，但<br/>交替著按相同角度向不同方向偏離<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09968msn3.jpg" target="_blank"><img alt="DSC09968msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09968msn3s.jpg" width="320"/></a><br/>所以用切線組，最後交叉２根的合成方向<br/>就會和徑向線重合，不會產生位相錯位。<br/>從這裡開始，連接剩下的非自由輪側花鼓孔和輪轂孔⋯⋯<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09969msn3.jpg" target="_blank"><img alt="DSC09969msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09969msn3s.jpg" width="320"/></a><br/>就會像這樣。<br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09970msn3.jpg" target="_blank"><img alt="DSC09970msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09970msn3s.jpg" width="320"/></a><br/>或者像這樣。<br/>只是豪豬方向反轉而已。<br/>這就是開頭的狀態。<br/>順便說，如果只有自由輪側的切線組，<br/>不會產生位相錯位，<br/>但一旦通過非自由輪側的輵條，<br/>那位相錯位就會連累自由輪側的切線組也扭轉。<br/><br/>無論在圖上還是實際狀態裡<br/>２：１組都是 ＸＩ（X-I）組，<br/>但從橫向看非自由輪側的徑向輵條<br/>通過自由輪側最後交叉的 Ж（Zhe）組也行，<br/>無論哪種都能組出不產生位相錯位的輪子。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09971msn3.jpg" target="_blank"><img alt="DSC09971msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09971msn3s.jpg" width="320"/></a><br/>３條平行線中，上下花鼓的線不動，<br/>中間輪轂的線可以任意左右移動。<br/>對著２４幅輪轂「非自由輪側徑向組優先」<br/>輵條已經先畫好了。<br/>現在輪轂孔也<br/>只畫了非自由輪側輵條用的輪轂孔。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09972msn3.jpg" target="_blank"><img alt="DSC09972msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09972msn3s.jpg" width="320"/></a><br/>加上了自由輪側輵條的輪轂孔。<br/>非自由輪側輵條孔之間３等分形狀下的２個。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09973msn3.jpg" target="_blank"><img alt="DSC09973msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09973msn3s.jpg" width="320"/></a><br/>畫上自由輪側的輵條。<br/>不產生位相錯位，非自由輪側的輵條還是徑向組。<br/>上圖是 Ж 組，但<br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09975msn3.jpg" target="_blank"><img alt="DSC09975msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09975msn3s.jpg" width="320"/></a><br/>也能做成 ＸＩ 組。<br/>我個人的話，因為喜歡最後交叉的夾角鈍一些，<br/>如果組的話會選 Ж 組。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09985msn3.jpg" target="_blank"><img alt="DSC09985msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09985msn3s.jpg" width="320"/></a><br/>張力完全放鬆了。<br/>張力鬆了，自由輪側的輵條<br/>就會明顯受到非自由輪側的扭轉，<br/>能看到最後交叉的尖端在扭轉。<br/>假如從這裡去掉非自由輪側的輵條，<br/>自由輪側的切線組不會產生扭轉。<br/><br/>從這裡開始，先卸掉自由輪側的螺帽，<br/>但凸緣孔通著的輵條完全不動，維持原樣，<br/>轉換成不產生位相錯位的２：１組。<br/>需要的輵條長度會變，但<br/>這是暫組，沒問題。<br/>後面會提到，其實之前輵條長度本身就錯了<br/>（非自由輪側的扭轉輵條長度是怎麼算出來的呢⋯⋯？）。<br/><br/>「卸掉所有自由輪側螺帽的狀態」<br/>就相當於前面圖裡<br/>「確保非自由輪側徑向組優先的狀態」。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09986msn3.jpg" target="_blank"><img alt="DSC09986msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09986msn3s.jpg" width="320"/></a><br/>暫組了。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09987msn3.jpg" target="_blank"><img alt="DSC09987msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09987msn3s.jpg" width="320"/></a><br/>Ж 組。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09988msn3.jpg" target="_blank"><img alt="DSC09988msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09988msn3s.jpg" width="320"/></a><br/>沒有位相錯位，<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09989msn3.jpg" target="_blank"><img alt="DSC09989msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09989msn3s.jpg" width="320"/></a><br/>非自由輪側的０交叉是徑向組。<br/>明白了吧蠢貨。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09990msn3.jpg" target="_blank"><img alt="DSC09990msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09990msn3s.jpg" width="320"/></a><br/>如果要從這裡轉換成 ＸＩ 組，<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09991msn3.jpg" target="_blank"><img alt="DSC09991msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09991msn3s.jpg" width="320"/></a><br/>比如４交叉的話，<br/>從膠帶標記的凸緣孔開始<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09993msn3.jpg" target="_blank"><img alt="DSC09993msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09993msn3s.jpg" width="320"/></a><br/>像這樣就可以了。<br/>如前所述，我對最後交叉的夾角執著，<br/>如果要做的話，會用６交叉做成 Ж 組。<br/>還有，最初的組法和 Ж 組重新通過<br/>自由輪側都是義大利式組（內穿／外穿），但<br/>上面圖片的 ＸＩ 組的話，內穿和外穿會反轉，<br/>要是不想改，就要把輵條從花鼓上卸下來。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09995msn3.jpg" target="_blank"><img alt="DSC09995msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09995msn3s.jpg" width="320"/></a><br/>↑這是有停用位相的 Fulcrum Racing Zero 後輪，<br/>採用的是 ＸＩ 組。<br/>Fulcrum 在輪轂孔間距均勻的時代有 Ж 組，<br/>但有停用位相後，基本上是 ＸＩ 組。<br/>和現在的情況不同，輪轂孔邊有停用位相，<br/>所以不會因為非自由輪側的輵條改變最後交叉的夾角<br/>而影響 Ж 組還是 ＸＩ 組。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09997msn3.jpg" target="_blank"><img alt="DSC09997msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09997msn3s.jpg" width="320"/></a><br/>這個後輪是「２８幅非自由輪側徑向組的<br/>左右同數組輪子裡<br/>把非自由輪側輵條間引一半的２１幅」構造，<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09998msn3.jpg" target="_blank"><img alt="DSC09998msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09998msn3s.jpg" width="320"/></a><br/>要是間引的非自由輪側位相搞反了，<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09999msn3.jpg" target="_blank"><img alt="DSC09999msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09999msn3s.jpg" width="320"/></a><br/>↑輵條軌跡就會像這樣，<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00001msn4.jpg" target="_blank"><img alt="DSC00001msn4.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00001msn4s.jpg" width="320"/></a><br/>↑或者像這樣只有兩種可能。<br/>情況有點不同，<br/>但這次的情況類似。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00003msn4.jpg" target="_blank"><img alt="DSC00003msn4.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00003msn4s.jpg" width="320"/></a><br/>從這個狀態，左凸緣的停用位相反轉就<br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00004msn4.jpg" target="_blank"><img alt="DSC00004msn4.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00004msn4s.jpg" width="320"/></a><br/>就會變成這樣，所以。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09946msn3.jpg" target="_blank"><img alt="DSC09946msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09946msn3s.jpg" width="320"/></a><br/>時間線回溯一下，<br/>原來用的是長（１６mm）黃銅螺帽組裝的。<br/>客人問過店裡，<br/>他們說「輪轂孔太厚，非得用這個」，<br/>但用１２mm 螺帽也完全沒問題，握把的四角能完全露出來。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09994msn3.jpg" target="_blank"><img alt="DSC09994msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09994msn3s.jpg" width="320"/></a><br/>１２mm、１４mm、１６mm 螺帽<br/>嚴格來說螺紋圈數不同，<br/>但和螺帽本身長度差比起來微不足道。<br/>我是按螺帽外週側端面基準算輵條長度的，<br/>所以基本上不會因為螺帽長度改輵條長度。<br/>什麼意思呢，就是說螺帽長度差<br/>根本蓋不住輵條長度算錯的影響。<br/><br/>用燈從輪轂內部照，<br/>原來輪子的輵條長度明顯太短，<br/>但平常會把２：１組的１對或２對、<br/>３根或６根完全未鬆的輵條<br/>從輪轂裡拉出來拍照，這次想省了，<br/>因為輪轂高度太高無法拉，<br/>還有想證明不改任何材料<br/>也能轉換成正確的２：１組，<br/>所以這次放棄了。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09947msn3.jpg" target="_blank"><img alt="DSC09947msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09947msn3s.jpg" width="320"/></a><br/>說不定原來的狀態，用１２mm 螺帽的話<br/>輵條螺紋會露出來。<br/>短到那種程度。<br/>１６mm 螺帽有掩蓋這個的效果（算是吧）。<br/>啊呀，真是沒什麼教育意義啊！<br/><br/>另外，上圖是客人交來後一點沒動過的狀態，<br/>但從螺帽到輵條的軌跡有種「咔」的斷裂感。<br/>不是全部，但很多地方這樣。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00019msn4.jpg" target="_blank"><img alt="DSC00019msn4.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00020msn4.jpg" width="320"/></a><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00020msn4.jpg" target="_blank"><img alt="DSC00020msn4.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00020msn4s.jpg" width="320"/></a><br/>↑用１２mm 螺帽的話握把部分有充分露出。<br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00021msn4.jpg" target="_blank"><img alt="DSC00021msn4.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00021msn4s.jpg" width="320"/></a><br/>時間線跳了，這是組完後。<br/>螺帽和輵條之間<br/>軌跡斷裂的地方沒有了。<br/>換句話說，這個輪轂，不用１６mm 螺帽的必要，<br/>反而用的話不好。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00009msn4.jpg" target="_blank"><img alt="DSC00009msn4.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00009msn4s.jpg" width="320"/></a><br/>輪轂孔的孔位似乎有點偏。<br/>至少看著不像對齊在輪轂中央。<br/>但也不是左右交替偏，<br/>不是２：１組用的右、右、左的設置，也不是中間、中間、左的設置，<br/>從上面的氣門孔兩邊看，<br/>甚至隱隱看著像是反向輪轂。<br/>結論就是，精度相當隨意，<br/>沒有特意設計的孔位偏。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00010msn4.jpg" target="_blank"><img alt="DSC00010msn4.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00010msn4s.jpg" width="320"/></a><br/>就這樣，組好了。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00011msn4.jpg" target="_blank"><img alt="DSC00011msn4.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00011msn4s.jpg" width="320"/></a><br/>Evolite 花鼓 ２４幅 全 Campagnolo １４號４６交叉組。<br/>結線等後面再說。<br/>輪轂不是明確的２：１組用，所以<br/>改成左右同數組。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00013msn4.jpg" target="_blank"><img alt="DSC00013msn4.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00013msn4s.jpg" width="320"/></a><br/>平端輵條和 Ｈ１ＳＴ 的關係<br/>因為說沒特別寫成飯桌話題，<br/>我就開始了！<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00014msn4.jpg" target="_blank"><img alt="DSC00014msn4.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00014msn4s.jpg" width="320"/></a><br/>１３７左右！<br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00015msn4.jpg" target="_blank"><img alt="DSC00015msn4.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00015msn4s.jpg" width="320"/></a><br/>１３４．５！<br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00016msn4.jpg" target="_blank"><img alt="DSC00016msn4.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00016msn4s.jpg" width="320"/></a><br/>１３８左右！<br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00018msn4.jpg" target="_blank"><img alt="DSC00018msn4.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00018msn4s.jpg" width="320"/></a><br/>所以大約１３００Ｎ。<br/>這邊的數值表後面部分很粗糙，<br/>嚴格要知道的話，可以從<br/>另外有的圖表來看。<br/><br/>Ｈ１ＳＴ１４３是１５００Ｎ的情況，<br/>這已經超過了大多數輪轂的許容限度。<br/>１０００Ｎ、１３００Ｎ、１５００Ｎ時的 Ｈ１ＳＴ 差<br/>張力越低差越大。<br/>張力計測量頭的動作就像<br/>「重複性極高的握輵條」，<br/>１４號平端的情況，Ｈ１ＳＴ 超過１３０<br/>相對握輵條的變形量就幾乎沒差<br/>（＝騎乘體感硬度也差不多），<br/>再高的話，隨著張力增加<br/>輪轂孔破損風險反而會升高，<br/>所以輪子不是張越緊越好。<br/>但大飛輪花鼓的後輪，<br/>自由輪側１０００Ｎ和１３００Ｎ<br/>非自由輪側的第２ＳＴ 會差蠻大的，要注意。<br/>什麼？要我也測非自由輪側給你看？<br/>那邊開始就是飯桌話題了喔，呵呵呵。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">今天又是輪子（以下省略）。<br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09934msn3.jpg" target="_blank"><img alt="DSC09934msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09934msn3s.jpg" width="320"/></a><br/>從客人那裡接下了一個１２０mm高的管狀輪轂組成的後輪。<br/>這是三輪車的後輪，這裡說的三輪車（３輪車）是指<br/>前面２輪、後面１輪的躺姿自行車。<br/>客人有允許，或者說根本希望我寫出來，<br/>所以我就提一下，組裝這個輪子的是一家叫ＨＣ Works的<br/>主要經營躺姿自行車和三輪車的蠢貨店。<br/>至於哪裡蠢我會慢慢寫，但考慮到<br/>可能存在其他騎著同樣爛東西的輪子，<br/>這篇也當作是一種警告。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09937msn3.jpg" target="_blank"><img alt="DSC09937msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09937msn3s.jpg" width="320"/></a><br/>ＢＣＴ品牌的２：１組合花鼓 ２４幅<br/>全黑 Campagnolo １４號 從讀數來看是４０交叉組。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09935msn3.jpg" target="_blank"><img alt="DSC09935msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09935msn3s.jpg" width="320"/></a><br/>這個輪轂，由於輪轂高度高，所以輻條短，<br/>但從輪轂孔內側的結構體來看，<br/>和２０寸HE的低高度輪轂基本一樣（輻條長度幾乎相同）。<br/>輵條這麼短的時候，張緊到一定程度後，<br/>握輻條時的變形就幾乎不動了，但<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09936msn3.jpg" target="_blank"><img alt="DSC09936msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09936msn3s.jpg" width="320"/></a><br/>↑就像這樣，從自由輪側來看異常鬆弛。<br/>跳動和中心偏移幾乎沒有。<br/>就是從暫組開始稍微鬆鬆地張了一下就組好的。<br/>後面拆解時，<br/>所有螺帽只要鬆開２圈，<br/>之後就能用手轉鬆了。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09941msn3.jpg" target="_blank"><img alt="DSC09941msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09941msn3s.jpg" width="320"/></a><br/>用 Hozan 張力計的測量頭按下去的話⋯⋯<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09942msn3.jpg" target="_blank"><img alt="DSC09942msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09942msn3s.jpg" width="320"/></a><br/>輻條就會像這樣彎曲。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09943msn3.jpg" target="_blank"><img alt="DSC09943msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09943msn3s.jpg" width="320"/></a><br/>檢查了自由輪側的所有輻條。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09944msn3.jpg" target="_blank"><img alt="DSC09944msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09944msn3s.jpg" width="320"/></a><br/>這裡的 Ｈ１ＳＴ 是７４。隔壁是７２。<br/>大多數地方都在８０以下，稍高一點的地方大約９０左右。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09945msn3.jpg" target="_blank"><img alt="DSC09945msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09945msn3s.jpg" width="320"/></a><br/>最高的地方是１０９．５。<br/>張力越低，<br/>輻條張力的分散就越大。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00017msn4.jpg" target="_blank"><img alt="DSC00017msn4.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00017msn4s.jpg" width="320"/></a><br/>平端輻條的 Ｈ１ＳＴ 和第２ＳＴ 的關係<br/>沒特別寫成飯桌話題，所以也列表了，<br/>Ｈ１ＳＴ 在８０以下就代表第２ＳＴ 在１５０Ｎ以下<br/>「低到測不了」的程度。<br/>Ｈ１ＳＴ 最高的１０９．５ 大約是５００Ｎ，<br/>但超過１００的只有最後交叉的那２根。<br/><br/>特別說一下，這不是這篇文章的重點。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09940msn3.jpg" target="_blank"><img alt="DSC09940msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09940msn3s.jpg" width="320"/></a><br/>這個後輪，非自由輪側的０交叉組沒有成為徑向組。<br/>位相錯位或者說發生了扭轉。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09939msn3.jpg" target="_blank"><img alt="DSC09939msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09939msn3s.jpg" width="320"/></a><br/>↑斜著看可能更清楚<br/><br/>如果輪子組完都沒察覺到這一點，那簡直不可思議，所以<br/>對ＨＣ Works 來說，這大概就是「理所當然的事」吧。<br/>「用這個花鼓和這個輪轂就必然會這樣」<br/>之類的藉口我預先堵住了，<br/>下面列舉反證。<br/><br/>小徑車輪子中，<br/>３６幅花鼓配２４幅輪轂，左右同數組的時候<br/>確實有無法避免的情況<br/>（比如用 Alfine 內變速花鼓組的時候）<br/>但這次的後輪是可以不產生位相錯位的方式組裝的。<br/><br/>Colnago 有個叫 ＭＣＣ 的輪子，<br/>那輪前後的左右都是０交叉的碳纖輻條。<br/>前輪是徑向組，<br/>但後輪左右都把輵條軌跡向著豪豬方向傾斜。<br/>因為是驅動輪，踩踏時飛輪芯要承受強烈的擠壓，<br/>應該是有考慮到力的方向。<br/>這個後輪，假如必須這樣組，<br/>非自由輪側的０交叉組應該向豪豬方向，<br/>但實際上反過來了。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09949msn3.jpg" target="_blank"><img alt="DSC09949msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09949msn3s.jpg" width="320"/></a><br/>一開始我以為非自由輪側的輵條<br/>是「一個個錯開到隔壁孔」，但不是。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09950msn3.jpg" target="_blank"><img alt="DSC09950msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09950msn3s.jpg" width="320"/></a><br/>從０交叉凸緣孔<br/>沿著徑向線放銀色輵條⋯⋯<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09951msn3.jpg" target="_blank"><img alt="DSC09951msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09951msn3s.jpg" width="320"/></a><br/>延長線上的輪轂孔已經被自由輪側的輵條佔了。<br/>看到這裡會覺得「這輪子確實只能這樣組」，但根本不是這樣。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09952msn3.jpg" target="_blank"><img alt="DSC09952msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09952msn3s.jpg" width="320"/></a><br/>自由輪側是４交叉（２重交叉）<br/>从２重交叉（最後交叉）下方的位相<br/>沿著花鼓軸平行放銀色輵條<br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09953msn3.jpg" target="_blank"><img alt="DSC09953msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09953msn3s.jpg" width="320"/></a><br/>非自由輪側的位相就會和凸緣孔重合。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09954msn3.jpg" target="_blank"><img alt="DSC09954msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09954msn3s.jpg" width="320"/></a><br/>在１重交叉下方做同樣的事<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09955msn3.jpg" target="_blank"><img alt="DSC09955msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09955msn3s.jpg" width="320"/></a><br/>非自由輪側的位相就會正好在凸緣孔的正中間。<br/>上面的圖輵條是銀色的，不是紅色，<br/>只是花鼓的顏色映進去了，特別說一下。<br/><br/>也就是說，這個花鼓是從３２幅通用花鼓<br/>把非自由輪側的凸緣孔間引一半的位相。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09956msn3.jpg" target="_blank"><img alt="DSC09956msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09956msn3s.jpg" width="320"/></a><br/>店裡的白板一面是空白，另一面是方眼，<br/>用方眼一側的話，即使徒手畫圖也相當準確。<br/>把方眼的一格當成<br/>輪子展開圖的４５°，<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09957msn3.jpg" target="_blank"><img alt="DSC09957msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09957msn3s.jpg" width="320"/></a><br/>３２幅輪轂的４５°就是４個輪轂孔。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09959msn3.jpg" target="_blank"><img alt="DSC09959msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09959msn3s.jpg" width="320"/></a><br/>延長到１８０°。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09960msn3.jpg" target="_blank"><img alt="DSC09960msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09960msn3s.jpg" width="320"/></a><br/>從這裡開始，按照３２幅通用花鼓組法<br/>畫出花鼓～輪轂～花鼓的輪子展開圖。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09962msn3.jpg" target="_blank"><img alt="DSC09962msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09962msn3s.jpg" width="320"/></a><br/>試著用左右都０交叉組的方式。<br/>如果輵條軌跡不發生位相錯位，<br/>且在展開圖上對輪轂和輪孔的線垂直，<br/>那０交叉的輵條就沿著徑向線走，<br/>也就是徑向組。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09963msn3.jpg" target="_blank"><img alt="DSC09963msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09963msn3s.jpg" width="320"/></a><br/>輵條消掉了。<br/>現在的花鼓，非自由輪側的凸緣孔<br/>每兩個就有一個停用、被封住，<br/>所以圖上也封起來。<br/>這樣花鼓就成了１６：８幅的２４幅<br/>（圖上只有１８０°的部分）。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09964msn3.jpg" target="_blank"><img alt="DSC09964msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09964msn3s.jpg" width="320"/></a><br/>把輪轂改成２４幅。４５°有３個輪轂孔。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09966msn3.jpg" target="_blank"><img alt="DSC09966msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09966msn3s.jpg" width="320"/></a><br/>２４幅輪轂孔加上２：１組的左右分配。<br/><span style="color:#FF0000">這裡的根本錯誤是，事先決定了非自由輪側的徑向組，<br/>卻沒有讓輪轂和左凸緣的孔位相對齊。</span><br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09967msn3.jpg" target="_blank"><img alt="DSC09967msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09967msn3s.jpg" width="320"/></a><br/>自由輪側０交叉組。<br/>所有輵條都離開了徑向線，但<br/>交替著按相同角度向不同方向偏離<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09968msn3.jpg" target="_blank"><img alt="DSC09968msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09968msn3s.jpg" width="320"/></a><br/>所以用切線組，最後交叉２根的合成方向<br/>就會和徑向線重合，不會產生位相錯位。<br/>從這裡開始，連接剩下的非自由輪側花鼓孔和輪轂孔⋯⋯<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09969msn3.jpg" target="_blank"><img alt="DSC09969msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09969msn3s.jpg" width="320"/></a><br/>就會像這樣。<br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09970msn3.jpg" target="_blank"><img alt="DSC09970msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09970msn3s.jpg" width="320"/></a><br/>或者像這樣。<br/>只是豪豬方向反轉而已。<br/>這就是開頭的狀態。<br/>順便說，如果只有自由輪側的切線組，<br/>不會產生位相錯位，<br/>但一旦通過非自由輪側的輵條，<br/>那位相錯位就會連累自由輪側的切線組也扭轉。<br/><br/>無論在圖上還是實際狀態裡<br/>２：１組都是 ＸＩ（X-I）組，<br/>但從橫向看非自由輪側的徑向輵條<br/>通過自由輪側最後交叉的 Ж（Zhe）組也行，<br/>無論哪種都能組出不產生位相錯位的輪子。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09971msn3.jpg" target="_blank"><img alt="DSC09971msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09971msn3s.jpg" width="320"/></a><br/>３條平行線中，上下花鼓的線不動，<br/>中間輪轂的線可以任意左右移動。<br/>對著２４幅輪轂「非自由輪側徑向組優先」<br/>輵條已經先畫好了。<br/>現在輪轂孔也<br/>只畫了非自由輪側輵條用的輪轂孔。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09972msn3.jpg" target="_blank"><img alt="DSC09972msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09972msn3s.jpg" width="320"/></a><br/>加上了自由輪側輵條的輪轂孔。<br/>非自由輪側輵條孔之間３等分形狀下的２個。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09973msn3.jpg" target="_blank"><img alt="DSC09973msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09973msn3s.jpg" width="320"/></a><br/>畫上自由輪側的輵條。<br/>不產生位相錯位，非自由輪側的輵條還是徑向組。<br/>上圖是 Ж 組，但<br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09975msn3.jpg" target="_blank"><img alt="DSC09975msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09975msn3s.jpg" width="320"/></a><br/>也能做成 ＸＩ 組。<br/>我個人的話，因為喜歡最後交叉的夾角鈍一些，<br/>如果組的話會選 Ж 組。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09985msn3.jpg" target="_blank"><img alt="DSC09985msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09985msn3s.jpg" width="320"/></a><br/>張力完全放鬆了。<br/>張力鬆了，自由輪側的輵條<br/>就會明顯受到非自由輪側的扭轉，<br/>能看到最後交叉的尖端在扭轉。<br/>假如從這裡去掉非自由輪側的輵條，<br/>自由輪側的切線組不會產生扭轉。<br/><br/>從這裡開始，先卸掉自由輪側的螺帽，<br/>但凸緣孔通著的輵條完全不動，維持原樣，<br/>轉換成不產生位相錯位的２：１組。<br/>需要的輵條長度會變，但<br/>這是暫組，沒問題。<br/>後面會提到，其實之前輵條長度本身就錯了<br/>（非自由輪側的扭轉輵條長度是怎麼算出來的呢⋯⋯？）。<br/><br/>「卸掉所有自由輪側螺帽的狀態」<br/>就相當於前面圖裡<br/>「確保非自由輪側徑向組優先的狀態」。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09986msn3.jpg" target="_blank"><img alt="DSC09986msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09986msn3s.jpg" width="320"/></a><br/>暫組了。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09987msn3.jpg" target="_blank"><img alt="DSC09987msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09987msn3s.jpg" width="320"/></a><br/>Ж 組。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09988msn3.jpg" target="_blank"><img alt="DSC09988msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09988msn3s.jpg" width="320"/></a><br/>沒有位相錯位，<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09989msn3.jpg" target="_blank"><img alt="DSC09989msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09989msn3s.jpg" width="320"/></a><br/>非自由輪側的０交叉是徑向組。<br/>明白了吧蠢貨。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09990msn3.jpg" target="_blank"><img alt="DSC09990msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09990msn3s.jpg" width="320"/></a><br/>如果要從這裡轉換成 ＸＩ 組，<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09991msn3.jpg" target="_blank"><img alt="DSC09991msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09991msn3s.jpg" width="320"/></a><br/>比如４交叉的話，<br/>從膠帶標記的凸緣孔開始<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09993msn3.jpg" target="_blank"><img alt="DSC09993msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09993msn3s.jpg" width="320"/></a><br/>像這樣就可以了。<br/>如前所述，我對最後交叉的夾角執著，<br/>如果要做的話，會用６交叉做成 Ж 組。<br/>還有，最初的組法和 Ж 組重新通過<br/>自由輪側都是義大利式組（內穿／外穿），但<br/>上面圖片的 ＸＩ 組的話，內穿和外穿會反轉，<br/>要是不想改，就要把輵條從花鼓上卸下來。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09995msn3.jpg" target="_blank"><img alt="DSC09995msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09995msn3s.jpg" width="320"/></a><br/>↑這是有停用位相的 Fulcrum Racing Zero 後輪，<br/>採用的是 ＸＩ 組。<br/>Fulcrum 在輪轂孔間距均勻的時代有 Ж 組，<br/>但有停用位相後，基本上是 ＸＩ 組。<br/>和現在的情況不同，輪轂孔邊有停用位相，<br/>所以不會因為非自由輪側的輵條改變最後交叉的夾角<br/>而影響 Ж 組還是 ＸＩ 組。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09997msn3.jpg" target="_blank"><img alt="DSC09997msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09997msn3s.jpg" width="320"/></a><br/>這個後輪是「２８幅非自由輪側徑向組的<br/>左右同數組輪子裡<br/>把非自由輪側輵條間引一半的２１幅」構造，<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09998msn3.jpg" target="_blank"><img alt="DSC09998msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09998msn3s.jpg" width="320"/></a><br/>要是間引的非自由輪側位相搞反了，<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09999msn3.jpg" target="_blank"><img alt="DSC09999msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09999msn3s.jpg" width="320"/></a><br/>↑輵條軌跡就會像這樣，<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00001msn4.jpg" target="_blank"><img alt="DSC00001msn4.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00001msn4s.jpg" width="320"/></a><br/>↑或者像這樣只有兩種可能。<br/>情況有點不同，<br/>但這次的情況類似。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00003msn4.jpg" target="_blank"><img alt="DSC00003msn4.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00003msn4s.jpg" width="320"/></a><br/>從這個狀態，左凸緣的停用位相反轉就<br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00004msn4.jpg" target="_blank"><img alt="DSC00004msn4.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00004msn4s.jpg" width="320"/></a><br/>就會變成這樣，所以。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09946msn3.jpg" target="_blank"><img alt="DSC09946msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09946msn3s.jpg" width="320"/></a><br/>時間線回溯一下，<br/>原來用的是長（１６mm）黃銅螺帽組裝的。<br/>客人問過店裡，<br/>他們說「輪轂孔太厚，非得用這個」，<br/>但用１２mm 螺帽也完全沒問題，握把的四角能完全露出來。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09994msn3.jpg" target="_blank"><img alt="DSC09994msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09994msn3s.jpg" width="320"/></a><br/>１２mm、１４mm、１６mm 螺帽<br/>嚴格來說螺紋圈數不同，<br/>但和螺帽本身長度差比起來微不足道。<br/>我是按螺帽外週側端面基準算輵條長度的，<br/>所以基本上不會因為螺帽長度改輵條長度。<br/>什麼意思呢，就是說螺帽長度差<br/>根本蓋不住輵條長度算錯的影響。<br/><br/>用燈從輪轂內部照，<br/>原來輪子的輵條長度明顯太短，<br/>但平常會把２：１組的１對或２對、<br/>３根或６根完全未鬆的輵條<br/>從輪轂裡拉出來拍照，這次想省了，<br/>因為輪轂高度太高無法拉，<br/>還有想證明不改任何材料<br/>也能轉換成正確的２：１組，<br/>所以這次放棄了。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09947msn3.jpg" target="_blank"><img alt="DSC09947msn3.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC09947msn3s.jpg" width="320"/></a><br/>說不定原來的狀態，用１２mm 螺帽的話<br/>輵條螺紋會露出來。<br/>短到那種程度。<br/>１６mm 螺帽有掩蓋這個的效果（算是吧）。<br/>啊呀，真是沒什麼教育意義啊！<br/><br/>另外，上圖是客人交來後一點沒動過的狀態，<br/>但從螺帽到輵條的軌跡有種「咔」的斷裂感。<br/>不是全部，但很多地方這樣。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00019msn4.jpg" target="_blank"><img alt="DSC00019msn4.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00020msn4.jpg" width="320"/></a><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00020msn4.jpg" target="_blank"><img alt="DSC00020msn4.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00020msn4s.jpg" width="320"/></a><br/>↑用１２mm 螺帽的話握把部分有充分露出。<br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00021msn4.jpg" target="_blank"><img alt="DSC00021msn4.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00021msn4s.jpg" width="320"/></a><br/>時間線跳了，這是組完後。<br/>螺帽和輵條之間<br/>軌跡斷裂的地方沒有了。<br/>換句話說，這個輪轂，不用１６mm 螺帽的必要，<br/>反而用的話不好。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00009msn4.jpg" target="_blank"><img alt="DSC00009msn4.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00009msn4s.jpg" width="320"/></a><br/>輪轂孔的孔位似乎有點偏。<br/>至少看著不像對齊在輪轂中央。<br/>但也不是左右交替偏，<br/>不是２：１組用的右、右、左的設置，也不是中間、中間、左的設置，<br/>從上面的氣門孔兩邊看，<br/>甚至隱隱看著像是反向輪轂。<br/>結論就是，精度相當隨意，<br/>沒有特意設計的孔位偏。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00010msn4.jpg" target="_blank"><img alt="DSC00010msn4.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00010msn4s.jpg" width="320"/></a><br/>就這樣，組好了。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00011msn4.jpg" target="_blank"><img alt="DSC00011msn4.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00011msn4s.jpg" width="320"/></a><br/>Evolite 花鼓 ２４幅 全 Campagnolo １４號４６交叉組。<br/>結線等後面再說。<br/>輪轂不是明確的２：１組用，所以<br/>改成左右同數組。<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00013msn4.jpg" target="_blank"><img alt="DSC00013msn4.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00013msn4s.jpg" width="320"/></a><br/>平端輵條和 Ｈ１ＳＴ 的關係<br/>因為說沒特別寫成飯桌話題，<br/>我就開始了！<br/><br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00014msn4.jpg" target="_blank"><img alt="DSC00014msn4.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00014msn4s.jpg" width="320"/></a><br/>１３７左右！<br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00015msn4.jpg" target="_blank"><img alt="DSC00015msn4.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00015msn4s.jpg" width="320"/></a><br/>１３４．５！<br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00016msn4.jpg" target="_blank"><img alt="DSC00016msn4.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00016msn4s.jpg" width="320"/></a><br/>１３８左右！<br/><a href="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00018msn4.jpg" target="_blank"><img alt="DSC00018msn4.jpg" border="0" height="240" src="https://blog-imgs-137-origin.fc2.com/p/a/s/pass13/DSC00018msn4s.jpg" width="320"/></a><br/>所以大約１３００Ｎ。<br/>這邊的數值表後面部分很粗糙，<br/>嚴格要知道的話，可以從<br/>另外有的圖表來看。<br/><br/>Ｈ１ＳＴ１４３是１５００Ｎ的情況，<br/>這已經超過了大多數輪轂的許容限度。<br/>１０００Ｎ、１３００Ｎ、１５００Ｎ時的 Ｈ１ＳＴ 差<br/>張力越低差越大。<br/>張力計測量頭的動作就像<br/>「重複性極高的握輵條」，<br/>１４號平端的情況，Ｈ１ＳＴ 超過１３０<br/>相對握輵條的變形量就幾乎沒差<br/>（＝騎乘體感硬度也差不多），<br/>再高的話，隨著張力增加<br/>輪轂孔破損風險反而會升高，<br/>所以輪子不是張越緊越好。<br/>但大飛輪花鼓的後輪，<br/>自由輪側１０００Ｎ和１３００Ｎ<br/>非自由輪側的第２ＳＴ 會差蠻大的，要注意。<br/>什麼？要我也測非自由輪側給你看？<br/>那邊開始就是飯桌話題了喔，呵呵呵。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

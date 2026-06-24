@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/4574.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Wheel Building</p>
     <h1>重新組裝諾姆實驗室輪組1號（2：1組裝）的後輪</h1>
     <p class="post-meta">March 30, 2019</p>
+    <div class="post-body"><div class="entrytext">今天也是輪子（以下略）。<br/>今天是最後一個星期六，雖然我知道這是定休日<br/>但是有些平時很難抽出時間來做的工作，所以還是來店裡了。<br/><a href="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00073amx10.jpg" target="_blank"><img alt="DSC00073amx10.jpg" border="0" height="240" src="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00073amx10s.jpg" width="320"/></a><br/>從客人那裡接下了諾姆實驗室輪組1號的後輪。<br/>當然這是我之前組的，<br/><br/><a href="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00074amx10.jpg" target="_blank"><img alt="DSC00074amx10.jpg" border="0" height="240" src="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00074amx10s.jpg" width="320"/></a><br/>羅瓦爾（Roval）2：1組裝後輪的輪圈壞掉了，<br/>所以我用那個花鼓來組諾姆實驗室輪組1號。<br/><br/><a href="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00076amx10.jpg" target="_blank"><img alt="DSC00076amx10.jpg" border="0" height="240" src="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00076amx10s.jpg" width="320"/></a><br/><a href="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00075amx10.jpg" target="_blank"><img alt="DSC00075amx10.jpg" border="0" height="240" src="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00075amx10s.jpg" width="320"/></a><br/>這個後輪的問題是反自由側的螺帽頻繁損壞，<br/>所以才需要重新組裝。<br/>這種情況其實不是完全無法預見的，<br/>所以算是免費維修，工費和螺帽就當成我的學習成本吧。<br/><br/>手組輪子做2：1組裝風險很大，<br/>我在諾姆實驗室開店前也自己組過幾條後輪，<br/>但是<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+Swiss+CX-RAY+spoke" target="_blank" rel="noopener sponsored" class="amz-inline">CX-RAY</a>和真正的星光輻條（True Straight）等<br/>根據經驗在短期內（最短2個月）就會頻繁斷頭<br/>雖然這些輻條通常很難斷頭，<br/>所以作為販售品的規格我不打算採用。<br/><br/>類似的例子，網達輪組（Neda Wheel）的網達先生<br/>雖然自己也組輪子，<br/>但是2：1組裝的手組後輪經常會斷頭。<br/><br/><a href="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00077amx10.jpg" target="_blank"><img alt="DSC00077amx10.jpg" border="0" height="240" src="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00077amx10s.jpg" width="320"/></a><br/>這次後輪的情況是左右都用黑色CX-RAY直條輻，<br/>所以輻頭比螺帽更堅固。<br/><br/><a href="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00079amx10.jpg" target="_blank"><img alt="DSC00079amx10.jpg" border="0" height="240" src="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00079amx10s.jpg" width="320"/></a><br/>組好了。<br/><br/><a href="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00080amx10.jpg" target="_blank"><img alt="DSC00080amx10.jpg" border="0" height="240" src="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00080amx10s.jpg" width="320"/></a><br/>我建議用黃銅螺帽，<br/>但客人說紅色不行的話，希望用彩色螺帽，<br/>所以就用了黑色螺帽。<br/><br/><a href="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00082amx10.jpg" target="_blank"><img alt="DSC00082amx10.jpg" border="0" height="240" src="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00082amx10s.jpg" width="320"/></a><br/>所以用了黑色黃銅螺帽，<br/><br/><a href="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00081amx10.jpg" target="_blank"><img alt="DSC00081amx10.jpg" border="0" height="240" src="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00081amx10s.jpg" width="320"/></a><br/>但那只是反自由側的事，自由側用的是黑色鋁螺帽。<br/><br/><a href="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00078amx10.jpg" target="_blank"><img alt="DSC00078amx10.jpg" border="0" height="240" src="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00078amx10s.jpg" width="320"/></a><br/>↑這是施工中的照片，這樣的話也許只交換反自由側的<br/>黑色黃銅螺帽就可以了。<br/><br/>但話說回來，前輪也是用紅色鋁螺帽組的，<br/>為了顏色協調也計畫改成黑色鋁螺帽，<br/>而且從手工來看，只交換反自由側和全部交換差不多，<br/>所以這次就全部交換了。<br/><br/>如果說鋼輻做2：1組裝不行的話，<br/>那例如聯達（<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Campagnolo+Zonda+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">Zonda</a>）或賽車3、<br/>博拉（Boora）或速度（Speed）怎麼樣呢，<br/><a href="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00087amx10.jpg" target="_blank"><img alt="DSC00087amx10.jpg" border="0" height="240" src="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00087amx10s.jpg" width="320"/></a><br/>聯達和賽車3的情況，<br/>工具的夾持面是3.2mm，雖然和通用螺帽同尺寸，<br/>但是採用了根部粗壯的專用黃銅螺帽，<br/><br/><a href="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00086amx10.jpg" target="_blank"><img alt="DSC00086amx10.jpg" border="0" height="240" src="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00086amx10s.jpg" width="320"/></a><br/>博拉和速度的情況，工具的夾持面是4mm（3.95mm），<br/>而且要求的輪圈孔徑也比通用品大，<br/>採用了專用鋁螺帽。<br/>聰明的製造商已經預見到了螺帽斷裂的情況。<br/><br/><br/><br/><br/>說起來，前公司的前同事<br/>在現行DT的RR系輪圈（需要墊圈）上做2：1組裝的輪子跑得很快，<br/>他說的根據是「輻張力總和最高」。<br/>真是胡說八道，笑死人。<br/><br/>確實，比如24孔的後輪，自由側的輻張力設為100的話，<br/>左右孔數相同時，自由側100有12根，<br/>反自由側70有12根。<br/><br/>要是2：1組裝的話，自由側100有16根，<br/>反自由側95有8根（一般尺寸的後花鼓的情況）。<br/>對於這一點確實有人反駁說應該是100有24根，<br/>但那是細枝末節，就算設成100有24根也無所謂。<br/><br/>2：1組裝的後輪需要把反自由側做成輻向組（radial）。<br/>如果反自由側做成切向組（tangent），反自由側的張力會變得更高，<br/>只要輻張力允許，張力越大越好的話，<br/>決定上限的就變成反自由側，<br/>這樣反自由側設為100的話自由側就會低於100。<br/>這樣張力分佈的好壞不會受影響，很難想像，<br/>完組輪子上確實有富樂克魯姆（Fulcrum）的山地車輪<br/>採用2：1組裝且反自由側切向組的例子，<br/>但那不是常見做法。<br/>聯達DB和博拉DB則是2：1組裝鋼輵用碟花鼓<br/>做反自由側輻向組，<br/>但是每個輵頭對應的法蘭形狀過度地大。<br/>這方面的內容我已經準備了文章用的照片，改天詳細寫。<br/><br/>「輵張力總和高的輪子跑得最快」<br/>（甚至明確說比半競技246組還快），<br/>如果說這個特性是相當重要的要素或最重要要素的話，<br/>用窄法蘭的後花鼓左右輵向組，<br/>把張力調得死緊不就行了嗎。<br/>這樣至少滿足輵張力總和高的條件。<br/><br/>反自由側輵向組，不論張力大小，<br/>對於自由體旋轉方向的變形耐性低，<br/>所以本質上被迫採用這種組法的2：1組裝，<br/>至少對於手組輪子來說，不太理想，這是我的看法。<br/>我認為不可能比反自由側切向組最後結線的後輪跑得更好。<br/><br/>順便說一下，那個輪子的組手<br/>對於反自由側螺帽斷裂或輵頭斷裂容易發生一事<br/>完全不知道。<br/>也許只組過一兩個的話摸不著頭腦，<br/>但要是組100條200條的話，過了一段時間後<br/>螺帽和輵斷裂會頻發，吃點虧也就知道了。<br/><s>現在我也是，因為要補修羅瓦爾，被迫<br/>就組了一條2：1組裝後輪就已經吃到苦頭了。</s><br/><br/>還有順帶一提，<br/>DT的輪圈有明確的孔位分佈，24孔的話是左右各12個，<br/>用來組8孔左右右的後輪感覺怪怪的。<br/><br/>談起2：1組裝和輵張力總和的時候<br/>我那邊提出了左右異徑組和輵量的話題，<br/><s>不能理解的話那是腦子的問題，無所謂，</s><br/>但居然被用鼻子笑了。<br/>可是啊，左右異徑組和左右異數組<br/>在輵量的考量上是同樣的評價標準。<br/><br/><a href="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00083amx10.jpg" target="_blank"><img alt="DSC00083amx10.jpg" border="0" height="240" src="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00083amx10s.jpg" width="320"/></a><br/>左右同徑輵的2：1組裝（反自由側輵向組）的情況，<br/>不計輵長的輵量左右比為右：左100：50<br/>（算上輵長的話因為輵向組的輵較短=輵量減少，<br/>視輪圈高和自由側X孔組情況，大約是100：48.5）。<br/><br/><a href="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00084amx10.jpg" target="_blank"><img alt="DSC00084amx10.jpg" border="0" height="240" src="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00084amx10s.jpg" width="320"/></a><br/>從這裡開始，把反自由側的輵像劈筷子一樣<br/>漂亮地二等分分成2根輵的話・・・<br/><br/><a href="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00085amx10.jpg" target="_blank"><img alt="DSC00085amx10.jpg" border="0" height="240" src="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00085amx10s.jpg" width="320"/></a><br/>輵量的左右比保持不變，<br/>左右異數組變換成左右異徑組。<br/>當然，輵比重50％的輵在現實中並不存在。<br/>即使存在，到輪子組完為止也會<br/>出現波浪形變形或輵頭斷裂。<br/><br/>所以，左右異數組（大多數情況是2：1組裝）<br/>確實實現了左右同數輵的異徑組遠達不到的<br/>輵張力左右差無的狀態，<br/>但反自由側的輵和螺帽承受的負荷非常大，<br/>實質上被迫採用輵向組，<br/>還有通用材料難以克服的缺點。<br/><br/>聯達DB的前輪是G3組，<br/>所以輵數左右比為右：左1：2，<br/>克里馬（Colima）的12：8H的20H後輪<br/>輵數左右比為右：左3：2，<br/>但這些輪子是把少輵側的輵比重反而做大。換句話說是逆異徑組。<br/>因為左右異數組效果太強，<br/>所以作為對抗加入逆異徑組來緩和的吧，<br/>這是我的看法，但坎帕尼奧羅和克里馬<br/>在目錄等輪子說明中完全沒有提到<br/>逆異徑組的事。但這正是關鍵。<br/>這只是我個人的想法，<br/>但我覺得坎帕尼奧羅和克里馬對於我所謂的「輵量」這一概念，<br/>把它作為思考輪子時的<br/>一種衡量標準來持有。<br/>不然的話不可能想到<br/>左右異數組＋左右逆異徑組這樣的組合。<br/><br/>不理解輵量的概念，<br/>只憑左右輵張力總和這一根據<br/>在手組輪子上試試2：1組裝，這種<br/>膚淺的輪子觀如果還想混下去的話，<br/>與其跟我廢話，不如去組幾條輪子公諸於眾啦。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">今天也是輪子（以下略）。<br/>今天是最後一個星期六，雖然我知道這是定休日<br/>但是有些平時很難抽出時間來做的工作，所以還是來店裡了。<br/><a href="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00073amx10.jpg" target="_blank"><img alt="DSC00073amx10.jpg" border="0" height="240" src="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00073amx10s.jpg" width="320"/></a><br/>從客人那裡接下了諾姆實驗室輪組1號的後輪。<br/>當然這是我之前組的，<br/><br/><a href="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00074amx10.jpg" target="_blank"><img alt="DSC00074amx10.jpg" border="0" height="240" src="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00074amx10s.jpg" width="320"/></a><br/>羅瓦爾（Roval）2：1組裝後輪的輪圈壞掉了，<br/>所以我用那個花鼓來組諾姆實驗室輪組1號。<br/><br/><a href="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00076amx10.jpg" target="_blank"><img alt="DSC00076amx10.jpg" border="0" height="240" src="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00076amx10s.jpg" width="320"/></a><br/><a href="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00075amx10.jpg" target="_blank"><img alt="DSC00075amx10.jpg" border="0" height="240" src="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00075amx10s.jpg" width="320"/></a><br/>這個後輪的問題是反自由側的螺帽頻繁損壞，<br/>所以才需要重新組裝。<br/>這種情況其實不是完全無法預見的，<br/>所以算是免費維修，工費和螺帽就當成我的學習成本吧。<br/><br/>手組輪子做2：1組裝風險很大，<br/>我在諾姆實驗室開店前也自己組過幾條後輪，<br/>但是<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+Swiss+CX-RAY+spoke" target="_blank" rel="noopener sponsored" class="amz-inline">CX-RAY</a>和真正的星光輻條（True Straight）等<br/>根據經驗在短期內（最短2個月）就會頻繁斷頭<br/>雖然這些輻條通常很難斷頭，<br/>所以作為販售品的規格我不打算採用。<br/><br/>類似的例子，網達輪組（Neda Wheel）的網達先生<br/>雖然自己也組輪子，<br/>但是2：1組裝的手組後輪經常會斷頭。<br/><br/><a href="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00077amx10.jpg" target="_blank"><img alt="DSC00077amx10.jpg" border="0" height="240" src="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00077amx10s.jpg" width="320"/></a><br/>這次後輪的情況是左右都用黑色CX-RAY直條輻，<br/>所以輻頭比螺帽更堅固。<br/><br/><a href="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00079amx10.jpg" target="_blank"><img alt="DSC00079amx10.jpg" border="0" height="240" src="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00079amx10s.jpg" width="320"/></a><br/>組好了。<br/><br/><a href="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00080amx10.jpg" target="_blank"><img alt="DSC00080amx10.jpg" border="0" height="240" src="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00080amx10s.jpg" width="320"/></a><br/>我建議用黃銅螺帽，<br/>但客人說紅色不行的話，希望用彩色螺帽，<br/>所以就用了黑色螺帽。<br/><br/><a href="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00082amx10.jpg" target="_blank"><img alt="DSC00082amx10.jpg" border="0" height="240" src="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00082amx10s.jpg" width="320"/></a><br/>所以用了黑色黃銅螺帽，<br/><br/><a href="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00081amx10.jpg" target="_blank"><img alt="DSC00081amx10.jpg" border="0" height="240" src="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00081amx10s.jpg" width="320"/></a><br/>但那只是反自由側的事，自由側用的是黑色鋁螺帽。<br/><br/><a href="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00078amx10.jpg" target="_blank"><img alt="DSC00078amx10.jpg" border="0" height="240" src="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00078amx10s.jpg" width="320"/></a><br/>↑這是施工中的照片，這樣的話也許只交換反自由側的<br/>黑色黃銅螺帽就可以了。<br/><br/>但話說回來，前輪也是用紅色鋁螺帽組的，<br/>為了顏色協調也計畫改成黑色鋁螺帽，<br/>而且從手工來看，只交換反自由側和全部交換差不多，<br/>所以這次就全部交換了。<br/><br/>如果說鋼輻做2：1組裝不行的話，<br/>那例如聯達（<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Campagnolo+Zonda+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">Zonda</a>）或賽車3、<br/>博拉（Boora）或速度（Speed）怎麼樣呢，<br/><a href="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00087amx10.jpg" target="_blank"><img alt="DSC00087amx10.jpg" border="0" height="240" src="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00087amx10s.jpg" width="320"/></a><br/>聯達和賽車3的情況，<br/>工具的夾持面是3.2mm，雖然和通用螺帽同尺寸，<br/>但是採用了根部粗壯的專用黃銅螺帽，<br/><br/><a href="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00086amx10.jpg" target="_blank"><img alt="DSC00086amx10.jpg" border="0" height="240" src="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00086amx10s.jpg" width="320"/></a><br/>博拉和速度的情況，工具的夾持面是4mm（3.95mm），<br/>而且要求的輪圈孔徑也比通用品大，<br/>採用了專用鋁螺帽。<br/>聰明的製造商已經預見到了螺帽斷裂的情況。<br/><br/><br/><br/><br/>說起來，前公司的前同事<br/>在現行DT的RR系輪圈（需要墊圈）上做2：1組裝的輪子跑得很快，<br/>他說的根據是「輻張力總和最高」。<br/>真是胡說八道，笑死人。<br/><br/>確實，比如24孔的後輪，自由側的輻張力設為100的話，<br/>左右孔數相同時，自由側100有12根，<br/>反自由側70有12根。<br/><br/>要是2：1組裝的話，自由側100有16根，<br/>反自由側95有8根（一般尺寸的後花鼓的情況）。<br/>對於這一點確實有人反駁說應該是100有24根，<br/>但那是細枝末節，就算設成100有24根也無所謂。<br/><br/>2：1組裝的後輪需要把反自由側做成輻向組（radial）。<br/>如果反自由側做成切向組（tangent），反自由側的張力會變得更高，<br/>只要輻張力允許，張力越大越好的話，<br/>決定上限的就變成反自由側，<br/>這樣反自由側設為100的話自由側就會低於100。<br/>這樣張力分佈的好壞不會受影響，很難想像，<br/>完組輪子上確實有富樂克魯姆（Fulcrum）的山地車輪<br/>採用2：1組裝且反自由側切向組的例子，<br/>但那不是常見做法。<br/>聯達DB和博拉DB則是2：1組裝鋼輵用碟花鼓<br/>做反自由側輻向組，<br/>但是每個輵頭對應的法蘭形狀過度地大。<br/>這方面的內容我已經準備了文章用的照片，改天詳細寫。<br/><br/>「輵張力總和高的輪子跑得最快」<br/>（甚至明確說比半競技246組還快），<br/>如果說這個特性是相當重要的要素或最重要要素的話，<br/>用窄法蘭的後花鼓左右輵向組，<br/>把張力調得死緊不就行了嗎。<br/>這樣至少滿足輵張力總和高的條件。<br/><br/>反自由側輵向組，不論張力大小，<br/>對於自由體旋轉方向的變形耐性低，<br/>所以本質上被迫採用這種組法的2：1組裝，<br/>至少對於手組輪子來說，不太理想，這是我的看法。<br/>我認為不可能比反自由側切向組最後結線的後輪跑得更好。<br/><br/>順便說一下，那個輪子的組手<br/>對於反自由側螺帽斷裂或輵頭斷裂容易發生一事<br/>完全不知道。<br/>也許只組過一兩個的話摸不著頭腦，<br/>但要是組100條200條的話，過了一段時間後<br/>螺帽和輵斷裂會頻發，吃點虧也就知道了。<br/><s>現在我也是，因為要補修羅瓦爾，被迫<br/>就組了一條2：1組裝後輪就已經吃到苦頭了。</s><br/><br/>還有順帶一提，<br/>DT的輪圈有明確的孔位分佈，24孔的話是左右各12個，<br/>用來組8孔左右右的後輪感覺怪怪的。<br/><br/>談起2：1組裝和輵張力總和的時候<br/>我那邊提出了左右異徑組和輵量的話題，<br/><s>不能理解的話那是腦子的問題，無所謂，</s><br/>但居然被用鼻子笑了。<br/>可是啊，左右異徑組和左右異數組<br/>在輵量的考量上是同樣的評價標準。<br/><br/><a href="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00083amx10.jpg" target="_blank"><img alt="DSC00083amx10.jpg" border="0" height="240" src="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00083amx10s.jpg" width="320"/></a><br/>左右同徑輵的2：1組裝（反自由側輵向組）的情況，<br/>不計輵長的輵量左右比為右：左100：50<br/>（算上輵長的話因為輵向組的輵較短=輵量減少，<br/>視輪圈高和自由側X孔組情況，大約是100：48.5）。<br/><br/><a href="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00084amx10.jpg" target="_blank"><img alt="DSC00084amx10.jpg" border="0" height="240" src="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00084amx10s.jpg" width="320"/></a><br/>從這裡開始，把反自由側的輵像劈筷子一樣<br/>漂亮地二等分分成2根輵的話・・・<br/><br/><a href="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00085amx10.jpg" target="_blank"><img alt="DSC00085amx10.jpg" border="0" height="240" src="https://blog-imgs-125-origin.fc2.com/p/a/s/pass13/DSC00085amx10s.jpg" width="320"/></a><br/>輵量的左右比保持不變，<br/>左右異數組變換成左右異徑組。<br/>當然，輵比重50％的輵在現實中並不存在。<br/>即使存在，到輪子組完為止也會<br/>出現波浪形變形或輵頭斷裂。<br/><br/>所以，左右異數組（大多數情況是2：1組裝）<br/>確實實現了左右同數輵的異徑組遠達不到的<br/>輵張力左右差無的狀態，<br/>但反自由側的輵和螺帽承受的負荷非常大，<br/>實質上被迫採用輵向組，<br/>還有通用材料難以克服的缺點。<br/><br/>聯達DB的前輪是G3組，<br/>所以輵數左右比為右：左1：2，<br/>克里馬（Colima）的12：8H的20H後輪<br/>輵數左右比為右：左3：2，<br/>但這些輪子是把少輵側的輵比重反而做大。換句話說是逆異徑組。<br/>因為左右異數組效果太強，<br/>所以作為對抗加入逆異徑組來緩和的吧，<br/>這是我的看法，但坎帕尼奧羅和克里馬<br/>在目錄等輪子說明中完全沒有提到<br/>逆異徑組的事。但這正是關鍵。<br/>這只是我個人的想法，<br/>但我覺得坎帕尼奧羅和克里馬對於我所謂的「輵量」這一概念，<br/>把它作為思考輪子時的<br/>一種衡量標準來持有。<br/>不然的話不可能想到<br/>左右異數組＋左右逆異徑組這樣的組合。<br/><br/>不理解輵量的概念，<br/>只憑左右輵張力總和這一根據<br/>在手組輪子上試試2：1組裝，這種<br/>膚淺的輪子觀如果還想混下去的話，<br/>與其跟我廢話，不如去組幾條輪子公諸於眾啦。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
-    <p>Bicycle Workshop — English Edition</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/index.html">
+        <span class="brand-title">Nomu Lab Diary</span>
+        <span class="brand-subtitle">Bicycle Workshop Archive</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/index.html">Archive</a>
+      <a href="/guides/wheel-building.html">Wheel Guide</a>
+      <a href="/glossary.html">Glossary</a>
+      <a href="/about.html">About</a>
+    </nav>
     <div class="lang-toggle"><span class="lang-btn active">EN</span><a class="lang-btn" href="/zh/posts/1011.html">繁中</a></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/index.html">← All posts</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Spoke Tension</p>
     <h1>Spoke Tension Meters and the Third Spoke Tension</h1>
     <p class="post-meta">March 01, 2014</p>
+    <div class="post-body"><div class="entrytext">I'm going to write about spoke tension and tension meters.<br/>Without writing this, I can't get into topics like "hand-laced free-side radial lacing" or "different-diameter lacing on one flange" or "0-cross lacing that isn't radial lacing."<br/>I should have written this back around December last year, but things kept dragging on.<br/><br/>Let me start with the principles and usage of tension meters.<br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09701amx2.jpg" target="_blank"><img alt="DSC09701amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09701amx2s.jpg" width="300"/></a><br/>To measure spoke deflection, the meter uses a lever action with three contact points on the spoke.<br/>Two of these are fixed and one is movable, and it measures spoke deflection by the resistance to compression.<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09703amx2.jpg" target="_blank"><img alt="DSC09703amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09703amx2s.jpg" width="300"/></a><br/>↑You then take that deflection measurement and apply it to the conversion chart that comes with the meter<br/>to determine the spoke tension.<br/>At this point, the relationship between deflection and spoke tension<br/>follows a bow-shaped curve like the one in the image above, but<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09705amx2.jpg" target="_blank"><img alt="DSC09705amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09705amx2s.jpg" width="300"/></a><br/>let's say this were a straight line instead.<br/>And if you then stipulated "we only use 2.0mm plain spokes, period,"<br/>limiting spoke types to just one,<br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09706amx2.jpg" target="_blank"><img alt="DSC09706amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09706amx2s.jpg" width="300"/></a><br/>then you could make a tension meter where the meter reading itself<br/>displays the spoke tension directly.<br/>(The dashed line in the figure above is drawn offset, but it's on the same line)<br/><br/>In reality, because the curve is bow-shaped and there's a wide variety of spoke types,<br/><span style="color:#FF0000">you cannot use a tension meter without a conversion chart</span>.<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09731amx2.jpg" target="_blank"><img alt="DSC09731amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09731amx2s.jpg" width="300"/></a><br/>This is an extremely important point: <br/><span style="color:#0000FF">when I simply write "spoke tension" on this blog, it can refer to any of at least three different meanings,<br/>but I've made it a policy to not go into detail about which one I'm referring to.<br/>I plan to basically stick with that going forward.</span><br/><br/>In my own arbitrary terminology,<br/>the "spoke deflection as measured by the tension meter"<br/>is what I call "first spoke tension."<br/>When I use the term "apparent spoke tension,"<br/>I'm usually referring to this, though looking back, sometimes I'm not.<br/>Regarding calling spoke deflection "spoke tension" — there is a causal relationship<br/>between low deflection and high spoke tension, so I'm calling<br/>this "spoke-tension-like" thing "first spoke tension" as a term of my own invention.<br/><br/>Next, the approximate spoke tension value after converting with the conversion chart,<br/>I call "second spoke tension."<br/>Looking back at my past posts, I often call this "true spoke tension,"<br/>but there are plenty of exceptions, so "second = true" isn't always the case.<br/>This one is the conventional meaning — the ordinary sense of "spoke tension" refers to this.<br/><br/>Now for the third spoke tension.<br/>This is not spoke tension itself.<br/>It's a numerical value derived from the first and second spoke tensions,<br/>the spoke thickness (strictly speaking, specific gravity),<br/>and the radial angular relationship between spoke and hub,<br/>plugged into a certain constant.<br/>I can't write about the constant — it's my own arbitrary definition.<br/>However, I have empirical conviction that the magnitude of third spoke tension<br/>more accurately expresses wheel responsiveness than second spoke tension does.<br/>Third spoke tension is broadly speaking "spoke deflection,"<br/>but the difference from first tension is that it incorporates both<br/>spoke specific gravity and the angle at which it's tensioned in the calculation.<br/>Even at the same spoke tension (—now which number spoke tension is that, I wonder?),<br/>radial and tangential lacing have different power transmission efficiency,<br/>so the angle at which the spoke is tensioned matters greatly for responsiveness.<br/>Think of third spoke tension as "responsiveness quantified."<br/>It's not quite that, but roughly.<br/><br/>There is a "fourth spoke tension" too, but<br/>it's a concept you don't really need for wheel building, so<br/>I've never touched on it in this blog.<br/>As I'll explain later, at the moment fourth tension can't be researched. Give it back.<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09704amx2.jpg" target="_blank"><img alt="DSC09704amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09704amx2s.jpg" width="300"/></a><br/>There are some exceptions between round spokes and flat spokes, but<br/>when you put thick and thin spokes on the same conversion chart, it looks like the image above.<br/>Both are curves, so the relationship between meter reading and approximate spoke tension—<br/>that is, the relationship between first and second tension—won't be the same proportion<br/>for thick spokes versus thin spokes.<br/>Say I'm building a rear wheel: both <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Champion+spoke+bicycle" target="_blank" rel="noopener sponsored" class="amz-inline">Champion</a> and <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+Swiss+CX-RAY+spoke" target="_blank" rel="noopener sponsored" class="amz-inline">CX-RAY</a>, neither is cross-diameter lacing,<br/>but CX-RAY has less left-right spoke tension variance than Champion.<br/>Let's say both have the free side tensioned at 1000N second tension.<br/>Naturally, the building method, rim, and hub are all identical.<br/>At that point, the tactile deflection feel of the non-free side spokes<br/>will feel more taut on CX-RAY than Champion.<br/>Even calculating this with third spoke tension, CX-RAY comes out higher.<br/>That's because spoke specific gravity is built into the third tension formula.<br/><br/><br/>I said I'd start with the principles and usage of tension meters, but<br/>I've gotten way sidetracked.<br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09707amx2.jpg" target="_blank"><img alt="DSC09707amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09707amx2s.jpg" width="300"/></a><br/>Back to spoke tension meters.<br/>Let me start with <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Hozan+spoke+tension+meter" target="_blank" rel="noopener sponsored" class="amz-inline">Hozan's tension meter</a>.<br/>This is what I use regularly.<br/>The list price before tax is ¥44,000. For your reference.<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09709amx2.jpg" target="_blank"><img alt="DSC09709amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09710amx2s.jpg" width="300"/></a><br/>You press the measuring probe in the center against the spoke to measure deflection.<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09710amx2.jpg" target="_blank"><img alt="DSC09710amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09710amx2s.jpg" width="300"/></a><br/>↑Calibration is done by adjusting the double-nut here,<br/>but you absolutely must not touch this. It throws off the calibration.<br/>Like a torque wrench, precision measuring tools like this<br/>will gradually change their readings with age and use.<br/>With Hozan's tension meter,<br/>you can send it back to the manufacturer for recalibration.<br/>Whether a measuring tool can or cannot be recalibrated is critically important.<br/><br/>Quoting from the instruction manual:<br/>"Conversion values differ from unit to unit, so <span style="color:#FF0000">each unit undergoes individual public inspection to create a conversion chart</span>.<br/>Please keep your conversion chart safe.<br/>Should you lose your conversion chart, the instrument will need to be re-certified."<br/><br/>That "individual" approach is what sets it apart from other manufacturers.<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09711amx2.jpg" target="_blank"><img alt="DSC09711amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09711amx2s.jpg" width="300"/></a><br/>Next is the <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+Swiss+spoke+tension+meter" target="_blank" rel="noopener sponsored" class="amz-inline">DT tension meter</a>.<br/>Without this, the Hozan meter can't be used (I'll explain why later).<br/>The list price before tax is ¥72,380. For your reference.<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09712amx2.jpg" target="_blank"><img alt="DSC09712amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09712amx2s.jpg" width="300"/></a><br/>↑You squeeze the spoke in here.<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09713amx2.jpg" target="_blank"><img alt="DSC09713amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09713amx2s.jpg" width="300"/></a><br/>When you squeeze the spoke, it works like squeezing a grip trainer,<br/>the probe gets pushed and you can measure the deflection, but<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09714amx2.jpg" target="_blank"><img alt="DSC09714amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09714amx2s.jpg" width="300"/></a><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09715amx2.jpg" target="_blank"><img alt="DSC09715amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09715amx2s.jpg" width="300"/></a><br/>↑the probe is held with just an Allen bolt to the grip trainer.<br/>If you mess with this, you can calibrate it.<br/>With Hozan, I said never touch the calibration adjustment,<br/>but with DT you can do it.<br/><br/>That's because DT's conversion chart is not meter-by-meter unique—there's one fixed chart.<br/>The instruction is to adjust the meter itself so it produces values matching the conversion chart.<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09720amx2.jpg" target="_blank"><img alt="DSC09720amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09720amx2s.jpg" width="300"/></a><br/>↑This is that conversion chart.<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09721amx2.jpg" target="_blank"><img alt="DSC09721amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09721amx2s.jpg" width="300"/></a><br/>For reference, 2.0mm Champion.<br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09722amx2.jpg" target="_blank"><img alt="DSC09722amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09722amx2s.jpg" width="300"/></a><br/>Next, 2.0-1.5mm Revolution.<br/><br/>Earlier I drew a figure with a thin-spoke bow curve underneath a thick-spoke bow curve,<br/>but looking at these two, they seem the same.<br/>Don't be fooled. The maximum values and ranges of the graphs are completely different.<br/>For example, Champion reaches 1000N at 2.2mm deflection,<br/>but Revolution reaches 1000N at just under 1.3mm deflection.<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09737amx2.jpg" target="_blank"><img alt="DSC09737amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09737amx2s.jpg" width="300"/></a><br/>Hozan supplies an individual conversion chart with each meter,<br/>and the conversion chart from one meter isn't compatible with another identical model.<br/>Also, the conversion chart is replaced each time the meter is recalibrated.<br/><br/>This conversion chart, perhaps because it was made for general-purpose bikes,<br/>can only determine spoke tension for sizes 13, 14, and 15 plain spokes.<br/>It explicitly states that other sizes and special spokes like aero spokes won't work.<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09738amx2.jpg" target="_blank"><img alt="DSC09738amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09738amx2s.jpg" width="300"/></a><br/>With DT, being faithful to the single conversion chart<br/>is considered "correct."<br/>If you have multiple DT tension meters<br/>and put them on the same 2.0mm Champion<br/>and they all point to, say, exactly 2.2mm deflection—the same reading.<br/>If you use just one continuously, it will eventually drift.<br/>If you have another DT meter as a reference standard (seemingly reliable in accuracy),<br/>then the user can do calibration themselves.<br/>That's why it's better to have two or more DT meters if possible.<br/>There's a building method I privately call "zero-in lacing"<br/>using two or more DT meters, but<br/>I only have one now, so I can't do it.<br/>For my current wheel-building approach, whether zero-in lacing directly leads<br/>to better wheel building—well, not really, so it's fine.<br/><br/>The DT conversion chart has the bow curves for all DT spoke models.<br/>Strictly speaking, different butting lengths mean they're not identical, but<br/>if I assume Sapim CX-RAY is the same as DT Aero-Lite,<br/>Race is Competition, and Laser is Revolution,<br/>then I can measure Sapim spokes with the DT meter.<br/>The error should be minimal, so that's what I do.<br/>Leader and Champion are both plain spokes, so there's barely any difference.<br/><br/>So what if you have only one DT meter?<br/>Even though it's fixed that "Champion 2.0mm plain at 1000N is 2.2mm deflection,"<br/>when you put the meter on it and it points to 2.2mm deflection,<br/>is that really 1000N?<br/>If you had a metronome-like standard to calibrate against—<br/>"definitely 1000N"—that would help, but...<br/>"Getting two DT meters like I mentioned" is like<br/>tuning two instruments against each other.<br/><br/>But as long as they're new, DT meters have very little drift or unit-to-unit variation, so<br/>buying just one is fine as long as you don't recalibrate.<br/>You only need recalibration if you're building wheels every day, and<br/>in this complete-wheel era, who does that?<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09740amx2.jpg" target="_blank"><img alt="DSC09740amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09740amx2s.jpg" width="300"/></a><br/>As for how I'm measuring butted and aero spokes with the Hozan meter:<br/>I've made my own conversion chart by comparing DT and Hozan readings<br/>in 100N increments.<br/>This way I can convert "CX-RAY (actually Aero-Lite)<br/>showing ○.○mm deflection on Hozan is ○○○○N" and so on.<br/>This amounts to "zero-in lacing between DT and Hozan,"<br/>and as long as I keep using the current Hozan with calibrations, I can use it forever.<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09732amx2.jpg" target="_blank"><img alt="DSC09732amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09732amx2s.jpg" width="300"/></a><br/>↑Three sets of conversion charts and such.<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09733amx2.jpg" target="_blank"><img alt="DSC09733amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09733amx2s.jpg" width="300"/></a><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09734amx2.jpg" target="_blank"><img alt="DSC09734amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09734amx2s.jpg" width="300"/></a><br/>There are three PB 2.5mm Allen keys<br/>for adjusting the probe set-screw<br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09735amx2.jpg" target="_blank"><img alt="DSC09735amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09735amx2s.jpg" width="300"/></a><br/>three of them.<br/><br/>Well, I learned the hard way that letting someone else manage tools leads to rough handling<br/>and loss of parts, so now I only have one DT meter.<br/>Without the conversion chart it's a useless object (though the DT chart should be obtainable),<br/>and it's a tool beyond your station, so give it back if you haven't lost it.<br/><br/>Never mind that I can't do zero-in lacing,<br/>but to verify fourth spoke tension I'd need<br/>at least two DT meters, and man oh man do I wish I had them!<br/><br/><br/><br/><br/>Thanks to the DT meter and conversion chart, I've been able to use<br/>the Hozan meter with Competition and CX-RAY.<br/>But do I consult the conversion chart every time?<br/>No—I've just memorized "CX-RAY at 1100N, the needle is around here"<br/>and the like, so for the DT Competition and CX-RAY I use frequently,<br/>I don't look at the chart.<br/>I just build using the first spoke tension reading.<br/>Actually, some complete-wheel manufacturers<br/>specify spoke tension this way too—<br/>"the free side of this wheel shows this many mm deflection on a DT meter"—<br/>using this method of designation.<br/>This approach might be clever.<br/>The spokes don't necessarily have to be DT brand.<br/>It's fine to just say "we build our wheels using a DT meter."<br/>For these reasons the DT meter is essential in shops.<br/>It's often necessary for repairs on foreign-brand wheels.<br/>So even if you're using it without a conversion chart for that reason, give it back.<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09728amx2.jpg" target="_blank"><img alt="DSC09728amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09728amx2s.jpg" width="300"/></a><br/>Finally.<br/>I figure someone will ask, "What about Park Tool's TM-1?"<br/>so I'll address it now.<br/>At ¥12,300 before tax, it's cheap, so I'd recommend it for home mechanics.<br/>Just be aware—its accuracy and repeatability are somewhat questionable.<br/>The individual variation in crimp hardness is huge, and the friction feel of moving parts differs from unit to unit.<br/>Also, by adjusting or lubricating the crimp on a single unit,<br/>the needle lift-off can change dramatically.<br/>Hozan and DT have the rigidity to prevent this kind of thing, but<br/>that shows in the price too (though I do think DT is pricey).<br/>Structurally it's an ultra-simplified DT.<br/>I don't think it's a shop pro tool,<br/>but I think it's sufficient for general use.<br/>However, as I mentioned, keeping the same conditions is important,<br/>so pay attention to that.<br/>It has a certain fragility—like "a ruler whose scale width changes depending on how you handle it."<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09730amx2.jpg" target="_blank"><img alt="DSC09730amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09730amx2s.jpg" width="300"/></a><br/>Park Tool names their tools either "acronym + size number"<br/>or "acronym + version number."<br/><br/>In the case of hub spanners (Park Tool calls them Shop Cone Wrenches),<br/>the acronym for Shop Cone Wrench is SCW, with<br/>13mm being SCW-13, 17mm being SCW-17—<br/>this is a size number system.<br/><br/>For floor pumps, Professional Floor Pump<br/>is acronymed PFP, followed by a number,<br/>and currently existing models are PFP-5, PFP-7, and PFP-8.<br/>This is a version number system, so there used to be 1, 2, 3, 4, and 6 at some point.<br/><br/>My point is: TM-1 is the first Tension Meter.<br/>Park Tool only recently became aware of "the need to manage spoke tension"<br/>from the catalog.<br/>Or maybe other companies had already established trusted meters as standards,<br/>making it hard to enter the market.<br/>Seen that way, it looks like a masterpiece born from that tight line:<br/>deliberate aim for "something much cheaper than what others are selling," pragmatically simple yet not cheap-looking,<br/>keeping the assumed retail price low.<br/><br/>If TM-1 were the only spoke tension meter in the world,<br/>of course I'd use it. I wouldn't rely on finger feel alone.<br/>It's just that if price is no object, I have other options—that's all.<br/><br/>If someday a TM-2 comes out that's solid and trustworthy,<br/>I wouldn't think ¥50,000 is expensive—I'm actually hoping for one.<br/>Even Park Tool's novelty pizza cutter is up to PZT-2 now.
+</div></div>
+    <aside class="post-guides">
+      <strong>Technical archive</strong>
+      <nav aria-label="Technical guides">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">I'm going to write about spoke tension and tension meters.<br/>Without writing this, I can't get into topics like "hand-laced free-side radial lacing" or "different-diameter lacing on one flange" or "0-cross lacing that isn't radial lacing."<br/>I should have written this back around December last year, but things kept dragging on.<br/><br/>Let me start with the principles and usage of tension meters.<br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09701amx2.jpg" target="_blank"><img alt="DSC09701amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09701amx2s.jpg" width="300"/></a><br/>To measure spoke deflection, the meter uses a lever action with three contact points on the spoke.<br/>Two of these are fixed and one is movable, and it measures spoke deflection by the resistance to compression.<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09703amx2.jpg" target="_blank"><img alt="DSC09703amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09703amx2s.jpg" width="300"/></a><br/>↑You then take that deflection measurement and apply it to the conversion chart that comes with the meter<br/>to determine the spoke tension.<br/>At this point, the relationship between deflection and spoke tension<br/>follows a bow-shaped curve like the one in the image above, but<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09705amx2.jpg" target="_blank"><img alt="DSC09705amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09705amx2s.jpg" width="300"/></a><br/>let's say this were a straight line instead.<br/>And if you then stipulated "we only use 2.0mm plain spokes, period,"<br/>limiting spoke types to just one,<br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09706amx2.jpg" target="_blank"><img alt="DSC09706amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09706amx2s.jpg" width="300"/></a><br/>then you could make a tension meter where the meter reading itself<br/>displays the spoke tension directly.<br/>(The dashed line in the figure above is drawn offset, but it's on the same line)<br/><br/>In reality, because the curve is bow-shaped and there's a wide variety of spoke types,<br/><span style="color:#FF0000">you cannot use a tension meter without a conversion chart</span>.<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09731amx2.jpg" target="_blank"><img alt="DSC09731amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09731amx2s.jpg" width="300"/></a><br/>This is an extremely important point: <br/><span style="color:#0000FF">when I simply write "spoke tension" on this blog, it can refer to any of at least three different meanings,<br/>but I've made it a policy to not go into detail about which one I'm referring to.<br/>I plan to basically stick with that going forward.</span><br/><br/>In my own arbitrary terminology,<br/>the "spoke deflection as measured by the tension meter"<br/>is what I call "first spoke tension."<br/>When I use the term "apparent spoke tension,"<br/>I'm usually referring to this, though looking back, sometimes I'm not.<br/>Regarding calling spoke deflection "spoke tension" — there is a causal relationship<br/>between low deflection and high spoke tension, so I'm calling<br/>this "spoke-tension-like" thing "first spoke tension" as a term of my own invention.<br/><br/>Next, the approximate spoke tension value after converting with the conversion chart,<br/>I call "second spoke tension."<br/>Looking back at my past posts, I often call this "true spoke tension,"<br/>but there are plenty of exceptions, so "second = true" isn't always the case.<br/>This one is the conventional meaning — the ordinary sense of "spoke tension" refers to this.<br/><br/>Now for the third spoke tension.<br/>This is not spoke tension itself.<br/>It's a numerical value derived from the first and second spoke tensions,<br/>the spoke thickness (strictly speaking, specific gravity),<br/>and the radial angular relationship between spoke and hub,<br/>plugged into a certain constant.<br/>I can't write about the constant — it's my own arbitrary definition.<br/>However, I have empirical conviction that the magnitude of third spoke tension<br/>more accurately expresses wheel responsiveness than second spoke tension does.<br/>Third spoke tension is broadly speaking "spoke deflection,"<br/>but the difference from first tension is that it incorporates both<br/>spoke specific gravity and the angle at which it's tensioned in the calculation.<br/>Even at the same spoke tension (—now which number spoke tension is that, I wonder?),<br/>radial and tangential lacing have different power transmission efficiency,<br/>so the angle at which the spoke is tensioned matters greatly for responsiveness.<br/>Think of third spoke tension as "responsiveness quantified."<br/>It's not quite that, but roughly.<br/><br/>There is a "fourth spoke tension" too, but<br/>it's a concept you don't really need for wheel building, so<br/>I've never touched on it in this blog.<br/>As I'll explain later, at the moment fourth tension can't be researched. Give it back.<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09704amx2.jpg" target="_blank"><img alt="DSC09704amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09704amx2s.jpg" width="300"/></a><br/>There are some exceptions between round spokes and flat spokes, but<br/>when you put thick and thin spokes on the same conversion chart, it looks like the image above.<br/>Both are curves, so the relationship between meter reading and approximate spoke tension—<br/>that is, the relationship between first and second tension—won't be the same proportion<br/>for thick spokes versus thin spokes.<br/>Say I'm building a rear wheel: both <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Champion+spoke+bicycle" target="_blank" rel="noopener sponsored" class="amz-inline">Champion</a> and <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+Swiss+CX-RAY+spoke" target="_blank" rel="noopener sponsored" class="amz-inline">CX-RAY</a>, neither is cross-diameter lacing,<br/>but CX-RAY has less left-right spoke tension variance than Champion.<br/>Let's say both have the free side tensioned at 1000N second tension.<br/>Naturally, the building method, rim, and hub are all identical.<br/>At that point, the tactile deflection feel of the non-free side spokes<br/>will feel more taut on CX-RAY than Champion.<br/>Even calculating this with third spoke tension, CX-RAY comes out higher.<br/>That's because spoke specific gravity is built into the third tension formula.<br/><br/><br/>I said I'd start with the principles and usage of tension meters, but<br/>I've gotten way sidetracked.<br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09707amx2.jpg" target="_blank"><img alt="DSC09707amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09707amx2s.jpg" width="300"/></a><br/>Back to spoke tension meters.<br/>Let me start with <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Hozan+spoke+tension+meter" target="_blank" rel="noopener sponsored" class="amz-inline">Hozan's tension meter</a>.<br/>This is what I use regularly.<br/>The list price before tax is ¥44,000. For your reference.<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09709amx2.jpg" target="_blank"><img alt="DSC09709amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09710amx2s.jpg" width="300"/></a><br/>You press the measuring probe in the center against the spoke to measure deflection.<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09710amx2.jpg" target="_blank"><img alt="DSC09710amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09710amx2s.jpg" width="300"/></a><br/>↑Calibration is done by adjusting the double-nut here,<br/>but you absolutely must not touch this. It throws off the calibration.<br/>Like a torque wrench, precision measuring tools like this<br/>will gradually change their readings with age and use.<br/>With Hozan's tension meter,<br/>you can send it back to the manufacturer for recalibration.<br/>Whether a measuring tool can or cannot be recalibrated is critically important.<br/><br/>Quoting from the instruction manual:<br/>"Conversion values differ from unit to unit, so <span style="color:#FF0000">each unit undergoes individual public inspection to create a conversion chart</span>.<br/>Please keep your conversion chart safe.<br/>Should you lose your conversion chart, the instrument will need to be re-certified."<br/><br/>That "individual" approach is what sets it apart from other manufacturers.<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09711amx2.jpg" target="_blank"><img alt="DSC09711amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09711amx2s.jpg" width="300"/></a><br/>Next is the <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+Swiss+spoke+tension+meter" target="_blank" rel="noopener sponsored" class="amz-inline">DT tension meter</a>.<br/>Without this, the Hozan meter can't be used (I'll explain why later).<br/>The list price before tax is ¥72,380. For your reference.<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09712amx2.jpg" target="_blank"><img alt="DSC09712amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09712amx2s.jpg" width="300"/></a><br/>↑You squeeze the spoke in here.<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09713amx2.jpg" target="_blank"><img alt="DSC09713amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09713amx2s.jpg" width="300"/></a><br/>When you squeeze the spoke, it works like squeezing a grip trainer,<br/>the probe gets pushed and you can measure the deflection, but<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09714amx2.jpg" target="_blank"><img alt="DSC09714amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09714amx2s.jpg" width="300"/></a><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09715amx2.jpg" target="_blank"><img alt="DSC09715amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09715amx2s.jpg" width="300"/></a><br/>↑the probe is held with just an Allen bolt to the grip trainer.<br/>If you mess with this, you can calibrate it.<br/>With Hozan, I said never touch the calibration adjustment,<br/>but with DT you can do it.<br/><br/>That's because DT's conversion chart is not meter-by-meter unique—there's one fixed chart.<br/>The instruction is to adjust the meter itself so it produces values matching the conversion chart.<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09720amx2.jpg" target="_blank"><img alt="DSC09720amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09720amx2s.jpg" width="300"/></a><br/>↑This is that conversion chart.<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09721amx2.jpg" target="_blank"><img alt="DSC09721amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09721amx2s.jpg" width="300"/></a><br/>For reference, 2.0mm Champion.<br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09722amx2.jpg" target="_blank"><img alt="DSC09722amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09722amx2s.jpg" width="300"/></a><br/>Next, 2.0-1.5mm Revolution.<br/><br/>Earlier I drew a figure with a thin-spoke bow curve underneath a thick-spoke bow curve,<br/>but looking at these two, they seem the same.<br/>Don't be fooled. The maximum values and ranges of the graphs are completely different.<br/>For example, Champion reaches 1000N at 2.2mm deflection,<br/>but Revolution reaches 1000N at just under 1.3mm deflection.<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09737amx2.jpg" target="_blank"><img alt="DSC09737amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09737amx2s.jpg" width="300"/></a><br/>Hozan supplies an individual conversion chart with each meter,<br/>and the conversion chart from one meter isn't compatible with another identical model.<br/>Also, the conversion chart is replaced each time the meter is recalibrated.<br/><br/>This conversion chart, perhaps because it was made for general-purpose bikes,<br/>can only determine spoke tension for sizes 13, 14, and 15 plain spokes.<br/>It explicitly states that other sizes and special spokes like aero spokes won't work.<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09738amx2.jpg" target="_blank"><img alt="DSC09738amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09738amx2s.jpg" width="300"/></a><br/>With DT, being faithful to the single conversion chart<br/>is considered "correct."<br/>If you have multiple DT tension meters<br/>and put them on the same 2.0mm Champion<br/>and they all point to, say, exactly 2.2mm deflection—the same reading.<br/>If you use just one continuously, it will eventually drift.<br/>If you have another DT meter as a reference standard (seemingly reliable in accuracy),<br/>then the user can do calibration themselves.<br/>That's why it's better to have two or more DT meters if possible.<br/>There's a building method I privately call "zero-in lacing"<br/>using two or more DT meters, but<br/>I only have one now, so I can't do it.<br/>For my current wheel-building approach, whether zero-in lacing directly leads<br/>to better wheel building—well, not really, so it's fine.<br/><br/>The DT conversion chart has the bow curves for all DT spoke models.<br/>Strictly speaking, different butting lengths mean they're not identical, but<br/>if I assume Sapim CX-RAY is the same as DT Aero-Lite,<br/>Race is Competition, and Laser is Revolution,<br/>then I can measure Sapim spokes with the DT meter.<br/>The error should be minimal, so that's what I do.<br/>Leader and Champion are both plain spokes, so there's barely any difference.<br/><br/>So what if you have only one DT meter?<br/>Even though it's fixed that "Champion 2.0mm plain at 1000N is 2.2mm deflection,"<br/>when you put the meter on it and it points to 2.2mm deflection,<br/>is that really 1000N?<br/>If you had a metronome-like standard to calibrate against—<br/>"definitely 1000N"—that would help, but...<br/>"Getting two DT meters like I mentioned" is like<br/>tuning two instruments against each other.<br/><br/>But as long as they're new, DT meters have very little drift or unit-to-unit variation, so<br/>buying just one is fine as long as you don't recalibrate.<br/>You only need recalibration if you're building wheels every day, and<br/>in this complete-wheel era, who does that?<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09740amx2.jpg" target="_blank"><img alt="DSC09740amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09740amx2s.jpg" width="300"/></a><br/>As for how I'm measuring butted and aero spokes with the Hozan meter:<br/>I've made my own conversion chart by comparing DT and Hozan readings<br/>in 100N increments.<br/>This way I can convert "CX-RAY (actually Aero-Lite)<br/>showing ○.○mm deflection on Hozan is ○○○○N" and so on.<br/>This amounts to "zero-in lacing between DT and Hozan,"<br/>and as long as I keep using the current Hozan with calibrations, I can use it forever.<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09732amx2.jpg" target="_blank"><img alt="DSC09732amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09732amx2s.jpg" width="300"/></a><br/>↑Three sets of conversion charts and such.<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09733amx2.jpg" target="_blank"><img alt="DSC09733amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09733amx2s.jpg" width="300"/></a><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09734amx2.jpg" target="_blank"><img alt="DSC09734amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09734amx2s.jpg" width="300"/></a><br/>There are three PB 2.5mm Allen keys<br/>for adjusting the probe set-screw<br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09735amx2.jpg" target="_blank"><img alt="DSC09735amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09735amx2s.jpg" width="300"/></a><br/>three of them.<br/><br/>Well, I learned the hard way that letting someone else manage tools leads to rough handling<br/>and loss of parts, so now I only have one DT meter.<br/>Without the conversion chart it's a useless object (though the DT chart should be obtainable),<br/>and it's a tool beyond your station, so give it back if you haven't lost it.<br/><br/>Never mind that I can't do zero-in lacing,<br/>but to verify fourth spoke tension I'd need<br/>at least two DT meters, and man oh man do I wish I had them!<br/><br/><br/><br/><br/>Thanks to the DT meter and conversion chart, I've been able to use<br/>the Hozan meter with Competition and CX-RAY.<br/>But do I consult the conversion chart every time?<br/>No—I've just memorized "CX-RAY at 1100N, the needle is around here"<br/>and the like, so for the DT Competition and CX-RAY I use frequently,<br/>I don't look at the chart.<br/>I just build using the first spoke tension reading.<br/>Actually, some complete-wheel manufacturers<br/>specify spoke tension this way too—<br/>"the free side of this wheel shows this many mm deflection on a DT meter"—<br/>using this method of designation.<br/>This approach might be clever.<br/>The spokes don't necessarily have to be DT brand.<br/>It's fine to just say "we build our wheels using a DT meter."<br/>For these reasons the DT meter is essential in shops.<br/>It's often necessary for repairs on foreign-brand wheels.<br/>So even if you're using it without a conversion chart for that reason, give it back.<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09728amx2.jpg" target="_blank"><img alt="DSC09728amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09728amx2s.jpg" width="300"/></a><br/>Finally.<br/>I figure someone will ask, "What about Park Tool's TM-1?"<br/>so I'll address it now.<br/>At ¥12,300 before tax, it's cheap, so I'd recommend it for home mechanics.<br/>Just be aware—its accuracy and repeatability are somewhat questionable.<br/>The individual variation in crimp hardness is huge, and the friction feel of moving parts differs from unit to unit.<br/>Also, by adjusting or lubricating the crimp on a single unit,<br/>the needle lift-off can change dramatically.<br/>Hozan and DT have the rigidity to prevent this kind of thing, but<br/>that shows in the price too (though I do think DT is pricey).<br/>Structurally it's an ultra-simplified DT.<br/>I don't think it's a shop pro tool,<br/>but I think it's sufficient for general use.<br/>However, as I mentioned, keeping the same conditions is important,<br/>so pay attention to that.<br/>It has a certain fragility—like "a ruler whose scale width changes depending on how you handle it."<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09730amx2.jpg" target="_blank"><img alt="DSC09730amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09730amx2s.jpg" width="300"/></a><br/>Park Tool names their tools either "acronym + size number"<br/>or "acronym + version number."<br/><br/>In the case of hub spanners (Park Tool calls them Shop Cone Wrenches),<br/>the acronym for Shop Cone Wrench is SCW, with<br/>13mm being SCW-13, 17mm being SCW-17—<br/>this is a size number system.<br/><br/>For floor pumps, Professional Floor Pump<br/>is acronymed PFP, followed by a number,<br/>and currently existing models are PFP-5, PFP-7, and PFP-8.<br/>This is a version number system, so there used to be 1, 2, 3, 4, and 6 at some point.<br/><br/>My point is: TM-1 is the first Tension Meter.<br/>Park Tool only recently became aware of "the need to manage spoke tension"<br/>from the catalog.<br/>Or maybe other companies had already established trusted meters as standards,<br/>making it hard to enter the market.<br/>Seen that way, it looks like a masterpiece born from that tight line:<br/>deliberate aim for "something much cheaper than what others are selling," pragmatically simple yet not cheap-looking,<br/>keeping the assumed retail price low.<br/><br/>If TM-1 were the only spoke tension meter in the world,<br/>of course I'd use it. I wouldn't rely on finger feel alone.<br/>It's just that if price is no object, I have other options—that's all.<br/><br/>If someday a TM-2 comes out that's solid and trustworthy,<br/>I wouldn't think ¥50,000 is expensive—I'm actually hoping for one.<br/>Even Park Tool's novelty pizza cutter is up to PZT-2 now.
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">Products Mentioned in This Article</p>
       <ul>

@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/7146.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">SRAM Calu</p>
     <h1>Kalu的路線生成與導航行為</h1>
     <p class="post-meta">June 14, 2024</p>
+    <div class="post-body"><div class="entrytext">在SRAM的Quarq上<br/>在本體的操作或儀表板上<br/>啟用導航到設定的釘子位置時<br/>關於其行為我來寫一下。<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9611msn5.jpg" target="_blank"><img alt="RIMG9611msn5.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9611msn5s.jpg" width="320"/></a><br/>不是地圖頁面<br/>只有數據頁面的佈局<br/>如果只是數值項目，最多可以選擇10個，<br/>圖表項目最多可以選擇2個，<br/>如果選擇1個圖表項目<br/>數值項目最多可以選擇6個，<br/>如果選擇2個圖表項目<br/>數值項目最多可以選擇4個。<br/><br/>舉例來說 上面的圖片中<br/>用深色顯示並被選中的是<br/>數值4個＋圖表2個。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/030amx15kar.jpg" target="_blank"><img alt="030amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/030amx15kars.jpg" width="320"/></a><br/>↑數值2個和圖表2個的<br/>佈局的頁面。<br/>從家門前手動操作本體的地圖<br/>在吹風嶺的頂峰位置打上釘子，<br/>並啟用了到那裡的導航。<br/>上面的兩個數值是 到終點的剩餘<br/>39.5公里 和標高220公尺的意思。<br/>先說在前面 本體地圖上<br/>頂峰的位置不太清楚，所以<br/>（縣界和隧道的標示都沒有，所以）<br/>實際上設定的終點比真正的山頂要前面得多。<br/><br/>下面的圖表是<br/>從 PROGRESS（進行狀況）的數據種類中選擇的<br/>Distance Remaining（剩餘距離）<br/>Elevation Remaining（剩餘上升距離）<br/>Dist + Elev Remaining（剩餘距離＋上升）<br/>其中最下面的 剩餘距離和標高<br/>選擇同時顯示這兩個項目的圖表。<br/>順便一提，英文項目名後面的（）內是<br/>選擇日語顯示時的表記原文照搬。<br/>隨著接近終點，圖表的柱子從右端開始<br/>逐漸變短，<br/>由於路線中的大部分獲得標高都來自<br/>風吹嶺的關係，<br/>在嶺腳附近，距離還剩約 15% 左右的時候<br/>標高卻還剩約 80% 左右……這樣<br/>偏差很大的圖表本來應該能看到才對，<br/>但因為這個圖表功能的缺陷<br/>最後沒能如願。<br/><br/>上面的圖表是<br/>從 CLIMB（上坡騎行）的數據種類中選擇的<br/>Upcoming Elevation Graph（下一段上升的圖表）<br/>Historical Elevation Graph（歷時性上升圖表）<br/>現在我在顯示上面即將到來的部分。<br/>（）內是同樣選擇日語時的原文，<br/>即將到來的部分是「剩餘的海拔數據」<br/>歷史數據的部分是「至今為止騎過的海拔數據」<br/>的意思。<br/>即將到來的部分是「到達終點的地形」，<br/>如果沒有打開導航的話<br/>圖表就不會出現。<br/><br/>在上面的圖像中，即將到來的圖表<br/>自動檢測路線後就沒有再碰過，<br/>所以還是單純的橫線，<br/>如果點擊這個圖表的顯示部分<br/>縮放比例就會改變。<br/>準備好的縮放比例有<br/>2.0公里、5.0公里、10.0公里、25.0公里、50.0公里、<br/>80.0公里、150.0公里等等，<br/>但是到終點的距離如果低於準備好的縮放比例距離的話<br/>那個縮放比例就無法選擇，<br/>到終點的距離本身就會成為縮放比例的上限。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/031amx15kar.jpg" target="_blank"><img alt="031amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/031amx15kars.jpg" width="320"/></a><br/>一直點擊把縮放比例改成了25.0公里。<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/032amx15kar.jpg" target="_blank"><img alt="032amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/032amx15kars.jpg" width="320"/></a><br/>↑這就是從現在位置向前25.0公里的海拔。<br/>嚴格來說是「按照導航指示的話」<br/>向前25.0公里的海拔。<br/>後面會提到，這個會「逐次修正」，所以<br/>真是神乎其技的功能。<br/><br/>下一次點擊的話，縮放應該會變成50.0km，<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/033amx15kar.jpg" target="_blank"><img alt="033amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/033amx15kars.jpg" width="320"/></a><br/>但因為路線本身不到50km，<br/>圖表的上限就成了39.4km。<br/>上面的數值是39.5km，<br/>但圖表卻是39.4km，<br/>在這種情況下，39.45km以上的處理<br/>不知道是四捨五入還是直接截斷，<br/>這裡有時候會出現0.1km的差異。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/034amx15kar.jpg" target="_blank"><img alt="034amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/034amx15kars.jpg" width="320"/></a><br/>路線整體的高度全景。<br/>進入山頂前那個尖尖的部分<br/>後面會出現，那就是「佐田前的無謂上升」。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9607amx15.jpg" target="_blank"><img alt="RIMG9607amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9607amx15s.jpg" width="320"/></a><br/>我來說明一下這條路線。<br/>圖片左邊大致是北方。<br/>在一條通的十字路口附近可以步行到達<br/>我從高中時代就一直光顧的<br/>自行車店 川原田的地方<br/>我擅自畫上去了，不過是有原因的（後述）。<br/><br/>我從家裡出發到中央環狀線（中環），<br/>直直朝海邊跑的話，<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9608amx15.jpg" target="_blank"><img alt="RIMG9608amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9608amx15s.jpg" width="320"/></a><br/>如果在一條通的十字路口轉彎，就是府道30號線，<br/>如果在安井町的十字路口轉彎，就是國道26號線，<br/>如果在大浜的十字路口轉彎，就是府道204號線（舊國道26號線）<br/>的路線。<br/>這３條道路（再加上更靠海邊的臨海線的話是４條）<br/>幾乎平行地南北走向。<br/><br/>府道２０４號線的大浜以北是國道２６號線，<br/>大浜～安井町之間成為之字形彎曲，<br/>從安井町以南繼續延伸的形式。<br/><br/>府道３０號線是大阪人通稱為「１３號線」，<br/>但這條道路的正式名稱無論是府道還是國道<br/>都不曾是１３號，<br/>按照我支持的說法<br/>「因為車線數只有２６號線的一半」<br/>才被稱為１３號線的。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9609amx15.jpg" target="_blank"><img alt="RIMG9609amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9609amx15s.jpg" width="320"/></a><br/>沿著各條道路往南下去<br/>在佐田、砂川變電所、樽井的交叉口<br/>左轉就會通往風吹峠山頂的道路。<br/>其中我最常騎的路線是<br/>「沿著２６號線路線在砂川變電所轉彎」。<br/>如果是２０４號線的情況，<br/>不會騎到樽井，而是途中進入２６號線。<br/>３０號線（１３號線）路線很少騎。<br/>雖然車很少，但卻無故有上下坡，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9610amx15.jpg" target="_blank"><img alt="RIMG9610amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9610amx15s.jpg" width="320"/></a><br/>尤其是佐田前面有「無故爬坡後<br/>山頂平坦一段時間，然後下坡距離大概是剛才上坡的一半」<br/>這樣的道路。<br/>這就是剛才提到的佐田前面的無故上坡。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/035amx15kar.jpg" target="_blank"><img alt="035amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/035amx15kars.jpg" width="320"/></a><br/>開始騎行了。<br/>第一頁地圖的頁面是<br/>上方有兩個數值項目，<br/>左邊選擇速度，右邊選擇行駛距離。<br/>包括這張圖片在內，之後的所有圖片都是在停車時拍攝的。<br/>在5.0km地點已經轉過安井町，<br/>正在26號線南下中，<br/>導航在273公尺先指示右轉<br/>進入204號線騎行。<br/>順帶一提，上面圖片的地圖左上方<br/>那個正方形的土地是久保田的堺工場，<br/>它右邊的L字形土地是島野的總部／工廠。<br/>從這裡開始，如果無視轉彎指示直進的話⋯⋯<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/036amx15kar.jpg" target="_blank"><img alt="036amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/036amx15kars.jpg" width="320"/></a><br/>從剛才的地點直進了約0.8km。<br/>大概是在島野的旁邊。<br/>毫不氣餒地無視了路線，<br/>在0.5km先右轉進入204號線的<br/>新路線馬上被提議了出來。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/037amx15kar.jpg" target="_blank"><img alt="037amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/037amx15kars.jpg" width="320"/></a><br/>在10.1km地點。<br/>當我縮小地圖的縮放比例確認後，<br/>之後一直都推薦204號線。<br/><br/>距離轉彎處還剩150公尺時，<br/>伴著一聲超大的嗶聲，<br/>導航的黃色標籤自動抬起<br/>「差不多要轉彎的地方喔」就這樣告訴我。<br/>邊騎邊看的話 第一次出現的剩餘距離<br/>已經大約是１３５ｍ左右的情況居多。<br/>上面的畫像中 標籤裡的紫色條<br/>顯示剩餘２５ｍ，<br/>紫色條代表「相對於１５０ｍ的進度」<br/>已經走過的部分就變成深紫色<br/>從左邊延伸過來。<br/>上面的畫像的話１２５ｍ是深紫色<br/>剩下的２５ｍ是淺紫色。<br/><br/>這個「轉彎地點還剩１５０ｍ的提醒」的<br/>剩餘距離呢，大概要打個負２０ｍ的折扣<br/>來理解會比較好。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/038amx15kar.jpg" target="_blank"><img alt="038amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/038amx15kars.jpg" width="320"/></a><br/>在說那個之前。<br/>目前位置黃色箭頭的前方有<br/>黃色的道路是２６號線，<br/>導航建議的比那更右邊的路線<br/>是２０４號線。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/040amx15kar.jpg" target="_blank"><img alt="040amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/040amx15kars.jpg" width="320"/></a><br/>１３．３ｋｍ地點。<br/>泉大津的Izumiya（Daily Canart）那一帶，<br/>不知道為什麼 從這個地方稍微前面開始導航就<br/>開始建議更靠山那邊的３０號線（１３號線）。<br/>如果無視導航的話 導航也不氣餒 馬上修正<br/>下一個要轉的地點然後告訴我，<br/>当還剩不到１５０ｍ時 就會用超大聲的嗶聲<br/>來通知你。<br/>也就是說 每忽視導航一次<br/>就會多聽一次超大聲的嗶聲。<br/>因為這樣 從此之後我就決定乖乖跟著導航走。<br/><br/>上面的圖片顯示還要２１ｍ就要左轉 但<br/>這是在紅綠燈停止的地點<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/042amx15kar.jpg" target="_blank"><img alt="042amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/042amx15kars.jpg" width="320"/></a><br/>↑這個左轉距離是「還有２１ｍ」。<br/>關於這個 左轉和右轉在<br/>是否要穿過眼前橫切的道路上<br/>可能有所不同。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/044amx15kar.jpg" target="_blank"><img alt="044amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/044amx15kars.jpg" width="320"/></a><br/>時間順序有點跳躍 但<br/>３０．１ｋｍ地點的這個「３３ｍ先右轉」<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/045amx15kar.jpg" target="_blank"><img alt="045amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/045amx15kars.jpg" width="320"/></a><br/>就是顯示該資訊時的實際畫面。<br/>右轉的話 大約「到彎的地方的距離」會<br/>相符吧。<br/>不過 還是覺得有點偏短啦。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/039amx15kar.jpg" target="_blank"><img alt="039amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/039amx15kars.jpg" width="320"/></a><br/>↑這是跑了１１．３ｋｍ時的畫面 但<br/>螢幕最下方的剩餘高度／距離圖表<br/>在３９．５ｋｍ中的１．５ｋｍ處<br/>和２２０ｍ中的２４ｍ爬升處<br/>卡住了。<br/>之後一直到完成整個路線為止<br/>這個狀態都沒有改變過。<br/><br/>會變成這樣的原因是，<br/>因為我一直無視導航啦。<br/>從家裡出來到中環為止，Karoo推薦的路線<br/>對於熟悉地形的人來說是效率很差的路線，<br/>所以我無視導航，從起點跑了1.5km的地方<br/>「你不聽指示的話 那我也不管了！」<br/>它就生氣結束了。<br/>之後我就沒有選擇這個顯示項目了，<br/>如果走行路線不是Karoo的自動生成，<br/>而是手動生成的隨意騎乘路線的話，<br/>我覺得它是個還滿好用的顯示項目。<br/>只要多少忽視一下導航，或是該轉彎的地方沒轉到<br/>再回到原本的導航路線程度的話，不會卡住。<br/>反過來說，如果會卡住的話，<br/>就表示這不是適合自己的顯示項目。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/043amx15kar.jpg" target="_blank"><img alt="043amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/043amx15kars.jpg" width="320"/></a><br/>在泉大津左轉，然後馬上右轉，<br/>在和泉府中站前的圓環再左轉，<br/>那先的T字路右轉的話（這裡大致朝南），<br/>就出現還剩10.1km。<br/>但那時不是能停車的時機，<br/>所以上面的圖片裡<br/>顯示還剩9.7km到下一個轉彎點。<br/>這表示，在一段時間內<br/>能從超大聲的嗶嗶警報聲解放出來，<br/>螢幕下方的標籤頁中，中間的灰色標籤是<br/>與智慧型手機的連結，當手機收到通知時<br/>中間的灰色標籤會自動彈起<br/>在與騎乘狀況無關的時機<br/>發出超大聲的嗶聲，嚇了我一跳。<br/><br/>在轉彎點的箭頭變化非常<br/>豐富，上圖的箭頭是<br/>在叫貝田的交差口，從我的角度來看<br/>是從Ｙ字形下方過來的形狀，所以<br/>是符合「選擇左邊」狀況的箭頭形狀。<br/>順帶一提，如果在那裡向右轉的話，就會通往２６號線。<br/><br/>在這裡我來寫一下「逐次修正」的事情。<br/>上圖顯示項目中的<br/>「剩餘距離」和「剩餘高度」這兩個數值，以及<br/>「接下來路線的高度圖」這３項<br/>每當偏離導航路線時<br/>都會「按照導航的剩餘距離／高度」<br/>逐次適切地被修正。<br/>這是我對Karoo的導航功能<br/>最為印象深刻的地方。<br/>實際上，當初的剩餘距離應該是３９．５ｋｍ，<br/>但上圖的進度１６．３ｋｍ加上剩餘２３．５ｋｍ<br/>等於３９．８ｋｍ，增加了，就是因為這個原因。<br/>實際騎乘的路線相比導航路線是近路的話<br/>相反地，到達終點的距離會逐次修正而縮短。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/049amx15kar.jpg" target="_blank"><img alt="049amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/049amx15kars.jpg" width="320"/></a><br/>３６．９ｋｍ地點。<br/>逐次修正堆積起來<br/>進度和剩餘距離相加，當初的３９．５ｋｍ<br/>伸長到了４１．０ｋｍ。<br/>那無所謂，藍色的標籤自動彈起來了。<br/>這個啊，我在以前的文章裡也寫過<br/>「Karoo認定為上坡的道路」的事，<br/>當靠近那個起始點時<br/>標籤就自動彈起<br/>顯示詳細的海拔數據。<br/><br/>這不只在導航的時候，<br/>現在騎的道路的前方<br/>如果有Karoo認定為上坡的道路<br/>就會在那個起始點自動生成藍色標籤<br/>並伴著超大聲的嗶嗶聲告知。<br/><br/>右端的紫色標籤是我按錯了而製造的<br/>單圈計時的標籤。<br/><br/>上面圖片的爬升圖表的<br/>比例尺不太容易看清<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/050amx15kar.jpg" target="_blank"><img alt="050amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/050amx15kars.jpg" width="320"/></a><br/>所以我改變了比例尺。<br/>好的，這就是佐田前面的無謂上坡。<br/>距離頂端還有０．３ｋｍ，<br/>不知道是不是抓住了這瞬間，斜度顯示為１２％<br/>實際上大約是７％。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/052amx15kar.jpg" target="_blank"><img alt="052amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/052amx15kars.jpg" width="320"/></a><br/>３９．２公里地點。<br/>只有當地人才能理解吧<br/>金熊寺的十字路口。<br/>前面有寫過，終點設定在風吹峠的山頂，<br/>以我嚴謹的定義來說<br/>不是進入新風吹隧道的那一瞬間，<br/>而是設在更前面一點。<br/><br/>上面的圖片裡，路線用藍色線表示，<br/>起點的三角白旗和<br/>表示終點的格紋旗標記<br/>是Karoo認定為上升的路線，<br/>終點的旗子是穿過新風吹隧道的地點。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/056amx15kar.jpg" target="_blank"><img alt="056amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/056amx15kars.jpg" width="320"/></a><br/>在UpComing的圖表裡是３９．１公里，<br/>這時候逐次修正的結果終點<br/>是４１．０公里地點。<br/>剩餘標高顯示４８公尺<br/>也受到逐次修正的影響，<br/>相比最初顯示的剩餘２２０公尺，<br/>不一定就是登了１７２公尺的結果，<br/>（這部分的另一頁有獲得標高的數值資料，<br/>看那個的話就能發現誤差，但我沒拍照）<br/>最初大約４０公里／２００多公尺相比<br/>剩下２公里卻還剩約５０公尺，<br/>真的有種「爬坡終點」的感覺（雖然不是山頂）。<br/><br/>縮放放大後的上升路段圖表<br/>相當準確地反映了實際道路的上下起伏<br/>如果要看陌生道路的導航的話<br/>事先就能做好心理準備，我覺得這點不錯。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/057amx15kar.jpg" target="_blank"><img alt="057amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/057amx15kars.jpg" width="320"/></a><br/>在４１．４km處導航結束，<br/>沒有開啟導航設定的話就不會顯示的項目<br/>全都消失了。<br/>剩下１．９km時，原本應該是４１．０km的路線<br/>最後突然增加了０．４km，<br/>是因為從路上的金熊寺十字路口<br/>被導航引往<br/>汽車專用隧道，我無視了（←那當然要無視啦）<br/>改走舊道的關係。<br/><br/>舊道與隧道那邊的道路合流，再往前一點<br/>我到達了誤設的終點。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/058amx15kar.jpg" target="_blank"><img alt="058amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/058amx15kars.jpg" width="320"/></a><br/>那是新風吹隧道入口的邊界。<br/>順帶一提，和歌山縣的縣界<br/>稍微前面已經通過了。<br/>上面照片裡的雜草<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/060amx15kar.jpg" target="_blank"><img alt="060amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/060amx15kars.jpg" width="320"/></a><br/>拍得有點模糊<br/>在隧道入口時是４４．４km。<br/><br/>從這裡開始的回程用另一筆記錄。<br/>到這裡為止的記錄是 出於習慣<br/>不小心刪掉了。<br/>按本體下側的實體按鈕，左、右、左、右地按<br/>已經成為習慣了。<br/>左　結束記錄<br/>右　真的要結束嗎？<br/>左　把記錄丟進垃圾桶刪除<br/>右　真的要丟進垃圾桶嗎？<br/>就是這個順序。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/062amx15kar.jpg" target="_blank"><img alt="062amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/062amx15kars.jpg" width="320"/></a><br/>在風吹嶺隧道前<br/>回程的別針我從本體操作改為手動打下。<br/>在地圖上點擊任意一點時<br/>黑點君就會出現，進入打別針的模式<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/063amx15kar.jpg" target="_blank"><img alt="063amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/063amx15kars.jpg" width="320"/></a><br/>在仁德天皇陵附近的川原田先生那裡<br/>我自作聰明地設定為終點。<br/><s>耶～店長，有看到嗎～？</s><br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/064amx15kar.jpg" target="_blank"><img alt="064amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/064amx15kars.jpg" width="320"/></a><br/>放大到最高倍數<br/>在極其準確的位置打下別針。<br/>因為網路上的域名是e-cycle的關係吧<br/>在地圖上名稱就是e-cycle。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/065amx15kar.jpg" target="_blank"><img alt="065amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/065amx15kars.jpg" width="320"/></a><br/>我打下了別針。<br/>出現了３３．４這樣的距離<br/>這是到別針位置的直線距離，<br/>自動生成路線的話，<br/>一定會比這個距離更長。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/066amx15kar.jpg" target="_blank"><img alt="066amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/066amx15kars.jpg" width="320"/></a><br/>剩餘距離／標高顯示為４３．７ｋｍ／２２８ｍ。<br/>不對，這肯定有問題。<br/>去程是我自己搞砸的，雖然只到了山頂的中途<br/>在上坡終點的路線上，從起點時<br/>預定獲得標高２２０ｍ，<br/>下山的回程完全沒有上坡<br/>不可能有２２８ｍ的標高。<br/>而且，從家裡到風吹峠的山頂<br/>沒有用速度感測器，是依據ＧＰＳ的距離，<br/>結果是４４．０ｋｍ，<br/>我家離カワハラダ先生<br/>大約４ｋｍ遠的地方，<br/>怎麼可能是４３．７ｋｍ呢。<br/><br/>螢幕最下面的進度圖表<br/>還沒有顯示，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/067amx15kar.jpg" target="_blank"><img alt="067amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/067amx15kars.jpg" width="320"/></a><br/>但導航開啟了。<br/>這是後來才注意到的，<br/>導航的提示變成了「返回１．８ｋｍ」。<br/>其實我無視導航指示直進的情況下，<br/>一開始會出現這個掉頭箭頭和返回距離。<br/>不過在選項較多的市區內，無視超過１００ｍ繼續前進的話，<br/>導航就會重新生成新路線。<br/>所以第一次看到要返回１．８ｋｍ這麼遠。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/069amx15kar.jpg" target="_blank"><img alt="069amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/069amx15kars.jpg" width="320"/></a><br/>但從那裡再騎個２０～３０ｍ左右<br/>伴隨著該死的大聲嗶聲<br/>距離被修正為４０．０ｋｍ，標高為１３８ｍ。<br/>這與我的體感距離和標高相符。<br/>從距離來看，之前那１．８ｋｍ指示的往返<br/>３．６ｋｍ消失了。<br/>下一個轉向指示在４．８ｋｍ處，右轉，<br/>這是金熊寺交叉口。<br/><br/>奇怪的是，螢幕最下方的進度圖表也<br/>被修正為１３８ｍ／４０．０ｋｍ。<br/>這個圖表通常不會被修正，<br/>但也許只在路線生成的最初階段才會修正。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/071amx15kar.jpg" target="_blank"><img alt="071amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/071amx15kars.jpg" width="320"/></a><br/>從那裡又跑了約１００ｍ。<br/>距離右轉還有０．２ｋｍ被縮短了，<br/>不過那沒關係，<br/>進度圖表在正常運作，沒有卡住。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/072amx15kar.jpg" target="_blank"><img alt="072amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/072amx15kars.jpg" width="320"/></a><br/>這是距離起點３．６ｋｍ的地點。<br/>導航指示向右轉，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/073amx15kar.jpg" target="_blank"><img alt="073amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/073amx15kars.jpg" width="320"/></a><br/>這就是實際位置，右邊的隧道<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/074amx15kar.jpg" target="_blank"><img alt="074amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/074amx15kars.jpg" width="320"/></a><br/>如我之前所寫的，自行車無法通過。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/075amx15kar.jpg" target="_blank"><img alt="075amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/075amx15kars.jpg" width="320"/></a><br/>在接下來的圖表中，行駛距離<br/>不是３．６ｋｍ，而是３．５ｋｍ，<br/>不過那沒關係（差距不到０．１ｋｍ），<br/>上面數值項目的剩餘距離與<br/>最下方進度圖表的剩餘距離相符。<br/>既然一直都是直路，那當然了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/077amx15kar.jpg" target="_blank"><img alt="077amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/077amx15kars.jpg" width="320"/></a><br/>我選擇了不經過左邊隧道的路線（舊道）的那一瞬間，<br/>路線立刻就被重新生成了。<br/>距離增加的原因就在這裡，<br/>往路時剩餘1.9公里，<br/>實際騎到終點卻是2.3公里，這就是主要原因。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/078amx15kar.jpg" target="_blank"><img alt="078amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/078amx15kars.jpg" width="320"/></a><br/>已經降到了佐田的十字路口。<br/>雖然被綠燈的光線遮住了，<br/>但十字路口名稱「佐田」的標牌<br/>就裝在柱子上面。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/079amx15kar.jpg" target="_blank"><img alt="079amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/079amx15kars.jpg" width="320"/></a><br/>雖然在停止線前停著，但19公尺先顯示要右轉。<br/>由於這個導航，左轉時應該也會顯示19公尺先，<br/>所以轉彎點的距離大概是20公尺左右，<br/>估算得短一點會比較好，<br/>這我前面也寫過了。<br/>但是，這個導航又一次<br/>推薦了大阪和泉泉南線（大阪府道30號線（通稱13號線））。<br/>推薦這條路線。<br/>右轉後產生的無謂上升<br/>已經出現在接下來的爬升圖上了，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/080amx15kar.jpg" target="_blank"><img alt="080amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/080amx15kars.jpg" width="320"/></a><br/>改變縮放比例後，大概就是這樣子。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/081amx15kar.jpg" target="_blank"><img alt="081amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/081amx15kars.jpg" width="320"/></a><br/>到目前為止看過的，沒有設定目的地時<br/>顯示項目什麼都不會顯示的頁面，<br/>其實是第4頁。<br/>第1頁是地圖＋速度和距離的顯示、<br/>第2頁通常是自行車碼錶會<br/>顯示的內容＋鏈條所在齒輪的圖表顯示、<br/>第3頁是上面圖片的<br/>上面的數值顯示現在的標高和累積爬升、<br/>下面的圖表是歷史標高圖。<br/><br/>因為只是從風吹峠頂端下來<br/>如果這是自己持有的股票圖表的話<br/>會出現讓胃疼的下降線般的圖表、<br/>歷史標高圖<br/>和即將到來的不同，無法改變縮放、<br/>上面圖片裡雖然有6．5km地點的資訊、<br/>但距離的橫軸沒有刻度、<br/>所以沒什麼值得看的。<br/>之後我也把這個從顯示項目中刪除了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/084amx15kar.jpg" target="_blank"><img alt="084amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/084amx15kars.jpg" width="320"/></a><br/>從6．5km地點又騎了約0．1km。<br/>重點是，在佐田沒有右轉、<br/>而是直進準備走26號線回家。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/086amx15kar.jpg" target="_blank"><img alt="086amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/086amx15kars.jpg" width="320"/></a><br/>結果，即將到來的圖表消失了、<br/>一瞬間出現了loading…的表記、<br/>圖表地形立刻從30號線無謂上升路線<br/>變更成現在正在騎的路線。<br/>而且，剛才法律上無法通行的隧道、<br/>當然被忽略了<br/>那種程度並不會導致進度圖表凍結。<br/><br/>上面剩餘距離的數值跟進度一樣是３３．６ｋｍ。<br/>在往路中選擇了迴避汽車專用隧道的路線<br/>後續的預估剩餘距離竟然改變了０．４ｋｍ<br/>如果進度圖表沒有逐次修正的話<br/>數值項目和進度圖表的３３．６ｋｍ<br/>根本對不上。<br/>所以在凍結之前，進度圖表也有<br/>逐次修正的可能性。<br/>最初預估的剩餘距離是４０．０ｋｍ，<br/>到了上面那張圖片的時點，已經進度６．６ｋｍ＋剩餘３３．６ｋｍ<br/>增加到４０．２ｋｍ了。<br/>所以上面那張圖片的進度圖表<br/>如果把剩餘３６．６ｋｍ的長度延伸到右端的話<br/>可能不是４０．０ｋｍ而是４０．２ｋｍ<br/>被逐次修正過也說不定。<br/>只是那種程度的誤差實在無法確認。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/087amx15kar.jpg" target="_blank"><img alt="087amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/087amx15kars.jpg" width="320"/></a><br/>之後又騎了一陣子，<br/>佐田那邊沒有轉彎，大概是這個明顯的悖逆讓導航生氣了吧，<br/>進度圖表在剩餘９１ｍ／３２．２ｋｍ的地方<br/>凍結了。<br/>之後這個顯示完全沒有改變，就這樣固定住了。<br/>數值方面的剩餘距離是２９．８ｋｍ。<br/><br/>我並不是想要迴避無謂的爬坡路線，<br/>我故意無視路線，凍結進度圖來<br/>因為想驗證假說，回程時選了26號線。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/089amx15kar.jpg" target="_blank"><img alt="089amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/089amx15kars.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/090amx15kar.jpg" target="_blank"><img alt="090amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/090amx15kars.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/093amx15kar.jpg" target="_blank"><img alt="093amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/093amx15kars.jpg" width="320"/></a><br/>之後一直沿著26號線往北行進，<br/>Calu的自動生成路線<br/>卻推薦了應該更繞遠路的204號線。<br/>上面圖片中的「剩餘18m左轉」和「剩餘12m左轉」<br/>想必你已經明白了<br/>就是在十字路口停止線停下的位置。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/094amx15kar.jpg" target="_blank"><img alt="094amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/094amx15kars.jpg" width="320"/></a><br/>原定計畫剩餘距離是40.0km，<br/>但在進度25.1km時點的剩餘距離<br/>變成了16.6km<br/>所以每次修正後的預定走行距離<br/>現在是41.7km。<br/><br/>剩餘16.6km<br/>是「之後按照Calu導航情況下的距離」，<br/>但按導航轉入204號線<br/>比26號線直進還要繞遠路，<br/>所以最終的走行距離應該會<br/>往縮短的方向逐次修正。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/095amx15kar.jpg" target="_blank"><img alt="095amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/095amx15kars.jpg" width="320"/></a><br/>25.1km時點的<br/>歷史記錄方面的海拔圖表。<br/>操作大多用右上方的實體按鈕，<br/>但停車時也會點擊螢幕，<br/>所以螢幕變髒了。<br/>順便一提 觸控面板相容的手套⋯⋯<br/>倒不如說是用裸手在操作。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/096amx15kar.jpg" target="_blank"><img alt="096amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/096amx15kars.jpg" width="320"/></a><br/>剩下５公里不到的時候<br/>就沒辦法選擇更縮小的縮放比例了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/101amx15kar.jpg" target="_blank"><img alt="101amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/101amx15kars.jpg" width="320"/></a><br/>剩餘距離０．２公里、剩餘爬升４公尺的時候<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/102amx15kar.jpg" target="_blank"><img alt="102amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/102amx15kars.jpg" width="320"/></a><br/>到了那種程度<br/>平時無法選擇的０．５公里縮放比例出現了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/103amx15kar.jpg" target="_blank"><img alt="103amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/103amx15kars.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/10k4amx15kar.jpg" target="_blank"><img alt="10k4amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/10k4amx15kars.jpg" width="320"/></a><br/>就好在川原田桑的前面<br/>導航路線的指引就結束了。<br/>預計行駛距離從最初的４０．０公里<br/>延伸到４２公里出頭<br/>因為導航的路線有點繞路<br/>一邊修正後變成４０．２公里。<br/>上面的圖片，在隱去車牌的同時<br/>我也製作了汽車翻轉的諷刺圖<br/>因為似乎會被罵 所以沒有採用。<br/><br/><br/><br/>Calu的自動生成路線導航<br/>對於熟悉當地的人來說<br/>似乎經常會選擇不是最優解的路線，<br/>讀到這篇文章時<br/>要是聽到２６號線啦安井町啦砂川變電所什麼的<br/>想不起來是哪裡的人如果被說「從風吹峠登上來」的話<br/>跟著導航走應該是最穩妥的做法，<br/>所以這是個很實用的功能。<br/><br/>之後上升中路線的標高圖表呢，<br/>看整體概覽式的縮放尺度也不錯，<br/>設定在２．０ｋｍ或５．０ｋｍ時，<br/>能相當精確地看清楚最近的地形也很方便。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9625amx15.jpg" target="_blank"><img alt="RIMG9625amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9625amx15s.jpg" width="320"/></a><br/>雖然跟表題內容無關，<br/>第２頁匯集了一般自行車碼錶上有的<br/>顯示項目。<br/>在這裡，把坡度（勾配）和變速資訊的圖表<br/>並排顯示的話就相當便利。<br/>能用視覺資訊看出在幾％的坡度上用幾Ｔ的齒輪，<br/>真的很有幫助。<br/>能做到這一點<br/>只有在用SRAM AXS套件的時候才行。<br/><br/>上面圖片裡的「GRADE」這個東西<br/>就是所謂用百分比表示的坡度（勾配），<br/>但是這個，改成日語顯示的話<br/>就變成了「グレード」這個標記，<br/>除了這之外也能看到不少奇妙的翻譯，<br/>所以我用英語來操作。<br/>GRADE的最小單位是０．１就太好了。<br/>如果是１為單位的話，會想「這裡是７年級嗎」啦，<br/>或者「這個下坡是負２年級嗎」這樣，<br/>把GRADE解釋成「學年」的意思<br/>也說不定呢。<br/>所以 這個項目名稱應該<br/>改成「INCLINE（傾斜・坡度）」比較<br/>好的樣子。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">在SRAM的Quarq上<br/>在本體的操作或儀表板上<br/>啟用導航到設定的釘子位置時<br/>關於其行為我來寫一下。<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9611msn5.jpg" target="_blank"><img alt="RIMG9611msn5.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9611msn5s.jpg" width="320"/></a><br/>不是地圖頁面<br/>只有數據頁面的佈局<br/>如果只是數值項目，最多可以選擇10個，<br/>圖表項目最多可以選擇2個，<br/>如果選擇1個圖表項目<br/>數值項目最多可以選擇6個，<br/>如果選擇2個圖表項目<br/>數值項目最多可以選擇4個。<br/><br/>舉例來說 上面的圖片中<br/>用深色顯示並被選中的是<br/>數值4個＋圖表2個。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/030amx15kar.jpg" target="_blank"><img alt="030amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/030amx15kars.jpg" width="320"/></a><br/>↑數值2個和圖表2個的<br/>佈局的頁面。<br/>從家門前手動操作本體的地圖<br/>在吹風嶺的頂峰位置打上釘子，<br/>並啟用了到那裡的導航。<br/>上面的兩個數值是 到終點的剩餘<br/>39.5公里 和標高220公尺的意思。<br/>先說在前面 本體地圖上<br/>頂峰的位置不太清楚，所以<br/>（縣界和隧道的標示都沒有，所以）<br/>實際上設定的終點比真正的山頂要前面得多。<br/><br/>下面的圖表是<br/>從 PROGRESS（進行狀況）的數據種類中選擇的<br/>Distance Remaining（剩餘距離）<br/>Elevation Remaining（剩餘上升距離）<br/>Dist + Elev Remaining（剩餘距離＋上升）<br/>其中最下面的 剩餘距離和標高<br/>選擇同時顯示這兩個項目的圖表。<br/>順便一提，英文項目名後面的（）內是<br/>選擇日語顯示時的表記原文照搬。<br/>隨著接近終點，圖表的柱子從右端開始<br/>逐漸變短，<br/>由於路線中的大部分獲得標高都來自<br/>風吹嶺的關係，<br/>在嶺腳附近，距離還剩約 15% 左右的時候<br/>標高卻還剩約 80% 左右……這樣<br/>偏差很大的圖表本來應該能看到才對，<br/>但因為這個圖表功能的缺陷<br/>最後沒能如願。<br/><br/>上面的圖表是<br/>從 CLIMB（上坡騎行）的數據種類中選擇的<br/>Upcoming Elevation Graph（下一段上升的圖表）<br/>Historical Elevation Graph（歷時性上升圖表）<br/>現在我在顯示上面即將到來的部分。<br/>（）內是同樣選擇日語時的原文，<br/>即將到來的部分是「剩餘的海拔數據」<br/>歷史數據的部分是「至今為止騎過的海拔數據」<br/>的意思。<br/>即將到來的部分是「到達終點的地形」，<br/>如果沒有打開導航的話<br/>圖表就不會出現。<br/><br/>在上面的圖像中，即將到來的圖表<br/>自動檢測路線後就沒有再碰過，<br/>所以還是單純的橫線，<br/>如果點擊這個圖表的顯示部分<br/>縮放比例就會改變。<br/>準備好的縮放比例有<br/>2.0公里、5.0公里、10.0公里、25.0公里、50.0公里、<br/>80.0公里、150.0公里等等，<br/>但是到終點的距離如果低於準備好的縮放比例距離的話<br/>那個縮放比例就無法選擇，<br/>到終點的距離本身就會成為縮放比例的上限。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/031amx15kar.jpg" target="_blank"><img alt="031amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/031amx15kars.jpg" width="320"/></a><br/>一直點擊把縮放比例改成了25.0公里。<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/032amx15kar.jpg" target="_blank"><img alt="032amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/032amx15kars.jpg" width="320"/></a><br/>↑這就是從現在位置向前25.0公里的海拔。<br/>嚴格來說是「按照導航指示的話」<br/>向前25.0公里的海拔。<br/>後面會提到，這個會「逐次修正」，所以<br/>真是神乎其技的功能。<br/><br/>下一次點擊的話，縮放應該會變成50.0km，<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/033amx15kar.jpg" target="_blank"><img alt="033amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/033amx15kars.jpg" width="320"/></a><br/>但因為路線本身不到50km，<br/>圖表的上限就成了39.4km。<br/>上面的數值是39.5km，<br/>但圖表卻是39.4km，<br/>在這種情況下，39.45km以上的處理<br/>不知道是四捨五入還是直接截斷，<br/>這裡有時候會出現0.1km的差異。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/034amx15kar.jpg" target="_blank"><img alt="034amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/034amx15kars.jpg" width="320"/></a><br/>路線整體的高度全景。<br/>進入山頂前那個尖尖的部分<br/>後面會出現，那就是「佐田前的無謂上升」。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9607amx15.jpg" target="_blank"><img alt="RIMG9607amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9607amx15s.jpg" width="320"/></a><br/>我來說明一下這條路線。<br/>圖片左邊大致是北方。<br/>在一條通的十字路口附近可以步行到達<br/>我從高中時代就一直光顧的<br/>自行車店 川原田的地方<br/>我擅自畫上去了，不過是有原因的（後述）。<br/><br/>我從家裡出發到中央環狀線（中環），<br/>直直朝海邊跑的話，<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9608amx15.jpg" target="_blank"><img alt="RIMG9608amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9608amx15s.jpg" width="320"/></a><br/>如果在一條通的十字路口轉彎，就是府道30號線，<br/>如果在安井町的十字路口轉彎，就是國道26號線，<br/>如果在大浜的十字路口轉彎，就是府道204號線（舊國道26號線）<br/>的路線。<br/>這３條道路（再加上更靠海邊的臨海線的話是４條）<br/>幾乎平行地南北走向。<br/><br/>府道２０４號線的大浜以北是國道２６號線，<br/>大浜～安井町之間成為之字形彎曲，<br/>從安井町以南繼續延伸的形式。<br/><br/>府道３０號線是大阪人通稱為「１３號線」，<br/>但這條道路的正式名稱無論是府道還是國道<br/>都不曾是１３號，<br/>按照我支持的說法<br/>「因為車線數只有２６號線的一半」<br/>才被稱為１３號線的。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9609amx15.jpg" target="_blank"><img alt="RIMG9609amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9609amx15s.jpg" width="320"/></a><br/>沿著各條道路往南下去<br/>在佐田、砂川變電所、樽井的交叉口<br/>左轉就會通往風吹峠山頂的道路。<br/>其中我最常騎的路線是<br/>「沿著２６號線路線在砂川變電所轉彎」。<br/>如果是２０４號線的情況，<br/>不會騎到樽井，而是途中進入２６號線。<br/>３０號線（１３號線）路線很少騎。<br/>雖然車很少，但卻無故有上下坡，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9610amx15.jpg" target="_blank"><img alt="RIMG9610amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9610amx15s.jpg" width="320"/></a><br/>尤其是佐田前面有「無故爬坡後<br/>山頂平坦一段時間，然後下坡距離大概是剛才上坡的一半」<br/>這樣的道路。<br/>這就是剛才提到的佐田前面的無故上坡。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/035amx15kar.jpg" target="_blank"><img alt="035amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/035amx15kars.jpg" width="320"/></a><br/>開始騎行了。<br/>第一頁地圖的頁面是<br/>上方有兩個數值項目，<br/>左邊選擇速度，右邊選擇行駛距離。<br/>包括這張圖片在內，之後的所有圖片都是在停車時拍攝的。<br/>在5.0km地點已經轉過安井町，<br/>正在26號線南下中，<br/>導航在273公尺先指示右轉<br/>進入204號線騎行。<br/>順帶一提，上面圖片的地圖左上方<br/>那個正方形的土地是久保田的堺工場，<br/>它右邊的L字形土地是島野的總部／工廠。<br/>從這裡開始，如果無視轉彎指示直進的話⋯⋯<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/036amx15kar.jpg" target="_blank"><img alt="036amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/036amx15kars.jpg" width="320"/></a><br/>從剛才的地點直進了約0.8km。<br/>大概是在島野的旁邊。<br/>毫不氣餒地無視了路線，<br/>在0.5km先右轉進入204號線的<br/>新路線馬上被提議了出來。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/037amx15kar.jpg" target="_blank"><img alt="037amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/037amx15kars.jpg" width="320"/></a><br/>在10.1km地點。<br/>當我縮小地圖的縮放比例確認後，<br/>之後一直都推薦204號線。<br/><br/>距離轉彎處還剩150公尺時，<br/>伴著一聲超大的嗶聲，<br/>導航的黃色標籤自動抬起<br/>「差不多要轉彎的地方喔」就這樣告訴我。<br/>邊騎邊看的話 第一次出現的剩餘距離<br/>已經大約是１３５ｍ左右的情況居多。<br/>上面的畫像中 標籤裡的紫色條<br/>顯示剩餘２５ｍ，<br/>紫色條代表「相對於１５０ｍ的進度」<br/>已經走過的部分就變成深紫色<br/>從左邊延伸過來。<br/>上面的畫像的話１２５ｍ是深紫色<br/>剩下的２５ｍ是淺紫色。<br/><br/>這個「轉彎地點還剩１５０ｍ的提醒」的<br/>剩餘距離呢，大概要打個負２０ｍ的折扣<br/>來理解會比較好。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/038amx15kar.jpg" target="_blank"><img alt="038amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/038amx15kars.jpg" width="320"/></a><br/>在說那個之前。<br/>目前位置黃色箭頭的前方有<br/>黃色的道路是２６號線，<br/>導航建議的比那更右邊的路線<br/>是２０４號線。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/040amx15kar.jpg" target="_blank"><img alt="040amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/040amx15kars.jpg" width="320"/></a><br/>１３．３ｋｍ地點。<br/>泉大津的Izumiya（Daily Canart）那一帶，<br/>不知道為什麼 從這個地方稍微前面開始導航就<br/>開始建議更靠山那邊的３０號線（１３號線）。<br/>如果無視導航的話 導航也不氣餒 馬上修正<br/>下一個要轉的地點然後告訴我，<br/>当還剩不到１５０ｍ時 就會用超大聲的嗶聲<br/>來通知你。<br/>也就是說 每忽視導航一次<br/>就會多聽一次超大聲的嗶聲。<br/>因為這樣 從此之後我就決定乖乖跟著導航走。<br/><br/>上面的圖片顯示還要２１ｍ就要左轉 但<br/>這是在紅綠燈停止的地點<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/042amx15kar.jpg" target="_blank"><img alt="042amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/042amx15kars.jpg" width="320"/></a><br/>↑這個左轉距離是「還有２１ｍ」。<br/>關於這個 左轉和右轉在<br/>是否要穿過眼前橫切的道路上<br/>可能有所不同。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/044amx15kar.jpg" target="_blank"><img alt="044amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/044amx15kars.jpg" width="320"/></a><br/>時間順序有點跳躍 但<br/>３０．１ｋｍ地點的這個「３３ｍ先右轉」<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/045amx15kar.jpg" target="_blank"><img alt="045amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/045amx15kars.jpg" width="320"/></a><br/>就是顯示該資訊時的實際畫面。<br/>右轉的話 大約「到彎的地方的距離」會<br/>相符吧。<br/>不過 還是覺得有點偏短啦。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/039amx15kar.jpg" target="_blank"><img alt="039amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/039amx15kars.jpg" width="320"/></a><br/>↑這是跑了１１．３ｋｍ時的畫面 但<br/>螢幕最下方的剩餘高度／距離圖表<br/>在３９．５ｋｍ中的１．５ｋｍ處<br/>和２２０ｍ中的２４ｍ爬升處<br/>卡住了。<br/>之後一直到完成整個路線為止<br/>這個狀態都沒有改變過。<br/><br/>會變成這樣的原因是，<br/>因為我一直無視導航啦。<br/>從家裡出來到中環為止，Karoo推薦的路線<br/>對於熟悉地形的人來說是效率很差的路線，<br/>所以我無視導航，從起點跑了1.5km的地方<br/>「你不聽指示的話 那我也不管了！」<br/>它就生氣結束了。<br/>之後我就沒有選擇這個顯示項目了，<br/>如果走行路線不是Karoo的自動生成，<br/>而是手動生成的隨意騎乘路線的話，<br/>我覺得它是個還滿好用的顯示項目。<br/>只要多少忽視一下導航，或是該轉彎的地方沒轉到<br/>再回到原本的導航路線程度的話，不會卡住。<br/>反過來說，如果會卡住的話，<br/>就表示這不是適合自己的顯示項目。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/043amx15kar.jpg" target="_blank"><img alt="043amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/043amx15kars.jpg" width="320"/></a><br/>在泉大津左轉，然後馬上右轉，<br/>在和泉府中站前的圓環再左轉，<br/>那先的T字路右轉的話（這裡大致朝南），<br/>就出現還剩10.1km。<br/>但那時不是能停車的時機，<br/>所以上面的圖片裡<br/>顯示還剩9.7km到下一個轉彎點。<br/>這表示，在一段時間內<br/>能從超大聲的嗶嗶警報聲解放出來，<br/>螢幕下方的標籤頁中，中間的灰色標籤是<br/>與智慧型手機的連結，當手機收到通知時<br/>中間的灰色標籤會自動彈起<br/>在與騎乘狀況無關的時機<br/>發出超大聲的嗶聲，嚇了我一跳。<br/><br/>在轉彎點的箭頭變化非常<br/>豐富，上圖的箭頭是<br/>在叫貝田的交差口，從我的角度來看<br/>是從Ｙ字形下方過來的形狀，所以<br/>是符合「選擇左邊」狀況的箭頭形狀。<br/>順帶一提，如果在那裡向右轉的話，就會通往２６號線。<br/><br/>在這裡我來寫一下「逐次修正」的事情。<br/>上圖顯示項目中的<br/>「剩餘距離」和「剩餘高度」這兩個數值，以及<br/>「接下來路線的高度圖」這３項<br/>每當偏離導航路線時<br/>都會「按照導航的剩餘距離／高度」<br/>逐次適切地被修正。<br/>這是我對Karoo的導航功能<br/>最為印象深刻的地方。<br/>實際上，當初的剩餘距離應該是３９．５ｋｍ，<br/>但上圖的進度１６．３ｋｍ加上剩餘２３．５ｋｍ<br/>等於３９．８ｋｍ，增加了，就是因為這個原因。<br/>實際騎乘的路線相比導航路線是近路的話<br/>相反地，到達終點的距離會逐次修正而縮短。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/049amx15kar.jpg" target="_blank"><img alt="049amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/049amx15kars.jpg" width="320"/></a><br/>３６．９ｋｍ地點。<br/>逐次修正堆積起來<br/>進度和剩餘距離相加，當初的３９．５ｋｍ<br/>伸長到了４１．０ｋｍ。<br/>那無所謂，藍色的標籤自動彈起來了。<br/>這個啊，我在以前的文章裡也寫過<br/>「Karoo認定為上坡的道路」的事，<br/>當靠近那個起始點時<br/>標籤就自動彈起<br/>顯示詳細的海拔數據。<br/><br/>這不只在導航的時候，<br/>現在騎的道路的前方<br/>如果有Karoo認定為上坡的道路<br/>就會在那個起始點自動生成藍色標籤<br/>並伴著超大聲的嗶嗶聲告知。<br/><br/>右端的紫色標籤是我按錯了而製造的<br/>單圈計時的標籤。<br/><br/>上面圖片的爬升圖表的<br/>比例尺不太容易看清<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/050amx15kar.jpg" target="_blank"><img alt="050amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/050amx15kars.jpg" width="320"/></a><br/>所以我改變了比例尺。<br/>好的，這就是佐田前面的無謂上坡。<br/>距離頂端還有０．３ｋｍ，<br/>不知道是不是抓住了這瞬間，斜度顯示為１２％<br/>實際上大約是７％。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/052amx15kar.jpg" target="_blank"><img alt="052amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/052amx15kars.jpg" width="320"/></a><br/>３９．２公里地點。<br/>只有當地人才能理解吧<br/>金熊寺的十字路口。<br/>前面有寫過，終點設定在風吹峠的山頂，<br/>以我嚴謹的定義來說<br/>不是進入新風吹隧道的那一瞬間，<br/>而是設在更前面一點。<br/><br/>上面的圖片裡，路線用藍色線表示，<br/>起點的三角白旗和<br/>表示終點的格紋旗標記<br/>是Karoo認定為上升的路線，<br/>終點的旗子是穿過新風吹隧道的地點。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/056amx15kar.jpg" target="_blank"><img alt="056amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/056amx15kars.jpg" width="320"/></a><br/>在UpComing的圖表裡是３９．１公里，<br/>這時候逐次修正的結果終點<br/>是４１．０公里地點。<br/>剩餘標高顯示４８公尺<br/>也受到逐次修正的影響，<br/>相比最初顯示的剩餘２２０公尺，<br/>不一定就是登了１７２公尺的結果，<br/>（這部分的另一頁有獲得標高的數值資料，<br/>看那個的話就能發現誤差，但我沒拍照）<br/>最初大約４０公里／２００多公尺相比<br/>剩下２公里卻還剩約５０公尺，<br/>真的有種「爬坡終點」的感覺（雖然不是山頂）。<br/><br/>縮放放大後的上升路段圖表<br/>相當準確地反映了實際道路的上下起伏<br/>如果要看陌生道路的導航的話<br/>事先就能做好心理準備，我覺得這點不錯。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/057amx15kar.jpg" target="_blank"><img alt="057amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/057amx15kars.jpg" width="320"/></a><br/>在４１．４km處導航結束，<br/>沒有開啟導航設定的話就不會顯示的項目<br/>全都消失了。<br/>剩下１．９km時，原本應該是４１．０km的路線<br/>最後突然增加了０．４km，<br/>是因為從路上的金熊寺十字路口<br/>被導航引往<br/>汽車專用隧道，我無視了（←那當然要無視啦）<br/>改走舊道的關係。<br/><br/>舊道與隧道那邊的道路合流，再往前一點<br/>我到達了誤設的終點。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/058amx15kar.jpg" target="_blank"><img alt="058amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/058amx15kars.jpg" width="320"/></a><br/>那是新風吹隧道入口的邊界。<br/>順帶一提，和歌山縣的縣界<br/>稍微前面已經通過了。<br/>上面照片裡的雜草<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/060amx15kar.jpg" target="_blank"><img alt="060amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/060amx15kars.jpg" width="320"/></a><br/>拍得有點模糊<br/>在隧道入口時是４４．４km。<br/><br/>從這裡開始的回程用另一筆記錄。<br/>到這裡為止的記錄是 出於習慣<br/>不小心刪掉了。<br/>按本體下側的實體按鈕，左、右、左、右地按<br/>已經成為習慣了。<br/>左　結束記錄<br/>右　真的要結束嗎？<br/>左　把記錄丟進垃圾桶刪除<br/>右　真的要丟進垃圾桶嗎？<br/>就是這個順序。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/062amx15kar.jpg" target="_blank"><img alt="062amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/062amx15kars.jpg" width="320"/></a><br/>在風吹嶺隧道前<br/>回程的別針我從本體操作改為手動打下。<br/>在地圖上點擊任意一點時<br/>黑點君就會出現，進入打別針的模式<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/063amx15kar.jpg" target="_blank"><img alt="063amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/063amx15kars.jpg" width="320"/></a><br/>在仁德天皇陵附近的川原田先生那裡<br/>我自作聰明地設定為終點。<br/><s>耶～店長，有看到嗎～？</s><br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/064amx15kar.jpg" target="_blank"><img alt="064amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/064amx15kars.jpg" width="320"/></a><br/>放大到最高倍數<br/>在極其準確的位置打下別針。<br/>因為網路上的域名是e-cycle的關係吧<br/>在地圖上名稱就是e-cycle。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/065amx15kar.jpg" target="_blank"><img alt="065amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/065amx15kars.jpg" width="320"/></a><br/>我打下了別針。<br/>出現了３３．４這樣的距離<br/>這是到別針位置的直線距離，<br/>自動生成路線的話，<br/>一定會比這個距離更長。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/066amx15kar.jpg" target="_blank"><img alt="066amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/066amx15kars.jpg" width="320"/></a><br/>剩餘距離／標高顯示為４３．７ｋｍ／２２８ｍ。<br/>不對，這肯定有問題。<br/>去程是我自己搞砸的，雖然只到了山頂的中途<br/>在上坡終點的路線上，從起點時<br/>預定獲得標高２２０ｍ，<br/>下山的回程完全沒有上坡<br/>不可能有２２８ｍ的標高。<br/>而且，從家裡到風吹峠的山頂<br/>沒有用速度感測器，是依據ＧＰＳ的距離，<br/>結果是４４．０ｋｍ，<br/>我家離カワハラダ先生<br/>大約４ｋｍ遠的地方，<br/>怎麼可能是４３．７ｋｍ呢。<br/><br/>螢幕最下面的進度圖表<br/>還沒有顯示，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/067amx15kar.jpg" target="_blank"><img alt="067amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/067amx15kars.jpg" width="320"/></a><br/>但導航開啟了。<br/>這是後來才注意到的，<br/>導航的提示變成了「返回１．８ｋｍ」。<br/>其實我無視導航指示直進的情況下，<br/>一開始會出現這個掉頭箭頭和返回距離。<br/>不過在選項較多的市區內，無視超過１００ｍ繼續前進的話，<br/>導航就會重新生成新路線。<br/>所以第一次看到要返回１．８ｋｍ這麼遠。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/069amx15kar.jpg" target="_blank"><img alt="069amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/069amx15kars.jpg" width="320"/></a><br/>但從那裡再騎個２０～３０ｍ左右<br/>伴隨著該死的大聲嗶聲<br/>距離被修正為４０．０ｋｍ，標高為１３８ｍ。<br/>這與我的體感距離和標高相符。<br/>從距離來看，之前那１．８ｋｍ指示的往返<br/>３．６ｋｍ消失了。<br/>下一個轉向指示在４．８ｋｍ處，右轉，<br/>這是金熊寺交叉口。<br/><br/>奇怪的是，螢幕最下方的進度圖表也<br/>被修正為１３８ｍ／４０．０ｋｍ。<br/>這個圖表通常不會被修正，<br/>但也許只在路線生成的最初階段才會修正。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/071amx15kar.jpg" target="_blank"><img alt="071amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/071amx15kars.jpg" width="320"/></a><br/>從那裡又跑了約１００ｍ。<br/>距離右轉還有０．２ｋｍ被縮短了，<br/>不過那沒關係，<br/>進度圖表在正常運作，沒有卡住。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/072amx15kar.jpg" target="_blank"><img alt="072amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/072amx15kars.jpg" width="320"/></a><br/>這是距離起點３．６ｋｍ的地點。<br/>導航指示向右轉，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/073amx15kar.jpg" target="_blank"><img alt="073amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/073amx15kars.jpg" width="320"/></a><br/>這就是實際位置，右邊的隧道<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/074amx15kar.jpg" target="_blank"><img alt="074amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/074amx15kars.jpg" width="320"/></a><br/>如我之前所寫的，自行車無法通過。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/075amx15kar.jpg" target="_blank"><img alt="075amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/075amx15kars.jpg" width="320"/></a><br/>在接下來的圖表中，行駛距離<br/>不是３．６ｋｍ，而是３．５ｋｍ，<br/>不過那沒關係（差距不到０．１ｋｍ），<br/>上面數值項目的剩餘距離與<br/>最下方進度圖表的剩餘距離相符。<br/>既然一直都是直路，那當然了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/077amx15kar.jpg" target="_blank"><img alt="077amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/077amx15kars.jpg" width="320"/></a><br/>我選擇了不經過左邊隧道的路線（舊道）的那一瞬間，<br/>路線立刻就被重新生成了。<br/>距離增加的原因就在這裡，<br/>往路時剩餘1.9公里，<br/>實際騎到終點卻是2.3公里，這就是主要原因。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/078amx15kar.jpg" target="_blank"><img alt="078amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/078amx15kars.jpg" width="320"/></a><br/>已經降到了佐田的十字路口。<br/>雖然被綠燈的光線遮住了，<br/>但十字路口名稱「佐田」的標牌<br/>就裝在柱子上面。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/079amx15kar.jpg" target="_blank"><img alt="079amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/079amx15kars.jpg" width="320"/></a><br/>雖然在停止線前停著，但19公尺先顯示要右轉。<br/>由於這個導航，左轉時應該也會顯示19公尺先，<br/>所以轉彎點的距離大概是20公尺左右，<br/>估算得短一點會比較好，<br/>這我前面也寫過了。<br/>但是，這個導航又一次<br/>推薦了大阪和泉泉南線（大阪府道30號線（通稱13號線））。<br/>推薦這條路線。<br/>右轉後產生的無謂上升<br/>已經出現在接下來的爬升圖上了，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/080amx15kar.jpg" target="_blank"><img alt="080amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/080amx15kars.jpg" width="320"/></a><br/>改變縮放比例後，大概就是這樣子。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/081amx15kar.jpg" target="_blank"><img alt="081amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/081amx15kars.jpg" width="320"/></a><br/>到目前為止看過的，沒有設定目的地時<br/>顯示項目什麼都不會顯示的頁面，<br/>其實是第4頁。<br/>第1頁是地圖＋速度和距離的顯示、<br/>第2頁通常是自行車碼錶會<br/>顯示的內容＋鏈條所在齒輪的圖表顯示、<br/>第3頁是上面圖片的<br/>上面的數值顯示現在的標高和累積爬升、<br/>下面的圖表是歷史標高圖。<br/><br/>因為只是從風吹峠頂端下來<br/>如果這是自己持有的股票圖表的話<br/>會出現讓胃疼的下降線般的圖表、<br/>歷史標高圖<br/>和即將到來的不同，無法改變縮放、<br/>上面圖片裡雖然有6．5km地點的資訊、<br/>但距離的橫軸沒有刻度、<br/>所以沒什麼值得看的。<br/>之後我也把這個從顯示項目中刪除了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/084amx15kar.jpg" target="_blank"><img alt="084amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/084amx15kars.jpg" width="320"/></a><br/>從6．5km地點又騎了約0．1km。<br/>重點是，在佐田沒有右轉、<br/>而是直進準備走26號線回家。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/086amx15kar.jpg" target="_blank"><img alt="086amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/086amx15kars.jpg" width="320"/></a><br/>結果，即將到來的圖表消失了、<br/>一瞬間出現了loading…的表記、<br/>圖表地形立刻從30號線無謂上升路線<br/>變更成現在正在騎的路線。<br/>而且，剛才法律上無法通行的隧道、<br/>當然被忽略了<br/>那種程度並不會導致進度圖表凍結。<br/><br/>上面剩餘距離的數值跟進度一樣是３３．６ｋｍ。<br/>在往路中選擇了迴避汽車專用隧道的路線<br/>後續的預估剩餘距離竟然改變了０．４ｋｍ<br/>如果進度圖表沒有逐次修正的話<br/>數值項目和進度圖表的３３．６ｋｍ<br/>根本對不上。<br/>所以在凍結之前，進度圖表也有<br/>逐次修正的可能性。<br/>最初預估的剩餘距離是４０．０ｋｍ，<br/>到了上面那張圖片的時點，已經進度６．６ｋｍ＋剩餘３３．６ｋｍ<br/>增加到４０．２ｋｍ了。<br/>所以上面那張圖片的進度圖表<br/>如果把剩餘３６．６ｋｍ的長度延伸到右端的話<br/>可能不是４０．０ｋｍ而是４０．２ｋｍ<br/>被逐次修正過也說不定。<br/>只是那種程度的誤差實在無法確認。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/087amx15kar.jpg" target="_blank"><img alt="087amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/087amx15kars.jpg" width="320"/></a><br/>之後又騎了一陣子，<br/>佐田那邊沒有轉彎，大概是這個明顯的悖逆讓導航生氣了吧，<br/>進度圖表在剩餘９１ｍ／３２．２ｋｍ的地方<br/>凍結了。<br/>之後這個顯示完全沒有改變，就這樣固定住了。<br/>數值方面的剩餘距離是２９．８ｋｍ。<br/><br/>我並不是想要迴避無謂的爬坡路線，<br/>我故意無視路線，凍結進度圖來<br/>因為想驗證假說，回程時選了26號線。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/089amx15kar.jpg" target="_blank"><img alt="089amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/089amx15kars.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/090amx15kar.jpg" target="_blank"><img alt="090amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/090amx15kars.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/093amx15kar.jpg" target="_blank"><img alt="093amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/093amx15kars.jpg" width="320"/></a><br/>之後一直沿著26號線往北行進，<br/>Calu的自動生成路線<br/>卻推薦了應該更繞遠路的204號線。<br/>上面圖片中的「剩餘18m左轉」和「剩餘12m左轉」<br/>想必你已經明白了<br/>就是在十字路口停止線停下的位置。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/094amx15kar.jpg" target="_blank"><img alt="094amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/094amx15kars.jpg" width="320"/></a><br/>原定計畫剩餘距離是40.0km，<br/>但在進度25.1km時點的剩餘距離<br/>變成了16.6km<br/>所以每次修正後的預定走行距離<br/>現在是41.7km。<br/><br/>剩餘16.6km<br/>是「之後按照Calu導航情況下的距離」，<br/>但按導航轉入204號線<br/>比26號線直進還要繞遠路，<br/>所以最終的走行距離應該會<br/>往縮短的方向逐次修正。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/095amx15kar.jpg" target="_blank"><img alt="095amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/095amx15kars.jpg" width="320"/></a><br/>25.1km時點的<br/>歷史記錄方面的海拔圖表。<br/>操作大多用右上方的實體按鈕，<br/>但停車時也會點擊螢幕，<br/>所以螢幕變髒了。<br/>順便一提 觸控面板相容的手套⋯⋯<br/>倒不如說是用裸手在操作。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/096amx15kar.jpg" target="_blank"><img alt="096amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/096amx15kars.jpg" width="320"/></a><br/>剩下５公里不到的時候<br/>就沒辦法選擇更縮小的縮放比例了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/101amx15kar.jpg" target="_blank"><img alt="101amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/101amx15kars.jpg" width="320"/></a><br/>剩餘距離０．２公里、剩餘爬升４公尺的時候<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/102amx15kar.jpg" target="_blank"><img alt="102amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/102amx15kars.jpg" width="320"/></a><br/>到了那種程度<br/>平時無法選擇的０．５公里縮放比例出現了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/103amx15kar.jpg" target="_blank"><img alt="103amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/103amx15kars.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/10k4amx15kar.jpg" target="_blank"><img alt="10k4amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/10k4amx15kars.jpg" width="320"/></a><br/>就好在川原田桑的前面<br/>導航路線的指引就結束了。<br/>預計行駛距離從最初的４０．０公里<br/>延伸到４２公里出頭<br/>因為導航的路線有點繞路<br/>一邊修正後變成４０．２公里。<br/>上面的圖片，在隱去車牌的同時<br/>我也製作了汽車翻轉的諷刺圖<br/>因為似乎會被罵 所以沒有採用。<br/><br/><br/><br/>Calu的自動生成路線導航<br/>對於熟悉當地的人來說<br/>似乎經常會選擇不是最優解的路線，<br/>讀到這篇文章時<br/>要是聽到２６號線啦安井町啦砂川變電所什麼的<br/>想不起來是哪裡的人如果被說「從風吹峠登上來」的話<br/>跟著導航走應該是最穩妥的做法，<br/>所以這是個很實用的功能。<br/><br/>之後上升中路線的標高圖表呢，<br/>看整體概覽式的縮放尺度也不錯，<br/>設定在２．０ｋｍ或５．０ｋｍ時，<br/>能相當精確地看清楚最近的地形也很方便。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9625amx15.jpg" target="_blank"><img alt="RIMG9625amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9625amx15s.jpg" width="320"/></a><br/>雖然跟表題內容無關，<br/>第２頁匯集了一般自行車碼錶上有的<br/>顯示項目。<br/>在這裡，把坡度（勾配）和變速資訊的圖表<br/>並排顯示的話就相當便利。<br/>能用視覺資訊看出在幾％的坡度上用幾Ｔ的齒輪，<br/>真的很有幫助。<br/>能做到這一點<br/>只有在用SRAM AXS套件的時候才行。<br/><br/>上面圖片裡的「GRADE」這個東西<br/>就是所謂用百分比表示的坡度（勾配），<br/>但是這個，改成日語顯示的話<br/>就變成了「グレード」這個標記，<br/>除了這之外也能看到不少奇妙的翻譯，<br/>所以我用英語來操作。<br/>GRADE的最小單位是０．１就太好了。<br/>如果是１為單位的話，會想「這裡是７年級嗎」啦，<br/>或者「這個下坡是負２年級嗎」這樣，<br/>把GRADE解釋成「學年」的意思<br/>也說不定呢。<br/>所以 這個項目名稱應該<br/>改成「INCLINE（傾斜・坡度）」比較<br/>好的樣子。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

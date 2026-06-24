@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/3881.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>我更換了初代 Racing 1 的後輪圈</h1>
     <p class="post-meta">January 21, 2018</p>
+    <div class="post-body"><div class="entrytext">今天也是騎車（以下略）。<br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02427amx8.jpg" target="_blank"><img alt="DSC02427amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02427amx8s.jpg" width="320"/></a><br/>從客人那裡接手了初代 Racing 1 的後輪。<br/>因為是初代，所以是 Racing 1、3、5 三款車型<br/>展開時代的旗艦機型，<br/>雖然也有管狀胎規格的版本，但這輛是 WO 規格。<br/><br/>WO 框的情況下，煞車帶會因為來令片的磨耗而被削掉<br/>無法抵抗管狀胎框沒有的「氣壓向左右推開鉤邊的力」，<br/>到了一定程度就會……<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02428amx8.jpg" target="_blank"><img alt="DSC02428amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02428amx8s.jpg" width="320"/></a><br/>輪框炸裂。<br/><span style="font-size:large;">碰！</span><br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02429amx8.jpg" target="_blank"><img alt="DSC02429amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02429amx8s.jpg" width="320"/></a><br/>需要更換輪框，但這個輪框是買得到的。<br/>太強了。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02431amx8.jpg" target="_blank"><img alt="DSC02431amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02431amx8s.jpg" width="320"/></a><br/>飛輪本體是 Shimano 10S 專用的鋁製品。<br/>花鼓轉動時聲音混濁，所以也要大修。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02433amx8.jpg" target="_blank"><img alt="DSC02433amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02433amx8s.jpg" width="320"/></a><br/>左右兩邊的軸承密封都沒有好好卡進內筒的溝裡。<br/>按理說不會自動脫落，所以之前摸過這個花鼓的人搞砸了。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02434amx8.jpg" target="_blank"><img alt="DSC02434amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02434amx8s.jpg" width="320"/></a><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02435amx8.jpg" target="_blank"><img alt="DSC02435amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02435amx8s.jpg" width="320"/></a><br/>髒得不行啊。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02436amx8.jpg" target="_blank"><img alt="DSC02436amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02436amx8s.jpg" width="320"/></a><br/>首先把飛輪本體卸下來。<br/>到了這個步驟，花鼓轉動的混濁感幾乎消失了，<br/>所以受傷的軸承只有飛輪本體側。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02437amx8.jpg" target="_blank"><img alt="DSC02437amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02437amx8s.jpg" width="320"/></a><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02438amx8.jpg" target="_blank"><img alt="DSC02438amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02438amx8s.jpg" width="320"/></a><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02480amx8.jpg" target="_blank"><img alt="DSC02480amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02480amx8s.jpg" width="320"/></a><br/>進一步檢查後，發現只有外側軸承受傷，就把它拆出來了。<br/><br/>這種情況下，花鼓軸的軸承下方部分經常會<br/>沾上副生鏽或擦痕，<br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02439amx8.jpg" target="_blank"><img alt="DSC02439amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02439amx8s.jpg" width="320"/></a><br/>但這次沒事。<br/>順便一提，這是沒有電镀處理的舊軸，<br/>飛輪體的相容性有問題（詳見後述）。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02440amx8.jpg" target="_blank"><img alt="DSC02440amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02440amx8s.jpg" width="320"/></a><br/>輪轂的碗和球座磨痕沒有蟲蝕傾向，<br/>刻畫得很整齊。<br/>鋼珠不是嶄新的光澤，<br/>但我覺得不需要更換，所以就繼續用。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02441amx8.jpg" target="_blank"><img alt="DSC02441amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02441amx8s.jpg" width="320"/></a><br/>飛輪體的爪彈簧有點變形。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02442amx8.jpg" target="_blank"><img alt="DSC02442amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02442amx8s.jpg" width="320"/></a><br/>before<br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02443amx8.jpg" target="_blank"><img alt="DSC02443amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02443amx8s.jpg" width="320"/></a><br/>after<br/>右側端螺帽。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02444amx8.jpg" target="_blank"><img alt="DSC02444amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02444amx8s.jpg" width="320"/></a><br/>輻條也洗了，<br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02445amx8.jpg" target="_blank"><img alt="DSC02445amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02445amx8s.jpg" width="320"/></a><br/>但還是沒怎麼乾淨。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02446amx8.jpg" target="_blank"><img alt="DSC02446amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02446amx8s.jpg" width="320"/></a><br/>這款輻條前輪和後輪只有兩種，<br/>後輪的左右長度相同。<br/>輪轂側的尺寸是經過調整才能這樣的。<br/><br/>設計成左右通用是為了<br/>shimano最初的完組輪組<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+WH-7700+complete+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">WH-7700</a>也是同樣的想法，<br/><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+WH-7701+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">WH-7701</a>改成飛輪側輻向組，<br/>所以左右長度就不同了。<br/>盡量減少備用零件數量也是聰明的考慮，<br/>但更重要的還是改成更好的（據說）輪組規格。<br/><br/>在<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Fulcrum+Racing+Zero+aluminum+spoke+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">Racing Zero</a>出現之前，這是<br/>Fulcrum唯一的鋁合金輻條，<br/>同時期的Campagnolo則是鋼製輻條G3組的<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Campagnolo+Eurus+wheel+G3+spokes" target="_blank" rel="noopener sponsored" class="amz-inline">Eurus</a><br/>因為是中等高度輪框的旗艦機型，所以<br/>鋁合金輻條沒有種類區別，輻條頭上沒有刻印。<br/>但是到了後期機型就會打上「縱向１條」的刻印。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02481amx8.jpg" target="_blank"><img alt="DSC02481amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02481amx8s.jpg" width="320"/></a><br/>↑這是以前裝在袋子裡供應的時代的<br/>黑領帶鋁合金輻條，但是<br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02482amx8.jpg" target="_blank"><img alt="DSC02482amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02482amx8s.jpg" width="320"/></a><br/>同樣也沒有刻印。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02447amx8.jpg" target="_blank"><img alt="DSC02447amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02447amx8s.jpg" width="320"/></a><br/>靠近氣嘴孔的地方有個小孔，看起來是製造上必要的<br/>因為跟輻條孔的位相重疊了<br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02448amx8.jpg" target="_blank"><img alt="DSC02448amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02448amx8s.jpg" width="320"/></a><br/>從內側看起來就是這樣。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02450amx8.jpg" target="_blank"><img alt="DSC02450amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02450amx8s.jpg" width="320"/></a><br/>這個孔在備用輪框上就變成了比較小的直徑。<br/>這個孔，要是２ＷＡＹ－ＦＩＴ的輪框的話就有仔細地塞住。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02454amx8.jpg" target="_blank"><img alt="DSC02454amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02454amx8s.jpg" width="320"/></a><br/>組好了。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02457amx8.jpg" target="_blank"><img alt="DSC02457amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02457amx8s.jpg" width="320"/></a><br/>車轂也清洗過了。<br/>沒有裝上飛輪本體的原因是<br/>如果客人希望改成１１Ｓ飛輪本體的話<br/>原本附加的１０Ｓ專用飛輪本體上面的<br/>軸承和爪彈簧就會浪費掉。<br/><br/>這台Racing１用的是舊軸，<br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC00574amx8.jpg" target="_blank"><img alt="DSC00574amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC00574amx8s.jpg" width="320"/></a><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC00575amx8.jpg" target="_blank"><img alt="DSC00575amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC00575amx8s.jpg" width="320"/></a><br/>前幾天另外一件工作裡裝上１１Ｓ飛輪本體的初代Racing Zero<br/>用的是新軸，所以能裝上白色鋁合金飛輪本體。<br/><br/>２００５年的Racing１是舊軸，<br/>２００６年的Racing１是新軸（除此之外的規格跟２００５年一樣），<br/>Racing Zero首次登場是２００７年，所以<br/>除非是在複雜的來龍去脈下才會去動它<br/>Racing Zero 一定是新軸的。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02472amx8.jpg" target="_blank"><img alt="DSC02472amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02472amx8s.jpg" width="320"/></a><br/>↑這是這次 10S 專用飛輪體。<br/>配合舊軸的圓孔。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02471amx8.jpg" target="_blank"><img alt="DSC02471amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02471amx8s.jpg" width="320"/></a><br/>如果是 Shimano 用的 10S 或 11S 鋼製飛輪體的話<br/>年代上來說是附在新軸上的<br/>但孔徑反而比舊軸用的飛輪體還要大<br/>所以能裝在舊軸上。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02473amx8.jpg" target="_blank"><img alt="DSC02473amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02473amx8s.jpg" width="320"/></a><br/>如果是 Shimano 11S 白鋁飛輪體<br/>或者 Campagnolo 用鋁製飛輪體的話<br/>只能裝在有對應切口的新軸上。<br/><br/>所以這次能提議給客人的選項是<br/>・保持 10S 專用飛輪體→補充彈簧和軸承<br/>・想在不換軸的情況下升級到 11S→更換成鋼製 11S 飛輪體<br/>・想要白鋁 11S 飛輪體→需要更換軸<br/>就是這樣。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02453amx8.jpg" target="_blank"><img alt="DSC02453amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02453amx8s.jpg" width="320"/></a><br/>不裝飛輪體直接鎖右端螺帽的話<br/>齒輪的位置會比原本更往內側進去<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02451amx8.jpg" target="_blank"><img alt="DSC02451amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02451amx8s.jpg" width="320"/></a><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02452amx8.jpg" target="_blank"><img alt="DSC02452amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02452amx8s.jpg" width="320"/></a><br/>所以故意把中心錯開了。<br/>從這裡裝上飛輪體後是否能完美契合<br/>我也不確定<br/>要是不契合的話就微調一下而已。<br/><br/><br/><span style="font-size:large;">追記：</span><br/>聯絡了客人，決定用修理 10S 專用飛輪體來解決<br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02485amx8.jpg" target="_blank"><img alt="DSC02485amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02485amx8s.jpg" width="320"/></a><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02486amx8.jpg" target="_blank"><img alt="DSC02486amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02486amx8s.jpg" width="320"/></a><br/>但事先錯開的方向搞反了<br/>中心偏移反而增大了。<br/>這傢伙是不是有毛病啦啊啊啊啊啊啊啊啊啊<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02487amx8.jpg" target="_blank"><img alt="DSC02487amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02487amx8s.jpg" width="320"/></a><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02488amx8.jpg" target="_blank"><img alt="DSC02488amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02488amx8s.jpg" width="320"/></a><br/>修正好了。<br/><br/><br/>話說回來，這篇文章還有後續呢<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02458amx8.jpg" target="_blank"><img alt="DSC02458amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02458amx8s.jpg" width="320"/></a><br/>另外一件事，客人把Racing 1的後輪託我保管。<br/>和汽車行駛方向相反的一側（後輪在前的狀態下）<br/>堆在車頂架上的時候不小心<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02459amx8.jpg" target="_blank"><img alt="DSC02459amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02459amx8s.jpg" width="320"/></a><br/>就這樣發生了咔啦砰的事故，<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02460amx8.jpg" target="_blank"><img alt="DSC02460amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02460amx8s.jpg" width="320"/></a><br/>在輪胎側面標籤的位置<br/>追著看的話就很清楚了，<br/>因為輪圈撞擊，黃色油漆轉移到了輪胎上，<br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02461amx8.jpg" target="_blank"><img alt="DSC02461amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02461amx8s.jpg" width="320"/></a><br/>然後再往前一點<br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02462amx8.jpg" target="_blank"><img alt="DSC02462amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02462amx8s.jpg" width="320"/></a><br/>在這裡輪圈凹進去了。<br/>雖然發生了強烈的輪圈撞擊，但沒有因此爆胎。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02464amx8.jpg" target="_blank"><img alt="DSC02464amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02464amx8s.jpg" width="320"/></a><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02465amx8.jpg" target="_blank"><img alt="DSC02465amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02465amx8s.jpg" width="320"/></a><br/>好的，決定換輪圈。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02466amx8.jpg" target="_blank"><img alt="DSC02466amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02466amx8s.jpg" width="320"/></a><br/>在拆解的時候才注意到，<br/>Fulcrum的鋁合金輻條沒有編最後的交叉。<br/>所以輻條的重疊應該是這樣，<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02467amx8.jpg" target="_blank"><img alt="DSC02467amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02467amx8s.jpg" width="320"/></a><br/>但不知為何有一個地方被編上了。<br/>要是這台Racing 1是2005年款，<br/>備用輻條用的是有後期型刻印的東西的話<br/>就能斷定是修理的某個人搞錯了，<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02468amx8.jpg" target="_blank"><img alt="DSC02468amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02468amx8s.jpg" width="320"/></a><br/>但因為是新的輪軸，所以是2006年以後的款式，<br/>輻條也全都有刻印。<br/>不過廠商方面搞錯組裝的可能性似乎不太大。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02477amx8.jpg" target="_blank"><img alt="DSC02477amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02477amx8s.jpg" width="320"/></a><br/>組好了。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02478amx8.jpg" target="_blank"><img alt="DSC02478amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02478amx8s.jpg" width="320"/></a><br/>這是8、9、10速用鋼製飛輪體，<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02479amx8.jpg" target="_blank"><img alt="DSC02479amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02479amx8s.jpg" width="320"/></a><br/>但客人那邊改裝成11速用的。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02470amx8.jpg" target="_blank"><img alt="DSC02470amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02470amx8s.jpg" width="320"/></a><br/>這是原本花鼓螺帽的齒紋位置，<br/>會略微超出軸心面外側。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02475amx8.jpg" target="_blank"><img alt="DSC02475amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02475amx8s.jpg" width="320"/></a><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02476amx8.jpg" target="_blank"><img alt="DSC02476amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02476amx8s.jpg" width="320"/></a><br/>當然這邊我是有做心軸調整的。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02483amx8.jpg" target="_blank"><img alt="DSC02483amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02483amx8s.jpg" width="320"/></a><br/>組換前<br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02449amx8.jpg" target="_blank"><img alt="DSC02449amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02449amx8s.jpg" width="320"/></a><br/>組換後<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02484amx8.jpg" target="_blank"><img alt="DSC02484amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02484amx8s.jpg" width="320"/></a><br/>組換前<br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02469amx8.jpg" target="_blank"><img alt="DSC02469amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02469amx8s.jpg" width="320"/></a><br/>組換後<br/><br/>銀色的組換前重量莫名其妙地輕，<br/>不過這基本上跟煞車區的磨耗沒什麼關係。<br/>Mavic Helium的管胎規格呢，<br/>除了前輪圈是26孔這種特異的孔數之外<br/>跟同廠的Reflex並不相同⋯⋯不對<br/>只有極初期的輪圈才存在340克上下的重量。<br/>後期型號是390克上下，所以幾乎變成了「紅色的Reflex」。<br/>同樣是Mavic，2004年型號的Ksyrium SL，<br/>首次採用銀色輪圈的型號，<br/>據說只有初期批次的輪圈切削過度了<br/>從下次出貨開始就會改成切削較淺的規格<br/>官方有這樣的公告。<br/>倒不是說一定會這樣，<br/>初期批次的輪圈異常輕量這種事很常見。<br/>Stan's 的 ZTR Alpha 340（→<a href="/zh/posts/774.html" target="_blank" title="こちら">這裡</a>）也是這樣。<br/>初期的確如其名是 340g 出頭的重量，<br/>但因為輪圈孔容易開裂所以變重了。<br/>不過即使變重也還是會開裂就是了。<br/><br/>這次爆裂的銀色輪圈，在煞車區磨耗的狀況下<br/>輕了 50g 這種事是不可能的。輕幾 g 左右是有可能啦。<br/>所以我認為爆裂跟它是初期批次之間應該有關係。<br/>當然 Silver Racing 1 的客戶<br/>那時候買的只是當時普通在賣的東西，不是特別挑選的，<br/>但我自己在看到初代 Racing 1 的時候<br/>會偷偷確認一下是不是舊式軸心＋沒有刻印的輻條。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">今天也是騎車（以下略）。<br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02427amx8.jpg" target="_blank"><img alt="DSC02427amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02427amx8s.jpg" width="320"/></a><br/>從客人那裡接手了初代 Racing 1 的後輪。<br/>因為是初代，所以是 Racing 1、3、5 三款車型<br/>展開時代的旗艦機型，<br/>雖然也有管狀胎規格的版本，但這輛是 WO 規格。<br/><br/>WO 框的情況下，煞車帶會因為來令片的磨耗而被削掉<br/>無法抵抗管狀胎框沒有的「氣壓向左右推開鉤邊的力」，<br/>到了一定程度就會……<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02428amx8.jpg" target="_blank"><img alt="DSC02428amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02428amx8s.jpg" width="320"/></a><br/>輪框炸裂。<br/><span style="font-size:large;">碰！</span><br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02429amx8.jpg" target="_blank"><img alt="DSC02429amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02429amx8s.jpg" width="320"/></a><br/>需要更換輪框，但這個輪框是買得到的。<br/>太強了。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02431amx8.jpg" target="_blank"><img alt="DSC02431amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02431amx8s.jpg" width="320"/></a><br/>飛輪本體是 Shimano 10S 專用的鋁製品。<br/>花鼓轉動時聲音混濁，所以也要大修。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02433amx8.jpg" target="_blank"><img alt="DSC02433amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02433amx8s.jpg" width="320"/></a><br/>左右兩邊的軸承密封都沒有好好卡進內筒的溝裡。<br/>按理說不會自動脫落，所以之前摸過這個花鼓的人搞砸了。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02434amx8.jpg" target="_blank"><img alt="DSC02434amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02434amx8s.jpg" width="320"/></a><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02435amx8.jpg" target="_blank"><img alt="DSC02435amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02435amx8s.jpg" width="320"/></a><br/>髒得不行啊。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02436amx8.jpg" target="_blank"><img alt="DSC02436amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02436amx8s.jpg" width="320"/></a><br/>首先把飛輪本體卸下來。<br/>到了這個步驟，花鼓轉動的混濁感幾乎消失了，<br/>所以受傷的軸承只有飛輪本體側。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02437amx8.jpg" target="_blank"><img alt="DSC02437amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02437amx8s.jpg" width="320"/></a><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02438amx8.jpg" target="_blank"><img alt="DSC02438amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02438amx8s.jpg" width="320"/></a><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02480amx8.jpg" target="_blank"><img alt="DSC02480amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02480amx8s.jpg" width="320"/></a><br/>進一步檢查後，發現只有外側軸承受傷，就把它拆出來了。<br/><br/>這種情況下，花鼓軸的軸承下方部分經常會<br/>沾上副生鏽或擦痕，<br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02439amx8.jpg" target="_blank"><img alt="DSC02439amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02439amx8s.jpg" width="320"/></a><br/>但這次沒事。<br/>順便一提，這是沒有電镀處理的舊軸，<br/>飛輪體的相容性有問題（詳見後述）。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02440amx8.jpg" target="_blank"><img alt="DSC02440amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02440amx8s.jpg" width="320"/></a><br/>輪轂的碗和球座磨痕沒有蟲蝕傾向，<br/>刻畫得很整齊。<br/>鋼珠不是嶄新的光澤，<br/>但我覺得不需要更換，所以就繼續用。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02441amx8.jpg" target="_blank"><img alt="DSC02441amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02441amx8s.jpg" width="320"/></a><br/>飛輪體的爪彈簧有點變形。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02442amx8.jpg" target="_blank"><img alt="DSC02442amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02442amx8s.jpg" width="320"/></a><br/>before<br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02443amx8.jpg" target="_blank"><img alt="DSC02443amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02443amx8s.jpg" width="320"/></a><br/>after<br/>右側端螺帽。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02444amx8.jpg" target="_blank"><img alt="DSC02444amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02444amx8s.jpg" width="320"/></a><br/>輻條也洗了，<br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02445amx8.jpg" target="_blank"><img alt="DSC02445amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02445amx8s.jpg" width="320"/></a><br/>但還是沒怎麼乾淨。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02446amx8.jpg" target="_blank"><img alt="DSC02446amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02446amx8s.jpg" width="320"/></a><br/>這款輻條前輪和後輪只有兩種，<br/>後輪的左右長度相同。<br/>輪轂側的尺寸是經過調整才能這樣的。<br/><br/>設計成左右通用是為了<br/>shimano最初的完組輪組<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+WH-7700+complete+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">WH-7700</a>也是同樣的想法，<br/><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+WH-7701+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">WH-7701</a>改成飛輪側輻向組，<br/>所以左右長度就不同了。<br/>盡量減少備用零件數量也是聰明的考慮，<br/>但更重要的還是改成更好的（據說）輪組規格。<br/><br/>在<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Fulcrum+Racing+Zero+aluminum+spoke+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">Racing Zero</a>出現之前，這是<br/>Fulcrum唯一的鋁合金輻條，<br/>同時期的Campagnolo則是鋼製輻條G3組的<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Campagnolo+Eurus+wheel+G3+spokes" target="_blank" rel="noopener sponsored" class="amz-inline">Eurus</a><br/>因為是中等高度輪框的旗艦機型，所以<br/>鋁合金輻條沒有種類區別，輻條頭上沒有刻印。<br/>但是到了後期機型就會打上「縱向１條」的刻印。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02481amx8.jpg" target="_blank"><img alt="DSC02481amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02481amx8s.jpg" width="320"/></a><br/>↑這是以前裝在袋子裡供應的時代的<br/>黑領帶鋁合金輻條，但是<br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02482amx8.jpg" target="_blank"><img alt="DSC02482amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02482amx8s.jpg" width="320"/></a><br/>同樣也沒有刻印。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02447amx8.jpg" target="_blank"><img alt="DSC02447amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02447amx8s.jpg" width="320"/></a><br/>靠近氣嘴孔的地方有個小孔，看起來是製造上必要的<br/>因為跟輻條孔的位相重疊了<br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02448amx8.jpg" target="_blank"><img alt="DSC02448amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02448amx8s.jpg" width="320"/></a><br/>從內側看起來就是這樣。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02450amx8.jpg" target="_blank"><img alt="DSC02450amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02450amx8s.jpg" width="320"/></a><br/>這個孔在備用輪框上就變成了比較小的直徑。<br/>這個孔，要是２ＷＡＹ－ＦＩＴ的輪框的話就有仔細地塞住。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02454amx8.jpg" target="_blank"><img alt="DSC02454amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02454amx8s.jpg" width="320"/></a><br/>組好了。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02457amx8.jpg" target="_blank"><img alt="DSC02457amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02457amx8s.jpg" width="320"/></a><br/>車轂也清洗過了。<br/>沒有裝上飛輪本體的原因是<br/>如果客人希望改成１１Ｓ飛輪本體的話<br/>原本附加的１０Ｓ專用飛輪本體上面的<br/>軸承和爪彈簧就會浪費掉。<br/><br/>這台Racing１用的是舊軸，<br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC00574amx8.jpg" target="_blank"><img alt="DSC00574amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC00574amx8s.jpg" width="320"/></a><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC00575amx8.jpg" target="_blank"><img alt="DSC00575amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC00575amx8s.jpg" width="320"/></a><br/>前幾天另外一件工作裡裝上１１Ｓ飛輪本體的初代Racing Zero<br/>用的是新軸，所以能裝上白色鋁合金飛輪本體。<br/><br/>２００５年的Racing１是舊軸，<br/>２００６年的Racing１是新軸（除此之外的規格跟２００５年一樣），<br/>Racing Zero首次登場是２００７年，所以<br/>除非是在複雜的來龍去脈下才會去動它<br/>Racing Zero 一定是新軸的。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02472amx8.jpg" target="_blank"><img alt="DSC02472amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02472amx8s.jpg" width="320"/></a><br/>↑這是這次 10S 專用飛輪體。<br/>配合舊軸的圓孔。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02471amx8.jpg" target="_blank"><img alt="DSC02471amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02471amx8s.jpg" width="320"/></a><br/>如果是 Shimano 用的 10S 或 11S 鋼製飛輪體的話<br/>年代上來說是附在新軸上的<br/>但孔徑反而比舊軸用的飛輪體還要大<br/>所以能裝在舊軸上。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02473amx8.jpg" target="_blank"><img alt="DSC02473amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02473amx8s.jpg" width="320"/></a><br/>如果是 Shimano 11S 白鋁飛輪體<br/>或者 Campagnolo 用鋁製飛輪體的話<br/>只能裝在有對應切口的新軸上。<br/><br/>所以這次能提議給客人的選項是<br/>・保持 10S 專用飛輪體→補充彈簧和軸承<br/>・想在不換軸的情況下升級到 11S→更換成鋼製 11S 飛輪體<br/>・想要白鋁 11S 飛輪體→需要更換軸<br/>就是這樣。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02453amx8.jpg" target="_blank"><img alt="DSC02453amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02453amx8s.jpg" width="320"/></a><br/>不裝飛輪體直接鎖右端螺帽的話<br/>齒輪的位置會比原本更往內側進去<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02451amx8.jpg" target="_blank"><img alt="DSC02451amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02451amx8s.jpg" width="320"/></a><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02452amx8.jpg" target="_blank"><img alt="DSC02452amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02452amx8s.jpg" width="320"/></a><br/>所以故意把中心錯開了。<br/>從這裡裝上飛輪體後是否能完美契合<br/>我也不確定<br/>要是不契合的話就微調一下而已。<br/><br/><br/><span style="font-size:large;">追記：</span><br/>聯絡了客人，決定用修理 10S 專用飛輪體來解決<br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02485amx8.jpg" target="_blank"><img alt="DSC02485amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02485amx8s.jpg" width="320"/></a><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02486amx8.jpg" target="_blank"><img alt="DSC02486amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02486amx8s.jpg" width="320"/></a><br/>但事先錯開的方向搞反了<br/>中心偏移反而增大了。<br/>這傢伙是不是有毛病啦啊啊啊啊啊啊啊啊啊<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02487amx8.jpg" target="_blank"><img alt="DSC02487amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02487amx8s.jpg" width="320"/></a><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02488amx8.jpg" target="_blank"><img alt="DSC02488amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02488amx8s.jpg" width="320"/></a><br/>修正好了。<br/><br/><br/>話說回來，這篇文章還有後續呢<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02458amx8.jpg" target="_blank"><img alt="DSC02458amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02458amx8s.jpg" width="320"/></a><br/>另外一件事，客人把Racing 1的後輪託我保管。<br/>和汽車行駛方向相反的一側（後輪在前的狀態下）<br/>堆在車頂架上的時候不小心<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02459amx8.jpg" target="_blank"><img alt="DSC02459amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02459amx8s.jpg" width="320"/></a><br/>就這樣發生了咔啦砰的事故，<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02460amx8.jpg" target="_blank"><img alt="DSC02460amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02460amx8s.jpg" width="320"/></a><br/>在輪胎側面標籤的位置<br/>追著看的話就很清楚了，<br/>因為輪圈撞擊，黃色油漆轉移到了輪胎上，<br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02461amx8.jpg" target="_blank"><img alt="DSC02461amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02461amx8s.jpg" width="320"/></a><br/>然後再往前一點<br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02462amx8.jpg" target="_blank"><img alt="DSC02462amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02462amx8s.jpg" width="320"/></a><br/>在這裡輪圈凹進去了。<br/>雖然發生了強烈的輪圈撞擊，但沒有因此爆胎。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02464amx8.jpg" target="_blank"><img alt="DSC02464amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02464amx8s.jpg" width="320"/></a><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02465amx8.jpg" target="_blank"><img alt="DSC02465amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02465amx8s.jpg" width="320"/></a><br/>好的，決定換輪圈。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02466amx8.jpg" target="_blank"><img alt="DSC02466amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02466amx8s.jpg" width="320"/></a><br/>在拆解的時候才注意到，<br/>Fulcrum的鋁合金輻條沒有編最後的交叉。<br/>所以輻條的重疊應該是這樣，<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02467amx8.jpg" target="_blank"><img alt="DSC02467amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02467amx8s.jpg" width="320"/></a><br/>但不知為何有一個地方被編上了。<br/>要是這台Racing 1是2005年款，<br/>備用輻條用的是有後期型刻印的東西的話<br/>就能斷定是修理的某個人搞錯了，<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02468amx8.jpg" target="_blank"><img alt="DSC02468amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02468amx8s.jpg" width="320"/></a><br/>但因為是新的輪軸，所以是2006年以後的款式，<br/>輻條也全都有刻印。<br/>不過廠商方面搞錯組裝的可能性似乎不太大。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02477amx8.jpg" target="_blank"><img alt="DSC02477amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02477amx8s.jpg" width="320"/></a><br/>組好了。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02478amx8.jpg" target="_blank"><img alt="DSC02478amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02478amx8s.jpg" width="320"/></a><br/>這是8、9、10速用鋼製飛輪體，<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02479amx8.jpg" target="_blank"><img alt="DSC02479amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02479amx8s.jpg" width="320"/></a><br/>但客人那邊改裝成11速用的。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02470amx8.jpg" target="_blank"><img alt="DSC02470amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02470amx8s.jpg" width="320"/></a><br/>這是原本花鼓螺帽的齒紋位置，<br/>會略微超出軸心面外側。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02475amx8.jpg" target="_blank"><img alt="DSC02475amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02475amx8s.jpg" width="320"/></a><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02476amx8.jpg" target="_blank"><img alt="DSC02476amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02476amx8s.jpg" width="320"/></a><br/>當然這邊我是有做心軸調整的。<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02483amx8.jpg" target="_blank"><img alt="DSC02483amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02483amx8s.jpg" width="320"/></a><br/>組換前<br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02449amx8.jpg" target="_blank"><img alt="DSC02449amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02449amx8s.jpg" width="320"/></a><br/>組換後<br/><br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02484amx8.jpg" target="_blank"><img alt="DSC02484amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02484amx8s.jpg" width="320"/></a><br/>組換前<br/><a href="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02469amx8.jpg" target="_blank"><img alt="DSC02469amx8.jpg" border="0" height="240" src="https://blog-imgs-118-origin.fc2.com/p/a/s/pass13/DSC02469amx8s.jpg" width="320"/></a><br/>組換後<br/><br/>銀色的組換前重量莫名其妙地輕，<br/>不過這基本上跟煞車區的磨耗沒什麼關係。<br/>Mavic Helium的管胎規格呢，<br/>除了前輪圈是26孔這種特異的孔數之外<br/>跟同廠的Reflex並不相同⋯⋯不對<br/>只有極初期的輪圈才存在340克上下的重量。<br/>後期型號是390克上下，所以幾乎變成了「紅色的Reflex」。<br/>同樣是Mavic，2004年型號的Ksyrium SL，<br/>首次採用銀色輪圈的型號，<br/>據說只有初期批次的輪圈切削過度了<br/>從下次出貨開始就會改成切削較淺的規格<br/>官方有這樣的公告。<br/>倒不是說一定會這樣，<br/>初期批次的輪圈異常輕量這種事很常見。<br/>Stan's 的 ZTR Alpha 340（→<a href="/zh/posts/774.html" target="_blank" title="こちら">這裡</a>）也是這樣。<br/>初期的確如其名是 340g 出頭的重量，<br/>但因為輪圈孔容易開裂所以變重了。<br/>不過即使變重也還是會開裂就是了。<br/><br/>這次爆裂的銀色輪圈，在煞車區磨耗的狀況下<br/>輕了 50g 這種事是不可能的。輕幾 g 左右是有可能啦。<br/>所以我認為爆裂跟它是初期批次之間應該有關係。<br/>當然 Silver Racing 1 的客戶<br/>那時候買的只是當時普通在賣的東西，不是特別挑選的，<br/>但我自己在看到初代 Racing 1 的時候<br/>會偷偷確認一下是不是舊式軸心＋沒有刻印的輻條。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

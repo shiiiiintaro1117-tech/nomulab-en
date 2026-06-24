@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
-    <p>Bicycle Workshop — English Edition</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/index.html">
+        <span class="brand-title">Nomu Lab Diary</span>
+        <span class="brand-subtitle">Bicycle Workshop Archive</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/index.html">Archive</a>
+      <a href="/guides/wheel-building.html">Wheel Guide</a>
+      <a href="/glossary.html">Glossary</a>
+      <a href="/about.html">About</a>
+    </nav>
     <div class="lang-toggle"><span class="lang-btn active">EN</span><a class="lang-btn" href="/zh/posts/939.html">繁中</a></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/index.html">← All posts</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Wheel Building</p>
     <h1>About Asymmetric Spoke Wheels, Starting with 2:1 Spoke Patterns</h1>
     <p class="post-meta">January 26, 2014</p>
+    <div class="post-body"><div class="entrytext">A while back, I built a wheel using a <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Novatec+2%3A1+spoke+bicycle+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Novatec</a> (Japanese wheel hub brand) 2:1 spoke hub at our shop.<br/>I've done center truing on <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Campagnolo+Bora+bicycle+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">Bora wheels</a> too, and I've built the original <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Campagnolo+Racing+1+bicycle+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">Racing 1</a> from scratch.<br/>I've received about five comments asking something like "What do you think about 2:1 spoke wheels?"<br/>so I'll write down my own thoughts on the matter.<br/><a href="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08913amx2.jpg" target="_blank"><img alt="DSC08913amx2.jpg" border="0" height="225" src="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08913amx2s.jpg" width="300"/></a><br/>Before that though. When truing a wheel, consider<br/>a situation like in the diagram above where you want to bring the rim back to center.<br/>To move it to the middle, you either tighten the nipples to pull the rim<br/>or loosen the nipples on the opposite side to push it out.<br/>When it comes to lateral runout, tightening and loosening look the same.<br/><br/>The red and blue arrows in the diagram above actually overlap,<br/>but I've shifted them slightly to make it easier to see.<br/><br/><a href="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08915amx2.jpg" target="_blank"><img alt="DSC08915amx2.jpg" border="0" height="225" src="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08915amx2s.jpg" width="300"/></a><br/>Even though tightening and loosening nipples have the same effect on lateral runout,<br/>they differ when it comes to radial runout.<br/>Tightening moves the rim inward, while loosening moves it outward.<br/>So the rim's movement becomes a combination of lateral and radial,<br/>creating something like the broken line in the diagram above.<br/><br/><a href="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08917amx2.jpg" target="_blank"><img alt="DSC08917amx2.jpg" border="0" height="225" src="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08917amx2s.jpg" width="300"/></a><br/>When correcting lateral runout, if you only adjust the nipples at the point of maximum deflection,<br/>you'll introduce radial runout. That's why it's common to simultaneously adjust<br/>the nipples before and after that point to counteract the radial distortion.<br/>In my opinion, this nuance is something only people who've actually built wheels would understand,<br/>so I don't think someone who says "I can true wheels but can't build them" really qualifies as being able to true.<br/>Bringing a partially-built wheel to that person's own "I've finished it!" compromise point<br/>and wheel truing are probably the same operation.<br/><br/><a href="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08921amx2.jpg" target="_blank"><img alt="DSC08921amx2.jpg" border="0" height="225" src="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08921amx2s.jpg" width="300"/></a><br/>To achieve the highest possible precision in radial truing,<br/>it's best if the rim holes are evenly spaced and the spokes pull in alternating directions.<br/>In other words, a normal wheel is the best.<br/>In a 2:1 wheel like in the diagram above, where two consecutive freewheel-side spokes (blue) continue,<br/>if you want to move the rim toward the non-freewheel side in that area,<br/>you have no choice but to loosen the freewheel-side nipples.<br/>The rim moves outward in that section,<br/>but there's no way to bring it back inward (without introducing lateral runout).<br/>With complete wheels, spoke tension is usually high, so<br/>rims for 2:1 spoke wheels ideally need to be ones where spoke tension doesn't easily translate to radial runout<br/>= stiffer ≈ heavier rims.<br/>Since there's no rim with perfect rigidity when it comes to radial runout,<br/>2:1 spoke wheels essentially have to abandon precise radial truing.<br/>The compromise seems to be "as long as radial runout is less than the tire's contact patch deformation, you won't notice it while riding,"<br/>but that's a point I find hard to accept.<br/><br/><a href="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08922amx2.jpg" target="_blank"><img alt="DSC08922amx2.jpg" border="0" height="225" src="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08922amx2s.jpg" width="300"/></a><br/>Since the rim isn't perfectly rigid laterally either, it's desirable for the non-freewheel-side radial lacing<br/>to be directly opposite the crossing point of the freewheel-side tangential lacing.<br/><br/><a href="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08923amx2.jpg" target="_blank"><img alt="DSC08923amx2.jpg" border="0" height="225" src="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08923amx2s.jpg" width="300"/></a><br/>This way the rim deformation is more balanced left and right,<br/>which results in less lateral runout.<br/><br/>The non-freewheel side is fixed to radial lacing because<br/>if you do tangential lacing on the non-freewheel side with 2:1 spokes,<br/>spoke tension could reverse between left and right sides depending on conditions.<br/><br/><a href="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08924amx2.jpg" target="_blank"><img alt="DSC08924amx2.jpg" border="0" height="225" src="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08924amx2s.jpg" width="300"/></a><br/>From here on I'll compare spoke counts to the diagrams,<br/>so I'll express them as "left:right".<br/>For 1:2 spokes on a 24H wheel, that's 8:16 spokes.<br/>Comparing this when the freewheel side has 16 spokes, it's the same as a 32H wheel with 16:16,<br/>but to match the total spoke count on both sides,<br/>I'll compare it to a 12:12 24H wheel.<br/>I'll continue assuming non-freewheel-side radial lacing and freewheel-side tangential lacing.<br/><br/>The merit of 1:2 spokes (gained even at the cost of abandoning radial truing)<br/>is that the spoke tension between left and right becomes very close,<br/>but it also has an advantage in having more freewheel-side spokes.<br/><br/><a href="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08925amx2.jpg" target="_blank"><img alt="DSC08925amx2.jpg" border="0" height="225" src="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08925amx2s.jpg" width="300"/></a><br/>Pedaling power is transmitted to the rim and tire mainly through the freewheel-side spokes,<br/>and more specifically, through the spokes in the "porcupine" direction (the red spokes in the diagram above).<br/>To put it extremely, I even think that in the instant you stomp hard on the pedals,<br/>only the spokes in the porcupine direction really exist in terms of driving efficiency.<br/>If you take this logic to its extreme, the more spokes you have in the porcupine direction,<br/>the better the driving efficiency becomes.<br/>For a 12:12 24H wheel, that's 6 spokes, but<br/><a href="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08926amx2.jpg" target="_blank"><img alt="DSC08926amx2.jpg" border="0" height="225" src="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08926amx2s.jpg" width="300"/></a><br/>for an 8:16 24H wheel, that's 8 spokes.<br/>Shouldn't this be considered another merit of asymmetric spoke wheels?<br/>However, I also have the idea that "the total spoke tension on one side of the wheel should be divided and supported by the number of spokes on that side,"<br/>and based on that, 8 non-freewheel spokes seems like a lot of load per spoke,<br/>which makes me worry whether spoke breakage would become more likely.<br/>(Especially with bent-elbow spokes.) The rim-side load would also increase.<br/>That's the RK (the force with which the nipple tries to tear through the rim) mentioned in this blog.<br/><br/>Regarding this,<br/>I received a comment saying:<br/>"Regarding RK, if we ignore rim hole drilling variance,<br/>and consider that left and right tension become nearly equal,<br/>wouldn't there be no rim-side issue as long as we don't exceed the tension that the freewheel-side can handle?"<br/>The idea being, for example, with 1:2 spokes at 120 kgf tension on both sides,<br/>if the rim's stated limit is 130 kgf, it should be fine, right?<br/><br/>Strictly speaking, a rim breaks when spoke tension exceeds the rim's RK tolerance.<br/>However, even if manufacturers showed the RK limit,<br/>there's no practical way for wheel builders to actually measure RK,<br/>so they only show it as an approximation using spoke tension.<br/><br/>Let me think about the case of maximum difference when building a 24H wheel with asymmetric spokes where left &lt; right.<br/>The minimum number of spokes for a functional spoked wheel on one side is 3.<br/>So for 24H that would be 3:21, but<br/>since 21 is odd, you can't do tangential lacing.<br/>So 4:20 becomes the maximum spoke count difference for a 24H wheel.<br/><br/><a href="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08927amx2.jpg" target="_blank"><img alt="DSC08927amx2.jpg" border="0" height="225" src="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08927amx2s.jpg" width="300"/></a><br/>The freewheel-side porcupine spokes have become 10.<br/>That's theoretically the maximum for a 24H wheel.<br/>If you keep spoke diameter the same on both sides (same-diameter build)<br/>and precisely adjust only the hub flange diameters,<br/>you should be able to equalize left and right spoke tension even under these spoke count conditions.<br/>But even if that tension stays below the rim's "stated spoke tension threshold,"<br/>I really don't think spoke durability and RK would be the same as a 12:12 24H wheel.<br/>With the logic of "dividing one side's load by the spoke count,"<br/>the non-freewheel side is doing it with just 4 spokes.<br/><br/>If reducing the non-freewheel spoke count is OK as long as "spoke tension" is the same,<br/>then a 4:20 24H wheel should be acceptable too.<br/>It might seem extreme, but<br/>12:12 → 8:16 → 4:20 is just increasing the number of porcupine spokes by 2 each<br/>while keeping the 24H count the same.<br/><br/>Among these three,<br/>I don't have a solid logical basis to say<br/>"8:16 is the best compromise for 24H when weighing merits and demerits."<br/>I can only see it as "8:16 has one foot in the door of 4:20 compared to 12:12."<br/>So then if I do some creative variations on 12:12 with different diameters and different spoke counts...<br/>that's the kind of wheel I usually build.<br/>Though if I had the position of someone designing complete wheels from the hub up,<br/>it would probably be different.<br/>"We've found the optimal hub dimensions and rim hole spacing for 8:16!"<br/>That kind of thing becomes possible.<br/>But as for the merits of doing 1:2 lacing with off-the-shelf even-spaced-hole hubs and rims,<br/>I don't think the merits outweigh the drawbacks.<br/><br/>To wrap up this long post:<br/>asymmetric spoke wheels might be viable for specially-designed complete wheels,<br/>but for hand-built wheels, I'd say you're probably better off not going that route.<br/>That's my conclusion.<br/><br/><br/>Bonus<br/><a href="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08928amx2.jpg" target="_blank"><img alt="DSC08928amx2.jpg" border="0" height="225" src="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08928amx2s.jpg" width="300"/></a><br/>With a 4:20, you can't evenly space the spoke pull intervals no matter what you do.<br/><br/>Speaking of non-1:2 asymmetric spokes,<br/>Colima (Japanese wheel brand) has a 20H rear wheel. It's 8:12.<br/>Looking at the hole pattern on the rim as you go around one full revolution,<br/>it goes RRLRLRRRLRLRRLRLRLR (R = regular side, L = left side or varying positions),<br/>and the holes aren't even spaced.<br/>The runout on this—both radial and lateral—is just really hard to true.<br/>I've actually fixed center problems with it before,<br/>but the radial runout compromise has to be pretty loose.<br/>(I got it to equal or better than the radial runout before I touched it, though.)
+</div></div>
+    <aside class="post-guides">
+      <strong>Technical archive</strong>
+      <nav aria-label="Technical guides">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">A while back, I built a wheel using a <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Novatec+2%3A1+spoke+bicycle+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Novatec</a> (Japanese wheel hub brand) 2:1 spoke hub at our shop.<br/>I've done center truing on <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Campagnolo+Bora+bicycle+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">Bora wheels</a> too, and I've built the original <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Campagnolo+Racing+1+bicycle+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">Racing 1</a> from scratch.<br/>I've received about five comments asking something like "What do you think about 2:1 spoke wheels?"<br/>so I'll write down my own thoughts on the matter.<br/><a href="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08913amx2.jpg" target="_blank"><img alt="DSC08913amx2.jpg" border="0" height="225" src="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08913amx2s.jpg" width="300"/></a><br/>Before that though. When truing a wheel, consider<br/>a situation like in the diagram above where you want to bring the rim back to center.<br/>To move it to the middle, you either tighten the nipples to pull the rim<br/>or loosen the nipples on the opposite side to push it out.<br/>When it comes to lateral runout, tightening and loosening look the same.<br/><br/>The red and blue arrows in the diagram above actually overlap,<br/>but I've shifted them slightly to make it easier to see.<br/><br/><a href="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08915amx2.jpg" target="_blank"><img alt="DSC08915amx2.jpg" border="0" height="225" src="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08915amx2s.jpg" width="300"/></a><br/>Even though tightening and loosening nipples have the same effect on lateral runout,<br/>they differ when it comes to radial runout.<br/>Tightening moves the rim inward, while loosening moves it outward.<br/>So the rim's movement becomes a combination of lateral and radial,<br/>creating something like the broken line in the diagram above.<br/><br/><a href="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08917amx2.jpg" target="_blank"><img alt="DSC08917amx2.jpg" border="0" height="225" src="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08917amx2s.jpg" width="300"/></a><br/>When correcting lateral runout, if you only adjust the nipples at the point of maximum deflection,<br/>you'll introduce radial runout. That's why it's common to simultaneously adjust<br/>the nipples before and after that point to counteract the radial distortion.<br/>In my opinion, this nuance is something only people who've actually built wheels would understand,<br/>so I don't think someone who says "I can true wheels but can't build them" really qualifies as being able to true.<br/>Bringing a partially-built wheel to that person's own "I've finished it!" compromise point<br/>and wheel truing are probably the same operation.<br/><br/><a href="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08921amx2.jpg" target="_blank"><img alt="DSC08921amx2.jpg" border="0" height="225" src="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08921amx2s.jpg" width="300"/></a><br/>To achieve the highest possible precision in radial truing,<br/>it's best if the rim holes are evenly spaced and the spokes pull in alternating directions.<br/>In other words, a normal wheel is the best.<br/>In a 2:1 wheel like in the diagram above, where two consecutive freewheel-side spokes (blue) continue,<br/>if you want to move the rim toward the non-freewheel side in that area,<br/>you have no choice but to loosen the freewheel-side nipples.<br/>The rim moves outward in that section,<br/>but there's no way to bring it back inward (without introducing lateral runout).<br/>With complete wheels, spoke tension is usually high, so<br/>rims for 2:1 spoke wheels ideally need to be ones where spoke tension doesn't easily translate to radial runout<br/>= stiffer ≈ heavier rims.<br/>Since there's no rim with perfect rigidity when it comes to radial runout,<br/>2:1 spoke wheels essentially have to abandon precise radial truing.<br/>The compromise seems to be "as long as radial runout is less than the tire's contact patch deformation, you won't notice it while riding,"<br/>but that's a point I find hard to accept.<br/><br/><a href="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08922amx2.jpg" target="_blank"><img alt="DSC08922amx2.jpg" border="0" height="225" src="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08922amx2s.jpg" width="300"/></a><br/>Since the rim isn't perfectly rigid laterally either, it's desirable for the non-freewheel-side radial lacing<br/>to be directly opposite the crossing point of the freewheel-side tangential lacing.<br/><br/><a href="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08923amx2.jpg" target="_blank"><img alt="DSC08923amx2.jpg" border="0" height="225" src="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08923amx2s.jpg" width="300"/></a><br/>This way the rim deformation is more balanced left and right,<br/>which results in less lateral runout.<br/><br/>The non-freewheel side is fixed to radial lacing because<br/>if you do tangential lacing on the non-freewheel side with 2:1 spokes,<br/>spoke tension could reverse between left and right sides depending on conditions.<br/><br/><a href="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08924amx2.jpg" target="_blank"><img alt="DSC08924amx2.jpg" border="0" height="225" src="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08924amx2s.jpg" width="300"/></a><br/>From here on I'll compare spoke counts to the diagrams,<br/>so I'll express them as "left:right".<br/>For 1:2 spokes on a 24H wheel, that's 8:16 spokes.<br/>Comparing this when the freewheel side has 16 spokes, it's the same as a 32H wheel with 16:16,<br/>but to match the total spoke count on both sides,<br/>I'll compare it to a 12:12 24H wheel.<br/>I'll continue assuming non-freewheel-side radial lacing and freewheel-side tangential lacing.<br/><br/>The merit of 1:2 spokes (gained even at the cost of abandoning radial truing)<br/>is that the spoke tension between left and right becomes very close,<br/>but it also has an advantage in having more freewheel-side spokes.<br/><br/><a href="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08925amx2.jpg" target="_blank"><img alt="DSC08925amx2.jpg" border="0" height="225" src="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08925amx2s.jpg" width="300"/></a><br/>Pedaling power is transmitted to the rim and tire mainly through the freewheel-side spokes,<br/>and more specifically, through the spokes in the "porcupine" direction (the red spokes in the diagram above).<br/>To put it extremely, I even think that in the instant you stomp hard on the pedals,<br/>only the spokes in the porcupine direction really exist in terms of driving efficiency.<br/>If you take this logic to its extreme, the more spokes you have in the porcupine direction,<br/>the better the driving efficiency becomes.<br/>For a 12:12 24H wheel, that's 6 spokes, but<br/><a href="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08926amx2.jpg" target="_blank"><img alt="DSC08926amx2.jpg" border="0" height="225" src="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08926amx2s.jpg" width="300"/></a><br/>for an 8:16 24H wheel, that's 8 spokes.<br/>Shouldn't this be considered another merit of asymmetric spoke wheels?<br/>However, I also have the idea that "the total spoke tension on one side of the wheel should be divided and supported by the number of spokes on that side,"<br/>and based on that, 8 non-freewheel spokes seems like a lot of load per spoke,<br/>which makes me worry whether spoke breakage would become more likely.<br/>(Especially with bent-elbow spokes.) The rim-side load would also increase.<br/>That's the RK (the force with which the nipple tries to tear through the rim) mentioned in this blog.<br/><br/>Regarding this,<br/>I received a comment saying:<br/>"Regarding RK, if we ignore rim hole drilling variance,<br/>and consider that left and right tension become nearly equal,<br/>wouldn't there be no rim-side issue as long as we don't exceed the tension that the freewheel-side can handle?"<br/>The idea being, for example, with 1:2 spokes at 120 kgf tension on both sides,<br/>if the rim's stated limit is 130 kgf, it should be fine, right?<br/><br/>Strictly speaking, a rim breaks when spoke tension exceeds the rim's RK tolerance.<br/>However, even if manufacturers showed the RK limit,<br/>there's no practical way for wheel builders to actually measure RK,<br/>so they only show it as an approximation using spoke tension.<br/><br/>Let me think about the case of maximum difference when building a 24H wheel with asymmetric spokes where left &lt; right.<br/>The minimum number of spokes for a functional spoked wheel on one side is 3.<br/>So for 24H that would be 3:21, but<br/>since 21 is odd, you can't do tangential lacing.<br/>So 4:20 becomes the maximum spoke count difference for a 24H wheel.<br/><br/><a href="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08927amx2.jpg" target="_blank"><img alt="DSC08927amx2.jpg" border="0" height="225" src="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08927amx2s.jpg" width="300"/></a><br/>The freewheel-side porcupine spokes have become 10.<br/>That's theoretically the maximum for a 24H wheel.<br/>If you keep spoke diameter the same on both sides (same-diameter build)<br/>and precisely adjust only the hub flange diameters,<br/>you should be able to equalize left and right spoke tension even under these spoke count conditions.<br/>But even if that tension stays below the rim's "stated spoke tension threshold,"<br/>I really don't think spoke durability and RK would be the same as a 12:12 24H wheel.<br/>With the logic of "dividing one side's load by the spoke count,"<br/>the non-freewheel side is doing it with just 4 spokes.<br/><br/>If reducing the non-freewheel spoke count is OK as long as "spoke tension" is the same,<br/>then a 4:20 24H wheel should be acceptable too.<br/>It might seem extreme, but<br/>12:12 → 8:16 → 4:20 is just increasing the number of porcupine spokes by 2 each<br/>while keeping the 24H count the same.<br/><br/>Among these three,<br/>I don't have a solid logical basis to say<br/>"8:16 is the best compromise for 24H when weighing merits and demerits."<br/>I can only see it as "8:16 has one foot in the door of 4:20 compared to 12:12."<br/>So then if I do some creative variations on 12:12 with different diameters and different spoke counts...<br/>that's the kind of wheel I usually build.<br/>Though if I had the position of someone designing complete wheels from the hub up,<br/>it would probably be different.<br/>"We've found the optimal hub dimensions and rim hole spacing for 8:16!"<br/>That kind of thing becomes possible.<br/>But as for the merits of doing 1:2 lacing with off-the-shelf even-spaced-hole hubs and rims,<br/>I don't think the merits outweigh the drawbacks.<br/><br/>To wrap up this long post:<br/>asymmetric spoke wheels might be viable for specially-designed complete wheels,<br/>but for hand-built wheels, I'd say you're probably better off not going that route.<br/>That's my conclusion.<br/><br/><br/>Bonus<br/><a href="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08928amx2.jpg" target="_blank"><img alt="DSC08928amx2.jpg" border="0" height="225" src="https://blog-imgs-47-origin.fc2.com/p/a/s/pass13/DSC08928amx2s.jpg" width="300"/></a><br/>With a 4:20, you can't evenly space the spoke pull intervals no matter what you do.<br/><br/>Speaking of non-1:2 asymmetric spokes,<br/>Colima (Japanese wheel brand) has a 20H rear wheel. It's 8:12.<br/>Looking at the hole pattern on the rim as you go around one full revolution,<br/>it goes RRLRLRRRLRLRRLRLRLR (R = regular side, L = left side or varying positions),<br/>and the holes aren't even spaced.<br/>The runout on this—both radial and lateral—is just really hard to true.<br/>I've actually fixed center problems with it before,<br/>but the radial runout compromise has to be pretty loose.<br/>(I got it to equal or better than the radial runout before I touched it, though.)
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">Products Mentioned in This Article</p>
       <ul>

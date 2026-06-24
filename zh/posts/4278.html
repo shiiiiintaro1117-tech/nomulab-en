@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/4278.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>我組了場地自行車的輪組，超興奮</h1>
     <p class="post-meta">September 22, 2018</p>
+    <div class="post-body"><div class="entrytext">9月20日（星期四）我說要休息啦……那是謊話。<br/>所以前天也是輪子（以下略）。<br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06863amx9.jpg" target="_blank"><img alt="DSC06863amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06863amx9s.jpg" width="320"/></a><br/>窩在店裡專心組輪圈，組了場地自行車用的輪圈。<br/>場地自行車系統的待組單雖然不只這些，<br/>剩下的也想盡量在9月內組完。<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06864amx9.jpg" target="_blank"><img alt="DSC06864amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06864amx9s.jpg" width="320"/></a><br/>先說第一對。用Tni的CX22輪圈組了輪圈。<br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06865amx9.jpg" target="_blank"><img alt="DSC06865amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06865amx9s.jpg" width="320"/></a><br/>如同CX之名所示，為場地自行車用做成寬輪圈，<br/>輪圈高22mm的CX22是tubular輪圈，<br/>CX22加上bead hook之後，基於那個緣故<br/>輪圈高變成28mm的WO輪圈就成了CX28。<br/>嚴格來說CX22的輪圈寬23.2mm，CX28則是23mm，<br/>除了耳部外，並不是完全相同的輪圈。<br/>CX28公稱490g，以輪圈高來說稍微有點重，<br/>但CX22是415g，算是滿輕的。<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06867amx9.jpg" target="_blank"><img alt="DSC06867amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06867amx9s.jpg" width="320"/></a><br/>HB-RS400 28H CX-RAY四四義大利編法。<br/>花鼓是Shimano等外級的RS400，<br/>之前也寫過，Altegra以下的花鼓沒有28H規格。<br/>Altegra也到6600系為止有24H和28H……。<br/><br/>和cartridge式滾珠不同，Cup &amp; Cone式花鼓<br/>因為鋼珠較大，又能補充潤滑脂，<br/>成為對場地自行車特有損傷耐受力強的花鼓。<br/>進一步要求更高的密封性能的話，<br/>28H的情況就要Dura-Ace，但價格差超大。<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06868amx9.jpg" target="_blank"><img alt="DSC06868amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06868amx9s.jpg" width="320"/></a><br/>後輪也組好了。<br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06869amx9.jpg" target="_blank"><img alt="DSC06869amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06869amx9s.jpg" width="320"/></a><br/>FH-RS400 28H 半培林四組內穿結線。<br/><br/><br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06870amx9.jpg" target="_blank"><img alt="DSC06870amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06870amx9s.jpg" width="320"/></a><br/>接著第2對。<br/>用Stans的鐵十字輪圈和Shimano的RS505花鼓組了輪組。<br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06871amx9.jpg" target="_blank"><img alt="DSC06871amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06871amx9s.jpg" width="320"/></a><br/>HB-RS505 28H 黑半培林六四組外穿義大利結線。<br/>鐵十字輪圈是本店的庫存，<br/>在上個賽季快結束時買下・・・進貨的輪圈，<br/>是客人一直預留著的。<br/><br/>RS505花鼓的話，這邊也是超出規格等級，<br/>可以看作RS400的碟煞花鼓規格。<br/>快拆碟煞花鼓的上位型號有CX75，<br/>不知道怎麼回事CX75花鼓已經停產了，<br/>本店也只夠充當客人的預訂分，<br/>好不容易才買下・・・進貨的，不過今後沒有預計進貨。<br/>話說快拆碟煞花鼓的上位型號<br/>那麼早就停產是個超級爛決定。<br/><s>這樣做也不會讓Shimano的完組輪組增加銷量啊。</s><br/>CX75花鼓只有28H「一種」規格，<br/>但RS505花鼓是28・32・36H的陣容。<br/>就我來說，有28H就夠了。<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06872amx9.jpg" target="_blank"><img alt="DSC06872amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06872amx9s.jpg" width="320"/></a><br/>後輪也組好了。<br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06873amx9.jpg" target="_blank"><img alt="DSC06873amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06873amx9s.jpg" width="320"/></a><br/>FH-RS505 28H黑半培林四組JIS結線。<br/>雖然是越野自行車車架，但使用快拆式的話，<br/>花鼓的過度鎖定螺帽尺寸有130mm的，<br/>客人的車架不是130mm已經確認過了。<br/><br/><span style="color:#FF0000">追記：轉轂是135mm，車架也是135mm。<br/>我之前寫錯了，說車架是130mm。<br/>感謝各位的留言。</span><br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06874amx9.jpg" target="_blank"><img alt="DSC06874amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06874amx9s.jpg" width="320"/></a><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06875amx9.jpg" target="_blank"><img alt="DSC06875amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06875amx9s.jpg" width="320"/></a><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06876amx9.jpg" target="_blank"><img alt="DSC06876amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06876amx9s.jpg" width="320"/></a><br/>根據客人的要求，從右側看以氣嘴孔為起點，順時針方向<br/>用金色、水色（土耳其藍）、綠色將輻條螺帽分成三等份，<br/>但28根輻條無法被3整除，所以設定為金色9個、水色9個、綠色10個。<br/><br/><br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06877amx9.jpg" target="_blank"><img alt="DSC06877amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06877amx9s.jpg" width="320"/></a><br/>最後是第三對輪組。<br/>用DT的RR411db輞組裝了輪組。<br/>碟煞轂的情況下，前輪也有偏心，偏心輞設計會更有效，<br/>所以與用於邊拉煞的RR411不同，RR411db只提供偏心輞規格。<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06878amx9.jpg" target="_blank"><img alt="DSC06878amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06878amx9s.jpg" width="320"/></a><br/>HB-9010 28H 黑色CX-RAY六四反義大利式結線組法。<br/>先前的Iron Cross是用非偏心輞的左右異徑組法，<br/>這次則是用偏心輞的左右同徑組法，<br/>但碟煞轂程度的偏心（不如飛輪轂那麼明顯）來說，<br/>輻條張力（不是第二ST）的左右矯正程度<br/>感覺前者更大。<br/><br/>這是因為在思考是否需要結線時，<br/>Iron Cross的半競賽式→不論做或不做都可以（但還是做了）<br/>RR411db的全CX-RAY→最好還是做（所以做了）<br/>大概是這樣的感覺。<br/>RR411db如果是半競賽式，結線（按我的想法）應該是不需要的。<br/>當然做也沒關係。<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06880amx9.jpg" target="_blank"><img alt="DSC06880amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06880amx9s.jpg" width="320"/></a><br/>在Shimano的轂中，快扣式轂會附贈快扣。<br/>中軸式則不附贈中軸。<br/>取決於車架和前叉，軸心部分的長度、<br/>手把下方是錐形還是平面、<br/>只是轉動式的快速調整器，還是最後要壓下的槓桿式等<br/>規格種類繁多的緣故吧。<br/><br/>１２mm穿軸的情況下，碟盤的鎖環是用<br/>飛輪鎖環工具來鎖緊的類型，<br/>那個會隨碟盤附屬，所以花鼓上沒有附鎖環，<br/>只有在前１５mm穿軸的情況下、<br/>才需要用Hollowtech BB工具鎖緊的鎖環、<br/>所以才會附鎖環。<br/><br/>「前後碟盤的固定工具應該一致比較好」這個想法，<br/>MTB完成車附屬的輪組的話、<br/>後輪是１２mm卻為了配合前輪１５mm、<br/>經常會使用BB工具式的鎖環。<br/><br/>關於XTRA花鼓的原因。<br/>客人的越野自行車車架組<br/>是穿軸化過渡時期的型號，<br/>前輪是MTB一樣的１５mm穿軸，<br/>後輪是１３５mm寬度的快速調整器規格，<br/>想用２８H的輪圈組前輪、<br/>可是越野自行車用的花鼓，前輪只有１２mm穿軸規格、<br/>只能用１５mm穿軸的MTB前花鼓來組裝，<br/>２８H的只有XTRA才有。<br/>如果XT有２８H的話，我可能就會選XT了。<br/>Ｍ９０００系ＸＴＲ的２８Ｈ輻轂也是後來才追加的規格，<br/>發售當初並沒有。<br/>不過如果改用Ｔｎｉ的碟式輻轂的話，轉子的固定方式就不是中心鎖而是６螺栓，<br/>所以被否決了，<br/>Chris King或DT的輻轂價格都比XTR高・・・等等<br/>（DT的３５０輻轂的１５／１００ｍｍ的話，比XTR便宜一點啦）<br/>綜合各種條件考量下來，XTR就是最好的選擇。<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06881amx9.jpg" target="_blank"><img alt="DSC06881amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06881amx9s.jpg" width="320"/></a><br/>後輪也組好了。<br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06882amx9.jpg" target="_blank"><img alt="DSC06882amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06882amx9s.jpg" width="320"/></a><br/>本店最後庫存的FH－CX７５  ２８Ｈ  黑色半競賽日規組法接線齊全。<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06883amx9.jpg" target="_blank"><img alt="DSC06883amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06883amx9s.jpg" width="320"/></a><br/>按照客人的要求換成紅色鋁製嘴。<br/>圖片裡輪圈的貼紙上寫著「要使用PHR墊片」，<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06884amx9.jpg" target="_blank"><img alt="DSC06884amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06884amx9s.jpg" width="320"/></a><br/>我們是有照做，但嚴格來說用了PHR墊片的DT輪圈，<br/>是一定要用Squolx嘴來組。<br/><br/>DT的紅色嘴，好像已經改成「深紅色」了，<br/>我前陣子寫說要保護淺紅色的庫存，<br/>結果最近進貨的３箱卻是３箱都是「淺紅色」。<br/>到底是哪一個啦啦啦啦啦啦啦啦啦啦<br/>暫時來說，現在是用深紅色，<br/>但同一個輪子裡不會混用深淺紅色。<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06888amx9.jpg" target="_blank"><img alt="DSC06888amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06888amx9s.jpg" width="320"/></a><br/>Squolx嘴是１５ｍｍ長度，<br/>外周側有可旋轉的Torx形狀突起，只是比１２ｍｍ長３ｍｍ而已，<br/>從輪圈突出的實際有效長度和１２ｍｍ嘴（上圖右邊）是一樣的。<br/>那除此之外和１２ｍｍ嘴是不是完全相同呢，倒也不是，<br/>嘴和輪圈（墊片）的接觸面圓度和傳統嘴是不同的。<br/><br/>用Squolx乳頭組裝時，雖然也可以組裝其他廠牌不需要墊圈的輞，<br/>但基本上這款乳頭的規格似乎是特別針對與PHR墊圈的組合而設計的。<br/>Squolx乳頭有銀色和黑色兩種顏色，<br/>如果要用這兩種顏色其中之一來組裝的話，就會使用Squolx乳頭，<br/>但如果要用其他顏色的乳頭組裝的話，就會根據客戶的希望<br/>用12mm長度的彩色乳頭來組裝。<br/>我之前也寫過（→<a href="/zh/posts/4130.html" target="_blank" title="こちら">這裡</a>），PHR墊圈和乳頭頸部下方的曲面能夠順暢契合的話<br/>反倒是普通乳頭會更適合。<br/>另外，在連結文章中，關於Squolx乳頭<br/>是從廠商網站的標記名稱來稱呼為Spherical乳頭的。<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06887amx9.jpg" target="_blank"><img alt="DSC06887amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06887amx9s.jpg" width="320"/></a><br/>關於PHR墊圈，最近作為改變過的規格<br/>出現了帶有用來對應輞前後方向的黑色點標記的版本。<br/>稍早前輞內紅色乳頭的照片中也有這種帶點標記的版本。<br/>隨輞附屬的墊圈，目前新舊款混在一起。<br/><br/>在輞組初組時，輞內側的圓弧會自動引導墊圈，所以<br/>只要不特意把墊圈的前後方向反過來裝成左右方向<br/>就不會以錯誤的方向安裝，<br/>不過乳頭旋轉時還是會多少滑動一些。<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06885amx9.jpg" target="_blank"><img alt="DSC06885amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06885amx9s.jpg" width="320"/></a><br/>↑左邊的照片是初始狀態，右邊是用乳頭加壓後正確方向的狀態。<br/>從正上方看的話會比較難看出來，<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06886amx9.jpg" target="_blank"><img alt="DSC06886amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06886amx9s.jpg" width="320"/></a><br/>最後因為會變形成碗狀（當然還是要按照方向指示來做），<br/>沒必要執著於要完全精確地對齊前後方向。<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06891amx9.jpg" target="_blank"><img alt="DSC06891amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06891amx9s.jpg" width="320"/></a><br/>↑自從變形成碗狀之後，就會隨著竹節的旋轉方向有些許偏移。<br/>順便一提，這種傾向在 Squorx 竹節上似乎更嚴重。<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06890amx9.jpg" target="_blank"><img alt="DSC06890amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06890amx9s.jpg" width="320"/></a><br/>↑前輪框附屬的 PHR 墊圈是沒有圓點的版本。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">9月20日（星期四）我說要休息啦……那是謊話。<br/>所以前天也是輪子（以下略）。<br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06863amx9.jpg" target="_blank"><img alt="DSC06863amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06863amx9s.jpg" width="320"/></a><br/>窩在店裡專心組輪圈，組了場地自行車用的輪圈。<br/>場地自行車系統的待組單雖然不只這些，<br/>剩下的也想盡量在9月內組完。<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06864amx9.jpg" target="_blank"><img alt="DSC06864amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06864amx9s.jpg" width="320"/></a><br/>先說第一對。用Tni的CX22輪圈組了輪圈。<br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06865amx9.jpg" target="_blank"><img alt="DSC06865amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06865amx9s.jpg" width="320"/></a><br/>如同CX之名所示，為場地自行車用做成寬輪圈，<br/>輪圈高22mm的CX22是tubular輪圈，<br/>CX22加上bead hook之後，基於那個緣故<br/>輪圈高變成28mm的WO輪圈就成了CX28。<br/>嚴格來說CX22的輪圈寬23.2mm，CX28則是23mm，<br/>除了耳部外，並不是完全相同的輪圈。<br/>CX28公稱490g，以輪圈高來說稍微有點重，<br/>但CX22是415g，算是滿輕的。<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06867amx9.jpg" target="_blank"><img alt="DSC06867amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06867amx9s.jpg" width="320"/></a><br/>HB-RS400 28H CX-RAY四四義大利編法。<br/>花鼓是Shimano等外級的RS400，<br/>之前也寫過，Altegra以下的花鼓沒有28H規格。<br/>Altegra也到6600系為止有24H和28H……。<br/><br/>和cartridge式滾珠不同，Cup &amp; Cone式花鼓<br/>因為鋼珠較大，又能補充潤滑脂，<br/>成為對場地自行車特有損傷耐受力強的花鼓。<br/>進一步要求更高的密封性能的話，<br/>28H的情況就要Dura-Ace，但價格差超大。<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06868amx9.jpg" target="_blank"><img alt="DSC06868amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06868amx9s.jpg" width="320"/></a><br/>後輪也組好了。<br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06869amx9.jpg" target="_blank"><img alt="DSC06869amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06869amx9s.jpg" width="320"/></a><br/>FH-RS400 28H 半培林四組內穿結線。<br/><br/><br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06870amx9.jpg" target="_blank"><img alt="DSC06870amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06870amx9s.jpg" width="320"/></a><br/>接著第2對。<br/>用Stans的鐵十字輪圈和Shimano的RS505花鼓組了輪組。<br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06871amx9.jpg" target="_blank"><img alt="DSC06871amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06871amx9s.jpg" width="320"/></a><br/>HB-RS505 28H 黑半培林六四組外穿義大利結線。<br/>鐵十字輪圈是本店的庫存，<br/>在上個賽季快結束時買下・・・進貨的輪圈，<br/>是客人一直預留著的。<br/><br/>RS505花鼓的話，這邊也是超出規格等級，<br/>可以看作RS400的碟煞花鼓規格。<br/>快拆碟煞花鼓的上位型號有CX75，<br/>不知道怎麼回事CX75花鼓已經停產了，<br/>本店也只夠充當客人的預訂分，<br/>好不容易才買下・・・進貨的，不過今後沒有預計進貨。<br/>話說快拆碟煞花鼓的上位型號<br/>那麼早就停產是個超級爛決定。<br/><s>這樣做也不會讓Shimano的完組輪組增加銷量啊。</s><br/>CX75花鼓只有28H「一種」規格，<br/>但RS505花鼓是28・32・36H的陣容。<br/>就我來說，有28H就夠了。<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06872amx9.jpg" target="_blank"><img alt="DSC06872amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06872amx9s.jpg" width="320"/></a><br/>後輪也組好了。<br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06873amx9.jpg" target="_blank"><img alt="DSC06873amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06873amx9s.jpg" width="320"/></a><br/>FH-RS505 28H黑半培林四組JIS結線。<br/>雖然是越野自行車車架，但使用快拆式的話，<br/>花鼓的過度鎖定螺帽尺寸有130mm的，<br/>客人的車架不是130mm已經確認過了。<br/><br/><span style="color:#FF0000">追記：轉轂是135mm，車架也是135mm。<br/>我之前寫錯了，說車架是130mm。<br/>感謝各位的留言。</span><br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06874amx9.jpg" target="_blank"><img alt="DSC06874amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06874amx9s.jpg" width="320"/></a><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06875amx9.jpg" target="_blank"><img alt="DSC06875amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06875amx9s.jpg" width="320"/></a><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06876amx9.jpg" target="_blank"><img alt="DSC06876amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06876amx9s.jpg" width="320"/></a><br/>根據客人的要求，從右側看以氣嘴孔為起點，順時針方向<br/>用金色、水色（土耳其藍）、綠色將輻條螺帽分成三等份，<br/>但28根輻條無法被3整除，所以設定為金色9個、水色9個、綠色10個。<br/><br/><br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06877amx9.jpg" target="_blank"><img alt="DSC06877amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06877amx9s.jpg" width="320"/></a><br/>最後是第三對輪組。<br/>用DT的RR411db輞組裝了輪組。<br/>碟煞轂的情況下，前輪也有偏心，偏心輞設計會更有效，<br/>所以與用於邊拉煞的RR411不同，RR411db只提供偏心輞規格。<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06878amx9.jpg" target="_blank"><img alt="DSC06878amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06878amx9s.jpg" width="320"/></a><br/>HB-9010 28H 黑色CX-RAY六四反義大利式結線組法。<br/>先前的Iron Cross是用非偏心輞的左右異徑組法，<br/>這次則是用偏心輞的左右同徑組法，<br/>但碟煞轂程度的偏心（不如飛輪轂那麼明顯）來說，<br/>輻條張力（不是第二ST）的左右矯正程度<br/>感覺前者更大。<br/><br/>這是因為在思考是否需要結線時，<br/>Iron Cross的半競賽式→不論做或不做都可以（但還是做了）<br/>RR411db的全CX-RAY→最好還是做（所以做了）<br/>大概是這樣的感覺。<br/>RR411db如果是半競賽式，結線（按我的想法）應該是不需要的。<br/>當然做也沒關係。<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06880amx9.jpg" target="_blank"><img alt="DSC06880amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06880amx9s.jpg" width="320"/></a><br/>在Shimano的轂中，快扣式轂會附贈快扣。<br/>中軸式則不附贈中軸。<br/>取決於車架和前叉，軸心部分的長度、<br/>手把下方是錐形還是平面、<br/>只是轉動式的快速調整器，還是最後要壓下的槓桿式等<br/>規格種類繁多的緣故吧。<br/><br/>１２mm穿軸的情況下，碟盤的鎖環是用<br/>飛輪鎖環工具來鎖緊的類型，<br/>那個會隨碟盤附屬，所以花鼓上沒有附鎖環，<br/>只有在前１５mm穿軸的情況下、<br/>才需要用Hollowtech BB工具鎖緊的鎖環、<br/>所以才會附鎖環。<br/><br/>「前後碟盤的固定工具應該一致比較好」這個想法，<br/>MTB完成車附屬的輪組的話、<br/>後輪是１２mm卻為了配合前輪１５mm、<br/>經常會使用BB工具式的鎖環。<br/><br/>關於XTRA花鼓的原因。<br/>客人的越野自行車車架組<br/>是穿軸化過渡時期的型號，<br/>前輪是MTB一樣的１５mm穿軸，<br/>後輪是１３５mm寬度的快速調整器規格，<br/>想用２８H的輪圈組前輪、<br/>可是越野自行車用的花鼓，前輪只有１２mm穿軸規格、<br/>只能用１５mm穿軸的MTB前花鼓來組裝，<br/>２８H的只有XTRA才有。<br/>如果XT有２８H的話，我可能就會選XT了。<br/>Ｍ９０００系ＸＴＲ的２８Ｈ輻轂也是後來才追加的規格，<br/>發售當初並沒有。<br/>不過如果改用Ｔｎｉ的碟式輻轂的話，轉子的固定方式就不是中心鎖而是６螺栓，<br/>所以被否決了，<br/>Chris King或DT的輻轂價格都比XTR高・・・等等<br/>（DT的３５０輻轂的１５／１００ｍｍ的話，比XTR便宜一點啦）<br/>綜合各種條件考量下來，XTR就是最好的選擇。<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06881amx9.jpg" target="_blank"><img alt="DSC06881amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06881amx9s.jpg" width="320"/></a><br/>後輪也組好了。<br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06882amx9.jpg" target="_blank"><img alt="DSC06882amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06882amx9s.jpg" width="320"/></a><br/>本店最後庫存的FH－CX７５  ２８Ｈ  黑色半競賽日規組法接線齊全。<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06883amx9.jpg" target="_blank"><img alt="DSC06883amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06883amx9s.jpg" width="320"/></a><br/>按照客人的要求換成紅色鋁製嘴。<br/>圖片裡輪圈的貼紙上寫著「要使用PHR墊片」，<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06884amx9.jpg" target="_blank"><img alt="DSC06884amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06884amx9s.jpg" width="320"/></a><br/>我們是有照做，但嚴格來說用了PHR墊片的DT輪圈，<br/>是一定要用Squolx嘴來組。<br/><br/>DT的紅色嘴，好像已經改成「深紅色」了，<br/>我前陣子寫說要保護淺紅色的庫存，<br/>結果最近進貨的３箱卻是３箱都是「淺紅色」。<br/>到底是哪一個啦啦啦啦啦啦啦啦啦啦<br/>暫時來說，現在是用深紅色，<br/>但同一個輪子裡不會混用深淺紅色。<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06888amx9.jpg" target="_blank"><img alt="DSC06888amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06888amx9s.jpg" width="320"/></a><br/>Squolx嘴是１５ｍｍ長度，<br/>外周側有可旋轉的Torx形狀突起，只是比１２ｍｍ長３ｍｍ而已，<br/>從輪圈突出的實際有效長度和１２ｍｍ嘴（上圖右邊）是一樣的。<br/>那除此之外和１２ｍｍ嘴是不是完全相同呢，倒也不是，<br/>嘴和輪圈（墊片）的接觸面圓度和傳統嘴是不同的。<br/><br/>用Squolx乳頭組裝時，雖然也可以組裝其他廠牌不需要墊圈的輞，<br/>但基本上這款乳頭的規格似乎是特別針對與PHR墊圈的組合而設計的。<br/>Squolx乳頭有銀色和黑色兩種顏色，<br/>如果要用這兩種顏色其中之一來組裝的話，就會使用Squolx乳頭，<br/>但如果要用其他顏色的乳頭組裝的話，就會根據客戶的希望<br/>用12mm長度的彩色乳頭來組裝。<br/>我之前也寫過（→<a href="/zh/posts/4130.html" target="_blank" title="こちら">這裡</a>），PHR墊圈和乳頭頸部下方的曲面能夠順暢契合的話<br/>反倒是普通乳頭會更適合。<br/>另外，在連結文章中，關於Squolx乳頭<br/>是從廠商網站的標記名稱來稱呼為Spherical乳頭的。<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06887amx9.jpg" target="_blank"><img alt="DSC06887amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06887amx9s.jpg" width="320"/></a><br/>關於PHR墊圈，最近作為改變過的規格<br/>出現了帶有用來對應輞前後方向的黑色點標記的版本。<br/>稍早前輞內紅色乳頭的照片中也有這種帶點標記的版本。<br/>隨輞附屬的墊圈，目前新舊款混在一起。<br/><br/>在輞組初組時，輞內側的圓弧會自動引導墊圈，所以<br/>只要不特意把墊圈的前後方向反過來裝成左右方向<br/>就不會以錯誤的方向安裝，<br/>不過乳頭旋轉時還是會多少滑動一些。<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06885amx9.jpg" target="_blank"><img alt="DSC06885amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06885amx9s.jpg" width="320"/></a><br/>↑左邊的照片是初始狀態，右邊是用乳頭加壓後正確方向的狀態。<br/>從正上方看的話會比較難看出來，<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06886amx9.jpg" target="_blank"><img alt="DSC06886amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06886amx9s.jpg" width="320"/></a><br/>最後因為會變形成碗狀（當然還是要按照方向指示來做），<br/>沒必要執著於要完全精確地對齊前後方向。<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06891amx9.jpg" target="_blank"><img alt="DSC06891amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06891amx9s.jpg" width="320"/></a><br/>↑自從變形成碗狀之後，就會隨著竹節的旋轉方向有些許偏移。<br/>順便一提，這種傾向在 Squorx 竹節上似乎更嚴重。<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06890amx9.jpg" target="_blank"><img alt="DSC06890amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06890amx9s.jpg" width="320"/></a><br/>↑前輪框附屬的 PHR 墊圈是沒有圓點的版本。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

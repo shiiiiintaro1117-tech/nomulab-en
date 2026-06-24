@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
-    <p>Bicycle Workshop — English Edition</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/index.html">
+        <span class="brand-title">Nomu Lab Diary</span>
+        <span class="brand-subtitle">Bicycle Workshop Archive</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/index.html">Archive</a>
+      <a href="/guides/wheel-building.html">Wheel Guide</a>
+      <a href="/glossary.html">Glossary</a>
+      <a href="/about.html">About</a>
+    </nav>
     <div class="lang-toggle"><span class="lang-btn active">EN</span><a class="lang-btn" href="/zh/posts/6613.html">繁中</a></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/index.html">← All posts</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>Hologram 35 Carbon Wheels</h1>
     <p class="post-meta">March 16, 2023</p>
+    <div class="post-body"><div class="entrytext">A customer brought in the front and rear wheels from a Cannondale<br/>Hologram 35 Carbon wheelset for service.<br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2564amx15.jpg" target="_blank"><img alt="RIMG2564amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2564amx15s.jpg" width="320"/></a><br/>The front wheel bearings were rough and needed replacement,<br/>plus a general inspection was requested,<br/>but both wheels turned out to be in pretty bad shape.<br/>Let me start with the front wheel.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2565amx15.jpg" target="_blank"><img alt="RIMG2565amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2565amx15s.jpg" width="320"/></a><br/>As I mentioned before, the front wheel is a 2:1 laced build,<br/>with the front being 24H and rear being 28H.<br/>That's fine, but this front wheel was laced in XI pattern.<br/>So other manufacturers besides <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Roval+bicycle+wheels" target="_blank" rel="noopener sponsored" class="amz-inline">Roval</a> use this too, apparently.<br/>It's not my first time seeing a Hologram wheel,<br/>but I hadn't paid close attention before.<br/>When I grip the spokes on both sides,<br/>the side with more spokes clearly deforms more.<br/>In fact, the front wheel of the asymmetric left-right diameter, same spoke count nom Lab wheel #8 that I built today<br/>(in its unlaced state) shows less difference in spoke deformation between sides.<br/>That said, even with nom Lab wheel #8's front wheel,<br/>I can tell the side where the spoke angle is shallower<br/>deforms more.<br/>That one will get lacing later.<br/>With Speed 25's front wheel, if you grip the spokes without looking at the wheel,<br/>the deformation differences are so similar you can't tell left from right.<br/><br/>With a 2:1 laced 24H setup, you could take a 32H hub, skip holes for a 2:1 lace,<br/>and get <span style="color:#FF0000">right-right-left</span> right-right-left <span style="color:#FF0000">right-right-left</span> right-right-left,<br/>which is repeating XI pattern.<br/>To convert that to Ж-pattern repetition<br/>right <span style="color:#FF0000">right-left-right</span> right-left-right <span style="color:#FF0000">right-left-right</span> right-left,<br/>where the last crossing angle on the multi-spoke side becomes obtuse,<br/>it's technically possible to rebuild this way. But you'd end up with a 2:1 lace on a J-bend spoke hub,<br/>and the valve hole phase ends up inside a Ж rather than between two Жs,<br/>which looks bad aesthetically.<br/>I'm not going to get that deep into it this time, though.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2566amx15.jpg" target="_blank"><img alt="RIMG2566amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2566amx15s.jpg" width="320"/></a><br/>The customer mentioned there were spoke rub marks,<br/>but said that unless I judged replacement necessary,<br/>they could stay as-is.<br/>When it comes to the rear wheel,<br/>I didn't replace it "because of rub marks."<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2573amx15.jpg" target="_blank"><img alt="RIMG2573amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2573amx15s.jpg" width="320"/></a><br/>The right side's quick-release end came out easily by hand,<br/>so I removed that one first.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2574amx15.jpg" target="_blank"><img alt="RIMG2574amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2574amx15s.jpg" width="320"/></a><br/>There's corrosion bloom where the bearing inner race contacts.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2575amx15.jpg" target="_blank"><img alt="RIMG2575amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2575amx15s.jpg" width="320"/></a><br/>The contact surface between the bearing's inner side and the hub body<br/>looks like a bearing puller won't grip it, but that's just because<br/>the sleeve supporting the bearing inner race from inside<br/>is butted, creating this shape.<br/>With a regular sleeve, you could insert a rod into the hub<br/>and apply slightly angled force to shift the sleeve within the hub body,<br/>but this sleeve-like part also supports the bearing inner diameter on the other side,<br/>so it has hub axle characteristics too.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2576amx15.jpg" target="_blank"><img alt="RIMG2576amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2576amx15s.jpg" width="320"/></a><br/>I left the right bearing from the previous image as-is<br/>and tapped out the left bearing-with-sleeve assembly toward the left side.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2577amx15.jpg" target="_blank"><img alt="RIMG2577amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2577amx15s.jpg" width="320"/></a><br/>The right side's quick-release end, unlike the left, has part of it<br/>sunk into the sleeve.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2578amx15.jpg" target="_blank"><img alt="RIMG2578amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2578amx15s.jpg" width="320"/></a><br/>It seems to have seized a bit too—I can't rotate<br/>the black quick-release end with one hand<br/>while holding the silver sleeve fixed with the other.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2579amx15.jpg" target="_blank"><img alt="RIMG2579amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2579amx15s.jpg" width="320"/></a><br/>I managed to pull the quick-release end out.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2580amx15.jpg" target="_blank"><img alt="RIMG2580amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2580amx15s.jpg" width="320"/></a><br/>↑The left side shows how deeply the end is inserted into the sleeve (hub axle).<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2589amx15.jpg" target="_blank"><img alt="RIMG2589amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2589amx15s.jpg" width="320"/></a><br/>By the time of the previous image, I'd also removed the right bearing from the hub body.<br/>It's an unusual structure: directly under the right bearing is just a quick-release end,<br/>but directly under the left bearing is a sleeve.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2582amx15.jpg" target="_blank"><img alt="RIMG2582amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2582amx15s.jpg" width="320"/></a><br/>The Hologram wheels are made by XERO,<br/>and the bearing seals also carry the XERO mark.<br/>A through-axle shaft with 12mm outer diameter fits through<br/>a 12mm inner diameter hub axle, with a 17mm outer diameter being possible.<br/>In that case, the standard size bearing 6903—<br/>with 17mm inner / 30mm outer / 7mm thickness—<br/>is commonly used.<br/>However, when you want the hub axle outer diameter to be 18mm,<br/>and you modify just the inner diameter of the 6903 to 18mm,<br/>creating a non-standard size bearing called 18307,<br/>both front wheel bearings in this case were that size.<br/>The name 18307 is just the numbers 18/30/7mm strung together.<br/>A similar example: the standard bearing 6902 is 15/28/7mm, and when you change only the outer diameter to 26mm,<br/>you get the 15267 bearing, which is also commonly used.<br/>Putting a 6902 into an HG freebody means<br/>the thickness of the non-tooth portions of the spline gets quite thin, so 26mm outer diameter<br/>is more convenient than 28mm, which is why it was adopted.<br/>(For example, Tni's EVO hub uses 6902, but the EVO Lite hub uses 15267.)<br/>When it comes time to source 15267 bearings,<br/>the cost is apparently better than 6902,<br/>so examples of adoption in hub bodies have increased.<br/><br/>As for 18307, I've seen it in the rear hub of Mavic's InstantDrive 360,<br/>but that's an extremely water-prone hub, and you often find<br/>it's turned into a rusty 18307 inside, continuously oozing brown liquid once you realize there's corrosion.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2581amx15.jpg" target="_blank"><img alt="RIMG2581amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2581amx15s.jpg" width="320"/></a><br/>The XERO logo is also built into the seal.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2583amx15.jpg" target="_blank"><img alt="RIMG2583amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2583amx15s.jpg" width="320"/></a><br/>They've even put in a nice message.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2584amx15.jpg" target="_blank"><img alt="RIMG2584amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2584amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2585amx15.jpg" target="_blank"><img alt="RIMG2585amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2585amx15s.jpg" width="320"/></a><br/><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+Swiss+hub+bearings" target="_blank" rel="noopener sponsored" class="amz-inline">DT</a> does the same thing with their hub bearings:<br/>the XERO bearing side facing outward is a contact seal,<br/>and the side facing into the hub body is a non-contact seal.<br/>Looking closely, the seal on the orange version has fins between it and the inner race,<br/>while the gray one does not.<br/>Getting bearings with this spec isn't impossible,<br/>but with DT, regardless of size, a steel-ball bearing costs<br/>a flat ¥2,700 pre-tax / ¥2,970 including tax at list price—pretty expensive.<br/>By the way, DT doesn't offer an 18307 ceramic bearing version,<br/>but ceramic bearings are also a flat<br/>¥12,200 pre-tax / ¥13,420 including tax at list price, regardless of size.<br/>For DT steel-ball bearings, the outside is orange seal and inside is black seal,<br/>while ceramic bearings have yellow seal outside and black seal inside.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2591amx15.jpg" target="_blank"><img alt="RIMG2591amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2591amx15s.jpg" width="320"/></a><br/>The XERO-made wheels even have the XERO logo on the spoke heads.<br/>They don't manufacture the bearings or spokes in-house—<br/>they just order them from manufacturers.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2587amx15.jpg" target="_blank"><img alt="RIMG2587amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2587amx15s.jpg" width="320"/></a><br/>The right-side bearing, whose inner race was in contact with the non-anodized aluminum end,<br/>shows rub marks from corrosion.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2586amx15.jpg" target="_blank"><img alt="RIMG2586amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2586amx15s.jpg" width="320"/></a><br/>The left-side bearing, whose inner race was in contact with the non-anodized aluminum sleeve,<br/>is comparatively clean.<br/>However, the left bearing was the one rotating grittier.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2590amx15.jpg" target="_blank"><img alt="RIMG2590amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2590amx15s.jpg" width="320"/></a><br/>The hub body with both bearings removed.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2592amx15.jpg" target="_blank"><img alt="RIMG2592amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2592amx15s.jpg" width="320"/></a><br/>I pressed in the left bearing first.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2593amx15.jpg" target="_blank"><img alt="RIMG2593amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2593amx15s.jpg" width="320"/></a><br/>Then I inserted the sleeve—or hub axle—from the right side.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2594amx15.jpg" target="_blank"><img alt="RIMG2594amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2594amx15s.jpg" width="320"/></a><br/>↑The hub body right side at that point looks like this.<br/>If I'd pressed in the right bearing first,<br/>I'd have to press in the left bearing with the protruding sleeve attached,<br/>which is possible but tedious.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2595amx15.jpg" target="_blank"><img alt="RIMG2595amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2595amx15s.jpg" width="320"/></a><br/>This fixture...<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2596amx15.jpg" target="_blank"><img alt="RIMG2596amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2596amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2597amx15.jpg" target="_blank"><img alt="RIMG2597amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2597amx15s.jpg" width="320"/></a><br/>...doesn't contact the sleeve's protruding part,<br/>and the center guide function is maintained at just slightly tight tolerance.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2598amx15.jpg" target="_blank"><img alt="RIMG2598amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2598amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2599amx15.jpg" target="_blank"><img alt="RIMG2599amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2599amx15s.jpg" width="320"/></a><br/>I pressed in the right bearing.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2600amx15.jpg" target="_blank"><img alt="RIMG2600amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2600amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2601amx15.jpg" target="_blank"><img alt="RIMG2601amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2601amx15s.jpg" width="320"/></a><br/>I'm showing the original bearing removed, but the fixture is just the right size<br/>to press the outer race.<br/><br/>This is speculation, but the fact that both 18307-sized bearings<br/>were shot is probably due to over-tightening of the through-axle.<br/>However, these wheels are probably mounted on a Cannondale frameset.<br/>Cannondale framesets should have the Mavic Speed Release standard<br/>two-thread screw holes,<br/>and Speed Release has a mechanism that, in a way the user doesn't consciously register,<br/>prevents you from really cranking it down.<br/>So given the bearing size and the Cannondale spec,<br/>I don't think over-tightening is that likely...<br/><br/>The X-12 standard through-axle that Specialized uses, as proposed by Syntace,<br/>can still be tightened about another ¼ turn after the wheel is perfectly secure,<br/>but doing that causes abnormal bearing wear.<br/>Plus, Roval's front wheel uses standard 6802 bearings—or<br/>15245 in the 18307-style notation—which are small diameter, and<br/>that's one reason why gritty Roval front wheels are commonly seen.<br/><br/>I don't know what frameset your wheels are mounted on,<br/>but through-axle tightening only needs to be tight enough<br/>to eliminate hub side-to-side play.<br/>(Grab the rim with the tire from above and shake it<br/>side-to-side—if there's no play, you're good.)<br/>Try installing with a "loose as possible while maintaining zero play" approach.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2603amx15.jpg" target="_blank"><img alt="RIMG2603amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2603amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2604amx15.jpg" target="_blank"><img alt="RIMG2604amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2604amx15s.jpg" width="320"/></a><br/>Finally at a temporary center.<br/>The rim is shifted toward the left side (the disc side, multi-spoke side)...<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2605amx15.jpg" target="_blank"><img alt="RIMG2605amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2605amx15s.jpg" width="320"/></a><br/>At the phase with the most radial runout, it barely touches the gauge on the truing stand.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2606amx15.jpg" target="_blank"><img alt="RIMG2606amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2606amx15s.jpg" width="320"/></a><br/>At most other phases, there's this much clearance.<br/>And the runout isn't just at one spot—there are about three areas that are pretty badly out.<br/>Plus, there was axial runout so bad<br/>I'd say it wouldn't pass factory QC.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2608amx15.jpg" target="_blank"><img alt="RIMG2608amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2608amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2609amx15.jpg" target="_blank"><img alt="RIMG2609amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2609amx15s.jpg" width="320"/></a><br/>Maybe it's because it's XI-laced, but I felt it more pronounced,<br/>and the multi-spoke side was loose, so<br/>knowing it would initially increase center misalignment,<br/>I focused on tightening the multi-spoke side<br/>to fix both radial and axial runout, then<br/>used additional tightening on the single-spoke side (lesser spoke side)<br/>to bring the rim back to center.<br/>In other words, there isn't a single nipple that I loosened from the original state.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2611amx15.jpg" target="_blank"><img alt="RIMG2611amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2611amx15s.jpg" width="320"/></a><br/>Now for the rear wheel.<br/>It's 28H with symmetrical left-right lacing.<br/>Both front and rear spokes are complete-equivalent (all-comp)<br/>round-butted spokes.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2613amx15.jpg" target="_blank"><img alt="RIMG2613amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2613amx15s.jpg" width="320"/></a><br/>Of all four ends (front/rear, left/right), only the rear right is threaded<br/>rather than quick-release.<br/>When there's a caution note about which direction to loosen, it's usually<br/>reverse-threaded like this one.<br/>To loosen and tighten it, there's a method to prevent rotation:<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2614amx15.jpg" target="_blank"><img alt="RIMG2614amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2614amx15s.jpg" width="320"/></a><br/>...inserting a 4mm Allen key into the hub axle after removing the left quick-release end.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2615amx15.jpg" target="_blank"><img alt="RIMG2615amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2615amx15s.jpg" width="320"/></a><br/>But the problem is, contaminated grease has leaked from the bearing<br/>through the contact seal.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2616amx15.jpg" target="_blank"><img alt="RIMG2616amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2616amx15s.jpg" width="320"/></a><br/>The area around the bearing step that presses the inner race<br/>was also contaminated.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2617amx15.jpg" target="_blank"><img alt="RIMG2617amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2617amx15s.jpg" width="320"/></a><br/>The freebody claw area is also gunked up with contaminated grease, but<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2618amx15.jpg" target="_blank"><img alt="RIMG2618amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2618amx15s.jpg" width="320"/></a><br/>the right-side bearing of the hub body seems okay.<br/>The hub rotation wasn't as rough as the front wheel,<br/>perhaps because it wasn't as bad,<br/>and the customer didn't propose replacement at that level,<br/>but the rear wheel still rotated pretty grittily.<br/>Based on a judgment that the drive-side bearing was less damaged,<br/>I tapped out the left bearing with the hub axle,<br/>then<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2619amx15.jpg" target="_blank"><img alt="RIMG2619amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2619amx15s.jpg" width="320"/></a><br/>inserted the left end of the hub axle into the right side of the hub,<br/>and rotated the wheel.<br/>In the image above, the wheel is spinning.<br/>Since the rotation of only the hub body's right-side bearing<br/>was nearly clean,<br/>I decided to reuse that one.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2629amx15.jpg" target="_blank"><img alt="RIMG2629amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2629amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2630amx15.jpg" target="_blank"><img alt="RIMG2630amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2630amx15s.jpg" width="320"/></a><br/>The original left-side hub bearing.<br/>Like the front hub's bearing, it has<br/>orange contact seal on outside / gray non-contact seal on inside, but<br/>the size is 6903, a standard-size bearing, so<br/>the contact seal should have LU or LLU marking,<br/>and the non-contact seal should have LB or LLB marking,<br/>following bearing industry standards.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2620amx15.jpg" target="_blank"><img alt="RIMG2620amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2620amx15s.jpg" width="320"/></a><br/>I peeled back the seal and sprayed with parts cleaner.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2622amx15.jpg" target="_blank"><img alt="RIMG2622amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2622amx15s.jpg" width="320"/></a><br/>This rust liquid is purely from that bearing.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2623amx15.jpg" target="_blank"><img alt="RIMG2623amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2623amx15s.jpg" width="320"/></a><br/>I replaced the hub body left-side bearing.<br/>Since the outside is non-contact seal, just like the front hub left and right and rear hub left,<br/>I applied grease before installing the quick-release ends on<br/>all these three bearing locations.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2624amx15.jpg" target="_blank"><img alt="RIMG2624amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2624amx15s.jpg" width="320"/></a><br/>I cleaned the freebody claw area too.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2625amx15.jpg" target="_blank"><img alt="RIMG2625amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2625amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2626amx15.jpg" target="_blank"><img alt="RIMG2626amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2626amx15s.jpg" width="320"/></a><br/>Assembled the hub, and here's the rear wheel temporary center.<br/>It's shifted in the opposite direction from typical aging shift,<br/>and with symmetrical left-right lacing, this is the result of<br/>someone doing spoke tension work, just tightening the easy-to-tighten low-tension side,<br/>and never checking with a centering gauge.<br/>I'd been suspicious since the front wheel, but<br/>this rear also shows the same peculiar axial runout as if only radial runout was done,<br/>plus there's axial runout at a specific phase for an apparent reason.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2627amx15.jpg" target="_blank"><img alt="RIMG2627amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2627amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2628amx15.jpg" target="_blank"><img alt="RIMG2628amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2628amx15s.jpg" width="320"/></a><br/>Despite all-comp equivalent spokes,<br/>one was repaired with CX-RAY.<br/>A competent shop would re-center during repair.<br/>I don't nitpick over a sheet of paper worth of clearance to one side,<br/>but obvious evidence of tampering with clear shift toward the other side? That's a no-go.<br/><br/>The spoke diameter is all-comp equivalent, so<br/>spoke weight percentage is definitely near 85%.<br/>CX-RAY is about 65%, a difference of negative 20%.<br/>Finding all-comp equivalent black straight spokes is difficult, so<br/>if you're mixing spoke weight percentages,<br/>14-gauge plain at 100% would be better—<br/>only +15% difference and similar shape, making it more appropriate.<br/>So why didn't they do that?<br/>Per-spoke cost, 14-gauge plain straight in black—<br/>either DT's black Champion or Sapim's black Leader—<br/>is cheaper, but they come in 100-spoke packs, so<br/>for this one repair, CX-RAY would be cheaper.<br/>CX-RAY straight was initially sold only in a repair-specific spec<br/>with a long plain section on the rim side,<br/>requiring spoke cutters—a spec Japanese distributors handled exclusively.<br/>For this spoke length, you'd order the 310mm (cutable to 270mm) version.<br/>Later, CX-RAY came in the normal version too: even-millimeter lengths in 2mm increments<br/>with standard threading.<br/>This CX-RAY doesn't have the plain section length that would result from cutting a 310mm,<br/>so it's the regular CX-RAY straight version.<br/><br/>For round plain straight spokes, the specs Japanese distributors handle are<br/>DT 14-gauge silver and black in 320mm, and<br/>Sapim 14-gauge silver and black in 310mm only.<br/>For all-comp equivalent spokes, 15-gauge plain is closer to the weight percentage than 14-gauge,<br/>but it's not available from either DT or Sapim.<br/><br/>What puzzled me was that years before this Hologram wheel came out,<br/>Sapim spokes (excluding Race, Strong, CX, etc.)<br/>became available as singles, and CX-RAY is one of those, plus<br/>14-gauge plain Leader straight also became a single-purchase option.<br/>So why didn't they get that instead?<br/>Because they don't own spoke cutters.<br/>When it comes to "straight spokes with pre-cut threading available in selectable lengths,"<br/>CX-RAY is the only option.<br/>I didn't ask the customer much about this wheel's history,<br/>but I did confirm they're the original owner.<br/>So they should know about repair history.<br/>Plus, as the original Hologram owner, they probably bought this from a Cannondale dealer,<br/>where they could have attempted to order genuine spokes.<br/>Maybe they tried, found none in stock, had no spoke cutter,<br/>so went with CX-RAY straight?<br/><br/>Mixing spokes with significantly different weight percentages causes<br/>radial and axial runout to appear when you match surrounding tension and runout.<br/>Fixing both radial and axial runout makes that one different-percentage spoke<br/>either screaming tight (if its percentage is lower) or floppy (if higher).<br/>This is the former, which makes achieving screaming tightness incredibly difficult,<br/>hence the prominent axial runout.<br/>That axial runout from mixing spoke percentages, combined with<br/>typical amateur-hour-level radial trueing creating its own axial runout,<br/>created an absolute mess.<br/>Did they think it wouldn't show on a disc brake wheel?<br/>This wheel was shipped from Kyushu (I'll avoid naming the prefecture),<br/>so it's clear they've lost trust already.<br/><br/>Beyond just this case, seeing nearby shops' work versus<br/>reading this blog has apparently made customers think my shop is more trustworthy,<br/>which I think is genuinely alarming.<br/>I'm not rebuilding these wheels to throw shade at nearby shops,<br/>but when the result is shade-throwing, I feel awful about it (laughing).<br/>Thoughts like "how are they making a living with that level of skill, you hack"<br/>or "so that's the standard in [prefecture]?"<br/>or "I'll remember that" have never crossed my mind. Never! (Yeah right!)<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2631amx15.jpg" target="_blank"><img alt="RIMG2631amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2631amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2632amx15.jpg" target="_blank"><img alt="RIMG2632amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2632amx15s.jpg" width="320"/></a><br/>Radial and axial runout fixed, center dialed in.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2633amx15.jpg" target="_blank"><img alt="RIMG2633amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2633amx15s.jpg" width="320"/></a><br/>The spoke where the CX-RAY was has been replaced.<br/>Not with 14-gauge plain, but with a precious black comp.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2636amx15.jpg" target="_blank"><img alt="RIMG2636amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2636amx15s.jpg" width="320"/></a><br/>↑Replaced parts.<br/>The original nipples were internal-fit 12mm brass,<br/>but the CX-RAY location only used the 14mm-length<br/>black aluminum that came with the spoke—uncool.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2637amx15.jpg" target="_blank"><img alt="RIMG2637amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2637amx15s.jpg" width="320"/></a><br/>↑The CX-RAY's final crossing wear mark.
+</div></div>
+    <aside class="post-guides">
+      <strong>Technical archive</strong>
+      <nav aria-label="Technical guides">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">A customer brought in the front and rear wheels from a Cannondale<br/>Hologram 35 Carbon wheelset for service.<br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2564amx15.jpg" target="_blank"><img alt="RIMG2564amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2564amx15s.jpg" width="320"/></a><br/>The front wheel bearings were rough and needed replacement,<br/>plus a general inspection was requested,<br/>but both wheels turned out to be in pretty bad shape.<br/>Let me start with the front wheel.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2565amx15.jpg" target="_blank"><img alt="RIMG2565amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2565amx15s.jpg" width="320"/></a><br/>As I mentioned before, the front wheel is a 2:1 laced build,<br/>with the front being 24H and rear being 28H.<br/>That's fine, but this front wheel was laced in XI pattern.<br/>So other manufacturers besides <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Roval+bicycle+wheels" target="_blank" rel="noopener sponsored" class="amz-inline">Roval</a> use this too, apparently.<br/>It's not my first time seeing a Hologram wheel,<br/>but I hadn't paid close attention before.<br/>When I grip the spokes on both sides,<br/>the side with more spokes clearly deforms more.<br/>In fact, the front wheel of the asymmetric left-right diameter, same spoke count nom Lab wheel #8 that I built today<br/>(in its unlaced state) shows less difference in spoke deformation between sides.<br/>That said, even with nom Lab wheel #8's front wheel,<br/>I can tell the side where the spoke angle is shallower<br/>deforms more.<br/>That one will get lacing later.<br/>With Speed 25's front wheel, if you grip the spokes without looking at the wheel,<br/>the deformation differences are so similar you can't tell left from right.<br/><br/>With a 2:1 laced 24H setup, you could take a 32H hub, skip holes for a 2:1 lace,<br/>and get <span style="color:#FF0000">right-right-left</span> right-right-left <span style="color:#FF0000">right-right-left</span> right-right-left,<br/>which is repeating XI pattern.<br/>To convert that to Ж-pattern repetition<br/>right <span style="color:#FF0000">right-left-right</span> right-left-right <span style="color:#FF0000">right-left-right</span> right-left,<br/>where the last crossing angle on the multi-spoke side becomes obtuse,<br/>it's technically possible to rebuild this way. But you'd end up with a 2:1 lace on a J-bend spoke hub,<br/>and the valve hole phase ends up inside a Ж rather than between two Жs,<br/>which looks bad aesthetically.<br/>I'm not going to get that deep into it this time, though.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2566amx15.jpg" target="_blank"><img alt="RIMG2566amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2566amx15s.jpg" width="320"/></a><br/>The customer mentioned there were spoke rub marks,<br/>but said that unless I judged replacement necessary,<br/>they could stay as-is.<br/>When it comes to the rear wheel,<br/>I didn't replace it "because of rub marks."<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2573amx15.jpg" target="_blank"><img alt="RIMG2573amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2573amx15s.jpg" width="320"/></a><br/>The right side's quick-release end came out easily by hand,<br/>so I removed that one first.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2574amx15.jpg" target="_blank"><img alt="RIMG2574amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2574amx15s.jpg" width="320"/></a><br/>There's corrosion bloom where the bearing inner race contacts.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2575amx15.jpg" target="_blank"><img alt="RIMG2575amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2575amx15s.jpg" width="320"/></a><br/>The contact surface between the bearing's inner side and the hub body<br/>looks like a bearing puller won't grip it, but that's just because<br/>the sleeve supporting the bearing inner race from inside<br/>is butted, creating this shape.<br/>With a regular sleeve, you could insert a rod into the hub<br/>and apply slightly angled force to shift the sleeve within the hub body,<br/>but this sleeve-like part also supports the bearing inner diameter on the other side,<br/>so it has hub axle characteristics too.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2576amx15.jpg" target="_blank"><img alt="RIMG2576amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2576amx15s.jpg" width="320"/></a><br/>I left the right bearing from the previous image as-is<br/>and tapped out the left bearing-with-sleeve assembly toward the left side.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2577amx15.jpg" target="_blank"><img alt="RIMG2577amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2577amx15s.jpg" width="320"/></a><br/>The right side's quick-release end, unlike the left, has part of it<br/>sunk into the sleeve.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2578amx15.jpg" target="_blank"><img alt="RIMG2578amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2578amx15s.jpg" width="320"/></a><br/>It seems to have seized a bit too—I can't rotate<br/>the black quick-release end with one hand<br/>while holding the silver sleeve fixed with the other.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2579amx15.jpg" target="_blank"><img alt="RIMG2579amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2579amx15s.jpg" width="320"/></a><br/>I managed to pull the quick-release end out.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2580amx15.jpg" target="_blank"><img alt="RIMG2580amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2580amx15s.jpg" width="320"/></a><br/>↑The left side shows how deeply the end is inserted into the sleeve (hub axle).<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2589amx15.jpg" target="_blank"><img alt="RIMG2589amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2589amx15s.jpg" width="320"/></a><br/>By the time of the previous image, I'd also removed the right bearing from the hub body.<br/>It's an unusual structure: directly under the right bearing is just a quick-release end,<br/>but directly under the left bearing is a sleeve.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2582amx15.jpg" target="_blank"><img alt="RIMG2582amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2582amx15s.jpg" width="320"/></a><br/>The Hologram wheels are made by XERO,<br/>and the bearing seals also carry the XERO mark.<br/>A through-axle shaft with 12mm outer diameter fits through<br/>a 12mm inner diameter hub axle, with a 17mm outer diameter being possible.<br/>In that case, the standard size bearing 6903—<br/>with 17mm inner / 30mm outer / 7mm thickness—<br/>is commonly used.<br/>However, when you want the hub axle outer diameter to be 18mm,<br/>and you modify just the inner diameter of the 6903 to 18mm,<br/>creating a non-standard size bearing called 18307,<br/>both front wheel bearings in this case were that size.<br/>The name 18307 is just the numbers 18/30/7mm strung together.<br/>A similar example: the standard bearing 6902 is 15/28/7mm, and when you change only the outer diameter to 26mm,<br/>you get the 15267 bearing, which is also commonly used.<br/>Putting a 6902 into an HG freebody means<br/>the thickness of the non-tooth portions of the spline gets quite thin, so 26mm outer diameter<br/>is more convenient than 28mm, which is why it was adopted.<br/>(For example, Tni's EVO hub uses 6902, but the EVO Lite hub uses 15267.)<br/>When it comes time to source 15267 bearings,<br/>the cost is apparently better than 6902,<br/>so examples of adoption in hub bodies have increased.<br/><br/>As for 18307, I've seen it in the rear hub of Mavic's InstantDrive 360,<br/>but that's an extremely water-prone hub, and you often find<br/>it's turned into a rusty 18307 inside, continuously oozing brown liquid once you realize there's corrosion.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2581amx15.jpg" target="_blank"><img alt="RIMG2581amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2581amx15s.jpg" width="320"/></a><br/>The XERO logo is also built into the seal.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2583amx15.jpg" target="_blank"><img alt="RIMG2583amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2583amx15s.jpg" width="320"/></a><br/>They've even put in a nice message.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2584amx15.jpg" target="_blank"><img alt="RIMG2584amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2584amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2585amx15.jpg" target="_blank"><img alt="RIMG2585amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2585amx15s.jpg" width="320"/></a><br/><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+Swiss+hub+bearings" target="_blank" rel="noopener sponsored" class="amz-inline">DT</a> does the same thing with their hub bearings:<br/>the XERO bearing side facing outward is a contact seal,<br/>and the side facing into the hub body is a non-contact seal.<br/>Looking closely, the seal on the orange version has fins between it and the inner race,<br/>while the gray one does not.<br/>Getting bearings with this spec isn't impossible,<br/>but with DT, regardless of size, a steel-ball bearing costs<br/>a flat ¥2,700 pre-tax / ¥2,970 including tax at list price—pretty expensive.<br/>By the way, DT doesn't offer an 18307 ceramic bearing version,<br/>but ceramic bearings are also a flat<br/>¥12,200 pre-tax / ¥13,420 including tax at list price, regardless of size.<br/>For DT steel-ball bearings, the outside is orange seal and inside is black seal,<br/>while ceramic bearings have yellow seal outside and black seal inside.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2591amx15.jpg" target="_blank"><img alt="RIMG2591amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2591amx15s.jpg" width="320"/></a><br/>The XERO-made wheels even have the XERO logo on the spoke heads.<br/>They don't manufacture the bearings or spokes in-house—<br/>they just order them from manufacturers.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2587amx15.jpg" target="_blank"><img alt="RIMG2587amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2587amx15s.jpg" width="320"/></a><br/>The right-side bearing, whose inner race was in contact with the non-anodized aluminum end,<br/>shows rub marks from corrosion.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2586amx15.jpg" target="_blank"><img alt="RIMG2586amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2586amx15s.jpg" width="320"/></a><br/>The left-side bearing, whose inner race was in contact with the non-anodized aluminum sleeve,<br/>is comparatively clean.<br/>However, the left bearing was the one rotating grittier.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2590amx15.jpg" target="_blank"><img alt="RIMG2590amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2590amx15s.jpg" width="320"/></a><br/>The hub body with both bearings removed.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2592amx15.jpg" target="_blank"><img alt="RIMG2592amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2592amx15s.jpg" width="320"/></a><br/>I pressed in the left bearing first.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2593amx15.jpg" target="_blank"><img alt="RIMG2593amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2593amx15s.jpg" width="320"/></a><br/>Then I inserted the sleeve—or hub axle—from the right side.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2594amx15.jpg" target="_blank"><img alt="RIMG2594amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2594amx15s.jpg" width="320"/></a><br/>↑The hub body right side at that point looks like this.<br/>If I'd pressed in the right bearing first,<br/>I'd have to press in the left bearing with the protruding sleeve attached,<br/>which is possible but tedious.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2595amx15.jpg" target="_blank"><img alt="RIMG2595amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2595amx15s.jpg" width="320"/></a><br/>This fixture...<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2596amx15.jpg" target="_blank"><img alt="RIMG2596amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2596amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2597amx15.jpg" target="_blank"><img alt="RIMG2597amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2597amx15s.jpg" width="320"/></a><br/>...doesn't contact the sleeve's protruding part,<br/>and the center guide function is maintained at just slightly tight tolerance.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2598amx15.jpg" target="_blank"><img alt="RIMG2598amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2598amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2599amx15.jpg" target="_blank"><img alt="RIMG2599amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2599amx15s.jpg" width="320"/></a><br/>I pressed in the right bearing.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2600amx15.jpg" target="_blank"><img alt="RIMG2600amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2600amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2601amx15.jpg" target="_blank"><img alt="RIMG2601amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2601amx15s.jpg" width="320"/></a><br/>I'm showing the original bearing removed, but the fixture is just the right size<br/>to press the outer race.<br/><br/>This is speculation, but the fact that both 18307-sized bearings<br/>were shot is probably due to over-tightening of the through-axle.<br/>However, these wheels are probably mounted on a Cannondale frameset.<br/>Cannondale framesets should have the Mavic Speed Release standard<br/>two-thread screw holes,<br/>and Speed Release has a mechanism that, in a way the user doesn't consciously register,<br/>prevents you from really cranking it down.<br/>So given the bearing size and the Cannondale spec,<br/>I don't think over-tightening is that likely...<br/><br/>The X-12 standard through-axle that Specialized uses, as proposed by Syntace,<br/>can still be tightened about another ¼ turn after the wheel is perfectly secure,<br/>but doing that causes abnormal bearing wear.<br/>Plus, Roval's front wheel uses standard 6802 bearings—or<br/>15245 in the 18307-style notation—which are small diameter, and<br/>that's one reason why gritty Roval front wheels are commonly seen.<br/><br/>I don't know what frameset your wheels are mounted on,<br/>but through-axle tightening only needs to be tight enough<br/>to eliminate hub side-to-side play.<br/>(Grab the rim with the tire from above and shake it<br/>side-to-side—if there's no play, you're good.)<br/>Try installing with a "loose as possible while maintaining zero play" approach.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2603amx15.jpg" target="_blank"><img alt="RIMG2603amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2603amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2604amx15.jpg" target="_blank"><img alt="RIMG2604amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2604amx15s.jpg" width="320"/></a><br/>Finally at a temporary center.<br/>The rim is shifted toward the left side (the disc side, multi-spoke side)...<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2605amx15.jpg" target="_blank"><img alt="RIMG2605amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2605amx15s.jpg" width="320"/></a><br/>At the phase with the most radial runout, it barely touches the gauge on the truing stand.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2606amx15.jpg" target="_blank"><img alt="RIMG2606amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2606amx15s.jpg" width="320"/></a><br/>At most other phases, there's this much clearance.<br/>And the runout isn't just at one spot—there are about three areas that are pretty badly out.<br/>Plus, there was axial runout so bad<br/>I'd say it wouldn't pass factory QC.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2608amx15.jpg" target="_blank"><img alt="RIMG2608amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2608amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2609amx15.jpg" target="_blank"><img alt="RIMG2609amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2609amx15s.jpg" width="320"/></a><br/>Maybe it's because it's XI-laced, but I felt it more pronounced,<br/>and the multi-spoke side was loose, so<br/>knowing it would initially increase center misalignment,<br/>I focused on tightening the multi-spoke side<br/>to fix both radial and axial runout, then<br/>used additional tightening on the single-spoke side (lesser spoke side)<br/>to bring the rim back to center.<br/>In other words, there isn't a single nipple that I loosened from the original state.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2611amx15.jpg" target="_blank"><img alt="RIMG2611amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2611amx15s.jpg" width="320"/></a><br/>Now for the rear wheel.<br/>It's 28H with symmetrical left-right lacing.<br/>Both front and rear spokes are complete-equivalent (all-comp)<br/>round-butted spokes.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2613amx15.jpg" target="_blank"><img alt="RIMG2613amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2613amx15s.jpg" width="320"/></a><br/>Of all four ends (front/rear, left/right), only the rear right is threaded<br/>rather than quick-release.<br/>When there's a caution note about which direction to loosen, it's usually<br/>reverse-threaded like this one.<br/>To loosen and tighten it, there's a method to prevent rotation:<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2614amx15.jpg" target="_blank"><img alt="RIMG2614amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2614amx15s.jpg" width="320"/></a><br/>...inserting a 4mm Allen key into the hub axle after removing the left quick-release end.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2615amx15.jpg" target="_blank"><img alt="RIMG2615amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2615amx15s.jpg" width="320"/></a><br/>But the problem is, contaminated grease has leaked from the bearing<br/>through the contact seal.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2616amx15.jpg" target="_blank"><img alt="RIMG2616amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2616amx15s.jpg" width="320"/></a><br/>The area around the bearing step that presses the inner race<br/>was also contaminated.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2617amx15.jpg" target="_blank"><img alt="RIMG2617amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2617amx15s.jpg" width="320"/></a><br/>The freebody claw area is also gunked up with contaminated grease, but<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2618amx15.jpg" target="_blank"><img alt="RIMG2618amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2618amx15s.jpg" width="320"/></a><br/>the right-side bearing of the hub body seems okay.<br/>The hub rotation wasn't as rough as the front wheel,<br/>perhaps because it wasn't as bad,<br/>and the customer didn't propose replacement at that level,<br/>but the rear wheel still rotated pretty grittily.<br/>Based on a judgment that the drive-side bearing was less damaged,<br/>I tapped out the left bearing with the hub axle,<br/>then<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2619amx15.jpg" target="_blank"><img alt="RIMG2619amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2619amx15s.jpg" width="320"/></a><br/>inserted the left end of the hub axle into the right side of the hub,<br/>and rotated the wheel.<br/>In the image above, the wheel is spinning.<br/>Since the rotation of only the hub body's right-side bearing<br/>was nearly clean,<br/>I decided to reuse that one.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2629amx15.jpg" target="_blank"><img alt="RIMG2629amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2629amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2630amx15.jpg" target="_blank"><img alt="RIMG2630amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2630amx15s.jpg" width="320"/></a><br/>The original left-side hub bearing.<br/>Like the front hub's bearing, it has<br/>orange contact seal on outside / gray non-contact seal on inside, but<br/>the size is 6903, a standard-size bearing, so<br/>the contact seal should have LU or LLU marking,<br/>and the non-contact seal should have LB or LLB marking,<br/>following bearing industry standards.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2620amx15.jpg" target="_blank"><img alt="RIMG2620amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2620amx15s.jpg" width="320"/></a><br/>I peeled back the seal and sprayed with parts cleaner.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2622amx15.jpg" target="_blank"><img alt="RIMG2622amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2622amx15s.jpg" width="320"/></a><br/>This rust liquid is purely from that bearing.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2623amx15.jpg" target="_blank"><img alt="RIMG2623amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2623amx15s.jpg" width="320"/></a><br/>I replaced the hub body left-side bearing.<br/>Since the outside is non-contact seal, just like the front hub left and right and rear hub left,<br/>I applied grease before installing the quick-release ends on<br/>all these three bearing locations.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2624amx15.jpg" target="_blank"><img alt="RIMG2624amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2624amx15s.jpg" width="320"/></a><br/>I cleaned the freebody claw area too.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2625amx15.jpg" target="_blank"><img alt="RIMG2625amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2625amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2626amx15.jpg" target="_blank"><img alt="RIMG2626amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2626amx15s.jpg" width="320"/></a><br/>Assembled the hub, and here's the rear wheel temporary center.<br/>It's shifted in the opposite direction from typical aging shift,<br/>and with symmetrical left-right lacing, this is the result of<br/>someone doing spoke tension work, just tightening the easy-to-tighten low-tension side,<br/>and never checking with a centering gauge.<br/>I'd been suspicious since the front wheel, but<br/>this rear also shows the same peculiar axial runout as if only radial runout was done,<br/>plus there's axial runout at a specific phase for an apparent reason.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2627amx15.jpg" target="_blank"><img alt="RIMG2627amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2627amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2628amx15.jpg" target="_blank"><img alt="RIMG2628amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2628amx15s.jpg" width="320"/></a><br/>Despite all-comp equivalent spokes,<br/>one was repaired with CX-RAY.<br/>A competent shop would re-center during repair.<br/>I don't nitpick over a sheet of paper worth of clearance to one side,<br/>but obvious evidence of tampering with clear shift toward the other side? That's a no-go.<br/><br/>The spoke diameter is all-comp equivalent, so<br/>spoke weight percentage is definitely near 85%.<br/>CX-RAY is about 65%, a difference of negative 20%.<br/>Finding all-comp equivalent black straight spokes is difficult, so<br/>if you're mixing spoke weight percentages,<br/>14-gauge plain at 100% would be better—<br/>only +15% difference and similar shape, making it more appropriate.<br/>So why didn't they do that?<br/>Per-spoke cost, 14-gauge plain straight in black—<br/>either DT's black Champion or Sapim's black Leader—<br/>is cheaper, but they come in 100-spoke packs, so<br/>for this one repair, CX-RAY would be cheaper.<br/>CX-RAY straight was initially sold only in a repair-specific spec<br/>with a long plain section on the rim side,<br/>requiring spoke cutters—a spec Japanese distributors handled exclusively.<br/>For this spoke length, you'd order the 310mm (cutable to 270mm) version.<br/>Later, CX-RAY came in the normal version too: even-millimeter lengths in 2mm increments<br/>with standard threading.<br/>This CX-RAY doesn't have the plain section length that would result from cutting a 310mm,<br/>so it's the regular CX-RAY straight version.<br/><br/>For round plain straight spokes, the specs Japanese distributors handle are<br/>DT 14-gauge silver and black in 320mm, and<br/>Sapim 14-gauge silver and black in 310mm only.<br/>For all-comp equivalent spokes, 15-gauge plain is closer to the weight percentage than 14-gauge,<br/>but it's not available from either DT or Sapim.<br/><br/>What puzzled me was that years before this Hologram wheel came out,<br/>Sapim spokes (excluding Race, Strong, CX, etc.)<br/>became available as singles, and CX-RAY is one of those, plus<br/>14-gauge plain Leader straight also became a single-purchase option.<br/>So why didn't they get that instead?<br/>Because they don't own spoke cutters.<br/>When it comes to "straight spokes with pre-cut threading available in selectable lengths,"<br/>CX-RAY is the only option.<br/>I didn't ask the customer much about this wheel's history,<br/>but I did confirm they're the original owner.<br/>So they should know about repair history.<br/>Plus, as the original Hologram owner, they probably bought this from a Cannondale dealer,<br/>where they could have attempted to order genuine spokes.<br/>Maybe they tried, found none in stock, had no spoke cutter,<br/>so went with CX-RAY straight?<br/><br/>Mixing spokes with significantly different weight percentages causes<br/>radial and axial runout to appear when you match surrounding tension and runout.<br/>Fixing both radial and axial runout makes that one different-percentage spoke<br/>either screaming tight (if its percentage is lower) or floppy (if higher).<br/>This is the former, which makes achieving screaming tightness incredibly difficult,<br/>hence the prominent axial runout.<br/>That axial runout from mixing spoke percentages, combined with<br/>typical amateur-hour-level radial trueing creating its own axial runout,<br/>created an absolute mess.<br/>Did they think it wouldn't show on a disc brake wheel?<br/>This wheel was shipped from Kyushu (I'll avoid naming the prefecture),<br/>so it's clear they've lost trust already.<br/><br/>Beyond just this case, seeing nearby shops' work versus<br/>reading this blog has apparently made customers think my shop is more trustworthy,<br/>which I think is genuinely alarming.<br/>I'm not rebuilding these wheels to throw shade at nearby shops,<br/>but when the result is shade-throwing, I feel awful about it (laughing).<br/>Thoughts like "how are they making a living with that level of skill, you hack"<br/>or "so that's the standard in [prefecture]?"<br/>or "I'll remember that" have never crossed my mind. Never! (Yeah right!)<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2631amx15.jpg" target="_blank"><img alt="RIMG2631amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2631amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2632amx15.jpg" target="_blank"><img alt="RIMG2632amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2632amx15s.jpg" width="320"/></a><br/>Radial and axial runout fixed, center dialed in.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2633amx15.jpg" target="_blank"><img alt="RIMG2633amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2633amx15s.jpg" width="320"/></a><br/>The spoke where the CX-RAY was has been replaced.<br/>Not with 14-gauge plain, but with a precious black comp.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2636amx15.jpg" target="_blank"><img alt="RIMG2636amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2636amx15s.jpg" width="320"/></a><br/>↑Replaced parts.<br/>The original nipples were internal-fit 12mm brass,<br/>but the CX-RAY location only used the 14mm-length<br/>black aluminum that came with the spoke—uncool.<br/><br/><a href="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2637amx15.jpg" target="_blank"><img alt="RIMG2637amx15.jpg" border="0" height="240" src="https://blog-imgs-165-origin.fc2.com/p/a/s/pass13/RIMG2637amx15s.jpg" width="320"/></a><br/>↑The CX-RAY's final crossing wear mark.
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">Products Mentioned in This Article</p>
       <ul>

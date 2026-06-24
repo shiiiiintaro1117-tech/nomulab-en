@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,37 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/4049.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>關於轮毂印字的方向</h1>
     <p class="post-meta">April 30, 2018</p>
+    <div class="post-body"><div class="entrytext">前陣子，在懷特工業（<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=White+Industries+bicycle+hub" target="_blank" rel="noopener sponsored" class="amz-inline">White Industries</a>）的首頁上看到<br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/t11amx9.jpg" target="_blank"><img alt="t11amx9.jpg" border="0" height="165" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/t11amx9s.jpg" width="320"/></a><br/>↑我提到這是反向logo，<br/>但同一位讀者多次<br/>「這樣看起來更自然」地留言給我。<br/>不過我不同意。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04252amx9.jpg" target="_blank"><img alt="DSC04252amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04252amx9s.jpg" width="320"/></a><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04253amx9.jpg" target="_blank"><img alt="DSC04253amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04253amx9s.jpg" width="320"/></a><br/>比方說，把手或把立前蓋上的印字、<br/>騎行碼錶的logo等，<br/>都是「從正面看時能正向閱讀」設計的。<br/>如果以此為根據的話，那就是<br/>從正面看時把帶端部能正向閱讀為止吧。<br/><br/>前輪毂如果依此做法，從上往下看就會變成反向logo，<br/>這似乎就是「反向logo很自然」的根據，<br/>但當轮毂的左右方向有logo或印字時，<br/>後輪毂通常是正向logo。<br/>雖然也有反例，但只是少數。<br/>如果遵循這點，前輪毂也應該和後輪毂方向相同（正向logo）<br/>這樣才自然啊……。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04250amx9.jpg" target="_blank"><img alt="DSC04250amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04250amx9s.jpg" width="320"/></a><br/><span style="font-size:large;">如果說不一樣，那就把正向logo的碟式前輪毂<br/>轉盤支架朝右邊組裝就好啊。</span><br/><br/>至少對於懷特工業而言，<br/>碟式前輪毂是１００％例外無一的正向logo，<br/>那麼懷特工業的前提就是「前輪毂正向logo」，<br/>開頭的圖片就是「美國人隨便組的」這樣的解釋了。<br/>我之前用反向logo組H２轮毂，<br/>並不是因為「從正面看logo能正向閱讀」的理由，<br/>而是遵循「球心調整機構在左側」的前提的結果，<br/>現行的T１１轮毂只是在球心調整機構在左側時<br/>剛好變成正向logo而已。<br/><br/>再者，作為手工組輪的慣例，<br/>從３２H或３６H的輪子還是主流的時代開始，<br/>前輪毂的logo就一直是正向的，<br/>所以沒有特別強烈的理由反對的話，<br/>我不覺得有必要用反向logo組裝。<br/><br/>那就先提出我自己想得到的反證吧。<br/>不久前克里斯金（Chris King）的R４５碟式前輪毂，<br/>６螺栓轉盤座是反向logo，<br/>中心鎖定式是正向logo。<br/>這不是隨機的，必定（曾經）是這樣。<br/>看現行的廠商網站，６螺栓也變成正向logo了。<br/><br/><a href="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC00485amx6.jpg" target="_blank"><img alt="DSC00485amx6.jpg" border="0" height="225" src="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC00485amx6s.jpg" width="300"/></a><br/>超輕牌（Extralight）的前輪毂體上<br/>有「這邊是左邊」的指定，遵循它會變成反向logo，<br/><br/><a href="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC00549amx6.jpg" target="_blank"><img alt="DSC00549amx6.jpg" border="0" height="225" src="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC00549amx6s.jpg" width="300"/></a><br/>但即使這樣，後輪毂也是正向logo。<br/>不過請別因此就說<br/>看吧！這才是對的吧！之類的話。<br/>因為我這邊只是提出<br/>少數派的例外例子而已。<br/><br/>還有，坎帕（<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Campagnolo+bicycle+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Campagnolo</a>）和福克斯（Fulcrum）的轮毂体上貼的貼紙<br/>有時是正向logo，有時是反向logo，<br/>但那完全是隨機的，沒有任何理由，<br/>並不是有根據才做成反向logo。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC02535amx9.jpg" target="_blank"><img alt="DSC02535amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC02535amx9s.jpg" width="320"/></a><br/>想起來了關於輪子安裝方向的話題。<br/>７８５０的Ｃ５０，<br/>後輪左右兩邊都是<br/>朝正向旋轉方向，貼紙的＞＞＞的尖端朝著那個方向。<br/>所以前輪也這樣安裝才自然吧，<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04251amx9.jpg" target="_blank"><img alt="DSC04251amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04251amx9s.jpg" width="320"/></a><br/>但在講習會上，被說用這個方向安裝才是對的。<br/>這件事在說明書之類的文件裡完全沒提。<br/>而且關於理由就只是說「反正就是這樣」，不太明白。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC02564amx9.jpg" target="_blank"><img alt="DSC02564amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC02564amx9s.jpg" width="320"/></a><br/>一個可能的根據是，<br/>轮毂体錐形部分的迪亞賽斯（<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+Dura-Ace+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Dura-Ace</a>）印字，後輪毂在右側，<br/>前輪毂也依此做法的話，<br/>就會變成「貼紙方向前後相反」，<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC02534amx9.jpg" target="_blank"><img alt="DSC02534amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC02534amx9s.jpg" width="320"/></a><br/>但在零件展開圖上，貼紙方向是一致的。<br/>如果轴穴一側是右邊，<br/>球心調整機構所在側或放Ｗ螺帽一側是左邊，<br/>那麼「前後貼紙方向一致」就對了，<br/>這樣才自然啊……。<br/><br/>用「ＷＨ－７８５０ Ｃ５０」搜尋的話，前輪貼紙<br/>也有安裝成和後輪相反方向的例子，<br/>但不知道這是否是有意識地這樣做的。<br/><br/>追記：<br/>拍手留言中，提出初始留言的人又留了言，<br/>我在這邊回覆並提供一些材料。<br/>「製造的人當然想前後一致，我這種外行人也是這樣組的，<br/>但製作目錄的人拍照時logo正向會高興，<br/>所以可能是什麼都沒想就叫人用logo朝上組裝吧。」<br/>是這樣說的，<br/>但「製作目錄的人拍照時logo正向會高興」→這意思不明啊。<br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04254amx9.jpg" target="_blank"><img alt="DSC04254amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04254amx9s.jpg" width="320"/></a><br/>↑那樣的話不就可以從後面拍？<br/>懷特工業的轮毂，除了Ｈ２前輪毂以外，<br/>左側都有球心調整機構，所以「示唆」正向logo組法。<br/>沒有特別強烈的理由反對所以就正向logo組，這是我的想法，<br/>不過假設「應該組成左側是球心調整機構」這種<br/>只有我個人才有的莫名規則吧。<br/><br/>但是，再次強調，懷特工業的<br/>碟式前輪毂是１００％正向logo，<br/>所以用碟式前輪毂組前輪的話，<br/>logo不可能變成開頭圖片那個方向。<br/>因此，即使沒考慮球心調整機構在哪邊這種情況，<br/>判斷廠商指定的是正向logo也是妥當的。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04255amx9.jpg" target="_blank"><img alt="DSC04255amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04255amx9s.jpg" width="320"/></a><br/>接著，如果從側面看左右方向有logo的情況該怎麼辦？<br/>這點來寫一下。<br/>美利達（Mavic）和吉普（ZIPP）中<br/>有「後輪毂印字從右側看是正向logo」的轮毂。<br/><br/>在左右方向有文字或logo的轮毂情況下，<br/>後輪毂正向、前輪毂反向logo比較自然，<br/>這就是原本那個留言的說法，<br/>但這種情況下也要<br/>把前輪毂的logo安裝成和後輪毂相反嗎？<br/>從正面看讀不了，這種情況就隨便？<br/>我還是覺得，前後轮毂logo方向不同很不自然啊。<br/><br/>為什麼舉美利達和吉普例子呢，是有原因的。<br/>各品牌的制動區都有銼過的痕跡，<br/>有方向指定的前輪安裝品牌是艾斯普瑞特（Exalith）和恩斯塔雙（NSW），<br/>遵循這些方向指定的話，兩種情況都變成<br/>從右側看正向logo，<br/>也就是前後轮毂方向不相反的安裝方式。<br/>即使這樣，也要為了莫名的執著<br/>特意讓前輪反向安裝嗎？<br/><br/>人會說「制動方向指定是比轮毂logo方向更強的理由」<br/>所以當然不會反向安裝吧！，<br/>但我想說的是，艾斯普瑞特或恩斯塔雙是這個方向，就代表<br/>「廠商認為這個方向是對的的一個線索」，<br/><br/>所以在美利達的其他非艾斯普瑞特轮子，<br/>或吉普的其他非恩斯塔雙轮子上，我也會按這個方向安裝。<br/><br/>基希里烏姆 Pro 艾斯普瑞特就按制動區跟後輪毂同方向，<br/>軸心（非艾斯普瑞特）有執著所以反向安裝，<br/>這種安裝方式才是不自然。<br/>順便說，艾斯普瑞特前輪按指定方向安裝的話，<br/>球心調整機構（至少出廠時）必定在左側。<br/><br/>Ｈ２前輪毂現在已停產，<br/>懷特工業的前輪碟毂<br/>全型號都是正向logo，如果像艾斯普瑞特一樣<br/>當作「廠商認為這個方向是對的的線索」，<br/>那非碟毂也不可能有除了正向logo以外的選擇，這是我的看法。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/20180430123503b09.jpg" target="_blank"><img alt="white hubsamx9" border="0" height="175" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/20180430123503b09s.jpg" width="320"/></a><br/>懷特工業的廠商網站上，<br/>把前後轮毂並排展示的圖片中<br/>前輪毂例外無一地沒有倒過來，<br/>所以前後轮毂用同樣方向組裝才自然。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04256amx9.jpg" target="_blank"><img alt="DSC04256amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04256amx9s.jpg" width="320"/></a><br/>在shimano的轮毂中，轮毂体前後方向有logo的情況，<br/>通常「從右側看正向」，<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04257amx9.jpg" target="_blank"><img alt="DSC04257amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04257amx9s.jpg" width="320"/></a><br/>初代碟式制動轮毂XT（上圖）或<br/>MC１８系統的Altus轮毂中有「從右側看反向」的轮毂。<br/>但即使是這些轮毂，「前後轮毂logo或印字方向相同」<br/>這點是不變的。<br/>我想說的是，<br/>果然前後轮毂logo或印字方向相反還是不自然。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04258amx9.jpg" target="_blank"><img alt="DSC04258amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04258amx9s.jpg" width="320"/></a><br/>這是工業九（Industry Nine）品牌的轮毂，<br/>前後轮毂都是反向logo。<br/>而且是碟毂，所以前後輪都只能反向logo組。<br/>在這裡講一下我自己的原則，<br/>假設這不是碟毂，我會怎麼做呢，<br/>「尊重後輪毂方向」，前輪毂也用反向logo組。<br/>這絕對不是「為了從正面看時logo正向」這個理由。<br/><br/>假設有一個情況，碟毂後輪正向、前輪反向，<br/>用同廠牌的非碟毂組輪子的話……。<br/>「這廠商在示唆那個方向」，我就判斷，<br/>後輪毂正向、前輪毂反向logo來組。<br/>不過符合這個例子的（至少在我認識的範圍內）沒有。<br/><br/>還有，留言中提到了艾斯普瑞特轮毂方向指定的理由<br/>是因為球心調整機構在左邊會鬆開之類的，<br/>但我想可能沒有遵循指定也沒問題。<br/>沒有合理的理由，或者<br/>覺得自己的想法比廠商更合理，有這樣強烈的理由時才反對，<br/>不然就遵循廠商指定，沒有的話就按慣例，這就是保險的方法。<br/>還有「前輪毂一般除了禮儀以外有功能性的理由指定左右嗎？」的問題，<br/>如果性能沒有區別，那接下來遵循禮儀是當然的。<br/>輪圈氣嘴孔看過去的位相，轮毂体logo卡好位置，<br/>氣嘴孔位相和輪胎標籤相同，<br/>像SILVA這類做成貼帶logo會對齊的把帶（多厚或多薄貼都能對齊是可能的）<br/>從性能上講沒有意義，<br/>但可以說是「懂技術的人組的」的標誌。<br/><br/>個人層級可以任意堅持，<br/>但工作上一定要遵循廠商指定，這樣例子的話<br/>美利達的前輪胎就舉得出來。<br/>那輪胎的反向安裝指定，如果按水排方向的慣例判斷，<br/>廠商指定反方向的話我想可能更好。<br/>私人用的話，也許會故意反向於廠商指定。<br/><br/>為什麼寫這麼長的文章呢，<br/>留言的人這次用著「感謝您寫了有趣的文章」或<br/>「我這種外行人」之類謙虛的寫法，<br/>但說出來的見解差得離譜（特別是關於城市騎士GOKISO的部分），<br/>經常用高人一等的語氣說話，<br/>有次甚至說「機器被敲的話，敲越多越露出沒自信，<br/>還是別一直留言比較好。」<br/>之類傲慢的話，<br/>所以這次我（笑）紅著臉反駁了一下。敲桌子<br/>那個不能說的品牌轮子件時也<br/>寫過什麼傲慢的東西，<br/>不過後輪在和車架摩擦得很厲害的狀態下，因為我重新組裝<br/>確實不再摩擦了，有這樣確實的實績在，<br/>關於輪子的理論性和實際的知識儲備<br/>我覺得比那個某品牌強太多了……。<br/><br/>寫到這裡，有意思的是<br/>我自己是不覺得有意思，<br/>但這麼瑣碎的話題<br/>在這裡讀的讀者應該都能相當高興吧，<br/>所以我就當了一個小丑。</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,7 +405,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">前陣子，在懷特工業（<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=White+Industries+bicycle+hub" target="_blank" rel="noopener sponsored" class="amz-inline">White Industries</a>）的首頁上看到<br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/t11amx9.jpg" target="_blank"><img alt="t11amx9.jpg" border="0" height="165" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/t11amx9s.jpg" width="320"/></a><br/>↑我提到這是反向logo，<br/>但同一位讀者多次<br/>「這樣看起來更自然」地留言給我。<br/>不過我不同意。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04252amx9.jpg" target="_blank"><img alt="DSC04252amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04252amx9s.jpg" width="320"/></a><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04253amx9.jpg" target="_blank"><img alt="DSC04253amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04253amx9s.jpg" width="320"/></a><br/>比方說，把手或把立前蓋上的印字、<br/>騎行碼錶的logo等，<br/>都是「從正面看時能正向閱讀」設計的。<br/>如果以此為根據的話，那就是<br/>從正面看時把帶端部能正向閱讀為止吧。<br/><br/>前輪毂如果依此做法，從上往下看就會變成反向logo，<br/>這似乎就是「反向logo很自然」的根據，<br/>但當轮毂的左右方向有logo或印字時，<br/>後輪毂通常是正向logo。<br/>雖然也有反例，但只是少數。<br/>如果遵循這點，前輪毂也應該和後輪毂方向相同（正向logo）<br/>這樣才自然啊……。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04250amx9.jpg" target="_blank"><img alt="DSC04250amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04250amx9s.jpg" width="320"/></a><br/><span style="font-size:large;">如果說不一樣，那就把正向logo的碟式前輪毂<br/>轉盤支架朝右邊組裝就好啊。</span><br/><br/>至少對於懷特工業而言，<br/>碟式前輪毂是１００％例外無一的正向logo，<br/>那麼懷特工業的前提就是「前輪毂正向logo」，<br/>開頭的圖片就是「美國人隨便組的」這樣的解釋了。<br/>我之前用反向logo組H２轮毂，<br/>並不是因為「從正面看logo能正向閱讀」的理由，<br/>而是遵循「球心調整機構在左側」的前提的結果，<br/>現行的T１１轮毂只是在球心調整機構在左側時<br/>剛好變成正向logo而已。<br/><br/>再者，作為手工組輪的慣例，<br/>從３２H或３６H的輪子還是主流的時代開始，<br/>前輪毂的logo就一直是正向的，<br/>所以沒有特別強烈的理由反對的話，<br/>我不覺得有必要用反向logo組裝。<br/><br/>那就先提出我自己想得到的反證吧。<br/>不久前克里斯金（Chris King）的R４５碟式前輪毂，<br/>６螺栓轉盤座是反向logo，<br/>中心鎖定式是正向logo。<br/>這不是隨機的，必定（曾經）是這樣。<br/>看現行的廠商網站，６螺栓也變成正向logo了。<br/><br/><a href="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC00485amx6.jpg" target="_blank"><img alt="DSC00485amx6.jpg" border="0" height="225" src="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC00485amx6s.jpg" width="300"/></a><br/>超輕牌（Extralight）的前輪毂體上<br/>有「這邊是左邊」的指定，遵循它會變成反向logo，<br/><br/><a href="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC00549amx6.jpg" target="_blank"><img alt="DSC00549amx6.jpg" border="0" height="225" src="https://blog-imgs-93-origin.fc2.com/p/a/s/pass13/DSC00549amx6s.jpg" width="300"/></a><br/>但即使這樣，後輪毂也是正向logo。<br/>不過請別因此就說<br/>看吧！這才是對的吧！之類的話。<br/>因為我這邊只是提出<br/>少數派的例外例子而已。<br/><br/>還有，坎帕（<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Campagnolo+bicycle+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Campagnolo</a>）和福克斯（Fulcrum）的轮毂体上貼的貼紙<br/>有時是正向logo，有時是反向logo，<br/>但那完全是隨機的，沒有任何理由，<br/>並不是有根據才做成反向logo。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC02535amx9.jpg" target="_blank"><img alt="DSC02535amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC02535amx9s.jpg" width="320"/></a><br/>想起來了關於輪子安裝方向的話題。<br/>７８５０的Ｃ５０，<br/>後輪左右兩邊都是<br/>朝正向旋轉方向，貼紙的＞＞＞的尖端朝著那個方向。<br/>所以前輪也這樣安裝才自然吧，<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04251amx9.jpg" target="_blank"><img alt="DSC04251amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04251amx9s.jpg" width="320"/></a><br/>但在講習會上，被說用這個方向安裝才是對的。<br/>這件事在說明書之類的文件裡完全沒提。<br/>而且關於理由就只是說「反正就是這樣」，不太明白。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC02564amx9.jpg" target="_blank"><img alt="DSC02564amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC02564amx9s.jpg" width="320"/></a><br/>一個可能的根據是，<br/>轮毂体錐形部分的迪亞賽斯（<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+Dura-Ace+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Dura-Ace</a>）印字，後輪毂在右側，<br/>前輪毂也依此做法的話，<br/>就會變成「貼紙方向前後相反」，<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC02534amx9.jpg" target="_blank"><img alt="DSC02534amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC02534amx9s.jpg" width="320"/></a><br/>但在零件展開圖上，貼紙方向是一致的。<br/>如果轴穴一側是右邊，<br/>球心調整機構所在側或放Ｗ螺帽一側是左邊，<br/>那麼「前後貼紙方向一致」就對了，<br/>這樣才自然啊……。<br/><br/>用「ＷＨ－７８５０ Ｃ５０」搜尋的話，前輪貼紙<br/>也有安裝成和後輪相反方向的例子，<br/>但不知道這是否是有意識地這樣做的。<br/><br/>追記：<br/>拍手留言中，提出初始留言的人又留了言，<br/>我在這邊回覆並提供一些材料。<br/>「製造的人當然想前後一致，我這種外行人也是這樣組的，<br/>但製作目錄的人拍照時logo正向會高興，<br/>所以可能是什麼都沒想就叫人用logo朝上組裝吧。」<br/>是這樣說的，<br/>但「製作目錄的人拍照時logo正向會高興」→這意思不明啊。<br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04254amx9.jpg" target="_blank"><img alt="DSC04254amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04254amx9s.jpg" width="320"/></a><br/>↑那樣的話不就可以從後面拍？<br/>懷特工業的轮毂，除了Ｈ２前輪毂以外，<br/>左側都有球心調整機構，所以「示唆」正向logo組法。<br/>沒有特別強烈的理由反對所以就正向logo組，這是我的想法，<br/>不過假設「應該組成左側是球心調整機構」這種<br/>只有我個人才有的莫名規則吧。<br/><br/>但是，再次強調，懷特工業的<br/>碟式前輪毂是１００％正向logo，<br/>所以用碟式前輪毂組前輪的話，<br/>logo不可能變成開頭圖片那個方向。<br/>因此，即使沒考慮球心調整機構在哪邊這種情況，<br/>判斷廠商指定的是正向logo也是妥當的。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04255amx9.jpg" target="_blank"><img alt="DSC04255amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04255amx9s.jpg" width="320"/></a><br/>接著，如果從側面看左右方向有logo的情況該怎麼辦？<br/>這點來寫一下。<br/>美利達（Mavic）和吉普（ZIPP）中<br/>有「後輪毂印字從右側看是正向logo」的轮毂。<br/><br/>在左右方向有文字或logo的轮毂情況下，<br/>後輪毂正向、前輪毂反向logo比較自然，<br/>這就是原本那個留言的說法，<br/>但這種情況下也要<br/>把前輪毂的logo安裝成和後輪毂相反嗎？<br/>從正面看讀不了，這種情況就隨便？<br/>我還是覺得，前後轮毂logo方向不同很不自然啊。<br/><br/>為什麼舉美利達和吉普例子呢，是有原因的。<br/>各品牌的制動區都有銼過的痕跡，<br/>有方向指定的前輪安裝品牌是艾斯普瑞特（Exalith）和恩斯塔雙（NSW），<br/>遵循這些方向指定的話，兩種情況都變成<br/>從右側看正向logo，<br/>也就是前後轮毂方向不相反的安裝方式。<br/>即使這樣，也要為了莫名的執著<br/>特意讓前輪反向安裝嗎？<br/><br/>人會說「制動方向指定是比轮毂logo方向更強的理由」<br/>所以當然不會反向安裝吧！，<br/>但我想說的是，艾斯普瑞特或恩斯塔雙是這個方向，就代表<br/>「廠商認為這個方向是對的的一個線索」，<br/><br/>所以在美利達的其他非艾斯普瑞特轮子，<br/>或吉普的其他非恩斯塔雙轮子上，我也會按這個方向安裝。<br/><br/>基希里烏姆 Pro 艾斯普瑞特就按制動區跟後輪毂同方向，<br/>軸心（非艾斯普瑞特）有執著所以反向安裝，<br/>這種安裝方式才是不自然。<br/>順便說，艾斯普瑞特前輪按指定方向安裝的話，<br/>球心調整機構（至少出廠時）必定在左側。<br/><br/>Ｈ２前輪毂現在已停產，<br/>懷特工業的前輪碟毂<br/>全型號都是正向logo，如果像艾斯普瑞特一樣<br/>當作「廠商認為這個方向是對的的線索」，<br/>那非碟毂也不可能有除了正向logo以外的選擇，這是我的看法。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/20180430123503b09.jpg" target="_blank"><img alt="white hubsamx9" border="0" height="175" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/20180430123503b09s.jpg" width="320"/></a><br/>懷特工業的廠商網站上，<br/>把前後轮毂並排展示的圖片中<br/>前輪毂例外無一地沒有倒過來，<br/>所以前後轮毂用同樣方向組裝才自然。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04256amx9.jpg" target="_blank"><img alt="DSC04256amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04256amx9s.jpg" width="320"/></a><br/>在shimano的轮毂中，轮毂体前後方向有logo的情況，<br/>通常「從右側看正向」，<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04257amx9.jpg" target="_blank"><img alt="DSC04257amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04257amx9s.jpg" width="320"/></a><br/>初代碟式制動轮毂XT（上圖）或<br/>MC１８系統的Altus轮毂中有「從右側看反向」的轮毂。<br/>但即使是這些轮毂，「前後轮毂logo或印字方向相同」<br/>這點是不變的。<br/>我想說的是，<br/>果然前後轮毂logo或印字方向相反還是不自然。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04258amx9.jpg" target="_blank"><img alt="DSC04258amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04258amx9s.jpg" width="320"/></a><br/>這是工業九（Industry Nine）品牌的轮毂，<br/>前後轮毂都是反向logo。<br/>而且是碟毂，所以前後輪都只能反向logo組。<br/>在這裡講一下我自己的原則，<br/>假設這不是碟毂，我會怎麼做呢，<br/>「尊重後輪毂方向」，前輪毂也用反向logo組。<br/>這絕對不是「為了從正面看時logo正向」這個理由。<br/><br/>假設有一個情況，碟毂後輪正向、前輪反向，<br/>用同廠牌的非碟毂組輪子的話……。<br/>「這廠商在示唆那個方向」，我就判斷，<br/>後輪毂正向、前輪毂反向logo來組。<br/>不過符合這個例子的（至少在我認識的範圍內）沒有。<br/><br/>還有，留言中提到了艾斯普瑞特轮毂方向指定的理由<br/>是因為球心調整機構在左邊會鬆開之類的，<br/>但我想可能沒有遵循指定也沒問題。<br/>沒有合理的理由，或者<br/>覺得自己的想法比廠商更合理，有這樣強烈的理由時才反對，<br/>不然就遵循廠商指定，沒有的話就按慣例，這就是保險的方法。<br/>還有「前輪毂一般除了禮儀以外有功能性的理由指定左右嗎？」的問題，<br/>如果性能沒有區別，那接下來遵循禮儀是當然的。<br/>輪圈氣嘴孔看過去的位相，轮毂体logo卡好位置，<br/>氣嘴孔位相和輪胎標籤相同，<br/>像SILVA這類做成貼帶logo會對齊的把帶（多厚或多薄貼都能對齊是可能的）<br/>從性能上講沒有意義，<br/>但可以說是「懂技術的人組的」的標誌。<br/><br/>個人層級可以任意堅持，<br/>但工作上一定要遵循廠商指定，這樣例子的話<br/>美利達的前輪胎就舉得出來。<br/>那輪胎的反向安裝指定，如果按水排方向的慣例判斷，<br/>廠商指定反方向的話我想可能更好。<br/>私人用的話，也許會故意反向於廠商指定。<br/><br/>為什麼寫這麼長的文章呢，<br/>留言的人這次用著「感謝您寫了有趣的文章」或<br/>「我這種外行人」之類謙虛的寫法，<br/>但說出來的見解差得離譜（特別是關於城市騎士GOKISO的部分），<br/>經常用高人一等的語氣說話，<br/>有次甚至說「機器被敲的話，敲越多越露出沒自信，<br/>還是別一直留言比較好。」<br/>之類傲慢的話，<br/>所以這次我（笑）紅著臉反駁了一下。敲桌子<br/>那個不能說的品牌轮子件時也<br/>寫過什麼傲慢的東西，<br/>不過後輪在和車架摩擦得很厲害的狀態下，因為我重新組裝<br/>確實不再摩擦了，有這樣確實的實績在，<br/>關於輪子的理論性和實際的知識儲備<br/>我覺得比那個某品牌強太多了……。<br/><br/>寫到這裡，有意思的是<br/>我自己是不覺得有意思，<br/>但這麼瑣碎的話題<br/>在這裡讀的讀者應該都能相當高興吧，<br/>所以我就當了一個小丑。</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
-    <p>Bicycle Workshop — English Edition</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/index.html">
+        <span class="brand-title">Nomu Lab Diary</span>
+        <span class="brand-subtitle">Bicycle Workshop Archive</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/index.html">Archive</a>
+      <a href="/guides/wheel-building.html">Wheel Guide</a>
+      <a href="/glossary.html">Glossary</a>
+      <a href="/about.html">About</a>
+    </nav>
     <div class="lang-toggle"><span class="lang-btn active">EN</span><a class="lang-btn" href="/zh/posts/64.html">繁中</a></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/index.html">← All posts</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Spoke (Advanced)</p>
     <h1>Inpoke Part 4</h1>
     <p class="post-meta">October 25, 2012</p>
+    <div class="post-body"><div class="entrytext">There's still more inpoke stuff I haven't covered yet,<br/>so I'll keep working through it bit by bit.<br/>Today's topic is how to thread spokes when doing radial lacing.<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00001amx.jpg" target="_blank"><img alt="DSC00001amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00001amxs.jpg" width="300"/></a><br/>First, since it's been a while, I should clarify the terminology.<br/>In this blog, spokes threaded from inside the hub flange outward are called<br/>"inpoke,"<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00002amx.jpg" target="_blank"><img alt="DSC00002amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00002amxs.jpg" width="300"/></a><br/>and spokes threaded from outside the hub flange inward are called<br/>"outpoke."<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00007amx.jpg" target="_blank"><img alt="DSC00007amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00007amxs.jpg" width="300"/></a><br/>↑In tangential lacing, the spokes passing through the flange alternate between inpoke and outpoke,<br/>but in radial lacing, you use either only inpoke or only outpoke.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09995amx.jpg" target="_blank"><img alt="DSC09995amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09995amxs.jpg" width="300"/></a><br/>↑This is a <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+WH-R501+wheelset" target="_blank" rel="noopener sponsored" class="amz-inline">Shimano WH-R501</a>, built with outpoke radial lacing.<br/>Virtually all factory-built wheels with butted spokes using radial lacing,<br/>with only tiny exceptions, are built as "outpoke radial."<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00004amx.jpg" target="_blank"><img alt="DSC00004amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00004amxs.jpg" width="300"/></a><br/>Yesterday's Tni wheel (thanks for all the inquiries) is<br/>a standard build, so I kept things understated with outpoke radial lacing.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08510amx.jpg" target="_blank"><img alt="DSC08510amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08510amxs.jpg" width="300"/></a><br/>I said "kept things understated," but when I build radial wheels,<br/>I sometimes use "inpoke radial" lacing.<br/>It's not the standard method, but compared to outpoke radial,<br/>there are both merits and demerits, and I choose inpoke radial when<br/>weighing those factors suggests it's the better option.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00008amx.jpg" target="_blank"><img alt="DSC00008amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00008amxs.jpg" width="300"/></a><br/>Whether inpoke or outpoke, I base lateral stiffness calculations on<br/>the root of the spoke—specifically where the spoke exits the hub flange.<br/>Outpoke has a narrower base width, so it offers less lateral stiffness<br/>compared to inpoke (in my assessment).<br/>This is the stiffness characteristic of outpoke radial from a structural standpoint, but<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00009amx.jpg" target="_blank"><img alt="DSC00009amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00009amxs.jpg" width="300"/></a><br/>let's look at it from an aerodynamic perspective too.<br/>The rim-side portion of spokes is hidden by the rim or tire,<br/>and outpoke radial has a smaller frontal projection area,<br/>making it aerodynamically advantageous.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00010amx.jpg" target="_blank"><img alt="DSC00010amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00010amxs.jpg" width="300"/></a><br/>With inpoke radial, by contrast, more of the spoke is exposed compared to outpoke radial.<br/>That's aerodynamically worse. However, because the spoke flex point<br/>has a wider base, it offers better lateral stiffness.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00011amx.jpg" target="_blank"><img alt="DSC00011amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00011amxs.jpg" width="300"/></a><br/>Also, with outpoke, the spoke neck opens outward as it exits the flange.<br/>Inpoke, by contrast, bends inward. And here's the key:<br/><span style="color:#FF0000">inpoke is less likely to suffer spoke neck breakage</span>.<br/>This is the primary reason I sometimes build wheels with inpoke radial lacing.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00012amx.jpg" target="_blank"><img alt="DSC00012amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00012amxs.jpg" width="300"/></a><br/>Some factory-built wheels with butted spokes use outpoke radial lacing<br/>but mitigate spoke neck breakage risk by using<br/>custom spokes with extra-long necks matched to very thick flange widths.<br/><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Rolf+Prima+wheelset" target="_blank" rel="noopener sponsored" class="amz-inline">Rolf Prima</a> is like this—they use<br/>custom <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=White+Industries+H-2+hub" target="_blank" rel="noopener sponsored" class="amz-inline">White Industries hubs</a> (with custom hole phasing for pair spoking)<br/>and <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Sapim+CX-RAY+spoke" target="_blank" rel="noopener sponsored" class="amz-inline">Sapim spokes</a> in custom dimensions. Real attention to detail.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00013amx.jpg" target="_blank"><img alt="DSC00013amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00013amxs.jpg" width="300"/></a><br/>The (probably) biggest reason manufacturers avoid inpoke radial<br/>is the risk of spoke-to-hub-flange interference depending on flange geometry (especially height).<br/>The contact shown above can never happen with outpoke radial.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00014amx.jpg" target="_blank"><img alt="DSC00014amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00014amxs.jpg" width="300"/></a><br/>The severity of this problem varies with rim height.<br/>With low rims, inpokes extend at a steeper angle toward the rim,<br/>so flange contact is less likely,<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00015amx.jpg" target="_blank"><img alt="DSC00015amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00015amxs.jpg" width="300"/></a><br/>but as rim height increases, the spoke angle becomes shallower,<br/>and flange contact problems occur.<br/>Even when I want to use inpoke radial, if the rim height is too tall,<br/>I often give up and go with outpoke radial instead.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09296amx.jpg" target="_blank"><img alt="DSC09296amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09296amxs.jpg" width="300"/></a><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09930amx.jpg" target="_blank"><img alt="DSC09930amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09930amxs.jpg" width="300"/></a><br/>Same rim height, but an Edge-era 45 rim and an Enve 45 rim.<br/>I've built both of these with inpoke radial lacing.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09953amx.jpg" target="_blank"><img alt="DSC09953amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09953amxs.jpg" width="300"/></a><br/>↑My mystery Cosmic Carbon wheel also has the non-drive-side radial lacing built with inpoke.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08635amx.jpg" target="_blank"><img alt="DSC08635amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08635amxs.jpg" width="300"/></a><br/>A wheel I'm building with inpoke radial in the initial stage—<br/>the spokes bulge outward pretty dramatically.<br/>Unrelated note: the hub is a Suntour Superbe Pro.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08638amx.jpg" target="_blank"><img alt="DSC08638amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08638amxs.jpg" width="300"/></a><br/>Before building<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08641amx.jpg" target="_blank"><img alt="DSC08641amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08641amxs.jpg" width="300"/></a><br/>After building<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00033amx.jpg" target="_blank"><img alt="DSC00033amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00033amxs.jpg" width="300"/></a><br/>Changing topics,<br/>I get asked a lot about the Tni AL300 rim wheel:<br/>"How's the stiffness feel?"<br/><span style="font-size:x-large;">I don't know.</span><br/>Since that's not much of an answer, I built a front wheel for myself.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00034amx.jpg" target="_blank"><img alt="DSC00034amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00034amxs.jpg" width="300"/></a><br/>This is also built with inpoke radial lacing.<br/>Hub is a White Industries H2,<br/>spokes are Sapim CX-RAY.<br/>The top of the image is the direction of travel.<br/>The hub lettering ends up reversed, but that's intentional. There's a reason, which I'll explain later.<br/><br/>It's also possible to build yesterday's Nomu Lab wheels with CX-RAY,<br/>for ¥5,000 extra per wheel pair (for 20H).<br/>For 24H, it's ¥6,000 extra.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09976amx.jpg" target="_blank"><img alt="DSC09976amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09976amxs.jpg" width="300"/></a><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09975amx.jpg" target="_blank"><img alt="DSC09975amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09975amxs.jpg" width="300"/></a><br/>I chose this hub for a reason:<br/>the hub flange isn't perfectly straight.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00036amx.jpg" target="_blank"><img alt="DSC00036amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00036amxs.jpg" width="300"/></a><br/>↑Exaggerated here, it looks something like this.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09979amx.jpg" target="_blank"><img alt="DSC09979amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09979amxs.jpg" width="300"/></a><br/>I chose it because flange contact problems shouldn't occur.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09971amx.jpg" target="_blank"><img alt="DSC09971amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09971amxs.jpg" width="300"/></a><br/>Unrelated to inpoke, but...<br/>This time, I built the wheel with the top of the image as the direction of travel.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09972amx.jpg" target="_blank"><img alt="DSC09972amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09972amxs.jpg" width="300"/></a><br/>This means the lettering appears reversed when viewed from the front.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09973amx.jpg" target="_blank"><img alt="DSC09973amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09973amxs.jpg" width="300"/></a><br/>The adjustment screw hole on the hub should be on the left side in the direction of travel—<br/>that's the correct orientation. When positioned that way, the lettering reads backward.<br/>I still think this orientation is correct though.<br/>On rear hubs, the adjustment screw hole is on the left side.<br/>(The right side has the freewheel body, so that's impossible.)<br/>If we think "adjustment mechanism is on the left for both front and rear,"<br/>this is how it should be. And there's evidence supporting this theory<br/>from another manufacturer.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/201210252334324aa.jpg" target="_blank"><img alt="rear sx 2.0 shima" border="0" height="141" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/201210252334324aas.jpg" width="299"/></a><br/>↑A rear hub from a maker called Extralight.<br/>The adjustment mechanism is naturally on the left.<br/>The left side of the hub body has a file-textured dial-like piece.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/20121025233432215.jpg" target="_blank"><img alt="ultrafront sx" border="0" height="126" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/20121025233432215s.jpg" width="298"/></a><br/>And this is their front hub, which has the same file-textured dial<br/>on the (from the perspective of facing it) right side.<br/>However, the hub body is marked "Left Side >>" as a deliberate note,<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/2012102523343227f.jpg" target="_blank"><img alt="ultrafront sx -2" border="0" height="126" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/2012102523343227fs.jpg" width="298"/></a><br/>telling you to install it in this orientation.<br/>So the logo is readable in the direction of travel on the rear hub,<br/>but reversed on the front hub.<br/>I made the same judgment about the White H2 hub, so<br/>I deliberately assembled it in the seemingly backward orientation.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09986amx.jpg" target="_blank"><img alt="DSC09986amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09986amxs.jpg" width="300"/></a><br/>My 4,820g Akamatsu aluminum bike has a front wheel<br/>built with an Akamatsu Systema hub.<br/>There are lighter hubs available, but<br/>here I chose the Systema because I wanted this hub specifically.<br/>It's a truly excellent hub. All right, let me say it:<br/><span style="font-size:large;">This is a plug for the Systema hub.</span><br/>...Sorry, please ignore that.<br/><br/>Because the flange width is narrow, lateral stiffness is structurally limited,<br/>but unless you're doing serious standing climbs, you won't notice.<br/>Since the flange width is already narrow, rather than trying to boost lateral stiffness<br/>with inpoke radial, I wanted to pursue ultimate spoke frontal projection area reduction<br/>with outpoke radial. That's why I built it that way.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09989amx.jpg" target="_blank"><img alt="DSC09989amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09989amxs.jpg" width="300"/></a><br/>Narrow! Aerodynamically, this is a really excellent front wheel.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09993amx.jpg" target="_blank"><img alt="DSC09993amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09993amxs.jpg" width="300"/></a><br/>With the White H2 hub, it looks like this.<br/>Since the H2 has quite a wide flange, these two wheels represent<br/>opposite ends of the radial lacing spectrum.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00017amx.jpg" target="_blank"><img alt="DSC00017amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00017amxs.jpg" width="300"/></a><br/>The reason the Systema hub has a narrow flange is that<br/>it's also designed for use on small-wheeled bikes.<br/>If you do the math, a 700C rim with the same inner diameter<br/>as a 20-inch (HE) small-wheel rim comes out to roughly 90mm rim height.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00021amx.jpg" target="_blank"><img alt="DSC00021amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00021amxs.jpg" width="300"/></a><br/>If you built such a rim with inpoke radial lacing, the spoke angle becomes very steep,<br/>and flange contact problems become likely.<br/>Or if you did tangential lacing instead, half would be inpoke anyway.<br/>With tangential lacing with woven crossings, the angle at which<br/>the inpokes emerge from the flange becomes even steeper than radial.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00023amx.jpg" target="_blank"><img alt="DSC00023amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00023amxs.jpg" width="300"/></a><br/>Let's consider a 700C rim with the same height as a 20-inch rim.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00025amx.jpg" target="_blank"><img alt="DSC00025amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00025amxs.jpg" width="300"/></a><br/>If you built this rim with inpoke radial,<br/>the spokes would follow the red dashed line shown above.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00027amx.jpg" target="_blank"><img alt="DSC00027amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00027amxs.jpg" width="300"/></a><br/>To build a 20-inch rim with spokes at roughly the same angle<br/>(the blue angle shown above),<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00030amx.jpg" target="_blank"><img alt="DSC00030amx.jpg" border="0" height="300" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00030amxs.jpg" width="225"/></a><br/>you'd need to move the hub flanges inward.<br/>This is why the Systema hub is well-suited for small-wheel bikes.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00031amx.jpg" target="_blank"><img alt="DSC00031amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00031amxs.jpg" width="300"/></a><br/>Building a 700C rim with outpoke lacing from that configuration<br/>produces the best frontal projection area for a front wheel<br/>(for a spoked wheel, anyway). That's what I was going for with mine.<br/><br/><br/>You're welcome to order Tni AL300 rim wheels with inpoke radial lacing,<br/>but for various reasons, I don't recommend it.<br/>(It's not impossible, though.)<br/>If you ask why I built the Enve 45 with inpoke,<br/>well, that's something I can't write about here, which is awkward...<br/><br/>Today's topic was "there are two types of radial lacing."
+</div></div>
+    <aside class="post-guides">
+      <strong>Technical archive</strong>
+      <nav aria-label="Technical guides">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">There's still more inpoke stuff I haven't covered yet,<br/>so I'll keep working through it bit by bit.<br/>Today's topic is how to thread spokes when doing radial lacing.<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00001amx.jpg" target="_blank"><img alt="DSC00001amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00001amxs.jpg" width="300"/></a><br/>First, since it's been a while, I should clarify the terminology.<br/>In this blog, spokes threaded from inside the hub flange outward are called<br/>"inpoke,"<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00002amx.jpg" target="_blank"><img alt="DSC00002amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00002amxs.jpg" width="300"/></a><br/>and spokes threaded from outside the hub flange inward are called<br/>"outpoke."<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00007amx.jpg" target="_blank"><img alt="DSC00007amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00007amxs.jpg" width="300"/></a><br/>↑In tangential lacing, the spokes passing through the flange alternate between inpoke and outpoke,<br/>but in radial lacing, you use either only inpoke or only outpoke.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09995amx.jpg" target="_blank"><img alt="DSC09995amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09995amxs.jpg" width="300"/></a><br/>↑This is a <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+WH-R501+wheelset" target="_blank" rel="noopener sponsored" class="amz-inline">Shimano WH-R501</a>, built with outpoke radial lacing.<br/>Virtually all factory-built wheels with butted spokes using radial lacing,<br/>with only tiny exceptions, are built as "outpoke radial."<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00004amx.jpg" target="_blank"><img alt="DSC00004amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00004amxs.jpg" width="300"/></a><br/>Yesterday's Tni wheel (thanks for all the inquiries) is<br/>a standard build, so I kept things understated with outpoke radial lacing.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08510amx.jpg" target="_blank"><img alt="DSC08510amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08510amxs.jpg" width="300"/></a><br/>I said "kept things understated," but when I build radial wheels,<br/>I sometimes use "inpoke radial" lacing.<br/>It's not the standard method, but compared to outpoke radial,<br/>there are both merits and demerits, and I choose inpoke radial when<br/>weighing those factors suggests it's the better option.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00008amx.jpg" target="_blank"><img alt="DSC00008amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00008amxs.jpg" width="300"/></a><br/>Whether inpoke or outpoke, I base lateral stiffness calculations on<br/>the root of the spoke—specifically where the spoke exits the hub flange.<br/>Outpoke has a narrower base width, so it offers less lateral stiffness<br/>compared to inpoke (in my assessment).<br/>This is the stiffness characteristic of outpoke radial from a structural standpoint, but<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00009amx.jpg" target="_blank"><img alt="DSC00009amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00009amxs.jpg" width="300"/></a><br/>let's look at it from an aerodynamic perspective too.<br/>The rim-side portion of spokes is hidden by the rim or tire,<br/>and outpoke radial has a smaller frontal projection area,<br/>making it aerodynamically advantageous.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00010amx.jpg" target="_blank"><img alt="DSC00010amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00010amxs.jpg" width="300"/></a><br/>With inpoke radial, by contrast, more of the spoke is exposed compared to outpoke radial.<br/>That's aerodynamically worse. However, because the spoke flex point<br/>has a wider base, it offers better lateral stiffness.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00011amx.jpg" target="_blank"><img alt="DSC00011amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00011amxs.jpg" width="300"/></a><br/>Also, with outpoke, the spoke neck opens outward as it exits the flange.<br/>Inpoke, by contrast, bends inward. And here's the key:<br/><span style="color:#FF0000">inpoke is less likely to suffer spoke neck breakage</span>.<br/>This is the primary reason I sometimes build wheels with inpoke radial lacing.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00012amx.jpg" target="_blank"><img alt="DSC00012amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00012amxs.jpg" width="300"/></a><br/>Some factory-built wheels with butted spokes use outpoke radial lacing<br/>but mitigate spoke neck breakage risk by using<br/>custom spokes with extra-long necks matched to very thick flange widths.<br/><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Rolf+Prima+wheelset" target="_blank" rel="noopener sponsored" class="amz-inline">Rolf Prima</a> is like this—they use<br/>custom <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=White+Industries+H-2+hub" target="_blank" rel="noopener sponsored" class="amz-inline">White Industries hubs</a> (with custom hole phasing for pair spoking)<br/>and <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Sapim+CX-RAY+spoke" target="_blank" rel="noopener sponsored" class="amz-inline">Sapim spokes</a> in custom dimensions. Real attention to detail.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00013amx.jpg" target="_blank"><img alt="DSC00013amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00013amxs.jpg" width="300"/></a><br/>The (probably) biggest reason manufacturers avoid inpoke radial<br/>is the risk of spoke-to-hub-flange interference depending on flange geometry (especially height).<br/>The contact shown above can never happen with outpoke radial.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00014amx.jpg" target="_blank"><img alt="DSC00014amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00014amxs.jpg" width="300"/></a><br/>The severity of this problem varies with rim height.<br/>With low rims, inpokes extend at a steeper angle toward the rim,<br/>so flange contact is less likely,<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00015amx.jpg" target="_blank"><img alt="DSC00015amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00015amxs.jpg" width="300"/></a><br/>but as rim height increases, the spoke angle becomes shallower,<br/>and flange contact problems occur.<br/>Even when I want to use inpoke radial, if the rim height is too tall,<br/>I often give up and go with outpoke radial instead.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09296amx.jpg" target="_blank"><img alt="DSC09296amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09296amxs.jpg" width="300"/></a><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09930amx.jpg" target="_blank"><img alt="DSC09930amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09930amxs.jpg" width="300"/></a><br/>Same rim height, but an Edge-era 45 rim and an Enve 45 rim.<br/>I've built both of these with inpoke radial lacing.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09953amx.jpg" target="_blank"><img alt="DSC09953amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09953amxs.jpg" width="300"/></a><br/>↑My mystery Cosmic Carbon wheel also has the non-drive-side radial lacing built with inpoke.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08635amx.jpg" target="_blank"><img alt="DSC08635amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08635amxs.jpg" width="300"/></a><br/>A wheel I'm building with inpoke radial in the initial stage—<br/>the spokes bulge outward pretty dramatically.<br/>Unrelated note: the hub is a Suntour Superbe Pro.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08638amx.jpg" target="_blank"><img alt="DSC08638amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08638amxs.jpg" width="300"/></a><br/>Before building<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08641amx.jpg" target="_blank"><img alt="DSC08641amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08641amxs.jpg" width="300"/></a><br/>After building<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00033amx.jpg" target="_blank"><img alt="DSC00033amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00033amxs.jpg" width="300"/></a><br/>Changing topics,<br/>I get asked a lot about the Tni AL300 rim wheel:<br/>"How's the stiffness feel?"<br/><span style="font-size:x-large;">I don't know.</span><br/>Since that's not much of an answer, I built a front wheel for myself.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00034amx.jpg" target="_blank"><img alt="DSC00034amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00034amxs.jpg" width="300"/></a><br/>This is also built with inpoke radial lacing.<br/>Hub is a White Industries H2,<br/>spokes are Sapim CX-RAY.<br/>The top of the image is the direction of travel.<br/>The hub lettering ends up reversed, but that's intentional. There's a reason, which I'll explain later.<br/><br/>It's also possible to build yesterday's Nomu Lab wheels with CX-RAY,<br/>for ¥5,000 extra per wheel pair (for 20H).<br/>For 24H, it's ¥6,000 extra.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09976amx.jpg" target="_blank"><img alt="DSC09976amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09976amxs.jpg" width="300"/></a><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09975amx.jpg" target="_blank"><img alt="DSC09975amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09975amxs.jpg" width="300"/></a><br/>I chose this hub for a reason:<br/>the hub flange isn't perfectly straight.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00036amx.jpg" target="_blank"><img alt="DSC00036amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00036amxs.jpg" width="300"/></a><br/>↑Exaggerated here, it looks something like this.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09979amx.jpg" target="_blank"><img alt="DSC09979amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09979amxs.jpg" width="300"/></a><br/>I chose it because flange contact problems shouldn't occur.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09971amx.jpg" target="_blank"><img alt="DSC09971amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09971amxs.jpg" width="300"/></a><br/>Unrelated to inpoke, but...<br/>This time, I built the wheel with the top of the image as the direction of travel.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09972amx.jpg" target="_blank"><img alt="DSC09972amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09972amxs.jpg" width="300"/></a><br/>This means the lettering appears reversed when viewed from the front.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09973amx.jpg" target="_blank"><img alt="DSC09973amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09973amxs.jpg" width="300"/></a><br/>The adjustment screw hole on the hub should be on the left side in the direction of travel—<br/>that's the correct orientation. When positioned that way, the lettering reads backward.<br/>I still think this orientation is correct though.<br/>On rear hubs, the adjustment screw hole is on the left side.<br/>(The right side has the freewheel body, so that's impossible.)<br/>If we think "adjustment mechanism is on the left for both front and rear,"<br/>this is how it should be. And there's evidence supporting this theory<br/>from another manufacturer.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/201210252334324aa.jpg" target="_blank"><img alt="rear sx 2.0 shima" border="0" height="141" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/201210252334324aas.jpg" width="299"/></a><br/>↑A rear hub from a maker called Extralight.<br/>The adjustment mechanism is naturally on the left.<br/>The left side of the hub body has a file-textured dial-like piece.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/20121025233432215.jpg" target="_blank"><img alt="ultrafront sx" border="0" height="126" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/20121025233432215s.jpg" width="298"/></a><br/>And this is their front hub, which has the same file-textured dial<br/>on the (from the perspective of facing it) right side.<br/>However, the hub body is marked "Left Side >>" as a deliberate note,<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/2012102523343227f.jpg" target="_blank"><img alt="ultrafront sx -2" border="0" height="126" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/2012102523343227fs.jpg" width="298"/></a><br/>telling you to install it in this orientation.<br/>So the logo is readable in the direction of travel on the rear hub,<br/>but reversed on the front hub.<br/>I made the same judgment about the White H2 hub, so<br/>I deliberately assembled it in the seemingly backward orientation.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09986amx.jpg" target="_blank"><img alt="DSC09986amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09986amxs.jpg" width="300"/></a><br/>My 4,820g Akamatsu aluminum bike has a front wheel<br/>built with an Akamatsu Systema hub.<br/>There are lighter hubs available, but<br/>here I chose the Systema because I wanted this hub specifically.<br/>It's a truly excellent hub. All right, let me say it:<br/><span style="font-size:large;">This is a plug for the Systema hub.</span><br/>...Sorry, please ignore that.<br/><br/>Because the flange width is narrow, lateral stiffness is structurally limited,<br/>but unless you're doing serious standing climbs, you won't notice.<br/>Since the flange width is already narrow, rather than trying to boost lateral stiffness<br/>with inpoke radial, I wanted to pursue ultimate spoke frontal projection area reduction<br/>with outpoke radial. That's why I built it that way.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09989amx.jpg" target="_blank"><img alt="DSC09989amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09989amxs.jpg" width="300"/></a><br/>Narrow! Aerodynamically, this is a really excellent front wheel.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09993amx.jpg" target="_blank"><img alt="DSC09993amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09993amxs.jpg" width="300"/></a><br/>With the White H2 hub, it looks like this.<br/>Since the H2 has quite a wide flange, these two wheels represent<br/>opposite ends of the radial lacing spectrum.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00017amx.jpg" target="_blank"><img alt="DSC00017amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00017amxs.jpg" width="300"/></a><br/>The reason the Systema hub has a narrow flange is that<br/>it's also designed for use on small-wheeled bikes.<br/>If you do the math, a 700C rim with the same inner diameter<br/>as a 20-inch (HE) small-wheel rim comes out to roughly 90mm rim height.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00021amx.jpg" target="_blank"><img alt="DSC00021amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00021amxs.jpg" width="300"/></a><br/>If you built such a rim with inpoke radial lacing, the spoke angle becomes very steep,<br/>and flange contact problems become likely.<br/>Or if you did tangential lacing instead, half would be inpoke anyway.<br/>With tangential lacing with woven crossings, the angle at which<br/>the inpokes emerge from the flange becomes even steeper than radial.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00023amx.jpg" target="_blank"><img alt="DSC00023amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00023amxs.jpg" width="300"/></a><br/>Let's consider a 700C rim with the same height as a 20-inch rim.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00025amx.jpg" target="_blank"><img alt="DSC00025amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00025amxs.jpg" width="300"/></a><br/>If you built this rim with inpoke radial,<br/>the spokes would follow the red dashed line shown above.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00027amx.jpg" target="_blank"><img alt="DSC00027amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00027amxs.jpg" width="300"/></a><br/>To build a 20-inch rim with spokes at roughly the same angle<br/>(the blue angle shown above),<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00030amx.jpg" target="_blank"><img alt="DSC00030amx.jpg" border="0" height="300" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00030amxs.jpg" width="225"/></a><br/>you'd need to move the hub flanges inward.<br/>This is why the Systema hub is well-suited for small-wheel bikes.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00031amx.jpg" target="_blank"><img alt="DSC00031amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00031amxs.jpg" width="300"/></a><br/>Building a 700C rim with outpoke lacing from that configuration<br/>produces the best frontal projection area for a front wheel<br/>(for a spoked wheel, anyway). That's what I was going for with mine.<br/><br/><br/>You're welcome to order Tni AL300 rim wheels with inpoke radial lacing,<br/>but for various reasons, I don't recommend it.<br/>(It's not impossible, though.)<br/>If you ask why I built the Enve 45 with inpoke,<br/>well, that's something I can't write about here, which is awkward...<br/><br/>Today's topic was "there are two types of radial lacing."
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">Products Mentioned in This Article</p>
       <ul>

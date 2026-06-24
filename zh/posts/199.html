@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/199.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Wheel Building</p>
     <h1>美式經典後花鼓的話題</h1>
     <p class="post-meta">January 06, 2013</p>
+    <div class="post-body"><div class="entrytext">昨天關於ENVE組裝的文章，<br/>收到了一條留言說<br/>「美式經典的凸緣寬度很窄，<br/>應該要配合凸緣直徑的大小一起來考慮」<br/>美國經典（以下簡稱美式經典）的後花鼓<br/>即使考慮到凸緣直徑的大小，規格也實在無法辯護，<br/>我就寫寫這個吧。<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01600amx.jpg" target="_blank"><img alt="DSC01600amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01600amxs.jpg" width="300"/></a><br/>在此之前。<br/>我想把輻條的變形（彎曲）分成兩個方向來思考。<br/>在完成的輪組狀態下讓輻條彎曲的話，<br/>一個就像上面的圖那樣從側面推輻條使其彎曲。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01601amx.jpg" target="_blank"><img alt="DSC01601amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01601amxs.jpg" width="300"/></a><br/>另一個是同側的兩根輻條一起握著使其彎曲。<br/>前後方向的彎曲。<br/>如果是正切組的話，就握著交叉的兩根。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01602amx.jpg" target="_blank"><img alt="DSC01602amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01602amxs.jpg" width="300"/></a><br/>無論哪一個方向，提高輻條張力就能減少彎曲，<br/>但通過加大花鼓凸緣也能達到減輕彎曲的目的。<br/>（高框也是同樣的道理）<br/>光是這樣的話還可以。<br/><span style="color:#FF0000">美式經典的後花鼓無法辯護的地方在於，<br/>左邊的凸緣往內側靠近了。<br/>由此造成的損失，用大凸緣<br/>無法彌補回來。</span><br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01605amx.jpg" target="_blank"><img alt="DSC01605amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01605amxs.jpg" width="300"/></a><br/>首先關於前後方向的彎曲。<br/>把輻條張力稱為<span style="color:#FF0000">ＳＴ</span>，<br/>把撬圈要被鍵槽破開的力稱為<span style="color:#0000FF">ＲＫ</span>（ＲｉｍをＫｕｉやぶる）<br/>ＳＴ提高的話ＲＫ也會提高。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01608amx.jpg" target="_blank"><img alt="DSC01608amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01608amxs.jpg" width="300"/></a><br/>剛才的圖是徑向組，<br/>這個是正切組呢。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01609amx.jpg" target="_blank"><img alt="DSC01609amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01609amxs.jpg" width="300"/></a><br/>正切組中交叉的兩根輻條各自的拉引方向<br/>分別稱為Ｆ１、Ｆ２。<br/>Ｆ１、Ｆ２合成後的拉引方向就是上圖的Ｆ３。<br/>Ｆ３與兩根輻條的交點和花鼓中心連線重合。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01610amx.jpg" target="_blank"><img alt="DSC01610amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01610amxs.jpg" width="300"/></a><br/>徑向組原本就是沿著Ｆ３的方向拉輻條，<br/>在拉引方向上沒有角度損失。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01611amx.jpg" target="_blank"><img alt="DSC01611amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01611amxs.jpg" width="300"/></a><br/>同樣的花鼓、同樣的圈，<br/>徑向組和正切組設定成同樣的ＳＴ的話，<br/>徑向組會產生更高的ＲＫ。<br/>要達到相同的ＲＫ的話，徑向組的張力會更低。<br/><br/>雖然話題稍微偏離美式經典，<br/>我做的４６孔和４８孔組裝<br/>是讓自由輪側（雖然是正切組但）盡量接近徑向組<br/>相對提高反自由輪側的張力為目的。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01612amx.jpg" target="_blank"><img alt="DSC01612amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01612amxs.jpg" width="300"/></a><br/>↑把剛才的花鼓當作大凸緣，<br/>旁邊加上小凸緣的花鼓。<br/><span style="color:#FF0000">凸緣直徑小並不代表<br/>無法獲得充分的ＳＴ。</span><br/>相比之下組裝方法（徑向還是正切）<br/>對ＳＴ和ＲＫ的關係影響更大。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01613amx.jpg" target="_blank"><img alt="DSC01613amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01613amxs.jpg" width="300"/></a><br/>相同的ＳＴ的話，大凸緣在「握著輻條交點」時<br/>的確會有較少的彎曲。這是事實。<br/>但是要減少「握著輻條交點」時的變形（彎曲）量<br/>其實很簡單。只要提高ＳＴ就行。<br/>在現實的範圍內（花鼓是Tni還是<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+Dura-Ace+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Dura-Ace</a>，或者美式經典）<br/>輪組完成前夜的撬槽加轉半圈甚至一轉<br/>都能在感覺上增加或減少前後方向的彎曲。<br/>我想表達的是，<span style="color:#FF0000">在減少前後方向彎曲這一點上<br/>大凸緣沒有太大的優勢</span>。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01614amx.jpg" target="_blank"><img alt="DSC01614amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01614amxs.jpg" width="300"/></a><br/>接下來是橫向的彎曲。<br/>以徑向組的（←如果左右組裝方式相同的話其實什麼都可以，但我覺得徑向組<br/>最好想像）前輪來考慮。<br/>花鼓凸緣和圈連起來的線就是輻條，<br/>輪組的中心線和輵條斜線之間有一定的角度。<br/>這個角度越是鈍角，輵條的彎曲就越少。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01615amx.jpg" target="_blank"><img alt="DSC01615amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01615amxs.jpg" width="300"/></a><br/>↑改成大凸緣了。加上去的紅線就是。<br/>中心線和輻條的角度變得更鈍角了。<br/>這樣的話，這個輪組比起剛才的輪組（如果ＳＴ相同）<br/>可以說是橫向彎曲更少（橫向剛性更高）的輪組。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01616amx.jpg" target="_blank"><img alt="DSC01616amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01616amxs.jpg" width="300"/></a><br/>接下來，考慮<span style="color:#FF0000">大凸緣但凸緣往內靠的花鼓</span>。<br/>圖中大凸緣時的中心線和輻條的銳角<br/>比起最初的輪組變得更銳角了。<br/>大凸緣化雖然會減少前後方向的彎曲，<br/>但如同剛才寫的那樣，即使小凸緣也能彌補。<br/>花鼓凸緣往內靠造成的橫向剛性損失，<br/>用「反正已經鎖緊撬槽了！」是補不回來的。<br/><br/>那麼，只注目於角度，以這個花鼓凸緣的尺寸為基礎，<br/>要達到最初輪組相同的輵條角度，需要把凸緣直徑加大到什麼程度呢。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01618amx.jpg" target="_blank"><img alt="DSC01618amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01618amxs.jpg" width="300"/></a><br/>↑就會變成這樣呢。<br/>輻條變短了，所以即使中心線和輵條的銳角相同，<br/>這也會比最初的輪組硬得多。<br/>我的圖進行了相當程度的變形，所以這圖的精確度令人懷疑，<br/>以下我想用Tni進化版後花鼓和美式經典的後花鼓<br/>代入實際數值來思考。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01619amx.jpg" target="_blank"><img alt="DSC01619amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01619amxs.jpg" width="300"/></a><br/>↑這個輪組圖中，<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01620amx.jpg" target="_blank"><img alt="DSC01620amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01620amxs.jpg" width="300"/></a><br/>反自由輪側的，進一步上面的部分放大看看。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01621amx.jpg" target="_blank"><img alt="DSC01621amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01621amxs.jpg" width="300"/></a><br/>首先圈是ENVE的１－４５管狀胎，<br/>花鼓是Tni進化版的情況。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01622amx.jpg" target="_blank"><img alt="DSC01622amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01622amxs.jpg" width="300"/></a><br/>把ENVE圈內徑的半徑設為２７５ｍｍ。<br/>其實不是正好２７５．０ｍｍ，但涉及到米西諾他內密碼<br/>所以請允許用２７５ｍｍ來計算。<br/>即使這樣，在四捨五入的範圍內也非常接近實測值。<br/>Tni進化花鼓從輪組中心到凸緣外側的寬度是３７ｍｍ，<br/>從花鼓軸中心到花鼓凸緣孔中心是２０．３５ｍｍ。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01623amx.jpg" target="_blank"><img alt="DSC01623amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01623amxs.jpg" width="300"/></a><br/>↑把圈內徑的一半減去花鼓凸緣直徑的一半作為高，<br/>從輪組中心到花鼓凸緣外側的長度作為底邊的<br/>直角三角形就出現了。<br/>斜邊的長度是徑向組時的輵條長。<br/>這次是關於輪組中心和輵條的銳角，所以計算的話<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01625amx.jpg" target="_blank"><img alt="DSC01625amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01625amxs.jpg" width="300"/></a><br/><span style="font-size:large;">８．２７°</span>。<br/>在這張圖上放量角器的話是３０°（笑）。<br/>圖很隨意，但角度的數值是精確的。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01627amx.jpg" target="_blank"><img alt="DSC01627amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01627amxs.jpg" width="300"/></a><br/>↑用美式經典的後花鼓也做同樣的事。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01628amx.jpg" target="_blank"><img alt="DSC01628amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01628amxs.jpg" width="300"/></a><br/><span style="font-size:large;">７．２８°</span>。<br/>大約差１°。從輪組中心到花鼓凸緣外側的長度<br/>比起Tni進化花鼓少了６．１ｍｍ。<br/>這些數值上的差異，看起來不多但其實相當大。<br/><span style="color:#FF0000">那麼，保持美式經典左凸緣的寬度，為了趕上Tni進化花鼓的<br/>輪組中心和輵條的銳角，<br/>實際上花鼓凸緣需要做到多少ｍｍ呢</span>，我來計算一下。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01629amx.jpg" target="_blank"><img alt="DSC01629amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01629amxs.jpg" width="300"/></a><br/><span style="font-size:large;">半徑６２．５ｍｍ，直徑１２５ｍｍ。</span><br/>只是稍微（自以為稍微）把左凸緣往內靠造成的角度損失，<br/>理論上需要這麼大的大凸緣才能彌補。<br/>這只是在意角度相同這一點。<br/>如果真的有凸緣孔中心間距１２５ｍｍ的花鼓的話，<br/>由於輵條變短，會比Tni進化花鼓的輪組更堅硬。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01630amx.jpg" target="_blank"><img alt="DSC01630amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01630amxs.jpg" width="300"/></a><br/>大凸緣化如果只沿著上圖的Ａ方向（垂直方向）進行的話，<br/>即使無視重量增加的劣勢，剛性上也許會有優勢。<br/>但是，像上圖Ｂ方向那樣把花鼓凸緣往中央靠的情況下<br/>造成的角度損失，光靠一點點的大凸緣化是補不回來的。<br/>從經驗上也知道美式經典的後花鼓很難確保橫向剛性，<br/>所以凸緣孔間距６６ｍｍ的程度，反自由輪側凸緣往中央靠<br/>造成的損失仍未能完全彌補，這應該是合理的判斷。<br/>如開頭所述「凸緣直徑的大小和這樣結合考慮」的結果<br/>就是如上所述了，這是我的想法。<br/><br/>附帶一提，前花鼓的大凸緣<br/>作為公路車花鼓在一般上是看不到的。<br/>杯錐式花鼓的話需要裝雙螺帽所以需要螺帽橫幅。<br/>在鎖定螺帽尺寸１００ｍｍ的寬度內，<br/>除了螺帽和墊片的橫幅以外，剩下的尺寸空間盡量寬地<br/>設定凸緣寬度，這種前花鼓佔了大多數。<br/>即使是軸承滾筒式，<br/>凸緣寬度也和杯錐式花鼓差不多。<br/>在前花鼓上，凸緣的左右間寬度也差不多。<br/>在這其中「好吧，我們家就用大凸緣來減少輵條彎曲吧」的<br/>製造商不多見，<br/>是因為在前後方向的彎曲上「反正加緊撬槽就容易解決」。<br/>如同剛才寫的那樣，這是大凸緣化貢獻度較低的方向，<br/>所以沒有製造商感覺到重量增加的劣勢以上的優勢吧。<br/>關於橫向的彎曲，幾乎所有製造商都把凸緣寬度盡量拉寬，<br/>所以花鼓造成的差異很小。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01631amx.jpg" target="_blank"><img alt="DSC01631amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01631amxs.jpg" width="300"/></a><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01632amx.jpg" target="_blank"><img alt="DSC01632amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01632amxs.jpg" width="300"/></a><br/>↑這個Woodman的前花鼓是不需要做Ｗ螺帽<br/>軸承滾筒式花鼓優勢發揮得最大的尺寸。聰明！<br/>美式經典的前花鼓凸緣寬度也是相當寬的。<br/>前花鼓是好孩子呢。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">昨天關於ENVE組裝的文章，<br/>收到了一條留言說<br/>「美式經典的凸緣寬度很窄，<br/>應該要配合凸緣直徑的大小一起來考慮」<br/>美國經典（以下簡稱美式經典）的後花鼓<br/>即使考慮到凸緣直徑的大小，規格也實在無法辯護，<br/>我就寫寫這個吧。<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01600amx.jpg" target="_blank"><img alt="DSC01600amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01600amxs.jpg" width="300"/></a><br/>在此之前。<br/>我想把輻條的變形（彎曲）分成兩個方向來思考。<br/>在完成的輪組狀態下讓輻條彎曲的話，<br/>一個就像上面的圖那樣從側面推輻條使其彎曲。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01601amx.jpg" target="_blank"><img alt="DSC01601amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01601amxs.jpg" width="300"/></a><br/>另一個是同側的兩根輻條一起握著使其彎曲。<br/>前後方向的彎曲。<br/>如果是正切組的話，就握著交叉的兩根。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01602amx.jpg" target="_blank"><img alt="DSC01602amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01602amxs.jpg" width="300"/></a><br/>無論哪一個方向，提高輻條張力就能減少彎曲，<br/>但通過加大花鼓凸緣也能達到減輕彎曲的目的。<br/>（高框也是同樣的道理）<br/>光是這樣的話還可以。<br/><span style="color:#FF0000">美式經典的後花鼓無法辯護的地方在於，<br/>左邊的凸緣往內側靠近了。<br/>由此造成的損失，用大凸緣<br/>無法彌補回來。</span><br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01605amx.jpg" target="_blank"><img alt="DSC01605amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01605amxs.jpg" width="300"/></a><br/>首先關於前後方向的彎曲。<br/>把輻條張力稱為<span style="color:#FF0000">ＳＴ</span>，<br/>把撬圈要被鍵槽破開的力稱為<span style="color:#0000FF">ＲＫ</span>（ＲｉｍをＫｕｉやぶる）<br/>ＳＴ提高的話ＲＫ也會提高。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01608amx.jpg" target="_blank"><img alt="DSC01608amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01608amxs.jpg" width="300"/></a><br/>剛才的圖是徑向組，<br/>這個是正切組呢。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01609amx.jpg" target="_blank"><img alt="DSC01609amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01609amxs.jpg" width="300"/></a><br/>正切組中交叉的兩根輻條各自的拉引方向<br/>分別稱為Ｆ１、Ｆ２。<br/>Ｆ１、Ｆ２合成後的拉引方向就是上圖的Ｆ３。<br/>Ｆ３與兩根輻條的交點和花鼓中心連線重合。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01610amx.jpg" target="_blank"><img alt="DSC01610amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01610amxs.jpg" width="300"/></a><br/>徑向組原本就是沿著Ｆ３的方向拉輻條，<br/>在拉引方向上沒有角度損失。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01611amx.jpg" target="_blank"><img alt="DSC01611amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01611amxs.jpg" width="300"/></a><br/>同樣的花鼓、同樣的圈，<br/>徑向組和正切組設定成同樣的ＳＴ的話，<br/>徑向組會產生更高的ＲＫ。<br/>要達到相同的ＲＫ的話，徑向組的張力會更低。<br/><br/>雖然話題稍微偏離美式經典，<br/>我做的４６孔和４８孔組裝<br/>是讓自由輪側（雖然是正切組但）盡量接近徑向組<br/>相對提高反自由輪側的張力為目的。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01612amx.jpg" target="_blank"><img alt="DSC01612amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01612amxs.jpg" width="300"/></a><br/>↑把剛才的花鼓當作大凸緣，<br/>旁邊加上小凸緣的花鼓。<br/><span style="color:#FF0000">凸緣直徑小並不代表<br/>無法獲得充分的ＳＴ。</span><br/>相比之下組裝方法（徑向還是正切）<br/>對ＳＴ和ＲＫ的關係影響更大。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01613amx.jpg" target="_blank"><img alt="DSC01613amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01613amxs.jpg" width="300"/></a><br/>相同的ＳＴ的話，大凸緣在「握著輻條交點」時<br/>的確會有較少的彎曲。這是事實。<br/>但是要減少「握著輻條交點」時的變形（彎曲）量<br/>其實很簡單。只要提高ＳＴ就行。<br/>在現實的範圍內（花鼓是Tni還是<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+Dura-Ace+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Dura-Ace</a>，或者美式經典）<br/>輪組完成前夜的撬槽加轉半圈甚至一轉<br/>都能在感覺上增加或減少前後方向的彎曲。<br/>我想表達的是，<span style="color:#FF0000">在減少前後方向彎曲這一點上<br/>大凸緣沒有太大的優勢</span>。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01614amx.jpg" target="_blank"><img alt="DSC01614amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01614amxs.jpg" width="300"/></a><br/>接下來是橫向的彎曲。<br/>以徑向組的（←如果左右組裝方式相同的話其實什麼都可以，但我覺得徑向組<br/>最好想像）前輪來考慮。<br/>花鼓凸緣和圈連起來的線就是輻條，<br/>輪組的中心線和輵條斜線之間有一定的角度。<br/>這個角度越是鈍角，輵條的彎曲就越少。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01615amx.jpg" target="_blank"><img alt="DSC01615amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01615amxs.jpg" width="300"/></a><br/>↑改成大凸緣了。加上去的紅線就是。<br/>中心線和輻條的角度變得更鈍角了。<br/>這樣的話，這個輪組比起剛才的輪組（如果ＳＴ相同）<br/>可以說是橫向彎曲更少（橫向剛性更高）的輪組。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01616amx.jpg" target="_blank"><img alt="DSC01616amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01616amxs.jpg" width="300"/></a><br/>接下來，考慮<span style="color:#FF0000">大凸緣但凸緣往內靠的花鼓</span>。<br/>圖中大凸緣時的中心線和輻條的銳角<br/>比起最初的輪組變得更銳角了。<br/>大凸緣化雖然會減少前後方向的彎曲，<br/>但如同剛才寫的那樣，即使小凸緣也能彌補。<br/>花鼓凸緣往內靠造成的橫向剛性損失，<br/>用「反正已經鎖緊撬槽了！」是補不回來的。<br/><br/>那麼，只注目於角度，以這個花鼓凸緣的尺寸為基礎，<br/>要達到最初輪組相同的輵條角度，需要把凸緣直徑加大到什麼程度呢。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01618amx.jpg" target="_blank"><img alt="DSC01618amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01618amxs.jpg" width="300"/></a><br/>↑就會變成這樣呢。<br/>輻條變短了，所以即使中心線和輵條的銳角相同，<br/>這也會比最初的輪組硬得多。<br/>我的圖進行了相當程度的變形，所以這圖的精確度令人懷疑，<br/>以下我想用Tni進化版後花鼓和美式經典的後花鼓<br/>代入實際數值來思考。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01619amx.jpg" target="_blank"><img alt="DSC01619amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01619amxs.jpg" width="300"/></a><br/>↑這個輪組圖中，<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01620amx.jpg" target="_blank"><img alt="DSC01620amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01620amxs.jpg" width="300"/></a><br/>反自由輪側的，進一步上面的部分放大看看。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01621amx.jpg" target="_blank"><img alt="DSC01621amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01621amxs.jpg" width="300"/></a><br/>首先圈是ENVE的１－４５管狀胎，<br/>花鼓是Tni進化版的情況。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01622amx.jpg" target="_blank"><img alt="DSC01622amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01622amxs.jpg" width="300"/></a><br/>把ENVE圈內徑的半徑設為２７５ｍｍ。<br/>其實不是正好２７５．０ｍｍ，但涉及到米西諾他內密碼<br/>所以請允許用２７５ｍｍ來計算。<br/>即使這樣，在四捨五入的範圍內也非常接近實測值。<br/>Tni進化花鼓從輪組中心到凸緣外側的寬度是３７ｍｍ，<br/>從花鼓軸中心到花鼓凸緣孔中心是２０．３５ｍｍ。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01623amx.jpg" target="_blank"><img alt="DSC01623amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01623amxs.jpg" width="300"/></a><br/>↑把圈內徑的一半減去花鼓凸緣直徑的一半作為高，<br/>從輪組中心到花鼓凸緣外側的長度作為底邊的<br/>直角三角形就出現了。<br/>斜邊的長度是徑向組時的輵條長。<br/>這次是關於輪組中心和輵條的銳角，所以計算的話<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01625amx.jpg" target="_blank"><img alt="DSC01625amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01625amxs.jpg" width="300"/></a><br/><span style="font-size:large;">８．２７°</span>。<br/>在這張圖上放量角器的話是３０°（笑）。<br/>圖很隨意，但角度的數值是精確的。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01627amx.jpg" target="_blank"><img alt="DSC01627amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01627amxs.jpg" width="300"/></a><br/>↑用美式經典的後花鼓也做同樣的事。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01628amx.jpg" target="_blank"><img alt="DSC01628amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01628amxs.jpg" width="300"/></a><br/><span style="font-size:large;">７．２８°</span>。<br/>大約差１°。從輪組中心到花鼓凸緣外側的長度<br/>比起Tni進化花鼓少了６．１ｍｍ。<br/>這些數值上的差異，看起來不多但其實相當大。<br/><span style="color:#FF0000">那麼，保持美式經典左凸緣的寬度，為了趕上Tni進化花鼓的<br/>輪組中心和輵條的銳角，<br/>實際上花鼓凸緣需要做到多少ｍｍ呢</span>，我來計算一下。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01629amx.jpg" target="_blank"><img alt="DSC01629amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01629amxs.jpg" width="300"/></a><br/><span style="font-size:large;">半徑６２．５ｍｍ，直徑１２５ｍｍ。</span><br/>只是稍微（自以為稍微）把左凸緣往內靠造成的角度損失，<br/>理論上需要這麼大的大凸緣才能彌補。<br/>這只是在意角度相同這一點。<br/>如果真的有凸緣孔中心間距１２５ｍｍ的花鼓的話，<br/>由於輵條變短，會比Tni進化花鼓的輪組更堅硬。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01630amx.jpg" target="_blank"><img alt="DSC01630amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01630amxs.jpg" width="300"/></a><br/>大凸緣化如果只沿著上圖的Ａ方向（垂直方向）進行的話，<br/>即使無視重量增加的劣勢，剛性上也許會有優勢。<br/>但是，像上圖Ｂ方向那樣把花鼓凸緣往中央靠的情況下<br/>造成的角度損失，光靠一點點的大凸緣化是補不回來的。<br/>從經驗上也知道美式經典的後花鼓很難確保橫向剛性，<br/>所以凸緣孔間距６６ｍｍ的程度，反自由輪側凸緣往中央靠<br/>造成的損失仍未能完全彌補，這應該是合理的判斷。<br/>如開頭所述「凸緣直徑的大小和這樣結合考慮」的結果<br/>就是如上所述了，這是我的想法。<br/><br/>附帶一提，前花鼓的大凸緣<br/>作為公路車花鼓在一般上是看不到的。<br/>杯錐式花鼓的話需要裝雙螺帽所以需要螺帽橫幅。<br/>在鎖定螺帽尺寸１００ｍｍ的寬度內，<br/>除了螺帽和墊片的橫幅以外，剩下的尺寸空間盡量寬地<br/>設定凸緣寬度，這種前花鼓佔了大多數。<br/>即使是軸承滾筒式，<br/>凸緣寬度也和杯錐式花鼓差不多。<br/>在前花鼓上，凸緣的左右間寬度也差不多。<br/>在這其中「好吧，我們家就用大凸緣來減少輵條彎曲吧」的<br/>製造商不多見，<br/>是因為在前後方向的彎曲上「反正加緊撬槽就容易解決」。<br/>如同剛才寫的那樣，這是大凸緣化貢獻度較低的方向，<br/>所以沒有製造商感覺到重量增加的劣勢以上的優勢吧。<br/>關於橫向的彎曲，幾乎所有製造商都把凸緣寬度盡量拉寬，<br/>所以花鼓造成的差異很小。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01631amx.jpg" target="_blank"><img alt="DSC01631amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01631amxs.jpg" width="300"/></a><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01632amx.jpg" target="_blank"><img alt="DSC01632amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC01632amxs.jpg" width="300"/></a><br/>↑這個Woodman的前花鼓是不需要做Ｗ螺帽<br/>軸承滾筒式花鼓優勢發揮得最大的尺寸。聰明！<br/>美式經典的前花鼓凸緣寬度也是相當寬的。<br/>前花鼓是好孩子呢。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

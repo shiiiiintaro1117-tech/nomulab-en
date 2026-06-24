@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
-    <p>Bicycle Workshop — English Edition</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/index.html">
+        <span class="brand-title">Nomu Lab Diary</span>
+        <span class="brand-subtitle">Bicycle Workshop Archive</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/index.html">Archive</a>
+      <a href="/guides/wheel-building.html">Wheel Guide</a>
+      <a href="/glossary.html">Glossary</a>
+      <a href="/about.html">About</a>
+    </nav>
     <div class="lang-toggle"><span class="lang-btn active">EN</span><a class="lang-btn" href="/zh/posts/6109.html">繁中</a></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/index.html">← All posts</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>It Was Trek</h1>
     <p class="post-meta">February 25, 2022</p>
+    <div class="post-body"><div class="entrytext">In my recent article about through-axles, I posted an image of a 1.75mm pitch axle that DT doesn't carry<br/>but I'd completely forgotten which brand it was from.<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07346amx14.jpg" target="_blank"><img alt="DSC07346amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07346amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07347amx14.jpg" target="_blank"><img alt="DSC07347amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07347amx14s.jpg" width="320"/></a><br/>but then today when I replaced the tires on an <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Trek+Emonda+road+bike+frame" target="_blank" rel="noopener sponsored" class="amz-inline">Emonda</a> complete bike for another job,<br/>it turned out to be a Trek specification.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07348amx14.jpg" target="_blank"><img alt="DSC07348amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07348amx14s.jpg" width="320"/></a><br/>You can remove and install it with an Allen key,<br/>but there's also a lever-type plug-in version like what DT has,<br/>and since the bottom of the hexagonal socket in the axle is magnetic,<br/>you won't drop it and lose it during normal riding.<br/>The customer's bike only had the add-on lever on the front axle,<br/>but whether that's the intended spec or if they just lost the rear one is unclear.<br/><br/>On a different note, the "<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Trek+Madone+road+bike+frame" target="_blank" rel="noopener sponsored" class="amz-inline">Madone</a>" in Trek's road bike model names<br/>is the name of a climb in France.<br/>Since the road is narrow, it's never been selected for high-category races like the Tour de France,<br/>but it's a climb that Lance Armstrong used as a training route<br/>when he was living in Nice.<br/><br/>There was a famous rider who used Madone regularly as a daily training climb<br/>and used his climbing time there as an indicator of fitness,<br/>and the first clearly documented example is<br/>Tony Rominger (Rominger).<br/>Rominger's record was 31 minutes 30 seconds, and while this record stood for a long time,<br/>it wasn't untouchable—it's just that Madone time trials weren't as common an activity back then as they are now.<br/><s>As a side note, I hold the world record for the commute between the Nomu Lab and my house.<br/>Unless someone appears who sees value in breaking it,<br/>this record will never be broken for all eternity.<br/>I am definitely a world record holder,<br/>but I have no idea what the time was or when I set it.</s><br/>Armstrong broke Rominger's record just before the 1999 Tour de France,<br/>clocking 30 minutes 47 seconds,<br/>and the frame he was developing at the time, which later became commercially available,<br/>was named Madone after that climb.<br/>Long ago, Nike released shoes and watches with Lance's name on them,<br/>but since Armstrong's image was dragged through the mud by doping,<br/>they've been discontinued and treated as if they "never existed."<br/>It should have been an extremely profitable product,<br/>so if not for the doping scandal, even after his retirement<br/>there likely would have been continued merchandise like signature models.<br/>While Madone is indeed a French place name,<br/>it's still perceived as "Armstrong's vestigial legacy,"<br/>but Trek shows no signs of changing the model name.<br/><br/>Returning to the Madone climb story, there actually isn't clear consensus on<br/>where to start, though the finish is established,<br/>so it's actually unknown whether Rominger and Armstrong covered<br/>exactly the same route.<br/>But as long as they're not wildly different, and with a 43-second gap,<br/>it's generally accepted that he definitely broke the course record.<br/>After that, Madone time trials became famous,<br/>and people—both pros and amateurs—started trying to break it.<br/>Between 2005 and 2007, with Discovery Channel<br/>(for some reason hiragana converts preferentially...),<br/>Tom Danielson, who had been teammates with Armstrong,<br/>recorded 30 minutes 24 seconds.<br/>While Danielson is American,<br/>he holds course records on several climbs back home in America.<br/>In other words, he's the type who enjoys doing this sort of thing.<br/>From what I've been able to track, around 2015<br/>Chris Froome put down 30 minutes 9 seconds, and then shortly after<br/>Richie Porte, Froome's teammate at the time,<br/>recorded 29 minutes 40 seconds.<br/><br/>Since Madone, Trek's road frame model names—<br/>both Emonda and <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Trek+Domane+road+bike+frame" target="_blank" rel="noopener sponsored" class="amz-inline">Domane</a>—are anagrams of Madone<br/>(MADONE・EMONDA・DOMANE).<br/>Following this pattern, the future model names I can think of that fit<br/>are MODENA and DAEMON.<br/><br/>This is pure speculation on my part, but regarding MODENA,<br/>it supposedly came up as a candidate during Emonda's development,<br/>but it was EMONDA that got adopted in the internal meeting,<br/>and I get the sense that the faction pushing for MODENA<br/>still mutters complaints called "the MODENA incident."<br/><br/>DAEMON uses the same letters as "daemon" but spelled DAEMON,<br/>the non-DEMON spelling that means demon.<br/>DAEMON is currently a demon living in the electronic world,<br/>tasked with dutifully returning to senders notification that<br/>their emails failed to reach the recipient.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07342amx14.jpg" target="_blank"><img alt="DSC07342amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07342amx14s.jpg" width="320"/></a><br/>↑This is reference material I prepared for a segment on multi-start threads,<br/>and it seems a shame to scrap it, so I'll use it anyway.<br/>Plastic bottle caps use multi-start threads,<br/>but they're not a unified standard.<br/>That said, bottle cap manufacturing is<br/>a niche oligopolistic market, so<br/>there aren't dozens of different dimensions in circulation<br/>(I'd bet there are fewer than the number of press-fit BB standards.<br/>Frame manufacturers really need to think about this stuff, seriously).<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07343amx14.jpg" target="_blank"><img alt="DSC07343amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07343amx14s.jpg" width="320"/></a><br/>Unlike sports bike components,<br/>bottle caps aren't mixed and matched non-OEM with bottles,<br/>so it goes largely unnoticed, but<br/>Evian bottle caps<br/>use a multi-start thread with a very steep lead angle.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07344amx14.jpg" target="_blank"><img alt="DSC07344amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07344amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07345amx14.jpg" target="_blank"><img alt="DSC07345amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07345amx14s.jpg" width="320"/></a><br/>and the cap comes off in just half a turn.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06747amx14.jpg" target="_blank"><img alt="DSC06747amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06747amx14s.jpg" width="320"/></a><br/>This is a different job from the Emonda with the through-axle at the top,<br/>but the front wheel of a <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Bontrager+disc+brake+wheel+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Bontrager disc brake</a><br/>that I got to photograph for an article.<br/>It's a 26-inch HE rim MTB, and during the early days of disc brakes,<br/>radial lacing on the non-rotor side was trendy,<br/>but if you're doing this with equal numbers on both sides, you'd want at least 32H.<br/>Plus, this hub uses straight spokes, so<br/>you can't change the lacing pattern.<br/>That's not actually the most valuable aspect of writing about this wheel though...<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06749amx14.jpg" target="_blank"><img alt="DSC06749amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06749amx14s.jpg" width="320"/></a><br/>It's an axle with a flat contact surface with the fork instead of tapered.<br/>With 1.75mm pitch, once the flange with serrations on the axle contacts the fork,<br/>you can't tighten it more than half a turn.<br/>You can't advance the threads by 0.875mm, which is half of 1.75mm.<br/>The X-12 standard is 1mm pitch, but<br/>from where you feel the same kind of contact on the tapered section,<br/>depending on the frame or fork, you can easily tighten more than a full turn.<br/><br/>Anyway, this fork<br/>has paint over the area where the serrations contact, so<br/>the paint is cracking like eggshell<br/>and spreading beyond the contact surface with the axle flange.<br/>That's not good.<br/>But that's not the most valuable aspect of this wheel either.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07390amx14.jpg" target="_blank"><img alt="DSC07390amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07390amx14s.jpg" width="320"/></a><br/>↑These are both Reynolds rims—<br/>the left is Stratos DV and the right is Assault SLG.<br/>The rim graphics are completely different and they're quite far apart in age,<br/>but on the Stratos, the "gravity" of the Reynolds lettering<br/>points toward the wheel's interior.<br/>On the Assault, the letter gravity points outward.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07391amx14.jpg" target="_blank"><img alt="DSC07391amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07391amx14s.jpg" width="320"/></a><br/>This is a Racing Zero Carbon rim, and<br/>Campagnolo and Fulcrum rims both have<br/>letter gravity pointing in one direction.<br/>In the state shown in the image above, the letter gravity points downward, so<br/>both the Racing Zero and Fulcrum read correctly in the normal direction,<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07392amx14.jpg" target="_blank"><img alt="DSC07392amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07392amx14s.jpg" width="320"/></a><br/>but when the rim rotates, neither reads correctly anymore.<br/>On rims versus tire labeling and such,<br/>the letter gravity almost always points toward the wheel's interior.<br/>The exception is that some Schwalbe tires from a certain period had<br/>unidirectional letter gravity, so<br/>when pairing them with Fulcrum and similar rims that also go one direction,<br/>aligning the letter gravity makes it look better.<br/><br/>As an example, here's a combination of Fulcrum Red Wind XLR50 and<br/>Schwalbe Altremo ZX:<br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05692amx3.jpg" target="_blank"><img alt="DSC05692amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05692amx3s.jpg" width="300"/></a><br/>the letter gravity aligns between Schwalbe and Fulcrum, and<br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05693amx3.jpg" target="_blank"><img alt="DSC05693amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05693amx3s.jpg" width="300"/></a><br/>the letter gravity aligns between Red Wind and Altremo.<br/><br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02608amx6.jpg" target="_blank"><img alt="DSC02608amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02608amx6s.jpg" width="300"/></a><br/>Here's another similar example. The valve hole is on the bottom of the image,<br/>and since I centered the rim and tire labels at the valve hole,<br/>they're slightly off on the top side.<br/><br/>Normally, with tire labels, I position the model name<br/>rather than the manufacturer name directly below the valve hole.<br/>For example, with Continental's Grand Prix 5000,<br/>I put the Grand Prix 5000 marking at the valve hole.<br/>When checking a customer's wheel, if the<br/>manufacturer name is at the valve hole,<br/>I leave it that way when reinstalling,<br/>but when installing tires fresh on both wheels,<br/>I put the model name label at the valve hole.<br/>The exceptions are cases like the earlier examples where<br/>letter gravity works in one direction on both rim and tire, or<br/>cases like Mavic's factory setup where there's a clear rule—<br/>in those cases I don't deliberately go against it.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07393amx14.jpg" target="_blank"><img alt="DSC07393amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07393amx14s.jpg" width="320"/></a><br/>My everyday bike's rear wheel has<br/>a DT XR331 rim in triple-valve configuration.<br/>The XR331 has the same sticker<br/>at two spots 180° apart, with<br/>the other side's phase offset by 90°.<br/>Of those four total, I removed three—<br/>all except the one on the freewheel side—<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07394amx14.jpg" target="_blank"><img alt="DSC07394amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07394amx14s.jpg" width="320"/></a><br/>and I align the tire label<br/>with the single rim sticker I left.<br/>If there's anyone out there thinking "I also use a triple-valve wheel and do the same,"<br/>I'd love to hear about it.<br/><br/>Now, tire labels usually have<br/>letter gravity toward the wheel interior, with<br/>unidirectional gravity being rare,<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06750amx14.jpg" target="_blank"><img alt="DSC06750amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06750amx14s.jpg" width="320"/></a><br/>but on recent Bontrager tires,<br/>the letter gravity points outward.<br/>This feels incredibly strange to me.<br/><br/>It's possible I'm mistaken, and this label might actually have<br/><span style="font-size:large;">Ｅᖈ</span>　ᖈヨ９∀ᖈ⊥NO８<br/>letter gravity pointing inward toward the wheel.<br/><br/>If that's the case, then the Emonda<br/>from which I took the through-axle photos at the top<br/>had Grand Prix 5000 installed on Nomu Lab wheel number 8, and<br/>the tire it had before was<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07398amx14.jpg" target="_blank"><img alt="DSC07398amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07398amx14s.jpg" width="320"/></a><br/>乙<span style="font-size:large;">ᖈ</span>　ᖈヨ９∀ᖈ⊥NO８<br/>which would be the case.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07399amx14.jpg" target="_blank"><img alt="DSC07399amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07399amx14s.jpg" width="320"/></a><br/>No, the tire size marking also points outward, so<br/>while I can't fathom the intent, it seems that currently Trek<br/>has some kind of strong commitment to having<br/>tire letter gravity point toward the wheel exterior.<br/><br/>Since it doesn't affect tire performance,<br/>it's not like it's bad, but<br/>it feels so incredibly strange to me that<br/>I can't understand why they'd deliberately do this,<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07400amx14.jpg" target="_blank"><img alt="DSC07400amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07400amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07401amx14.jpg" target="_blank"><img alt="DSC07401amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07401amx14s.jpg" width="320"/></a><br/>and the OEM manufacturers contracted for tire production<br/>apparently didn't go along with it either.
+</div></div>
+    <aside class="post-guides">
+      <strong>Technical archive</strong>
+      <nav aria-label="Technical guides">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">In my recent article about through-axles, I posted an image of a 1.75mm pitch axle that DT doesn't carry<br/>but I'd completely forgotten which brand it was from.<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07346amx14.jpg" target="_blank"><img alt="DSC07346amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07346amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07347amx14.jpg" target="_blank"><img alt="DSC07347amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07347amx14s.jpg" width="320"/></a><br/>but then today when I replaced the tires on an <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Trek+Emonda+road+bike+frame" target="_blank" rel="noopener sponsored" class="amz-inline">Emonda</a> complete bike for another job,<br/>it turned out to be a Trek specification.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07348amx14.jpg" target="_blank"><img alt="DSC07348amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07348amx14s.jpg" width="320"/></a><br/>You can remove and install it with an Allen key,<br/>but there's also a lever-type plug-in version like what DT has,<br/>and since the bottom of the hexagonal socket in the axle is magnetic,<br/>you won't drop it and lose it during normal riding.<br/>The customer's bike only had the add-on lever on the front axle,<br/>but whether that's the intended spec or if they just lost the rear one is unclear.<br/><br/>On a different note, the "<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Trek+Madone+road+bike+frame" target="_blank" rel="noopener sponsored" class="amz-inline">Madone</a>" in Trek's road bike model names<br/>is the name of a climb in France.<br/>Since the road is narrow, it's never been selected for high-category races like the Tour de France,<br/>but it's a climb that Lance Armstrong used as a training route<br/>when he was living in Nice.<br/><br/>There was a famous rider who used Madone regularly as a daily training climb<br/>and used his climbing time there as an indicator of fitness,<br/>and the first clearly documented example is<br/>Tony Rominger (Rominger).<br/>Rominger's record was 31 minutes 30 seconds, and while this record stood for a long time,<br/>it wasn't untouchable—it's just that Madone time trials weren't as common an activity back then as they are now.<br/><s>As a side note, I hold the world record for the commute between the Nomu Lab and my house.<br/>Unless someone appears who sees value in breaking it,<br/>this record will never be broken for all eternity.<br/>I am definitely a world record holder,<br/>but I have no idea what the time was or when I set it.</s><br/>Armstrong broke Rominger's record just before the 1999 Tour de France,<br/>clocking 30 minutes 47 seconds,<br/>and the frame he was developing at the time, which later became commercially available,<br/>was named Madone after that climb.<br/>Long ago, Nike released shoes and watches with Lance's name on them,<br/>but since Armstrong's image was dragged through the mud by doping,<br/>they've been discontinued and treated as if they "never existed."<br/>It should have been an extremely profitable product,<br/>so if not for the doping scandal, even after his retirement<br/>there likely would have been continued merchandise like signature models.<br/>While Madone is indeed a French place name,<br/>it's still perceived as "Armstrong's vestigial legacy,"<br/>but Trek shows no signs of changing the model name.<br/><br/>Returning to the Madone climb story, there actually isn't clear consensus on<br/>where to start, though the finish is established,<br/>so it's actually unknown whether Rominger and Armstrong covered<br/>exactly the same route.<br/>But as long as they're not wildly different, and with a 43-second gap,<br/>it's generally accepted that he definitely broke the course record.<br/>After that, Madone time trials became famous,<br/>and people—both pros and amateurs—started trying to break it.<br/>Between 2005 and 2007, with Discovery Channel<br/>(for some reason hiragana converts preferentially...),<br/>Tom Danielson, who had been teammates with Armstrong,<br/>recorded 30 minutes 24 seconds.<br/>While Danielson is American,<br/>he holds course records on several climbs back home in America.<br/>In other words, he's the type who enjoys doing this sort of thing.<br/>From what I've been able to track, around 2015<br/>Chris Froome put down 30 minutes 9 seconds, and then shortly after<br/>Richie Porte, Froome's teammate at the time,<br/>recorded 29 minutes 40 seconds.<br/><br/>Since Madone, Trek's road frame model names—<br/>both Emonda and <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Trek+Domane+road+bike+frame" target="_blank" rel="noopener sponsored" class="amz-inline">Domane</a>—are anagrams of Madone<br/>(MADONE・EMONDA・DOMANE).<br/>Following this pattern, the future model names I can think of that fit<br/>are MODENA and DAEMON.<br/><br/>This is pure speculation on my part, but regarding MODENA,<br/>it supposedly came up as a candidate during Emonda's development,<br/>but it was EMONDA that got adopted in the internal meeting,<br/>and I get the sense that the faction pushing for MODENA<br/>still mutters complaints called "the MODENA incident."<br/><br/>DAEMON uses the same letters as "daemon" but spelled DAEMON,<br/>the non-DEMON spelling that means demon.<br/>DAEMON is currently a demon living in the electronic world,<br/>tasked with dutifully returning to senders notification that<br/>their emails failed to reach the recipient.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07342amx14.jpg" target="_blank"><img alt="DSC07342amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07342amx14s.jpg" width="320"/></a><br/>↑This is reference material I prepared for a segment on multi-start threads,<br/>and it seems a shame to scrap it, so I'll use it anyway.<br/>Plastic bottle caps use multi-start threads,<br/>but they're not a unified standard.<br/>That said, bottle cap manufacturing is<br/>a niche oligopolistic market, so<br/>there aren't dozens of different dimensions in circulation<br/>(I'd bet there are fewer than the number of press-fit BB standards.<br/>Frame manufacturers really need to think about this stuff, seriously).<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07343amx14.jpg" target="_blank"><img alt="DSC07343amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07343amx14s.jpg" width="320"/></a><br/>Unlike sports bike components,<br/>bottle caps aren't mixed and matched non-OEM with bottles,<br/>so it goes largely unnoticed, but<br/>Evian bottle caps<br/>use a multi-start thread with a very steep lead angle.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07344amx14.jpg" target="_blank"><img alt="DSC07344amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07344amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07345amx14.jpg" target="_blank"><img alt="DSC07345amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07345amx14s.jpg" width="320"/></a><br/>and the cap comes off in just half a turn.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06747amx14.jpg" target="_blank"><img alt="DSC06747amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06747amx14s.jpg" width="320"/></a><br/>This is a different job from the Emonda with the through-axle at the top,<br/>but the front wheel of a <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Bontrager+disc+brake+wheel+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Bontrager disc brake</a><br/>that I got to photograph for an article.<br/>It's a 26-inch HE rim MTB, and during the early days of disc brakes,<br/>radial lacing on the non-rotor side was trendy,<br/>but if you're doing this with equal numbers on both sides, you'd want at least 32H.<br/>Plus, this hub uses straight spokes, so<br/>you can't change the lacing pattern.<br/>That's not actually the most valuable aspect of writing about this wheel though...<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06749amx14.jpg" target="_blank"><img alt="DSC06749amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06749amx14s.jpg" width="320"/></a><br/>It's an axle with a flat contact surface with the fork instead of tapered.<br/>With 1.75mm pitch, once the flange with serrations on the axle contacts the fork,<br/>you can't tighten it more than half a turn.<br/>You can't advance the threads by 0.875mm, which is half of 1.75mm.<br/>The X-12 standard is 1mm pitch, but<br/>from where you feel the same kind of contact on the tapered section,<br/>depending on the frame or fork, you can easily tighten more than a full turn.<br/><br/>Anyway, this fork<br/>has paint over the area where the serrations contact, so<br/>the paint is cracking like eggshell<br/>and spreading beyond the contact surface with the axle flange.<br/>That's not good.<br/>But that's not the most valuable aspect of this wheel either.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07390amx14.jpg" target="_blank"><img alt="DSC07390amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07390amx14s.jpg" width="320"/></a><br/>↑These are both Reynolds rims—<br/>the left is Stratos DV and the right is Assault SLG.<br/>The rim graphics are completely different and they're quite far apart in age,<br/>but on the Stratos, the "gravity" of the Reynolds lettering<br/>points toward the wheel's interior.<br/>On the Assault, the letter gravity points outward.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07391amx14.jpg" target="_blank"><img alt="DSC07391amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07391amx14s.jpg" width="320"/></a><br/>This is a Racing Zero Carbon rim, and<br/>Campagnolo and Fulcrum rims both have<br/>letter gravity pointing in one direction.<br/>In the state shown in the image above, the letter gravity points downward, so<br/>both the Racing Zero and Fulcrum read correctly in the normal direction,<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07392amx14.jpg" target="_blank"><img alt="DSC07392amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07392amx14s.jpg" width="320"/></a><br/>but when the rim rotates, neither reads correctly anymore.<br/>On rims versus tire labeling and such,<br/>the letter gravity almost always points toward the wheel's interior.<br/>The exception is that some Schwalbe tires from a certain period had<br/>unidirectional letter gravity, so<br/>when pairing them with Fulcrum and similar rims that also go one direction,<br/>aligning the letter gravity makes it look better.<br/><br/>As an example, here's a combination of Fulcrum Red Wind XLR50 and<br/>Schwalbe Altremo ZX:<br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05692amx3.jpg" target="_blank"><img alt="DSC05692amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05692amx3s.jpg" width="300"/></a><br/>the letter gravity aligns between Schwalbe and Fulcrum, and<br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05693amx3.jpg" target="_blank"><img alt="DSC05693amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC05693amx3s.jpg" width="300"/></a><br/>the letter gravity aligns between Red Wind and Altremo.<br/><br/><a href="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02608amx6.jpg" target="_blank"><img alt="DSC02608amx6.jpg" border="0" height="225" src="https://blog-imgs-100-origin.fc2.com/p/a/s/pass13/DSC02608amx6s.jpg" width="300"/></a><br/>Here's another similar example. The valve hole is on the bottom of the image,<br/>and since I centered the rim and tire labels at the valve hole,<br/>they're slightly off on the top side.<br/><br/>Normally, with tire labels, I position the model name<br/>rather than the manufacturer name directly below the valve hole.<br/>For example, with Continental's Grand Prix 5000,<br/>I put the Grand Prix 5000 marking at the valve hole.<br/>When checking a customer's wheel, if the<br/>manufacturer name is at the valve hole,<br/>I leave it that way when reinstalling,<br/>but when installing tires fresh on both wheels,<br/>I put the model name label at the valve hole.<br/>The exceptions are cases like the earlier examples where<br/>letter gravity works in one direction on both rim and tire, or<br/>cases like Mavic's factory setup where there's a clear rule—<br/>in those cases I don't deliberately go against it.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07393amx14.jpg" target="_blank"><img alt="DSC07393amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07393amx14s.jpg" width="320"/></a><br/>My everyday bike's rear wheel has<br/>a DT XR331 rim in triple-valve configuration.<br/>The XR331 has the same sticker<br/>at two spots 180° apart, with<br/>the other side's phase offset by 90°.<br/>Of those four total, I removed three—<br/>all except the one on the freewheel side—<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07394amx14.jpg" target="_blank"><img alt="DSC07394amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07394amx14s.jpg" width="320"/></a><br/>and I align the tire label<br/>with the single rim sticker I left.<br/>If there's anyone out there thinking "I also use a triple-valve wheel and do the same,"<br/>I'd love to hear about it.<br/><br/>Now, tire labels usually have<br/>letter gravity toward the wheel interior, with<br/>unidirectional gravity being rare,<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06750amx14.jpg" target="_blank"><img alt="DSC06750amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC06750amx14s.jpg" width="320"/></a><br/>but on recent Bontrager tires,<br/>the letter gravity points outward.<br/>This feels incredibly strange to me.<br/><br/>It's possible I'm mistaken, and this label might actually have<br/><span style="font-size:large;">Ｅᖈ</span>　ᖈヨ９∀ᖈ⊥NO８<br/>letter gravity pointing inward toward the wheel.<br/><br/>If that's the case, then the Emonda<br/>from which I took the through-axle photos at the top<br/>had Grand Prix 5000 installed on Nomu Lab wheel number 8, and<br/>the tire it had before was<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07398amx14.jpg" target="_blank"><img alt="DSC07398amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07398amx14s.jpg" width="320"/></a><br/>乙<span style="font-size:large;">ᖈ</span>　ᖈヨ９∀ᖈ⊥NO８<br/>which would be the case.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07399amx14.jpg" target="_blank"><img alt="DSC07399amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07399amx14s.jpg" width="320"/></a><br/>No, the tire size marking also points outward, so<br/>while I can't fathom the intent, it seems that currently Trek<br/>has some kind of strong commitment to having<br/>tire letter gravity point toward the wheel exterior.<br/><br/>Since it doesn't affect tire performance,<br/>it's not like it's bad, but<br/>it feels so incredibly strange to me that<br/>I can't understand why they'd deliberately do this,<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07400amx14.jpg" target="_blank"><img alt="DSC07400amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07400amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07401amx14.jpg" target="_blank"><img alt="DSC07401amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC07401amx14s.jpg" width="320"/></a><br/>and the OEM manufacturers contracted for tire production<br/>apparently didn't go along with it either.
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">Products Mentioned in This Article</p>
       <ul>

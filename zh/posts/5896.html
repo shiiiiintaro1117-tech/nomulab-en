@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/5896.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>購入了 Fouriers 的鏈條導輪</h1>
     <p class="post-meta">September 28, 2021</p>
+    <div class="post-body"><div class="entrytext">我現在正在使用的日常公路車採用前單速齒輪配置<br/>（其實早在窄寬齒輪盤普及之前就開始用了）<br/>曲柄使用 Campagnolo Ecal<br/>但在特定的使用情況下發現鏈條會往外側脫落<br/>在下坡時掛上最高檔<br/>以時速約５０km 踩過路面的坑洞時鏈條就會脫落<br/>某個山坡下坡的直線段有一個必定會發生的地點<br/>只要持續踩踏並保持鏈條張力的狀態<br/>就不會脫落<br/>另外，如果掛低檔的話由於鏈條張力夠<br/>鏈條不會從齒輪盤上搖晃到脫落的程度<br/>但下坡時掛這麼低的檔位<br/>踩踏時檔位太輕會很困擾<br/><br/>因此我在尋找能防止鏈條脫落的導輪<br/>剛好發現 Fouriers 的 CT-FD007 這個型號很便宜<br/>就買了<br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04237amx14.jpg" target="_blank"><img alt="DSC04237amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04237amx14s.jpg" width="320"/></a><br/>↑就是這個<br/>是用 U 形設計將鏈條的下方以外三個方向圍起來<br/>另外還有一款 CT-FD002 型號<br/>類似前變速器的導片設計，四方都圍起來<br/>CT-FD002 的建議零售價為 3,300 日圓，CT-FD007 為 3,500 日圓<br/>可能因為有很多塑膠部件所以才便宜<br/>但即便如此價格仍然便宜得驚人<br/><br/>雖然材質不同（主要是鋁材）且效果是否相同不得而知<br/>但 Wolf Tooth 的「GnarWolf」<br/>在原廠網站的日圓價格是 10,800 圓<br/>K-EDGE 的「K13-080」建議零售價為 12,545 圓<br/>Wickworks 的「Sentinel」構造上外側也附有鏈條導輪<br/>建議零售價為 5,200 圓<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04238amx14.jpg" target="_blank"><img alt="DSC04238amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04238amx14s.jpg" width="320"/></a><br/>夾箍為 34.9mm，附帶可轉換為 31.8mm 的墊片<br/>在 34.9mm 的使用狀態下實測重量為 58g<br/>但廠商的公稱重量為 76g<br/>可能是把所有未使用的小零件加起來算的<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04239amx14.jpg" target="_blank"><img alt="DSC04239amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04239amx14s.jpg" width="320"/></a><br/>↑把鏈條套進這個 U 形的部分<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04240amx14.jpg" target="_blank"><img alt="DSC04240amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04240amx14s.jpg" width="320"/></a><br/>外側導片可以從兩種形狀中選擇<br/>不過看起來兩者沒有太大差別<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04242amx14.jpg" target="_blank"><img alt="DSC04242amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04242amx14s.jpg" width="320"/></a><br/>外側導片組件有定位銷<br/>相對於內側導片不會旋轉或移位<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04241amx14.jpg" target="_blank"><img alt="DSC04241amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04241amx14s.jpg" width="320"/></a><br/>導片上下滑動的部分除了開口外還有定位銷<br/>確保只能沿著開口滑動，不能做其他動作<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04243amx14.jpg" target="_blank"><img alt="DSC04243amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04243amx14s.jpg" width="320"/></a><br/>開口部分裝在夾箍上的孔是方形的<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04244amx14.jpg" target="_blank"><img alt="DSC04244amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04244amx14s.jpg" width="320"/></a><br/>但夾箍側伸出的部分是六角形<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04245amx14.jpg" target="_blank"><img alt="DSC04245amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04245amx14s.jpg" width="320"/></a><br/>六角形的對邊和方形的對邊尺寸基本相同，或者說<br/>六角形的正公差較大（或方形的負公差較小）<br/>手指按壓的話按不進去<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04246amx14.jpg" target="_blank"><img alt="DSC04246amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04246amx14s.jpg" width="320"/></a><br/>但轉緊螺絲時就會以壓入的方式進入<br/>沒有任何鬆動，完全卡死，這應該是故意設計的<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04253amx14.jpg" target="_blank"><img alt="DSC04253amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04253amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04252amx14.jpg" target="_blank"><img alt="DSC04252amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04252amx14s.jpg" width="320"/></a><br/>↑裝上去的樣子<br/>這是林道自行車<br/>曲柄是 Sunrace 的 Superbe PCD 144mm<br/>由於背面有裝內齒輪的凸起<br/>所以這不是牙盤車用而是很久以前的公路車用<br/>上面裝著 Dura-Ace Track 薄齒 45T<br/><s>稍微加工過</s><br/>搭配 10S 鏈條<br/><br/>雖然開頭說的是公路車用<br/>但還是需要 Fouriers<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04248amx14.jpg" target="_blank"><img alt="DSC04248amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04248amx14s.jpg" width="320"/></a><br/>時間軸往回一下<br/>這是林道車原本裝著的自製鏈條導輪<br/>實測重量只有 21g 相當輕<br/>當初進行前單速化時還沒有窄寬齒輪盤存在<br/>所以這種導輪是必需品<br/>如果只要防止內側脫落的話有更簡單的設計<br/>但實際上鏈條跳躍大多是往外側脫落<br/>當時只有 MTB 用的大型鏈條導輪<br/>或者就是直接裝公路車前變速器<br/>或者是稍微改裝一下的方案可選<br/>外觀上不太理想，所以我自製了只保護必要部分的導輪<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04249amx14.jpg" target="_blank"><img alt="DSC04249amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04249amx14s.jpg" width="320"/></a><br/>夾箍是 E 型前變速器的防轉基座夾箍<br/>但在 E 型 MTB 前變速器衰退後<br/>34.9mm 的規格後來還被用在 BD-1 的轉向管部分裝水壺籠<br/>除此之外，在林道自行車的變速線是上拉式<br/>但要裝下拉式的前變速器時<br/>（公路車前變速器是下拉式）<br/>沒有 M5 螺孔的車架上為了裝改變拉線方向的導輪<br/>也會用這種夾箍作為後裝解決方案<br/>￥<br/>兩個螺帽分別鎖在導片和夾箍上<br/>可以調整導片的角度和橫向位置<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04251amx14.jpg" target="_blank"><img alt="DSC04251amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04251amx14s.jpg" width="320"/></a><br/>↑留下了工作的痕跡<br/>從裝上這個導輪以後（更確切地說是調整好以後）<br/>就再也沒有發生過鏈條脫落<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04266amx14.jpg" target="_blank"><img alt="DSC04266amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04266amx14s.jpg" width="320"/></a><br/>移裝到公路車上了<br/>之前畫在左曲柄上的<br/>Campagnolo Ecal 的非官方角色<br/>「小蛙君」現在移到了右曲柄<br/>左眼是北極星，也就是在旋轉狀態下<br/>大約位於曲柄的中央位置，但沒有其他含義<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04268amx14.jpg" target="_blank"><img alt="DSC04268amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04268amx14s.jpg" width="320"/></a><br/>夾箍換成了 31.8mm 的規格，並進一步重新塗裝<br/>因為原來 34.9mm 的夾箍表面有浮銹<br/>其實這個車架的坐管直徑是 30mm<br/>所以中間夾了墊片<br/><br/>導片頂部的皺褶是因為<br/>在通過螺絲時需要稍微彎曲 U 形部分<br/>螺絲頭的高度必須是低矮的半沉頭或盤頭<br/>否則會和鏈條干涉<br/>不過這只是這個金具的情況<br/><br/>通過螺絲的長度可以進行大致的橫向位置調整<br/>通過螺紋的咬合程度可以進行微調<br/>要注意的是，如果使用夾箍螺紋部分全部用滿的長度<br/>螺絲會頂到車架，所以必須避免這種情況發生<br/><br/>我想要的前單速齒輪數是 46T<br/>但 Ecal 的規格線是 38～44T 的 2T 遞增<br/>外廠品（大概）也沒有，所以只能勉強用 44T<br/>飛輪用 11-28T 或 11-30T<br/>目前是 11-30T<br/>44×30T 的齒比理論值是 39×26.59T<br/>比 39×26T 稍微輕一點<br/>只要不是陡坡就沒問題<br/>最高檔 44×11T 正好 4 倍<br/>和相同齒比的 52×13T 相比<br/>由於鏈輪較小會有負向補正<br/>在下坡時可以踩到大約時速 55km（※）<br/>這已經確認過了<br/>只要不是賽道下坡的話就沒問題<br/><br/>※剛才計算了一下踏頻大約是 108rpm<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04269amx14.jpg" target="_blank"><img alt="DSC04269amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04269amx14s.jpg" width="320"/></a><br/>↑最高檔<br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04270amx14.jpg" target="_blank"><img alt="DSC04270amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04270amx14s.jpg" width="320"/></a><br/>↑最低檔<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04273amx14.jpg" target="_blank"><img alt="DSC04273amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04273amx14s.jpg" width="320"/></a><br/>↑最高檔<br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04272amx14.jpg" target="_blank"><img alt="DSC04272amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04272amx14s.jpg" width="320"/></a><br/>↑最低檔<br/><br/>這些照片是在今年 8 月 22 日拍的<br/>鏈條雖然很髒，但之後洗車了<br/>並在包括開頭提到的那個必定會脫落的山坡下坡在內<br/>各種騎乘狀況下試驗，鏈條一次都沒有脫落過<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04751amx14.jpg" target="_blank"><img alt="DSC04751amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04751amx14s.jpg" width="320"/></a><br/>↑這是今天 9 月 28 日的狀況<br/>鏈條跳躍導片被弄髒了<s>真的是辛苦活</s><br/>有時候在騎乘中能感受到「現在在工作呢」的那一刻
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">我現在正在使用的日常公路車採用前單速齒輪配置<br/>（其實早在窄寬齒輪盤普及之前就開始用了）<br/>曲柄使用 Campagnolo Ecal<br/>但在特定的使用情況下發現鏈條會往外側脫落<br/>在下坡時掛上最高檔<br/>以時速約５０km 踩過路面的坑洞時鏈條就會脫落<br/>某個山坡下坡的直線段有一個必定會發生的地點<br/>只要持續踩踏並保持鏈條張力的狀態<br/>就不會脫落<br/>另外，如果掛低檔的話由於鏈條張力夠<br/>鏈條不會從齒輪盤上搖晃到脫落的程度<br/>但下坡時掛這麼低的檔位<br/>踩踏時檔位太輕會很困擾<br/><br/>因此我在尋找能防止鏈條脫落的導輪<br/>剛好發現 Fouriers 的 CT-FD007 這個型號很便宜<br/>就買了<br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04237amx14.jpg" target="_blank"><img alt="DSC04237amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04237amx14s.jpg" width="320"/></a><br/>↑就是這個<br/>是用 U 形設計將鏈條的下方以外三個方向圍起來<br/>另外還有一款 CT-FD002 型號<br/>類似前變速器的導片設計，四方都圍起來<br/>CT-FD002 的建議零售價為 3,300 日圓，CT-FD007 為 3,500 日圓<br/>可能因為有很多塑膠部件所以才便宜<br/>但即便如此價格仍然便宜得驚人<br/><br/>雖然材質不同（主要是鋁材）且效果是否相同不得而知<br/>但 Wolf Tooth 的「GnarWolf」<br/>在原廠網站的日圓價格是 10,800 圓<br/>K-EDGE 的「K13-080」建議零售價為 12,545 圓<br/>Wickworks 的「Sentinel」構造上外側也附有鏈條導輪<br/>建議零售價為 5,200 圓<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04238amx14.jpg" target="_blank"><img alt="DSC04238amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04238amx14s.jpg" width="320"/></a><br/>夾箍為 34.9mm，附帶可轉換為 31.8mm 的墊片<br/>在 34.9mm 的使用狀態下實測重量為 58g<br/>但廠商的公稱重量為 76g<br/>可能是把所有未使用的小零件加起來算的<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04239amx14.jpg" target="_blank"><img alt="DSC04239amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04239amx14s.jpg" width="320"/></a><br/>↑把鏈條套進這個 U 形的部分<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04240amx14.jpg" target="_blank"><img alt="DSC04240amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04240amx14s.jpg" width="320"/></a><br/>外側導片可以從兩種形狀中選擇<br/>不過看起來兩者沒有太大差別<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04242amx14.jpg" target="_blank"><img alt="DSC04242amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04242amx14s.jpg" width="320"/></a><br/>外側導片組件有定位銷<br/>相對於內側導片不會旋轉或移位<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04241amx14.jpg" target="_blank"><img alt="DSC04241amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04241amx14s.jpg" width="320"/></a><br/>導片上下滑動的部分除了開口外還有定位銷<br/>確保只能沿著開口滑動，不能做其他動作<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04243amx14.jpg" target="_blank"><img alt="DSC04243amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04243amx14s.jpg" width="320"/></a><br/>開口部分裝在夾箍上的孔是方形的<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04244amx14.jpg" target="_blank"><img alt="DSC04244amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04244amx14s.jpg" width="320"/></a><br/>但夾箍側伸出的部分是六角形<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04245amx14.jpg" target="_blank"><img alt="DSC04245amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04245amx14s.jpg" width="320"/></a><br/>六角形的對邊和方形的對邊尺寸基本相同，或者說<br/>六角形的正公差較大（或方形的負公差較小）<br/>手指按壓的話按不進去<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04246amx14.jpg" target="_blank"><img alt="DSC04246amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04246amx14s.jpg" width="320"/></a><br/>但轉緊螺絲時就會以壓入的方式進入<br/>沒有任何鬆動，完全卡死，這應該是故意設計的<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04253amx14.jpg" target="_blank"><img alt="DSC04253amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04253amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04252amx14.jpg" target="_blank"><img alt="DSC04252amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04252amx14s.jpg" width="320"/></a><br/>↑裝上去的樣子<br/>這是林道自行車<br/>曲柄是 Sunrace 的 Superbe PCD 144mm<br/>由於背面有裝內齒輪的凸起<br/>所以這不是牙盤車用而是很久以前的公路車用<br/>上面裝著 Dura-Ace Track 薄齒 45T<br/><s>稍微加工過</s><br/>搭配 10S 鏈條<br/><br/>雖然開頭說的是公路車用<br/>但還是需要 Fouriers<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04248amx14.jpg" target="_blank"><img alt="DSC04248amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04248amx14s.jpg" width="320"/></a><br/>時間軸往回一下<br/>這是林道車原本裝著的自製鏈條導輪<br/>實測重量只有 21g 相當輕<br/>當初進行前單速化時還沒有窄寬齒輪盤存在<br/>所以這種導輪是必需品<br/>如果只要防止內側脫落的話有更簡單的設計<br/>但實際上鏈條跳躍大多是往外側脫落<br/>當時只有 MTB 用的大型鏈條導輪<br/>或者就是直接裝公路車前變速器<br/>或者是稍微改裝一下的方案可選<br/>外觀上不太理想，所以我自製了只保護必要部分的導輪<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04249amx14.jpg" target="_blank"><img alt="DSC04249amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04249amx14s.jpg" width="320"/></a><br/>夾箍是 E 型前變速器的防轉基座夾箍<br/>但在 E 型 MTB 前變速器衰退後<br/>34.9mm 的規格後來還被用在 BD-1 的轉向管部分裝水壺籠<br/>除此之外，在林道自行車的變速線是上拉式<br/>但要裝下拉式的前變速器時<br/>（公路車前變速器是下拉式）<br/>沒有 M5 螺孔的車架上為了裝改變拉線方向的導輪<br/>也會用這種夾箍作為後裝解決方案<br/>￥<br/>兩個螺帽分別鎖在導片和夾箍上<br/>可以調整導片的角度和橫向位置<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04251amx14.jpg" target="_blank"><img alt="DSC04251amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04251amx14s.jpg" width="320"/></a><br/>↑留下了工作的痕跡<br/>從裝上這個導輪以後（更確切地說是調整好以後）<br/>就再也沒有發生過鏈條脫落<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04266amx14.jpg" target="_blank"><img alt="DSC04266amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04266amx14s.jpg" width="320"/></a><br/>移裝到公路車上了<br/>之前畫在左曲柄上的<br/>Campagnolo Ecal 的非官方角色<br/>「小蛙君」現在移到了右曲柄<br/>左眼是北極星，也就是在旋轉狀態下<br/>大約位於曲柄的中央位置，但沒有其他含義<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04268amx14.jpg" target="_blank"><img alt="DSC04268amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04268amx14s.jpg" width="320"/></a><br/>夾箍換成了 31.8mm 的規格，並進一步重新塗裝<br/>因為原來 34.9mm 的夾箍表面有浮銹<br/>其實這個車架的坐管直徑是 30mm<br/>所以中間夾了墊片<br/><br/>導片頂部的皺褶是因為<br/>在通過螺絲時需要稍微彎曲 U 形部分<br/>螺絲頭的高度必須是低矮的半沉頭或盤頭<br/>否則會和鏈條干涉<br/>不過這只是這個金具的情況<br/><br/>通過螺絲的長度可以進行大致的橫向位置調整<br/>通過螺紋的咬合程度可以進行微調<br/>要注意的是，如果使用夾箍螺紋部分全部用滿的長度<br/>螺絲會頂到車架，所以必須避免這種情況發生<br/><br/>我想要的前單速齒輪數是 46T<br/>但 Ecal 的規格線是 38～44T 的 2T 遞增<br/>外廠品（大概）也沒有，所以只能勉強用 44T<br/>飛輪用 11-28T 或 11-30T<br/>目前是 11-30T<br/>44×30T 的齒比理論值是 39×26.59T<br/>比 39×26T 稍微輕一點<br/>只要不是陡坡就沒問題<br/>最高檔 44×11T 正好 4 倍<br/>和相同齒比的 52×13T 相比<br/>由於鏈輪較小會有負向補正<br/>在下坡時可以踩到大約時速 55km（※）<br/>這已經確認過了<br/>只要不是賽道下坡的話就沒問題<br/><br/>※剛才計算了一下踏頻大約是 108rpm<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04269amx14.jpg" target="_blank"><img alt="DSC04269amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04269amx14s.jpg" width="320"/></a><br/>↑最高檔<br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04270amx14.jpg" target="_blank"><img alt="DSC04270amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04270amx14s.jpg" width="320"/></a><br/>↑最低檔<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04273amx14.jpg" target="_blank"><img alt="DSC04273amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04273amx14s.jpg" width="320"/></a><br/>↑最高檔<br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04272amx14.jpg" target="_blank"><img alt="DSC04272amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04272amx14s.jpg" width="320"/></a><br/>↑最低檔<br/><br/>這些照片是在今年 8 月 22 日拍的<br/>鏈條雖然很髒，但之後洗車了<br/>並在包括開頭提到的那個必定會脫落的山坡下坡在內<br/>各種騎乘狀況下試驗，鏈條一次都沒有脫落過<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04751amx14.jpg" target="_blank"><img alt="DSC04751amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC04751amx14s.jpg" width="320"/></a><br/>↑這是今天 9 月 28 日的狀況<br/>鏈條跳躍導片被弄髒了<s>真的是辛苦活</s><br/>有時候在騎乘中能感受到「現在在工作呢」的那一刻
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

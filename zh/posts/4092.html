@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/4092.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Other Equipment</p>
     <h1>將日常通勤用公路車改成單速齒輪仕様</h1>
     <p class="post-meta">May 21, 2018</p>
+    <div class="post-body"><div class="entrytext">將通勤兼祕密練習（※）用的公路車前變速改成單速齒輪了。<br/>※獨自偷偷進行的練習<br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04590amx9.jpg" target="_blank"><img alt="DSC04590amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04590amx9s.jpg" width="320"/></a><br/>好幾年沒試著去掉後輪圈上的基爾羅伊塗鴉了，<br/>結果被日曬留下了痕跡。算了，隨便吧。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04591amx9.jpg" target="_blank"><img alt="DSC04591amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04591amx9s.jpg" width="320"/></a><br/>換成了Wolf Tooth（美國單速齒輪專業廠牌）的窄寬齒輪盤，<br/>並且拆掉了前變速器。<br/>窄寬齒輪盤雖然有各種廠商製作，<br/>但至少在Wolf Tooth和SRAM的產品中，<br/>我所知的公路車就沒發生過掉鏈的情況。<br/>在越野自行車上似乎極少會發生，<br/>如果在意的話可以裝上Wolf Tooth的Gnarwolf或<br/>Praxis Works的導鏈器等配件。<br/>不過這樣做的話，拆掉前變速器帶來的輕量化效果<br/>就會大大減弱了。<br/><br/>在機械式變速的情況下，前變速的外線和內線也能拆掉，<br/>這部分也能起到輕量化的作用。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04604amx9.jpg" target="_blank"><img alt="DSC04604amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04604amx9s.jpg" width="320"/></a><br/>對於Campagnolo和SRAM的情況，可以拆開左邊把手內部<br/>改成單純的剎車把手。<br/>「可以」的意思是說可以復原。<br/><br/>無論哪種情況，把手側的回位彈簧會消失，<br/>但只要組裝得當，光靠制動器本體的回位彈簧<br/>就足以讓把手復位了。<br/>反而因為不用克服把手彈簧的力量，<br/>拉力會變得更輕。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04592amx9.jpg" target="_blank"><img alt="DSC04592amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04592amx9s.jpg" width="320"/></a><br/>我所擁有的公路車曲柄大多是<br/>PCD 144mm或135mm的規格，<br/>但這些PCD規格的窄寬齒輪盤幾乎不存在<br/>（135mm的曾在美國的小廠出現過，但沒有較大齒數的選項），<br/>所以需要把曲柄換成PCD 130mm或110mm的。<br/>在PCD 130mm中，我想使用的曲柄<br/>是FC-7402超級賽級、禧瑪諾超級賽級Pro、<br/>FC-6600G Altegra SL等，<br/>但這次用了手邊現成的SRAM GXP曲柄。<br/>因為我使用的曲柄長度是165mm，<br/>這也限縮了選擇的範圍。<br/><br/>在PCD 144mm曲柄的情況下我主要使用52-42T，<br/>而130mm曲柄的情況下主要使用52-39T，<br/>但無論哪種情況，後飛輪的最小齒數我都設定為25T。<br/>42×25T按計算相當於39×23.21T，<br/>所以42×25T≒39×23T。<br/><br/>改成前單速齒輪時，<br/>最輕檔的齒輪比在39×23T附近，<br/>最重檔的齒輪比達到4倍或更高的話，<br/>通勤和祕密練習基本上都不會有問題。大多數山路都能應付。<br/>雖然只有大阪周邊的人才能理解，<br/>這裡說的「大多數山路」是否包括十三峠<br/>對我來說是衡量認真訓練程度的分界線。<br/>用39×23T（≒34×20T）能輕快地騎過去嗎……目前還辦不到。<br/>順帶一提，這個部落格網址裡的PASS13就是源自十三峠。<br/><br/>想用前單速齒輪盡量表現出52-39T×11-25T的<br/>外圈×最重檔和內圈×最輕檔，<br/>最初設定是48T×11-32T。<br/>兩端相當於52×12T和39×26T。<br/>稍微偏向輕檔方向，<br/>但重檔方面只要達到4倍以上就沒問題。<br/>順便說一下，52×13T和48×12T和44×11T<br/>雖然齒輪比都是4倍，但由於前齒輪大小不同，<br/>實際踏踪時的重量並不相同，這回先不談。<br/><br/>上面的圖片中已經換成了Shimano 11速的11-28T飛輪。<br/>後變速器本來不支援32T，<br/>但實際使用中沒有出現問題。<br/>放棄32T的原因是<br/>無法忍受那種不像公路車的<br/>破壞性外觀。<br/>↑在目前的標準套件中都包含32T最輕檔飛輪的狀況下<br/>我不應該這樣說！<br/><br/>48T×11-28T的兩端相當於52×12T和39×23T弱（22.75T）。<br/>11-32T的情況下，變速時的齒數跨度是<br/>1・1・1・2・2・2・2・3・3・4，<br/>每次變速造成的踏頻變化<br/>雖然有點勉強，但11-28T變成<br/>1・1・1・1・2・2・2・2・3・3了。<br/>既然有點勉強何必改成前單速，有人可能會這樣說，<br/>但這本身不是前單速齒輪的問題，只是寬比例的緣故。<br/>用52×39T進行通勤或平地練習時，<br/>內圈可能完全不用或很少用到，<br/>這種情況下等同於用52T單速齒輪騎行。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04630amx9.jpg" target="_blank"><img alt="DSC04630amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04630amx9s.jpg" width="320"/></a><br/>↑把52-39T×11-25T的齒輪比列出來是這樣。<br/>內圈×最重檔是3.55，<br/>比這更重的外圈×最重檔側4檔<br/>成為「只有外圈才能達到的重量」，<br/>外圈×最輕檔是2.08，<br/>比這更輕的內圈×最輕檔側4檔<br/>成為「只有內圈才能達到的輕度」。<br/>內圈頂部起算第8檔的2.05<br/>與外圈×最輕檔的2.08幾乎相同，<br/>所以「只有內圈才能達到的輕度」也可以說是3檔。<br/>其他齒輪比中外圈和內圈的數值<br/>相同或接近的情況也存在。<br/>前齒輪2檔×11速乍看之下像是「22色鉛筆組」，<br/>但其實只是本數是22本，混雜著幾乎相同顏色的鉛筆。<br/>除去那些重複的，實際的色數大約是15色。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04631amx9.jpg" target="_blank"><img alt="DSC04631amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04631amx9s.jpg" width="320"/></a><br/>用52-39T×11-25T按齒輪比順序嚴格變速的話會是這樣。<br/>52×16T＝39×12T＝3.25時<br/>為了減少前變速次數而忽略了內圈側。<br/>當然，這種用法在現實中不實用。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04632amx9.jpg" target="_blank"><img alt="DSC04632amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04632amx9s.jpg" width="320"/></a><br/>實際上的用法應該是<br/>從外圈×最重檔開始用到外圈×最輕檔附近，<br/>之後變速到內圈獨有的輕檔3檔，<br/>從內圈×最輕檔往上時<br/>在內圈頂部起算第3～4檔的某處<br/>變速到外圈，應該就是這樣。<br/>預先按指令進行這種操作的<br/>就是Shimano電動變速套件的同步變速功能。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04633amx9.jpg" target="_blank"><img alt="DSC04633amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04633amx9s.jpg" width="320"/></a><br/>在這裡加上了48T單速×11-28T的齒輪比。<br/>雖然兩端較短，但變成了11色11本的色鉛筆。<br/>我之前說22本色鉛筆實質上大約是15色，<br/>那就是說如果後飛輪段數達到15速左右的話，<br/>也許前單速齒輪就能完全滿足需求了。<br/>要用52T表現39×25T的輕度，理論值是33.33T，<br/>也就是34T。<br/>如果能用52×11-34T的組合，<br/>讓變速時的齒輪比變化相對於齒數跨度<br/>小到不會在意（改變踏頻時不費力），<br/>那前變速器就真的不需要了。<br/><br/>我不是想藉此聲稱前單速齒輪是前雙速的上位互換。<br/>實際上兩端的齒輪比我就放棄了。<br/>11速程度不該這樣折騰。<br/>而且Shimano的Hollowtech II曲柄和SRAM的GXP曲柄，<br/>還有壓入式下轉五通都無法實現另一個野心。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04636amx9.jpg" target="_blank"><img alt="DSC04636amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04636amx9s.jpg" width="320"/></a><br/>另一個野心就是「縮小Q因素」。<br/>既然能根據肩寬選擇把手寬度，<br/>為什麼不能根據胯寬選擇曲柄寬度呢（加寬很容易，但縮小不行），<br/>我覺得這很奇怪，但其實有原因。<br/>外齒盤外側切面和<br/>內齒盤內側切面的中點位置<br/>到車架中心的距離稱為「鏈線」，<br/>Shimano規定這個數值為43.5mm，<br/>如果使用第三方曲柄組等方式<br/>讓鏈線大幅偏離這個數值，<br/>就會超出前變速器的調整範圍，導致<br/>外圈×最重檔或內圈×最輕檔時<br/>前變速器和鏈條干涉。<br/>在保持鏈線的前提下縮小Q因素在結構上是困難的，<br/>所以曲柄長度還好說，寬度就沒那麼容易改了。<br/><s>我又不是不知道La Crankset那種東西。<br/>但那個也談不上大幅縮小Q因素……</s><br/><br/>上圖中畫的是Hollowtech II類型的下轉五通，<br/>這類五通是無法改變Q因素<br/>（左右踏板軸的距離）的。<br/>Q因素在現今大廠的曲柄組中<br/>基本都在148mm左右。<br/>Campagnolo的Ultra Torque曲柄上曾標註過<br/>「145.5mm」，<br/>但這支曲柄不裝在車架上而是在空中組好，<br/>左右曲臂相位對齊後測量的話會變成147mm。<br/><br/>我有台公路車裝的是方形塔柱下轉五通的<br/>死飛曲柄，它的Q因素是135mm，<br/>如果左右不要求對稱的話能做到132mm。<br/><br/>我試過把手寬度從340mm到440mm，<br/>340mm時雖然最容易穿過車陣而且<br/>在三軸滾筒上容易做出踩踏動作，但操控感過於敏銳難以使用，<br/>440mm則純粹是太寬不好用，<br/>最後我落定在400mm（外邊到外邊400mm）。<br/><br/>而且當用過Q因素在130mm台的曲柄組後，<br/>再用148mm前後的曲柄組騎了連續3天，<br/>就會產生「哇！好寬！好難受！」的感覺。<br/>換句話說，到目前為止我經歷過把手太窄而難以使用，<br/>但從未經歷過Q因素太窄而難以使用。<br/>「再縮小就會難以使用的折返點」還沒到達，<br/>所以我不知道該在哪裡妥協。<br/>那支死飛曲柄PCD是144mm所以最小齒數是42T，<br/>內齒盤和右曲柄間隙不到1mm，<br/>用水潑的話水滴都能卡在中間。<br/>當然鏈線比廠商設想的更偏內側，<br/>內圈×最輕檔時前變速器和鏈條不會干涉<br/>（我特意調整過），<br/>所以使用上沒有問題。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04637amx9.jpg" target="_blank"><img alt="DSC04637amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04637amx9s.jpg" width="320"/></a><br/>而在用窄寬齒輪做前單速專門設計時，<br/>不必對鏈線那麼敏感，<br/>所以至少在現在的鏈線位置<br/>是否能把齒盤裝上去，<br/>以及那樣的話是否能多少縮小Q因素，<br/>我是這樣想的。<br/>我不是套件廠商所以Hollowtech II規格<br/>裡無法縮小Q因素，<br/>但如果是方形塔柱曲柄的話能做到一定程度。<br/>我在開頭提到的PCD 130mm曲柄<br/>FC-7402和超級賽級Pro<br/>是因為經驗上我知道能做到，才列出來的。<br/>FC-7402的下一個型號FC-7410不行。<br/>原廠下轉五通軸長是103mm，<br/>而Shimano規格更短的方形塔柱五通幾乎不存在。<br/>而且FC-7410用原廠五通和曲柄組合時<br/>右曲柄比左曲柄內縮2mm，<br/>要是講究左右對稱的話<br/>得在右踏板上墊2mm的墊圈。<br/>再下一個FC-7700/7701是Octalink五通，<br/>雙速用109.5mm、三速用118.5mm的<br/>專用五通，沒有其他選擇，<br/>因此Q因素改不了。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04638amx9.jpg" target="_blank"><img alt="DSC04638amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04638amx9s.jpg" width="320"/></a><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04639amx9.jpg" target="_blank"><img alt="DSC04639amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04639amx9s.jpg" width="320"/></a><br/>支援Octalink五通的第三方曲柄<br/>是有Sugino和FSA等品牌製作的<br/>（Sugino製的在Specialized完成車上<br/>標著Specialized商標的曲柄上更常見），<br/>但Octalink五通是Shimano絕對禁止他廠製造的，<br/>所以沒有第三方的五通選擇。<br/><br/>下一個FC-7800以後是Hollowtech II，<br/>完全沒辦法在Q因素上玩花樣了。<br/><br/>所以如果有PCD 144mm的窄寬齒輪的話，<br/>既能縮小Q因素又能實現前單速化，<br/>會非常有用，但遺憾的是沒有這樣的配件。<br/>而且目前適配公路車曲柄的前單速齒輪<br/>似乎只考慮越野自行車市場的需求，<br/>除了Wolf Tooth以外的廠商大多<br/>最多也只有42T的規格。<br/>Wolf Tooth的話<br/>PCD 130mm五臂用有38～52T的2T刻度，<br/>PCD 110mm五臂用有34～52T的2T刻度，<br/>適配R9100系的四臂用則有36～50T的2T刻度。<br/>窄寬齒輪所以2T刻度是當然的，<br/>我只是順便寫一下。<br/>我不是Wolf Tooth的托。<br/>順帶一提，PCD 110mm五臂用還有非圓形齒輪。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04641amx9.jpg" target="_blank"><img alt="DSC04641amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04641amx9s.jpg" width="320"/></a><br/>PCD 130mm165mm曲柄的話<br/>我還有FC-7900，<br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04640amx9.jpg" target="_blank"><img alt="DSC04640amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04640amx9s.jpg" width="320"/></a><br/>↑這個縫隙不吻合的程度非常難看。<br/>FC-9000和FC-R9100等四臂的話<br/>RIDEA和Absolute Black等廠商都有<br/>能漂亮填補這處的零件，<br/>但7900的話Praxis Works出過但<br/>現在已停產（原廠網站也沒有了），難以入手。<br/>用「praxis works 7900 bolt kit」搜尋的話能找到圖片。<br/><br/><br/><br/>回到正題，<br/>最初用48T×11-32T時<br/>後來把飛輪改成11-28T，<br/>才發現在祕密練習中48×12T的4倍齒比<br/>幾乎都用不到。<br/>4倍齒比用700C管胎踏頻100rpm的話<br/>時速50.1km/h，這不是我能獨力維持的速度。<br/>頂多是下坡時踩不出力的程度。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04595amx9.jpg" target="_blank"><img alt="DSC04595amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04595amx9s.jpg" width="320"/></a><br/>48T必須裝在曲柄五臂的外側位置。<br/>雖然視車架而定會有例外，<br/>但不這樣做齒盤會和右曲柄干涉。<br/>然而44T似乎是預設裝在內側位置的，<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04596amx9.jpg" target="_blank"><img alt="DSC04596amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04596amx9s.jpg" width="320"/></a><br/>齒盤外側的螺孔沒有沉頭螺栓的加工。<br/>但在Wolf Tooth的產品中，<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04597amx9.jpg" target="_blank"><img alt="DSC04597amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04597amx9s.jpg" width="320"/></a><br/>即便是預設內側位置的齒數<br/>齒盤內側也沒有沉頭孔。<br/>34T也是這樣，所以我想內側用的<br/>全部都是這樣（邊界齒數我不知道，抱歉），<br/>麻煩的是雙側都沒沉頭的齒盤<br/>用單速用5pin的話長度不夠，<br/>所以需要在螺紋孔側準備雙速用或稍長的螺釘。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04603amx9.jpg" target="_blank"><img alt="DSC04603amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04603amx9s.jpg" width="320"/></a><br/>改成44T了。<br/>刻意裝在外側位置。<br/>知道回不到48T，連鏈條節數也縮減了。<br/><br/>用52×39T的兩端表現的話，44T×11-28T是<br/>52×13T～39×25T弱（24.81T），11本11色的色鉛筆。<br/>另外，有點無關痛癢的事，<br/>從39×25T相當一直變速到52×13T<br/>只需約1秒鐘。<br/>即使是前雙速齒輪也做不到這個<br/>（說不定電動變速套件更耗時）。<br/><br/>我一直都喜歡單速齒輪，<br/>在這之前越野自行車、爬坡車和計時車<br/>都已經是單速仕様了。<br/>窄寬齒輪出現之前<br/>我都是自己製作脫落防止零件，<br/>現在連這個必要都沒有了。<br/>真是個方便的年代啊。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">將通勤兼祕密練習（※）用的公路車前變速改成單速齒輪了。<br/>※獨自偷偷進行的練習<br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04590amx9.jpg" target="_blank"><img alt="DSC04590amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04590amx9s.jpg" width="320"/></a><br/>好幾年沒試著去掉後輪圈上的基爾羅伊塗鴉了，<br/>結果被日曬留下了痕跡。算了，隨便吧。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04591amx9.jpg" target="_blank"><img alt="DSC04591amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04591amx9s.jpg" width="320"/></a><br/>換成了Wolf Tooth（美國單速齒輪專業廠牌）的窄寬齒輪盤，<br/>並且拆掉了前變速器。<br/>窄寬齒輪盤雖然有各種廠商製作，<br/>但至少在Wolf Tooth和SRAM的產品中，<br/>我所知的公路車就沒發生過掉鏈的情況。<br/>在越野自行車上似乎極少會發生，<br/>如果在意的話可以裝上Wolf Tooth的Gnarwolf或<br/>Praxis Works的導鏈器等配件。<br/>不過這樣做的話，拆掉前變速器帶來的輕量化效果<br/>就會大大減弱了。<br/><br/>在機械式變速的情況下，前變速的外線和內線也能拆掉，<br/>這部分也能起到輕量化的作用。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04604amx9.jpg" target="_blank"><img alt="DSC04604amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04604amx9s.jpg" width="320"/></a><br/>對於Campagnolo和SRAM的情況，可以拆開左邊把手內部<br/>改成單純的剎車把手。<br/>「可以」的意思是說可以復原。<br/><br/>無論哪種情況，把手側的回位彈簧會消失，<br/>但只要組裝得當，光靠制動器本體的回位彈簧<br/>就足以讓把手復位了。<br/>反而因為不用克服把手彈簧的力量，<br/>拉力會變得更輕。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04592amx9.jpg" target="_blank"><img alt="DSC04592amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04592amx9s.jpg" width="320"/></a><br/>我所擁有的公路車曲柄大多是<br/>PCD 144mm或135mm的規格，<br/>但這些PCD規格的窄寬齒輪盤幾乎不存在<br/>（135mm的曾在美國的小廠出現過，但沒有較大齒數的選項），<br/>所以需要把曲柄換成PCD 130mm或110mm的。<br/>在PCD 130mm中，我想使用的曲柄<br/>是FC-7402超級賽級、禧瑪諾超級賽級Pro、<br/>FC-6600G Altegra SL等，<br/>但這次用了手邊現成的SRAM GXP曲柄。<br/>因為我使用的曲柄長度是165mm，<br/>這也限縮了選擇的範圍。<br/><br/>在PCD 144mm曲柄的情況下我主要使用52-42T，<br/>而130mm曲柄的情況下主要使用52-39T，<br/>但無論哪種情況，後飛輪的最小齒數我都設定為25T。<br/>42×25T按計算相當於39×23.21T，<br/>所以42×25T≒39×23T。<br/><br/>改成前單速齒輪時，<br/>最輕檔的齒輪比在39×23T附近，<br/>最重檔的齒輪比達到4倍或更高的話，<br/>通勤和祕密練習基本上都不會有問題。大多數山路都能應付。<br/>雖然只有大阪周邊的人才能理解，<br/>這裡說的「大多數山路」是否包括十三峠<br/>對我來說是衡量認真訓練程度的分界線。<br/>用39×23T（≒34×20T）能輕快地騎過去嗎……目前還辦不到。<br/>順帶一提，這個部落格網址裡的PASS13就是源自十三峠。<br/><br/>想用前單速齒輪盡量表現出52-39T×11-25T的<br/>外圈×最重檔和內圈×最輕檔，<br/>最初設定是48T×11-32T。<br/>兩端相當於52×12T和39×26T。<br/>稍微偏向輕檔方向，<br/>但重檔方面只要達到4倍以上就沒問題。<br/>順便說一下，52×13T和48×12T和44×11T<br/>雖然齒輪比都是4倍，但由於前齒輪大小不同，<br/>實際踏踪時的重量並不相同，這回先不談。<br/><br/>上面的圖片中已經換成了Shimano 11速的11-28T飛輪。<br/>後變速器本來不支援32T，<br/>但實際使用中沒有出現問題。<br/>放棄32T的原因是<br/>無法忍受那種不像公路車的<br/>破壞性外觀。<br/>↑在目前的標準套件中都包含32T最輕檔飛輪的狀況下<br/>我不應該這樣說！<br/><br/>48T×11-28T的兩端相當於52×12T和39×23T弱（22.75T）。<br/>11-32T的情況下，變速時的齒數跨度是<br/>1・1・1・2・2・2・2・3・3・4，<br/>每次變速造成的踏頻變化<br/>雖然有點勉強，但11-28T變成<br/>1・1・1・1・2・2・2・2・3・3了。<br/>既然有點勉強何必改成前單速，有人可能會這樣說，<br/>但這本身不是前單速齒輪的問題，只是寬比例的緣故。<br/>用52×39T進行通勤或平地練習時，<br/>內圈可能完全不用或很少用到，<br/>這種情況下等同於用52T單速齒輪騎行。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04630amx9.jpg" target="_blank"><img alt="DSC04630amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04630amx9s.jpg" width="320"/></a><br/>↑把52-39T×11-25T的齒輪比列出來是這樣。<br/>內圈×最重檔是3.55，<br/>比這更重的外圈×最重檔側4檔<br/>成為「只有外圈才能達到的重量」，<br/>外圈×最輕檔是2.08，<br/>比這更輕的內圈×最輕檔側4檔<br/>成為「只有內圈才能達到的輕度」。<br/>內圈頂部起算第8檔的2.05<br/>與外圈×最輕檔的2.08幾乎相同，<br/>所以「只有內圈才能達到的輕度」也可以說是3檔。<br/>其他齒輪比中外圈和內圈的數值<br/>相同或接近的情況也存在。<br/>前齒輪2檔×11速乍看之下像是「22色鉛筆組」，<br/>但其實只是本數是22本，混雜著幾乎相同顏色的鉛筆。<br/>除去那些重複的，實際的色數大約是15色。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04631amx9.jpg" target="_blank"><img alt="DSC04631amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04631amx9s.jpg" width="320"/></a><br/>用52-39T×11-25T按齒輪比順序嚴格變速的話會是這樣。<br/>52×16T＝39×12T＝3.25時<br/>為了減少前變速次數而忽略了內圈側。<br/>當然，這種用法在現實中不實用。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04632amx9.jpg" target="_blank"><img alt="DSC04632amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04632amx9s.jpg" width="320"/></a><br/>實際上的用法應該是<br/>從外圈×最重檔開始用到外圈×最輕檔附近，<br/>之後變速到內圈獨有的輕檔3檔，<br/>從內圈×最輕檔往上時<br/>在內圈頂部起算第3～4檔的某處<br/>變速到外圈，應該就是這樣。<br/>預先按指令進行這種操作的<br/>就是Shimano電動變速套件的同步變速功能。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04633amx9.jpg" target="_blank"><img alt="DSC04633amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04633amx9s.jpg" width="320"/></a><br/>在這裡加上了48T單速×11-28T的齒輪比。<br/>雖然兩端較短，但變成了11色11本的色鉛筆。<br/>我之前說22本色鉛筆實質上大約是15色，<br/>那就是說如果後飛輪段數達到15速左右的話，<br/>也許前單速齒輪就能完全滿足需求了。<br/>要用52T表現39×25T的輕度，理論值是33.33T，<br/>也就是34T。<br/>如果能用52×11-34T的組合，<br/>讓變速時的齒輪比變化相對於齒數跨度<br/>小到不會在意（改變踏頻時不費力），<br/>那前變速器就真的不需要了。<br/><br/>我不是想藉此聲稱前單速齒輪是前雙速的上位互換。<br/>實際上兩端的齒輪比我就放棄了。<br/>11速程度不該這樣折騰。<br/>而且Shimano的Hollowtech II曲柄和SRAM的GXP曲柄，<br/>還有壓入式下轉五通都無法實現另一個野心。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04636amx9.jpg" target="_blank"><img alt="DSC04636amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04636amx9s.jpg" width="320"/></a><br/>另一個野心就是「縮小Q因素」。<br/>既然能根據肩寬選擇把手寬度，<br/>為什麼不能根據胯寬選擇曲柄寬度呢（加寬很容易，但縮小不行），<br/>我覺得這很奇怪，但其實有原因。<br/>外齒盤外側切面和<br/>內齒盤內側切面的中點位置<br/>到車架中心的距離稱為「鏈線」，<br/>Shimano規定這個數值為43.5mm，<br/>如果使用第三方曲柄組等方式<br/>讓鏈線大幅偏離這個數值，<br/>就會超出前變速器的調整範圍，導致<br/>外圈×最重檔或內圈×最輕檔時<br/>前變速器和鏈條干涉。<br/>在保持鏈線的前提下縮小Q因素在結構上是困難的，<br/>所以曲柄長度還好說，寬度就沒那麼容易改了。<br/><s>我又不是不知道La Crankset那種東西。<br/>但那個也談不上大幅縮小Q因素……</s><br/><br/>上圖中畫的是Hollowtech II類型的下轉五通，<br/>這類五通是無法改變Q因素<br/>（左右踏板軸的距離）的。<br/>Q因素在現今大廠的曲柄組中<br/>基本都在148mm左右。<br/>Campagnolo的Ultra Torque曲柄上曾標註過<br/>「145.5mm」，<br/>但這支曲柄不裝在車架上而是在空中組好，<br/>左右曲臂相位對齊後測量的話會變成147mm。<br/><br/>我有台公路車裝的是方形塔柱下轉五通的<br/>死飛曲柄，它的Q因素是135mm，<br/>如果左右不要求對稱的話能做到132mm。<br/><br/>我試過把手寬度從340mm到440mm，<br/>340mm時雖然最容易穿過車陣而且<br/>在三軸滾筒上容易做出踩踏動作，但操控感過於敏銳難以使用，<br/>440mm則純粹是太寬不好用，<br/>最後我落定在400mm（外邊到外邊400mm）。<br/><br/>而且當用過Q因素在130mm台的曲柄組後，<br/>再用148mm前後的曲柄組騎了連續3天，<br/>就會產生「哇！好寬！好難受！」的感覺。<br/>換句話說，到目前為止我經歷過把手太窄而難以使用，<br/>但從未經歷過Q因素太窄而難以使用。<br/>「再縮小就會難以使用的折返點」還沒到達，<br/>所以我不知道該在哪裡妥協。<br/>那支死飛曲柄PCD是144mm所以最小齒數是42T，<br/>內齒盤和右曲柄間隙不到1mm，<br/>用水潑的話水滴都能卡在中間。<br/>當然鏈線比廠商設想的更偏內側，<br/>內圈×最輕檔時前變速器和鏈條不會干涉<br/>（我特意調整過），<br/>所以使用上沒有問題。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04637amx9.jpg" target="_blank"><img alt="DSC04637amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04637amx9s.jpg" width="320"/></a><br/>而在用窄寬齒輪做前單速專門設計時，<br/>不必對鏈線那麼敏感，<br/>所以至少在現在的鏈線位置<br/>是否能把齒盤裝上去，<br/>以及那樣的話是否能多少縮小Q因素，<br/>我是這樣想的。<br/>我不是套件廠商所以Hollowtech II規格<br/>裡無法縮小Q因素，<br/>但如果是方形塔柱曲柄的話能做到一定程度。<br/>我在開頭提到的PCD 130mm曲柄<br/>FC-7402和超級賽級Pro<br/>是因為經驗上我知道能做到，才列出來的。<br/>FC-7402的下一個型號FC-7410不行。<br/>原廠下轉五通軸長是103mm，<br/>而Shimano規格更短的方形塔柱五通幾乎不存在。<br/>而且FC-7410用原廠五通和曲柄組合時<br/>右曲柄比左曲柄內縮2mm，<br/>要是講究左右對稱的話<br/>得在右踏板上墊2mm的墊圈。<br/>再下一個FC-7700/7701是Octalink五通，<br/>雙速用109.5mm、三速用118.5mm的<br/>專用五通，沒有其他選擇，<br/>因此Q因素改不了。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04638amx9.jpg" target="_blank"><img alt="DSC04638amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04638amx9s.jpg" width="320"/></a><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04639amx9.jpg" target="_blank"><img alt="DSC04639amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04639amx9s.jpg" width="320"/></a><br/>支援Octalink五通的第三方曲柄<br/>是有Sugino和FSA等品牌製作的<br/>（Sugino製的在Specialized完成車上<br/>標著Specialized商標的曲柄上更常見），<br/>但Octalink五通是Shimano絕對禁止他廠製造的，<br/>所以沒有第三方的五通選擇。<br/><br/>下一個FC-7800以後是Hollowtech II，<br/>完全沒辦法在Q因素上玩花樣了。<br/><br/>所以如果有PCD 144mm的窄寬齒輪的話，<br/>既能縮小Q因素又能實現前單速化，<br/>會非常有用，但遺憾的是沒有這樣的配件。<br/>而且目前適配公路車曲柄的前單速齒輪<br/>似乎只考慮越野自行車市場的需求，<br/>除了Wolf Tooth以外的廠商大多<br/>最多也只有42T的規格。<br/>Wolf Tooth的話<br/>PCD 130mm五臂用有38～52T的2T刻度，<br/>PCD 110mm五臂用有34～52T的2T刻度，<br/>適配R9100系的四臂用則有36～50T的2T刻度。<br/>窄寬齒輪所以2T刻度是當然的，<br/>我只是順便寫一下。<br/>我不是Wolf Tooth的托。<br/>順帶一提，PCD 110mm五臂用還有非圓形齒輪。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04641amx9.jpg" target="_blank"><img alt="DSC04641amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04641amx9s.jpg" width="320"/></a><br/>PCD 130mm165mm曲柄的話<br/>我還有FC-7900，<br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04640amx9.jpg" target="_blank"><img alt="DSC04640amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04640amx9s.jpg" width="320"/></a><br/>↑這個縫隙不吻合的程度非常難看。<br/>FC-9000和FC-R9100等四臂的話<br/>RIDEA和Absolute Black等廠商都有<br/>能漂亮填補這處的零件，<br/>但7900的話Praxis Works出過但<br/>現在已停產（原廠網站也沒有了），難以入手。<br/>用「praxis works 7900 bolt kit」搜尋的話能找到圖片。<br/><br/><br/><br/>回到正題，<br/>最初用48T×11-32T時<br/>後來把飛輪改成11-28T，<br/>才發現在祕密練習中48×12T的4倍齒比<br/>幾乎都用不到。<br/>4倍齒比用700C管胎踏頻100rpm的話<br/>時速50.1km/h，這不是我能獨力維持的速度。<br/>頂多是下坡時踩不出力的程度。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04595amx9.jpg" target="_blank"><img alt="DSC04595amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04595amx9s.jpg" width="320"/></a><br/>48T必須裝在曲柄五臂的外側位置。<br/>雖然視車架而定會有例外，<br/>但不這樣做齒盤會和右曲柄干涉。<br/>然而44T似乎是預設裝在內側位置的，<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04596amx9.jpg" target="_blank"><img alt="DSC04596amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04596amx9s.jpg" width="320"/></a><br/>齒盤外側的螺孔沒有沉頭螺栓的加工。<br/>但在Wolf Tooth的產品中，<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04597amx9.jpg" target="_blank"><img alt="DSC04597amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04597amx9s.jpg" width="320"/></a><br/>即便是預設內側位置的齒數<br/>齒盤內側也沒有沉頭孔。<br/>34T也是這樣，所以我想內側用的<br/>全部都是這樣（邊界齒數我不知道，抱歉），<br/>麻煩的是雙側都沒沉頭的齒盤<br/>用單速用5pin的話長度不夠，<br/>所以需要在螺紋孔側準備雙速用或稍長的螺釘。<br/><br/><a href="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04603amx9.jpg" target="_blank"><img alt="DSC04603amx9.jpg" border="0" height="240" src="https://blog-imgs-115-origin.fc2.com/p/a/s/pass13/DSC04603amx9s.jpg" width="320"/></a><br/>改成44T了。<br/>刻意裝在外側位置。<br/>知道回不到48T，連鏈條節數也縮減了。<br/><br/>用52×39T的兩端表現的話，44T×11-28T是<br/>52×13T～39×25T弱（24.81T），11本11色的色鉛筆。<br/>另外，有點無關痛癢的事，<br/>從39×25T相當一直變速到52×13T<br/>只需約1秒鐘。<br/>即使是前雙速齒輪也做不到這個<br/>（說不定電動變速套件更耗時）。<br/><br/>我一直都喜歡單速齒輪，<br/>在這之前越野自行車、爬坡車和計時車<br/>都已經是單速仕様了。<br/>窄寬齒輪出現之前<br/>我都是自己製作脫落防止零件，<br/>現在連這個必要都沒有了。<br/>真是個方便的年代啊。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

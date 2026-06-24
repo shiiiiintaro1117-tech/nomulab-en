@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/6131.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>拉皮德CLX先生</h1>
     <p class="post-meta">March 14, 2022</p>
+    <div class="post-body"><div class="entrytext">我從客人那裡預先了拉皮德CLX的前後輪。<br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07637amx14.jpg" target="_blank"><img alt="DSC07637amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07637amx14s.jpg" width="320"/></a><br/>雖然盒子上貼著阿爾皮尼斯特CLX的標籤，<br/>但從這張圖片就可以明確地判斷出，它不是阿爾皮尼斯特。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07638amx14.jpg" target="_blank"><img alt="DSC07638amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07638amx14s.jpg" width="320"/></a><br/>阿爾皮尼斯特CLX的前後輞和拉皮德CLX的後輞<br/>都有普通（相當薄）的珠扣厚度，<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07639amx14.jpg" target="_blank"><img alt="DSC07639amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07639amx14s.jpg" width="320"/></a><br/>拉皮德CLX的前輞（按羅瓦爾（<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Roval+bicycle+wheels" target="_blank" rel="noopener sponsored" class="amz-inline">Roval</a>）的說法<br/>輪胎側面延伸的輞形狀在空氣動力學上更有優勢<br/>比輞重量本身更是重要因素）<br/>珠扣的橫向厚度變得非常大。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07641amx14.jpg" target="_blank"><img alt="DSC07641amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07641amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07642amx14.jpg" target="_blank"><img alt="DSC07642amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07642amx14s.jpg" width="320"/></a><br/>前輪是51mm高輞，後輪是60mm高輞。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07640amx14.jpg" target="_blank"><img alt="DSC07640amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07640amx14s.jpg" width="320"/></a><br/>看起來幾乎像新品一樣乾淨，<br/>但有安裝過飛輪組的使用痕跡。<br/><br/>這對輪組前後輪都有約5mm的橫向竄動，<br/>客人希望我們修正一下。<br/>5mm對於輪組精度來說是個非常大的數值。<br/>我本以為實際上振動沒有那麼大，只是說5mm而已，<br/>但實際檢查發現前後輪確實都有約5mm的竄動。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07686amx14.jpg" target="_blank"><img alt="DSC07686amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07686amx14s.jpg" width="320"/></a><br/>另外，羅瓦爾附帶輪組的檢驗單，<br/>根據該檢驗單，<br/>這次前輪的中心偏移為0.30mm，<br/>後輪的中心偏移為0.08mm。<br/>上面的圖片是後輪的檢驗單。<br/>如果有能檢知到百分之一毫米單位的方法，<br/>應該還能進一步調整才對。<br/>偏移0.30mm（注意是0.30mm這樣的標記，而非0.3mm）<br/>但還是算了！我不明白這個邏輯。<br/><br/>另外，表上大約0.4～0.45的數值是<br/>DT牌張力計的第一根幅張力，即D1ST，<br/>下方的1100左右的數值是一般意義上的幅張力，<br/>也就是本部落格所說的第二根幅張力。<br/>如果你擁有羅瓦爾的輪組，一眼就能看出，<br/>雖然2:1組合的左右幅張力幾乎相同，<br/>但握著輪幅時，前後輪的<br/>多幅側的相切組合方式的變形明顯更軟。<br/>這是因為，例如同樣是2:1組合且幅數相似的<br/><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Campagnolo+Bora+bicycle+wheels" target="_blank" rel="noopener sponsored" class="amz-inline">Bora</a>和Bora WTO碟煞輪組<br/>變形量的左右差異（不是幅張力的左右差異）<br/>要少得多。這些是由幅的規格和形狀、<br/>高低牙盤的有效直徑左右差異、<br/>幅的軌跡（相切組合的交叉角度）等產生的問題，<br/>羅瓦爾在這方面的理論基礎非常薄弱。<br/>坦白說，這是個爛輪組，<br/>無法相信它出自與製造Tarmac車架的人士相同的智力水準。<br/>我並非基於個人好惡來批評<br/>羅瓦爾的輪組。<br/>我確實覺得完成車附帶這樣的輪組很過分。<br/>但我說這在理論上很爛，<br/>如果實際使用者的評價普遍很好的話，<br/>就不會有這麼多人把它帶來我的店裡。<br/><br/>關於這次的輪組，<br/>如果按照檢驗單的出廠狀態，<br/>那麼在流通過程中的損傷或<br/>輕微的經年使用絕不會產生這麼大量的<br/>縱橫向竄動和中心偏移。<br/>不管是輪組所有人還是自行車店，<br/>肯定是有人亂動過它。<br/><span style="color:#FF0000">追記：確認了客人沒有亂動這個輪組，<br/>他也是初始所有人。</span><br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07645amx14.jpg" target="_blank"><img alt="DSC07645amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07645amx14s.jpg" width="320"/></a><br/>先從前輪開始。<br/>找到最大橫向竄動的位相，<br/>調整得振輞臺的規尺剛好接觸。<br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07644amx14.jpg" target="_blank"><img alt="DSC07644amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07644amx14s.jpg" width="320"/></a><br/>其他位相大約會有這樣的間隙。<br/>有這樣竄動量的情況下，<br/>振動位相附近的輪幅應該有變形，<br/>但檢查發現輪幅沒有異常。<br/><br/>最大橫向竄動位相的垂直90°位相，<br/>橫向竄動無影響的位相上，用中心規尺測得<br/>暫時中心為<br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07646amx14.jpg" target="_blank"><img alt="DSC07646amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07646amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07647amx14.jpg" target="_blank"><img alt="DSC07647amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07647amx14s.jpg" width="320"/></a><br/>↑這樣。<br/>遠遠不止0.30mm。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07650amx14.jpg" target="_blank"><img alt="DSC07650amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07650amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07651amx14.jpg" target="_blank"><img alt="DSC07651amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07651amx14s.jpg" width="320"/></a><br/>雖然拍不太清楚，但也有縱向竄動。<br/>縱向竄動出現在多個位置。<br/>即使不放在臺上，看著懸空轉動的輞<br/>也能看出它在顫動和偏心，竄動相當大。<br/>左右異數組合的輪組在追求縱向竄動時有點困難。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07652amx14.jpg" target="_blank"><img alt="DSC07652amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07652amx14s.jpg" width="320"/></a><br/>追求了縱橫竄動。<br/>上面圖片中的輪組在轉動。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07655amx14.jpg" target="_blank"><img alt="DSC07655amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07655amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07656amx14.jpg" target="_blank"><img alt="DSC07656amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07656amx14s.jpg" width="320"/></a><br/>按理在進行縱橫竄動調整時應該會順帶減少中心偏移，<br/>但幾乎沒變。<br/>只是至少沒有偏移增大。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07657amx14.jpg" target="_blank"><img alt="DSC07657amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07657amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07658amx14.jpg" target="_blank"><img alt="DSC07658amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07658amx14s.jpg" width="320"/></a><br/>中心調整的第二次增緊。<br/>第一次沒有拍照。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07659amx14.jpg" target="_blank"><img alt="DSC07659amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07659amx14s.jpg" width="320"/></a><br/>放大的樣子是這樣。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07660amx14.jpg" target="_blank"><img alt="DSC07660amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07660amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07661amx14.jpg" target="_blank"><img alt="DSC07661amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07661amx14s.jpg" width="320"/></a><br/>中心調好了。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07662amx14.jpg" target="_blank"><img alt="DSC07662amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07662amx14s.jpg" width="320"/></a><br/>接著是後輪。<br/>輪組轉動時，輞內傳來<br/>硬質小石子彈跳一般的聲音。<br/>實際上這不是小石子，<br/>而是輞膠帶的氣門孔部分被剪掉的碎屑<br/>掉進輞內的。<br/>上面的圖片中能看到，就像罐頭刀的最後狀態一樣，<br/>孔的邊緣沒有斷開而是卡著，<br/>但輞膠帶在氣門孔周圍是雙層的，<br/>所以除了這個，還有另一片<br/>掉進輞內。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07663amx14.jpg" target="_blank"><img alt="DSC07663amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07663amx14s.jpg" width="320"/></a><br/>把看得見的部分撕掉並回收了。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07664amx14.jpg" target="_blank"><img alt="DSC07664amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07664amx14s.jpg" width="320"/></a><br/>掉進輞內的部分也回收了。<br/>我從經驗上知道這個，<br/>但如果不知道的話，會很難相信<br/>這麼硬質的聲音 卡卡地響是膠帶碎片。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07668amx14.jpg" target="_blank"><img alt="DSC07668amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07668amx14s.jpg" width="320"/></a><br/>↑最大竄動位相<br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07667amx14.jpg" target="_blank"><img alt="DSC07667amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07667amx14s.jpg" width="320"/></a><br/>↑其他大部分位相<br/>比前輪好一點，但有些位相竄動很大。<br/>輪幅沒有變形。<br/>稍微騎一下都不會有這樣的竄動。<br/>如果花鼓螺帽局部鬆掉的話有可能，<br/>但最大竄動位相反而是花鼓螺帽局部被擰緊的。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07665amx14.jpg" target="_blank"><img alt="DSC07665amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07665amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07666amx14.jpg" target="_blank"><img alt="DSC07666amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07666amx14s.jpg" width="320"/></a><br/>與前輪同樣地，避開局部竄動位相的暫時中心。<br/>前後輪都是輞向多幅側傾斜，<br/>但多幅側的花鼓螺帽比較容易轉動，<br/>所以為了改善這個軟的輪組，<br/>可能是通過增緊多幅側而導致偏移的吧。<br/>根據檢驗單，中心偏移應該是0.08mm。<br/>哎呀，80微米竟然能看得這麼清楚？<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07677amx14.jpg" target="_blank"><img alt="DSC07677amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07677amx14s.jpg" width="320"/></a><br/>這個輪組的花鼓螺帽可以從外周側轉動，<br/>但這種螺帽內周側的把手角<br/>奇怪地圓鈍，內周側一碰就有可能滑牙，<br/>所以為了不剝下膠帶，我從內周側抓著調整。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07679amx14.jpg" target="_blank"><img alt="DSC07679amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07679amx14s.jpg" width="320"/></a><br/>↑這是輪組轉動的狀態，這個輞膠帶<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07681amx14.jpg" target="_blank"><img alt="DSC07681amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07681amx14s.jpg" width="320"/></a><br/>在更慢的特定轉速下，且在日光燈下的話，<br/>雖然拍不出來，但能看到橙色的帶子<br/>以及它似乎以與輪組方向相反的速度移動的<br/>速度範圍。<br/>這就是所謂的「班達姆轉盤」效應。<br/>因為重現性很高，如果有機會的話，<br/>在換輪胎的時候不妨試試看。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07672amx14.jpg" target="_blank"><img alt="DSC07672amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07672amx14s.jpg" width="320"/></a><br/>自由輪體唯一細花鍵的山峰上，<br/>逆時針轉到隔壁的山峰處，因為最高齒輪定位錯誤<br/>而擰緊產生的倒刺。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07673amx14.jpg" target="_blank"><img alt="DSC07673amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07673amx14s.jpg" width="320"/></a><br/>只有飛輪最高齒輪，<br/>以正確定位重新安裝。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07674amx14.jpg" target="_blank"><img alt="DSC07674amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07674amx14s.jpg" width="320"/></a><br/>這次只把飛輪的定位<br/>逆時針轉了一個山峰。<br/>與之前不同，最高齒輪不會卡到底，<br/>但最近有螺紋部分長的鎖圈的話，<br/>即使手轉也能輕易地擰進大約一個山峰，<br/>從那裡用工具用力地擰進去，<br/>花鍵就會產生獨特的倒刺。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07676amx14.jpg" target="_blank"><img alt="DSC07676amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07676amx14s.jpg" width="320"/></a><br/>↑倒刺出現的位置與<br/>飛輪溝槽不相符的位置完全一致。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07670amx14.jpg" target="_blank"><img alt="DSC07670amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07670amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07671amx14.jpg" target="_blank"><img alt="DSC07671amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07671amx14s.jpg" width="320"/></a><br/>在追求縱橫竄動時的中心偏移。<br/>似乎比最初的暫時中心稍微減少了一點。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07683amx14.jpg" target="_blank"><img alt="DSC07683amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07683amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07682amx14.jpg" target="_blank"><img alt="DSC07682amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07682amx14s.jpg" width="320"/></a><br/>中心調好了。<br/>前後輪都盡量用增緊的方向調中心，<br/>所以與預先狀態比張力更大，<br/>但要改善這個軟的特性，<br/>需要逆異徑組合和結線。<br/>這次只被要求進行竄動調整，<br/>所以我用竄動調整能做到的範圍試著做了。<br/><br/>拉皮德CLX的前輪是2:1組合配對不是7配對21H，<br/>而是6配對18H這樣非常奇葩的幅數，<br/>由於輞孔間隔變寬，多幅側變成12H<br/>相比CLX50等，最終交叉的夾角變鈍雖然不錯，<br/>但最終交叉的位置更靠近花鼓法蘭，<br/>所以結線的效果幾乎看不到。<br/>實際上，由於另外的原因，<br/>拉皮德CLX前輪的客人想要重新組裝<br/>我也有預先，說實話有點無從下手。<br/>我會盡量試試，<br/>那是另一個故事，計畫近期進行。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">我從客人那裡預先了拉皮德CLX的前後輪。<br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07637amx14.jpg" target="_blank"><img alt="DSC07637amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07637amx14s.jpg" width="320"/></a><br/>雖然盒子上貼著阿爾皮尼斯特CLX的標籤，<br/>但從這張圖片就可以明確地判斷出，它不是阿爾皮尼斯特。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07638amx14.jpg" target="_blank"><img alt="DSC07638amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07638amx14s.jpg" width="320"/></a><br/>阿爾皮尼斯特CLX的前後輞和拉皮德CLX的後輞<br/>都有普通（相當薄）的珠扣厚度，<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07639amx14.jpg" target="_blank"><img alt="DSC07639amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07639amx14s.jpg" width="320"/></a><br/>拉皮德CLX的前輞（按羅瓦爾（<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Roval+bicycle+wheels" target="_blank" rel="noopener sponsored" class="amz-inline">Roval</a>）的說法<br/>輪胎側面延伸的輞形狀在空氣動力學上更有優勢<br/>比輞重量本身更是重要因素）<br/>珠扣的橫向厚度變得非常大。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07641amx14.jpg" target="_blank"><img alt="DSC07641amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07641amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07642amx14.jpg" target="_blank"><img alt="DSC07642amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07642amx14s.jpg" width="320"/></a><br/>前輪是51mm高輞，後輪是60mm高輞。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07640amx14.jpg" target="_blank"><img alt="DSC07640amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07640amx14s.jpg" width="320"/></a><br/>看起來幾乎像新品一樣乾淨，<br/>但有安裝過飛輪組的使用痕跡。<br/><br/>這對輪組前後輪都有約5mm的橫向竄動，<br/>客人希望我們修正一下。<br/>5mm對於輪組精度來說是個非常大的數值。<br/>我本以為實際上振動沒有那麼大，只是說5mm而已，<br/>但實際檢查發現前後輪確實都有約5mm的竄動。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07686amx14.jpg" target="_blank"><img alt="DSC07686amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07686amx14s.jpg" width="320"/></a><br/>另外，羅瓦爾附帶輪組的檢驗單，<br/>根據該檢驗單，<br/>這次前輪的中心偏移為0.30mm，<br/>後輪的中心偏移為0.08mm。<br/>上面的圖片是後輪的檢驗單。<br/>如果有能檢知到百分之一毫米單位的方法，<br/>應該還能進一步調整才對。<br/>偏移0.30mm（注意是0.30mm這樣的標記，而非0.3mm）<br/>但還是算了！我不明白這個邏輯。<br/><br/>另外，表上大約0.4～0.45的數值是<br/>DT牌張力計的第一根幅張力，即D1ST，<br/>下方的1100左右的數值是一般意義上的幅張力，<br/>也就是本部落格所說的第二根幅張力。<br/>如果你擁有羅瓦爾的輪組，一眼就能看出，<br/>雖然2:1組合的左右幅張力幾乎相同，<br/>但握著輪幅時，前後輪的<br/>多幅側的相切組合方式的變形明顯更軟。<br/>這是因為，例如同樣是2:1組合且幅數相似的<br/><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Campagnolo+Bora+bicycle+wheels" target="_blank" rel="noopener sponsored" class="amz-inline">Bora</a>和Bora WTO碟煞輪組<br/>變形量的左右差異（不是幅張力的左右差異）<br/>要少得多。這些是由幅的規格和形狀、<br/>高低牙盤的有效直徑左右差異、<br/>幅的軌跡（相切組合的交叉角度）等產生的問題，<br/>羅瓦爾在這方面的理論基礎非常薄弱。<br/>坦白說，這是個爛輪組，<br/>無法相信它出自與製造Tarmac車架的人士相同的智力水準。<br/>我並非基於個人好惡來批評<br/>羅瓦爾的輪組。<br/>我確實覺得完成車附帶這樣的輪組很過分。<br/>但我說這在理論上很爛，<br/>如果實際使用者的評價普遍很好的話，<br/>就不會有這麼多人把它帶來我的店裡。<br/><br/>關於這次的輪組，<br/>如果按照檢驗單的出廠狀態，<br/>那麼在流通過程中的損傷或<br/>輕微的經年使用絕不會產生這麼大量的<br/>縱橫向竄動和中心偏移。<br/>不管是輪組所有人還是自行車店，<br/>肯定是有人亂動過它。<br/><span style="color:#FF0000">追記：確認了客人沒有亂動這個輪組，<br/>他也是初始所有人。</span><br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07645amx14.jpg" target="_blank"><img alt="DSC07645amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07645amx14s.jpg" width="320"/></a><br/>先從前輪開始。<br/>找到最大橫向竄動的位相，<br/>調整得振輞臺的規尺剛好接觸。<br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07644amx14.jpg" target="_blank"><img alt="DSC07644amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07644amx14s.jpg" width="320"/></a><br/>其他位相大約會有這樣的間隙。<br/>有這樣竄動量的情況下，<br/>振動位相附近的輪幅應該有變形，<br/>但檢查發現輪幅沒有異常。<br/><br/>最大橫向竄動位相的垂直90°位相，<br/>橫向竄動無影響的位相上，用中心規尺測得<br/>暫時中心為<br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07646amx14.jpg" target="_blank"><img alt="DSC07646amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07646amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07647amx14.jpg" target="_blank"><img alt="DSC07647amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07647amx14s.jpg" width="320"/></a><br/>↑這樣。<br/>遠遠不止0.30mm。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07650amx14.jpg" target="_blank"><img alt="DSC07650amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07650amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07651amx14.jpg" target="_blank"><img alt="DSC07651amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07651amx14s.jpg" width="320"/></a><br/>雖然拍不太清楚，但也有縱向竄動。<br/>縱向竄動出現在多個位置。<br/>即使不放在臺上，看著懸空轉動的輞<br/>也能看出它在顫動和偏心，竄動相當大。<br/>左右異數組合的輪組在追求縱向竄動時有點困難。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07652amx14.jpg" target="_blank"><img alt="DSC07652amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07652amx14s.jpg" width="320"/></a><br/>追求了縱橫竄動。<br/>上面圖片中的輪組在轉動。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07655amx14.jpg" target="_blank"><img alt="DSC07655amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07655amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07656amx14.jpg" target="_blank"><img alt="DSC07656amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07656amx14s.jpg" width="320"/></a><br/>按理在進行縱橫竄動調整時應該會順帶減少中心偏移，<br/>但幾乎沒變。<br/>只是至少沒有偏移增大。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07657amx14.jpg" target="_blank"><img alt="DSC07657amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07657amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07658amx14.jpg" target="_blank"><img alt="DSC07658amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07658amx14s.jpg" width="320"/></a><br/>中心調整的第二次增緊。<br/>第一次沒有拍照。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07659amx14.jpg" target="_blank"><img alt="DSC07659amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07659amx14s.jpg" width="320"/></a><br/>放大的樣子是這樣。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07660amx14.jpg" target="_blank"><img alt="DSC07660amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07660amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07661amx14.jpg" target="_blank"><img alt="DSC07661amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07661amx14s.jpg" width="320"/></a><br/>中心調好了。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07662amx14.jpg" target="_blank"><img alt="DSC07662amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07662amx14s.jpg" width="320"/></a><br/>接著是後輪。<br/>輪組轉動時，輞內傳來<br/>硬質小石子彈跳一般的聲音。<br/>實際上這不是小石子，<br/>而是輞膠帶的氣門孔部分被剪掉的碎屑<br/>掉進輞內的。<br/>上面的圖片中能看到，就像罐頭刀的最後狀態一樣，<br/>孔的邊緣沒有斷開而是卡著，<br/>但輞膠帶在氣門孔周圍是雙層的，<br/>所以除了這個，還有另一片<br/>掉進輞內。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07663amx14.jpg" target="_blank"><img alt="DSC07663amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07663amx14s.jpg" width="320"/></a><br/>把看得見的部分撕掉並回收了。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07664amx14.jpg" target="_blank"><img alt="DSC07664amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07664amx14s.jpg" width="320"/></a><br/>掉進輞內的部分也回收了。<br/>我從經驗上知道這個，<br/>但如果不知道的話，會很難相信<br/>這麼硬質的聲音 卡卡地響是膠帶碎片。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07668amx14.jpg" target="_blank"><img alt="DSC07668amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07668amx14s.jpg" width="320"/></a><br/>↑最大竄動位相<br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07667amx14.jpg" target="_blank"><img alt="DSC07667amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07667amx14s.jpg" width="320"/></a><br/>↑其他大部分位相<br/>比前輪好一點，但有些位相竄動很大。<br/>輪幅沒有變形。<br/>稍微騎一下都不會有這樣的竄動。<br/>如果花鼓螺帽局部鬆掉的話有可能，<br/>但最大竄動位相反而是花鼓螺帽局部被擰緊的。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07665amx14.jpg" target="_blank"><img alt="DSC07665amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07665amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07666amx14.jpg" target="_blank"><img alt="DSC07666amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07666amx14s.jpg" width="320"/></a><br/>與前輪同樣地，避開局部竄動位相的暫時中心。<br/>前後輪都是輞向多幅側傾斜，<br/>但多幅側的花鼓螺帽比較容易轉動，<br/>所以為了改善這個軟的輪組，<br/>可能是通過增緊多幅側而導致偏移的吧。<br/>根據檢驗單，中心偏移應該是0.08mm。<br/>哎呀，80微米竟然能看得這麼清楚？<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07677amx14.jpg" target="_blank"><img alt="DSC07677amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07677amx14s.jpg" width="320"/></a><br/>這個輪組的花鼓螺帽可以從外周側轉動，<br/>但這種螺帽內周側的把手角<br/>奇怪地圓鈍，內周側一碰就有可能滑牙，<br/>所以為了不剝下膠帶，我從內周側抓著調整。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07679amx14.jpg" target="_blank"><img alt="DSC07679amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07679amx14s.jpg" width="320"/></a><br/>↑這是輪組轉動的狀態，這個輞膠帶<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07681amx14.jpg" target="_blank"><img alt="DSC07681amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07681amx14s.jpg" width="320"/></a><br/>在更慢的特定轉速下，且在日光燈下的話，<br/>雖然拍不出來，但能看到橙色的帶子<br/>以及它似乎以與輪組方向相反的速度移動的<br/>速度範圍。<br/>這就是所謂的「班達姆轉盤」效應。<br/>因為重現性很高，如果有機會的話，<br/>在換輪胎的時候不妨試試看。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07672amx14.jpg" target="_blank"><img alt="DSC07672amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07672amx14s.jpg" width="320"/></a><br/>自由輪體唯一細花鍵的山峰上，<br/>逆時針轉到隔壁的山峰處，因為最高齒輪定位錯誤<br/>而擰緊產生的倒刺。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07673amx14.jpg" target="_blank"><img alt="DSC07673amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07673amx14s.jpg" width="320"/></a><br/>只有飛輪最高齒輪，<br/>以正確定位重新安裝。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07674amx14.jpg" target="_blank"><img alt="DSC07674amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07674amx14s.jpg" width="320"/></a><br/>這次只把飛輪的定位<br/>逆時針轉了一個山峰。<br/>與之前不同，最高齒輪不會卡到底，<br/>但最近有螺紋部分長的鎖圈的話，<br/>即使手轉也能輕易地擰進大約一個山峰，<br/>從那裡用工具用力地擰進去，<br/>花鍵就會產生獨特的倒刺。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07676amx14.jpg" target="_blank"><img alt="DSC07676amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07676amx14s.jpg" width="320"/></a><br/>↑倒刺出現的位置與<br/>飛輪溝槽不相符的位置完全一致。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07670amx14.jpg" target="_blank"><img alt="DSC07670amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07670amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07671amx14.jpg" target="_blank"><img alt="DSC07671amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07671amx14s.jpg" width="320"/></a><br/>在追求縱橫竄動時的中心偏移。<br/>似乎比最初的暫時中心稍微減少了一點。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07683amx14.jpg" target="_blank"><img alt="DSC07683amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07683amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07682amx14.jpg" target="_blank"><img alt="DSC07682amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC07682amx14s.jpg" width="320"/></a><br/>中心調好了。<br/>前後輪都盡量用增緊的方向調中心，<br/>所以與預先狀態比張力更大，<br/>但要改善這個軟的特性，<br/>需要逆異徑組合和結線。<br/>這次只被要求進行竄動調整，<br/>所以我用竄動調整能做到的範圍試著做了。<br/><br/>拉皮德CLX的前輪是2:1組合配對不是7配對21H，<br/>而是6配對18H這樣非常奇葩的幅數，<br/>由於輞孔間隔變寬，多幅側變成12H<br/>相比CLX50等，最終交叉的夾角變鈍雖然不錯，<br/>但最終交叉的位置更靠近花鼓法蘭，<br/>所以結線的效果幾乎看不到。<br/>實際上，由於另外的原因，<br/>拉皮德CLX前輪的客人想要重新組裝<br/>我也有預先，說實話有點無從下手。<br/>我會盡量試試，<br/>那是另一個故事，計畫近期進行。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

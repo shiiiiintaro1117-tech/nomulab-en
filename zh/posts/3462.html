@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/3462.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Spoke Talk</p>
     <h1>關於鋁合金輻條</h1>
     <p class="post-meta">May 25, 2017</p>
+    <div class="post-body"><div class="entrytext">我收到了許多要求寫關於鋁製輻條的評論，<br/>或者是從實際來店的客人那裡聽到的。<br/>至少，某些不夠敏銳的傢伙（裝蒜）嘴上說著<br/>「與鋼製輻條相比，幾乎沒有意義」這種主張明顯是錯誤的。<br/><br/>作為根據「只要稍微使用一下<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Fulcrum+Racing+Zero+bicycle+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">Racing Zero</a><br/>就能明白這是用鋼製輻條無法達到的硬度輪組」這樣的<br/>感受性的說法的話，好像就能結束了，<br/>但不是那樣的話，按照のむラボ的輪組觀點來看的話<br/>我來寫寫會發生什麼樣的情況。<br/><br/>「第１根輻條張力（以下簡稱 第１ＳＴ）」<br/>「第２根輻條張力（以下簡稱 第２ＳＴ）」<br/>「輻條比重」<br/>「燒杯理論」<br/>這些如果套用在鋁合金輻條上就可以了，<br/>燒杯理論的話題（到現在為止完全沒有觸及過）會很冗長，<br/>而且與鋁合金輻條沒有直接關係，所以那部分就留到改天再說。<br/><br/>首先，關於第1ST。<br/>第1ST是指顯示在張力計上的<br/>「計量表讀數」的數值本身。<br/>當然這是車房實驗室用語，先說明一下。<br/><br/>第2ST是指把第1ST代入換算表時的<br/>輪幅張力的概算值，一般說起輪幅張力時<br/>指的就是這個。<br/><br/>與其用這麼複雜的說法，第1ST就是「計量表讀數」、<br/>第２ＳＴ就是「輻條張力」啊，沒問題吧，<br/>雖然這種說法是滿有道理的，<br/>第１ＳＴ也會因為轉軸的鬆緊而增減，<br/>它是把輻條張力數值化的一種方式<br/>只用輻條張力（←也就是第２ＳＴ）<br/>無法單獨討論輪組的硬度或驅動剛性。<br/>關於原因，我接下來會寫。<br/><br/>鋁合金輻條是，Racing Zero的<br/>我使用きしめん氣動（蝦扁部分各處形狀一致的方形氣動）。<br/>這絕非為了引導出武斷的結果才方便<br/>不是那樣的。<br/>為了對純粹的觀測事實表述我的想法，<br/>我認為觀測事實本身誤差最少的是鋁合金輻條。<br/>從這一點來看，領帶輻條不行。<br/>關於那件事我後面會詳細寫到，<br/>但首先我要先寫上為什麼不選馬維克鋁合金輻條的理由。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05958amx6.jpg" target="_blank"><img alt="DSC05958amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05958amx6s.jpg" width="320"/></a><br/>Mavic 的鋁合金輻條至少有 4 種類。<br/>可能我學識不足，還有更多種類。<br/>上面圖片的「H1ST」，現在先忽略不看。<br/><br/>首先是第 1 種輻條，這是從初代 <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Mavic+Ksyrium+SSC+bicycle+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">Ksyrium SSC</a> 就有的形狀<br/>在敲擊成形部分的末端有著像魚尾鰭一樣的紋路<br/>前後寬度最大的類型。<br/>第 2 種輻條是前後寬度比第 1 種小，敲擊成形邊界沒有紋路的類型。<br/>第 3 種輻條是圓形斷面的輻條。<br/>４號輻條與２號很相似，但扁平率不同。<br/><br/>從初代到ＥＳ的Ｋｓｙｒｉｕｍ輪轂，用來裝工具的花鍵部分<br/>採用的是較小的乳頭，<br/>Ｒ－ＳＹＳ的乳頭則是比那更大直徑的花鍵，使用的工具也不一樣。<br/>Ｒ－ＳＹＳ之後的Ｋｓｙｒｉｕｍ乳頭尺寸與Ｒ－ＳＹＳ相同，<br/>無論哪種情況，輻條都是在製造時就密封好的狀態，<br/>所以沒辦法單獨測量輻條的重量。<br/>因此很難求得準確的輻條比重。<br/>這就是，談起鋁合金輻條時<br/>不採用馬維克輻條的原因。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05891amx6.jpg" target="_blank"><img alt="DSC05891amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05891amx6s.jpg" width="320"/></a><br/>↑１的輻條<br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05893amx6.jpg" target="_blank"><img alt="DSC05893amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05893amx6s.jpg" width="320"/></a><br/>↑２的輻條<br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05892amx6.jpg" target="_blank"><img alt="DSC05892amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05892amx6s.jpg" width="320"/></a><br/>↑３的輻條<br/><br/>關於４的輻條（→<a href="/zh/posts/3470.html" target="_blank" title="こちら">這裡</a>）<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05896amx6.jpg" target="_blank"><img alt="DSC05896amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05896amx6s.jpg" width="320"/></a><br/>接著，關於第1ST和第2ST的關係。<br/>與之前寫過的內容（→<a href="/zh/posts/1011.html" target="_blank" title="こちら">這裡</a>）（→<a href="/zh/posts/1012.html" target="_blank" title="こちら">這裡</a>）有所重複，但我輕輕帶過一下。<br/>關於第3根輻條的張力，<br/>雖然不觸及核心，但會在談到燒杯論時寫到。<br/><br/>如果「第１ＳＴ變成２倍，第２ＳＴ也變成２倍，<br/>第１ＳＴ變成ｎ倍，第２ＳＴ也變成ｎ倍……」的話，<br/>把第１ＳＴ和第２ＳＴ的關係畫成圖表，就會是正比直線。<br/>但是，實際上並不是這樣。所以才需要換算表。<br/>在連結的文章裡有寫到，<br/>ＤＴ和Park Tool的張力計<br/>都是根據換算表做過校準的，<br/>理論上個體誤差是零（Park Tool有點可疑就是了）。<br/>HOZAN 承認了各張力計之間的誤差，<br/>並為每台機器附送換算表。<br/>比如我的 HOZAN 在 14 號平面圓形輻條上，<br/>第一代機型顯示 130 時，第二代機型就是 1000N。<br/>如果每台計器都準確的話，第二代機型會顯示相同的數值，<br/>但第一代機型如果張力計製造商不同，數值就會完全不同，<br/>即使是同一（應該是同一）產品，每台之間也會有微小誤差。<br/><br/>從此以後，如上圖所示，<br/>我就把HOZAN張力錶的第1ST稱為H1ST。<br/>如果是DT的話就叫D1ST，Park Tool的話就叫P1ST好了。<br/>當測量同一根輻條時，H1ST、D1ST、P1ST的數值各不相同<br/>但代入各自的換算表後，第2ST就會變成相同的數值，就是這樣。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05874amx6.jpg" target="_blank"><img alt="DSC05874amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05874amx6s.jpg" width="320"/></a><br/>這是我的HOZAN張力錶的換算表。<br/>就像我前面寫的那樣，對HOZAN來說的H1ST<br/>就是有多少台錶就有多少種。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05876amx6.jpg" target="_blank"><img alt="DSC05876amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05876amx6s.jpg" width="320"/></a><br/>第1ST和第2ST的圖表。<br/>我畫的圖與橫軸、縱軸相反，所以曲線的反彎也相反了，<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05878amx6.jpg" target="_blank"><img alt="DSC05878amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05878amx6s.jpg" width="320"/></a><br/>從背面用光透射這邊的圖就一樣了。<br/>DT的換算表是這邊（橫軸 第2ST、縱軸 第1ST），所以<br/>畫成那樣就成了習慣。<br/>雖然與這次的話題沒有關係，但應力－應變曲線的反彎也很像<br/>看起來更像那樣形狀的話，各種方面都更容易想像，也是理由之一。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05877amx6.jpg" target="_blank"><img alt="DSC05877amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05877amx6s.jpg" width="320"/></a><br/>具體的第1ST數值是這樣的。<br/>HOZAN的張力計是13號、14號、15號的直條輻條的<br/>只有第１ＳＴ的表記，<br/>巴頓轮辐的数值我不清楚。<br/>所以无法用这个来测量竞赛或ＣＸ－ＲＡＹ。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05879amx6.jpg" target="_blank"><img alt="DSC05879amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05879amx6s.jpg" width="320"/></a><br/>这是ＤＴ的图表（冠军１４号素面）。<br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05880amx6.jpg" target="_blank"><img alt="DSC05880amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05880amx6s.jpg" width="320"/></a><br/>也有只有数值的表。<br/>我最先做的事，就是制作Ｄ１ＳＴ和Ｈ１ＳＴ的对比表。<br/>具体来说，比如某个竞赛轮（１４号的那种）<br/>Ｄ１ＳＴ显示２．００的话。<br/>根據 DT 的換算表，當 D1ST 為 1.96 時第 2ST 為 1200N，<br/>2.04 時為 1300N，<br/>所以這場比賽的第 2ST 大約是 1250N，<br/>用 H1ST 來看的話顯示為 134。<br/>根據 Hozan 的換算表，第 2ST 為 1300N 的 14 號平幅輻條為 138，<br/>15 號平幅輻條為 126，所以大致上也符合實際情況。<br/>用平常使用的輻條仔細調查了這個<br/>「針對梯形輻條用的 H1ST 換算表」，我已經製作好了，<br/>用Hozan的張力表<br/>可以量測扁頭輻條。<br/>對於Sapim輻條，我們假設它與相同截面尺寸的DT輻條<br/>完全相同，從DT的換算表中求得H1ST。<br/>普通輻條的Leader和Champion<br/>基本上可以認為是一樣的，<br/>CX-RAY和Aero Lite、Race和Competition也被視為相同。<br/>實際上，Race的1.8mm圓形扁頭部分比Competition明顯要長<br/>輻條比重的小數位數程度上確實存在差異，<br/>即使將車圈的D1ST或H1ST視為與Comp相同，<br/>我判斷在組裝車圈時沒有問題。<br/>關於Laser和Revolution，<br/>平時不太使用，所以用這些輻條組裝車圈時<br/>我使用DT的張力計。<br/>因為求H1ST實在太麻煩了。<br/>除了那個用途外，DT的張力計<br/>除了檢查 H1ST 時以外，我不會使用它。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05881amx6.jpg" target="_blank"><img alt="DSC05881amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05881amx6s.jpg" width="320"/></a><br/>有一件很重要的事。<br/>DT 換算表中的 D1ST 是從輪轂左右方向測量得到的數值。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05882amx6.jpg" target="_blank"><img alt="DSC05882amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05882amx6s.jpg" width="320"/></a><br/>（偽空氣動力輪轂的）CX-RAY 測出了 0.38 弱。<br/>空氣動力輪轂在 0.37 時是 1000N，0.41 時是 1050N，所以<br/>第 2ST 就是 1000N 多一點這樣。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05883amx6.jpg" target="_blank"><img alt="DSC05883amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05883amx6s.jpg" width="320"/></a><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05884amx6.jpg" target="_blank"><img alt="DSC05884amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05884amx6s.jpg" width="320"/></a><br/>從前後方向測量時，數值跳到了 2.19。<br/>這個數值不是換算表使用的數值，但<br/>「Aero Lite的D1ST在左右方向是0.38時，前後方向則是2.19」<br/>像這樣的數值其實我也是細緻地測量的。<br/><br/>理由後面會寫，H1ST基本上是使用前後方向的數值。<br/>順帶一提，這根輻條的「前後方向的」H1ST是130。<br/>以下，除非特別說明，H1ST的數值都是以前後方向測量的。<br/><br/>後面會提到，「扁平輻條在半徑較大的一側測量時<br/>比在較小的一側測量會得到更大的數值」請記住這一點。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05897amx6.jpg" target="_blank"><img alt="DSC05897amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05897amx6s.jpg" width="320"/></a><br/>13號、14號、15號直頭輻條的第2ST是<br/>整理了1000N時H1ST和D1ST的數據。<br/>圓形輻條無論如何測量，無論是左右方向還是前後方向，第1ST都不會改變。<br/><br/><span style="color:#FF0000">這個第1ST的多寡，但可以說是輪組體感上的硬度，<br/>以及驅動時的咬合性能被數值化的結果。</span><br/><br/>將前後方向和左右方向各自的不易變形性進行了數值化，<br/>舉例來說，14號平頭輻條的1000N用D1ST來表現的話<br/>左右方向的不易變形性2.19 前後方向的不易變形性2.19，<br/>1000N多一點的Aero Lite是<br/>左右方向的抵抗變形性０．３８ 前後方向的抵抗變形性２．１９<br/>這樣就能表現了，是這樣的想法。<br/><br/>作為最簡單的輪組，考慮幅向組法的前輪的話<br/>１３番平面上 Ｈ１ＳＴ為１５５的前輪和<br/>１５番平面上 Ｈ１ＳＴ為１１６的前輪<br/>雖然輻條張力（←這是第２ＳＴ）是相同的<br/>騎乘的手感和 車輪歪斜時的撓度<br/>前者明顯更硬、更不易撓曲。<br/><br/>如果說「不管第１張力如何，只要第２張力相同<br/>輪組剛性就相同」的話，<br/>輻條只要在不發生うにょーん（拉伸方向塑性變形）的範圍內<br/>盡可能選擇輕量的就行了。<br/><br/>更極端地說，如果H１張力是５０左右，<br/>第２張力達到１０００Ｎ的超細素面輻條的話，<br/>只要把第２張力張到１０００Ｎ<br/>就能產生和１３號的H１張力１５５相同的剛性。<br/>當然，不是那樣的。<br/><br/>車輻張力（←嘮叨一下但這是第２ＳＴ）相同的話<br/>如果第１ＳＴ不同 輪組的硬度就會有差異。<br/>當然，<span style="color:#0000FF">相對於第２ＳＴ 第１ＳＴ變大的車輻<br/>這表示車輻的比重變大了<br/>當然會有與輕量化相悖的缺點。</span><br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05898amx6.jpg" target="_blank"><img alt="DSC05898amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05898amx6s.jpg" width="320"/></a><br/>順便說一下，Ｈ１ＳＴ和Ｄ１ＳＴ的比率並不相同。也不接近。<br/>這對我來說是個非常令人頭痛的問題，<br/>我會在寫燒杯論的時候詳細說明。<br/><br/><br/><br/>Sapim的CX和CX-RAY<br/>都採用橢圓斷面的扁平（橢圓空氣動力學）內穿輻條，<br/>輻條比重分別是100％和65％。<br/>根據製造商公稱值的概算是98.9％和63.6％，<br/>但實際測量結果要大約多出1％。<br/>反正大概就好，所以就用100％和65％了。<br/><br/>當這些輻條拉到最緊的時候<br/>（無法再轉緊尼普爾的）狀態下，<br/>H1ST在CX上是190，在CX-RAY上大約是150。<br/>剛才那個黑色CX-RAY的130是<br/>のむラボホイール5號的前輪，<br/>到150為止 實在是不會這樣拉（也拉不了）。<br/>CX-RAY的H1ST能看到150的情況是，<br/>24H的四一零組合的自由端拼命拉緊的時候<br/>（這樣的話外穿側會鬆鬆垮垮的）之類的情況。<br/>能夠這樣做的輪圈也有點受限。<br/>具體來說，Mecchaniko完組後輪就是那種感覺。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05899amx6.jpg" target="_blank"><img alt="DSC05899amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05899amx6s.jpg" width="320"/></a><br/>我把CX和CX-RAY的第1檔與輻條比重的關係用圖表畫出來了。<br/>為了不讓外觀看起來太武斷，我沿著白板的格子<br/>按照右邊正方形相同的數值比例<br/>相當用心地描繪著。<br/>在這裡，從CX到CX-RAY為止<br/>將扁平氣動輻條的輻條比重按 1% 的增幅進行變更後<br/>排列時會形成怎樣的點的集合，我來思考一下。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05900amx6.jpg" target="_blank"><img alt="DSC05900amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05900amx6s.jpg" width="320"/></a><br/>CX 和 CX-RAY 的扁平率不同。<br/>CX 的外形看起來略微短胖一些。<br/>扁平率以圓輻條為 1，所以距離越遠就越扁平。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05901amx6.jpg" target="_blank"><img alt="DSC05901amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05901amx6s.jpg" width="320"/></a><br/>在保持 CX 的扁平率不變的情況下，將輻條比重縮減到 65% 時<br/>點的集合情況我試著思考了一下。<br/>實際上應該還會有更多的變化，但<br/>「嗯，大概在這附近就能俐落地拉出直線啦」<br/>這樣的想法應該會浮現出來，而拉出的那條線就是藍色虛線。<br/>實際的CX-RAY扁平率不是2.15而是2.44<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05902amx6.jpg" target="_blank"><img alt="DSC05902amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05902amx6s.jpg" width="320"/></a><br/>比起扁平率2.15、輻條比重65%的輻條<br/>第1ST應該會向上修正<br/>（D1ST的左右方向與前後方向的差異是根據）。<br/><br/>如果從CX到CX-RAY為止，扁平率也會逐漸改變的話<br/>從藍色虛線起立的藍色實線就會留下來<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05903amx6.jpg" target="_blank"><img alt="DSC05903amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05903amx6s.jpg" width="320"/></a><br/>應該會是這種感覺。<br/>不過話說回來，稍微有點曲線也好，稍微直一點也好<br/>對今後的話題沒有什麼影響啦。<br/><br/><br/>差不多該開始聊鋁合金輻條的話題了吧，這樣的話大概會被催促<br/>所以需要到這裡為止的前置說明。<br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05570amx6.jpg" target="_blank"><img alt="DSC05570amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05570amx6s.jpg" width="320"/></a><br/>那麼，各位期待已久的時刻來了。<br/>Fulcrum的扁平鋁合金輻條。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05571amx6.jpg" target="_blank"><img alt="DSC05571amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05571amx6s.jpg" width="320"/></a><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05573amx6.jpg" target="_blank"><img alt="DSC05573amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05573amx6s.jpg" width="320"/></a><br/><span style="font-size:large;">H1ST是268。</span><br/>這是有點例外的數值。<br/>因為黃銅套筒時代的Racing 1，進一步增加了鎖緊力。<br/><br/>現在的鋁套筒Racing Zero的前或後右邊，<br/>H1ST大約是235左右。<br/>低於220的話，騎乘感覺明顯變得鬆軟。<br/><br/>前陣子在某家店裡做了輪圈更換<br/>Racing Zero 2WAY-FIT明顯感覺鬆軟，<br/>重新張力調整的案例（→<a href="/zh/posts/3412.html" target="_blank" title="こちら">這邊</a>）中，<br/>H1ST的最低值是205，最高值是220。<br/>從那裡開始，下限設在230，平均拉到235左右。<br/>這個數值我有告訴客人。<br/>今後也不是要在別的Hozan H1ST上保持235，<br/>而是為了表示跟本店其他Racing Zero差不多，這個意思。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05904amx6.jpg" target="_blank"><img alt="DSC05904amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05904amx6s.jpg" width="320"/></a><br/>接下來，我測測看輻條的比重。<br/>在那之前。<br/>这根铝辐条的辐条长度<br/>有个怎么定义的问题。<br/>是采用辐条的全长（上图Ａ）呢，<br/>还是测量首下长度（同Ｂ）。<br/><br/>这根辐条的公称长度是２７９．２ｍｍ，<br/>我调查了一下那个规格到底是从哪里到哪里，<br/>结果发现和全长Ａ完全一致，所以就采用了那个。<br/>就輪輻的比重而言，會稍微處於不利的位置。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05905amx6.jpg" target="_blank"><img alt="DSC05905amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05905amx6s.jpg" width="320"/></a><br/>為了能夠用較少的本數進行計算，我準備了可以量測０．１ｇ的秤。<br/>雖然我認為陽極氧化處理的顏色不會造成重量差異，<br/>不過還是分別測量一下。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05906amx6.jpg" target="_blank"><img alt="DSC05906amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05906amx6s.jpg" width="320"/></a><br/>↑黑色２４本<br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05907amx6.jpg" target="_blank"><img alt="DSC05907amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05907amx6s.jpg" width="320"/></a><br/>↑銀色５本<br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05908amx6.jpg" target="_blank"><img alt="DSC05908amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05908amx6s.jpg" width="320"/></a><br/>↑紅色７本<br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05909amx6.jpg" target="_blank"><img alt="DSC05909amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05909amx6s.jpg" width="320"/></a><br/>↑３６本一起量<br/>每根大约略微超过5克。<br/>所以这根辐条的比重结果是69.8%。<br/>因为Sapim的辐条也用概算值，那就设定为70%吧。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05910amx6.jpg" target="_blank"><img alt="DSC05910amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05910amx6s.jpg" width="320"/></a><br/>我把那个加描在刚才的图表里了。<br/>能看出来它的性能有多出众吧。<br/>哪里是「跟钢制辐条程度相同」呢。<br/>难道看了这个还要说「第一阶段ST与驱动刚性无关！」<br/>这样的话吗。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05911amx6.jpg" target="_blank"><img alt="DSC05911amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05911amx6s.jpg" width="320"/></a><br/>↑任意版本<br/><br/>接下來，關於為什麼即使是同一支Fulcrum也沒有測量內穿的原因。<br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05739amx6.jpg" target="_blank"><img alt="DSC05739amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05739amx6s.jpg" width="320"/></a><br/>Racing 1的後輪自由側，<br/>內穿的這個部分測量時<br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05740amx6.jpg" target="_blank"><img alt="DSC05740amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05740amx6s.jpg" width="320"/></a><br/>H 1ST會顯示大約421。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05741amx6.jpg" target="_blank"><img alt="DSC05741amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05741amx6s.jpg" width="320"/></a><br/>但如果在更靠近轂的地方測量<br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05742amx6.jpg" target="_blank"><img alt="DSC05742amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05742amx6s.jpg" width="320"/></a><br/>就會激減到281。這是因為扁平率改變了。<br/>特別說明一下，當然測的是同一位置的輻條。<br/>如果是扁條輻條，無論在哪裡測量都幾乎沒有差別，<br/>為了採集穩定的數值，我避開了領帶輻條。<br/><br/>還有，雖然要回溯相當久遠的時間，<br/>我也在力所能及的範圍內記錄了Mavic鋁合金輻條的H1ST。<br/>至於圓形輻條，無論前後方向還是左右方向測量，數值都是一樣的。<br/><br/>圓形鋁合金輻條的H1ST為什麼最高呢，<br/>那是因為從輻條的前後方向測量H1ST有關。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05912amx6.jpg" target="_blank"><img alt="DSC05912amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05912amx6s.jpg" width="320"/></a><br/>Hozan張力計的測量子頭的話，<br/>在ㄱ字形的凹陷底部對準輻條。<br/>只要能測量13號平紋輻條（2.34mm直徑）以上<br/>最大寬度比那更微小的CX-RAY或AeroLite<br/>可以製作將D1ST的左右方向轉換為H1ST左右方向的對照表。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05913amx6.jpg" target="_blank"><img alt="DSC05913amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05913amx6s.jpg" width="320"/></a><br/>我自己的野村實驗室輪組2號。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05914amx6.jpg" target="_blank"><img alt="DSC05914amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05914amx6s.jpg" width="320"/></a><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05915amx6.jpg" target="_blank"><img alt="DSC05915amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05915amx6s.jpg" width="320"/></a><br/>用星牌AeroStar Bright II型<br/>盡可能地拉得緊緊地組裝起來。<br/>呵呵呵。<br/><br/>這傢伙的輻條比重約９３％。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05916amx6.jpg" target="_blank"><img alt="DSC05916amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05916amx6s.jpg" width="320"/></a><br/>那麼，H1ST 是 １８７。<br/>如同先前寫的，CX 在 １９０ 就是極限了，<br/>比那個輻條比重稍微小一點<br/>用 Aero SBII 張到同樣程度，那就是相當有張力啊。<br/><br/>這裡我來寫 CX-RAY 的具體數值，<br/>前後方向的 H1ST 是 １３０ 的時候，左右方向大概是 ７８ 左右。<br/>１２０ 的話，大概是 ６３ 左右。<br/><br/>因此這支Aero SB II雖然扁平率與CX-RAY不同，<br/>左右方向的H1ST應該會在187以下才對・・・<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05917amx6.jpg" target="_blank"><img alt="DSC05917amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05917amx6s.jpg" width="320"/></a><br/>實際上卻出現了295弱這種荒唐的數值。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05918amx6.jpg" target="_blank"><img alt="DSC05918amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05918amx6s.jpg" width="320"/></a><br/>這是因為測量針的底部進不去輻條之間的關係。<br/>Fulcrum的扁平鋁合金輻條薄邊的寬度<br/>實測約1.4mm，所以前後方向可以測量，<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05743amx6.jpg" target="_blank"><img alt="DSC05743amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05743amx6s.jpg" width="320"/></a><br/>但左右方向就測不了。<br/><br/>剛才那支領帶輻條也是，<br/>前後方向是２８１，左右方向卻是３６４。<br/>Mavic 的圓形輻條數值會跳升，也是因為這個原因。<br/>我之所以從前後方向來測量 H1ST，也是這個理由。<br/><br/>所以鋁合金圓形輻條的３６０這個數值是錯誤的，實際上應該更低才對。<br/>不過，在輪圈重組作業拆散之前，<br/>知道「雖然沒有貼底但是３６０」這件事的話，<br/>對重新組裝時就能成為參考。<br/>所以測量還是有意義的。<br/><br/><br/><br/>所以說，鋁合金輻條真正厲害的地方在於<br/>上面用藍色字寫著，我複製貼上過來的是<br/><span style="color:#0000FF">相對於第２ST，第１ST變大的輻條<br/>代表輻條的比重變大，所以<br/>會有違反輕量化的缺點。</span><br/>我寫過這樣的內容。<br/>這是建立在「輻條只能是鋼材」這個大前提上的話。<br/>雖然比重１００％的鋼製輻條根本無法達到的第１ST<br/>且スポーク比重比CX-RAY稍微重一點左右......這樣能夠實現的原因是，<br/>真正意義上的「比重」在鋁和鋼之間是不同的。<br/><br/>有人說什麼鋁和鋼的鑄錠之類的，<br/>只用素材的物性來比較沒有意義啦<br/>似乎有人在胡說八道（裝作沒看見），<br/>簡直是荒唐。必須以輻條的角度來評價才有意義。<br/><br/>順便說一下，那個不行 這個不行<br/>一邊否定別人家的輪圈<br/>花大價錢自己選定零件和組裝方式的完成輪組，<br/>看過實物後，也沒什麼特別的。<br/>24小時 左右同徑輻條四十組法的後輪<br/>自由輪側的H1ST是150，反自由輪側是120。<br/>四十組法來說，150對應120的追隨度相當高，<br/>這主要是因為使用了偏心輞的關係。<br/>如果150是用CX-RAY製作的話，那還真是不錯，<br/>但這是Pillar製的，輻條比重比CX-RAY還要大<br/>氣動輻條但張力只有150而已，所以並沒有拉得很緊。<br/>更麻煩的是，外穿輻條組的宿命就是<br/>輻條用手指捏一下會有相當程度的撓度……<br/><br/>撇開輞硬度不談，踩踏時後輞的內側會<br/>（硬到能體感到摩擦損耗的程度）被擠壓，<br/>換句話說，這是個咬合不佳的後輪，<br/>這是我摸過各式各樣輪組後，單從外觀判斷得出的感想，<br/>但實際車主使用後的感想也和我的判斷沒有太大差異<br/>啊，我就想到應該是這樣。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05919amx6.jpg" target="_blank"><img alt="DSC05919amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05919amx6s.jpg" width="320"/></a><br/>自由端柱子的內穿，H1ST150是說呢，<br/>也就是這一帶。<br/>果然 Le Sauló是遙遠啊。<br/><br/>鋁和鋼「作為車條」沒有差異，<br/>或者 幾乎沒有差異的話<br/>用比重70％的鋼車條把H1ST張到230左右試試看。<br/><s>不可能啦 蠢蛋。</s><br/>即使是滑動比重100%也很困難。<br/><br/>或者，換個角度看，跟Fulcrum的鋁合金輻條是一樣的<br/>用滑動比重70%的鋼製輻條<br/>組裝16孔前輪，與Racing Zero的孔數相同，<br/>完全無法想像能超越那種硬度。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05920amx6.jpg" target="_blank"><img alt="DSC05920amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05920amx6s.jpg" width="320"/></a><br/>關於預期會出現的反論。<br/>H1ST用領帶鋁輻條是390，<br/>用扁平鋁輻條是235，CX-RAY是140的話，<br/>這些第２ST（也就是一般意義上的輻條張力）是<br/>應該差不多吧？關於這一點。<br/><br/>正是如此。<br/>比如，Racing Zero和Racing 3的輻圈重量差不多，還是<br/>Zero稍微輕一點的樣子，<br/>Racing 3的輻條是粗壯的方形氣動設計，<br/>H1ST大約是180～185左右。<br/>雖然第１ST因為輻條而相差2倍以上，<br/>我不認為第２ST會有那麼大的差異。<br/><br/>雖然第１ST的差異程度，轂孔所承受的負荷<br/>應該不會有那麼大的不同，這點確實沒錯。<br/><br/>不過，要說這些具有相同的驅動剛性和抗磨損性，還是有些勉強。<br/>我在前面提過，第２ST（１０００Ｎ）相同的<br/>１３號前輪和１５號前輪不可能具有相同的硬度（抗磨損性）。<br/>雖然不是完全精確地互相聯動，<br/>但在１０００Ｎ時的抗撓性，１３號是１５５，１５號是１１６<br/>第1ST的數值差異中應該存在某些能被表現出來的部分。<br/><br/>因此，看上面的圖表時應該讀取的是<br/>「雖然表面上的第1ST不同，但第2ST差不多，所以<br/>鋁合金輻條沒有意義」並不是這樣，<br/>「在相同的第2ST下，每根輻條的抗彎性（第1ST）不同」<br/>這個重點，而且如果從輻條比重相應的第1ST來看的話<br/>那就相當突出了。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05924amx6.jpg" target="_blank"><img alt="DSC05924amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05924amx6s.jpg" width="320"/></a><br/>如果「只」用第2ST來進行靜態評估的話，那確實是這樣，<br/>如果把組好的輪子當作椅子的腳用的話<br/>即使輪幅材質不同<br/>也許也能說是「差不多的東西」。<br/><br/>換上Racing Zero和手組輪子<br/>不看輪子 只靠騎乘感覺來猜哪一個的話<br/>也許是有可能的，<br/>坐在腳的部分是輪子的椅子上（第２ST保持相同）<br/>我沒有信心能從坐感來判斷輪幅的材質。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05922amx6.jpg" target="_blank"><img alt="DSC05922amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05922amx6s.jpg" width="320"/></a><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05923amx6.jpg" target="_blank"><img alt="DSC05923amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05923amx6s.jpg" width="320"/></a><br/>還要再繼續下去呢。<br/>假設用鋼製輻條把H1ST張到230左右的話。<br/>用折頸鋼製輻條來做的話<br/>和用直型鋼製輻條來做的話<br/>在驅動時的變形來考慮的話就有點不同了。<br/><br/>輻條張力完全沒有施加的狀態下<br/>考慮輻條的活動範圍的話，直型輻條方面<br/>被認為對扭轉和變形的抵抗力更強。<br/>此外，就鋁製輻條而言，由於材料的特性<br/>必須採用較大的截面積<br/>但正因為如此（或者說因此？）輻條頭部形狀的自由度<br/>反而具有極高的優勢。<br/>Fulcrum鋁製輻條的切片杏鮑菇頭設計，<br/>在前輪和後輪左側如拼圖般牢牢卡合，<br/>在後輪右側雖然略有搖晃，但活動範圍幾乎沒有。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05921amx6.jpg" target="_blank"><img alt="DSC05921amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05921amx6s.jpg" width="320"/></a><br/>因此，即使是相同的輻條張力（←雖然有點囉嗦，但這是第2ST）<br/>驅動時輻條頭的搖晃幾乎沒有，所以<br/>卡度好壞相關的損失也很少，我是這麼想的。<br/>一旦這樣說起來，首先鋁製輻條本身就是<br/>太重大的因素了，只從這裡的差異中提取並用身體去感受是不可能的。<br/><br/>以上，寫得越多我虧損越大的鋁製輻條相關話題，就到此為止了。<br/>燒杯論的話，還需要多一點時間。<br/><br/>追記：<br/>關於明顯的觀測事實<br/>我發表個人看法（即使有誤也沒關係）。<br/><br/>只是，我不會寫出是誰的公司<br/><span style="font-size:large;">「所以我們家的輪組很厲害」<br/>作為這種既定結論的前置詞<br/>揮舞著似是而非的理論</span><br/>我覺得這樣很奇怪。<br/>Lightweight和Racing Zero都是由比我聰明得多的天才集團<br/>絞盡腦汁、費盡心思開發出來的產物，<br/>手組輪圈根本不可能贏過完組輪圈。<br/>唯一能找到突破口的地方，<br/>就是使用比完組輪圈更輕的輪圈而已。<br/><br/>如果連 Lightweight 或 Racing Zero 的厲害之處都無法坦率地理解，<br/>那我就會覺得這傢伙的見識未免太低了。<br/><br/>就今天這個話題來說，如果我能靠自己獨有的巧思<br/>用 CX-RAY 做出 H1ST 235，那麼<br/>「我的輪圈超越了 Racing Zero！」之類的<br/>「鋁製輻條沒有意義啦 呵呵呵」之類的<br/>我是覺得可以這麼說，但實際上不可能。<br/>CX-RAY也不是說破斷方面就沒有上限啦。<br/><br/>但是，既不拿出輻條比重，也沒有具體例子（比如說雷澤羅的輻條之類的）<br/>就被說鋼製輻條和鋁製輻條差不多同樣重量...。<br/><br/>以前在Shimano的技術講座上<br/>聽過開發C75輪組的人講他的故事。<br/>五十多歲吧，是個不錯年紀的大叔呢，<br/>我參加了長距離的鐵人三項賽，在騎自行車的時候<br/>「我能夠理解風的偏航角（Yaw Angle）」，他就這麼說。<br/>而且，為了保持最具空氣動力學優勢的偏航角<br/>他甚至說自己會通過讀風來讓自行車軌跡呈之字形行駛。<br/>我本來想吐槽說那如果風從反方向吹來，你是要回頭掉頭回家嗎，<br/>不過這番言論，我是在一個只聚集了專業車店員工、不是終端使用者的場合裡<br/>聽到他堂而皇之地說出來，實在太荒唐了，<br/>我就在研討會的資料背脊上，給這老仁兄畫上了似顏繪<br/>我記得在打發時間。<br/>（因為有很多人在睡覺 就當各位只是在聽就很了不起了）<br/><br/>聽了這個故事後我想到的是，C75這款輪組<br/>「真的認為能在騎行時讀懂風的偏航角的人<br/>設計出來的東西」。<br/>就是這樣，不知道是有自覺還是沒自覺的那種帶著神祕主義色彩的<br/>思想，或者說哲學基礎下製造出來的來歷，<br/>姑且不論東西本身的好壞 就是莫名讓人感到不舒服。<br/><s>（別問他是不是好做法，<br/>讀這個部落格的人應該都知道答案）</s><br/><br/>這樣的事我<span style="font-size:large;">不知道為什麼</span>又想起來了。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">我收到了許多要求寫關於鋁製輻條的評論，<br/>或者是從實際來店的客人那裡聽到的。<br/>至少，某些不夠敏銳的傢伙（裝蒜）嘴上說著<br/>「與鋼製輻條相比，幾乎沒有意義」這種主張明顯是錯誤的。<br/><br/>作為根據「只要稍微使用一下<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Fulcrum+Racing+Zero+bicycle+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">Racing Zero</a><br/>就能明白這是用鋼製輻條無法達到的硬度輪組」這樣的<br/>感受性的說法的話，好像就能結束了，<br/>但不是那樣的話，按照のむラボ的輪組觀點來看的話<br/>我來寫寫會發生什麼樣的情況。<br/><br/>「第１根輻條張力（以下簡稱 第１ＳＴ）」<br/>「第２根輻條張力（以下簡稱 第２ＳＴ）」<br/>「輻條比重」<br/>「燒杯理論」<br/>這些如果套用在鋁合金輻條上就可以了，<br/>燒杯理論的話題（到現在為止完全沒有觸及過）會很冗長，<br/>而且與鋁合金輻條沒有直接關係，所以那部分就留到改天再說。<br/><br/>首先，關於第1ST。<br/>第1ST是指顯示在張力計上的<br/>「計量表讀數」的數值本身。<br/>當然這是車房實驗室用語，先說明一下。<br/><br/>第2ST是指把第1ST代入換算表時的<br/>輪幅張力的概算值，一般說起輪幅張力時<br/>指的就是這個。<br/><br/>與其用這麼複雜的說法，第1ST就是「計量表讀數」、<br/>第２ＳＴ就是「輻條張力」啊，沒問題吧，<br/>雖然這種說法是滿有道理的，<br/>第１ＳＴ也會因為轉軸的鬆緊而增減，<br/>它是把輻條張力數值化的一種方式<br/>只用輻條張力（←也就是第２ＳＴ）<br/>無法單獨討論輪組的硬度或驅動剛性。<br/>關於原因，我接下來會寫。<br/><br/>鋁合金輻條是，Racing Zero的<br/>我使用きしめん氣動（蝦扁部分各處形狀一致的方形氣動）。<br/>這絕非為了引導出武斷的結果才方便<br/>不是那樣的。<br/>為了對純粹的觀測事實表述我的想法，<br/>我認為觀測事實本身誤差最少的是鋁合金輻條。<br/>從這一點來看，領帶輻條不行。<br/>關於那件事我後面會詳細寫到，<br/>但首先我要先寫上為什麼不選馬維克鋁合金輻條的理由。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05958amx6.jpg" target="_blank"><img alt="DSC05958amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05958amx6s.jpg" width="320"/></a><br/>Mavic 的鋁合金輻條至少有 4 種類。<br/>可能我學識不足，還有更多種類。<br/>上面圖片的「H1ST」，現在先忽略不看。<br/><br/>首先是第 1 種輻條，這是從初代 <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Mavic+Ksyrium+SSC+bicycle+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">Ksyrium SSC</a> 就有的形狀<br/>在敲擊成形部分的末端有著像魚尾鰭一樣的紋路<br/>前後寬度最大的類型。<br/>第 2 種輻條是前後寬度比第 1 種小，敲擊成形邊界沒有紋路的類型。<br/>第 3 種輻條是圓形斷面的輻條。<br/>４號輻條與２號很相似，但扁平率不同。<br/><br/>從初代到ＥＳ的Ｋｓｙｒｉｕｍ輪轂，用來裝工具的花鍵部分<br/>採用的是較小的乳頭，<br/>Ｒ－ＳＹＳ的乳頭則是比那更大直徑的花鍵，使用的工具也不一樣。<br/>Ｒ－ＳＹＳ之後的Ｋｓｙｒｉｕｍ乳頭尺寸與Ｒ－ＳＹＳ相同，<br/>無論哪種情況，輻條都是在製造時就密封好的狀態，<br/>所以沒辦法單獨測量輻條的重量。<br/>因此很難求得準確的輻條比重。<br/>這就是，談起鋁合金輻條時<br/>不採用馬維克輻條的原因。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05891amx6.jpg" target="_blank"><img alt="DSC05891amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05891amx6s.jpg" width="320"/></a><br/>↑１的輻條<br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05893amx6.jpg" target="_blank"><img alt="DSC05893amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05893amx6s.jpg" width="320"/></a><br/>↑２的輻條<br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05892amx6.jpg" target="_blank"><img alt="DSC05892amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05892amx6s.jpg" width="320"/></a><br/>↑３的輻條<br/><br/>關於４的輻條（→<a href="/zh/posts/3470.html" target="_blank" title="こちら">這裡</a>）<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05896amx6.jpg" target="_blank"><img alt="DSC05896amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05896amx6s.jpg" width="320"/></a><br/>接著，關於第1ST和第2ST的關係。<br/>與之前寫過的內容（→<a href="/zh/posts/1011.html" target="_blank" title="こちら">這裡</a>）（→<a href="/zh/posts/1012.html" target="_blank" title="こちら">這裡</a>）有所重複，但我輕輕帶過一下。<br/>關於第3根輻條的張力，<br/>雖然不觸及核心，但會在談到燒杯論時寫到。<br/><br/>如果「第１ＳＴ變成２倍，第２ＳＴ也變成２倍，<br/>第１ＳＴ變成ｎ倍，第２ＳＴ也變成ｎ倍……」的話，<br/>把第１ＳＴ和第２ＳＴ的關係畫成圖表，就會是正比直線。<br/>但是，實際上並不是這樣。所以才需要換算表。<br/>在連結的文章裡有寫到，<br/>ＤＴ和Park Tool的張力計<br/>都是根據換算表做過校準的，<br/>理論上個體誤差是零（Park Tool有點可疑就是了）。<br/>HOZAN 承認了各張力計之間的誤差，<br/>並為每台機器附送換算表。<br/>比如我的 HOZAN 在 14 號平面圓形輻條上，<br/>第一代機型顯示 130 時，第二代機型就是 1000N。<br/>如果每台計器都準確的話，第二代機型會顯示相同的數值，<br/>但第一代機型如果張力計製造商不同，數值就會完全不同，<br/>即使是同一（應該是同一）產品，每台之間也會有微小誤差。<br/><br/>從此以後，如上圖所示，<br/>我就把HOZAN張力錶的第1ST稱為H1ST。<br/>如果是DT的話就叫D1ST，Park Tool的話就叫P1ST好了。<br/>當測量同一根輻條時，H1ST、D1ST、P1ST的數值各不相同<br/>但代入各自的換算表後，第2ST就會變成相同的數值，就是這樣。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05874amx6.jpg" target="_blank"><img alt="DSC05874amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05874amx6s.jpg" width="320"/></a><br/>這是我的HOZAN張力錶的換算表。<br/>就像我前面寫的那樣，對HOZAN來說的H1ST<br/>就是有多少台錶就有多少種。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05876amx6.jpg" target="_blank"><img alt="DSC05876amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05876amx6s.jpg" width="320"/></a><br/>第1ST和第2ST的圖表。<br/>我畫的圖與橫軸、縱軸相反，所以曲線的反彎也相反了，<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05878amx6.jpg" target="_blank"><img alt="DSC05878amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05878amx6s.jpg" width="320"/></a><br/>從背面用光透射這邊的圖就一樣了。<br/>DT的換算表是這邊（橫軸 第2ST、縱軸 第1ST），所以<br/>畫成那樣就成了習慣。<br/>雖然與這次的話題沒有關係，但應力－應變曲線的反彎也很像<br/>看起來更像那樣形狀的話，各種方面都更容易想像，也是理由之一。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05877amx6.jpg" target="_blank"><img alt="DSC05877amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05877amx6s.jpg" width="320"/></a><br/>具體的第1ST數值是這樣的。<br/>HOZAN的張力計是13號、14號、15號的直條輻條的<br/>只有第１ＳＴ的表記，<br/>巴頓轮辐的数值我不清楚。<br/>所以无法用这个来测量竞赛或ＣＸ－ＲＡＹ。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05879amx6.jpg" target="_blank"><img alt="DSC05879amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05879amx6s.jpg" width="320"/></a><br/>这是ＤＴ的图表（冠军１４号素面）。<br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05880amx6.jpg" target="_blank"><img alt="DSC05880amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05880amx6s.jpg" width="320"/></a><br/>也有只有数值的表。<br/>我最先做的事，就是制作Ｄ１ＳＴ和Ｈ１ＳＴ的对比表。<br/>具体来说，比如某个竞赛轮（１４号的那种）<br/>Ｄ１ＳＴ显示２．００的话。<br/>根據 DT 的換算表，當 D1ST 為 1.96 時第 2ST 為 1200N，<br/>2.04 時為 1300N，<br/>所以這場比賽的第 2ST 大約是 1250N，<br/>用 H1ST 來看的話顯示為 134。<br/>根據 Hozan 的換算表，第 2ST 為 1300N 的 14 號平幅輻條為 138，<br/>15 號平幅輻條為 126，所以大致上也符合實際情況。<br/>用平常使用的輻條仔細調查了這個<br/>「針對梯形輻條用的 H1ST 換算表」，我已經製作好了，<br/>用Hozan的張力表<br/>可以量測扁頭輻條。<br/>對於Sapim輻條，我們假設它與相同截面尺寸的DT輻條<br/>完全相同，從DT的換算表中求得H1ST。<br/>普通輻條的Leader和Champion<br/>基本上可以認為是一樣的，<br/>CX-RAY和Aero Lite、Race和Competition也被視為相同。<br/>實際上，Race的1.8mm圓形扁頭部分比Competition明顯要長<br/>輻條比重的小數位數程度上確實存在差異，<br/>即使將車圈的D1ST或H1ST視為與Comp相同，<br/>我判斷在組裝車圈時沒有問題。<br/>關於Laser和Revolution，<br/>平時不太使用，所以用這些輻條組裝車圈時<br/>我使用DT的張力計。<br/>因為求H1ST實在太麻煩了。<br/>除了那個用途外，DT的張力計<br/>除了檢查 H1ST 時以外，我不會使用它。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05881amx6.jpg" target="_blank"><img alt="DSC05881amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05881amx6s.jpg" width="320"/></a><br/>有一件很重要的事。<br/>DT 換算表中的 D1ST 是從輪轂左右方向測量得到的數值。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05882amx6.jpg" target="_blank"><img alt="DSC05882amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05882amx6s.jpg" width="320"/></a><br/>（偽空氣動力輪轂的）CX-RAY 測出了 0.38 弱。<br/>空氣動力輪轂在 0.37 時是 1000N，0.41 時是 1050N，所以<br/>第 2ST 就是 1000N 多一點這樣。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05883amx6.jpg" target="_blank"><img alt="DSC05883amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05883amx6s.jpg" width="320"/></a><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05884amx6.jpg" target="_blank"><img alt="DSC05884amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05884amx6s.jpg" width="320"/></a><br/>從前後方向測量時，數值跳到了 2.19。<br/>這個數值不是換算表使用的數值，但<br/>「Aero Lite的D1ST在左右方向是0.38時，前後方向則是2.19」<br/>像這樣的數值其實我也是細緻地測量的。<br/><br/>理由後面會寫，H1ST基本上是使用前後方向的數值。<br/>順帶一提，這根輻條的「前後方向的」H1ST是130。<br/>以下，除非特別說明，H1ST的數值都是以前後方向測量的。<br/><br/>後面會提到，「扁平輻條在半徑較大的一側測量時<br/>比在較小的一側測量會得到更大的數值」請記住這一點。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05897amx6.jpg" target="_blank"><img alt="DSC05897amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05897amx6s.jpg" width="320"/></a><br/>13號、14號、15號直頭輻條的第2ST是<br/>整理了1000N時H1ST和D1ST的數據。<br/>圓形輻條無論如何測量，無論是左右方向還是前後方向，第1ST都不會改變。<br/><br/><span style="color:#FF0000">這個第1ST的多寡，但可以說是輪組體感上的硬度，<br/>以及驅動時的咬合性能被數值化的結果。</span><br/><br/>將前後方向和左右方向各自的不易變形性進行了數值化，<br/>舉例來說，14號平頭輻條的1000N用D1ST來表現的話<br/>左右方向的不易變形性2.19 前後方向的不易變形性2.19，<br/>1000N多一點的Aero Lite是<br/>左右方向的抵抗變形性０．３８ 前後方向的抵抗變形性２．１９<br/>這樣就能表現了，是這樣的想法。<br/><br/>作為最簡單的輪組，考慮幅向組法的前輪的話<br/>１３番平面上 Ｈ１ＳＴ為１５５的前輪和<br/>１５番平面上 Ｈ１ＳＴ為１１６的前輪<br/>雖然輻條張力（←這是第２ＳＴ）是相同的<br/>騎乘的手感和 車輪歪斜時的撓度<br/>前者明顯更硬、更不易撓曲。<br/><br/>如果說「不管第１張力如何，只要第２張力相同<br/>輪組剛性就相同」的話，<br/>輻條只要在不發生うにょーん（拉伸方向塑性變形）的範圍內<br/>盡可能選擇輕量的就行了。<br/><br/>更極端地說，如果H１張力是５０左右，<br/>第２張力達到１０００Ｎ的超細素面輻條的話，<br/>只要把第２張力張到１０００Ｎ<br/>就能產生和１３號的H１張力１５５相同的剛性。<br/>當然，不是那樣的。<br/><br/>車輻張力（←嘮叨一下但這是第２ＳＴ）相同的話<br/>如果第１ＳＴ不同 輪組的硬度就會有差異。<br/>當然，<span style="color:#0000FF">相對於第２ＳＴ 第１ＳＴ變大的車輻<br/>這表示車輻的比重變大了<br/>當然會有與輕量化相悖的缺點。</span><br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05898amx6.jpg" target="_blank"><img alt="DSC05898amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05898amx6s.jpg" width="320"/></a><br/>順便說一下，Ｈ１ＳＴ和Ｄ１ＳＴ的比率並不相同。也不接近。<br/>這對我來說是個非常令人頭痛的問題，<br/>我會在寫燒杯論的時候詳細說明。<br/><br/><br/><br/>Sapim的CX和CX-RAY<br/>都採用橢圓斷面的扁平（橢圓空氣動力學）內穿輻條，<br/>輻條比重分別是100％和65％。<br/>根據製造商公稱值的概算是98.9％和63.6％，<br/>但實際測量結果要大約多出1％。<br/>反正大概就好，所以就用100％和65％了。<br/><br/>當這些輻條拉到最緊的時候<br/>（無法再轉緊尼普爾的）狀態下，<br/>H1ST在CX上是190，在CX-RAY上大約是150。<br/>剛才那個黑色CX-RAY的130是<br/>のむラボホイール5號的前輪，<br/>到150為止 實在是不會這樣拉（也拉不了）。<br/>CX-RAY的H1ST能看到150的情況是，<br/>24H的四一零組合的自由端拼命拉緊的時候<br/>（這樣的話外穿側會鬆鬆垮垮的）之類的情況。<br/>能夠這樣做的輪圈也有點受限。<br/>具體來說，Mecchaniko完組後輪就是那種感覺。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05899amx6.jpg" target="_blank"><img alt="DSC05899amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05899amx6s.jpg" width="320"/></a><br/>我把CX和CX-RAY的第1檔與輻條比重的關係用圖表畫出來了。<br/>為了不讓外觀看起來太武斷，我沿著白板的格子<br/>按照右邊正方形相同的數值比例<br/>相當用心地描繪著。<br/>在這裡，從CX到CX-RAY為止<br/>將扁平氣動輻條的輻條比重按 1% 的增幅進行變更後<br/>排列時會形成怎樣的點的集合，我來思考一下。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05900amx6.jpg" target="_blank"><img alt="DSC05900amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05900amx6s.jpg" width="320"/></a><br/>CX 和 CX-RAY 的扁平率不同。<br/>CX 的外形看起來略微短胖一些。<br/>扁平率以圓輻條為 1，所以距離越遠就越扁平。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05901amx6.jpg" target="_blank"><img alt="DSC05901amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05901amx6s.jpg" width="320"/></a><br/>在保持 CX 的扁平率不變的情況下，將輻條比重縮減到 65% 時<br/>點的集合情況我試著思考了一下。<br/>實際上應該還會有更多的變化，但<br/>「嗯，大概在這附近就能俐落地拉出直線啦」<br/>這樣的想法應該會浮現出來，而拉出的那條線就是藍色虛線。<br/>實際的CX-RAY扁平率不是2.15而是2.44<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05902amx6.jpg" target="_blank"><img alt="DSC05902amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05902amx6s.jpg" width="320"/></a><br/>比起扁平率2.15、輻條比重65%的輻條<br/>第1ST應該會向上修正<br/>（D1ST的左右方向與前後方向的差異是根據）。<br/><br/>如果從CX到CX-RAY為止，扁平率也會逐漸改變的話<br/>從藍色虛線起立的藍色實線就會留下來<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05903amx6.jpg" target="_blank"><img alt="DSC05903amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05903amx6s.jpg" width="320"/></a><br/>應該會是這種感覺。<br/>不過話說回來，稍微有點曲線也好，稍微直一點也好<br/>對今後的話題沒有什麼影響啦。<br/><br/><br/>差不多該開始聊鋁合金輻條的話題了吧，這樣的話大概會被催促<br/>所以需要到這裡為止的前置說明。<br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05570amx6.jpg" target="_blank"><img alt="DSC05570amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05570amx6s.jpg" width="320"/></a><br/>那麼，各位期待已久的時刻來了。<br/>Fulcrum的扁平鋁合金輻條。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05571amx6.jpg" target="_blank"><img alt="DSC05571amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05571amx6s.jpg" width="320"/></a><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05573amx6.jpg" target="_blank"><img alt="DSC05573amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05573amx6s.jpg" width="320"/></a><br/><span style="font-size:large;">H1ST是268。</span><br/>這是有點例外的數值。<br/>因為黃銅套筒時代的Racing 1，進一步增加了鎖緊力。<br/><br/>現在的鋁套筒Racing Zero的前或後右邊，<br/>H1ST大約是235左右。<br/>低於220的話，騎乘感覺明顯變得鬆軟。<br/><br/>前陣子在某家店裡做了輪圈更換<br/>Racing Zero 2WAY-FIT明顯感覺鬆軟，<br/>重新張力調整的案例（→<a href="/zh/posts/3412.html" target="_blank" title="こちら">這邊</a>）中，<br/>H1ST的最低值是205，最高值是220。<br/>從那裡開始，下限設在230，平均拉到235左右。<br/>這個數值我有告訴客人。<br/>今後也不是要在別的Hozan H1ST上保持235，<br/>而是為了表示跟本店其他Racing Zero差不多，這個意思。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05904amx6.jpg" target="_blank"><img alt="DSC05904amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05904amx6s.jpg" width="320"/></a><br/>接下來，我測測看輻條的比重。<br/>在那之前。<br/>这根铝辐条的辐条长度<br/>有个怎么定义的问题。<br/>是采用辐条的全长（上图Ａ）呢，<br/>还是测量首下长度（同Ｂ）。<br/><br/>这根辐条的公称长度是２７９．２ｍｍ，<br/>我调查了一下那个规格到底是从哪里到哪里，<br/>结果发现和全长Ａ完全一致，所以就采用了那个。<br/>就輪輻的比重而言，會稍微處於不利的位置。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05905amx6.jpg" target="_blank"><img alt="DSC05905amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05905amx6s.jpg" width="320"/></a><br/>為了能夠用較少的本數進行計算，我準備了可以量測０．１ｇ的秤。<br/>雖然我認為陽極氧化處理的顏色不會造成重量差異，<br/>不過還是分別測量一下。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05906amx6.jpg" target="_blank"><img alt="DSC05906amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05906amx6s.jpg" width="320"/></a><br/>↑黑色２４本<br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05907amx6.jpg" target="_blank"><img alt="DSC05907amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05907amx6s.jpg" width="320"/></a><br/>↑銀色５本<br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05908amx6.jpg" target="_blank"><img alt="DSC05908amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05908amx6s.jpg" width="320"/></a><br/>↑紅色７本<br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05909amx6.jpg" target="_blank"><img alt="DSC05909amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05909amx6s.jpg" width="320"/></a><br/>↑３６本一起量<br/>每根大约略微超过5克。<br/>所以这根辐条的比重结果是69.8%。<br/>因为Sapim的辐条也用概算值，那就设定为70%吧。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05910amx6.jpg" target="_blank"><img alt="DSC05910amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05910amx6s.jpg" width="320"/></a><br/>我把那个加描在刚才的图表里了。<br/>能看出来它的性能有多出众吧。<br/>哪里是「跟钢制辐条程度相同」呢。<br/>难道看了这个还要说「第一阶段ST与驱动刚性无关！」<br/>这样的话吗。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05911amx6.jpg" target="_blank"><img alt="DSC05911amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05911amx6s.jpg" width="320"/></a><br/>↑任意版本<br/><br/>接下來，關於為什麼即使是同一支Fulcrum也沒有測量內穿的原因。<br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05739amx6.jpg" target="_blank"><img alt="DSC05739amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05739amx6s.jpg" width="320"/></a><br/>Racing 1的後輪自由側，<br/>內穿的這個部分測量時<br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05740amx6.jpg" target="_blank"><img alt="DSC05740amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05740amx6s.jpg" width="320"/></a><br/>H 1ST會顯示大約421。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05741amx6.jpg" target="_blank"><img alt="DSC05741amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05741amx6s.jpg" width="320"/></a><br/>但如果在更靠近轂的地方測量<br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05742amx6.jpg" target="_blank"><img alt="DSC05742amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05742amx6s.jpg" width="320"/></a><br/>就會激減到281。這是因為扁平率改變了。<br/>特別說明一下，當然測的是同一位置的輻條。<br/>如果是扁條輻條，無論在哪裡測量都幾乎沒有差別，<br/>為了採集穩定的數值，我避開了領帶輻條。<br/><br/>還有，雖然要回溯相當久遠的時間，<br/>我也在力所能及的範圍內記錄了Mavic鋁合金輻條的H1ST。<br/>至於圓形輻條，無論前後方向還是左右方向測量，數值都是一樣的。<br/><br/>圓形鋁合金輻條的H1ST為什麼最高呢，<br/>那是因為從輻條的前後方向測量H1ST有關。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05912amx6.jpg" target="_blank"><img alt="DSC05912amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05912amx6s.jpg" width="320"/></a><br/>Hozan張力計的測量子頭的話，<br/>在ㄱ字形的凹陷底部對準輻條。<br/>只要能測量13號平紋輻條（2.34mm直徑）以上<br/>最大寬度比那更微小的CX-RAY或AeroLite<br/>可以製作將D1ST的左右方向轉換為H1ST左右方向的對照表。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05913amx6.jpg" target="_blank"><img alt="DSC05913amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05913amx6s.jpg" width="320"/></a><br/>我自己的野村實驗室輪組2號。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05914amx6.jpg" target="_blank"><img alt="DSC05914amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05914amx6s.jpg" width="320"/></a><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05915amx6.jpg" target="_blank"><img alt="DSC05915amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05915amx6s.jpg" width="320"/></a><br/>用星牌AeroStar Bright II型<br/>盡可能地拉得緊緊地組裝起來。<br/>呵呵呵。<br/><br/>這傢伙的輻條比重約９３％。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05916amx6.jpg" target="_blank"><img alt="DSC05916amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05916amx6s.jpg" width="320"/></a><br/>那麼，H1ST 是 １８７。<br/>如同先前寫的，CX 在 １９０ 就是極限了，<br/>比那個輻條比重稍微小一點<br/>用 Aero SBII 張到同樣程度，那就是相當有張力啊。<br/><br/>這裡我來寫 CX-RAY 的具體數值，<br/>前後方向的 H1ST 是 １３０ 的時候，左右方向大概是 ７８ 左右。<br/>１２０ 的話，大概是 ６３ 左右。<br/><br/>因此這支Aero SB II雖然扁平率與CX-RAY不同，<br/>左右方向的H1ST應該會在187以下才對・・・<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05917amx6.jpg" target="_blank"><img alt="DSC05917amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05917amx6s.jpg" width="320"/></a><br/>實際上卻出現了295弱這種荒唐的數值。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05918amx6.jpg" target="_blank"><img alt="DSC05918amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05918amx6s.jpg" width="320"/></a><br/>這是因為測量針的底部進不去輻條之間的關係。<br/>Fulcrum的扁平鋁合金輻條薄邊的寬度<br/>實測約1.4mm，所以前後方向可以測量，<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05743amx6.jpg" target="_blank"><img alt="DSC05743amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05743amx6s.jpg" width="320"/></a><br/>但左右方向就測不了。<br/><br/>剛才那支領帶輻條也是，<br/>前後方向是２８１，左右方向卻是３６４。<br/>Mavic 的圓形輻條數值會跳升，也是因為這個原因。<br/>我之所以從前後方向來測量 H1ST，也是這個理由。<br/><br/>所以鋁合金圓形輻條的３６０這個數值是錯誤的，實際上應該更低才對。<br/>不過，在輪圈重組作業拆散之前，<br/>知道「雖然沒有貼底但是３６０」這件事的話，<br/>對重新組裝時就能成為參考。<br/>所以測量還是有意義的。<br/><br/><br/><br/>所以說，鋁合金輻條真正厲害的地方在於<br/>上面用藍色字寫著，我複製貼上過來的是<br/><span style="color:#0000FF">相對於第２ST，第１ST變大的輻條<br/>代表輻條的比重變大，所以<br/>會有違反輕量化的缺點。</span><br/>我寫過這樣的內容。<br/>這是建立在「輻條只能是鋼材」這個大前提上的話。<br/>雖然比重１００％的鋼製輻條根本無法達到的第１ST<br/>且スポーク比重比CX-RAY稍微重一點左右......這樣能夠實現的原因是，<br/>真正意義上的「比重」在鋁和鋼之間是不同的。<br/><br/>有人說什麼鋁和鋼的鑄錠之類的，<br/>只用素材的物性來比較沒有意義啦<br/>似乎有人在胡說八道（裝作沒看見），<br/>簡直是荒唐。必須以輻條的角度來評價才有意義。<br/><br/>順便說一下，那個不行 這個不行<br/>一邊否定別人家的輪圈<br/>花大價錢自己選定零件和組裝方式的完成輪組，<br/>看過實物後，也沒什麼特別的。<br/>24小時 左右同徑輻條四十組法的後輪<br/>自由輪側的H1ST是150，反自由輪側是120。<br/>四十組法來說，150對應120的追隨度相當高，<br/>這主要是因為使用了偏心輞的關係。<br/>如果150是用CX-RAY製作的話，那還真是不錯，<br/>但這是Pillar製的，輻條比重比CX-RAY還要大<br/>氣動輻條但張力只有150而已，所以並沒有拉得很緊。<br/>更麻煩的是，外穿輻條組的宿命就是<br/>輻條用手指捏一下會有相當程度的撓度……<br/><br/>撇開輞硬度不談，踩踏時後輞的內側會<br/>（硬到能體感到摩擦損耗的程度）被擠壓，<br/>換句話說，這是個咬合不佳的後輪，<br/>這是我摸過各式各樣輪組後，單從外觀判斷得出的感想，<br/>但實際車主使用後的感想也和我的判斷沒有太大差異<br/>啊，我就想到應該是這樣。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05919amx6.jpg" target="_blank"><img alt="DSC05919amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05919amx6s.jpg" width="320"/></a><br/>自由端柱子的內穿，H1ST150是說呢，<br/>也就是這一帶。<br/>果然 Le Sauló是遙遠啊。<br/><br/>鋁和鋼「作為車條」沒有差異，<br/>或者 幾乎沒有差異的話<br/>用比重70％的鋼車條把H1ST張到230左右試試看。<br/><s>不可能啦 蠢蛋。</s><br/>即使是滑動比重100%也很困難。<br/><br/>或者，換個角度看，跟Fulcrum的鋁合金輻條是一樣的<br/>用滑動比重70%的鋼製輻條<br/>組裝16孔前輪，與Racing Zero的孔數相同，<br/>完全無法想像能超越那種硬度。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05920amx6.jpg" target="_blank"><img alt="DSC05920amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05920amx6s.jpg" width="320"/></a><br/>關於預期會出現的反論。<br/>H1ST用領帶鋁輻條是390，<br/>用扁平鋁輻條是235，CX-RAY是140的話，<br/>這些第２ST（也就是一般意義上的輻條張力）是<br/>應該差不多吧？關於這一點。<br/><br/>正是如此。<br/>比如，Racing Zero和Racing 3的輻圈重量差不多，還是<br/>Zero稍微輕一點的樣子，<br/>Racing 3的輻條是粗壯的方形氣動設計，<br/>H1ST大約是180～185左右。<br/>雖然第１ST因為輻條而相差2倍以上，<br/>我不認為第２ST會有那麼大的差異。<br/><br/>雖然第１ST的差異程度，轂孔所承受的負荷<br/>應該不會有那麼大的不同，這點確實沒錯。<br/><br/>不過，要說這些具有相同的驅動剛性和抗磨損性，還是有些勉強。<br/>我在前面提過，第２ST（１０００Ｎ）相同的<br/>１３號前輪和１５號前輪不可能具有相同的硬度（抗磨損性）。<br/>雖然不是完全精確地互相聯動，<br/>但在１０００Ｎ時的抗撓性，１３號是１５５，１５號是１１６<br/>第1ST的數值差異中應該存在某些能被表現出來的部分。<br/><br/>因此，看上面的圖表時應該讀取的是<br/>「雖然表面上的第1ST不同，但第2ST差不多，所以<br/>鋁合金輻條沒有意義」並不是這樣，<br/>「在相同的第2ST下，每根輻條的抗彎性（第1ST）不同」<br/>這個重點，而且如果從輻條比重相應的第1ST來看的話<br/>那就相當突出了。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05924amx6.jpg" target="_blank"><img alt="DSC05924amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05924amx6s.jpg" width="320"/></a><br/>如果「只」用第2ST來進行靜態評估的話，那確實是這樣，<br/>如果把組好的輪子當作椅子的腳用的話<br/>即使輪幅材質不同<br/>也許也能說是「差不多的東西」。<br/><br/>換上Racing Zero和手組輪子<br/>不看輪子 只靠騎乘感覺來猜哪一個的話<br/>也許是有可能的，<br/>坐在腳的部分是輪子的椅子上（第２ST保持相同）<br/>我沒有信心能從坐感來判斷輪幅的材質。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05922amx6.jpg" target="_blank"><img alt="DSC05922amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05922amx6s.jpg" width="320"/></a><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05923amx6.jpg" target="_blank"><img alt="DSC05923amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05923amx6s.jpg" width="320"/></a><br/>還要再繼續下去呢。<br/>假設用鋼製輻條把H1ST張到230左右的話。<br/>用折頸鋼製輻條來做的話<br/>和用直型鋼製輻條來做的話<br/>在驅動時的變形來考慮的話就有點不同了。<br/><br/>輻條張力完全沒有施加的狀態下<br/>考慮輻條的活動範圍的話，直型輻條方面<br/>被認為對扭轉和變形的抵抗力更強。<br/>此外，就鋁製輻條而言，由於材料的特性<br/>必須採用較大的截面積<br/>但正因為如此（或者說因此？）輻條頭部形狀的自由度<br/>反而具有極高的優勢。<br/>Fulcrum鋁製輻條的切片杏鮑菇頭設計，<br/>在前輪和後輪左側如拼圖般牢牢卡合，<br/>在後輪右側雖然略有搖晃，但活動範圍幾乎沒有。<br/><br/><a href="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05921amx6.jpg" target="_blank"><img alt="DSC05921amx6.jpg" border="0" height="240" src="https://blog-imgs-106-origin.fc2.com/p/a/s/pass13/DSC05921amx6s.jpg" width="320"/></a><br/>因此，即使是相同的輻條張力（←雖然有點囉嗦，但這是第2ST）<br/>驅動時輻條頭的搖晃幾乎沒有，所以<br/>卡度好壞相關的損失也很少，我是這麼想的。<br/>一旦這樣說起來，首先鋁製輻條本身就是<br/>太重大的因素了，只從這裡的差異中提取並用身體去感受是不可能的。<br/><br/>以上，寫得越多我虧損越大的鋁製輻條相關話題，就到此為止了。<br/>燒杯論的話，還需要多一點時間。<br/><br/>追記：<br/>關於明顯的觀測事實<br/>我發表個人看法（即使有誤也沒關係）。<br/><br/>只是，我不會寫出是誰的公司<br/><span style="font-size:large;">「所以我們家的輪組很厲害」<br/>作為這種既定結論的前置詞<br/>揮舞著似是而非的理論</span><br/>我覺得這樣很奇怪。<br/>Lightweight和Racing Zero都是由比我聰明得多的天才集團<br/>絞盡腦汁、費盡心思開發出來的產物，<br/>手組輪圈根本不可能贏過完組輪圈。<br/>唯一能找到突破口的地方，<br/>就是使用比完組輪圈更輕的輪圈而已。<br/><br/>如果連 Lightweight 或 Racing Zero 的厲害之處都無法坦率地理解，<br/>那我就會覺得這傢伙的見識未免太低了。<br/><br/>就今天這個話題來說，如果我能靠自己獨有的巧思<br/>用 CX-RAY 做出 H1ST 235，那麼<br/>「我的輪圈超越了 Racing Zero！」之類的<br/>「鋁製輻條沒有意義啦 呵呵呵」之類的<br/>我是覺得可以這麼說，但實際上不可能。<br/>CX-RAY也不是說破斷方面就沒有上限啦。<br/><br/>但是，既不拿出輻條比重，也沒有具體例子（比如說雷澤羅的輻條之類的）<br/>就被說鋼製輻條和鋁製輻條差不多同樣重量...。<br/><br/>以前在Shimano的技術講座上<br/>聽過開發C75輪組的人講他的故事。<br/>五十多歲吧，是個不錯年紀的大叔呢，<br/>我參加了長距離的鐵人三項賽，在騎自行車的時候<br/>「我能夠理解風的偏航角（Yaw Angle）」，他就這麼說。<br/>而且，為了保持最具空氣動力學優勢的偏航角<br/>他甚至說自己會通過讀風來讓自行車軌跡呈之字形行駛。<br/>我本來想吐槽說那如果風從反方向吹來，你是要回頭掉頭回家嗎，<br/>不過這番言論，我是在一個只聚集了專業車店員工、不是終端使用者的場合裡<br/>聽到他堂而皇之地說出來，實在太荒唐了，<br/>我就在研討會的資料背脊上，給這老仁兄畫上了似顏繪<br/>我記得在打發時間。<br/>（因為有很多人在睡覺 就當各位只是在聽就很了不起了）<br/><br/>聽了這個故事後我想到的是，C75這款輪組<br/>「真的認為能在騎行時讀懂風的偏航角的人<br/>設計出來的東西」。<br/>就是這樣，不知道是有自覺還是沒自覺的那種帶著神祕主義色彩的<br/>思想，或者說哲學基礎下製造出來的來歷，<br/>姑且不論東西本身的好壞 就是莫名讓人感到不舒服。<br/><s>（別問他是不是好做法，<br/>讀這個部落格的人應該都知道答案）</s><br/><br/>這樣的事我<span style="font-size:large;">不知道為什麼</span>又想起來了。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

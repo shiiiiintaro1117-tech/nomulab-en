@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
-    <p>Bicycle Workshop — English Edition</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/index.html">
+        <span class="brand-title">Nomu Lab Diary</span>
+        <span class="brand-subtitle">Bicycle Workshop Archive</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/index.html">Archive</a>
+      <a href="/guides/wheel-building.html">Wheel Guide</a>
+      <a href="/glossary.html">Glossary</a>
+      <a href="/about.html">About</a>
+    </nav>
     <div class="lang-toggle"><span class="lang-btn active">EN</span><a class="lang-btn" href="/zh/posts/7862.html">繁中</a></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/index.html">← All posts</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Wheel Building</p>
     <h1>About the FH-TC500 Rear Hub</h1>
     <p class="post-meta">April 06, 2026</p>
+    <div class="post-body"><div class="entrytext">In the draft of my previous article<br/>I had written down 3 things that bothered me<br/>about the <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+FH-TC500+rear+hub" target="_blank" rel="noopener sponsored" class="amz-inline">FH-TC500</a><br/>but it got long, so I made it a separate post.<br/><br/>First, regarding the fact that there are<br/>5 different variations in the model numbers at the end of the FH-TC500.<br/><br/>HM is a hub with an 11-speed HG freewheel body for MTB,<br/>or in road bike terms,<br/>a 10-speed HG freewheel body hub, and<br/>limited to MTB 11-speed sprockets or 11-34T,<br/>11-speed sprockets can be mounted. The speed designation<br/>at Shimano is<br/>M11/10/9/8.<br/><br/>HL is a road-use 11-speed HG freewheel body<br/>and also supports 12-speed sprockets.<br/>The freewheel body spline is<br/>1.85mm longer than the HM, so<br/>when using 11-34T 11-speed sprockets or<br/>10~8-speed sprockets,<br/>a 1.85mm spacer needs to be installed.<br/>The speed designation at Shimano is 12/11-speed.<br/><br/>MS is a Microspline specification.<br/><br/>HM-B and MS-B are<br/>respectively BOOST specifications of HM and MS, so<br/>the rear hub end width is not 142mm<br/>but 148mm.<br/>HL does not have a BOOST specification.<br/><br/><br/><br/>There are 3 things that bother me about these.<br/><br/>The first is the road rim brake rear hubs<br/><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+FH-RS300+rear+hub+rim+brake" target="_blank" rel="noopener sponsored" class="amz-inline">FH-RS300</a> and RS400<br/>(nominally graded Sora and Tiagra)<br/>each have freewheel bodies of<br/>10-speed (11-speed possible with MTB and 11-34T) and<br/>11-speed (12-speed also possible), and<br/>these flange widths are respectively<br/>57.9mm and 56.9mm.<br/>Rather than the exact 1.85mm difference in freewheel body spline length,<br/>there's a 1mm difference, but<br/>"if a 10-speed freewheel body as used in road bikes is fine,<br/>the RS300 is dimensionally superior."<br/>In contrast, with the TC500 rear hub,<br/>the flange width of HM, HL, and further MS are<br/>all 55.45mm, and<br/>"HM having a shorter freewheel body than HL's<br/>dimensional superiority"<br/>doesn't exist.<br/>So I don't understand the meaning of setting up<br/>an HM specification.<br/>By the way, the flange width of HM-B and MS-B is<br/>both 61.45mm, and<br/>this is a dimension that puts all the<br/>plus 6mm width from BOOSTification<br/>entirely into the flange width.<br/><br/>The second is that as a<br/>road 11-speed (also compatible with 12-speed)<br/>disc road hub,<br/>there are hubs called <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+RS770+disc+road+rear+hub" target="_blank" rel="noopener sponsored" class="amz-inline">RS770</a> and RS470,<br/>off-grade hubs, and<br/>the front hubs of these RS770 and RS470 have<br/>almost no weight difference.<br/>There's barely any weight-related difference other than<br/>the material of the end nuts.<br/>When this becomes a rear hub, the hub shaft material is<br/>aluminum or steel, so<br/>RS470 is noticeably and considerably heavier<br/>compared to RS770.<br/>The TC500 front hub<br/>even when held as a hub alone<br/>doesn't feel particularly heavy, and<br/>even verbatim from Shimano's site<br/>"This sturdy and lightweight front hub is<br/>designed for reliable road rides and<br/>smooth gravel rides, and<br/>is ideal for use with a<br/>12mm E-thru axle."<br/>they specifically mention lightness.<br/>However, with the rear hub, only HL has<br/>an introduction at the beginning about the hub's features, and<br/>quoting the original:<br/>"While considering ease of maintenance,<br/>the versatile and reliable<br/>12/11-speed freewheel hub features<br/>reliability and combines e-bike, trekking, city riding and<br/>matches all kinds of rides."<br/>and that's all—if they said it was light<br/>it would be a lie, so they don't mention it.<br/><br/>The third is, with the Microspline specification MS,<br/>is there even a need to put out<br/>a non-BOOST 142mm width rear hub?<br/>Whether the next Dura-Ace (R9300 series)<br/>will be Microspline specification or not, and<br/>whether it will become 13-speed or not, I don't know, but<br/>it's hard to imagine Shimano BOOSTifying road bike frames at that point.<br/>The TC500 is a CUES-grade hub, but<br/>if 142mm width road components<br/>should become Microspline in the future,<br/>it might have been set up as a hub for<br/>hand-built wheels.<br/>If that's the case, then all the more so,<br/>why not put out a 24H specification?<br/>And if that happens, I imagine<br/>third-party 142mm width MS freehubs like Tni<br/>will come out.<br/>There are rumors that a wheel with carbon spokes<br/>based on the <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+WH-R9270+carbon+spoke+wheelset" target="_blank" rel="noopener sponsored" class="amz-inline">WH-R9270</a><br/>will be released at the WH-R9300 grade<br/>ahead of the component groupset, but<br/>in that case, the freewheel body should be<br/>the current 12-speed-only HG.<br/>Campagnolo announced the original Shamal<br/>when they had 8-speed components, but<br/>the following year (two years later in catalog year, but<br/>roughly one year in practice) when the component became 9-speed,<br/>they later released a freewheel body<br/>that could be swapped from 8-speed to 9-speed<br/>so that the rear wheel with the 8-speed freewheel body and Shamal<br/>wouldn't be wasted.<br/>Similarly, if the WH-R9370 is released<br/>for use with the current R9200 series and<br/>the R9300 series becomes Microspline freewheel body,<br/>surely they won't completely ignore<br/>the innovators and early adopters<br/>who jumped on the WH-R9370 right away, but...<br/><br/><br/>Those are the 3 things that bothered me,<br/>but I'll continue further.<br/>The FH-TC500 is<br/>a CUES-grade<br/>off-grade rear hub, and<br/>on the Shimano maker site,<br/>selecting the hub item under<br/>Road/MTB/Gravel/Lifestyle categories →<br/>Lifestyle → Components →<br/>Drivetrain → Hub<br/>is the only way to find it—<br/>it's an extremely hard-to-find product.<br/>Aside from TC500, the TC series hubs include<br/>TC600.<br/>Whether this rear hub, like the<br/>RS770 and RS470 rear hub weight difference I mentioned earlier,<br/>has no sense of heaviness to the TC600... that is,<br/>whether it's light enough, I don't know.<br/><br/>However, regardless of weight, the <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+FH-TC600+rear+hub" target="_blank" rel="noopener sponsored" class="amz-inline">FH-TC600</a><br/>is currently a rear hub unrelated to disc road.<br/>The reason is that the model number suffix<br/>only exists in HM-B and MS-B variants—that is, BOOST specifications only.<br/><br/>The spoke hole count deployed in TC500 and TC600 rear hubs is<br/>only the HL of FH-TC500 comes in 28/32H, and<br/>other than that, the<br/>HM, HM-B, MS, MS-B of TC-500 and<br/>HM-B, MS-B of FH-TC600<br/>also come in 36H.<br/><s>So when doing a 36H spoke-skipped lacing on a<br/>24H disc road rim,<br/>there's no choice but to use<br/>FH-TC500-HM. ← doesn't really matter</s><br/><br/><br/>FH-TC500 and TC600 are not<br/>Shimano's traditional-style freewheel hubs<br/>(where the entire hub's right lockring is at the freewheel body right end,<br/>cup-and-cone type) but instead<br/>use a ratchet with coil springs and<br/>cartridge bearing specification.<br/>Looking at their exploded diagrams...<br/><br/><a href="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/fh-tc600amx16.jpg" target="_blank"><img alt="fh-tc600amx16.jpg" border="0" height="201" src="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/fh-tc600amx16s.jpg" width="320"/></a><br/>First, the TC600.<br/>The left and right hub bearings have the same part number, but<br/>the dimensions of this are 17×30×7 as stated<br/>(outside the image range), and<br/>17×30×7 refers to standard size 6903.<br/><br/>The ratchet pawls are on the freewheel body side,<br/>the ratchet teeth are on the hub body side.<br/>The reason I'm bothering to write such a thing is<br/><a href="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/fh-tc500amx16.jpg" target="_blank"><img alt="fh-tc500amx16.jpg" border="0" height="178" src="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/fh-tc500amx16s.jpg" width="320"/></a><br/>because with the TC500, this is reversed.<br/>So TC500 and TC600<br/>don't have freewheel body compatibility.<br/>Furthermore, the left hub body bearing has<br/>dimensions of 15×28×7, so<br/>this refers to standard size 6902, but<br/>in contrast, the right hub body bearing is<br/>supplied as a "bearing-equipped inner unit," and<br/>there's no individual bearing sale, and<br/>the dimensions are undisclosed (seems like 6903 though).<br/>This is a part with ratchet pawls attached, with<br/>a bearing press-fitted from inside to outside of the hub,<br/>and the specified torque is 180–200 Nm.<br/><br/>Shimano has in the past specified<br/>hollow bolt tightening torque securing the freewheel body<br/>at a maximum of 200 Nm for<br/>several hubs.<br/>The factory assembly uses<br/>a dedicated jig for this, presumably, but<br/>to loosen a bolt tightened at 200 Nm<br/>there's no way to do it with the hub alone,<br/>and the freewheel body swap for that type<br/>first requires securing an Allen key<br/>like 14mm or 15mm<br/>(sizes aren't even standardized, and<br/>this tool is only for this job)<br/>L-shaped with the short side facing up in a vise,<br/>and the hub itself, with the wheel assembled,<br/>you're supposed to grip the rim while rotating the wheel to<br/>install or remove it—this is the official instruction.<br/>The right bearing unit of FH-TC500 also<br/>supports the same installation/removal method, but<br/>the Allen key used is surprisingly 19mm.<br/><br/><a href="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/RIMG9692amx16.jpg" target="_blank"><img alt="RIMG9692amx16.jpg" border="0" height="240" src="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/RIMG9692amx16s.jpg" width="320"/></a><br/>The "bearing press-fitted from inside the ratchet tooth unit<br/>screwed into the hub body" style<br/>also exists with DT's Ratchet EXP<br/>rear hub (image above), but<br/>the ratchet part has a specialized tool<br/>spline on the inside, and<br/>it's easy to lengthen the wrench handle with the tool attached, and<br/>since the bearing size is 15×26×7 with a relatively<br/>small outer diameter, installation/removal of this<br/>isn't a difficult job.<br/><br/><br/>The RS300 and RS400 hubs<br/>I mentioned as an example in<br/>the first of the 3 concerning things, but<br/>these front hubs—I can't figure out<br/>what the performance differences are.<br/>Only the RS400 comes in a silver hub barrel specification, but<br/>with black on both sides, the SHIMANO markings are exactly the same, and<br/>the included quick-release is also the same.<br/>So I think these should be<br/>unified to one (preferably the higher grade)<br/>Campagnolo, after the Super Record came out,<br/>the mechanical ergopower of Record and Chorus<br/>have had all parts except brake lever parts (Record or Chorus marking)<br/>be exactly the same.<br/>So there's no difference in shift performance, feel, or weight.<br/>Yet there's quite a price difference.<br/>It's like paying money for the "prestige of using Record,"<br/>but that said, when building up a groupset with Record,<br/>it's rare to find someone saying<br/>"it's actually the same as Record,<br/>so I just used Chorus levers!"—<br/>that's the terrifying thing about Campagnolo.<br/>By the way, if you buy Chorus ergopower levers first and<br/>then buy and retrofit Record brake lever parts,<br/>it'll be more expensive than buying<br/>genuine Record ergopower.<br/><br/>Changing the subject a bit,<br/>Crank Brothers' pedaling cleats are<br/>"odd-numbered grades<br/>(though a 2 came out later), with 11 being the highest,"<br/>but with Eggbeaters, the numbers jump drastically: 11, 3, 2, 1.<br/>This is because in the old days when grades weren't numbers,<br/>there were 3 types of Eggbeater titanium part specs<br/>depending on how much was titaniumized,<br/>and each was sold as Single Titanium, Double Titanium, and<br/>Triple Titanium respectively.<br/>The current 11 conforms to the former Triple Titanium spec.<br/>And back then, aftermarket parts were sold<br/>to upgrade Single and Double Titanium to<br/>Triple Titanium.<br/>But looking at their prices closely,<br/>the cheapest way to get Triple Titanium was<br/>"buy Single Titanium and upgrade to Triple Titanium with aftermarket parts."<br/><br/>Oh, how to tie this back to the main topic—<br/>although there's a TC600 rear hub, there currently<br/>doesn't exist an HB-TC600<br/>front hub.<br/>Which means, just like with the RS400 and RS300 front hubs,<br/>if you're going to put out front hubs where you can't tell what's different,<br/>you might as well merge them.<br/><br/>Rather, I don't understand the necessity of<br/>making separate designs for TC500 and TC600 rear hubs<br/>when their internal structures are completely different.<br/>Upon investigation, the current M9200 series XTR and<br/>M8200 series XT and M7100 series SLX rear hubs<br/>use the same large-diameter coil spring method as the WH-R9270,<br/>with two springs, and<br/>the current M6100 series Deore<br/>has no hub specification,<br/>and the previous M6000 series<br/>uses Shimano's traditional style, so<br/>something like "TC600 is copied from XT style,<br/>TC500 is copied from Deore style"<br/>doesn't even hold water here.<br/><br/><br/>The TC500 and TC600 rear hubs, while<br/>the hub body shape is different, so<br/>the dimensions of parts relating to wheel performance also differ.<br/>Since TC600 only has BOOST hubs,<br/>I'll compare with TC500's BOOST hub:<br/>FH-TC500-(  )-B flange width is<br/>61.45mm.<br/>In contrast, FH-TC600-(  )-B's<br/>61.1mm.<br/>Looking at just this, TC500 seems superior, but<br/>checking the left and right flange widths,<br/>TC500's offset is 7.6mm,<br/>TC600's offset is 7.19mm.<br/>Smaller offset = less dishing<br/>and left/right flange width is<br/>"flange width/2 ± offset," so<br/>calculating (or rather Shimano should publish the calculation results):<br/>TC500 is<br/>left flange width of 61.45/2+7.6 = 38.325mm,<br/>right flange width of 61.45/2−7.6 = 23.125mm.<br/>TC600 is<br/>left flange width of 61.1/2+7.19 = 37.74mm,<br/>right flange width of 61.1/2−7.19 = 23.36mm.<br/><br/>Flange width evaluation is completely different left and right;<br/>a 1mm difference in left flange width is<br/>barely noticeable even when building wheels, but<br/>a 1mm difference in right flange width, especially on the narrower side,<br/>you clearly feel the freewheel-side tension<br/>immediately tighten more compared to the non-freewheel side.<br/>From here, "TC600 has a narrower total<br/>left and right flange width combined,<br/>but with wider right flange width, is actually superior"<br/>would be the conclusion, so I investigated,<br/>but a 0.2mm right flange width difference<br/>doesn't seem sufficient to overcome<br/>the ~0.6mm wider left flange width<br/>lateral stiffness merit when considering the magnitude of factors,<br/>so they're about equivalent.<br/>TC600 being a large flange is<br/>likely to make for a better-engaging rear wheel.<br/><br/>Shimano traditionally (not all) often makes<br/>the spoke hole PCD difference on rear hubs<br/>1mm in diameter.<br/>This is not with the flange part diameter of the hub body being the same<br/>and drilling positioned inward only on the left side... rather,<br/>the flange part diameter as a hub body dimension itself is also<br/>1mm different.<br/><br/>Rim brake rear hubs typically have<br/>left and right spoke hole PCD of 44/45mm, and<br/>with TC500 rear hubs, this is<br/>spoke hole PCD of 50.5/51.5mm,<br/>flange itself diameter of 59.3/60.3mm,<br/>with TC600 rear hubs,<br/>spoke hole PCD of 60/61mm,<br/>flange itself diameter of 68.8/69.8mm.<br/><br/>The flange's own diameter is<br/>not necessary information for building wheels, so<br/>when other hub manufacturers/brands<br/>publish dimensions, it's usually<br/>not even written, but<br/>Shimano calls what I call<br/>spoke hole PCD (or in most cases flange diameter) "P.C.D.,"<br/>and the flange's own diameter "flange diameter," so<br/>if you plug Shimano's "flange diameter" into the calculation formula,<br/>you'll certainly get the spoke length wrong, so be careful.<br/><br/>"While bathing,<br/>washing your head with shampoo<br/>and installing a Hollowtech II BB"<br/>is a situation Shimano apparently assumes, and<br/>similarly, "placing a truing stand on top of a wide slide or<br/>in the middle of a steep slope<br/>to build the rear wheel"<br/>is also apparently assumed.<br/>If you accidentally roll a rear hub down a slope while trying to build a wheel,<br/>if the left and right flanges had the same diameter,<br/>it would roll forever, but<br/>because the left and right flanges are slightly different diameters,<br/>the hub, while rolling, spins around and changes direction, so<br/>it hits something or stops, making it<br/>easier to retrieve—this seems to be the intent.<br/><br/><a href="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/RIMG0017aamx16.jpg" target="_blank"><img alt="RIMG0017aamx16.jpg" border="0" height="240" src="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/RIMG0017aamx16s.jpg" width="320"/></a><br/>The spline on the Hollowtech II threaded hole BB small parts<br/>outer cup comes in the large diameter from the initial release and<br/>the small diameter that came later for SM-BB9000,<br/>plus a slightly smaller diameter that came after, which is hard to tell apart,<br/>from the initial one, with<br/>3 types, and the specialized tools for assembly also<br/>are all different sizes.<br/>The image above shows the initial one on the left and<br/>the SM-BBR60-use one on the right, but<br/>even in a situation where shampoo stings your eyes so they're closed,<br/>to avoid accidentally choosing the wrong one<br/><br/><a href="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/RIMG0020aamx16.jpg" target="_blank"><img alt="RIMG0020aamx16.jpg" border="0" height="240" src="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/RIMG0020aamx16s.jpg" width="320"/></a><br/>only the BBR-60 type has<br/>the same tactile bumps (ridges) as on<br/>shampoo pump heads or<br/>the side of the bottle.<br/>The smooth, smooth-feeling one is<br/>the initial-size tool or rinse,<br/>rinse-in shampoo, in which case<br/>it falls under the definition of shampoo,<br/>and the bumpy one, so if you remember<br/>with-ridges-yes,<br/>even with eyes closed you can avoid<br/>wasting shampoo and tool mix-ups.<br/>For BSC BBs where the right cup is<br/>reverse-threaded, how do you even tell the difference?! people might ask—<br/>I'd recommend getting a<br/>shampoo hat, but<br/>people like that should just give up on trying to<br/>assemble BBs in the bath altogether.<br/><br/><br/>For some reason Shimano<br/>stubbornly refuses to make a<br/>20H front hub for nipple-less spokes.<br/>If you disassemble the front wheel of WH-R500/501,<br/>you can get something equivalent,<br/>but single units aren't sold.<br/><br/>Even Shimano's most spoke-count-diverse<br/>7700 series Dura-Ace hubs come in<br/>12, 16, 24, 28, 32, and 36H, and<br/>with even 18H for the front only as well, and<br/>yet with 12H hubs even being made,<br/>not making 20H hubs<br/>makes absolutely no sense.<br/>If Dura-Ace, Ultegra, and 105 had<br/>20H front hubs, they'd have been used<br/>by the hundreds instead of Tni<br/>for things like the Noma-Lab wheels.<br/><br/>Shimano continues, even now, with this sort of<br/>outmoded, nonsensical spoke-count lineup in a way like<br/>"we make 36H disc hubs,<br/>but not 24H"—<br/>stubbornly maintaining such practices.<br/><br/>The price difference between<br/>TC500 and TC600 rear hubs is<br/>nearly 2000 yen (※1), so<br/>drop the poorly-maintained TC500's unique spec<br/>(the spare parts holding period for the right bearing unit<br/>will be quite short after product discontinuation, presumably)<br/>and unify the rear hubs in TC600 spec, and<br/>if you'd release 142mm width with HL freewheel body (12-speed) and<br/>24H spec,<br/>it could become a god hub, but<br/>never scratching that itch<br/>is what's "Shimano-like" about the<br/>TC500/600 hubs.<br/><br/>※1 I understand that a 2000-yen price difference<br/>is an absolutely huge factor in the judgment of<br/>whether OEM manufacturers assemble them in complete bikes<br/><br/>※2 They're famous for continuing to release<br/>"itchy" parts like sprocket tooth configurations<br/>that draw complaints from laypeople
+</div></div>
+    <aside class="post-guides">
+      <strong>Technical archive</strong>
+      <nav aria-label="Technical guides">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">In the draft of my previous article<br/>I had written down 3 things that bothered me<br/>about the <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+FH-TC500+rear+hub" target="_blank" rel="noopener sponsored" class="amz-inline">FH-TC500</a><br/>but it got long, so I made it a separate post.<br/><br/>First, regarding the fact that there are<br/>5 different variations in the model numbers at the end of the FH-TC500.<br/><br/>HM is a hub with an 11-speed HG freewheel body for MTB,<br/>or in road bike terms,<br/>a 10-speed HG freewheel body hub, and<br/>limited to MTB 11-speed sprockets or 11-34T,<br/>11-speed sprockets can be mounted. The speed designation<br/>at Shimano is<br/>M11/10/9/8.<br/><br/>HL is a road-use 11-speed HG freewheel body<br/>and also supports 12-speed sprockets.<br/>The freewheel body spline is<br/>1.85mm longer than the HM, so<br/>when using 11-34T 11-speed sprockets or<br/>10~8-speed sprockets,<br/>a 1.85mm spacer needs to be installed.<br/>The speed designation at Shimano is 12/11-speed.<br/><br/>MS is a Microspline specification.<br/><br/>HM-B and MS-B are<br/>respectively BOOST specifications of HM and MS, so<br/>the rear hub end width is not 142mm<br/>but 148mm.<br/>HL does not have a BOOST specification.<br/><br/><br/><br/>There are 3 things that bother me about these.<br/><br/>The first is the road rim brake rear hubs<br/><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+FH-RS300+rear+hub+rim+brake" target="_blank" rel="noopener sponsored" class="amz-inline">FH-RS300</a> and RS400<br/>(nominally graded Sora and Tiagra)<br/>each have freewheel bodies of<br/>10-speed (11-speed possible with MTB and 11-34T) and<br/>11-speed (12-speed also possible), and<br/>these flange widths are respectively<br/>57.9mm and 56.9mm.<br/>Rather than the exact 1.85mm difference in freewheel body spline length,<br/>there's a 1mm difference, but<br/>"if a 10-speed freewheel body as used in road bikes is fine,<br/>the RS300 is dimensionally superior."<br/>In contrast, with the TC500 rear hub,<br/>the flange width of HM, HL, and further MS are<br/>all 55.45mm, and<br/>"HM having a shorter freewheel body than HL's<br/>dimensional superiority"<br/>doesn't exist.<br/>So I don't understand the meaning of setting up<br/>an HM specification.<br/>By the way, the flange width of HM-B and MS-B is<br/>both 61.45mm, and<br/>this is a dimension that puts all the<br/>plus 6mm width from BOOSTification<br/>entirely into the flange width.<br/><br/>The second is that as a<br/>road 11-speed (also compatible with 12-speed)<br/>disc road hub,<br/>there are hubs called <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+RS770+disc+road+rear+hub" target="_blank" rel="noopener sponsored" class="amz-inline">RS770</a> and RS470,<br/>off-grade hubs, and<br/>the front hubs of these RS770 and RS470 have<br/>almost no weight difference.<br/>There's barely any weight-related difference other than<br/>the material of the end nuts.<br/>When this becomes a rear hub, the hub shaft material is<br/>aluminum or steel, so<br/>RS470 is noticeably and considerably heavier<br/>compared to RS770.<br/>The TC500 front hub<br/>even when held as a hub alone<br/>doesn't feel particularly heavy, and<br/>even verbatim from Shimano's site<br/>"This sturdy and lightweight front hub is<br/>designed for reliable road rides and<br/>smooth gravel rides, and<br/>is ideal for use with a<br/>12mm E-thru axle."<br/>they specifically mention lightness.<br/>However, with the rear hub, only HL has<br/>an introduction at the beginning about the hub's features, and<br/>quoting the original:<br/>"While considering ease of maintenance,<br/>the versatile and reliable<br/>12/11-speed freewheel hub features<br/>reliability and combines e-bike, trekking, city riding and<br/>matches all kinds of rides."<br/>and that's all—if they said it was light<br/>it would be a lie, so they don't mention it.<br/><br/>The third is, with the Microspline specification MS,<br/>is there even a need to put out<br/>a non-BOOST 142mm width rear hub?<br/>Whether the next Dura-Ace (R9300 series)<br/>will be Microspline specification or not, and<br/>whether it will become 13-speed or not, I don't know, but<br/>it's hard to imagine Shimano BOOSTifying road bike frames at that point.<br/>The TC500 is a CUES-grade hub, but<br/>if 142mm width road components<br/>should become Microspline in the future,<br/>it might have been set up as a hub for<br/>hand-built wheels.<br/>If that's the case, then all the more so,<br/>why not put out a 24H specification?<br/>And if that happens, I imagine<br/>third-party 142mm width MS freehubs like Tni<br/>will come out.<br/>There are rumors that a wheel with carbon spokes<br/>based on the <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+WH-R9270+carbon+spoke+wheelset" target="_blank" rel="noopener sponsored" class="amz-inline">WH-R9270</a><br/>will be released at the WH-R9300 grade<br/>ahead of the component groupset, but<br/>in that case, the freewheel body should be<br/>the current 12-speed-only HG.<br/>Campagnolo announced the original Shamal<br/>when they had 8-speed components, but<br/>the following year (two years later in catalog year, but<br/>roughly one year in practice) when the component became 9-speed,<br/>they later released a freewheel body<br/>that could be swapped from 8-speed to 9-speed<br/>so that the rear wheel with the 8-speed freewheel body and Shamal<br/>wouldn't be wasted.<br/>Similarly, if the WH-R9370 is released<br/>for use with the current R9200 series and<br/>the R9300 series becomes Microspline freewheel body,<br/>surely they won't completely ignore<br/>the innovators and early adopters<br/>who jumped on the WH-R9370 right away, but...<br/><br/><br/>Those are the 3 things that bothered me,<br/>but I'll continue further.<br/>The FH-TC500 is<br/>a CUES-grade<br/>off-grade rear hub, and<br/>on the Shimano maker site,<br/>selecting the hub item under<br/>Road/MTB/Gravel/Lifestyle categories →<br/>Lifestyle → Components →<br/>Drivetrain → Hub<br/>is the only way to find it—<br/>it's an extremely hard-to-find product.<br/>Aside from TC500, the TC series hubs include<br/>TC600.<br/>Whether this rear hub, like the<br/>RS770 and RS470 rear hub weight difference I mentioned earlier,<br/>has no sense of heaviness to the TC600... that is,<br/>whether it's light enough, I don't know.<br/><br/>However, regardless of weight, the <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+FH-TC600+rear+hub" target="_blank" rel="noopener sponsored" class="amz-inline">FH-TC600</a><br/>is currently a rear hub unrelated to disc road.<br/>The reason is that the model number suffix<br/>only exists in HM-B and MS-B variants—that is, BOOST specifications only.<br/><br/>The spoke hole count deployed in TC500 and TC600 rear hubs is<br/>only the HL of FH-TC500 comes in 28/32H, and<br/>other than that, the<br/>HM, HM-B, MS, MS-B of TC-500 and<br/>HM-B, MS-B of FH-TC600<br/>also come in 36H.<br/><s>So when doing a 36H spoke-skipped lacing on a<br/>24H disc road rim,<br/>there's no choice but to use<br/>FH-TC500-HM. ← doesn't really matter</s><br/><br/><br/>FH-TC500 and TC600 are not<br/>Shimano's traditional-style freewheel hubs<br/>(where the entire hub's right lockring is at the freewheel body right end,<br/>cup-and-cone type) but instead<br/>use a ratchet with coil springs and<br/>cartridge bearing specification.<br/>Looking at their exploded diagrams...<br/><br/><a href="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/fh-tc600amx16.jpg" target="_blank"><img alt="fh-tc600amx16.jpg" border="0" height="201" src="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/fh-tc600amx16s.jpg" width="320"/></a><br/>First, the TC600.<br/>The left and right hub bearings have the same part number, but<br/>the dimensions of this are 17×30×7 as stated<br/>(outside the image range), and<br/>17×30×7 refers to standard size 6903.<br/><br/>The ratchet pawls are on the freewheel body side,<br/>the ratchet teeth are on the hub body side.<br/>The reason I'm bothering to write such a thing is<br/><a href="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/fh-tc500amx16.jpg" target="_blank"><img alt="fh-tc500amx16.jpg" border="0" height="178" src="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/fh-tc500amx16s.jpg" width="320"/></a><br/>because with the TC500, this is reversed.<br/>So TC500 and TC600<br/>don't have freewheel body compatibility.<br/>Furthermore, the left hub body bearing has<br/>dimensions of 15×28×7, so<br/>this refers to standard size 6902, but<br/>in contrast, the right hub body bearing is<br/>supplied as a "bearing-equipped inner unit," and<br/>there's no individual bearing sale, and<br/>the dimensions are undisclosed (seems like 6903 though).<br/>This is a part with ratchet pawls attached, with<br/>a bearing press-fitted from inside to outside of the hub,<br/>and the specified torque is 180–200 Nm.<br/><br/>Shimano has in the past specified<br/>hollow bolt tightening torque securing the freewheel body<br/>at a maximum of 200 Nm for<br/>several hubs.<br/>The factory assembly uses<br/>a dedicated jig for this, presumably, but<br/>to loosen a bolt tightened at 200 Nm<br/>there's no way to do it with the hub alone,<br/>and the freewheel body swap for that type<br/>first requires securing an Allen key<br/>like 14mm or 15mm<br/>(sizes aren't even standardized, and<br/>this tool is only for this job)<br/>L-shaped with the short side facing up in a vise,<br/>and the hub itself, with the wheel assembled,<br/>you're supposed to grip the rim while rotating the wheel to<br/>install or remove it—this is the official instruction.<br/>The right bearing unit of FH-TC500 also<br/>supports the same installation/removal method, but<br/>the Allen key used is surprisingly 19mm.<br/><br/><a href="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/RIMG9692amx16.jpg" target="_blank"><img alt="RIMG9692amx16.jpg" border="0" height="240" src="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/RIMG9692amx16s.jpg" width="320"/></a><br/>The "bearing press-fitted from inside the ratchet tooth unit<br/>screwed into the hub body" style<br/>also exists with DT's Ratchet EXP<br/>rear hub (image above), but<br/>the ratchet part has a specialized tool<br/>spline on the inside, and<br/>it's easy to lengthen the wrench handle with the tool attached, and<br/>since the bearing size is 15×26×7 with a relatively<br/>small outer diameter, installation/removal of this<br/>isn't a difficult job.<br/><br/><br/>The RS300 and RS400 hubs<br/>I mentioned as an example in<br/>the first of the 3 concerning things, but<br/>these front hubs—I can't figure out<br/>what the performance differences are.<br/>Only the RS400 comes in a silver hub barrel specification, but<br/>with black on both sides, the SHIMANO markings are exactly the same, and<br/>the included quick-release is also the same.<br/>So I think these should be<br/>unified to one (preferably the higher grade)<br/>Campagnolo, after the Super Record came out,<br/>the mechanical ergopower of Record and Chorus<br/>have had all parts except brake lever parts (Record or Chorus marking)<br/>be exactly the same.<br/>So there's no difference in shift performance, feel, or weight.<br/>Yet there's quite a price difference.<br/>It's like paying money for the "prestige of using Record,"<br/>but that said, when building up a groupset with Record,<br/>it's rare to find someone saying<br/>"it's actually the same as Record,<br/>so I just used Chorus levers!"—<br/>that's the terrifying thing about Campagnolo.<br/>By the way, if you buy Chorus ergopower levers first and<br/>then buy and retrofit Record brake lever parts,<br/>it'll be more expensive than buying<br/>genuine Record ergopower.<br/><br/>Changing the subject a bit,<br/>Crank Brothers' pedaling cleats are<br/>"odd-numbered grades<br/>(though a 2 came out later), with 11 being the highest,"<br/>but with Eggbeaters, the numbers jump drastically: 11, 3, 2, 1.<br/>This is because in the old days when grades weren't numbers,<br/>there were 3 types of Eggbeater titanium part specs<br/>depending on how much was titaniumized,<br/>and each was sold as Single Titanium, Double Titanium, and<br/>Triple Titanium respectively.<br/>The current 11 conforms to the former Triple Titanium spec.<br/>And back then, aftermarket parts were sold<br/>to upgrade Single and Double Titanium to<br/>Triple Titanium.<br/>But looking at their prices closely,<br/>the cheapest way to get Triple Titanium was<br/>"buy Single Titanium and upgrade to Triple Titanium with aftermarket parts."<br/><br/>Oh, how to tie this back to the main topic—<br/>although there's a TC600 rear hub, there currently<br/>doesn't exist an HB-TC600<br/>front hub.<br/>Which means, just like with the RS400 and RS300 front hubs,<br/>if you're going to put out front hubs where you can't tell what's different,<br/>you might as well merge them.<br/><br/>Rather, I don't understand the necessity of<br/>making separate designs for TC500 and TC600 rear hubs<br/>when their internal structures are completely different.<br/>Upon investigation, the current M9200 series XTR and<br/>M8200 series XT and M7100 series SLX rear hubs<br/>use the same large-diameter coil spring method as the WH-R9270,<br/>with two springs, and<br/>the current M6100 series Deore<br/>has no hub specification,<br/>and the previous M6000 series<br/>uses Shimano's traditional style, so<br/>something like "TC600 is copied from XT style,<br/>TC500 is copied from Deore style"<br/>doesn't even hold water here.<br/><br/><br/>The TC500 and TC600 rear hubs, while<br/>the hub body shape is different, so<br/>the dimensions of parts relating to wheel performance also differ.<br/>Since TC600 only has BOOST hubs,<br/>I'll compare with TC500's BOOST hub:<br/>FH-TC500-(  )-B flange width is<br/>61.45mm.<br/>In contrast, FH-TC600-(  )-B's<br/>61.1mm.<br/>Looking at just this, TC500 seems superior, but<br/>checking the left and right flange widths,<br/>TC500's offset is 7.6mm,<br/>TC600's offset is 7.19mm.<br/>Smaller offset = less dishing<br/>and left/right flange width is<br/>"flange width/2 ± offset," so<br/>calculating (or rather Shimano should publish the calculation results):<br/>TC500 is<br/>left flange width of 61.45/2+7.6 = 38.325mm,<br/>right flange width of 61.45/2−7.6 = 23.125mm.<br/>TC600 is<br/>left flange width of 61.1/2+7.19 = 37.74mm,<br/>right flange width of 61.1/2−7.19 = 23.36mm.<br/><br/>Flange width evaluation is completely different left and right;<br/>a 1mm difference in left flange width is<br/>barely noticeable even when building wheels, but<br/>a 1mm difference in right flange width, especially on the narrower side,<br/>you clearly feel the freewheel-side tension<br/>immediately tighten more compared to the non-freewheel side.<br/>From here, "TC600 has a narrower total<br/>left and right flange width combined,<br/>but with wider right flange width, is actually superior"<br/>would be the conclusion, so I investigated,<br/>but a 0.2mm right flange width difference<br/>doesn't seem sufficient to overcome<br/>the ~0.6mm wider left flange width<br/>lateral stiffness merit when considering the magnitude of factors,<br/>so they're about equivalent.<br/>TC600 being a large flange is<br/>likely to make for a better-engaging rear wheel.<br/><br/>Shimano traditionally (not all) often makes<br/>the spoke hole PCD difference on rear hubs<br/>1mm in diameter.<br/>This is not with the flange part diameter of the hub body being the same<br/>and drilling positioned inward only on the left side... rather,<br/>the flange part diameter as a hub body dimension itself is also<br/>1mm different.<br/><br/>Rim brake rear hubs typically have<br/>left and right spoke hole PCD of 44/45mm, and<br/>with TC500 rear hubs, this is<br/>spoke hole PCD of 50.5/51.5mm,<br/>flange itself diameter of 59.3/60.3mm,<br/>with TC600 rear hubs,<br/>spoke hole PCD of 60/61mm,<br/>flange itself diameter of 68.8/69.8mm.<br/><br/>The flange's own diameter is<br/>not necessary information for building wheels, so<br/>when other hub manufacturers/brands<br/>publish dimensions, it's usually<br/>not even written, but<br/>Shimano calls what I call<br/>spoke hole PCD (or in most cases flange diameter) "P.C.D.,"<br/>and the flange's own diameter "flange diameter," so<br/>if you plug Shimano's "flange diameter" into the calculation formula,<br/>you'll certainly get the spoke length wrong, so be careful.<br/><br/>"While bathing,<br/>washing your head with shampoo<br/>and installing a Hollowtech II BB"<br/>is a situation Shimano apparently assumes, and<br/>similarly, "placing a truing stand on top of a wide slide or<br/>in the middle of a steep slope<br/>to build the rear wheel"<br/>is also apparently assumed.<br/>If you accidentally roll a rear hub down a slope while trying to build a wheel,<br/>if the left and right flanges had the same diameter,<br/>it would roll forever, but<br/>because the left and right flanges are slightly different diameters,<br/>the hub, while rolling, spins around and changes direction, so<br/>it hits something or stops, making it<br/>easier to retrieve—this seems to be the intent.<br/><br/><a href="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/RIMG0017aamx16.jpg" target="_blank"><img alt="RIMG0017aamx16.jpg" border="0" height="240" src="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/RIMG0017aamx16s.jpg" width="320"/></a><br/>The spline on the Hollowtech II threaded hole BB small parts<br/>outer cup comes in the large diameter from the initial release and<br/>the small diameter that came later for SM-BB9000,<br/>plus a slightly smaller diameter that came after, which is hard to tell apart,<br/>from the initial one, with<br/>3 types, and the specialized tools for assembly also<br/>are all different sizes.<br/>The image above shows the initial one on the left and<br/>the SM-BBR60-use one on the right, but<br/>even in a situation where shampoo stings your eyes so they're closed,<br/>to avoid accidentally choosing the wrong one<br/><br/><a href="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/RIMG0020aamx16.jpg" target="_blank"><img alt="RIMG0020aamx16.jpg" border="0" height="240" src="https://blog-imgs-184-origin.fc2.com/p/a/s/pass13/RIMG0020aamx16s.jpg" width="320"/></a><br/>only the BBR-60 type has<br/>the same tactile bumps (ridges) as on<br/>shampoo pump heads or<br/>the side of the bottle.<br/>The smooth, smooth-feeling one is<br/>the initial-size tool or rinse,<br/>rinse-in shampoo, in which case<br/>it falls under the definition of shampoo,<br/>and the bumpy one, so if you remember<br/>with-ridges-yes,<br/>even with eyes closed you can avoid<br/>wasting shampoo and tool mix-ups.<br/>For BSC BBs where the right cup is<br/>reverse-threaded, how do you even tell the difference?! people might ask—<br/>I'd recommend getting a<br/>shampoo hat, but<br/>people like that should just give up on trying to<br/>assemble BBs in the bath altogether.<br/><br/><br/>For some reason Shimano<br/>stubbornly refuses to make a<br/>20H front hub for nipple-less spokes.<br/>If you disassemble the front wheel of WH-R500/501,<br/>you can get something equivalent,<br/>but single units aren't sold.<br/><br/>Even Shimano's most spoke-count-diverse<br/>7700 series Dura-Ace hubs come in<br/>12, 16, 24, 28, 32, and 36H, and<br/>with even 18H for the front only as well, and<br/>yet with 12H hubs even being made,<br/>not making 20H hubs<br/>makes absolutely no sense.<br/>If Dura-Ace, Ultegra, and 105 had<br/>20H front hubs, they'd have been used<br/>by the hundreds instead of Tni<br/>for things like the Noma-Lab wheels.<br/><br/>Shimano continues, even now, with this sort of<br/>outmoded, nonsensical spoke-count lineup in a way like<br/>"we make 36H disc hubs,<br/>but not 24H"—<br/>stubbornly maintaining such practices.<br/><br/>The price difference between<br/>TC500 and TC600 rear hubs is<br/>nearly 2000 yen (※1), so<br/>drop the poorly-maintained TC500's unique spec<br/>(the spare parts holding period for the right bearing unit<br/>will be quite short after product discontinuation, presumably)<br/>and unify the rear hubs in TC600 spec, and<br/>if you'd release 142mm width with HL freewheel body (12-speed) and<br/>24H spec,<br/>it could become a god hub, but<br/>never scratching that itch<br/>is what's "Shimano-like" about the<br/>TC500/600 hubs.<br/><br/>※1 I understand that a 2000-yen price difference<br/>is an absolutely huge factor in the judgment of<br/>whether OEM manufacturers assemble them in complete bikes<br/><br/>※2 They're famous for continuing to release<br/>"itchy" parts like sprocket tooth configurations<br/>that draw complaints from laypeople
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">Products Mentioned in This Article</p>
       <ul>

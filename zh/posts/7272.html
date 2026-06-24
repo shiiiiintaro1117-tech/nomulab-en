@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/7272.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Other Equipment</p>
     <h1>要更加深入理解幾何尺寸（前叉部分編）</h1>
     <p class="post-meta">October 09, 2024</p>
+    <div class="post-body"><div class="entrytext">這是相當久以前的事了，<br/>關於GUSTO（以下簡稱 古斯托）的車架<br/>我曾經寫過一些不好的評論（→<a href="/zh/posts/4683.html" target="_blank" title="こちら">這裡</a>），<br/>對此我收到了以下這樣的評論。<br/><br/>真是太偏見了。<br/>看了讓人不愉快。<br/>前幾天Gust送來了，真的是台不錯的自行車呢。<br/><br/>就是這樣。<br/>很遺憾，這不過是「のむ實驗室對Gust持有<br/>偏見的這種偏見」罷了。<br/>Gust的車架<br/>在某一點上達到了無可比擬的垃圾程度，這是<br/>無可動搖的事實。<br/>把這一點明白無誤地戳穿出來也<br/>當時就已經可以做，<br/>我覺得這個人有點可憐，<br/>所以就睜一隻眼閉一隻眼了。<br/>不過，如果讀到這裡的人（不是Gusto騎手）<br/>大多數人能從中受益的話，那也就沒關係了，<br/>我就來寫寫<br/>為什麼我不推薦Gusto車架的理由。<br/><br/>理由有兩個，<br/>我先寫第二個「並非」本質上的理由。<br/>先寫著。<br/>這是連結文章的話題，<br/>我們店的老客人<br/>從他另一間常去的車店<br/>被提議要不要以特價買一台 Gusto 的車架。<br/>我說「算了算了」，<br/>但他們還是想買。<br/>結局是買了。<br/><br/>被說成「CP值很高（笑）」<br/>在品牌的完成車當中，<br/>「如果把組裝在那台完成車上的<br/>變速套件和輪組按定價購買的話<br/>剩下的部分就等於是白得」這種程度的<br/>定價方式是存在的。<br/>聰明的消費者就是注意到了這一點，<br/>那種計算想必會被做出來<br/>當然地 完成車品牌的<br/>預想範圍之內，那樣的購買行動本身<br/>就在完成車品牌的掌心裡。<br/><br/>買CP值高的完成車有什麼不對的！<br/>雖然會被這樣說，但當然 沒什麼不對。<br/>要是終端用戶自己做的話。<br/>那件事上 客人被拉去考慮購買車架的時候，<br/>因為想要附屬的變速系統和輪組，買了古斯特的完成車，<br/>把零件移植到別的車架上，<br/>在組裝完古斯特以外的車架完成車之後，<br/>這個車架在內部評估上實質上幾乎是零價值的剩餘廢料，<br/>內部的評估額實質上幾乎是零的剩餘廢料車架。<br/>就是這樣的原因。<br/>我甚至還說過不要被店家的這種方便做法牽著走，<br/>但因為實在便宜得不得了，<br/>結局是在購買。<br/><br/>終端用戶買了Gusty的完成車<br/>把零件幾乎全部移植到別的車架上<br/>把不需要的車架部分放到拍賣網站<br/>這樣做我覺得沒問題，<br/>但如果是車店這樣做就有點問題。<br/>因為賣方這樣做明確表示了<br/>他們不尊重Gusty這個品牌。<br/>如果只是根據某家店裡的一個案例來說的話<br/>也就是說，是個只會被拆掉零件的品牌程度吧。<br/><br/>接下來，說一下本質上的第一個理由。<br/>既然是本質上的<br/>這個理由呢，假設古斯托的車架<br/>即使是世界上踩踏感最好的車架<br/>無論多便宜也改變不了的理由。<br/>就算更換零件也改變不了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0930amx15x.jpg" target="_blank"><img alt="RIMG0930amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0930amx15xs.jpg" width="320"/></a><br/>我來聊一下前輪中心距和越野角的話題。<br/>前輪中心距是指BB的中心軸到<br/>前輪轂軸的距離。<br/>如果是700C輪組的車架的話<br/>最好要有570mm。<br/>寫完這篇文章後大略重讀一遍<br/>車架製造商考慮的最低線似乎<br/>大概是在575mm左右。<br/><br/>前叉中心距離短的<br/>有什麼問題<br/>經常有人說<br/>「轉向角度轉太深時<br/>前輪會碰到鞋尖」<br/>不過在實際騎乘的範圍內<br/>根本不會把把手轉那麼深。<br/>想在紅綠燈等待的時間用站騎撐過去<br/>停車時に前輪とシューズが接触する可能性はあります。<br/>クランク長さやクリートの位置調整にもよりますが、<br/>１６５mmクランクで クリートを最も前方で固定している<br/>（つま先の位置が後ろに下がる）という<br/>前輪との接触に関して起こらないほうに<br/>強い条件下でも フロントセンター５７５ｍｍくらいで<br/>スレスレになるくらいです<br/>（シューズの３つ穴の前後位置にも よりますが）。<br/><br/>前輪與腳尖接觸如果不是什麼大問題的話，<br/>前中心短的問題在於<br/>簡單來說就是危險。<br/>在轉彎時，特別是下坡轉彎時很危險。<br/><br/>700C輪組適合的本來的車架尺寸，<br/>以上管長度來說大約在560mm前後。<br/>這個尺寸範圍在任何廠商那裡<br/>幾何設計（以前叫做車架骨架）上<br/>不會有問題，換個說法的話<br/>任何廠牌都是差不多的設計。<br/>關於幾何數據，我把那些特異的數值<br/>稱為「異常值」，<br/>車架尺寸大的人<br/>碰到有異常值的車架的情況<br/>相當少見。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0932amx15x.jpg" target="_blank"><img alt="RIMG0932amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0932amx15xs.jpg" width="320"/></a><br/>除了前輪中心距以外<br/>前叉周圍有個重要的數值<br/>叫做Trail。<br/>日語中有Trail表記和Trail表記兩種寫法<br/>因為我是Trail派，所以以下統一用Trail來表記。<br/><br/>如上圖所示，將轉向軸線<br/>延長到地面的線<br/>和從前輪軸心垂直向下延伸到地面的線<br/>這兩條線之間的前後距離就是了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0933amx15x.jpg" target="_blank"><img alt="RIMG0933amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0933amx15xs.jpg" width="320"/></a><br/>從車軸的垂線看起來好像完全不是直角<br/>別在意。<br/>這個叫做前轮牵引距的數值，不是說大就好<br/>或者小就好的東西，<br/>有適當的範圍，大約是５７～６０毫米。<br/>如果前轮牵引距的值相同的話<br/>理論上轉向的手感就會變成一樣。<br/>前轮牵引距相同，對於某個人來說<br/>小車架＋１１０ｍｍ莖管的情況和<br/>大車架＋９０ｍｍ莖管的情況<br/>莖管長度改變的話 操舵感也會跟著改變<br/>所以完全不會有相同的騎乘感受。<br/>越跡增大的話 操控性會變得<br/>有點沉重遲鈍。<br/>「沉重遲鈍」這種說法 就是有種笨笨的感覺<br/>大阪方言啦，我從很久以前 就一直<br/>這是我們在講到林道時使用的表達方式。<br/>「悶沉沉」的反義詞是「乾脆俐落」。<br/><br/>低速時，特別是上坡的站立踩踏時<br/>在擺動把手的時候<br/>切過的把手沒有自然地回到中間<br/>必須特地用手把它扳回去的那種手感<br/>就是「悶沉沉」。<br/>從紅綠燈前的靜止發進或<br/>在低速下以最小半径描圓周轉動時<br/>車把出現晃動感就是所謂的「靈敏俐落」。<br/><br/>當車架尺寸變小時<br/>前輪中心距也會變短，<br/>作為通常回避這種情況的方法<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0934amx15x.jpg" target="_blank"><img alt="RIMG0934amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0934amx15xs.jpg" width="320"/></a><br/>頭管角度（以下簡稱 頭角）會<br/>後傾。<br/>這樣的話前輪轂就會朝前方遠處延伸<br/>可以確保前叉中心。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0935amx15x.jpg" target="_blank"><img alt="RIMG0935amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0935amx15xs.jpg" width="320"/></a><br/>但是，只是降低了頭管角的話<br/>尾跡會增加，轉向會變得遲鈍。<br/>要避免這種情況的話，該怎麼做呢，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0938amx15x.jpg" target="_blank"><img alt="RIMG0938amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0938amx15xs.jpg" width="320"/></a><br/>也就是前叉的彎曲量<br/>增加叉偏移量就可以了。<br/>叉偏移量也被稱為叉後移量，<br/>因為我是偏移派，所以以下就叫它叉偏移量。<br/>順帶一提，有「オフセット量」這種說法<br/>但我沒聽過「レイク量」這種說法。<br/><br/>如果迹距相同，基本上轉向感覺就相同，<br/>也就是說上圖的<br/>立起的車頭角＋小オフセット的迹距（紅色底線）和<br/>放平的車頭角＋大オフセット的迹距（藍色底線）<br/>如果長度相同的話，<br/>即使是同一款車架的不同尺寸<br/>操舵感上基本上沒有什麼差異。<br/>另外，如果增加偏移量的話<br/>那樣的話前中心也會變長，<br/>對小尺寸的車架來說是很好的條件。<br/><br/>從這裡開始，要看各個廠牌品牌的<br/>車架幾何表上的<br/>標稱尺寸、水平換算上管長、前中心、<br/>叉偏移量、頭管角、以及牽引線這6個項目<br/>我把抽出出來的項目列舉並逐一說明。<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0941amx15x.jpg" target="_blank"><img alt="RIMG0941amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0941amx15xs.jpg" width="320"/></a><br/>首先是 LOOK 的 795 Blade RS。<br/>之所以拿出 LOOK 來說，<br/>是因為 LOOK 從遠古時代起，幾何數據表就非常優秀，<br/>可以說完全沒有缺少任何數據<br/>的廠商。<br/>這款 795 Blade RS 是現行版本的前一代，初代款。<br/>現行款的正式名稱也是 795 Blade RS，<br/>在日本的批發商那裡為了區別起見<br/>被稱為７９５刀片２ＲＳ。<br/>有一部叫做「瞄準頂峰！」的ＯＶＡ動畫<br/>它的續編不是「瞄準頂峰！２」<br/>而是「瞄準頂峰２！」。<br/>是刀片２ＲＳ而不是刀片ＲＳ２<br/>讓我想起了這件事。<br/>這個車架的幾何設計的看點是<br/>首先最小尺寸的前中心<br/>低於570mm。<br/>但這是沒有辦法的。<br/>上管長度少於500mm的情況下<br/>要確保前中心570mm<br/>是極其困難的。<br/>而且，在五個尺寸中較小的兩個<br/>頭管角71.8°＋叉偏移50mm，<br/>較大的那３個<br/>頭管角７３°＋叉偏移量４３ｍｍ。<br/>如果頭管角和偏移量相同，拖曳距也會相同。<br/>較小的那２個的拖曳距是５９．２ｍｍ，<br/>較大的那３個的拖曳距是５９ｍｍ。<br/>等等才會發現，<br/>這是非常精心設計的。<br/>雖然可能不太常見，<br/>如果騎著這台車架M尺寸的人<br/>因為某些原因要放棄這台車架，<br/>或者因為摔車而損壞、或者被偷了的話，<br/>再次購買同一款車架時，<br/>「M尺寸感覺有點大，<br/>下次改成S尺寸吧」而騎上S尺寸的話，<br/>即使頭管角相差1.2°，<br/>轉向手感應該也不會有違和感。<br/>叉子偏移的7mm差異對<br/>前中心的影響，在要素大小上來說<br/>相當大，所以S尺寸比M尺寸的<br/>前中心更長。<br/>在這個偏移量大幅切換的地方<br/>前中心的長度相對於車架尺寸<br/>出現逆轉的現象在各種廠牌都很常見。<br/><br/>偏移量不同的前叉有2種以上<br/>準備需要花成本。<br/>這款車架的情況是「5個尺寸對應2種類型」，<br/>全尺寸的叉偏移量只有1種<br/>製造商、品牌<br/>基本上可以說是偷工減料。<br/><br/>現行款的795 Blade 2 RS<br/>沒有拿來舉例的原因是<br/>只挑對文章有利的資訊。<br/>似乎會這樣<br/>製作文章用的資料是在<br/>2RS出現之前做的，就只是這樣。<br/>只用文字列舉的話<br/>同樣對應5個尺寸<br/>較小的2個尺寸和較大的3個尺寸<br/>頭管角分別是71.75°和73°，<br/>叉偏移分別是50mm和43mm，<br/>車軛值分別為５９．８ｍｍ和５９．３ｍｍ<br/>最小尺寸的水平換算頂管長度<br/>為５１０ｍｍ，而前叉中心距為５６９．８ｍｍ<br/><br/>還有這次論點裡無關的地方<br/>「LOOK的車架，還真有兩下子」<br/>我覺得的重點是<br/>「頂管長度是奇怪的數值」這件事<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0942amx15x.jpg" target="_blank"><img alt="RIMG0942amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0942amx15xs.jpg" width="320"/></a><br/>７９５刀片RS和２RS的<br/>把上管長度寫出來了。<br/>XS和S、M和L和XL分別<br/>改變頭管角度和叉子偏移的方針是<br/>保持不變，對應尺寸名稱的上管長度<br/>滑動了1個尺寸的感覺。<br/>如果初代RS的XL尺寸是上限的話<br/>也不準備專業特別規格的話<br/>這個上管長度就會有問題<br/>職業選手應該也在其中。<br/><br/>然後，上管的數值是以０．１ｍｍ為單位的零碎數字<br/>這本身沒有什麼意義。<br/>重要的是為什麼會變成這樣。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0944amx15x.jpg" target="_blank"><img alt="RIMG0944amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0944amx15xs.jpg" width="320"/></a><br/>水平換算上管長度<br/>從ＢＢ向上垂直延伸的線分成兩部分中的<br/>前半部分的長度叫做「伸距」。<br/>在ＬＯＯＫ上，顯然是這個伸距這邊<br/>我正在設計車架。<br/>「不是看上管，而是要看<br/>到達距離！」這個程度的<br/>重要數值，<br/>但這次我不寫那個。<br/>標題是「更要讀懂幾何設計（前叉周邊篇）」<br/>不過並沒有計畫連載。<br/><br/>765 Optimum 的 XS～XL 尺寸的到達距離列舉如下<br/>355/365/375/385/395mm，<br/>舊785裡<br/>365/375/385/395/405mm，<br/>現行的785Huez，為了區別起見<br/>785Huez2（跟785 2 Huez不一樣啦）<br/>被稱為的車型裡<br/>落差跟上管長度也<br/>都是0.1mm單位的半端數值<br/>現在ではLOOKの全てのモデルのリーチが<br/>漂亮得不是完全以1mm為單位。<br/><br/>另外，這次雖然不詳細說明<br/>（而且下次沒有「Reach篇」）<br/>上述的765 Optimum和舊的785<br/>相對於標稱尺寸的Reach長度<br/>一個接一個地錯開了。<br/>也就是說，Reach 375mm的<br/>騎765 Optimum M尺寸的人<br/>購買舊785的時候，同樣是延伸距離375mm的<br/>S尺寸可能是更好的選擇<br/>就是這樣。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0946amx15x.jpg" target="_blank"><img alt="RIMG0946amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0946amx15xs.jpg" width="320"/></a><br/>接下來是Cannondale的SuperSix EVO。<br/>長度的數值是以cm表記的，<br/>我沒有擅自換算成mm就直接抄下來了。<br/>Cannondale關於前中心的部分<br/>相當優秀的製造商。<br/>上管長度約510mm左右<br/>確保了580mm以上的前中心距離。<br/>這也與吊耳下沉幅度較大有關<br/>不過這次我就不深入探討那部分了。<br/>叉偏移是「7個尺寸對應2種規格」<br/>45mm和55mm相差10mm，差異相當大。<br/>從上管長度來看，較大的那2個尺寸<br/>日本人身上合適的人相當少<br/>「市面上出現的超級六代EVO的大多數是<br/>前叉偏移量為55mm」<br/>這樣的看法也是可以的。<br/>這個也和先前的795刀鋒RS一樣<br/>「叉偏移變大的尺寸切換點<br/>比那更大的車架尺寸<br/>前中心反而變長」這樣的反轉現象發生了。<br/><br/>因為是用公分表示<br/>頭管角71.2°＋叉偏移5.5公分和<br/>頭管角73°＋叉偏移4.5公分<br/>兩者的越野距都是5.8公分這件事<br/>換成毫米表示的話在58.X毫米的部分<br/>感覺會有差異<br/>不過也不算什麼大問題。<br/>只有最小尺寸的越野距是6.0公分<br/>有點黏呼呼的<br/>但不到異常值的程度。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0947amx15x.jpg" target="_blank"><img alt="RIMG0947amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0947amx15xs.jpg" width="320"/></a><br/>同樣是Cannondale的CAAD 13。<br/>58尺寸之後不是61<br/>而是60、62這樣繼續下去<br/>但對大多數人來說都沒關係。<br/>幾何設計的傾向也基本相同。<br/>不過怎樣都好，Cannondale是<br/>關於叉偏移量<br/>這個製造商稱之為叉偏角。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0948amx15x.jpg" target="_blank"><img alt="RIMG0948amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0948amx15xs.jpg" width="320"/></a><br/>接著是普利司通 Anchor 的現行車型<br/>RP9。RP8 也是相同的幾何設計。<br/>叉偏移量是「4 個尺寸對應 2 種類型」，<br/>最小尺寸的上管長度 518mm 時<br/>前輪中心距竟然能確保 570mm。<br/><br/>拖尾量未公開。<br/>連前叉中心都不公開的<br/>也有廠商品牌是這樣做的<br/>前叉中心頂多誤差1mm左右<br/>用捲尺的話很容易就能量出來，相比之下<br/>（當然需要實物擺在眼前），<br/>煞車拖距就沒那麼容易量了。<br/>所以這是我希望廠商公開的資訊。<br/><br/>Anchor的幾何設定是<br/>曾經是神乎其技的狀態（過去式）<br/>要拿來說明那個話題時引用的幾何規格表是<br/>不是這個。<br/>嘛，這個也還不錯啦。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0950amx15x.jpg" target="_blank"><img alt="RIMG0950amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0950amx15xs.jpg" width="320"/></a><br/>約在２０１５年左右旗艦車款的<br/>Anchor RIS９。<br/>當然囉，只有牙盤煞車的車型。<br/>而且，也沒有想到現在這樣的寬輻圈和寬輪胎<br/>前叉肩下尺寸不长<br/>虽然设计很紧凑（前中心难以获得）<br/>最小尺寸却有 上管长度505mm<br/>确保了578mm的前中心。<br/>叉偏移是「5个尺寸对应3种」。<br/><br/>虽然迹线未公开，但最小尺寸<br/>相比下一个尺寸 头管角放缓了1°<br/>而偏移量相同<br/>應該已經變成相當沉重遲鈍的轉向特性了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0951amx15x.jpg" target="_blank"><img alt="RIMG0951amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0951amx15xs.jpg" width="320"/></a><br/>同樣是舊時代 Anchor 的停產車款，<br/>女性用夾器剎車公路車的 RL8W。<br/>在最小尺寸上，上管長度遠不止 500mm，<br/>甚至切到 490mm 以下，車頭角不低於 70°，<br/>前叉中心距卻有 574mm 那麼長。<br/>前叉偏移量達到 55mm 是<br/>主要的原因，<br/>「頂管長４８５ｍｍ、前軸距５７４ｍｍ」<br/>是稍後會引用的，所以請記住。<br/>軌跡沒有公開，但與剛才的RIS9不同的是<br/>最小尺寸和次一個尺寸<br/>頭管角度和偏移量相同的話<br/>軌跡也會相同這一點。<br/>雖然沒有好好計算，<br/>RIS9的最小尺寸和RL8W的最小尺寸則<br/>後者的應該不會太寬鬆。<br/>怎麼樣，這幾何設計不是神來之筆嗎。<br/>作為現行款式，有那款碟煞版本的<br/>叫RL6D的型號，前中心距也很優秀，不過<br/>說到碟煞自行車<br/>最近裝粗輪胎的公路車<br/>後中心距和叉頸肩下尺寸都很長<br/>軸距也長，設計很寬裕<br/>「上管長度５００毫米、前叉距５７０毫米」來<br/>確保的話，比起輪圈煞車自行車的時代要容易得多。<br/><br/>還有，雖然無關緊要的事<br/>在Anchor，把頭管角叫作轉向角。<br/><br/>雖然到目前為止沒有寫過，<br/>作為車架製造商、品牌的整體傾向<br/>前叉距和迹距這兩個參數之中，<br/>哪個被視為更重要的呢<br/>絕對是前中心。<br/>即使是「所有尺寸的偏移量都是一種」這樣的車架<br/>從最大尺寸到最小尺寸<br/>逐漸降低車頭角的工夫<br/>至少是有做的。<br/>「準備好幾種叉子的話<br/>會花成本，所以就沒做，<br/>小尺寸的前中心短的是<br/>畢竟太危險了<br/>即使轉向會變得沉重也沒關係<br/>車頭角一定要放平」就是這樣<br/><br/>作為這種極端例子被舉出來的<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0952amx15x.jpg" target="_blank"><img alt="RIMG0952amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0952amx15xs.jpg" width="320"/></a><br/>是2005～2008年左右的Orbea<br/>即使到了2008年也還沒停產<br/>在那之前就存在的鋁合金車架<br/>像是「Arin」和「Loblr」這樣的型號<br/>這些是從４８～６２為止，以１公分為單位展開的１５個尺寸<br/>我認真地在製作車架時，<br/>碳纖維車架旗艦款的<br/>初代虎鯨發展為５個尺寸之後<br/>公路車用的車架<br/>就只有這種幾何設計了。<br/>鋁合金車架的平價款 Aqua也<br/>採用同樣的幾何設計，<br/>中堅等級的碳纖維車架Onyx<br/>不知道為什麼 只有頭管角 從這張表上 還要再臥0.2°。<br/>頭管角相差0.2° 的話 其他數值也應該會1mm以上<br/>有所改變才對，<br/>要麼是隨便亂設定 要麼就是其他地方數值都相同。<br/>只有最大尺寸的前中心<br/>沒有公開 這是照原文。<br/>我也不知道為什麼。<br/>嘛，騎這個尺寸車架的人當中<br/>應該不會有人在乎前中心距離吧。<br/><br/>在幾何參數表中需要注意的地方是<br/>最小尺寸的頭管角一下子就放緩了３°。<br/>頭管角低於７０°的情況其實相當罕見。<br/>這可以說是「異常值」了。<br/>這個頭管角的原因是，為了與下一個尺寸的<br/>前中心距離５７５ｍｍ相同<br/>這是硬生生地把車頭管放平的設計。<br/>叉偏移是「5個尺寸只用1種」的偷懶做法。<br/>這證明了「車架廠商即使不管迴轉半徑，<br/>也只是勉強做出前中心距」的事實。<br/><br/>騎大尺寸的Orbea（那時候的）的人沒有問題，<br/>但最小尺寸的轉向特性<br/>遲鈍到有點騎不了。<br/>已經可以說偏離了公路車的特性。<br/>為什麼我能這麼斷言呢，<br/>因為我曾經騎過這一代Aqua的最小尺寸車款。<br/>從我的角度來看，那確實是個明顯偏小的尺寸，<br/>車頭管長度很短，<br/>我之前也寫過，<br/>當時在工作的車店裡掛著的現貨車架中，<br/>我逐一檢查了所有我能騎的尺寸，<br/>用我的眼睛都檢查不出有車架變形的問題<br/>因為它是車架的其中之一。<br/>這並不是因為歐貝亞的製造技術高超……<br/>反而更像是一種無法刻意製造的奇蹟。<br/>不用中心尺，只是反覆追求前後左右的擺動精度，<br/>組裝了幾十個輪子之後，<br/>其中有些在第一次使用中心尺測量時，<br/>可能會發現中心完全對齊的輪子，<br/>大概就是這樣的情況吧。<br/>前叉換成了偏距50mm的產品<br/>但還是有相當沉重的轉向感。<br/><br/>騎乘小尺寸車架的人<br/>很容易買到轉向感沉重的自行車<br/>所以就抱著「公路車就是這樣」的想法<br/>根本沒有產生過疑問的可能性。<br/>如果是女性專用錨牌的最小尺寸<br/>或是下一個尺寸的使用者的話<br/>騎上老神牌錨車的話 反應敏捷的程度<br/>我想你會嚇一跳。<br/>作為那樣的自行車 專門化的艾米拉也是<br/>幾何學上是個不錯的車架<br/>（後來查了才知道 最小尺寸的話<br/>就沒那麼回事了，<br/>結果我在文章後半放上去了）。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0953amx15x.jpg" target="_blank"><img alt="RIMG0953amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0953amx15xs.jpg" width="320"/></a><br/>接下來是Trek的Emonda ALR。<br/>Trek 是一個不公開車架前中心的製造商。<br/>如我之前所寫的，車架前中心很容易測量，<br/>如果能看到正在考慮購買的實物的話，<br/>即使不公開，也不是什麼大問題。<br/><br/>這是因為實際上有人想買<br/>2019 年款的 Emonda ALR 5，<br/>（當然，我們店裡沒有在賣）<br/>曾經被詢問過希望能告訴他們尺寸方面的事情<br/>這次引用作為參考。<br/>她是女性，但不是最小的兩個尺寸。<br/>所以我沒有放棄購買的想法，實際上還是買了。<br/>Trek最小的兩個尺寸，特別是最小尺寸<br/>達到了不應該購買的程度。<br/>到目前為止公開了軌跡數據的<br/>從LOOK和Cannondale的例子來看<br/>67mm的軌跡實在是太離譜了。<br/>至於下一個尺寸的61mm，姑且不論<br/>最小尺寸的67mm可以說是異常值。<br/><br/>這應該是製造商的設計理念吧，<br/>Trek的叉偏移值偏小。<br/>叉偏移「7個尺寸對應2種規格」這點還不錯，<br/>但展開成45mm和40mm這樣的配置。<br/><br/>如果會產生這樣的trail數值，<br/>我甚至覺得最小尺寸不出比較好。<br/>那麼，如果你是 Trek 專門店的話<br/>在販售公路車給身材較矮的顧客時<br/>如果被問到『那你怎麼辦呢』，我就詞窮了。<br/>如果是『也』販售 Trek 的車店的話<br/>我會跟客人解釋這些幾何設計的問題<br/>除非客人堅持一定要那台車<br/>否則我會建議他們從其他品牌來選擇。<br/><br/>從 1 吋的壓入式頭碗組開始<br/>被稱為超大尺寸的１－１／８英吋的<br/>到整體式車頭為止的通用規格時代的話<br/>更換前叉也是個辦法，<br/>最近的車架是 其他廠牌的前叉<br/>無法安裝。<br/><br/>看上面的幾何表<br/>７個尺寸全部的車頭角度都不同。<br/>所以 較大的２個尺寸的拖曳距是<br/>如果不用「５．８ｃｍ」而是用「５８．Ｘｍｍ」這樣的表示方式的話<br/>嚴格來說端數應該是不同的。<br/>而且在偏移量切換的２個尺寸裡<br/>山道量也出現了反轉。<br/><br/>「僅限最小尺寸山道量會出現異常值」這句話<br/>其實是說「即使山道量出現異常值<br/>也要確保前中心距離」的意思。<br/>看來車架製造商確實是優先考慮前中心距離，<br/>越野車架如果能準備好細部的叉子偏距的話<br/>有時候也能勉強應付，似乎是這樣的想法。<br/>「做也可以不做也可以，不做的話<br/>也不會被罵，對暑假作業的評分也沒有影響」<br/>就像是這樣的東西吧。<br/>但是（看幾何設計的）人是認真在看的，<br/>我對認真做的廠商評價很高。<br/><br/>這台艾蒙達 ALR 的最小尺寸是<br/>至少換上偏移50mm的前叉的話<br/>應該就能達到下一個尺寸的trail了吧，<br/>不這樣做是因為它是廉價鋁合金車款的關係嗎？<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0955amx15x.jpg" target="_blank"><img alt="RIMG0955amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0955amx15xs.jpg" width="320"/></a><br/>話說回來就是Madone SLR了。<br/>和剛才的Emonda ALR傾向幾乎一樣，<br/>在Emonda ALR中，最小尺寸相對於下一個尺寸<br/>頭管角度躺平了0.9°，<br/>但在Madone SLR中，頭管角度卻是一樣的。<br/>可是两款车型都一样<br/>凸缘差只有6mm这一点没变<br/>这样就变成了件奇怪的事。<br/>不过这确实还是异常值。<br/>即使是价格较高的Madone SLR车架或成车<br/>几何参数也基本相同<br/>并不是说Emonda ALR作为便宜款<br/>就偷工减料了<br/>這就是 Trek 整體的傾向所在的幾何設計。<br/>如果用剛才 LOOK 同樣的邏輯來說的話，<br/>從最小尺碼開始，騎著大一號 Trek 的人<br/>在買完 Emonda ALR 之後，<br/>接著要買 Madone SLR 的話，<br/>如果不改變車架尺碼<br/>或者改成大一號的情況下，<br/>特別也感覺不到什麼差異。<br/>如果選擇小一個尺寸的話<br/>方向把的沉重感會確實地被察覺到。<br/>如果沒有知識的話，可能會誤以為「碳纖維車架就是<br/>這樣的東西」而有奇怪的誤解。<br/><br/>最小尺寸的前輪跡值異常地大，是<br/>Trek的設計哲學，<br/>騎乘最小尺寸車架的人<br/>要欣然接受Trek這樣刻意設計的思想！<br/>說到這裡 我在不久前寫的<br/>草稿已經完成了呢・・・。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0956amx15x.jpg" target="_blank"><img alt="RIMG0956amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0956amx15xs.jpg" width="320"/></a><br/>最近發表的馬多內 SLR 第８代的<br/>幾何設計讓我感到震撼。<br/>在講那個話題之前 有點無關緊要的事<br/>尺寸的稱呼從數字改成 S、M、L 的稱法了。<br/>M、L 指的是「中大尺寸」這樣的規格。<br/><br/>咦？最小尺寸的偏移量<br/>已改成５０ｍｍ了呢。<br/>車頭角睡得那麼深，竟然０．６°<br/>偏移量差５ｍｍ反而才是大要素<br/>牽引距離反而從下一個尺寸開始逆轉了<br/>也脫離了異常值<br/>（最舒服、最順手的尺寸<br/>變成次小尺寸了）。<br/>車頭角變淺和偏移量增加是<br/>兩者都是在伸長前中心距的那一側發揮作用。<br/>所以在最小尺寸方面<br/>儘管前中心距伸長了<br/>操控性反而得到改善這樣<br/>是好處多多的改變。<br/>這個，最小尺寸配置偏移量45mm的前叉<br/>Trek已經承認是不行的，<br/>騎乘第7代Madone SLR最小尺寸的人<br/>「更加好吃了！」這種說法相對於現狀來說<br/>是在不好吃的時候的車架套組的情況下<br/>就像製造商所說的那樣。<br/>如果我騎的是第七代的最小尺寸的話<br/>（因為我看得懂幾何參數 所以根本不會買）<br/>第八代偏移量５０ｍｍ的前叉的話<br/>能換的話 我就會換。<br/><br/>還有，這套新幾何參數今後的話<br/>如果也被採用到其他型號的話<br/>在符合最小尺寸的人當中<br/>對於能看懂幾何參數的人來說是個好消息，<br/>看不懂幾何參數的人<br/>就在無意識中被拯救了。<br/><br/>現在擺在車店裡的<br/>最小尺寸的Trek公路車千萬別買！<br/>稍微再觀望一下吧！<br/>↑就是因為寫這種東西，才會被同業討厭啦<br/><br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0957amx15x.jpg" target="_blank"><img alt="RIMG0957amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0957amx15xs.jpg" width="320"/></a><br/>接下來，我最近在幾何設計方面<br/>最讓我印象深刻的廠商，是 Factor<br/>的 Ostro VAM 2.0。<br/>首先，這不是讓我印象深刻的地方<br/>但他們關於上管長度的資訊<br/>只用 Reach（前伸長度）來公開，<br/>連 LOOK 都沒做過這種自以為是的事。<br/>更何況，叉偏移（Fork Offset）對於「7種尺寸卻只有4種規格」<br/>越野性能的設計方式真的很出色<br/>讀到這裡的各位應該能理解我的意思。<br/>投入成本認真製作車架。<br/>既然投入了成本，車架套組的含稅定價<br/>居然要88550日圓，這樣的話<br/>我實在是無言以對。<br/>有一點，在這份幾何參數表中看起來有點奇怪。<br/>最小尺寸和 次一個尺寸的部分<br/>頭管角相同 但偏移量相差４mm<br/>軌跡卻是相同的這一點。<br/>較大的３個尺寸的軌跡<br/>是５８．６mm 的話，<br/>其他的 ５８mm 的軌跡<br/>有效位數相同的５８．０mm 起<br/>小數點是零所以被省略了 應該這樣想<br/>應該是５８．０ｍｍ恰好，而不是５８ｍｍ。<br/>針對這個問題，以及只有公布過Reach的那個問題，<br/>看看Factor另一個車型O２ VAM的幾何參數表<br/>總算是解決了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0958amx15x.jpg" target="_blank"><img alt="RIMG0958amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0958amx15xs.jpg" width="320"/></a><br/>O２ VAM的幾何參數表。<br/>車號尺寸、叉偏移、頭管角、Trail<br/>和Ostro VAM２．０完全相同<br/>只有Reach稍微有點不同<br/>這裡也並列記載了水平換算上管長度，所以<br/>對照來看的話，就能對 Ostro VAM 2.0 的上管長度<br/>進行相當準確的推測。<br/>剛才我寫「完全相同」的範圍內，唯一有不同的地方是。<br/>這裡最小尺寸的下一個尺寸的頭管角<br/>不是 71.1° 而是 71.7°。<br/>這樣的話，偏移量不同的叉子<br/>產生相同的車跡也就沒有矛盾了<br/>Ostro VAM 2.0 那邊應該是誤植。<br/>還有，最大尺寸的上管長度<br/>標示為 5591mm<br/>這也是照著日本問屋資料的原文直接寫的。<br/>從前後的關係來看，不可能解釋為 559.1mm<br/>所以是 591mm 的錯誤。<br/>49 尺寸和 52 尺寸、54 尺寸和 56 尺寸分別<br/>「因為頭管角和偏移量不同」<br/>手臂長度的差異相互抵銷，前中心點完全相同」<br/>變成了這樣的狀態，但我覺得這似乎有點太巧合了。<br/>不過，叉架偏移量「針對7種尺寸有4種類型」這一點<br/>應該是事實，所以這方面可以給予非常高的評價。<br/><br/>好的，雖然前言講得太長了，<br/>在對前叉周圍的幾何結構有了詳細了解的狀態下，<br/>我想給各位看看成為Gusto那致命般偷工減料幾何結構的起點的<br/>那個車架。<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0959amx15x.jpg" target="_blank"><img alt="RIMG0959amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0959amx15xs.jpg" width="320"/></a><br/>古斯託的「遊俠者」這個車型。<br/>後來也推出了碟煞規格的版本<br/>但這是來令煞規格的。<br/>一眼就能看出來吧，<br/>前碟距短到離譜。<br/>會有這樣的幾何設計<br/>是因為兩個偷工減料，其中一個當然是<br/>叉身偏移量「5個尺寸只用1種」的關係。<br/>另一個是，根據尺寸<br/>頭管角幾乎沒有改變。<br/>上管長度在５１０ｍｍ左右的<br/>頭管角７２．５°的公路車架<br/>除了古斯特以外，幾乎沒有。<br/>「只使用一種叉偏移量，<br/>偷工減料的製造商和品牌」為數不少。<br/>在這篇文章舉的例子中，歐貝亞就是這樣。<br/>後來會提到，皮納雷羅也是這樣。<br/>但是，根據尺寸幾乎不改變頭管角的<br/>做出這種荒唐手抜工作的品牌，<br/>據我所知只有古斯塔夫。<br/>這就是我在開頭寫的「無與倫比的垃圾」的<br/>「無與倫比」這個用詞的根據。<br/><br/>歐巴為了69.3°這個異常的頭管角，<br/>崔克為了67毫米這個異常的越野值，<br/>用最小尺寸硬是擰出來的<br/>我完全沒有想過要拉出前中心<br/>可惜的是前中心<br/>最小尺寸下低於570mm<br/>雖然偶爾會有這樣的車架，<br/>560mm或550mm以下的車架<br/>除了訂製車架之外，在一般的範疇內是不可能的。<br/><br/>遊俠者的XL尺寸，上管長545mm的時候<br/>前叉中心距离为５７４ｍｍ。<br/>就像我刚才说的引用那样<br/>女性款车型的Anchor数值是<br/>「上管４８５ｍｍ，前叉中心距离５７４ｍｍ」。<br/>上管长度相差６０ｍｍ<br/>前叉中心距离却完全相同之类的<br/>做车架的手艺也太烂了吧 真是笑死人！<br/><br/>前叉中心距离短的原因是<br/>單純因為轉彎時危險才這樣寫的，<br/>除了最大尺寸外的 Gust 騎手<br/>「我從來沒在下坡或轉彎時摔過車！」<br/>可能會這樣嘴硬。<br/>但不只是 Gust（其實 Gust 以外根本沒有這種情況），<br/>如果我騎上前輪中心距離 554mm 的<br/>車架的話<br/>（要說我騎 Ranger 的話<br/>M尺寸所以引用了那個數值）<br/>其他正常尺寸的車架上能做到的<br/>下坡方式無法做到，沒辦法好好下坡。<br/>不過就是感受到低的極限<br/>被嚇到而只能慢慢下坡而已<br/>並不會立刻摔車。<br/>對於那個「低的極限」，我能從幾何表上<br/>找到理由說明，<br/>看不懂幾何表的人大概就會「差不多」就算了吧<br/>本來就感受不到低落的極限這種<br/>某種意義上說，可能也有這樣幸福的人。<br/><br/>這不是偏見，而是事實，<br/>只要是能好好讀懂幾何表的人<br/>對於古斯特的車架呢<br/>至少上面那款 Ranger 絕對不會買。<br/>所以我看到騎古斯特的人時<br/>「啊。這個人是看不懂幾何參數表的人呢」<br/>是否要說出來是另一回事，我就是會這樣想。<br/>不是看不懂幾何參數表，<br/>而是看得懂卻沒看就買的人也有吧？<br/>這樣的說法好像也是<br/>能夠理解幾何參數表的人<br/>在購買車架時卻不仔細挑選，<br/>我是想不出這種人的。<br/>果然只有完全沒有養成看幾何表的習慣的人，<br/>才會這樣說非得買Gusto。<br/>要說Gusto值得稱讚的地方，<br/>就是在前中心這個超級異常的數值上，<br/>誠實地寫了出來，這一點是值得肯定的。<br/><br/>「相比其他廠牌頂管長度差不多的車架，<br/>不過就是前花鼓靠前２～３公分罷了！<br/>沒什麼大不了的！」這種說法<br/>或者說也許有騎Gust的人，也有騎Ranger的人。<br/>Ranger最小尺寸的<br/>前中心距是547mm，<br/>正好完全相同的前中心距547mm的<br/>車架我是知道的。<br/>喂，剛才寫的「無與倫比」這個說法不是自相矛盾嗎！<br/>你可能會這樣說，但其實並不矛盾。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0960amx15x.jpg" target="_blank"><img alt="RIMG0960amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0960amx15xs.jpg" width="320"/></a><br/>Specialized到2019年左右一直在推出的<br/>Alloy Junior 的幾何規格表。<br/>尺寸只有 44 號一種規格。<br/>前中心到水平線的距離是 頂管長度 514mm 的<br/>最小尺寸 Ranger 相同的 547mm，<br/>trail 數值較小，看起來有點異常。<br/>・・・我想很多人已經察覺到了，<br/>這台 Alloy Junior，<br/>是採用 650C（26 吋 WO）輪組規格的車子。<br/>正經廠牌的650C自行車和<br/>一樣的前中心距離的話<br/>700C卻是547mm這個<br/>有多異常，大家應該能理解吧。<br/>650C輪組用的車架和<br/>前中心距離完全一樣什麼的<br/>做車架技術也太差了吧　真是笑死人！<br/><br/><br/>開頭我說「本質上的理由的話<br/>零件更換無法解決的問題」這樣寫的。<br/>比如說 坐管角度比較豎直的時候<br/>無法達到希望的鞍座後退量的情況下<br/>相對於車架的座管<br/>如果是27.2mm圓管這類通用零件的話<br/>換成回拉量更大的鞍座夾具的話<br/>或許就能解決問題。<br/><br/>頭管長度比較長的時候<br/>希望的低把位位置無法取得的情況下，<br/>改用前下傾角度的莖管就<br/>或許能解決。<br/>關於這個頭管長度與<br/>能否取得把位位置這件事，<br/>應該有不少人<br/>曾在幾何表上確認過吧。<br/><br/>明明是很小的車架尺寸<br/>只是把車頭角度設定得比較平緩，<br/>跟大尺寸相同偏移量的<br/>前叉配在上面的話，<br/>轉向會有點沉重，這種情況的話<br/>換成偏移量更大的前叉<br/>說不定就能解決問題。<br/>我剛才說過這已經不太現實了，<br/>正因為如此<br/>學會閱讀幾何表有其意義。<br/>然而，儘管是小尺寸的車架<br/>頭管角並沒有放緩<br/>前中心過短這個問題<br/>無法透過零件更換來解決。<br/>假如市面上有像是偏移量90mm這樣的<br/>前叉的話，情況就另當別論了。<br/>這就是本質上的原因，前中心異常值的真正來由<br/>這是說用零件更換也無法改變的問題。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0958amx15x.jpg" target="_blank"><img alt="RIMG0958amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0958amx15xs.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0959amx15x.jpg" target="_blank"><img alt="RIMG0959amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0959amx15xs.jpg" width="320"/></a><br/>↑重新貼出。<br/>獵人車的幾何規格表裡有伸距，<br/>所以順便寫了下來。<br/>然後把它跟Factor的O2 VAM比較的話，<br/>從小的尺寸開始到第四號尺寸為止幾乎都是一樣的。<br/>除了前叉周圍以外的幾何規格話題，<br/>我也沒什麼想說的<br/>這２個車架的軸距<br/>（從前花鼓軸心到後花鼓軸心的長度）<br/>列舉出到達距離幾乎相同的５個尺寸的話<br/>Ranger是９３７／９４３／９５３／９６４／９８４ｍｍ<br/>Ｏ２ ＶＡＭ是９７０／９６９／９７１／９８５／９８７ｍｍ。<br/>Ｏ２ ＶＡＭ時不時增減的原因<br/>應該是和前叉偏移量的轉換有關，<br/>要是馬上察覺到這點的人<br/>我已經成為前輪周圍幾何學的博士了。<br/>對於新手來說還真有兩下子！（居高臨下的語氣）<br/>下一個尺寸的 接觸距離和軸距是<br/>Ranger 是 415／1023mm，<br/>O2 VAM 是 401／1006mm，<br/>接觸距離相差 14mm，<br/>軸距反而大幅逆轉。<br/>到了更大的尺寸，軸距非但趕不上，<br/>倒轉這件事很重要，請記住。<br/>之後我會引用。<br/><br/>後輪中心距（從BB軸中心到後輪轂軸中心的距離。<br/>粗略來說就是鏈條座管的長度）的長度是<br/>Ranger各款都是410mm，<br/>O2 VAM從較小的5尺寸開始是405mm，<br/>之後是408mm和412mm。<br/>也就是說，在比較的範圍內<br/>O2 VAM 的後輪中心距離更短，<br/>但軸距卻長得多，<br/>這個差異幾乎全部來自於<br/>前輪中心的異常值（過短）所造成的。<br/>跟幾何設計正常的車架相比，<br/>我把它公開處刑了，真是抱歉。<br/><br/><br/>在販賣Trek的車店裡，<br/>「一到這個尺寸（最小尺寸）時，只有Trek會<br/>車道間距值比較大呢～」と<br/>有自行車店向客人解釋這個嗎？<br/>在那之前，撇除是否要說這回事<br/>具備幾何學知識的自行車店員工<br/>到底有多少呢？<br/><br/>關於Gusto的車架<br/>「CP值很划算！」這樣推薦的自行車店<br/>「雖然便宜，但透過頭管角度和叉偏移量兩方面<br/>這個品牌在偷工減料<br/>前中心距很短・・・」<br/>關於幾何數據的異常值<br/>他們有好好說明嗎？<br/>要是這樣說的話 肯定賣不出去啦！我好像聽得到這樣的聲音<br/>正因為如此啊，從一開始就是那樣的東西啊！<br/><br/><br/>開頭的留言裡有<br/>「這是很棒的單車喔。」這樣的說法<br/>我尊重這個。<br/>肯定地，就踏踏板就能前進的感觸而言<br/>可以說是非常好的騎乘感受吧。<br/>在今年的５月，我重新組裝了羅瓦爾的<br/>夾器煞車用的後輪（→<a href="/zh/posts/7114.html" target="_blank" title="こちら">這裡</a>），<br/>那個輪組的車主是<br/>我有一台古斯托的眼鏡蛇 EVO DB 完成車<br/>結果根本沒有進展，我很驚訝<br/>他說自己白白浪費了錢<br/>這不是我引導出來的答案<br/>而是這個人的真實感受，所以也請尊重他的意見<br/>這是為數不多的古斯托車手的寶貴意見<br/>順便說一下，開頭提到的古斯托車架<br/>已經不在使用了，換了新的車架<br/>不知道是不是發生了什麼不愉快的事啊。<br/>可能跟車架尺寸是最小尺碼有關，<br/>但也說不準。<br/><br/>不過文章開頭那個連結的車架<br/>是 RCR Duro Team Limited 這個型號，<br/>其實沒有像 Ranger 那樣<br/>在最小尺碼時<br/>前輪軸距短到誇張的程度。<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG1076amx15x.jpg" target="_blank"><img alt="RIMG1076amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG1076amx15xs.jpg" width="320"/></a><br/>叉偏移只有1種規格，有點偷工減料，<br/>但各尺寸的頭管角都不同，即使是最小尺寸也<br/>確實有夠臥角的，<br/>上管長度在510mm以下的情況下，<br/>還能確保前輪中心570mm以上的距離。<br/><br/>順便一提，剛才提到的<br/>眼鏡蛇 EVO DB的幾何規格我寫下來了。<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0963amx15x.jpg" target="_blank"><img alt="RIMG0963amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0963amx15xs.jpg" width="320"/></a><br/>小尺寸的頭管臥角設定不足，<br/>比Ranger要好一些<br/>不過還是有Ranger的傾向。<br/>前叉offset只有1種<br/>頭管角的變化也很小，<br/>特別是小尺寸的角度比較立。<br/>因為沒有準備offset 50mm的前叉，<br/>為了不讓操舵感變得太沉重<br/>有可能是故意立起來的，<br/>如我多次所寫的，重要度壓倒性地<br/>前輪圓心距 ＞ 尾跡距。<br/>儘管確立了兼容並行的方式<br/>不去做是因為成本高啊。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0964amx15x.jpg" target="_blank"><img alt="RIMG0964amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0964amx15xs.jpg" width="320"/></a><br/>Boma的Sai 2我也寫下來。<br/>叉偏移只有一種，頭管角變化不大<br/>即便是小尺寸也有直立的傾向<br/>作為一個目安「前輪圓心距是570mm或<br/>比較「超過該尺寸的最初上管長度」時<br/>Gusto的Ranger是545mm、<br/>Cobra EVO DB是540mm、<br/>Boma的Rhino 2是513mm、<br/>果然最近Gusto的異常值還是很突出。<br/>順帶一提，如果是Factor的O2 VAM的話是493mm、<br/>Anchor的RIS 9的話是505mm、<br/>RL8W的話是485mm。<br/>就連Orbea的Orca/Aqua都<br/>把頭管角的異常值放在一邊，是510mm，<br/>LOOK的795 Blade RS也<br/>幾乎相同的510.1mm<br/>但這款在所有尺寸上<br/>都沒有破壞循跡的幾何設計。<br/>Cannondale的SuperSix EVO的話<br/>在最小尺寸的上管長度510mm就能達成<br/>那個車架的前叉中心不只是５７０ｍｍ<br/>而是堂堂正正的５８２ｍｍ，而且這邊也是<br/>在全尺寸範圍內，Trail 數值都沒有問題。<br/>正規的廠商就是<br/>有正規的設計作為後盾。<br/><span style="font-size:x-small;">Trek 的最小尺寸？<br/>→去買 Madone SLR Gen 8 吧。</span><br/><br/>在開頭留言的那位<br/>不知道是否會被看到<br/>但如果被看到了的話<br/>我這邊有兩個請求。<br/>當然只是請求，沒有強制力<br/>第一個是，關於 Gusto 的哪個車型<br/>我不知道是什麼尺寸<br/>請珍惜地騎乘它。<br/>「這真的是很棒的車子」對吧？（笑）<br/>希望最大尺寸就好了。<br/>第二個是關於車架幾何<br/>價格便宜又輕盈這類的<br/>或是說以前波加查爾騎過之類的<br/>不是這種膚淺的理由<br/>而是從車架幾何的部分來說<br/>這是一台「非常好的自行車」<br/>如果我能向你解釋的話<br/>拜託了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0965amx15x.jpg" target="_blank"><img alt="RIMG0965amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0965amx15xs.jpg" width="320"/></a><br/>Specialized 的女性用車型<br/>「Amira」剛才提到過，所以<br/>順便查了一下。<br/>上表的 Amira SL4 是 2016 年左右的車型，<br/>2010 年左右還有 Amira S-WORKS 這個車型<br/>幾何設計在細節上有差異，但趨勢是一樣的。<br/>最小尺寸的頭管角設定傾角較大，所以<br/>雖然尾跡大到異常數值的程度，<br/>除此之外的話 可能會成為 Anchor 以外的選擇。<br/>儘管準備了 2 種叉偏移量，<br/>但只是 50mm 加減 1mm 的差異而已，<br/>既然要準備 2 種的話，<br/>雖然不是要求像 Cannondale 那樣 10mm 的差距，<br/>如果改成 49mm 和 55mm 就能防止最小尺寸的異常值，<br/>下一個尺碼則是因為偏移量的切換<br/>更進一步下個尺寸的話<br/>前中心反而比較長這樣<br/>幾何設計都做出來了，有點浪費。<br/><br/>如果48尺寸也好像可以的話<br/>在44尺寸比較好還是48尺寸比較好之間猶豫不決的人的話，<br/>44尺寸和48尺寸是<br/>上管長度的差異有9mm，所以<br/>尺寸一旦改變的話<br/>把龍頭長度差設為10mm的差異看起來<br/>是不錯的<br/>但是在前伸距的差異上只有6mm的差別<br/>所以改變龍頭長度的可能性不大<br/>頭管的長度也都是105mm和115mm<br/>差異並不是特別大<br/>把把手降低1mm之類的想法<br/>如果改成48尺寸的話坐管的露出長度就<br/>如果不會感到太過寂寞的話<br/>我會推薦４８尺寸。<br/>但是 如果 越野值 沒有飆得很高的話<br/>４４尺寸可能會比較好。<br/>哎呀 我不應該談論到伸距。<br/>只能談前輪中心和頭管角<br/>還有叉子偏移和越野值<br/>才行。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0967amx15x.jpg" target="_blank"><img alt="RIMG0967amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0967amx15xs.jpg" width="320"/></a><br/>最後に。超級六號和馬多納都寫了，所以<br/>Tarmac SL8也開始寫了。<br/>這個，真的很難呢。<br/>49尺寸在不是異常值的程度內<br/>（不到不該買的程度）前叉角度跨度很大，<br/>相比52和54尺寸的接近程度<br/>56尺寸卻大幅躍升。<br/>小尺寸的三個型號 在上管長度相差32mm的範圍內<br/>前中心距離相差5mm就堆積起來了，<br/>只有56尺寸 突然變長了。<br/>52尺寸和54尺寸的<br/>上管長度的差是10mm，<br/>但伸展距離只差4mm。<br/>這是妥當的數值，<br/>49尺寸和52尺寸上管長度的差是<br/>22mm這麼大的幅度相比<br/>手臂長度的差異只有5mm。<br/>這與只根據上管長度判斷的情況相比<br/>不是與直覺相悖的事實嗎？<br/>在49尺寸和52尺寸之間糾結的人<br/>為了避免遲鈍的轉向特性<br/>放棄座管外露長度的外觀<br/>改用52尺寸可能會更好。<br/>頭管長度是從尺寸較小的一方開始<br/>從１０９／１２０／１３７／１５７毫米這樣推移下去，<br/>在５２尺寸和５４尺寸之間猶豫不決的時候，<br/>需要根據把手位置的高低來選擇。<br/>只按照座管尺寸和上管長度來選的話，<br/>即使是應該選５４尺寸的人，有時候也必須硬著頭皮選５２尺寸才行，<br/>否則有可能調不出把手位置。<br/>像這樣，光是前叉周邊就，<br/>需要寫成這麼長的文章。<br/>如果要列舉其他要素的話 <br/>根本沒完沒了。<br/><br/>更深入讀懂幾何數據吧（前叉周圍篇）<br/>沒打算寫這之外的續篇，<br/>個別「你覺得這裡的車架怎樣？」這類的<br/>留言我也不會一一回覆。<br/>不過要是來店裡問的話 或許會回答。<br/><br/>幾何表上有トレイル的標記<br/>在所有尺寸上都沒有破綻的製造商是<br/>除此之外，在這篇文章中沒有詳細提及的部分<br/>往往也會考慮周全<br/>只要你是前叉幾何學博士<br/>就不太可能犯大錯誤。<br/>700C輪組的車架 本來的適正尺寸是<br/>上管約560mm左右<br/>尺寸愈往下縮小<br/>幾何形狀上的變形發生了<br/>而要解決這個問題需要花費智慧和成本，<br/>原本尺寸較大的車架根本不會出現破損。<br/>所謂沒有破損，就是指小尺寸車架<br/>設計得有多出色<br/>我也符合這個情況，以上管來說的話<br/>大概騎乘530mm以下車架的人的話<br/><s>（↑這個其實應該用reach來說才對啦）</s><br/>作為自衛手段，最好仔細檢視幾何設計。<br/><br/>我到此為止<br/>關於車架的硬度軟度之類的<br/>關於世間一般評價的跑得快跑不快這樣的要點<br/>完全沒有涉及。<br/>舉例來說，Factor似乎有著「過於堅硬」的傾向<br/>在我們店裡也有競輪選手客人和腿力不錯的車手<br/>說Factor「硬到無法接受」然後轉手的人有好幾位。<br/>就像輪組花鼓張力一樣<br/>是無法輕易得到數值標準的要素，所以<br/>我只能是基於幾何學角度<br/>來評論好壞，<br/>關於車架硬度、心軸偏擺的有無<br/>我無法保證，但<br/>因為表現優異，所以就像這裡介紹的一樣<br/>LOOK、Cannondale、Factor等品牌<br/>在我現在能想到的範圍內，<br/>是認真對待車架的製造商。<br/>比如 S-WORKS Tarmac SL8，<br/>現在含稅定價要 792,000 日圓的話，<br/>49 號車架的前叉<br/>與 52 號車架共用的 47mm offset 不就行了嗎，<br/>能不能改用 50mm 或 55mm 的前叉呢？<br/>我就會這樣想。<br/>Cannondale 原本就在做的事情，<br/>Trek 用最新的 Madone 做到了。<br/><br/>到目前為止 對於義大利品牌<br/>一直沒有提及，是因為<br/>在這次的論點中 有很多廠商<br/>寫不出什麼好話。<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0968amx15x.jpg" target="_blank"><img alt="RIMG0968amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0968amx15xs.jpg" width="320"/></a><br/>關於 Pinarello 的部分，<br/>2025 年款的 Dogma F 是<br/>尺寸從425～600，共11個規格<br/>叉子偏移量為47mm，單一規格<br/>最小尺寸的頭管角為69.5°<br/>下一個尺寸是70.5°<br/>再下一個尺寸是71.4°<br/>之後的變化就變得緩和了<br/><br/>對於前叉博士來說應該不用解釋<br/>小尺寸是 完全不管尾跡<br/>只保留前中心的幾何設計。<br/>2024年款和2023年款的Dogma F<br/>都是11個尺寸規格<br/>叉偏移只有43mm一種<br/>各尺寸的頭管角變化<br/>和2025年款沒有差別<br/>所以規定的單一叉偏移<br/>從43mm變成47mm的2025年款反而<br/>對許多人來說 都變得更好了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0969amx15x.jpg" target="_blank"><img alt="RIMG0969amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0969amx15xs.jpg" width="320"/></a><br/>相當於前中心的尺寸上<br/>被分配了「F」這個文字，<br/>沒想到 幾何規格表中 F的部分、<br/>前中心的數值卻沒有記載。<br/>這在日本批發商的網站上也是<br/>本國網站上也是一樣的。<br/><br/>另外 雖然這是無關緊要的事，<br/>插圖上的曲柄無論怎麼看都是shimano的<br/>個人來說我不太滿意<br/><br/>皮納瑞羅除了這次接觸到的部分之外<br/>還有閃閃發光的地方<br/>碳纖維車架展開１１種尺寸這一點<br/>不能說是偷工減料<br/><br/>柯那戈傳統上從幾十年前開始<br/>就有一個政策是頭管角度完全不在目錄上記載<br/>叉偏移量 V4RS 沒有公開、<br/>鋼架的 Arabesque 和 Master 甚至也沒有公開<br/>只有 C64 不知為何全尺寸都標記為 43mm。<br/>C64 的最小尺寸在水平換算上管長度 510mm 時<br/>偏移量 43mm 的前叉<br/>前中心距離是 583mm⋯⋯這是怎麼回事<br/>好吧 大家應該都明白了吧？<br/><br/>皮那雷羅車架各尺寸的<br/>上管长度是以1毫米为单位・・・才怪<br/>末位的1位只有0或5<br/>所以最小单位是5毫米的设计，<br/>而伸展距离反而是0.1毫米单位的奇怪数值。<br/>这也就是说，是用上管长度而不是伸展距离来<br/>设计车架的。<br/><br/>科纳戈的C64的水平换算上管长度<br/>最小尺寸是510毫米，最大尺寸是565毫米<br/>相差55毫米<br/>這兩個尺寸之間變化的前伸量是<br/>從377毫米到385毫米，僅僅相差8毫米而已。<br/>以較大尺寸為基準來思考的話<br/>隨著車架尺寸變小<br/>上管的幾乎後半部分只是<br/>在縮短的樣子。<br/>與這個上管長度範圍大致相同的是<br/>以Dogma F來說，標稱尺寸450的515mm到<br/>標稱尺寸525的565mm相當，<br/>以Dogma F來說，在這個上管長度50mm的差距中，<br/>Reach的差異是從364.8mm到390.7mm的<br/>25.9mm。<br/><br/>在Colnago的C64中，最大尺寸和最小尺寸的<br/>前中心長度的差距<br/>是596mm到583mm的13mm差，相當小。<br/>這也符合前伸距變化不大的情況<br/>這在皮那雷羅就...因為前中心距沒有公開<br/>所以沒辦法比較。<br/>光是這點就能寫成一篇長文章，但我就不寫了。<br/><br/><br/>古斯圖會把過去款式的資訊從網站上<br/>一個勁地刪掉<br/>想要調查過去款式的幾何參數的話<br/>需要費一些功夫。<br/>在頂頁的https://www.gustobike.jp/也可以，但<br/>「GUSTO是」這個連結目標<br/>https://www.gustobike.jp/about-us-2/從<br/>末尾的-2刪除的話<br/>似乎是以前長年使用過的<br/>舊「GUSTO是」的頁面就跳出來了，所以<br/>我把它丟到WAYBACK MACHINE裡<br/>從過去的網站記錄中調查了各種東西。<br/>例如https://www.gustobike.jp/product/ranger-team-limited/<br/>這個URL 現在<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/gus1amx15x.jpg" target="_blank"><img alt="gus1amx15x.jpg" border="0" height="125" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/gus1amx15xs.jpg" width="320"/></a><br/>變成了這樣，但如果查詢檔案庫的話<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/gus2amx15x.jpg" target="_blank"><img alt="gus2amx15x.jpg" border="0" height="134" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/gus2amx15xs.jpg" width="320"/></a><br/>↑像這樣 可以看到那個URL過去的狀態。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0971amx15x.jpg" target="_blank"><img alt="RIMG0971amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0971amx15xs.jpg" width="320"/></a><br/>特意用電腦螢幕 直接拍攝，但<br/>現在 Gusto的座右銘是<br/>DARE TO BE DIFFERENT（特意做不同的事）<br/>據說是這樣。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0972amx15x.jpg" target="_blank"><img alt="RIMG0972amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0972amx15xs.jpg" width="320"/></a><br/>這在日文版本中是<br/>DARE to BE DIFERENT，<br/><s>把to改成小寫，還從DIFFERENT裡少一個F之類的，<br/>確實是刻意做得不一樣。</s><br/>這個標語在幾何設計還很普通的那個時代是沒有的。<br/>也就是說，雖然有點難以理解，<br/>但那致命的前中心確實<br/>就是這樣。<br/>作為品牌哲學在進行<br/>可能有這種可能性，我這樣想過<br/>但還是應該認為這只是偷懶。<br/>那個根據我待會再說。<br/><br/>在今天時點的現行網站上<br/>點擊 Lineup → COBRA EVO DISC 12S 的分頁<br/>COBRA EVO DB 系列載有 6 款車型<br/>https://www.gustobike.jp/product-category/cobra-evo/<br/>跳到這個URL，<br/>其中2024 COBRA EVO DB PRO ULTRA這個型號<br/>https://www.gustobike.jp/product/2024-cobra-evo-db-pro-ultra/<br/>就是這個URL。<br/>那倒還好，但這個<br/>2024 COBRA EVO DB PRO LEGEND這66萬日圓的型號<br/>https://www.gustobike.jp/product/2024-cobra-evo-db-pro-legend-copy/<br/>卻是這樣的URL。<br/>末尾的-copy要消掉，然後更新頁面的URL呢。<br/>實際上這樣做的話，<br/>2024 COBRA EVO DB SPORT ULTRA這個<br/>44萬2000日圓的型號頁面就會改變。<br/><br/>這個不是COBRA而是DURO這邊<br/>2024 DURO EVO DB SPORT ULTRA這個型號的頁面看的話<br/>https://www.gustobike.jp/product/2024-duro-evo-db-pro-legend-copy-copy/<br/>結果-copy被附加了兩個的URL呢<br/>只抽出一個-copy來更新的話<br/>不知道為什麼會跳到原本的-copy-copy頁面<br/>抽出兩個的話 就會變成現行型號2024 DURO EVO DB PRO LEGEND<br/>這個型號的頁面。<br/><br/>這個在2024 DURO EVO DB PRO TL的情況下<br/>https://www.gustobike.jp/product/2024-duro-evo-db-pro-tl__trashed/<br/>網址的末尾會有__trashed，這表示<br/>管理員已經把頁面放進垃圾桶的狀態<br/>這是URL自動附加的東西，<br/>trashed字面上<br/>不只是指在垃圾箱裡<br/>也表示壞掉了、一團糟的意思<br/>而且還有被狠狠罵過、被<br/>貶得體無完膚的意思。<br/>好像在暗示什麼，我忍不住笑了。<br/><br/>不是Cobra，而是Duro的話，<br/>曾經比博馬好一些<br/>RCR Duro 繼承了這個名字。<br/>所以 也許幾何設計稍微好一點<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG1077amx15x.jpg" target="_blank"><img alt="RIMG1077amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG1077amx15xs.jpg" width="320"/></a><br/>沒辦法，這個不行。<br/>在寫 Anchor 的時候提過，<br/>說起碟煞車<br/>為了對應最近的 28C 或 30C 寬度輪胎<br/>有預留空間的車架組，<br/>車叉肩部下方寸法較長等因素<br/>相比於輪框煞車自行車，設計上有更多的自由度，所以<br/>最小尺寸時前輪中心距也能達到５７０ｍｍ以上<br/>變得相對容易。<br/>因此 這個數值實質上是<br/>「將Ranger改為碟煞規格的車種」，而<br/>２０１９年款RCR之後的車型<br/>幾何設計上都有相當程度的偷工減料。<br/><br/>那麼，Trek的叉偏移量較少啦<br/>Cannondale的吊耳下沉幅度較大啦，同樣地<br/>Gusto的前中心距較短<br/>是由廠商的設計理念所決定的<br/>這麼說得出來嗎？<br/>答案是否定的。<br/><br/>先才，我用Gusto的Ranger和<br/>Factor的O2 VAM比較了軸距。<br/>後輪中心的距離基本上不論哪個廠牌都<br/>落在410加減5毫米的範圍內左右<br/>沒有太大差別。<br/>所以輪距的長度<br/>幾乎完全取決於前輪中心的差異<br/>（反而在今次的比較中<br/>Ranger的後輪中心比較長<br/>所以輪距也會傾向於變長的條件下）。<br/>觸及距離幾乎相同，從較小的開始<br/>比較５個尺寸的軸距<br/>Ranger相對於O2VAM<br/>最小尺寸減少３３ｍｍ，<br/>下一個尺寸減少２６ｍｍ，<br/>下一個尺寸減少１８ｍｍ，<br/>下一個尺寸減少１９ｍｍ，<br/>下一個尺寸減少３ｍｍ，<br/>下一個尺寸是<br/>O2 VAM的伸展距離偏短的關係<br/>Ranger反而變成加17mm。<br/><br/>我想說的是<br/>如果前中心短是設計理念的話<br/>全尺寸都要有合理的幾何規格<br/>相同的上管長或伸展距離的車架<br/>無論如何 前中心都<br/>應該是採用了20～30mm較短的設計。<br/><br/>如我多次提過的，上管長度是560mm的話<br/>超過這個尺寸的話，設計就不會有問題<br/>所以各家廠商的車架幾何都差不多。<br/>因此尺寸越大<br/>幾何就越普通 Gusto的車架設計就是<br/>單純出於成本考量的偷工減料<br/>完全沒有考慮小尺寸騎士的需求。<br/><br/>如我稍才提到的那樣，<br/>賣方的說明也存在問題。<br/>根據我看過的例子，只是比較車架重量<br/>「和S社的T-Max SL或C社的S-uper Six等相比<br/>重量差異只有◯◯克，價格卻便宜××萬圓！」<br/>之類的毫無頭腦的銷售文句<br/>（最划算的性價比！除此之外就沒有什麼話好說了嗎），<br/>以及試騎Gusto的車架的印象評測<br/>「輪距短就跑得靈敏！」之類的<br/>那根本就是你騎的尺寸小而已啦<br/>我還看過一些我覺得根本是在唬爛的文章。<br/>這些傢伙是理解了幾何學之後<br/>才閉嘴不說的呢，<br/>還是根本就沒理解幾何學啊，<br/>應該是後者吧，真的是挺扯的話題。<br/><br/>「Gusto連職業隊都在用！」<br/>雖然也許有這樣擁護的意見，<br/>（職業選手是被給什麼就<br/>要在眾人面前表現得好吃的樣子，<br/>需要駕馭被給予之物的技巧，<br/>這個話題先放一邊）<br/>那些選手們騎乘的尺寸<br/>不是市售品的最大尺寸，<br/>要不就是比最大尺寸小一號左右，大多數都是這樣，<br/>有些選手偏好較大的尺寸<br/>也許會準備特殊訂製尺寸。<br/>所以受到較短前中心距影響的<br/>專業選手幾乎是不存在的，<br/>作為來自選手的改善建議<br/>「有點過彎時會害怕呢」這樣的<br/>說法也不會聽到。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG1078amx15x.jpg" target="_blank"><img alt="RIMG1078amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG1078amx15xs.jpg" width="320"/></a><br/>在文章調查時發現的<br/>我覺得很有趣，是第2章的TOA這個車款。<br/>最小尺寸的前心距這麼短啊！<br/>我有種找到同伴的感覺<br/>可能有Gusto的騎士在<br/>請不要把它和那種東西相提並論。<br/>下一個尺寸的上管是509mm，<br/>前心距576mm這樣的數字<br/>只有真正講究的廠商才能做出來的數據<br/>這一帶接近 700C 輪組的尺寸極限了。<br/>要推出更小的尺寸的話，<br/>從前的 Anchor 或 Specialized 的話，就會選用 650C 輪組的<br/>Canyon 的話就會選用 650B 輪組的<br/>車架套件作為選項。<br/><br/>最小尺寸的上管長 482mm 搭配<br/>700C 輪組這種組合，除非是訂製車架，<br/>在成品車上其實不太常見。<br/>以前女性用車款的上管長度是485mm的時候<br/>前置中心距是574mm這樣的規格<br/>就能讓大家理解這有多麼厲害。<br/><br/>叉偏移量應該從大尺寸開始<br/>43／43／43／50／50／55<br/>大概是這樣推移比較理想<br/>但像Cannondale這樣改成10mm差距的話<br/>43／43／43／53／53／53<br/>用２種類的偏移量來對應。<br/>這個偏移量５３ｍｍ的上限尺寸<br/>車架的上管長度５２５ｍｍ，<br/>似乎還不錯。<br/>當然，只限於符合該尺寸的人。<br/><br/>風帆衝浪有個著名品牌<br/>叫尼爾普萊德<br/>創辦人是尼爾．普萊德先生，<br/>現任社長是他的兒子麥克‧普萊德氏<br/>因為喜歡自行車，而不是風帆衝浪那方面<br/>就用同樣的品牌名稱開始了<br/>自行車車架品牌就是尼爾普萊德。<br/>雖然後來把那家公司賣掉了<br/>但又想重新創立自行車品牌<br/>新創立的是<br/>Chapter 2（第二章）這個品牌。<br/>所以 Pride氏沒有參與<br/>關於現在的Neil Pride<br/>「第一章」之類的說法也有人在用。<br/>哎呀 那是我啊。<br/><br/><br/>最後。<br/>從今天開始，帶著捲尺去測量前叉中心<br/>半路出家的 前輪周圍幾何學博士<br/>可能會在各地的車店出沒，<br/>請不要怪我。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">這是相當久以前的事了，<br/>關於GUSTO（以下簡稱 古斯托）的車架<br/>我曾經寫過一些不好的評論（→<a href="/zh/posts/4683.html" target="_blank" title="こちら">這裡</a>），<br/>對此我收到了以下這樣的評論。<br/><br/>真是太偏見了。<br/>看了讓人不愉快。<br/>前幾天Gust送來了，真的是台不錯的自行車呢。<br/><br/>就是這樣。<br/>很遺憾，這不過是「のむ實驗室對Gust持有<br/>偏見的這種偏見」罷了。<br/>Gust的車架<br/>在某一點上達到了無可比擬的垃圾程度，這是<br/>無可動搖的事實。<br/>把這一點明白無誤地戳穿出來也<br/>當時就已經可以做，<br/>我覺得這個人有點可憐，<br/>所以就睜一隻眼閉一隻眼了。<br/>不過，如果讀到這裡的人（不是Gusto騎手）<br/>大多數人能從中受益的話，那也就沒關係了，<br/>我就來寫寫<br/>為什麼我不推薦Gusto車架的理由。<br/><br/>理由有兩個，<br/>我先寫第二個「並非」本質上的理由。<br/>先寫著。<br/>這是連結文章的話題，<br/>我們店的老客人<br/>從他另一間常去的車店<br/>被提議要不要以特價買一台 Gusto 的車架。<br/>我說「算了算了」，<br/>但他們還是想買。<br/>結局是買了。<br/><br/>被說成「CP值很高（笑）」<br/>在品牌的完成車當中，<br/>「如果把組裝在那台完成車上的<br/>變速套件和輪組按定價購買的話<br/>剩下的部分就等於是白得」這種程度的<br/>定價方式是存在的。<br/>聰明的消費者就是注意到了這一點，<br/>那種計算想必會被做出來<br/>當然地 完成車品牌的<br/>預想範圍之內，那樣的購買行動本身<br/>就在完成車品牌的掌心裡。<br/><br/>買CP值高的完成車有什麼不對的！<br/>雖然會被這樣說，但當然 沒什麼不對。<br/>要是終端用戶自己做的話。<br/>那件事上 客人被拉去考慮購買車架的時候，<br/>因為想要附屬的變速系統和輪組，買了古斯特的完成車，<br/>把零件移植到別的車架上，<br/>在組裝完古斯特以外的車架完成車之後，<br/>這個車架在內部評估上實質上幾乎是零價值的剩餘廢料，<br/>內部的評估額實質上幾乎是零的剩餘廢料車架。<br/>就是這樣的原因。<br/>我甚至還說過不要被店家的這種方便做法牽著走，<br/>但因為實在便宜得不得了，<br/>結局是在購買。<br/><br/>終端用戶買了Gusty的完成車<br/>把零件幾乎全部移植到別的車架上<br/>把不需要的車架部分放到拍賣網站<br/>這樣做我覺得沒問題，<br/>但如果是車店這樣做就有點問題。<br/>因為賣方這樣做明確表示了<br/>他們不尊重Gusty這個品牌。<br/>如果只是根據某家店裡的一個案例來說的話<br/>也就是說，是個只會被拆掉零件的品牌程度吧。<br/><br/>接下來，說一下本質上的第一個理由。<br/>既然是本質上的<br/>這個理由呢，假設古斯托的車架<br/>即使是世界上踩踏感最好的車架<br/>無論多便宜也改變不了的理由。<br/>就算更換零件也改變不了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0930amx15x.jpg" target="_blank"><img alt="RIMG0930amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0930amx15xs.jpg" width="320"/></a><br/>我來聊一下前輪中心距和越野角的話題。<br/>前輪中心距是指BB的中心軸到<br/>前輪轂軸的距離。<br/>如果是700C輪組的車架的話<br/>最好要有570mm。<br/>寫完這篇文章後大略重讀一遍<br/>車架製造商考慮的最低線似乎<br/>大概是在575mm左右。<br/><br/>前叉中心距離短的<br/>有什麼問題<br/>經常有人說<br/>「轉向角度轉太深時<br/>前輪會碰到鞋尖」<br/>不過在實際騎乘的範圍內<br/>根本不會把把手轉那麼深。<br/>想在紅綠燈等待的時間用站騎撐過去<br/>停車時に前輪とシューズが接触する可能性はあります。<br/>クランク長さやクリートの位置調整にもよりますが、<br/>１６５mmクランクで クリートを最も前方で固定している<br/>（つま先の位置が後ろに下がる）という<br/>前輪との接触に関して起こらないほうに<br/>強い条件下でも フロントセンター５７５ｍｍくらいで<br/>スレスレになるくらいです<br/>（シューズの３つ穴の前後位置にも よりますが）。<br/><br/>前輪與腳尖接觸如果不是什麼大問題的話，<br/>前中心短的問題在於<br/>簡單來說就是危險。<br/>在轉彎時，特別是下坡轉彎時很危險。<br/><br/>700C輪組適合的本來的車架尺寸，<br/>以上管長度來說大約在560mm前後。<br/>這個尺寸範圍在任何廠商那裡<br/>幾何設計（以前叫做車架骨架）上<br/>不會有問題，換個說法的話<br/>任何廠牌都是差不多的設計。<br/>關於幾何數據，我把那些特異的數值<br/>稱為「異常值」，<br/>車架尺寸大的人<br/>碰到有異常值的車架的情況<br/>相當少見。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0932amx15x.jpg" target="_blank"><img alt="RIMG0932amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0932amx15xs.jpg" width="320"/></a><br/>除了前輪中心距以外<br/>前叉周圍有個重要的數值<br/>叫做Trail。<br/>日語中有Trail表記和Trail表記兩種寫法<br/>因為我是Trail派，所以以下統一用Trail來表記。<br/><br/>如上圖所示，將轉向軸線<br/>延長到地面的線<br/>和從前輪軸心垂直向下延伸到地面的線<br/>這兩條線之間的前後距離就是了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0933amx15x.jpg" target="_blank"><img alt="RIMG0933amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0933amx15xs.jpg" width="320"/></a><br/>從車軸的垂線看起來好像完全不是直角<br/>別在意。<br/>這個叫做前轮牵引距的數值，不是說大就好<br/>或者小就好的東西，<br/>有適當的範圍，大約是５７～６０毫米。<br/>如果前轮牵引距的值相同的話<br/>理論上轉向的手感就會變成一樣。<br/>前轮牵引距相同，對於某個人來說<br/>小車架＋１１０ｍｍ莖管的情況和<br/>大車架＋９０ｍｍ莖管的情況<br/>莖管長度改變的話 操舵感也會跟著改變<br/>所以完全不會有相同的騎乘感受。<br/>越跡增大的話 操控性會變得<br/>有點沉重遲鈍。<br/>「沉重遲鈍」這種說法 就是有種笨笨的感覺<br/>大阪方言啦，我從很久以前 就一直<br/>這是我們在講到林道時使用的表達方式。<br/>「悶沉沉」的反義詞是「乾脆俐落」。<br/><br/>低速時，特別是上坡的站立踩踏時<br/>在擺動把手的時候<br/>切過的把手沒有自然地回到中間<br/>必須特地用手把它扳回去的那種手感<br/>就是「悶沉沉」。<br/>從紅綠燈前的靜止發進或<br/>在低速下以最小半径描圓周轉動時<br/>車把出現晃動感就是所謂的「靈敏俐落」。<br/><br/>當車架尺寸變小時<br/>前輪中心距也會變短，<br/>作為通常回避這種情況的方法<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0934amx15x.jpg" target="_blank"><img alt="RIMG0934amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0934amx15xs.jpg" width="320"/></a><br/>頭管角度（以下簡稱 頭角）會<br/>後傾。<br/>這樣的話前輪轂就會朝前方遠處延伸<br/>可以確保前叉中心。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0935amx15x.jpg" target="_blank"><img alt="RIMG0935amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0935amx15xs.jpg" width="320"/></a><br/>但是，只是降低了頭管角的話<br/>尾跡會增加，轉向會變得遲鈍。<br/>要避免這種情況的話，該怎麼做呢，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0938amx15x.jpg" target="_blank"><img alt="RIMG0938amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0938amx15xs.jpg" width="320"/></a><br/>也就是前叉的彎曲量<br/>增加叉偏移量就可以了。<br/>叉偏移量也被稱為叉後移量，<br/>因為我是偏移派，所以以下就叫它叉偏移量。<br/>順帶一提，有「オフセット量」這種說法<br/>但我沒聽過「レイク量」這種說法。<br/><br/>如果迹距相同，基本上轉向感覺就相同，<br/>也就是說上圖的<br/>立起的車頭角＋小オフセット的迹距（紅色底線）和<br/>放平的車頭角＋大オフセット的迹距（藍色底線）<br/>如果長度相同的話，<br/>即使是同一款車架的不同尺寸<br/>操舵感上基本上沒有什麼差異。<br/>另外，如果增加偏移量的話<br/>那樣的話前中心也會變長，<br/>對小尺寸的車架來說是很好的條件。<br/><br/>從這裡開始，要看各個廠牌品牌的<br/>車架幾何表上的<br/>標稱尺寸、水平換算上管長、前中心、<br/>叉偏移量、頭管角、以及牽引線這6個項目<br/>我把抽出出來的項目列舉並逐一說明。<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0941amx15x.jpg" target="_blank"><img alt="RIMG0941amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0941amx15xs.jpg" width="320"/></a><br/>首先是 LOOK 的 795 Blade RS。<br/>之所以拿出 LOOK 來說，<br/>是因為 LOOK 從遠古時代起，幾何數據表就非常優秀，<br/>可以說完全沒有缺少任何數據<br/>的廠商。<br/>這款 795 Blade RS 是現行版本的前一代，初代款。<br/>現行款的正式名稱也是 795 Blade RS，<br/>在日本的批發商那裡為了區別起見<br/>被稱為７９５刀片２ＲＳ。<br/>有一部叫做「瞄準頂峰！」的ＯＶＡ動畫<br/>它的續編不是「瞄準頂峰！２」<br/>而是「瞄準頂峰２！」。<br/>是刀片２ＲＳ而不是刀片ＲＳ２<br/>讓我想起了這件事。<br/>這個車架的幾何設計的看點是<br/>首先最小尺寸的前中心<br/>低於570mm。<br/>但這是沒有辦法的。<br/>上管長度少於500mm的情況下<br/>要確保前中心570mm<br/>是極其困難的。<br/>而且，在五個尺寸中較小的兩個<br/>頭管角71.8°＋叉偏移50mm，<br/>較大的那３個<br/>頭管角７３°＋叉偏移量４３ｍｍ。<br/>如果頭管角和偏移量相同，拖曳距也會相同。<br/>較小的那２個的拖曳距是５９．２ｍｍ，<br/>較大的那３個的拖曳距是５９ｍｍ。<br/>等等才會發現，<br/>這是非常精心設計的。<br/>雖然可能不太常見，<br/>如果騎著這台車架M尺寸的人<br/>因為某些原因要放棄這台車架，<br/>或者因為摔車而損壞、或者被偷了的話，<br/>再次購買同一款車架時，<br/>「M尺寸感覺有點大，<br/>下次改成S尺寸吧」而騎上S尺寸的話，<br/>即使頭管角相差1.2°，<br/>轉向手感應該也不會有違和感。<br/>叉子偏移的7mm差異對<br/>前中心的影響，在要素大小上來說<br/>相當大，所以S尺寸比M尺寸的<br/>前中心更長。<br/>在這個偏移量大幅切換的地方<br/>前中心的長度相對於車架尺寸<br/>出現逆轉的現象在各種廠牌都很常見。<br/><br/>偏移量不同的前叉有2種以上<br/>準備需要花成本。<br/>這款車架的情況是「5個尺寸對應2種類型」，<br/>全尺寸的叉偏移量只有1種<br/>製造商、品牌<br/>基本上可以說是偷工減料。<br/><br/>現行款的795 Blade 2 RS<br/>沒有拿來舉例的原因是<br/>只挑對文章有利的資訊。<br/>似乎會這樣<br/>製作文章用的資料是在<br/>2RS出現之前做的，就只是這樣。<br/>只用文字列舉的話<br/>同樣對應5個尺寸<br/>較小的2個尺寸和較大的3個尺寸<br/>頭管角分別是71.75°和73°，<br/>叉偏移分別是50mm和43mm，<br/>車軛值分別為５９．８ｍｍ和５９．３ｍｍ<br/>最小尺寸的水平換算頂管長度<br/>為５１０ｍｍ，而前叉中心距為５６９．８ｍｍ<br/><br/>還有這次論點裡無關的地方<br/>「LOOK的車架，還真有兩下子」<br/>我覺得的重點是<br/>「頂管長度是奇怪的數值」這件事<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0942amx15x.jpg" target="_blank"><img alt="RIMG0942amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0942amx15xs.jpg" width="320"/></a><br/>７９５刀片RS和２RS的<br/>把上管長度寫出來了。<br/>XS和S、M和L和XL分別<br/>改變頭管角度和叉子偏移的方針是<br/>保持不變，對應尺寸名稱的上管長度<br/>滑動了1個尺寸的感覺。<br/>如果初代RS的XL尺寸是上限的話<br/>也不準備專業特別規格的話<br/>這個上管長度就會有問題<br/>職業選手應該也在其中。<br/><br/>然後，上管的數值是以０．１ｍｍ為單位的零碎數字<br/>這本身沒有什麼意義。<br/>重要的是為什麼會變成這樣。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0944amx15x.jpg" target="_blank"><img alt="RIMG0944amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0944amx15xs.jpg" width="320"/></a><br/>水平換算上管長度<br/>從ＢＢ向上垂直延伸的線分成兩部分中的<br/>前半部分的長度叫做「伸距」。<br/>在ＬＯＯＫ上，顯然是這個伸距這邊<br/>我正在設計車架。<br/>「不是看上管，而是要看<br/>到達距離！」這個程度的<br/>重要數值，<br/>但這次我不寫那個。<br/>標題是「更要讀懂幾何設計（前叉周邊篇）」<br/>不過並沒有計畫連載。<br/><br/>765 Optimum 的 XS～XL 尺寸的到達距離列舉如下<br/>355/365/375/385/395mm，<br/>舊785裡<br/>365/375/385/395/405mm，<br/>現行的785Huez，為了區別起見<br/>785Huez2（跟785 2 Huez不一樣啦）<br/>被稱為的車型裡<br/>落差跟上管長度也<br/>都是0.1mm單位的半端數值<br/>現在ではLOOKの全てのモデルのリーチが<br/>漂亮得不是完全以1mm為單位。<br/><br/>另外，這次雖然不詳細說明<br/>（而且下次沒有「Reach篇」）<br/>上述的765 Optimum和舊的785<br/>相對於標稱尺寸的Reach長度<br/>一個接一個地錯開了。<br/>也就是說，Reach 375mm的<br/>騎765 Optimum M尺寸的人<br/>購買舊785的時候，同樣是延伸距離375mm的<br/>S尺寸可能是更好的選擇<br/>就是這樣。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0946amx15x.jpg" target="_blank"><img alt="RIMG0946amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0946amx15xs.jpg" width="320"/></a><br/>接下來是Cannondale的SuperSix EVO。<br/>長度的數值是以cm表記的，<br/>我沒有擅自換算成mm就直接抄下來了。<br/>Cannondale關於前中心的部分<br/>相當優秀的製造商。<br/>上管長度約510mm左右<br/>確保了580mm以上的前中心距離。<br/>這也與吊耳下沉幅度較大有關<br/>不過這次我就不深入探討那部分了。<br/>叉偏移是「7個尺寸對應2種規格」<br/>45mm和55mm相差10mm，差異相當大。<br/>從上管長度來看，較大的那2個尺寸<br/>日本人身上合適的人相當少<br/>「市面上出現的超級六代EVO的大多數是<br/>前叉偏移量為55mm」<br/>這樣的看法也是可以的。<br/>這個也和先前的795刀鋒RS一樣<br/>「叉偏移變大的尺寸切換點<br/>比那更大的車架尺寸<br/>前中心反而變長」這樣的反轉現象發生了。<br/><br/>因為是用公分表示<br/>頭管角71.2°＋叉偏移5.5公分和<br/>頭管角73°＋叉偏移4.5公分<br/>兩者的越野距都是5.8公分這件事<br/>換成毫米表示的話在58.X毫米的部分<br/>感覺會有差異<br/>不過也不算什麼大問題。<br/>只有最小尺寸的越野距是6.0公分<br/>有點黏呼呼的<br/>但不到異常值的程度。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0947amx15x.jpg" target="_blank"><img alt="RIMG0947amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0947amx15xs.jpg" width="320"/></a><br/>同樣是Cannondale的CAAD 13。<br/>58尺寸之後不是61<br/>而是60、62這樣繼續下去<br/>但對大多數人來說都沒關係。<br/>幾何設計的傾向也基本相同。<br/>不過怎樣都好，Cannondale是<br/>關於叉偏移量<br/>這個製造商稱之為叉偏角。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0948amx15x.jpg" target="_blank"><img alt="RIMG0948amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0948amx15xs.jpg" width="320"/></a><br/>接著是普利司通 Anchor 的現行車型<br/>RP9。RP8 也是相同的幾何設計。<br/>叉偏移量是「4 個尺寸對應 2 種類型」，<br/>最小尺寸的上管長度 518mm 時<br/>前輪中心距竟然能確保 570mm。<br/><br/>拖尾量未公開。<br/>連前叉中心都不公開的<br/>也有廠商品牌是這樣做的<br/>前叉中心頂多誤差1mm左右<br/>用捲尺的話很容易就能量出來，相比之下<br/>（當然需要實物擺在眼前），<br/>煞車拖距就沒那麼容易量了。<br/>所以這是我希望廠商公開的資訊。<br/><br/>Anchor的幾何設定是<br/>曾經是神乎其技的狀態（過去式）<br/>要拿來說明那個話題時引用的幾何規格表是<br/>不是這個。<br/>嘛，這個也還不錯啦。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0950amx15x.jpg" target="_blank"><img alt="RIMG0950amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0950amx15xs.jpg" width="320"/></a><br/>約在２０１５年左右旗艦車款的<br/>Anchor RIS９。<br/>當然囉，只有牙盤煞車的車型。<br/>而且，也沒有想到現在這樣的寬輻圈和寬輪胎<br/>前叉肩下尺寸不长<br/>虽然设计很紧凑（前中心难以获得）<br/>最小尺寸却有 上管长度505mm<br/>确保了578mm的前中心。<br/>叉偏移是「5个尺寸对应3种」。<br/><br/>虽然迹线未公开，但最小尺寸<br/>相比下一个尺寸 头管角放缓了1°<br/>而偏移量相同<br/>應該已經變成相當沉重遲鈍的轉向特性了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0951amx15x.jpg" target="_blank"><img alt="RIMG0951amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0951amx15xs.jpg" width="320"/></a><br/>同樣是舊時代 Anchor 的停產車款，<br/>女性用夾器剎車公路車的 RL8W。<br/>在最小尺寸上，上管長度遠不止 500mm，<br/>甚至切到 490mm 以下，車頭角不低於 70°，<br/>前叉中心距卻有 574mm 那麼長。<br/>前叉偏移量達到 55mm 是<br/>主要的原因，<br/>「頂管長４８５ｍｍ、前軸距５７４ｍｍ」<br/>是稍後會引用的，所以請記住。<br/>軌跡沒有公開，但與剛才的RIS9不同的是<br/>最小尺寸和次一個尺寸<br/>頭管角度和偏移量相同的話<br/>軌跡也會相同這一點。<br/>雖然沒有好好計算，<br/>RIS9的最小尺寸和RL8W的最小尺寸則<br/>後者的應該不會太寬鬆。<br/>怎麼樣，這幾何設計不是神來之筆嗎。<br/>作為現行款式，有那款碟煞版本的<br/>叫RL6D的型號，前中心距也很優秀，不過<br/>說到碟煞自行車<br/>最近裝粗輪胎的公路車<br/>後中心距和叉頸肩下尺寸都很長<br/>軸距也長，設計很寬裕<br/>「上管長度５００毫米、前叉距５７０毫米」來<br/>確保的話，比起輪圈煞車自行車的時代要容易得多。<br/><br/>還有，雖然無關緊要的事<br/>在Anchor，把頭管角叫作轉向角。<br/><br/>雖然到目前為止沒有寫過，<br/>作為車架製造商、品牌的整體傾向<br/>前叉距和迹距這兩個參數之中，<br/>哪個被視為更重要的呢<br/>絕對是前中心。<br/>即使是「所有尺寸的偏移量都是一種」這樣的車架<br/>從最大尺寸到最小尺寸<br/>逐漸降低車頭角的工夫<br/>至少是有做的。<br/>「準備好幾種叉子的話<br/>會花成本，所以就沒做，<br/>小尺寸的前中心短的是<br/>畢竟太危險了<br/>即使轉向會變得沉重也沒關係<br/>車頭角一定要放平」就是這樣<br/><br/>作為這種極端例子被舉出來的<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0952amx15x.jpg" target="_blank"><img alt="RIMG0952amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0952amx15xs.jpg" width="320"/></a><br/>是2005～2008年左右的Orbea<br/>即使到了2008年也還沒停產<br/>在那之前就存在的鋁合金車架<br/>像是「Arin」和「Loblr」這樣的型號<br/>這些是從４８～６２為止，以１公分為單位展開的１５個尺寸<br/>我認真地在製作車架時，<br/>碳纖維車架旗艦款的<br/>初代虎鯨發展為５個尺寸之後<br/>公路車用的車架<br/>就只有這種幾何設計了。<br/>鋁合金車架的平價款 Aqua也<br/>採用同樣的幾何設計，<br/>中堅等級的碳纖維車架Onyx<br/>不知道為什麼 只有頭管角 從這張表上 還要再臥0.2°。<br/>頭管角相差0.2° 的話 其他數值也應該會1mm以上<br/>有所改變才對，<br/>要麼是隨便亂設定 要麼就是其他地方數值都相同。<br/>只有最大尺寸的前中心<br/>沒有公開 這是照原文。<br/>我也不知道為什麼。<br/>嘛，騎這個尺寸車架的人當中<br/>應該不會有人在乎前中心距離吧。<br/><br/>在幾何參數表中需要注意的地方是<br/>最小尺寸的頭管角一下子就放緩了３°。<br/>頭管角低於７０°的情況其實相當罕見。<br/>這可以說是「異常值」了。<br/>這個頭管角的原因是，為了與下一個尺寸的<br/>前中心距離５７５ｍｍ相同<br/>這是硬生生地把車頭管放平的設計。<br/>叉偏移是「5個尺寸只用1種」的偷懶做法。<br/>這證明了「車架廠商即使不管迴轉半徑，<br/>也只是勉強做出前中心距」的事實。<br/><br/>騎大尺寸的Orbea（那時候的）的人沒有問題，<br/>但最小尺寸的轉向特性<br/>遲鈍到有點騎不了。<br/>已經可以說偏離了公路車的特性。<br/>為什麼我能這麼斷言呢，<br/>因為我曾經騎過這一代Aqua的最小尺寸車款。<br/>從我的角度來看，那確實是個明顯偏小的尺寸，<br/>車頭管長度很短，<br/>我之前也寫過，<br/>當時在工作的車店裡掛著的現貨車架中，<br/>我逐一檢查了所有我能騎的尺寸，<br/>用我的眼睛都檢查不出有車架變形的問題<br/>因為它是車架的其中之一。<br/>這並不是因為歐貝亞的製造技術高超……<br/>反而更像是一種無法刻意製造的奇蹟。<br/>不用中心尺，只是反覆追求前後左右的擺動精度，<br/>組裝了幾十個輪子之後，<br/>其中有些在第一次使用中心尺測量時，<br/>可能會發現中心完全對齊的輪子，<br/>大概就是這樣的情況吧。<br/>前叉換成了偏距50mm的產品<br/>但還是有相當沉重的轉向感。<br/><br/>騎乘小尺寸車架的人<br/>很容易買到轉向感沉重的自行車<br/>所以就抱著「公路車就是這樣」的想法<br/>根本沒有產生過疑問的可能性。<br/>如果是女性專用錨牌的最小尺寸<br/>或是下一個尺寸的使用者的話<br/>騎上老神牌錨車的話 反應敏捷的程度<br/>我想你會嚇一跳。<br/>作為那樣的自行車 專門化的艾米拉也是<br/>幾何學上是個不錯的車架<br/>（後來查了才知道 最小尺寸的話<br/>就沒那麼回事了，<br/>結果我在文章後半放上去了）。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0953amx15x.jpg" target="_blank"><img alt="RIMG0953amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0953amx15xs.jpg" width="320"/></a><br/>接下來是Trek的Emonda ALR。<br/>Trek 是一個不公開車架前中心的製造商。<br/>如我之前所寫的，車架前中心很容易測量，<br/>如果能看到正在考慮購買的實物的話，<br/>即使不公開，也不是什麼大問題。<br/><br/>這是因為實際上有人想買<br/>2019 年款的 Emonda ALR 5，<br/>（當然，我們店裡沒有在賣）<br/>曾經被詢問過希望能告訴他們尺寸方面的事情<br/>這次引用作為參考。<br/>她是女性，但不是最小的兩個尺寸。<br/>所以我沒有放棄購買的想法，實際上還是買了。<br/>Trek最小的兩個尺寸，特別是最小尺寸<br/>達到了不應該購買的程度。<br/>到目前為止公開了軌跡數據的<br/>從LOOK和Cannondale的例子來看<br/>67mm的軌跡實在是太離譜了。<br/>至於下一個尺寸的61mm，姑且不論<br/>最小尺寸的67mm可以說是異常值。<br/><br/>這應該是製造商的設計理念吧，<br/>Trek的叉偏移值偏小。<br/>叉偏移「7個尺寸對應2種規格」這點還不錯，<br/>但展開成45mm和40mm這樣的配置。<br/><br/>如果會產生這樣的trail數值，<br/>我甚至覺得最小尺寸不出比較好。<br/>那麼，如果你是 Trek 專門店的話<br/>在販售公路車給身材較矮的顧客時<br/>如果被問到『那你怎麼辦呢』，我就詞窮了。<br/>如果是『也』販售 Trek 的車店的話<br/>我會跟客人解釋這些幾何設計的問題<br/>除非客人堅持一定要那台車<br/>否則我會建議他們從其他品牌來選擇。<br/><br/>從 1 吋的壓入式頭碗組開始<br/>被稱為超大尺寸的１－１／８英吋的<br/>到整體式車頭為止的通用規格時代的話<br/>更換前叉也是個辦法，<br/>最近的車架是 其他廠牌的前叉<br/>無法安裝。<br/><br/>看上面的幾何表<br/>７個尺寸全部的車頭角度都不同。<br/>所以 較大的２個尺寸的拖曳距是<br/>如果不用「５．８ｃｍ」而是用「５８．Ｘｍｍ」這樣的表示方式的話<br/>嚴格來說端數應該是不同的。<br/>而且在偏移量切換的２個尺寸裡<br/>山道量也出現了反轉。<br/><br/>「僅限最小尺寸山道量會出現異常值」這句話<br/>其實是說「即使山道量出現異常值<br/>也要確保前中心距離」的意思。<br/>看來車架製造商確實是優先考慮前中心距離，<br/>越野車架如果能準備好細部的叉子偏距的話<br/>有時候也能勉強應付，似乎是這樣的想法。<br/>「做也可以不做也可以，不做的話<br/>也不會被罵，對暑假作業的評分也沒有影響」<br/>就像是這樣的東西吧。<br/>但是（看幾何設計的）人是認真在看的，<br/>我對認真做的廠商評價很高。<br/><br/>這台艾蒙達 ALR 的最小尺寸是<br/>至少換上偏移50mm的前叉的話<br/>應該就能達到下一個尺寸的trail了吧，<br/>不這樣做是因為它是廉價鋁合金車款的關係嗎？<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0955amx15x.jpg" target="_blank"><img alt="RIMG0955amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0955amx15xs.jpg" width="320"/></a><br/>話說回來就是Madone SLR了。<br/>和剛才的Emonda ALR傾向幾乎一樣，<br/>在Emonda ALR中，最小尺寸相對於下一個尺寸<br/>頭管角度躺平了0.9°，<br/>但在Madone SLR中，頭管角度卻是一樣的。<br/>可是两款车型都一样<br/>凸缘差只有6mm这一点没变<br/>这样就变成了件奇怪的事。<br/>不过这确实还是异常值。<br/>即使是价格较高的Madone SLR车架或成车<br/>几何参数也基本相同<br/>并不是说Emonda ALR作为便宜款<br/>就偷工减料了<br/>這就是 Trek 整體的傾向所在的幾何設計。<br/>如果用剛才 LOOK 同樣的邏輯來說的話，<br/>從最小尺碼開始，騎著大一號 Trek 的人<br/>在買完 Emonda ALR 之後，<br/>接著要買 Madone SLR 的話，<br/>如果不改變車架尺碼<br/>或者改成大一號的情況下，<br/>特別也感覺不到什麼差異。<br/>如果選擇小一個尺寸的話<br/>方向把的沉重感會確實地被察覺到。<br/>如果沒有知識的話，可能會誤以為「碳纖維車架就是<br/>這樣的東西」而有奇怪的誤解。<br/><br/>最小尺寸的前輪跡值異常地大，是<br/>Trek的設計哲學，<br/>騎乘最小尺寸車架的人<br/>要欣然接受Trek這樣刻意設計的思想！<br/>說到這裡 我在不久前寫的<br/>草稿已經完成了呢・・・。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0956amx15x.jpg" target="_blank"><img alt="RIMG0956amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0956amx15xs.jpg" width="320"/></a><br/>最近發表的馬多內 SLR 第８代的<br/>幾何設計讓我感到震撼。<br/>在講那個話題之前 有點無關緊要的事<br/>尺寸的稱呼從數字改成 S、M、L 的稱法了。<br/>M、L 指的是「中大尺寸」這樣的規格。<br/><br/>咦？最小尺寸的偏移量<br/>已改成５０ｍｍ了呢。<br/>車頭角睡得那麼深，竟然０．６°<br/>偏移量差５ｍｍ反而才是大要素<br/>牽引距離反而從下一個尺寸開始逆轉了<br/>也脫離了異常值<br/>（最舒服、最順手的尺寸<br/>變成次小尺寸了）。<br/>車頭角變淺和偏移量增加是<br/>兩者都是在伸長前中心距的那一側發揮作用。<br/>所以在最小尺寸方面<br/>儘管前中心距伸長了<br/>操控性反而得到改善這樣<br/>是好處多多的改變。<br/>這個，最小尺寸配置偏移量45mm的前叉<br/>Trek已經承認是不行的，<br/>騎乘第7代Madone SLR最小尺寸的人<br/>「更加好吃了！」這種說法相對於現狀來說<br/>是在不好吃的時候的車架套組的情況下<br/>就像製造商所說的那樣。<br/>如果我騎的是第七代的最小尺寸的話<br/>（因為我看得懂幾何參數 所以根本不會買）<br/>第八代偏移量５０ｍｍ的前叉的話<br/>能換的話 我就會換。<br/><br/>還有，這套新幾何參數今後的話<br/>如果也被採用到其他型號的話<br/>在符合最小尺寸的人當中<br/>對於能看懂幾何參數的人來說是個好消息，<br/>看不懂幾何參數的人<br/>就在無意識中被拯救了。<br/><br/>現在擺在車店裡的<br/>最小尺寸的Trek公路車千萬別買！<br/>稍微再觀望一下吧！<br/>↑就是因為寫這種東西，才會被同業討厭啦<br/><br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0957amx15x.jpg" target="_blank"><img alt="RIMG0957amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0957amx15xs.jpg" width="320"/></a><br/>接下來，我最近在幾何設計方面<br/>最讓我印象深刻的廠商，是 Factor<br/>的 Ostro VAM 2.0。<br/>首先，這不是讓我印象深刻的地方<br/>但他們關於上管長度的資訊<br/>只用 Reach（前伸長度）來公開，<br/>連 LOOK 都沒做過這種自以為是的事。<br/>更何況，叉偏移（Fork Offset）對於「7種尺寸卻只有4種規格」<br/>越野性能的設計方式真的很出色<br/>讀到這裡的各位應該能理解我的意思。<br/>投入成本認真製作車架。<br/>既然投入了成本，車架套組的含稅定價<br/>居然要88550日圓，這樣的話<br/>我實在是無言以對。<br/>有一點，在這份幾何參數表中看起來有點奇怪。<br/>最小尺寸和 次一個尺寸的部分<br/>頭管角相同 但偏移量相差４mm<br/>軌跡卻是相同的這一點。<br/>較大的３個尺寸的軌跡<br/>是５８．６mm 的話，<br/>其他的 ５８mm 的軌跡<br/>有效位數相同的５８．０mm 起<br/>小數點是零所以被省略了 應該這樣想<br/>應該是５８．０ｍｍ恰好，而不是５８ｍｍ。<br/>針對這個問題，以及只有公布過Reach的那個問題，<br/>看看Factor另一個車型O２ VAM的幾何參數表<br/>總算是解決了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0958amx15x.jpg" target="_blank"><img alt="RIMG0958amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0958amx15xs.jpg" width="320"/></a><br/>O２ VAM的幾何參數表。<br/>車號尺寸、叉偏移、頭管角、Trail<br/>和Ostro VAM２．０完全相同<br/>只有Reach稍微有點不同<br/>這裡也並列記載了水平換算上管長度，所以<br/>對照來看的話，就能對 Ostro VAM 2.0 的上管長度<br/>進行相當準確的推測。<br/>剛才我寫「完全相同」的範圍內，唯一有不同的地方是。<br/>這裡最小尺寸的下一個尺寸的頭管角<br/>不是 71.1° 而是 71.7°。<br/>這樣的話，偏移量不同的叉子<br/>產生相同的車跡也就沒有矛盾了<br/>Ostro VAM 2.0 那邊應該是誤植。<br/>還有，最大尺寸的上管長度<br/>標示為 5591mm<br/>這也是照著日本問屋資料的原文直接寫的。<br/>從前後的關係來看，不可能解釋為 559.1mm<br/>所以是 591mm 的錯誤。<br/>49 尺寸和 52 尺寸、54 尺寸和 56 尺寸分別<br/>「因為頭管角和偏移量不同」<br/>手臂長度的差異相互抵銷，前中心點完全相同」<br/>變成了這樣的狀態，但我覺得這似乎有點太巧合了。<br/>不過，叉架偏移量「針對7種尺寸有4種類型」這一點<br/>應該是事實，所以這方面可以給予非常高的評價。<br/><br/>好的，雖然前言講得太長了，<br/>在對前叉周圍的幾何結構有了詳細了解的狀態下，<br/>我想給各位看看成為Gusto那致命般偷工減料幾何結構的起點的<br/>那個車架。<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0959amx15x.jpg" target="_blank"><img alt="RIMG0959amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0959amx15xs.jpg" width="320"/></a><br/>古斯託的「遊俠者」這個車型。<br/>後來也推出了碟煞規格的版本<br/>但這是來令煞規格的。<br/>一眼就能看出來吧，<br/>前碟距短到離譜。<br/>會有這樣的幾何設計<br/>是因為兩個偷工減料，其中一個當然是<br/>叉身偏移量「5個尺寸只用1種」的關係。<br/>另一個是，根據尺寸<br/>頭管角幾乎沒有改變。<br/>上管長度在５１０ｍｍ左右的<br/>頭管角７２．５°的公路車架<br/>除了古斯特以外，幾乎沒有。<br/>「只使用一種叉偏移量，<br/>偷工減料的製造商和品牌」為數不少。<br/>在這篇文章舉的例子中，歐貝亞就是這樣。<br/>後來會提到，皮納雷羅也是這樣。<br/>但是，根據尺寸幾乎不改變頭管角的<br/>做出這種荒唐手抜工作的品牌，<br/>據我所知只有古斯塔夫。<br/>這就是我在開頭寫的「無與倫比的垃圾」的<br/>「無與倫比」這個用詞的根據。<br/><br/>歐巴為了69.3°這個異常的頭管角，<br/>崔克為了67毫米這個異常的越野值，<br/>用最小尺寸硬是擰出來的<br/>我完全沒有想過要拉出前中心<br/>可惜的是前中心<br/>最小尺寸下低於570mm<br/>雖然偶爾會有這樣的車架，<br/>560mm或550mm以下的車架<br/>除了訂製車架之外，在一般的範疇內是不可能的。<br/><br/>遊俠者的XL尺寸，上管長545mm的時候<br/>前叉中心距离为５７４ｍｍ。<br/>就像我刚才说的引用那样<br/>女性款车型的Anchor数值是<br/>「上管４８５ｍｍ，前叉中心距离５７４ｍｍ」。<br/>上管长度相差６０ｍｍ<br/>前叉中心距离却完全相同之类的<br/>做车架的手艺也太烂了吧 真是笑死人！<br/><br/>前叉中心距离短的原因是<br/>單純因為轉彎時危險才這樣寫的，<br/>除了最大尺寸外的 Gust 騎手<br/>「我從來沒在下坡或轉彎時摔過車！」<br/>可能會這樣嘴硬。<br/>但不只是 Gust（其實 Gust 以外根本沒有這種情況），<br/>如果我騎上前輪中心距離 554mm 的<br/>車架的話<br/>（要說我騎 Ranger 的話<br/>M尺寸所以引用了那個數值）<br/>其他正常尺寸的車架上能做到的<br/>下坡方式無法做到，沒辦法好好下坡。<br/>不過就是感受到低的極限<br/>被嚇到而只能慢慢下坡而已<br/>並不會立刻摔車。<br/>對於那個「低的極限」，我能從幾何表上<br/>找到理由說明，<br/>看不懂幾何表的人大概就會「差不多」就算了吧<br/>本來就感受不到低落的極限這種<br/>某種意義上說，可能也有這樣幸福的人。<br/><br/>這不是偏見，而是事實，<br/>只要是能好好讀懂幾何表的人<br/>對於古斯特的車架呢<br/>至少上面那款 Ranger 絕對不會買。<br/>所以我看到騎古斯特的人時<br/>「啊。這個人是看不懂幾何參數表的人呢」<br/>是否要說出來是另一回事，我就是會這樣想。<br/>不是看不懂幾何參數表，<br/>而是看得懂卻沒看就買的人也有吧？<br/>這樣的說法好像也是<br/>能夠理解幾何參數表的人<br/>在購買車架時卻不仔細挑選，<br/>我是想不出這種人的。<br/>果然只有完全沒有養成看幾何表的習慣的人，<br/>才會這樣說非得買Gusto。<br/>要說Gusto值得稱讚的地方，<br/>就是在前中心這個超級異常的數值上，<br/>誠實地寫了出來，這一點是值得肯定的。<br/><br/>「相比其他廠牌頂管長度差不多的車架，<br/>不過就是前花鼓靠前２～３公分罷了！<br/>沒什麼大不了的！」這種說法<br/>或者說也許有騎Gust的人，也有騎Ranger的人。<br/>Ranger最小尺寸的<br/>前中心距是547mm，<br/>正好完全相同的前中心距547mm的<br/>車架我是知道的。<br/>喂，剛才寫的「無與倫比」這個說法不是自相矛盾嗎！<br/>你可能會這樣說，但其實並不矛盾。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0960amx15x.jpg" target="_blank"><img alt="RIMG0960amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0960amx15xs.jpg" width="320"/></a><br/>Specialized到2019年左右一直在推出的<br/>Alloy Junior 的幾何規格表。<br/>尺寸只有 44 號一種規格。<br/>前中心到水平線的距離是 頂管長度 514mm 的<br/>最小尺寸 Ranger 相同的 547mm，<br/>trail 數值較小，看起來有點異常。<br/>・・・我想很多人已經察覺到了，<br/>這台 Alloy Junior，<br/>是採用 650C（26 吋 WO）輪組規格的車子。<br/>正經廠牌的650C自行車和<br/>一樣的前中心距離的話<br/>700C卻是547mm這個<br/>有多異常，大家應該能理解吧。<br/>650C輪組用的車架和<br/>前中心距離完全一樣什麼的<br/>做車架技術也太差了吧　真是笑死人！<br/><br/><br/>開頭我說「本質上的理由的話<br/>零件更換無法解決的問題」這樣寫的。<br/>比如說 坐管角度比較豎直的時候<br/>無法達到希望的鞍座後退量的情況下<br/>相對於車架的座管<br/>如果是27.2mm圓管這類通用零件的話<br/>換成回拉量更大的鞍座夾具的話<br/>或許就能解決問題。<br/><br/>頭管長度比較長的時候<br/>希望的低把位位置無法取得的情況下，<br/>改用前下傾角度的莖管就<br/>或許能解決。<br/>關於這個頭管長度與<br/>能否取得把位位置這件事，<br/>應該有不少人<br/>曾在幾何表上確認過吧。<br/><br/>明明是很小的車架尺寸<br/>只是把車頭角度設定得比較平緩，<br/>跟大尺寸相同偏移量的<br/>前叉配在上面的話，<br/>轉向會有點沉重，這種情況的話<br/>換成偏移量更大的前叉<br/>說不定就能解決問題。<br/>我剛才說過這已經不太現實了，<br/>正因為如此<br/>學會閱讀幾何表有其意義。<br/>然而，儘管是小尺寸的車架<br/>頭管角並沒有放緩<br/>前中心過短這個問題<br/>無法透過零件更換來解決。<br/>假如市面上有像是偏移量90mm這樣的<br/>前叉的話，情況就另當別論了。<br/>這就是本質上的原因，前中心異常值的真正來由<br/>這是說用零件更換也無法改變的問題。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0958amx15x.jpg" target="_blank"><img alt="RIMG0958amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0958amx15xs.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0959amx15x.jpg" target="_blank"><img alt="RIMG0959amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0959amx15xs.jpg" width="320"/></a><br/>↑重新貼出。<br/>獵人車的幾何規格表裡有伸距，<br/>所以順便寫了下來。<br/>然後把它跟Factor的O2 VAM比較的話，<br/>從小的尺寸開始到第四號尺寸為止幾乎都是一樣的。<br/>除了前叉周圍以外的幾何規格話題，<br/>我也沒什麼想說的<br/>這２個車架的軸距<br/>（從前花鼓軸心到後花鼓軸心的長度）<br/>列舉出到達距離幾乎相同的５個尺寸的話<br/>Ranger是９３７／９４３／９５３／９６４／９８４ｍｍ<br/>Ｏ２ ＶＡＭ是９７０／９６９／９７１／９８５／９８７ｍｍ。<br/>Ｏ２ ＶＡＭ時不時增減的原因<br/>應該是和前叉偏移量的轉換有關，<br/>要是馬上察覺到這點的人<br/>我已經成為前輪周圍幾何學的博士了。<br/>對於新手來說還真有兩下子！（居高臨下的語氣）<br/>下一個尺寸的 接觸距離和軸距是<br/>Ranger 是 415／1023mm，<br/>O2 VAM 是 401／1006mm，<br/>接觸距離相差 14mm，<br/>軸距反而大幅逆轉。<br/>到了更大的尺寸，軸距非但趕不上，<br/>倒轉這件事很重要，請記住。<br/>之後我會引用。<br/><br/>後輪中心距（從BB軸中心到後輪轂軸中心的距離。<br/>粗略來說就是鏈條座管的長度）的長度是<br/>Ranger各款都是410mm，<br/>O2 VAM從較小的5尺寸開始是405mm，<br/>之後是408mm和412mm。<br/>也就是說，在比較的範圍內<br/>O2 VAM 的後輪中心距離更短，<br/>但軸距卻長得多，<br/>這個差異幾乎全部來自於<br/>前輪中心的異常值（過短）所造成的。<br/>跟幾何設計正常的車架相比，<br/>我把它公開處刑了，真是抱歉。<br/><br/><br/>在販賣Trek的車店裡，<br/>「一到這個尺寸（最小尺寸）時，只有Trek會<br/>車道間距值比較大呢～」と<br/>有自行車店向客人解釋這個嗎？<br/>在那之前，撇除是否要說這回事<br/>具備幾何學知識的自行車店員工<br/>到底有多少呢？<br/><br/>關於Gusto的車架<br/>「CP值很划算！」這樣推薦的自行車店<br/>「雖然便宜，但透過頭管角度和叉偏移量兩方面<br/>這個品牌在偷工減料<br/>前中心距很短・・・」<br/>關於幾何數據的異常值<br/>他們有好好說明嗎？<br/>要是這樣說的話 肯定賣不出去啦！我好像聽得到這樣的聲音<br/>正因為如此啊，從一開始就是那樣的東西啊！<br/><br/><br/>開頭的留言裡有<br/>「這是很棒的單車喔。」這樣的說法<br/>我尊重這個。<br/>肯定地，就踏踏板就能前進的感觸而言<br/>可以說是非常好的騎乘感受吧。<br/>在今年的５月，我重新組裝了羅瓦爾的<br/>夾器煞車用的後輪（→<a href="/zh/posts/7114.html" target="_blank" title="こちら">這裡</a>），<br/>那個輪組的車主是<br/>我有一台古斯托的眼鏡蛇 EVO DB 完成車<br/>結果根本沒有進展，我很驚訝<br/>他說自己白白浪費了錢<br/>這不是我引導出來的答案<br/>而是這個人的真實感受，所以也請尊重他的意見<br/>這是為數不多的古斯托車手的寶貴意見<br/>順便說一下，開頭提到的古斯托車架<br/>已經不在使用了，換了新的車架<br/>不知道是不是發生了什麼不愉快的事啊。<br/>可能跟車架尺寸是最小尺碼有關，<br/>但也說不準。<br/><br/>不過文章開頭那個連結的車架<br/>是 RCR Duro Team Limited 這個型號，<br/>其實沒有像 Ranger 那樣<br/>在最小尺碼時<br/>前輪軸距短到誇張的程度。<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG1076amx15x.jpg" target="_blank"><img alt="RIMG1076amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG1076amx15xs.jpg" width="320"/></a><br/>叉偏移只有1種規格，有點偷工減料，<br/>但各尺寸的頭管角都不同，即使是最小尺寸也<br/>確實有夠臥角的，<br/>上管長度在510mm以下的情況下，<br/>還能確保前輪中心570mm以上的距離。<br/><br/>順便一提，剛才提到的<br/>眼鏡蛇 EVO DB的幾何規格我寫下來了。<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0963amx15x.jpg" target="_blank"><img alt="RIMG0963amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0963amx15xs.jpg" width="320"/></a><br/>小尺寸的頭管臥角設定不足，<br/>比Ranger要好一些<br/>不過還是有Ranger的傾向。<br/>前叉offset只有1種<br/>頭管角的變化也很小，<br/>特別是小尺寸的角度比較立。<br/>因為沒有準備offset 50mm的前叉，<br/>為了不讓操舵感變得太沉重<br/>有可能是故意立起來的，<br/>如我多次所寫的，重要度壓倒性地<br/>前輪圓心距 ＞ 尾跡距。<br/>儘管確立了兼容並行的方式<br/>不去做是因為成本高啊。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0964amx15x.jpg" target="_blank"><img alt="RIMG0964amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0964amx15xs.jpg" width="320"/></a><br/>Boma的Sai 2我也寫下來。<br/>叉偏移只有一種，頭管角變化不大<br/>即便是小尺寸也有直立的傾向<br/>作為一個目安「前輪圓心距是570mm或<br/>比較「超過該尺寸的最初上管長度」時<br/>Gusto的Ranger是545mm、<br/>Cobra EVO DB是540mm、<br/>Boma的Rhino 2是513mm、<br/>果然最近Gusto的異常值還是很突出。<br/>順帶一提，如果是Factor的O2 VAM的話是493mm、<br/>Anchor的RIS 9的話是505mm、<br/>RL8W的話是485mm。<br/>就連Orbea的Orca/Aqua都<br/>把頭管角的異常值放在一邊，是510mm，<br/>LOOK的795 Blade RS也<br/>幾乎相同的510.1mm<br/>但這款在所有尺寸上<br/>都沒有破壞循跡的幾何設計。<br/>Cannondale的SuperSix EVO的話<br/>在最小尺寸的上管長度510mm就能達成<br/>那個車架的前叉中心不只是５７０ｍｍ<br/>而是堂堂正正的５８２ｍｍ，而且這邊也是<br/>在全尺寸範圍內，Trail 數值都沒有問題。<br/>正規的廠商就是<br/>有正規的設計作為後盾。<br/><span style="font-size:x-small;">Trek 的最小尺寸？<br/>→去買 Madone SLR Gen 8 吧。</span><br/><br/>在開頭留言的那位<br/>不知道是否會被看到<br/>但如果被看到了的話<br/>我這邊有兩個請求。<br/>當然只是請求，沒有強制力<br/>第一個是，關於 Gusto 的哪個車型<br/>我不知道是什麼尺寸<br/>請珍惜地騎乘它。<br/>「這真的是很棒的車子」對吧？（笑）<br/>希望最大尺寸就好了。<br/>第二個是關於車架幾何<br/>價格便宜又輕盈這類的<br/>或是說以前波加查爾騎過之類的<br/>不是這種膚淺的理由<br/>而是從車架幾何的部分來說<br/>這是一台「非常好的自行車」<br/>如果我能向你解釋的話<br/>拜託了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0965amx15x.jpg" target="_blank"><img alt="RIMG0965amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0965amx15xs.jpg" width="320"/></a><br/>Specialized 的女性用車型<br/>「Amira」剛才提到過，所以<br/>順便查了一下。<br/>上表的 Amira SL4 是 2016 年左右的車型，<br/>2010 年左右還有 Amira S-WORKS 這個車型<br/>幾何設計在細節上有差異，但趨勢是一樣的。<br/>最小尺寸的頭管角設定傾角較大，所以<br/>雖然尾跡大到異常數值的程度，<br/>除此之外的話 可能會成為 Anchor 以外的選擇。<br/>儘管準備了 2 種叉偏移量，<br/>但只是 50mm 加減 1mm 的差異而已，<br/>既然要準備 2 種的話，<br/>雖然不是要求像 Cannondale 那樣 10mm 的差距，<br/>如果改成 49mm 和 55mm 就能防止最小尺寸的異常值，<br/>下一個尺碼則是因為偏移量的切換<br/>更進一步下個尺寸的話<br/>前中心反而比較長這樣<br/>幾何設計都做出來了，有點浪費。<br/><br/>如果48尺寸也好像可以的話<br/>在44尺寸比較好還是48尺寸比較好之間猶豫不決的人的話，<br/>44尺寸和48尺寸是<br/>上管長度的差異有9mm，所以<br/>尺寸一旦改變的話<br/>把龍頭長度差設為10mm的差異看起來<br/>是不錯的<br/>但是在前伸距的差異上只有6mm的差別<br/>所以改變龍頭長度的可能性不大<br/>頭管的長度也都是105mm和115mm<br/>差異並不是特別大<br/>把把手降低1mm之類的想法<br/>如果改成48尺寸的話坐管的露出長度就<br/>如果不會感到太過寂寞的話<br/>我會推薦４８尺寸。<br/>但是 如果 越野值 沒有飆得很高的話<br/>４４尺寸可能會比較好。<br/>哎呀 我不應該談論到伸距。<br/>只能談前輪中心和頭管角<br/>還有叉子偏移和越野值<br/>才行。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0967amx15x.jpg" target="_blank"><img alt="RIMG0967amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0967amx15xs.jpg" width="320"/></a><br/>最後に。超級六號和馬多納都寫了，所以<br/>Tarmac SL8也開始寫了。<br/>這個，真的很難呢。<br/>49尺寸在不是異常值的程度內<br/>（不到不該買的程度）前叉角度跨度很大，<br/>相比52和54尺寸的接近程度<br/>56尺寸卻大幅躍升。<br/>小尺寸的三個型號 在上管長度相差32mm的範圍內<br/>前中心距離相差5mm就堆積起來了，<br/>只有56尺寸 突然變長了。<br/>52尺寸和54尺寸的<br/>上管長度的差是10mm，<br/>但伸展距離只差4mm。<br/>這是妥當的數值，<br/>49尺寸和52尺寸上管長度的差是<br/>22mm這麼大的幅度相比<br/>手臂長度的差異只有5mm。<br/>這與只根據上管長度判斷的情況相比<br/>不是與直覺相悖的事實嗎？<br/>在49尺寸和52尺寸之間糾結的人<br/>為了避免遲鈍的轉向特性<br/>放棄座管外露長度的外觀<br/>改用52尺寸可能會更好。<br/>頭管長度是從尺寸較小的一方開始<br/>從１０９／１２０／１３７／１５７毫米這樣推移下去，<br/>在５２尺寸和５４尺寸之間猶豫不決的時候，<br/>需要根據把手位置的高低來選擇。<br/>只按照座管尺寸和上管長度來選的話，<br/>即使是應該選５４尺寸的人，有時候也必須硬著頭皮選５２尺寸才行，<br/>否則有可能調不出把手位置。<br/>像這樣，光是前叉周邊就，<br/>需要寫成這麼長的文章。<br/>如果要列舉其他要素的話 <br/>根本沒完沒了。<br/><br/>更深入讀懂幾何數據吧（前叉周圍篇）<br/>沒打算寫這之外的續篇，<br/>個別「你覺得這裡的車架怎樣？」這類的<br/>留言我也不會一一回覆。<br/>不過要是來店裡問的話 或許會回答。<br/><br/>幾何表上有トレイル的標記<br/>在所有尺寸上都沒有破綻的製造商是<br/>除此之外，在這篇文章中沒有詳細提及的部分<br/>往往也會考慮周全<br/>只要你是前叉幾何學博士<br/>就不太可能犯大錯誤。<br/>700C輪組的車架 本來的適正尺寸是<br/>上管約560mm左右<br/>尺寸愈往下縮小<br/>幾何形狀上的變形發生了<br/>而要解決這個問題需要花費智慧和成本，<br/>原本尺寸較大的車架根本不會出現破損。<br/>所謂沒有破損，就是指小尺寸車架<br/>設計得有多出色<br/>我也符合這個情況，以上管來說的話<br/>大概騎乘530mm以下車架的人的話<br/><s>（↑這個其實應該用reach來說才對啦）</s><br/>作為自衛手段，最好仔細檢視幾何設計。<br/><br/>我到此為止<br/>關於車架的硬度軟度之類的<br/>關於世間一般評價的跑得快跑不快這樣的要點<br/>完全沒有涉及。<br/>舉例來說，Factor似乎有著「過於堅硬」的傾向<br/>在我們店裡也有競輪選手客人和腿力不錯的車手<br/>說Factor「硬到無法接受」然後轉手的人有好幾位。<br/>就像輪組花鼓張力一樣<br/>是無法輕易得到數值標準的要素，所以<br/>我只能是基於幾何學角度<br/>來評論好壞，<br/>關於車架硬度、心軸偏擺的有無<br/>我無法保證，但<br/>因為表現優異，所以就像這裡介紹的一樣<br/>LOOK、Cannondale、Factor等品牌<br/>在我現在能想到的範圍內，<br/>是認真對待車架的製造商。<br/>比如 S-WORKS Tarmac SL8，<br/>現在含稅定價要 792,000 日圓的話，<br/>49 號車架的前叉<br/>與 52 號車架共用的 47mm offset 不就行了嗎，<br/>能不能改用 50mm 或 55mm 的前叉呢？<br/>我就會這樣想。<br/>Cannondale 原本就在做的事情，<br/>Trek 用最新的 Madone 做到了。<br/><br/>到目前為止 對於義大利品牌<br/>一直沒有提及，是因為<br/>在這次的論點中 有很多廠商<br/>寫不出什麼好話。<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0968amx15x.jpg" target="_blank"><img alt="RIMG0968amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0968amx15xs.jpg" width="320"/></a><br/>關於 Pinarello 的部分，<br/>2025 年款的 Dogma F 是<br/>尺寸從425～600，共11個規格<br/>叉子偏移量為47mm，單一規格<br/>最小尺寸的頭管角為69.5°<br/>下一個尺寸是70.5°<br/>再下一個尺寸是71.4°<br/>之後的變化就變得緩和了<br/><br/>對於前叉博士來說應該不用解釋<br/>小尺寸是 完全不管尾跡<br/>只保留前中心的幾何設計。<br/>2024年款和2023年款的Dogma F<br/>都是11個尺寸規格<br/>叉偏移只有43mm一種<br/>各尺寸的頭管角變化<br/>和2025年款沒有差別<br/>所以規定的單一叉偏移<br/>從43mm變成47mm的2025年款反而<br/>對許多人來說 都變得更好了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0969amx15x.jpg" target="_blank"><img alt="RIMG0969amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0969amx15xs.jpg" width="320"/></a><br/>相當於前中心的尺寸上<br/>被分配了「F」這個文字，<br/>沒想到 幾何規格表中 F的部分、<br/>前中心的數值卻沒有記載。<br/>這在日本批發商的網站上也是<br/>本國網站上也是一樣的。<br/><br/>另外 雖然這是無關緊要的事，<br/>插圖上的曲柄無論怎麼看都是shimano的<br/>個人來說我不太滿意<br/><br/>皮納瑞羅除了這次接觸到的部分之外<br/>還有閃閃發光的地方<br/>碳纖維車架展開１１種尺寸這一點<br/>不能說是偷工減料<br/><br/>柯那戈傳統上從幾十年前開始<br/>就有一個政策是頭管角度完全不在目錄上記載<br/>叉偏移量 V4RS 沒有公開、<br/>鋼架的 Arabesque 和 Master 甚至也沒有公開<br/>只有 C64 不知為何全尺寸都標記為 43mm。<br/>C64 的最小尺寸在水平換算上管長度 510mm 時<br/>偏移量 43mm 的前叉<br/>前中心距離是 583mm⋯⋯這是怎麼回事<br/>好吧 大家應該都明白了吧？<br/><br/>皮那雷羅車架各尺寸的<br/>上管长度是以1毫米为单位・・・才怪<br/>末位的1位只有0或5<br/>所以最小单位是5毫米的设计，<br/>而伸展距离反而是0.1毫米单位的奇怪数值。<br/>这也就是说，是用上管长度而不是伸展距离来<br/>设计车架的。<br/><br/>科纳戈的C64的水平换算上管长度<br/>最小尺寸是510毫米，最大尺寸是565毫米<br/>相差55毫米<br/>這兩個尺寸之間變化的前伸量是<br/>從377毫米到385毫米，僅僅相差8毫米而已。<br/>以較大尺寸為基準來思考的話<br/>隨著車架尺寸變小<br/>上管的幾乎後半部分只是<br/>在縮短的樣子。<br/>與這個上管長度範圍大致相同的是<br/>以Dogma F來說，標稱尺寸450的515mm到<br/>標稱尺寸525的565mm相當，<br/>以Dogma F來說，在這個上管長度50mm的差距中，<br/>Reach的差異是從364.8mm到390.7mm的<br/>25.9mm。<br/><br/>在Colnago的C64中，最大尺寸和最小尺寸的<br/>前中心長度的差距<br/>是596mm到583mm的13mm差，相當小。<br/>這也符合前伸距變化不大的情況<br/>這在皮那雷羅就...因為前中心距沒有公開<br/>所以沒辦法比較。<br/>光是這點就能寫成一篇長文章，但我就不寫了。<br/><br/><br/>古斯圖會把過去款式的資訊從網站上<br/>一個勁地刪掉<br/>想要調查過去款式的幾何參數的話<br/>需要費一些功夫。<br/>在頂頁的https://www.gustobike.jp/也可以，但<br/>「GUSTO是」這個連結目標<br/>https://www.gustobike.jp/about-us-2/從<br/>末尾的-2刪除的話<br/>似乎是以前長年使用過的<br/>舊「GUSTO是」的頁面就跳出來了，所以<br/>我把它丟到WAYBACK MACHINE裡<br/>從過去的網站記錄中調查了各種東西。<br/>例如https://www.gustobike.jp/product/ranger-team-limited/<br/>這個URL 現在<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/gus1amx15x.jpg" target="_blank"><img alt="gus1amx15x.jpg" border="0" height="125" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/gus1amx15xs.jpg" width="320"/></a><br/>變成了這樣，但如果查詢檔案庫的話<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/gus2amx15x.jpg" target="_blank"><img alt="gus2amx15x.jpg" border="0" height="134" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/gus2amx15xs.jpg" width="320"/></a><br/>↑像這樣 可以看到那個URL過去的狀態。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0971amx15x.jpg" target="_blank"><img alt="RIMG0971amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0971amx15xs.jpg" width="320"/></a><br/>特意用電腦螢幕 直接拍攝，但<br/>現在 Gusto的座右銘是<br/>DARE TO BE DIFFERENT（特意做不同的事）<br/>據說是這樣。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0972amx15x.jpg" target="_blank"><img alt="RIMG0972amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0972amx15xs.jpg" width="320"/></a><br/>這在日文版本中是<br/>DARE to BE DIFERENT，<br/><s>把to改成小寫，還從DIFFERENT裡少一個F之類的，<br/>確實是刻意做得不一樣。</s><br/>這個標語在幾何設計還很普通的那個時代是沒有的。<br/>也就是說，雖然有點難以理解，<br/>但那致命的前中心確實<br/>就是這樣。<br/>作為品牌哲學在進行<br/>可能有這種可能性，我這樣想過<br/>但還是應該認為這只是偷懶。<br/>那個根據我待會再說。<br/><br/>在今天時點的現行網站上<br/>點擊 Lineup → COBRA EVO DISC 12S 的分頁<br/>COBRA EVO DB 系列載有 6 款車型<br/>https://www.gustobike.jp/product-category/cobra-evo/<br/>跳到這個URL，<br/>其中2024 COBRA EVO DB PRO ULTRA這個型號<br/>https://www.gustobike.jp/product/2024-cobra-evo-db-pro-ultra/<br/>就是這個URL。<br/>那倒還好，但這個<br/>2024 COBRA EVO DB PRO LEGEND這66萬日圓的型號<br/>https://www.gustobike.jp/product/2024-cobra-evo-db-pro-legend-copy/<br/>卻是這樣的URL。<br/>末尾的-copy要消掉，然後更新頁面的URL呢。<br/>實際上這樣做的話，<br/>2024 COBRA EVO DB SPORT ULTRA這個<br/>44萬2000日圓的型號頁面就會改變。<br/><br/>這個不是COBRA而是DURO這邊<br/>2024 DURO EVO DB SPORT ULTRA這個型號的頁面看的話<br/>https://www.gustobike.jp/product/2024-duro-evo-db-pro-legend-copy-copy/<br/>結果-copy被附加了兩個的URL呢<br/>只抽出一個-copy來更新的話<br/>不知道為什麼會跳到原本的-copy-copy頁面<br/>抽出兩個的話 就會變成現行型號2024 DURO EVO DB PRO LEGEND<br/>這個型號的頁面。<br/><br/>這個在2024 DURO EVO DB PRO TL的情況下<br/>https://www.gustobike.jp/product/2024-duro-evo-db-pro-tl__trashed/<br/>網址的末尾會有__trashed，這表示<br/>管理員已經把頁面放進垃圾桶的狀態<br/>這是URL自動附加的東西，<br/>trashed字面上<br/>不只是指在垃圾箱裡<br/>也表示壞掉了、一團糟的意思<br/>而且還有被狠狠罵過、被<br/>貶得體無完膚的意思。<br/>好像在暗示什麼，我忍不住笑了。<br/><br/>不是Cobra，而是Duro的話，<br/>曾經比博馬好一些<br/>RCR Duro 繼承了這個名字。<br/>所以 也許幾何設計稍微好一點<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG1077amx15x.jpg" target="_blank"><img alt="RIMG1077amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG1077amx15xs.jpg" width="320"/></a><br/>沒辦法，這個不行。<br/>在寫 Anchor 的時候提過，<br/>說起碟煞車<br/>為了對應最近的 28C 或 30C 寬度輪胎<br/>有預留空間的車架組，<br/>車叉肩部下方寸法較長等因素<br/>相比於輪框煞車自行車，設計上有更多的自由度，所以<br/>最小尺寸時前輪中心距也能達到５７０ｍｍ以上<br/>變得相對容易。<br/>因此 這個數值實質上是<br/>「將Ranger改為碟煞規格的車種」，而<br/>２０１９年款RCR之後的車型<br/>幾何設計上都有相當程度的偷工減料。<br/><br/>那麼，Trek的叉偏移量較少啦<br/>Cannondale的吊耳下沉幅度較大啦，同樣地<br/>Gusto的前中心距較短<br/>是由廠商的設計理念所決定的<br/>這麼說得出來嗎？<br/>答案是否定的。<br/><br/>先才，我用Gusto的Ranger和<br/>Factor的O2 VAM比較了軸距。<br/>後輪中心的距離基本上不論哪個廠牌都<br/>落在410加減5毫米的範圍內左右<br/>沒有太大差別。<br/>所以輪距的長度<br/>幾乎完全取決於前輪中心的差異<br/>（反而在今次的比較中<br/>Ranger的後輪中心比較長<br/>所以輪距也會傾向於變長的條件下）。<br/>觸及距離幾乎相同，從較小的開始<br/>比較５個尺寸的軸距<br/>Ranger相對於O2VAM<br/>最小尺寸減少３３ｍｍ，<br/>下一個尺寸減少２６ｍｍ，<br/>下一個尺寸減少１８ｍｍ，<br/>下一個尺寸減少１９ｍｍ，<br/>下一個尺寸減少３ｍｍ，<br/>下一個尺寸是<br/>O2 VAM的伸展距離偏短的關係<br/>Ranger反而變成加17mm。<br/><br/>我想說的是<br/>如果前中心短是設計理念的話<br/>全尺寸都要有合理的幾何規格<br/>相同的上管長或伸展距離的車架<br/>無論如何 前中心都<br/>應該是採用了20～30mm較短的設計。<br/><br/>如我多次提過的，上管長度是560mm的話<br/>超過這個尺寸的話，設計就不會有問題<br/>所以各家廠商的車架幾何都差不多。<br/>因此尺寸越大<br/>幾何就越普通 Gusto的車架設計就是<br/>單純出於成本考量的偷工減料<br/>完全沒有考慮小尺寸騎士的需求。<br/><br/>如我稍才提到的那樣，<br/>賣方的說明也存在問題。<br/>根據我看過的例子，只是比較車架重量<br/>「和S社的T-Max SL或C社的S-uper Six等相比<br/>重量差異只有◯◯克，價格卻便宜××萬圓！」<br/>之類的毫無頭腦的銷售文句<br/>（最划算的性價比！除此之外就沒有什麼話好說了嗎），<br/>以及試騎Gusto的車架的印象評測<br/>「輪距短就跑得靈敏！」之類的<br/>那根本就是你騎的尺寸小而已啦<br/>我還看過一些我覺得根本是在唬爛的文章。<br/>這些傢伙是理解了幾何學之後<br/>才閉嘴不說的呢，<br/>還是根本就沒理解幾何學啊，<br/>應該是後者吧，真的是挺扯的話題。<br/><br/>「Gusto連職業隊都在用！」<br/>雖然也許有這樣擁護的意見，<br/>（職業選手是被給什麼就<br/>要在眾人面前表現得好吃的樣子，<br/>需要駕馭被給予之物的技巧，<br/>這個話題先放一邊）<br/>那些選手們騎乘的尺寸<br/>不是市售品的最大尺寸，<br/>要不就是比最大尺寸小一號左右，大多數都是這樣，<br/>有些選手偏好較大的尺寸<br/>也許會準備特殊訂製尺寸。<br/>所以受到較短前中心距影響的<br/>專業選手幾乎是不存在的，<br/>作為來自選手的改善建議<br/>「有點過彎時會害怕呢」這樣的<br/>說法也不會聽到。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG1078amx15x.jpg" target="_blank"><img alt="RIMG1078amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG1078amx15xs.jpg" width="320"/></a><br/>在文章調查時發現的<br/>我覺得很有趣，是第2章的TOA這個車款。<br/>最小尺寸的前心距這麼短啊！<br/>我有種找到同伴的感覺<br/>可能有Gusto的騎士在<br/>請不要把它和那種東西相提並論。<br/>下一個尺寸的上管是509mm，<br/>前心距576mm這樣的數字<br/>只有真正講究的廠商才能做出來的數據<br/>這一帶接近 700C 輪組的尺寸極限了。<br/>要推出更小的尺寸的話，<br/>從前的 Anchor 或 Specialized 的話，就會選用 650C 輪組的<br/>Canyon 的話就會選用 650B 輪組的<br/>車架套件作為選項。<br/><br/>最小尺寸的上管長 482mm 搭配<br/>700C 輪組這種組合，除非是訂製車架，<br/>在成品車上其實不太常見。<br/>以前女性用車款的上管長度是485mm的時候<br/>前置中心距是574mm這樣的規格<br/>就能讓大家理解這有多麼厲害。<br/><br/>叉偏移量應該從大尺寸開始<br/>43／43／43／50／50／55<br/>大概是這樣推移比較理想<br/>但像Cannondale這樣改成10mm差距的話<br/>43／43／43／53／53／53<br/>用２種類的偏移量來對應。<br/>這個偏移量５３ｍｍ的上限尺寸<br/>車架的上管長度５２５ｍｍ，<br/>似乎還不錯。<br/>當然，只限於符合該尺寸的人。<br/><br/>風帆衝浪有個著名品牌<br/>叫尼爾普萊德<br/>創辦人是尼爾．普萊德先生，<br/>現任社長是他的兒子麥克‧普萊德氏<br/>因為喜歡自行車，而不是風帆衝浪那方面<br/>就用同樣的品牌名稱開始了<br/>自行車車架品牌就是尼爾普萊德。<br/>雖然後來把那家公司賣掉了<br/>但又想重新創立自行車品牌<br/>新創立的是<br/>Chapter 2（第二章）這個品牌。<br/>所以 Pride氏沒有參與<br/>關於現在的Neil Pride<br/>「第一章」之類的說法也有人在用。<br/>哎呀 那是我啊。<br/><br/><br/>最後。<br/>從今天開始，帶著捲尺去測量前叉中心<br/>半路出家的 前輪周圍幾何學博士<br/>可能會在各地的車店出沒，<br/>請不要怪我。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">Related Products on Amazon</p>
       <ul>

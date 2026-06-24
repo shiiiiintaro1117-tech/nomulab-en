@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,37 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
-    <p>Bicycle Workshop — English Edition</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/index.html">
+        <span class="brand-title">Nomu Lab Diary</span>
+        <span class="brand-subtitle">Bicycle Workshop Archive</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/index.html">Archive</a>
+      <a href="/guides/wheel-building.html">Wheel Guide</a>
+      <a href="/glossary.html">Glossary</a>
+      <a href="/about.html">About</a>
+    </nav>
     <div class="lang-toggle"><span class="lang-btn active">EN</span><a class="lang-btn" href="/zh/posts/6872.html">繁中</a></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/index.html">← All posts</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>I repaired wheels built with a brand whose name must not be spoken</h1>
     <p class="post-meta">October 07, 2023</p>
+    <div class="post-body"><div class="entrytext">A customer brought in front and rear wheels built with a brand whose name must not be spoken.<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5614amxx15.jpg" target="_blank"><img alt="RIMG5614amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5614amxx15s.jpg" width="320"/></a><br/>Let me start with the rear wheel.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5615amxx15.jpg" target="_blank"><img alt="RIMG5615amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5615amxx15s.jpg" width="320"/></a><br/>Oh no—even being diplomatic about this doesn't cut it.<br/>But I do want credit for trying.<br/>The chain fell inboard of the low gear on the rear wheel,<br/>so the customer is asking for spoke replacement.<br/>Maybe they should've asked the shop's distributor about this (playing dumb).<br/><br/>That said, this wheel was built with a Tni Evolite hub,<br/>and the shop's name sticker was plastered<br/>shamelessly on the rear hub shell,<br/>so I'm pretty sure this brand's rim was assembled by the shop.<br/>To cut to the chase: the workmanship was sloppy enough that I almost<br/>asked the customer whether they'd built this wheel themselves.<br/>I won't write down which prefecture the shop and customer are in,<br/>but it's not on Honshu.<br/>And by a strange coincidence, there's also a shop with the same name<br/>in Osaka, or rather within Osaka City proper—not a chain.<br/>It's like how Chinese restaurants have generic names like "Beijing,"<br/>but the prefix part (what would be like "bicycle workshop" for us)<br/>was at least different, like "Chinese Cuisine Hall" versus "Chinese Wine House."<br/>But here's another coincidence: their technical skill is just as terrible.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5616amxx15.jpg" target="_blank"><img alt="RIMG5616amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5616amxx15s.jpg" width="320"/></a><br/>The inpoke spokes on the freewheel side have scratches and deformation from the chain strike.<br/>Since this is a 24-hole wheel, there are 6 inpoke spokes on the freewheel side.<br/>The spoke clearly bent in the middle of the image above<br/>took the initial impact from the fallen chain.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5617amxx15.jpg" target="_blank"><img alt="RIMG5617amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5617amxx15s.jpg" width="320"/></a><br/>↑The second and third impacts.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5618amxx15.jpg" target="_blank"><img alt="RIMG5618amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5618amxx15s.jpg" width="320"/></a><br/>↑It looks like the rider stomped down when the chain jammed,<br/>and around the fourth impact point, there's even damage to the hub flange.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5619amxx15.jpg" target="_blank"><img alt="RIMG5619amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5619amxx15s.jpg" width="320"/></a><br/>The fifth and sixth spokes show scuff marks,<br/>but they don't look like they need replacement.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5620amxx15.jpg" target="_blank"><img alt="RIMG5620amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5620amxx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5622amxx15.jpg" target="_blank"><img alt="RIMG5622amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5622amxx15s.jpg" width="320"/></a><br/>The freewheel side was fairly well tensioned,<br/>but the non-freewheel side is all wobbly despite being built with<br/>the same diameter and spoke count on both sides.<br/>The rim isn't an offset rim.<br/>There's some lateral runout from the spoke deformation,<br/>but there's no wildly obvious wobbling phase.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5626amxx15.jpg" target="_blank"><img alt="RIMG5626amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5626amxx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5627amxx15.jpg" target="_blank"><img alt="RIMG5627amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5627amxx15s.jpg" width="320"/></a><br/>When I checked the centering, the rim was shifted way<br/>toward the non-freewheel side.<br/>If you mounted this on a frame, the spacing with the seat stays<br/>would be visibly off to the naked eye.<br/>I took the measurement from the right side and applied it to the left,<br/>and both phases came out nearly the same—<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5629amxx15.jpg" target="_blank"><img alt="RIMG5629amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5629amxx15s.jpg" width="320"/></a><br/>But when I tried different phases on the left side,<br/>the result stayed about the same.<br/>There's no lateral runout that would fill in this center offset;<br/>no matter where you measure, it comes out roughly the same.<br/><br/>This is a pretty complicated situation. If I center this wheel<br/>by loosening only the non-freewheel side,<br/>the non-freewheel side tension would fall below the minimum viable threshold for a wheel.<br/>The freewheel side could still be tightened more, but<br/>tightening only the freewheel side wouldn't be enough<br/>to close this center offset.<br/>In other words, I'd have to blend both:<br/>tightening the freewheel side and loosening the non-freewheel side in the right proportion.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5630amxx15.jpg" target="_blank"><img alt="RIMG5630amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5630amxx15s.jpg" width="320"/></a><br/>To investigate, I fully loosened the nipples on the fifth and sixth inpoke spokes<br/>(the ones I thought had no chain damage),<br/>and I accidentally dropped a nipple inside the rim at one spot.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5631amxx15.jpg" target="_blank"><img alt="RIMG5631amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5631amxx15s.jpg" width="320"/></a><br/>I fished the nipple out through the valve hole first,<br/>then used a magnet to draw it back to the rim hole—<br/>the same method as with Zonda or Racing 3 rims.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5625amxx15.jpg" target="_blank"><img alt="RIMG5625amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5625amxx15s.jpg" width="320"/></a><br/>When the customer brought the wheel in,<br/>it had a <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Stan%27s+rim+tape+tubeless" target="_blank" rel="noopener sponsored" class="amz-inline">Stan's rim tape</a>, and hardened sealant was caked<br/>in the dimples of the rim holes.<br/>I wanted to work without peeling that tape, so<br/>I took this roundabout approach to get the nipple back.<br/>But then I realized later that the customer had also asked for<br/>the rim tape to be replaced with fresh tape (we use Stan's too)<br/>and for new sealant (Muc-Off brand, I think) and tire remounting.<br/>So my careful approach was wasted effort.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5662amxx15.jpg" target="_blank"><img alt="RIMG5662amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5662amxx15s.jpg" width="320"/></a><br/>↑Time jump ahead, but here's the rim tape after I replaced it.<br/>The customer also asked about replacing bearings if there was any hub damage,<br/>but there wasn't anything wrong.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5623amxx15.jpg" target="_blank"><img alt="RIMG5623amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5623amxx15s.jpg" width="320"/></a><br/>↑This is from when I'd dropped the nipple in the rim,<br/>The tubeless valve had bottomed out on the nut's threads—<br/>it was right at the edge—so they'd extended it with a threadless coupling-style extension valve.<br/>The problem with this setup is that if you get a flat roadside,<br/>you can't remove the tubeless valve without removing the extension first.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5632amxx15.jpg" target="_blank"><img alt="RIMG5632amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5632amxx15s.jpg" width="320"/></a><br/>I removed it to recover the nipple.<br/>Since the customer wanted a fresh rim tape anyway,<br/>removal was inevitable.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5670amxx15.jpg" target="_blank"><img alt="RIMG5670amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5670amxx15s.jpg" width="320"/></a><br/>This is a front wheel image, jumping ahead in the timeline,<br/>but that coupling-style extension is tightened pretty firmly,<br/>so you can't loosen it by hand. Please carry appropriate tools.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5633amxx15.jpg" target="_blank"><img alt="RIMG5633amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5633amxx15s.jpg" width="320"/></a><br/>I fully loosened the nipples on the fifth and sixth inpoke spokes.<br/>I taped them down to keep the nipples from falling into the rim.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5634amxx15.jpg" target="_blank"><img alt="RIMG5634amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5634amxx15s.jpg" width="320"/></a><br/>No deformation.<br/>So I'll reuse these two.<br/>My standard here at the shop is:<br/>"Would I replace it if this were my own bike?"<br/>A lot of shops have this attitude of "grab whatever money you can,"<br/>but then make a point of pressuring customers into full replacement<br/>under the guise of "safety considerations."<br/>It's frustrating, and I think that's a major reason<br/>why people don't trust bike shops in general.<br/><br/>That said, if the customer had wanted full replacement,<br/>I'd have done it in this case too.<br/>I'm just delegating my judgment here—if I decided not to replace,<br/>it's because that's what made sense.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5635amxx15.jpg" target="_blank"><img alt="RIMG5635amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5635amxx15s.jpg" width="320"/></a><br/>↑These four spokes were deformed.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5637amxx15.jpg" target="_blank"><img alt="RIMG5637amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5637amxx15s.jpg" width="320"/></a><br/>From top to bottom in the image: impacts 1 through 4.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5636amxx15.jpg" target="_blank"><img alt="RIMG5636amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5636amxx15s.jpg" width="320"/></a><br/>There was something like a wrap-around tape seal<br/>on the spoke threads, the kind you peel away.<br/>But it barely does anything.<br/>Once I cracked the nipple loose with a tool,<br/>I could spin it by hand afterwards, so the threadlocker<br/>essentially wasn't doing its job.<br/>At best, it might prevent sand from getting packed<br/>in the nipple's root, but that's about it.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5638amxx15.jpg" target="_blank"><img alt="RIMG5638amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5638amxx15s.jpg" width="320"/></a><br/>I put marker tape on the six replaced or removed inpoke spokes.<br/>First, I'll try to chase down the runout touching only the nipples<br/>of the taped spokes and see how far I can get.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5639amxx15.jpg" target="_blank"><img alt="RIMG5639amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5639amxx15s.jpg" width="320"/></a><br/>I put white tape on the rim side<br/>where I saw obvious radial runout.<br/>When I spun the wheel, there was a visible pulsing—<br/>radial runout (lifting away from the rim)—that you could spot at a glance.<br/>The phase directly below the taped inpoke spoke is<br/>still under-tightened, so the rim lifts outward there,<br/>but there's even more radial runout at other phases.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5640amxx15.jpg" target="_blank"><img alt="RIMG5640amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5640amxx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5641amxx15.jpg" target="_blank"><img alt="RIMG5641amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5641amxx15s.jpg" width="320"/></a><br/>By adjusting only the six taped inpoke spokes,<br/>I chased down the lateral runout roughly.<br/>The rim is more offset than the original centering check<br/>because the spokes are undertensioned.<br/>In fact, at this point the inpoke and outpoke tension<br/>on the freewheel side are clearly different.<br/>Once I bring the inpoke tension up to match the outpoke,<br/>keeping just the lateral runout tight—<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5647amxx15.jpg" target="_blank"><img alt="RIMG5647amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5647amxx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5648amxx15.jpg" target="_blank"><img alt="RIMG5648amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5648amxx15s.jpg" width="320"/></a><br/>—it roughly matches the original center offset I measured.<br/>This represents the state just before the chain fell inboard of the sprocket<br/>(though the lateral runout should be a bit less).<br/><br/>In a properly built wheel, from here you'd just need fine tweaks,<br/>but this one is severely offset toward the non-freewheel side<br/>and has noticeable radial runout,<br/>so this isn't spoke replacement or runout correction—<br/>this is actual wheel building.<br/>If you ask me, before I fixed both these wheels,<br/>there was never a moment when they were actual wheels.<br/>They're just parts glued together in wheel-shaped form.<br/>This precision level wouldn't even pass JIS standards<br/>for a single-speed bike wheel.<br/>If the shop does wheel building at this resolution,<br/>I bet their competence level on things like component installation<br/>or disc brake bleeding is pretty low too.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5651amxx15.jpg" target="_blank"><img alt="RIMG5651amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5651amxx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5652amxx15.jpg" target="_blank"><img alt="RIMG5652amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5652amxx15s.jpg" width="320"/></a><br/>I mixed freewheel-side tightening with non-freewheel-side loosening<br/>in roughly a 7:3 ratio (not 5:5, which would loosen the non-freewheel side too much)<br/>and chased the radial and lateral runout down. I thought I had the center,<br/>so I checked with a centering gauge. That's the top image.<br/>If you account for tubeless use and intentionally offset the rim toward<br/>the non-freewheel side, the amount shown might make sense,<br/>but the original state was clearly abnormal.<br/>Getting from here to proper center with just freewheel-side tightening<br/>would be extremely difficult, so—<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5653amxx15.jpg" target="_blank"><img alt="RIMG5653amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5653amxx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5654amxx15.jpg" target="_blank"><img alt="RIMG5654amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5654amxx15s.jpg" width="320"/></a><br/>—I centered with non-freewheel-side loosening instead.<br/>The freewheel side is rock-solid in tension while<br/>the non-freewheel side feels a bit soft... which is normal for<br/>an equal-diameter, equal-spoke-count wheel build.<br/>The original assembly was well below normal precision,<br/>and it's laughable that they could plaster their shop sticker on the hub<br/>without shame—but I fixed it.<br/>If this were just four spokes on a properly built wheel,<br/>the job would take about a third the time I spent on this rear wheel.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5655amxx15.jpg" target="_blank"><img alt="RIMG5655amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5655amxx15s.jpg" width="320"/></a><br/>The tires are Schwalbe tubeless, but like all aged tubeless tires,<br/>the bead seal gets worse over time.<br/>The rear wheel wouldn't seat with the shop compressor,<br/>so I used a CO₂ cartridge instead.<br/>You can see a thin frost on the valve stem.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5656amxx15.jpg" target="_blank"><img alt="RIMG5656amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5656amxx15s.jpg" width="320"/></a><br/>It melted right away, though.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5657amxx15.jpg" target="_blank"><img alt="RIMG5657amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5657amxx15s.jpg" width="320"/></a><br/>Fixed.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5658amxx15.jpg" target="_blank"><img alt="RIMG5658amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5658amxx15s.jpg" width="320"/></a><br/>↑The fourth-impact spot plus the hub flange damage.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5659amxx15.jpg" target="_blank"><img alt="RIMG5659amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5659amxx15s.jpg" width="320"/></a><br/>↑The fifth and sixth spokes I didn't replace.<br/>You can see "Tni" marked on the hub body in this image,<br/>but I angled the previous shot to avoid catching<br/>the shop-name sticker in the photo.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5660amxx15.jpg" target="_blank"><img alt="RIMG5660amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5660amxx15s.jpg" width="320"/></a><br/>Now for the front wheel.<br/>The customer probably thought of this as an afterthought to the rear,<br/>but it was also completely messed up.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5663amxx15.jpg" target="_blank"><img alt="RIMG5663amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5663amxx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5664amxx15.jpg" target="_blank"><img alt="RIMG5664amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5664amxx15s.jpg" width="320"/></a><br/>There's a center offset.<br/>With Mavic and others, rear wheel rims are sometimes<br/>slightly offset to the non-freewheel side, and I've wondered<br/>if there's some design philosophy behind it.<br/>But when I see a front rim brake wheel that clearly lacks proper center,<br/>I'm reminded: nope, this shop just doesn't have the precision<br/>to build wheels properly.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5666amxx15.jpg" target="_blank"><img alt="RIMG5666amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5666amxx15s.jpg" width="320"/></a><br/>For the radial runout, I found the one phase<br/>around the whole rim where the gauge barely touches<br/>and took a photo, but—<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5667amxx15.jpg" target="_blank"><img alt="RIMG5667amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5667amxx15s.jpg" width="320"/></a><br/>—almost everywhere else,<br/>there's this much gap from the gauge.<br/>This is pretty significant radial runout,<br/>but the rear wheel had even more.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5668amxx15.jpg" target="_blank"><img alt="RIMG5668amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5668amxx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5669amxx15.jpg" target="_blank"><img alt="RIMG5669amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5669amxx15s.jpg" width="320"/></a><br/>I chased the radial and lateral runout and centered it.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5671amxx15.jpg" target="_blank"><img alt="RIMG5671amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5671amxx15s.jpg" width="320"/></a><br/>Sealant had hardened on the inner edge of the</div>
+    <aside class="post-guides">
+      <strong>Technical archive</strong>
+      <nav aria-label="Technical guides">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,7 +405,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">A customer brought in front and rear wheels built with a brand whose name must not be spoken.<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5614amxx15.jpg" target="_blank"><img alt="RIMG5614amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5614amxx15s.jpg" width="320"/></a><br/>Let me start with the rear wheel.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5615amxx15.jpg" target="_blank"><img alt="RIMG5615amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5615amxx15s.jpg" width="320"/></a><br/>Oh no—even being diplomatic about this doesn't cut it.<br/>But I do want credit for trying.<br/>The chain fell inboard of the low gear on the rear wheel,<br/>so the customer is asking for spoke replacement.<br/>Maybe they should've asked the shop's distributor about this (playing dumb).<br/><br/>That said, this wheel was built with a Tni Evolite hub,<br/>and the shop's name sticker was plastered<br/>shamelessly on the rear hub shell,<br/>so I'm pretty sure this brand's rim was assembled by the shop.<br/>To cut to the chase: the workmanship was sloppy enough that I almost<br/>asked the customer whether they'd built this wheel themselves.<br/>I won't write down which prefecture the shop and customer are in,<br/>but it's not on Honshu.<br/>And by a strange coincidence, there's also a shop with the same name<br/>in Osaka, or rather within Osaka City proper—not a chain.<br/>It's like how Chinese restaurants have generic names like "Beijing,"<br/>but the prefix part (what would be like "bicycle workshop" for us)<br/>was at least different, like "Chinese Cuisine Hall" versus "Chinese Wine House."<br/>But here's another coincidence: their technical skill is just as terrible.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5616amxx15.jpg" target="_blank"><img alt="RIMG5616amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5616amxx15s.jpg" width="320"/></a><br/>The inpoke spokes on the freewheel side have scratches and deformation from the chain strike.<br/>Since this is a 24-hole wheel, there are 6 inpoke spokes on the freewheel side.<br/>The spoke clearly bent in the middle of the image above<br/>took the initial impact from the fallen chain.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5617amxx15.jpg" target="_blank"><img alt="RIMG5617amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5617amxx15s.jpg" width="320"/></a><br/>↑The second and third impacts.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5618amxx15.jpg" target="_blank"><img alt="RIMG5618amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5618amxx15s.jpg" width="320"/></a><br/>↑It looks like the rider stomped down when the chain jammed,<br/>and around the fourth impact point, there's even damage to the hub flange.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5619amxx15.jpg" target="_blank"><img alt="RIMG5619amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5619amxx15s.jpg" width="320"/></a><br/>The fifth and sixth spokes show scuff marks,<br/>but they don't look like they need replacement.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5620amxx15.jpg" target="_blank"><img alt="RIMG5620amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5620amxx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5622amxx15.jpg" target="_blank"><img alt="RIMG5622amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5622amxx15s.jpg" width="320"/></a><br/>The freewheel side was fairly well tensioned,<br/>but the non-freewheel side is all wobbly despite being built with<br/>the same diameter and spoke count on both sides.<br/>The rim isn't an offset rim.<br/>There's some lateral runout from the spoke deformation,<br/>but there's no wildly obvious wobbling phase.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5626amxx15.jpg" target="_blank"><img alt="RIMG5626amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5626amxx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5627amxx15.jpg" target="_blank"><img alt="RIMG5627amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5627amxx15s.jpg" width="320"/></a><br/>When I checked the centering, the rim was shifted way<br/>toward the non-freewheel side.<br/>If you mounted this on a frame, the spacing with the seat stays<br/>would be visibly off to the naked eye.<br/>I took the measurement from the right side and applied it to the left,<br/>and both phases came out nearly the same—<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5629amxx15.jpg" target="_blank"><img alt="RIMG5629amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5629amxx15s.jpg" width="320"/></a><br/>But when I tried different phases on the left side,<br/>the result stayed about the same.<br/>There's no lateral runout that would fill in this center offset;<br/>no matter where you measure, it comes out roughly the same.<br/><br/>This is a pretty complicated situation. If I center this wheel<br/>by loosening only the non-freewheel side,<br/>the non-freewheel side tension would fall below the minimum viable threshold for a wheel.<br/>The freewheel side could still be tightened more, but<br/>tightening only the freewheel side wouldn't be enough<br/>to close this center offset.<br/>In other words, I'd have to blend both:<br/>tightening the freewheel side and loosening the non-freewheel side in the right proportion.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5630amxx15.jpg" target="_blank"><img alt="RIMG5630amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5630amxx15s.jpg" width="320"/></a><br/>To investigate, I fully loosened the nipples on the fifth and sixth inpoke spokes<br/>(the ones I thought had no chain damage),<br/>and I accidentally dropped a nipple inside the rim at one spot.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5631amxx15.jpg" target="_blank"><img alt="RIMG5631amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5631amxx15s.jpg" width="320"/></a><br/>I fished the nipple out through the valve hole first,<br/>then used a magnet to draw it back to the rim hole—<br/>the same method as with Zonda or Racing 3 rims.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5625amxx15.jpg" target="_blank"><img alt="RIMG5625amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5625amxx15s.jpg" width="320"/></a><br/>When the customer brought the wheel in,<br/>it had a <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Stan%27s+rim+tape+tubeless" target="_blank" rel="noopener sponsored" class="amz-inline">Stan's rim tape</a>, and hardened sealant was caked<br/>in the dimples of the rim holes.<br/>I wanted to work without peeling that tape, so<br/>I took this roundabout approach to get the nipple back.<br/>But then I realized later that the customer had also asked for<br/>the rim tape to be replaced with fresh tape (we use Stan's too)<br/>and for new sealant (Muc-Off brand, I think) and tire remounting.<br/>So my careful approach was wasted effort.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5662amxx15.jpg" target="_blank"><img alt="RIMG5662amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5662amxx15s.jpg" width="320"/></a><br/>↑Time jump ahead, but here's the rim tape after I replaced it.<br/>The customer also asked about replacing bearings if there was any hub damage,<br/>but there wasn't anything wrong.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5623amxx15.jpg" target="_blank"><img alt="RIMG5623amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5623amxx15s.jpg" width="320"/></a><br/>↑This is from when I'd dropped the nipple in the rim,<br/>The tubeless valve had bottomed out on the nut's threads—<br/>it was right at the edge—so they'd extended it with a threadless coupling-style extension valve.<br/>The problem with this setup is that if you get a flat roadside,<br/>you can't remove the tubeless valve without removing the extension first.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5632amxx15.jpg" target="_blank"><img alt="RIMG5632amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5632amxx15s.jpg" width="320"/></a><br/>I removed it to recover the nipple.<br/>Since the customer wanted a fresh rim tape anyway,<br/>removal was inevitable.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5670amxx15.jpg" target="_blank"><img alt="RIMG5670amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5670amxx15s.jpg" width="320"/></a><br/>This is a front wheel image, jumping ahead in the timeline,<br/>but that coupling-style extension is tightened pretty firmly,<br/>so you can't loosen it by hand. Please carry appropriate tools.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5633amxx15.jpg" target="_blank"><img alt="RIMG5633amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5633amxx15s.jpg" width="320"/></a><br/>I fully loosened the nipples on the fifth and sixth inpoke spokes.<br/>I taped them down to keep the nipples from falling into the rim.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5634amxx15.jpg" target="_blank"><img alt="RIMG5634amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5634amxx15s.jpg" width="320"/></a><br/>No deformation.<br/>So I'll reuse these two.<br/>My standard here at the shop is:<br/>"Would I replace it if this were my own bike?"<br/>A lot of shops have this attitude of "grab whatever money you can,"<br/>but then make a point of pressuring customers into full replacement<br/>under the guise of "safety considerations."<br/>It's frustrating, and I think that's a major reason<br/>why people don't trust bike shops in general.<br/><br/>That said, if the customer had wanted full replacement,<br/>I'd have done it in this case too.<br/>I'm just delegating my judgment here—if I decided not to replace,<br/>it's because that's what made sense.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5635amxx15.jpg" target="_blank"><img alt="RIMG5635amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5635amxx15s.jpg" width="320"/></a><br/>↑These four spokes were deformed.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5637amxx15.jpg" target="_blank"><img alt="RIMG5637amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5637amxx15s.jpg" width="320"/></a><br/>From top to bottom in the image: impacts 1 through 4.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5636amxx15.jpg" target="_blank"><img alt="RIMG5636amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5636amxx15s.jpg" width="320"/></a><br/>There was something like a wrap-around tape seal<br/>on the spoke threads, the kind you peel away.<br/>But it barely does anything.<br/>Once I cracked the nipple loose with a tool,<br/>I could spin it by hand afterwards, so the threadlocker<br/>essentially wasn't doing its job.<br/>At best, it might prevent sand from getting packed<br/>in the nipple's root, but that's about it.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5638amxx15.jpg" target="_blank"><img alt="RIMG5638amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5638amxx15s.jpg" width="320"/></a><br/>I put marker tape on the six replaced or removed inpoke spokes.<br/>First, I'll try to chase down the runout touching only the nipples<br/>of the taped spokes and see how far I can get.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5639amxx15.jpg" target="_blank"><img alt="RIMG5639amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5639amxx15s.jpg" width="320"/></a><br/>I put white tape on the rim side<br/>where I saw obvious radial runout.<br/>When I spun the wheel, there was a visible pulsing—<br/>radial runout (lifting away from the rim)—that you could spot at a glance.<br/>The phase directly below the taped inpoke spoke is<br/>still under-tightened, so the rim lifts outward there,<br/>but there's even more radial runout at other phases.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5640amxx15.jpg" target="_blank"><img alt="RIMG5640amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5640amxx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5641amxx15.jpg" target="_blank"><img alt="RIMG5641amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5641amxx15s.jpg" width="320"/></a><br/>By adjusting only the six taped inpoke spokes,<br/>I chased down the lateral runout roughly.<br/>The rim is more offset than the original centering check<br/>because the spokes are undertensioned.<br/>In fact, at this point the inpoke and outpoke tension<br/>on the freewheel side are clearly different.<br/>Once I bring the inpoke tension up to match the outpoke,<br/>keeping just the lateral runout tight—<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5647amxx15.jpg" target="_blank"><img alt="RIMG5647amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5647amxx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5648amxx15.jpg" target="_blank"><img alt="RIMG5648amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5648amxx15s.jpg" width="320"/></a><br/>—it roughly matches the original center offset I measured.<br/>This represents the state just before the chain fell inboard of the sprocket<br/>(though the lateral runout should be a bit less).<br/><br/>In a properly built wheel, from here you'd just need fine tweaks,<br/>but this one is severely offset toward the non-freewheel side<br/>and has noticeable radial runout,<br/>so this isn't spoke replacement or runout correction—<br/>this is actual wheel building.<br/>If you ask me, before I fixed both these wheels,<br/>there was never a moment when they were actual wheels.<br/>They're just parts glued together in wheel-shaped form.<br/>This precision level wouldn't even pass JIS standards<br/>for a single-speed bike wheel.<br/>If the shop does wheel building at this resolution,<br/>I bet their competence level on things like component installation<br/>or disc brake bleeding is pretty low too.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5651amxx15.jpg" target="_blank"><img alt="RIMG5651amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5651amxx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5652amxx15.jpg" target="_blank"><img alt="RIMG5652amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5652amxx15s.jpg" width="320"/></a><br/>I mixed freewheel-side tightening with non-freewheel-side loosening<br/>in roughly a 7:3 ratio (not 5:5, which would loosen the non-freewheel side too much)<br/>and chased the radial and lateral runout down. I thought I had the center,<br/>so I checked with a centering gauge. That's the top image.<br/>If you account for tubeless use and intentionally offset the rim toward<br/>the non-freewheel side, the amount shown might make sense,<br/>but the original state was clearly abnormal.<br/>Getting from here to proper center with just freewheel-side tightening<br/>would be extremely difficult, so—<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5653amxx15.jpg" target="_blank"><img alt="RIMG5653amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5653amxx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5654amxx15.jpg" target="_blank"><img alt="RIMG5654amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5654amxx15s.jpg" width="320"/></a><br/>—I centered with non-freewheel-side loosening instead.<br/>The freewheel side is rock-solid in tension while<br/>the non-freewheel side feels a bit soft... which is normal for<br/>an equal-diameter, equal-spoke-count wheel build.<br/>The original assembly was well below normal precision,<br/>and it's laughable that they could plaster their shop sticker on the hub<br/>without shame—but I fixed it.<br/>If this were just four spokes on a properly built wheel,<br/>the job would take about a third the time I spent on this rear wheel.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5655amxx15.jpg" target="_blank"><img alt="RIMG5655amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5655amxx15s.jpg" width="320"/></a><br/>The tires are Schwalbe tubeless, but like all aged tubeless tires,<br/>the bead seal gets worse over time.<br/>The rear wheel wouldn't seat with the shop compressor,<br/>so I used a CO₂ cartridge instead.<br/>You can see a thin frost on the valve stem.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5656amxx15.jpg" target="_blank"><img alt="RIMG5656amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5656amxx15s.jpg" width="320"/></a><br/>It melted right away, though.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5657amxx15.jpg" target="_blank"><img alt="RIMG5657amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5657amxx15s.jpg" width="320"/></a><br/>Fixed.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5658amxx15.jpg" target="_blank"><img alt="RIMG5658amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5658amxx15s.jpg" width="320"/></a><br/>↑The fourth-impact spot plus the hub flange damage.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5659amxx15.jpg" target="_blank"><img alt="RIMG5659amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5659amxx15s.jpg" width="320"/></a><br/>↑The fifth and sixth spokes I didn't replace.<br/>You can see "Tni" marked on the hub body in this image,<br/>but I angled the previous shot to avoid catching<br/>the shop-name sticker in the photo.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5660amxx15.jpg" target="_blank"><img alt="RIMG5660amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5660amxx15s.jpg" width="320"/></a><br/>Now for the front wheel.<br/>The customer probably thought of this as an afterthought to the rear,<br/>but it was also completely messed up.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5663amxx15.jpg" target="_blank"><img alt="RIMG5663amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5663amxx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5664amxx15.jpg" target="_blank"><img alt="RIMG5664amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5664amxx15s.jpg" width="320"/></a><br/>There's a center offset.<br/>With Mavic and others, rear wheel rims are sometimes<br/>slightly offset to the non-freewheel side, and I've wondered<br/>if there's some design philosophy behind it.<br/>But when I see a front rim brake wheel that clearly lacks proper center,<br/>I'm reminded: nope, this shop just doesn't have the precision<br/>to build wheels properly.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5666amxx15.jpg" target="_blank"><img alt="RIMG5666amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5666amxx15s.jpg" width="320"/></a><br/>For the radial runout, I found the one phase<br/>around the whole rim where the gauge barely touches<br/>and took a photo, but—<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5667amxx15.jpg" target="_blank"><img alt="RIMG5667amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5667amxx15s.jpg" width="320"/></a><br/>—almost everywhere else,<br/>there's this much gap from the gauge.<br/>This is pretty significant radial runout,<br/>but the rear wheel had even more.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5668amxx15.jpg" target="_blank"><img alt="RIMG5668amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5668amxx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5669amxx15.jpg" target="_blank"><img alt="RIMG5669amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5669amxx15s.jpg" width="320"/></a><br/>I chased the radial and lateral runout and centered it.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5671amxx15.jpg" target="_blank"><img alt="RIMG5671amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5671amxx15s.jpg" width="320"/></a><br/>Sealant had hardened on the inner edge of the</div>
     <div class="affiliate-box">
       <p class="affiliate-title">Products Mentioned in This Article</p>
       <ul>

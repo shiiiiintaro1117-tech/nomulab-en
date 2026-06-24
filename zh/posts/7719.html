@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,37 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/7719.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Gravel Bike First Year</p>
     <h1>小豆島に去了一趟</h1>
     <p class="post-meta">November 26, 2025</p>
+    <div class="post-body"><div class="entrytext">前陣子休了２天假期<br/>在第１天的時候 去了小豆島。<br/>在那個時候 注意到的事情<br/>和發生的一些事 我來寫一下。<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_1212amx16.jpg" target="_blank"><img alt="IMG_1212amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_1212amx16s.jpg" width="320"/></a><br/>這是寒霞溪頂部的停車場。<br/>雖然叫頂部，但並不是真正的最高海拔，<br/>依照路線的不同<br/>從坡的最頂端往下 海拔會下降１００ｍ左右。<br/><br/>大致上分為 從草壁（県道２９号線）上山的<br/>南路線（藍線），<br/>從福田港（県道２４６号線）上山的東路線<br/>（途中與藍線匯合），<br/>從県道３１号線上山的北路線，<br/>從土庄港稍微北側登山的西路線<br/>（県道２７号線／寒霞溪天空公路）。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_1213amx16.jpg" target="_blank"><img alt="IMG_1213amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_1213amx16s.jpg" width="320"/></a><br/>因為我的路線是 從坂出港進、土庄港出<br/>所以沒辦法把行李放在港口的投幣置物櫃，<br/>一直都背著 Campagnolo（義大利零件商品牌）的大背包。<br/><br/>剛才提到的路線名稱 不是官方的<br/>只是我自己亂叫的而已<br/>但是從東路線上到寒霞溪，<br/>再從西路線下來。<br/><br/>西路線，也就是寒霞溪天空公路<br/>坡度相當陡，有些地方非常容易加速，<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/kankake2amx16.jpg" target="_blank"><img alt="kankake2amx16.jpg" border="0" height="186" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/kankake2amx16s.jpg" width="320"/></a><br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/kankake1amx16.jpg" target="_blank"><img alt="kankake1amx16.jpg" border="0" height="178" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/kankake1amx16s.jpg" width="320"/></a><br/>因為沒時間拍照<br/>所以從谷歌地圖引用的圖片，<br/>但這樣的緊急逃生區設置在那裡。<br/>這是當汽車煞車淡褪失效時<br/>用來逃生停車的 用沙和土做的傾斜面，<br/>但路面被成波浪狀地塑形<br/>所以如果真的以必要的速度進入<br/>汽車有可能會損壞。<br/>在最近煞車性能提升的汽車上面<br/>這設備幾乎不需要了。<br/><br/>稍早前 我從和歌山的有田川<br/>沿著之字形坡道上去 千葉山<br/>也被稱為 和歌山的阿爾卑斯<br/>回程不是原路返回<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_0668amx16.jpg" target="_blank"><img alt="IMG_0668amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_0668amx16s.jpg" width="320"/></a><br/>去了千葉山的<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_0671amx16.jpg" target="_blank"><img alt="IMG_0671amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_0671amx16s.jpg" width="320"/></a><br/>山頂<br/>（除了小涼亭以外什麼都沒有）<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_0676amx16.jpg" target="_blank"><img alt="IMG_0676amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_0676amx16s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_0677amx16.jpg" target="_blank"><img alt="IMG_0677amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_0677amx16s.jpg" width="320"/></a><br/>之後去了鷲峰的山頂<br/>然後從 路面破損且狹窄的舊路下來<br/>在這裡 前煞車開始淡褪<br/>制動力突然大幅下降。<br/>在那個恐怖的時刻，我甚至開始思考<br/>說不定公路車真的需要後煞車？<br/>我甚至考慮要改宗了。<br/><br/>碟式轉子變成銅色，<br/>從顏色來看 表面溫度<br/>少說也超過２００℃。<br/>之後查看記錄確認<br/>下坡的斜度平均是負１３％，<br/>最陡處是負２１％。<br/><br/>淡褪發生一次之後<br/>活塞就沒辦法完全復位<br/>在千葉山也好、寒霞溪也好<br/>之後 煞車塊都一直<br/>擦著碟式轉子 吱吱吱地響。<br/><br/>小豆島的部分 隔天又<br/>跑了２００ｋｍ多一點<br/>在那段期間也一直在擦。<br/>把前輪提起用手轉<br/>轉１周多一點左右就會停<br/>但實際騎的時候 除了聲音以外<br/>感覺不太出來<br/>所以在外面沒去修理。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4360amx16.jpg" target="_blank"><img alt="RIMG4360amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4360amx16s.jpg" width="320"/></a><br/>↑這是 SwissStop 的３５Ｅ<br/>是現行 SRAM 的公路用煞車塊。<br/>數字代表形狀<br/>比如說 Shimano 的公路用是３４，<br/>Campagnolo 用的是３０。<br/>Ｅ代表背板是銀色<br/>除此之外還有背板是黃色的<br/>ＲＳ款<br/>但根據日本問屋的說法<br/>Ｅ是樹脂系素材、耐久性高、<br/>而且對轉子溫和、<br/>聲音也低<br/>但這完全是謊言。<br/><br/>首先，樹脂塊特有的<br/>初期剎車時「咔」的一聲好用的感覺<br/>「初始制動力」根本沒有。<br/>另外，碟式轉子如果濕了<br/>會發出相當大的「吱吱吱！」聲。<br/><br/>SRAM 把樹脂塊叫做「有機」，<br/>把金屬塊叫做「燒結」<br/>他們說用過燒結塊的轉子<br/>以後不要用有機塊。<br/>我會說「被汙染了」<br/>被燒結汙染過的轉子<br/>以後用有機塊的話 雨天時<br/>雖然比燒結塊的聲音好<br/>但會發出爆炸一樣的聲音。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4361amx16.jpg" target="_blank"><img alt="RIMG4361amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4361amx16s.jpg" width="320"/></a><br/>SwissStop 的 Ｅ<br/>具有初始制動力感觸貧乏的特點<br/>下雨時如果轉子濕潤<br/>雖然比 SRAM 的燒結塊好<br/>但會發出爆炸聲<br/>而且確認過轉子會被汙染<br/>所以性質上是 金屬系（不是金屬 K）塊。<br/><br/>再加上，金屬塊的優點就是<br/>煞車把手深度握緊時<br/>制動力比樹脂塊強<br/>但這個優點沒有<br/>而且也沒有金屬塊那麼耐磨<br/>所以 SwissStop 的 Ｅ<br/>就像是 樹脂和金屬塊缺點的合體<br/>煞車塊。<br/><br/>那為什麼還在用呢<br/>就是因為 SRAM 的公路用零件在<br/>日本唯一代理商的<br/>SRAM 原廠塊 長期缺貨<br/>那時候為了確保店裡庫存<br/>用來補修客戶車子需要的塊<br/>所以找副廠品<br/>結果 Ashima、PSB 等廠商<br/>莫名其妙都找不著<br/>（存在但問屋不進？）<br/>最後 SwissStop 的３５ＲＳ<br/>當時問屋只有１個<br/>３５Ｅ買了５個。<br/>現在 SRAM 原廠和 SwissStop<br/>問屋都有庫存了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4362amx16.jpg" target="_blank"><img alt="RIMG4362amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4362amx16s.jpg" width="320"/></a><br/>↑從千葉山用過之後拆掉的３５Ｅ。<br/>SRAM 煞車活塞的形狀<br/>烙印在背板上<br/>接收碟式轉子熱的<br/>後面側面被烙焦了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4363amx16.jpg" target="_blank"><img alt="RIMG4363amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4363amx16s.jpg" width="320"/></a><br/>↑下面的圖片是在寒霞溪烙焦的塊。<br/>比起千葉山的舊路<br/>寒霞溪天空公路的溫度比較低。<br/>而這些塊 都出現了偏磨耗。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4435amx16.jpg" target="_blank"><img alt="RIMG4435amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4435amx16s.jpg" width="320"/></a><br/>說起偏磨耗的話 通常會想到<br/>煞車卡鉗對著碟式轉子<br/>設定得斜斜的 才導致<br/>塊的前後磨耗位置 左右相反<br/>但這次不是這樣。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4365amx16.jpg" target="_blank"><img alt="RIMG4365amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4365amx16s.jpg" width="320"/></a><br/>把煞車塊的左右對齊。<br/>圖片左側沒被烙焦 所以是煞車前側。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4366amx16.jpg" target="_blank"><img alt="RIMG4366amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4366amx16s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4368amx16.jpg" target="_blank"><img alt="RIMG4368amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4368amx16s.jpg" width="320"/></a><br/>↑寒霞溪塊<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4369amx16.jpg" target="_blank"><img alt="RIMG4369amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4369amx16s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4371amx16.jpg" target="_blank"><img alt="RIMG4371amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4371amx16s.jpg" width="320"/></a><br/>↑千葉山塊<br/>接收煞車熱<br/>塊的後側 左右都在磨耗。<br/>SRAM 的這款塊 左右沒區別<br/>如果後側還剩不少的話 應該<br/>在某個時間點 把塊左右交換比較好吧。<br/><br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4288amx16.jpg" target="_blank"><img alt="RIMG4288amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4288amx16s.jpg" width="320"/></a><br/>稍早前 Crank Brothers 的文章（→<a href="/zh/posts/7708.html" target="_blank" title="這裡">這裡</a>）裡<br/>我寫了<br/>「我使用公路用踏板的固定夾片的話<br/>只會在右腳稍微加一點角度<br/>Crank Brothers 的踏板和<br/>自稱０度浮動的夾片<br/>晃動幅度很大 所以不用這樣。」<br/>但之後把夾片和鞋子之間墊著的<br/>從塑膠墊片<br/>換成不銹鋼的鞋盾<br/>結果讓我改變了看法。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4429amx16.jpg" target="_blank"><img alt="RIMG4429amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4429amx16s.jpg" width="320"/></a><br/>換成鞋盾之後<br/>「在小晃動幅度的中心位置恢復的感觸」<br/>變得非常清楚<br/>（上面的圖片 紅線）。<br/><br/>要是塑膠墊片的話<br/>感觸很模糊<br/>所以我認為「在晃動幅度的某處體感上是直」<br/>就沒問題<br/>但換成鞋盾之後<br/>當腳放鬆時（平時用固定夾片加角度的<br/>右腳不是這樣）左腳<br/>在晃動幅度的中立位置<br/>能感覺到腳跟向外側晃<br/>感觸變得清晰。<br/>這是 我的左腳扭曲<br/>還是左鞋的夾片位置設定<br/>本來想直 但其實略有角度<br/>主要應該是後者<br/>（右腳我知道有扭曲）<br/>但稍微調整一下<br/>讓腳跟向內側靠一點<br/>晃動幅度的中心和 體感上的直<br/>就合上了。<br/>前陣子也寫過<br/>果然 鞋盾是必備的。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4384amx16.jpg" target="_blank"><img alt="RIMG4384amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4384amx16s.jpg" width="320"/></a><br/>調整完夾片設定後<br/>只在踏板後部的２個孔<br/>裝上了內六角螺帽。<br/><br/>踏板附帶的原廠品是５ｍｍ<br/>另外販售的長螺帽是１０ｍｍ<br/>但零件本體是 Ｍ４的沉頭螺帽<br/>（內六角止動螺帽）<br/>所以我買了<br/>市售品１２ｍｍ長的不銹鋼製<br/>在螺紋上塗上防鬆膠<br/>裝上去。<br/>之前的文章裡我寫說 要不要用<br/>接觸長度來調<br/>但１２ｍｍ的話<br/>相對於螺孔 還是有點浮著。<br/>透過這個調整<br/>得到了公路踏板固定夾片<br/>差不多那個自稱０度浮動的感覺。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4375amx16.jpg" target="_blank"><img alt="RIMG4375amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4375amx16s.jpg" width="320"/></a><br/>買了 Crank Brothers 的夾片工具。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4380amx16.jpg" target="_blank"><img alt="RIMG4380amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4380amx16s.jpg" width="320"/></a><br/>裝在鞋子上後<br/>夾片的防轉和<br/>前後位置的微調很方便<br/>但鞋盾的防轉沒有被固定住<br/>所以那方面不太好用。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4377amx16.jpg" target="_blank"><img alt="RIMG4377amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4377amx16s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4378amx16.jpg" target="_blank"><img alt="RIMG4378amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4378amx16s.jpg" width="320"/></a><br/>工具的側邊有 測量鞋子夾片孔邊<br/>大底高度的突起<br/>１～４打著點。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4381amx16.jpg" target="_blank"><img alt="RIMG4381amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4381amx16s.jpg" width="320"/></a><br/>嚴格來說應該在夾片孔邊量<br/>但因為已經裝了鞋盾<br/>我就在夾片稍微前面量。<br/>１個點的突起 工具和大底之間<br/>有間隙。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4382amx16.jpg" target="_blank"><img alt="RIMG4382amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4382amx16s.jpg" width="320"/></a><br/>這次是２個點的話 工具和大底<br/>差不多接觸了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4383amx16.jpg" target="_blank"><img alt="RIMG4383amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4383amx16s.jpg" width="320"/></a><br/>３個點的話 間隙比１個點還大。<br/><br/>有人會想 為什麼結果反過來了<br/>這很合理<br/>４個突起的高度 不是按點數順序排的。<br/>這樣講對製造商不太禮貌<br/>但依我實測 各點的突起高度<br/>１個　７ｍｍ<br/>２個　６．４ｍｍ<br/>３個　７．６ｍｍ<br/>４個　８．８ｍｍ<br/>是這樣的。<br/>對應這個 還有夾片墊片和<br/>防滑墊等的對應表<br/>把那個寫出來的話<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4436amx16.jpg" target="_blank"><img alt="RIMG4436amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4436amx16s.jpg" width="320"/></a><br/>Eggbeater 的話是２個點<br/>Mallet E 的話是１個點<br/>直接裝夰片適正。<br/><br/>有間隙的情況下<br/>踏板那邊往下靠或<br/>鞋子那邊往上靠<br/>來調整<br/>首先從踏板那邊靠的防滑墊厚度來寫<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4438amx16.jpg" target="_blank"><img alt="RIMG4438amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4438amx16s.jpg" width="320"/></a><br/>↑變成這樣。<br/>我最初對這個表覺得莫名其妙<br/>Eggbeater 的話 點數在減少的方向<br/>加防滑墊<br/>但 Mallet E 反過來<br/>而且 Eggbeater 的防滑墊厚度<br/>反向了吧 我那樣想。<br/><br/>但這是因為工具的點數順序<br/>突起不是變長 造成的難以理解。<br/>所以把表的１個點和２個點交換。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4439amx16.jpg" target="_blank"><img alt="RIMG4439amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4439amx16s.jpg" width="320"/></a><br/>↑變成這樣。<br/>另外補充<br/>Candy 和 Mallet 踏板<br/>本身就附帶１ｍｍ厚的防滑墊。<br/>Double Shot 的話 一面是 Mallet<br/>另一面是平踏板的款式。<br/><br/>Eggbeater 最初的狀態<br/>沒附防滑墊<br/>所以這個表的範圍內 防滑墊<br/>０ｍｍ、１ｍｍ、２ｍｍ<br/>向上加。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4437amx16.jpg" target="_blank"><img alt="RIMG4437amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4437amx16s.jpg" width="320"/></a><br/>Eggbeater 的防滑墊<br/>是裝在上面圖片的部分<br/>但最便宜款 Eggbeater 1 不相容<br/>只有２、３、１１才相容。<br/>而且 Crank Brothers 的問屋<br/>日本有２家<br/>其中一家 只進１ｍｍ厚的防滑墊<br/>另一家 連 Eggbeater 用的<br/>防滑墊進貨都沒有<br/>所以 Eggbeater 用的２ｍｍ厚<br/>沒辦法從正規代理商進貨。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4440amx16.jpg" target="_blank"><img alt</div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,7 +405,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">前陣子休了２天假期<br/>在第１天的時候 去了小豆島。<br/>在那個時候 注意到的事情<br/>和發生的一些事 我來寫一下。<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_1212amx16.jpg" target="_blank"><img alt="IMG_1212amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_1212amx16s.jpg" width="320"/></a><br/>這是寒霞溪頂部的停車場。<br/>雖然叫頂部，但並不是真正的最高海拔，<br/>依照路線的不同<br/>從坡的最頂端往下 海拔會下降１００ｍ左右。<br/><br/>大致上分為 從草壁（県道２９号線）上山的<br/>南路線（藍線），<br/>從福田港（県道２４６号線）上山的東路線<br/>（途中與藍線匯合），<br/>從県道３１号線上山的北路線，<br/>從土庄港稍微北側登山的西路線<br/>（県道２７号線／寒霞溪天空公路）。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_1213amx16.jpg" target="_blank"><img alt="IMG_1213amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_1213amx16s.jpg" width="320"/></a><br/>因為我的路線是 從坂出港進、土庄港出<br/>所以沒辦法把行李放在港口的投幣置物櫃，<br/>一直都背著 Campagnolo（義大利零件商品牌）的大背包。<br/><br/>剛才提到的路線名稱 不是官方的<br/>只是我自己亂叫的而已<br/>但是從東路線上到寒霞溪，<br/>再從西路線下來。<br/><br/>西路線，也就是寒霞溪天空公路<br/>坡度相當陡，有些地方非常容易加速，<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/kankake2amx16.jpg" target="_blank"><img alt="kankake2amx16.jpg" border="0" height="186" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/kankake2amx16s.jpg" width="320"/></a><br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/kankake1amx16.jpg" target="_blank"><img alt="kankake1amx16.jpg" border="0" height="178" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/kankake1amx16s.jpg" width="320"/></a><br/>因為沒時間拍照<br/>所以從谷歌地圖引用的圖片，<br/>但這樣的緊急逃生區設置在那裡。<br/>這是當汽車煞車淡褪失效時<br/>用來逃生停車的 用沙和土做的傾斜面，<br/>但路面被成波浪狀地塑形<br/>所以如果真的以必要的速度進入<br/>汽車有可能會損壞。<br/>在最近煞車性能提升的汽車上面<br/>這設備幾乎不需要了。<br/><br/>稍早前 我從和歌山的有田川<br/>沿著之字形坡道上去 千葉山<br/>也被稱為 和歌山的阿爾卑斯<br/>回程不是原路返回<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_0668amx16.jpg" target="_blank"><img alt="IMG_0668amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_0668amx16s.jpg" width="320"/></a><br/>去了千葉山的<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_0671amx16.jpg" target="_blank"><img alt="IMG_0671amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_0671amx16s.jpg" width="320"/></a><br/>山頂<br/>（除了小涼亭以外什麼都沒有）<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_0676amx16.jpg" target="_blank"><img alt="IMG_0676amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_0676amx16s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_0677amx16.jpg" target="_blank"><img alt="IMG_0677amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_0677amx16s.jpg" width="320"/></a><br/>之後去了鷲峰的山頂<br/>然後從 路面破損且狹窄的舊路下來<br/>在這裡 前煞車開始淡褪<br/>制動力突然大幅下降。<br/>在那個恐怖的時刻，我甚至開始思考<br/>說不定公路車真的需要後煞車？<br/>我甚至考慮要改宗了。<br/><br/>碟式轉子變成銅色，<br/>從顏色來看 表面溫度<br/>少說也超過２００℃。<br/>之後查看記錄確認<br/>下坡的斜度平均是負１３％，<br/>最陡處是負２１％。<br/><br/>淡褪發生一次之後<br/>活塞就沒辦法完全復位<br/>在千葉山也好、寒霞溪也好<br/>之後 煞車塊都一直<br/>擦著碟式轉子 吱吱吱地響。<br/><br/>小豆島的部分 隔天又<br/>跑了２００ｋｍ多一點<br/>在那段期間也一直在擦。<br/>把前輪提起用手轉<br/>轉１周多一點左右就會停<br/>但實際騎的時候 除了聲音以外<br/>感覺不太出來<br/>所以在外面沒去修理。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4360amx16.jpg" target="_blank"><img alt="RIMG4360amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4360amx16s.jpg" width="320"/></a><br/>↑這是 SwissStop 的３５Ｅ<br/>是現行 SRAM 的公路用煞車塊。<br/>數字代表形狀<br/>比如說 Shimano 的公路用是３４，<br/>Campagnolo 用的是３０。<br/>Ｅ代表背板是銀色<br/>除此之外還有背板是黃色的<br/>ＲＳ款<br/>但根據日本問屋的說法<br/>Ｅ是樹脂系素材、耐久性高、<br/>而且對轉子溫和、<br/>聲音也低<br/>但這完全是謊言。<br/><br/>首先，樹脂塊特有的<br/>初期剎車時「咔」的一聲好用的感覺<br/>「初始制動力」根本沒有。<br/>另外，碟式轉子如果濕了<br/>會發出相當大的「吱吱吱！」聲。<br/><br/>SRAM 把樹脂塊叫做「有機」，<br/>把金屬塊叫做「燒結」<br/>他們說用過燒結塊的轉子<br/>以後不要用有機塊。<br/>我會說「被汙染了」<br/>被燒結汙染過的轉子<br/>以後用有機塊的話 雨天時<br/>雖然比燒結塊的聲音好<br/>但會發出爆炸一樣的聲音。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4361amx16.jpg" target="_blank"><img alt="RIMG4361amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4361amx16s.jpg" width="320"/></a><br/>SwissStop 的 Ｅ<br/>具有初始制動力感觸貧乏的特點<br/>下雨時如果轉子濕潤<br/>雖然比 SRAM 的燒結塊好<br/>但會發出爆炸聲<br/>而且確認過轉子會被汙染<br/>所以性質上是 金屬系（不是金屬 K）塊。<br/><br/>再加上，金屬塊的優點就是<br/>煞車把手深度握緊時<br/>制動力比樹脂塊強<br/>但這個優點沒有<br/>而且也沒有金屬塊那麼耐磨<br/>所以 SwissStop 的 Ｅ<br/>就像是 樹脂和金屬塊缺點的合體<br/>煞車塊。<br/><br/>那為什麼還在用呢<br/>就是因為 SRAM 的公路用零件在<br/>日本唯一代理商的<br/>SRAM 原廠塊 長期缺貨<br/>那時候為了確保店裡庫存<br/>用來補修客戶車子需要的塊<br/>所以找副廠品<br/>結果 Ashima、PSB 等廠商<br/>莫名其妙都找不著<br/>（存在但問屋不進？）<br/>最後 SwissStop 的３５ＲＳ<br/>當時問屋只有１個<br/>３５Ｅ買了５個。<br/>現在 SRAM 原廠和 SwissStop<br/>問屋都有庫存了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4362amx16.jpg" target="_blank"><img alt="RIMG4362amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4362amx16s.jpg" width="320"/></a><br/>↑從千葉山用過之後拆掉的３５Ｅ。<br/>SRAM 煞車活塞的形狀<br/>烙印在背板上<br/>接收碟式轉子熱的<br/>後面側面被烙焦了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4363amx16.jpg" target="_blank"><img alt="RIMG4363amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4363amx16s.jpg" width="320"/></a><br/>↑下面的圖片是在寒霞溪烙焦的塊。<br/>比起千葉山的舊路<br/>寒霞溪天空公路的溫度比較低。<br/>而這些塊 都出現了偏磨耗。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4435amx16.jpg" target="_blank"><img alt="RIMG4435amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4435amx16s.jpg" width="320"/></a><br/>說起偏磨耗的話 通常會想到<br/>煞車卡鉗對著碟式轉子<br/>設定得斜斜的 才導致<br/>塊的前後磨耗位置 左右相反<br/>但這次不是這樣。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4365amx16.jpg" target="_blank"><img alt="RIMG4365amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4365amx16s.jpg" width="320"/></a><br/>把煞車塊的左右對齊。<br/>圖片左側沒被烙焦 所以是煞車前側。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4366amx16.jpg" target="_blank"><img alt="RIMG4366amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4366amx16s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4368amx16.jpg" target="_blank"><img alt="RIMG4368amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4368amx16s.jpg" width="320"/></a><br/>↑寒霞溪塊<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4369amx16.jpg" target="_blank"><img alt="RIMG4369amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4369amx16s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4371amx16.jpg" target="_blank"><img alt="RIMG4371amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4371amx16s.jpg" width="320"/></a><br/>↑千葉山塊<br/>接收煞車熱<br/>塊的後側 左右都在磨耗。<br/>SRAM 的這款塊 左右沒區別<br/>如果後側還剩不少的話 應該<br/>在某個時間點 把塊左右交換比較好吧。<br/><br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4288amx16.jpg" target="_blank"><img alt="RIMG4288amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4288amx16s.jpg" width="320"/></a><br/>稍早前 Crank Brothers 的文章（→<a href="/zh/posts/7708.html" target="_blank" title="這裡">這裡</a>）裡<br/>我寫了<br/>「我使用公路用踏板的固定夾片的話<br/>只會在右腳稍微加一點角度<br/>Crank Brothers 的踏板和<br/>自稱０度浮動的夾片<br/>晃動幅度很大 所以不用這樣。」<br/>但之後把夾片和鞋子之間墊著的<br/>從塑膠墊片<br/>換成不銹鋼的鞋盾<br/>結果讓我改變了看法。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4429amx16.jpg" target="_blank"><img alt="RIMG4429amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4429amx16s.jpg" width="320"/></a><br/>換成鞋盾之後<br/>「在小晃動幅度的中心位置恢復的感觸」<br/>變得非常清楚<br/>（上面的圖片 紅線）。<br/><br/>要是塑膠墊片的話<br/>感觸很模糊<br/>所以我認為「在晃動幅度的某處體感上是直」<br/>就沒問題<br/>但換成鞋盾之後<br/>當腳放鬆時（平時用固定夾片加角度的<br/>右腳不是這樣）左腳<br/>在晃動幅度的中立位置<br/>能感覺到腳跟向外側晃<br/>感觸變得清晰。<br/>這是 我的左腳扭曲<br/>還是左鞋的夾片位置設定<br/>本來想直 但其實略有角度<br/>主要應該是後者<br/>（右腳我知道有扭曲）<br/>但稍微調整一下<br/>讓腳跟向內側靠一點<br/>晃動幅度的中心和 體感上的直<br/>就合上了。<br/>前陣子也寫過<br/>果然 鞋盾是必備的。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4384amx16.jpg" target="_blank"><img alt="RIMG4384amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4384amx16s.jpg" width="320"/></a><br/>調整完夾片設定後<br/>只在踏板後部的２個孔<br/>裝上了內六角螺帽。<br/><br/>踏板附帶的原廠品是５ｍｍ<br/>另外販售的長螺帽是１０ｍｍ<br/>但零件本體是 Ｍ４的沉頭螺帽<br/>（內六角止動螺帽）<br/>所以我買了<br/>市售品１２ｍｍ長的不銹鋼製<br/>在螺紋上塗上防鬆膠<br/>裝上去。<br/>之前的文章裡我寫說 要不要用<br/>接觸長度來調<br/>但１２ｍｍ的話<br/>相對於螺孔 還是有點浮著。<br/>透過這個調整<br/>得到了公路踏板固定夾片<br/>差不多那個自稱０度浮動的感覺。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4375amx16.jpg" target="_blank"><img alt="RIMG4375amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4375amx16s.jpg" width="320"/></a><br/>買了 Crank Brothers 的夾片工具。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4380amx16.jpg" target="_blank"><img alt="RIMG4380amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4380amx16s.jpg" width="320"/></a><br/>裝在鞋子上後<br/>夾片的防轉和<br/>前後位置的微調很方便<br/>但鞋盾的防轉沒有被固定住<br/>所以那方面不太好用。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4377amx16.jpg" target="_blank"><img alt="RIMG4377amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4377amx16s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4378amx16.jpg" target="_blank"><img alt="RIMG4378amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4378amx16s.jpg" width="320"/></a><br/>工具的側邊有 測量鞋子夾片孔邊<br/>大底高度的突起<br/>１～４打著點。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4381amx16.jpg" target="_blank"><img alt="RIMG4381amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4381amx16s.jpg" width="320"/></a><br/>嚴格來說應該在夾片孔邊量<br/>但因為已經裝了鞋盾<br/>我就在夾片稍微前面量。<br/>１個點的突起 工具和大底之間<br/>有間隙。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4382amx16.jpg" target="_blank"><img alt="RIMG4382amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4382amx16s.jpg" width="320"/></a><br/>這次是２個點的話 工具和大底<br/>差不多接觸了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4383amx16.jpg" target="_blank"><img alt="RIMG4383amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4383amx16s.jpg" width="320"/></a><br/>３個點的話 間隙比１個點還大。<br/><br/>有人會想 為什麼結果反過來了<br/>這很合理<br/>４個突起的高度 不是按點數順序排的。<br/>這樣講對製造商不太禮貌<br/>但依我實測 各點的突起高度<br/>１個　７ｍｍ<br/>２個　６．４ｍｍ<br/>３個　７．６ｍｍ<br/>４個　８．８ｍｍ<br/>是這樣的。<br/>對應這個 還有夾片墊片和<br/>防滑墊等的對應表<br/>把那個寫出來的話<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4436amx16.jpg" target="_blank"><img alt="RIMG4436amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4436amx16s.jpg" width="320"/></a><br/>Eggbeater 的話是２個點<br/>Mallet E 的話是１個點<br/>直接裝夰片適正。<br/><br/>有間隙的情況下<br/>踏板那邊往下靠或<br/>鞋子那邊往上靠<br/>來調整<br/>首先從踏板那邊靠的防滑墊厚度來寫<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4438amx16.jpg" target="_blank"><img alt="RIMG4438amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4438amx16s.jpg" width="320"/></a><br/>↑變成這樣。<br/>我最初對這個表覺得莫名其妙<br/>Eggbeater 的話 點數在減少的方向<br/>加防滑墊<br/>但 Mallet E 反過來<br/>而且 Eggbeater 的防滑墊厚度<br/>反向了吧 我那樣想。<br/><br/>但這是因為工具的點數順序<br/>突起不是變長 造成的難以理解。<br/>所以把表的１個點和２個點交換。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4439amx16.jpg" target="_blank"><img alt="RIMG4439amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4439amx16s.jpg" width="320"/></a><br/>↑變成這樣。<br/>另外補充<br/>Candy 和 Mallet 踏板<br/>本身就附帶１ｍｍ厚的防滑墊。<br/>Double Shot 的話 一面是 Mallet<br/>另一面是平踏板的款式。<br/><br/>Eggbeater 最初的狀態<br/>沒附防滑墊<br/>所以這個表的範圍內 防滑墊<br/>０ｍｍ、１ｍｍ、２ｍｍ<br/>向上加。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4437amx16.jpg" target="_blank"><img alt="RIMG4437amx16.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4437amx16s.jpg" width="320"/></a><br/>Eggbeater 的防滑墊<br/>是裝在上面圖片的部分<br/>但最便宜款 Eggbeater 1 不相容<br/>只有２、３、１１才相容。<br/>而且 Crank Brothers 的問屋<br/>日本有２家<br/>其中一家 只進１ｍｍ厚的防滑墊<br/>另一家 連 Eggbeater 用的<br/>防滑墊進貨都沒有<br/>所以 Eggbeater 用的２ｍｍ厚<br/>沒辦法從正規代理商進貨。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4440amx16.jpg" target="_blank"><img alt</div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

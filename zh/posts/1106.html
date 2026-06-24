@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/1106.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Wheel Building</p>
     <h1>留言回覆</h1>
     <p class="post-meta">April 18, 2014</p>
+    <div class="post-body"><div class="entrytext"><span style="color:#0000FF">致歉和更正！（→<a href="/zh/posts/1115.html" target="_blank" title="こちら">這裡</a>）<br/>文章可以編修，但這類內容我想保留下來<br/>所以就原封不動了。</span><br/><br/>前陣子美式經典牌有孔花鼓的事件（→<a href="/zh/posts/1040.html" target="_blank" title="こちら">這裡</a>）<br/>「只要容認氣嘴孔位在最後交叉束的中間<br/>JIS組法和義大利組法都可以做，但是……」<br/>這類主旨的留言。在那之上<br/>「這個花鼓的問題應該更正確地說『避開孔隙組輪的話<br/>輻條有可能在氣嘴上方交叉』，而不是那樣吧？」<br/>這樣的意見。<br/>問題的關鍵在於<br/>我寫了「這個花鼓被限定在JIS組法或義大利組法」之類的說法<br/>「這樣好像不太對……」<br/>這個質疑。<br/><br/>確實沒錯，但是「氣嘴孔不在交叉束的中間，必須在間隙」<br/>這個規則對我組輪的方式來說非常重要，<br/>（所以試組時我會用起子插進氣嘴孔確認）<br/>如果組出氣嘴孔在交叉束中間這種難看的輪子<br/>我寧願改成JIS組法，也不要用義大利組法。<br/>不管是左右同本數組法還是異本數組法，一旦JIS／義大利互換<br/>右落／左落的關係就會反轉，<br/>但我所以要在乎右落和左落<br/>根本就是為了不讓氣嘴孔進到最後交叉束的中間。<br/><br/>「避開孔隙用義大利組法結果氣嘴孔卻在交叉束的中間了」<br/>這樣的輪子就算性能上沒問題，我也不想當成成品賣出去<br/>所以「輻條束中間有氣嘴孔也可以」這種想法<br/>我根本想都沒想過。<br/>因此「限定在JIS組法或義大利組法」的說法<br/>如果以「氣嘴孔在交叉束間隙」為前提條件的話，確實還是成立的<br/>所以我那樣寫了。<br/><br/>如果硬要用JIS組法或義大利組法其中之一來組<br/>又認為氣嘴孔在交叉中間沒關係（可以容認）的人<br/>可能會覺得我的寫法難以接受<br/>但至今為止我（至少在成品中）沒組過這樣的輪子<br/>所以對我來說那個花鼓就是被孔隙限定住JIS組法或義大利組法<br/>我才那樣表述的。<br/><br/><br/><br/><br/><span style="font-size:large;">追記：我終於回到有白板和相機的環境了<br/>所以補充一下。</span><br/>追記前後有表述重複的地方，敬請見諒。<br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01238amx3.jpg" target="_blank"><img alt="DSC01238amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01238amx3s.jpg" width="300"/></a><br/>氣嘴孔在交叉束的中間我寫作「中（中間）」，<br/>在交叉束的間隙則寫作「間（間隙）」，<br/>今後就這樣統一了。<br/><br/>前陣子有孔隙的美式經典花鼓如果要遵守「間隙」組法<br/>就被限定在JIS組法或義大利組法<br/>但這個「限定」的表述<br/>只要組「中間」的話JIS或義大利都可以做啊<br/>所以收到了「不是有點奇怪嗎……」這樣的留言。<br/><br/>我是把醜到極致的「中間」組輪子<br/>從輪子的概念本身就排除了<br/>所以才寫限定在JIS或義大利。<br/>如果「中間」組法也被認可的話<br/>四六義大利組法改用左落也就組得了啊。<br/>我會跟客人說<br/>「24H的後輪要組，我認為四六組比四四組左右輪平衡更好<br/>所以用四六組。<br/>只不過會變成「中間」組，<br/>外觀不好看的話請包涵」<br/>這樣解釋就行了。<br/><br/>我做不到，所以24H四六義大利組法我用右落組（笑）。<br/><br/>說到底右落和左落這些<br/>本來就是必須「間隙」組法才創造出來的智慧<br/>所以舉放棄這個前提的例子好像不太妥當。<br/>首先絕對的前提條件就是「間隙」組法<br/>再來（我的情況）盡量用義大利組法。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01253amx3.jpg" target="_blank"><img alt="DSC01253amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01253amx3s.jpg" width="300"/></a><br/>開始24H後輪的試組。<br/>只在自由輪側用4本組法穿過輻條。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01254amx3.jpg" target="_blank"><img alt="DSC01254amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01254amx3s.jpg" width="300"/></a><br/>「氣嘴孔在正上方時，從氣嘴孔朝左邊的孔穿出的輻條<br/>從自己看得見的前面花鼓凸緣出來的轂孔位置」<br/>在這個部落格叫做「正轂」。<br/>因為這種孔位分布佔大多數。<br/>例外在Campagnolo、Fulcrum、Colima等有，<br/>那些叫做「逆轂」。<br/><br/>用正轂組法組的。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01255amx3.jpg" target="_blank"><img alt="DSC01255amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01255amx3s.jpg" width="300"/></a><br/>內穿方向朝向刺蝟先生那邊，<br/>所以反自由輪側的組法方式來說，可能的組法是義大利組或JIS組，<br/>不可能的是逆義大利組和逆JIS組。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01257amx3.jpg" target="_blank"><img alt="DSC01257amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01257amx3s.jpg" width="300"/></a><br/>用右落穿過輻條，<br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01259amx3.jpg" target="_blank"><img alt="DSC01259amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01259amx3s.jpg" width="300"/></a><br/>只有2組4本的輻條用6本組做成JIS組。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01258amx3.jpg" target="_blank"><img alt="DSC01258amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01258amx3s.jpg" width="300"/></a><br/>變成「中間」組了。<br/>哇！超醜的！<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01261amx3.jpg" target="_blank"><img alt="DSC01261amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01261amx3s.jpg" width="300"/></a><br/>↑在那個狀態下貼了藍色標記。<br/>這個藍色標記表示「在有孔隙的方向上<br/>不能拉輻條」。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01274amx3.jpg" target="_blank"><img alt="DSC01274amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01274amx3s.jpg" width="300"/></a><br/>↑就是這樣的情況。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01263amx3.jpg" target="_blank"><img alt="DSC01263amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01263amx3s.jpg" width="300"/></a><br/>反自由輪側的4本輻條保持孔位不變<br/>改成義大利組法穿過。<br/>當然輵條的方向也會改變。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01265amx3.jpg" target="_blank"><img alt="DSC01265amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01265amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01268amx3.jpg" target="_blank"><img alt="DSC01268amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01268amx3s.jpg" width="300"/></a><br/>↑沒有在藍色標記的方向拉輻條。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01269amx3.jpg" target="_blank"><img alt="DSC01269amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01269amx3s.jpg" width="300"/></a><br/>接著把反自由輪側其他的輵條也穿過了。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01270amx3.jpg" target="_blank"><img alt="DSC01270amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01270amx3s.jpg" width="300"/></a><br/>現在確實是「間隙」組法了。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01272amx3.jpg" target="_blank"><img alt="DSC01272amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01272amx3s.jpg" width="300"/></a><br/>義大利組法。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01273amx3.jpg" target="_blank"><img alt="DSC01273amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01273amx3s.jpg" width="300"/></a><br/>再確認一次以防萬一。<br/><br/>右落／左落的轉換時JIS／義大利組法也會轉換，<br/>拉輵條的方向是否對著孔隙也會反轉<br/>希望各位都能理解了。<br/><br/>在這個案例中，右落四六義大利組法的時候<br/>孔隙方向對我們有利，所以這樣做的<br/>要是孔隙方向對我們不利的話呢？我也會寫一下。<br/><br/>解決方法其一　「改成四四組法」→這是理所當然的事。<br/>可以在「間隙」組法下組成義大利組。<br/><br/>這邊考慮一下「間隙」和「中間」會反轉的條件<br/>第一個是「改變右落和左落」。<br/><br/>第二個是「左右花鼓凸緣的組法改成（奇數×2）本組和（偶數×2）本組的<br/>組合」。<br/>2本組會導致內穿或外穿同向編織，<br/>問題很多所以除外。<br/>限制在4本組以上的話<br/>有四四組、六八組、八八組等等<br/>但實例基本上只會是四六組。<br/><br/>第三個是出現限制的轂，但「逆轂扱いする」。<br/>剛才試組的例子裡XR300轂也可以當逆轂組。<br/>「用正轂扱い右落四六義大利組法的時候雖然是「間隙」組<br/>但要拉著孔隙」的話<br/>改用逆轂扱い就能在「間隙」組下不拉孔隙<br/>同時組法也不用變。<br/>所以解決方法其二是，轂有限制但「用逆轂扱いして組」。<br/><br/>想要說的是，只要有不用組難看的「中間」組輪子的方法<br/>「中間」組輪子的可能性就根本不值得一顧。<br/>如果那樣還不能接受的話<br/>24H四六義大利組也改用左落來<br/>刻意組成「中間」怎麼樣呢。<br/><br/>前陣子美式經典花鼓有孔隙<br/>所以避開孔隙的話「中間」組是無可奈何的<br/>這種意見可能會有，<br/>但只要有不「中間」組也能避開的辦法存在<br/>就沒有「無可奈何」這回事。<br/><br/>那個花鼓是左右同本數組和（奇數×2）本組或（偶數×2）本組同向異本數組的情況下<br/>「間隙」組義大利組法時會拉著孔隙<br/>所以我寫成只能用JIS組。<br/>用四六組迴避了這一點就是要點。<br/>四六義大利組法拉著孔隙的話就改四八組。<br/>後輪和轂是28H，勉強可以。<br/>28H四八組的情況下如果是700C矮框轂<br/>按照這個部落格的說法會變成真正的最接線組<br/>輵條長度有可能無法取得。<br/><br/>這樣的話每次組輪都得仔細考慮很多東西<br/>每一個輪子對我來說不過是過去組過的<br/>幾千個其中之一<br/>但對客人來說，那可能是他人生中100%唯一的一個輪子。<br/>「避開孔隙結果變成「中間」組了但<br/>想不到別的辦法就先這樣用著吧」<br/>說出這種話不會讓客人滿意<br/>更重要的是我自己都不滿意。<br/>某個客人手上唯一的我組的輪子<br/>結果是超醜的「中間」組輪子？想都可怕。<br/>所以「中間」組就好了這種膚淺的想法根本不可能出現<br/>「間隙」組限定下的話，那個花鼓「正常」組法<br/>還是只能用JIS組法。<br/><br/>最後列舉一下「中間」組也沒辦法的實例。<br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01247amx3.jpg" target="_blank"><img alt="DSC01247amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01247amx3s.jpg" width="300"/></a><br/>像Fulcrum這樣2:1組法輵條<br/>自由輪側和反自由輪側3本輵條成1束的情況<br/>如果束數是偶數就能組成「間隙」。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01248amx3.jpg" target="_blank"><img alt="DSC01248amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01248amx3s.jpg" width="300"/></a><br/>但像21H這樣奇數束的情況<br/>氣嘴孔或轂接縫會和轂孔重合<br/>需要稍微錯開位相。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01251amx3.jpg" target="_blank"><img alt="DSC01251amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01251amx3s.jpg" width="300"/></a><br/>↑轂接縫大約在G的字正中央。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01250amx3.jpg" target="_blank"><img alt="DSC01250amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01250amx3s.jpg" width="300"/></a><br/>↑然後氣嘴孔看起來會在輵條束的「中間」呢。<br/>這確實是沒辦法的。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01275amx3.jpg" target="_blank"><img alt="DSC01275amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01275amx3s.jpg" width="300"/></a><br/>氣嘴孔和轂接縫<br/>離輵條束中點同樣遠的位相的話<br/>外觀會好一點<br/>但這個轂接縫處有牆，很沉（→<a href="/zh/posts/683.html" target="_blank" title="こちら">這裡</a>）<br/>（平衡調整可能故意的）<br/>氣嘴孔必須在接縫對面。<br/><br/>追記：<br/>前後略去<br/>「～收到的輪子要是氣嘴孔是「中間」組的話，一定會很失望～」<br/>收到這樣的留言。<br/>是的，就是這樣呢。組陌生輪子的時候真的得想很多。<br/>希望能組出最佳方案，實在不行的話<br/>至少也要用較好的方案。<br/>我認為把「中間」組算進選項裡，才是真正的思考停止。<br/>感謝留言。<br/>
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext"><span style="color:#0000FF">致歉和更正！（→<a href="/zh/posts/1115.html" target="_blank" title="こちら">這裡</a>）<br/>文章可以編修，但這類內容我想保留下來<br/>所以就原封不動了。</span><br/><br/>前陣子美式經典牌有孔花鼓的事件（→<a href="/zh/posts/1040.html" target="_blank" title="こちら">這裡</a>）<br/>「只要容認氣嘴孔位在最後交叉束的中間<br/>JIS組法和義大利組法都可以做，但是……」<br/>這類主旨的留言。在那之上<br/>「這個花鼓的問題應該更正確地說『避開孔隙組輪的話<br/>輻條有可能在氣嘴上方交叉』，而不是那樣吧？」<br/>這樣的意見。<br/>問題的關鍵在於<br/>我寫了「這個花鼓被限定在JIS組法或義大利組法」之類的說法<br/>「這樣好像不太對……」<br/>這個質疑。<br/><br/>確實沒錯，但是「氣嘴孔不在交叉束的中間，必須在間隙」<br/>這個規則對我組輪的方式來說非常重要，<br/>（所以試組時我會用起子插進氣嘴孔確認）<br/>如果組出氣嘴孔在交叉束中間這種難看的輪子<br/>我寧願改成JIS組法，也不要用義大利組法。<br/>不管是左右同本數組法還是異本數組法，一旦JIS／義大利互換<br/>右落／左落的關係就會反轉，<br/>但我所以要在乎右落和左落<br/>根本就是為了不讓氣嘴孔進到最後交叉束的中間。<br/><br/>「避開孔隙用義大利組法結果氣嘴孔卻在交叉束的中間了」<br/>這樣的輪子就算性能上沒問題，我也不想當成成品賣出去<br/>所以「輻條束中間有氣嘴孔也可以」這種想法<br/>我根本想都沒想過。<br/>因此「限定在JIS組法或義大利組法」的說法<br/>如果以「氣嘴孔在交叉束間隙」為前提條件的話，確實還是成立的<br/>所以我那樣寫了。<br/><br/>如果硬要用JIS組法或義大利組法其中之一來組<br/>又認為氣嘴孔在交叉中間沒關係（可以容認）的人<br/>可能會覺得我的寫法難以接受<br/>但至今為止我（至少在成品中）沒組過這樣的輪子<br/>所以對我來說那個花鼓就是被孔隙限定住JIS組法或義大利組法<br/>我才那樣表述的。<br/><br/><br/><br/><br/><span style="font-size:large;">追記：我終於回到有白板和相機的環境了<br/>所以補充一下。</span><br/>追記前後有表述重複的地方，敬請見諒。<br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01238amx3.jpg" target="_blank"><img alt="DSC01238amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01238amx3s.jpg" width="300"/></a><br/>氣嘴孔在交叉束的中間我寫作「中（中間）」，<br/>在交叉束的間隙則寫作「間（間隙）」，<br/>今後就這樣統一了。<br/><br/>前陣子有孔隙的美式經典花鼓如果要遵守「間隙」組法<br/>就被限定在JIS組法或義大利組法<br/>但這個「限定」的表述<br/>只要組「中間」的話JIS或義大利都可以做啊<br/>所以收到了「不是有點奇怪嗎……」這樣的留言。<br/><br/>我是把醜到極致的「中間」組輪子<br/>從輪子的概念本身就排除了<br/>所以才寫限定在JIS或義大利。<br/>如果「中間」組法也被認可的話<br/>四六義大利組法改用左落也就組得了啊。<br/>我會跟客人說<br/>「24H的後輪要組，我認為四六組比四四組左右輪平衡更好<br/>所以用四六組。<br/>只不過會變成「中間」組，<br/>外觀不好看的話請包涵」<br/>這樣解釋就行了。<br/><br/>我做不到，所以24H四六義大利組法我用右落組（笑）。<br/><br/>說到底右落和左落這些<br/>本來就是必須「間隙」組法才創造出來的智慧<br/>所以舉放棄這個前提的例子好像不太妥當。<br/>首先絕對的前提條件就是「間隙」組法<br/>再來（我的情況）盡量用義大利組法。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01253amx3.jpg" target="_blank"><img alt="DSC01253amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01253amx3s.jpg" width="300"/></a><br/>開始24H後輪的試組。<br/>只在自由輪側用4本組法穿過輻條。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01254amx3.jpg" target="_blank"><img alt="DSC01254amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01254amx3s.jpg" width="300"/></a><br/>「氣嘴孔在正上方時，從氣嘴孔朝左邊的孔穿出的輻條<br/>從自己看得見的前面花鼓凸緣出來的轂孔位置」<br/>在這個部落格叫做「正轂」。<br/>因為這種孔位分布佔大多數。<br/>例外在Campagnolo、Fulcrum、Colima等有，<br/>那些叫做「逆轂」。<br/><br/>用正轂組法組的。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01255amx3.jpg" target="_blank"><img alt="DSC01255amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01255amx3s.jpg" width="300"/></a><br/>內穿方向朝向刺蝟先生那邊，<br/>所以反自由輪側的組法方式來說，可能的組法是義大利組或JIS組，<br/>不可能的是逆義大利組和逆JIS組。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01257amx3.jpg" target="_blank"><img alt="DSC01257amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01257amx3s.jpg" width="300"/></a><br/>用右落穿過輻條，<br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01259amx3.jpg" target="_blank"><img alt="DSC01259amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01259amx3s.jpg" width="300"/></a><br/>只有2組4本的輻條用6本組做成JIS組。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01258amx3.jpg" target="_blank"><img alt="DSC01258amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01258amx3s.jpg" width="300"/></a><br/>變成「中間」組了。<br/>哇！超醜的！<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01261amx3.jpg" target="_blank"><img alt="DSC01261amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01261amx3s.jpg" width="300"/></a><br/>↑在那個狀態下貼了藍色標記。<br/>這個藍色標記表示「在有孔隙的方向上<br/>不能拉輻條」。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01274amx3.jpg" target="_blank"><img alt="DSC01274amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01274amx3s.jpg" width="300"/></a><br/>↑就是這樣的情況。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01263amx3.jpg" target="_blank"><img alt="DSC01263amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01263amx3s.jpg" width="300"/></a><br/>反自由輪側的4本輻條保持孔位不變<br/>改成義大利組法穿過。<br/>當然輵條的方向也會改變。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01265amx3.jpg" target="_blank"><img alt="DSC01265amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01265amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01268amx3.jpg" target="_blank"><img alt="DSC01268amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01268amx3s.jpg" width="300"/></a><br/>↑沒有在藍色標記的方向拉輻條。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01269amx3.jpg" target="_blank"><img alt="DSC01269amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01269amx3s.jpg" width="300"/></a><br/>接著把反自由輪側其他的輵條也穿過了。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01270amx3.jpg" target="_blank"><img alt="DSC01270amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01270amx3s.jpg" width="300"/></a><br/>現在確實是「間隙」組法了。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01272amx3.jpg" target="_blank"><img alt="DSC01272amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01272amx3s.jpg" width="300"/></a><br/>義大利組法。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01273amx3.jpg" target="_blank"><img alt="DSC01273amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01273amx3s.jpg" width="300"/></a><br/>再確認一次以防萬一。<br/><br/>右落／左落的轉換時JIS／義大利組法也會轉換，<br/>拉輵條的方向是否對著孔隙也會反轉<br/>希望各位都能理解了。<br/><br/>在這個案例中，右落四六義大利組法的時候<br/>孔隙方向對我們有利，所以這樣做的<br/>要是孔隙方向對我們不利的話呢？我也會寫一下。<br/><br/>解決方法其一　「改成四四組法」→這是理所當然的事。<br/>可以在「間隙」組法下組成義大利組。<br/><br/>這邊考慮一下「間隙」和「中間」會反轉的條件<br/>第一個是「改變右落和左落」。<br/><br/>第二個是「左右花鼓凸緣的組法改成（奇數×2）本組和（偶數×2）本組的<br/>組合」。<br/>2本組會導致內穿或外穿同向編織，<br/>問題很多所以除外。<br/>限制在4本組以上的話<br/>有四四組、六八組、八八組等等<br/>但實例基本上只會是四六組。<br/><br/>第三個是出現限制的轂，但「逆轂扱いする」。<br/>剛才試組的例子裡XR300轂也可以當逆轂組。<br/>「用正轂扱い右落四六義大利組法的時候雖然是「間隙」組<br/>但要拉著孔隙」的話<br/>改用逆轂扱い就能在「間隙」組下不拉孔隙<br/>同時組法也不用變。<br/>所以解決方法其二是，轂有限制但「用逆轂扱いして組」。<br/><br/>想要說的是，只要有不用組難看的「中間」組輪子的方法<br/>「中間」組輪子的可能性就根本不值得一顧。<br/>如果那樣還不能接受的話<br/>24H四六義大利組也改用左落來<br/>刻意組成「中間」怎麼樣呢。<br/><br/>前陣子美式經典花鼓有孔隙<br/>所以避開孔隙的話「中間」組是無可奈何的<br/>這種意見可能會有，<br/>但只要有不「中間」組也能避開的辦法存在<br/>就沒有「無可奈何」這回事。<br/><br/>那個花鼓是左右同本數組和（奇數×2）本組或（偶數×2）本組同向異本數組的情況下<br/>「間隙」組義大利組法時會拉著孔隙<br/>所以我寫成只能用JIS組。<br/>用四六組迴避了這一點就是要點。<br/>四六義大利組法拉著孔隙的話就改四八組。<br/>後輪和轂是28H，勉強可以。<br/>28H四八組的情況下如果是700C矮框轂<br/>按照這個部落格的說法會變成真正的最接線組<br/>輵條長度有可能無法取得。<br/><br/>這樣的話每次組輪都得仔細考慮很多東西<br/>每一個輪子對我來說不過是過去組過的<br/>幾千個其中之一<br/>但對客人來說，那可能是他人生中100%唯一的一個輪子。<br/>「避開孔隙結果變成「中間」組了但<br/>想不到別的辦法就先這樣用著吧」<br/>說出這種話不會讓客人滿意<br/>更重要的是我自己都不滿意。<br/>某個客人手上唯一的我組的輪子<br/>結果是超醜的「中間」組輪子？想都可怕。<br/>所以「中間」組就好了這種膚淺的想法根本不可能出現<br/>「間隙」組限定下的話，那個花鼓「正常」組法<br/>還是只能用JIS組法。<br/><br/>最後列舉一下「中間」組也沒辦法的實例。<br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01247amx3.jpg" target="_blank"><img alt="DSC01247amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01247amx3s.jpg" width="300"/></a><br/>像Fulcrum這樣2:1組法輵條<br/>自由輪側和反自由輪側3本輵條成1束的情況<br/>如果束數是偶數就能組成「間隙」。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01248amx3.jpg" target="_blank"><img alt="DSC01248amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01248amx3s.jpg" width="300"/></a><br/>但像21H這樣奇數束的情況<br/>氣嘴孔或轂接縫會和轂孔重合<br/>需要稍微錯開位相。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01251amx3.jpg" target="_blank"><img alt="DSC01251amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01251amx3s.jpg" width="300"/></a><br/>↑轂接縫大約在G的字正中央。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01250amx3.jpg" target="_blank"><img alt="DSC01250amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01250amx3s.jpg" width="300"/></a><br/>↑然後氣嘴孔看起來會在輵條束的「中間」呢。<br/>這確實是沒辦法的。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01275amx3.jpg" target="_blank"><img alt="DSC01275amx3.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC01275amx3s.jpg" width="300"/></a><br/>氣嘴孔和轂接縫<br/>離輵條束中點同樣遠的位相的話<br/>外觀會好一點<br/>但這個轂接縫處有牆，很沉（→<a href="/zh/posts/683.html" target="_blank" title="こちら">這裡</a>）<br/>（平衡調整可能故意的）<br/>氣嘴孔必須在接縫對面。<br/><br/>追記：<br/>前後略去<br/>「～收到的輪子要是氣嘴孔是「中間」組的話，一定會很失望～」<br/>收到這樣的留言。<br/>是的，就是這樣呢。組陌生輪子的時候真的得想很多。<br/>希望能組出最佳方案，實在不行的話<br/>至少也要用較好的方案。<br/>我認為把「中間」組算進選項裡，才是真正的思考停止。<br/>感謝留言。<br/>
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

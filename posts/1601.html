@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
-    <p>Bicycle Workshop — English Edition</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/index.html">
+        <span class="brand-title">Nomu Lab Diary</span>
+        <span class="brand-subtitle">Bicycle Workshop Archive</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/index.html">Archive</a>
+      <a href="/guides/wheel-building.html">Wheel Guide</a>
+      <a href="/glossary.html">Glossary</a>
+      <a href="/about.html">About</a>
+    </nav>
     <div class="lang-toggle"><span class="lang-btn active">EN</span><a class="lang-btn" href="/zh/posts/1601.html">繁中</a></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/index.html">← All posts</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>EC90SLX</h1>
     <p class="post-meta">December 19, 2014</p>
+    <div class="post-body"><div class="entrytext">I took in an <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Mavic+EC90SLX+bicycle+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">EC90SLX</a> from a customer.<br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06360amx3.jpg" target="_blank"><img alt="DSC06360amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06360amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06358amx3.jpg" target="_blank"><img alt="DSC06358amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06358amx3s.jpg" width="300"/></a><br/>The front wheel had slight runout and centering issues,<br/>and the rear wheel had centering problems worse than the front,<br/>but neither was anything serious.<br/>The issue was that the rear hub bearing rotation felt gritty.<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06359amx3.jpg" target="_blank"><img alt="DSC06359amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06359amx3s.jpg" width="300"/></a><br/>All the images up to here are after work,<br/>but the gritty feeling was definitely there when I manually rotated the shaft.<br/>In a rear hub, there are typically four bearings—two in the hub body and two in the freewheel body.<br/>（This applies to cartridge bearings. Shimano, except during the 7800-series era, uses two cup-and-cone bearings,<br/>while Mavic has only one bearing in the freewheel body,<br/>making it three cartridge bearings.）<br/>Since these are in constant contact with the shaft via light press-fitting,<br/>it's impossible to determine by feel which bearing is causing the grit<br/>or how many bad ones there are.<br/>Often it's not the hub bearings at all,<br/>but the freewheel body bearing that's dead.<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06256amx3.jpg" target="_blank"><img alt="DSC06256amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06256amx3s.jpg" width="300"/></a><br/>After disassembling, I found<br/>that only the right-side hub bearing was dead this time.<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06258amx3.jpg" target="_blank"><img alt="DSC06258amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06258amx3s.jpg" width="300"/></a><br/>Since it's an <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Mavic+R4SL+rear+hub" target="_blank" rel="noopener sponsored" class="amz-inline">R4SL hub</a>, it has ceramic bearing specs,<br/>but the ball race couldn't handle the hardness of the ceramic balls and developed spalling,<br/>with the scraped-off iron particles rusting.<br/>In the image above, I sprayed parts cleaner before peeling back the seal,<br/>and you can already see rust deposits coming out.<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06340amx3.jpg" target="_blank"><img alt="DSC06340amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06340amx3s.jpg" width="300"/></a><br/>When I sprayed after peeling back the seal, a considerable amount of rust deposits came out,<br/>but I forgot to take a photo.<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06341amx3.jpg" target="_blank"><img alt="DSC06341amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06341amx3s.jpg" width="300"/></a><br/>When I washed this seal...<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06343amx3.jpg" target="_blank"><img alt="DSC06343amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06343amx3s.jpg" width="300"/></a><br/>It reads 6902CE-2RS.<br/>6902 is the bearing size, CE indicates ceramic balls,<br/>and 2RS means dual rubber seals. A single rubber seal would be RS,<br/>though some manufacturers mark dual seals as RS as well.<br/><br/>6902 is a metric standard bearing—28mm OD / 15mm ID / 7mm width—<br/>so it's normally easy to source. <span style="color:#FF0000">If only it weren't ceramic.</span><br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06350amx3.jpg" target="_blank"><img alt="DSC06350amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06350amx3s.jpg" width="300"/></a><br/>↑The freewheel bearing is a 6902-2RS steel ball version.<br/>That one would be easy to source,<br/>but this... hmm, that's a problem. <s>(Pretending to be troubled)</s><br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06344amx3.jpg" target="_blank"><img alt="DSC06344amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06344amx3s.jpg" width="300"/></a><br/>But then I discovered that <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Tni+ceramic+bearing+6902" target="_blank" rel="noopener sponsored" class="amz-inline">Tni</a> (a ceramic bearing manufacturer) has ceramic bearings available. <s>(I already knew that)</s><br/>They have a good selection of 68xx and 69xx series sizes<br/>commonly used in bicycle parts.<br/>This is really convenient! <s>(Blatant advertisement)</s><br/><br/>Just as steel ball bearings range from great to terrible,<br/>ceramic bearings have their good and bad versions too.<br/>The critical factor isn't the sphericity of the bearing balls—<span style="color:#FF0000">it's the hardness of the ball race.</span><br/>If that doesn't match the hardness of ceramic balls,<br/>the race gets scraped and spalls quickly.<br/>Campagnolo's black ball race USB bearings are notoriously short-lived,<br/>and that's exactly why.<br/>The newer silver ball races have improved on this.<br/>Even accounting for their relative newness,<br/>the spalling failure rate is remarkably low.<br/>Back in the black ball race era, when I used USB bearings,<br/>I'd deliberately downgrade them all to steel balls.<br/>（Though one could question if that really counts as a downgrade.）<br/>Silver ball races don't seem to require that anymore.<br/><br/>As for which ceramic bearings are actually good—this is just my opinion,<br/>but <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Ceramic+Speed+ceramic+bearing+bicycle" target="_blank" rel="noopener sponsored" class="amz-inline">Ceramic Speed</a> is still in a class of its own.<br/>There's a higher-end COATED model, but even the standard version is excellent.<br/>Next would be CULT, which I'd put in the same category,<br/>though it doesn't fit everything.<br/>Beyond that it's mostly hit or miss—or rather, mostly miss.<br/>Just like with the drill story from before, ones that tout titanium coating<br/>don't actually have superior durability or low friction.<br/>Especially with BB cups: <span style="color:#FF0000">if a ceramic-ball version has a lifespan drastically shorter than steel ball versions,<br/>it's a cheap knockoff with only the balls ceramicized.</span><br/>The ball race hardness is probably low, and the sphericity is likely poor too.<br/>The reason I don't aggressively recommend ceramic bearings to customers is<br/>because "there aren't many decent ones, and the decent ones are expensive."<br/><br/>Years ago, when a customer had a Cosmic Carbon Ultimate fitted with<br/>some brand's ceramic bearings and wasn't happy with the results<br/>(couldn't feel much difference), I asked them to "trust me"<br/>and immediately swapped in Ceramic Speed ceramic bearings.<br/>They came back with "It's completely different!"<br/>Well, of course—comparing a gem to a stone.<br/>Actually, I didn't just swap the bearings—<br/>but the main reason for the improvement was still the bearing performance itself.<br/><br/>As for whether Tni's bearings are gems or stones,<br/>they're not Ceramic Speed, but they're definitely worth more than their price.<br/>I've personally swapped out <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Campagnolo+Ultegra+USB+bearing+cartridge" target="_blank" rel="noopener sponsored" class="amz-inline">Campagnolo Ultegra USB</a><br/>for these and used them continuously.<br/>They don't have an extremely short lifespan, at least.<br/>More importantly, there are plenty of worse-quality options<br/>that cost more than these.<br/>I'm not naming names though.<br/>Who'd tell you anyway?<br/>↑Wow, this guy's kind of rude!<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06345amx3.jpg" target="_blank"><img alt="DSC06345amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06345amx3s.jpg" width="300"/></a><br/>Sorry, I got sidetracked.<br/>The bearings are, of course, the same size.<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06347amx3.jpg" target="_blank"><img alt="DSC06347amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06347amx3s.jpg" width="300"/></a><br/>The "RS" marking on the 6902 means dual seals.<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06349amx3.jpg" target="_blank"><img alt="DSC06349amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06349amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06354amx3.jpg" target="_blank"><img alt="DSC06354amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06354amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06353amx3.jpg" target="_blank"><img alt="DSC06353amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06353amx3s.jpg" width="300"/></a><br/>After overhauling the hub and re-pressing the bearings,<br/>the gritty feeling is completely gone.<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06366amx3.jpg" target="_blank"><img alt="DSC06366amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06366amx3s.jpg" width="300"/></a><br/>Many of you probably expected the crab beam to make an appearance,<br/>but currently the crab beam is in custody with the thought police<br/>undergoing unjust and harsh interrogation,<br/>so there's no part for it this time. Too bad.
+</div></div>
+    <aside class="post-guides">
+      <strong>Technical archive</strong>
+      <nav aria-label="Technical guides">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">I took in an <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Mavic+EC90SLX+bicycle+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">EC90SLX</a> from a customer.<br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06360amx3.jpg" target="_blank"><img alt="DSC06360amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06360amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06358amx3.jpg" target="_blank"><img alt="DSC06358amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06358amx3s.jpg" width="300"/></a><br/>The front wheel had slight runout and centering issues,<br/>and the rear wheel had centering problems worse than the front,<br/>but neither was anything serious.<br/>The issue was that the rear hub bearing rotation felt gritty.<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06359amx3.jpg" target="_blank"><img alt="DSC06359amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06359amx3s.jpg" width="300"/></a><br/>All the images up to here are after work,<br/>but the gritty feeling was definitely there when I manually rotated the shaft.<br/>In a rear hub, there are typically four bearings—two in the hub body and two in the freewheel body.<br/>（This applies to cartridge bearings. Shimano, except during the 7800-series era, uses two cup-and-cone bearings,<br/>while Mavic has only one bearing in the freewheel body,<br/>making it three cartridge bearings.）<br/>Since these are in constant contact with the shaft via light press-fitting,<br/>it's impossible to determine by feel which bearing is causing the grit<br/>or how many bad ones there are.<br/>Often it's not the hub bearings at all,<br/>but the freewheel body bearing that's dead.<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06256amx3.jpg" target="_blank"><img alt="DSC06256amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06256amx3s.jpg" width="300"/></a><br/>After disassembling, I found<br/>that only the right-side hub bearing was dead this time.<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06258amx3.jpg" target="_blank"><img alt="DSC06258amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06258amx3s.jpg" width="300"/></a><br/>Since it's an <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Mavic+R4SL+rear+hub" target="_blank" rel="noopener sponsored" class="amz-inline">R4SL hub</a>, it has ceramic bearing specs,<br/>but the ball race couldn't handle the hardness of the ceramic balls and developed spalling,<br/>with the scraped-off iron particles rusting.<br/>In the image above, I sprayed parts cleaner before peeling back the seal,<br/>and you can already see rust deposits coming out.<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06340amx3.jpg" target="_blank"><img alt="DSC06340amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06340amx3s.jpg" width="300"/></a><br/>When I sprayed after peeling back the seal, a considerable amount of rust deposits came out,<br/>but I forgot to take a photo.<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06341amx3.jpg" target="_blank"><img alt="DSC06341amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06341amx3s.jpg" width="300"/></a><br/>When I washed this seal...<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06343amx3.jpg" target="_blank"><img alt="DSC06343amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06343amx3s.jpg" width="300"/></a><br/>It reads 6902CE-2RS.<br/>6902 is the bearing size, CE indicates ceramic balls,<br/>and 2RS means dual rubber seals. A single rubber seal would be RS,<br/>though some manufacturers mark dual seals as RS as well.<br/><br/>6902 is a metric standard bearing—28mm OD / 15mm ID / 7mm width—<br/>so it's normally easy to source. <span style="color:#FF0000">If only it weren't ceramic.</span><br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06350amx3.jpg" target="_blank"><img alt="DSC06350amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06350amx3s.jpg" width="300"/></a><br/>↑The freewheel bearing is a 6902-2RS steel ball version.<br/>That one would be easy to source,<br/>but this... hmm, that's a problem. <s>(Pretending to be troubled)</s><br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06344amx3.jpg" target="_blank"><img alt="DSC06344amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06344amx3s.jpg" width="300"/></a><br/>But then I discovered that <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Tni+ceramic+bearing+6902" target="_blank" rel="noopener sponsored" class="amz-inline">Tni</a> (a ceramic bearing manufacturer) has ceramic bearings available. <s>(I already knew that)</s><br/>They have a good selection of 68xx and 69xx series sizes<br/>commonly used in bicycle parts.<br/>This is really convenient! <s>(Blatant advertisement)</s><br/><br/>Just as steel ball bearings range from great to terrible,<br/>ceramic bearings have their good and bad versions too.<br/>The critical factor isn't the sphericity of the bearing balls—<span style="color:#FF0000">it's the hardness of the ball race.</span><br/>If that doesn't match the hardness of ceramic balls,<br/>the race gets scraped and spalls quickly.<br/>Campagnolo's black ball race USB bearings are notoriously short-lived,<br/>and that's exactly why.<br/>The newer silver ball races have improved on this.<br/>Even accounting for their relative newness,<br/>the spalling failure rate is remarkably low.<br/>Back in the black ball race era, when I used USB bearings,<br/>I'd deliberately downgrade them all to steel balls.<br/>（Though one could question if that really counts as a downgrade.）<br/>Silver ball races don't seem to require that anymore.<br/><br/>As for which ceramic bearings are actually good—this is just my opinion,<br/>but <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Ceramic+Speed+ceramic+bearing+bicycle" target="_blank" rel="noopener sponsored" class="amz-inline">Ceramic Speed</a> is still in a class of its own.<br/>There's a higher-end COATED model, but even the standard version is excellent.<br/>Next would be CULT, which I'd put in the same category,<br/>though it doesn't fit everything.<br/>Beyond that it's mostly hit or miss—or rather, mostly miss.<br/>Just like with the drill story from before, ones that tout titanium coating<br/>don't actually have superior durability or low friction.<br/>Especially with BB cups: <span style="color:#FF0000">if a ceramic-ball version has a lifespan drastically shorter than steel ball versions,<br/>it's a cheap knockoff with only the balls ceramicized.</span><br/>The ball race hardness is probably low, and the sphericity is likely poor too.<br/>The reason I don't aggressively recommend ceramic bearings to customers is<br/>because "there aren't many decent ones, and the decent ones are expensive."<br/><br/>Years ago, when a customer had a Cosmic Carbon Ultimate fitted with<br/>some brand's ceramic bearings and wasn't happy with the results<br/>(couldn't feel much difference), I asked them to "trust me"<br/>and immediately swapped in Ceramic Speed ceramic bearings.<br/>They came back with "It's completely different!"<br/>Well, of course—comparing a gem to a stone.<br/>Actually, I didn't just swap the bearings—<br/>but the main reason for the improvement was still the bearing performance itself.<br/><br/>As for whether Tni's bearings are gems or stones,<br/>they're not Ceramic Speed, but they're definitely worth more than their price.<br/>I've personally swapped out <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Campagnolo+Ultegra+USB+bearing+cartridge" target="_blank" rel="noopener sponsored" class="amz-inline">Campagnolo Ultegra USB</a><br/>for these and used them continuously.<br/>They don't have an extremely short lifespan, at least.<br/>More importantly, there are plenty of worse-quality options<br/>that cost more than these.<br/>I'm not naming names though.<br/>Who'd tell you anyway?<br/>↑Wow, this guy's kind of rude!<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06345amx3.jpg" target="_blank"><img alt="DSC06345amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06345amx3s.jpg" width="300"/></a><br/>Sorry, I got sidetracked.<br/>The bearings are, of course, the same size.<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06347amx3.jpg" target="_blank"><img alt="DSC06347amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06347amx3s.jpg" width="300"/></a><br/>The "RS" marking on the 6902 means dual seals.<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06349amx3.jpg" target="_blank"><img alt="DSC06349amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06349amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06354amx3.jpg" target="_blank"><img alt="DSC06354amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06354amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06353amx3.jpg" target="_blank"><img alt="DSC06353amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06353amx3s.jpg" width="300"/></a><br/>After overhauling the hub and re-pressing the bearings,<br/>the gritty feeling is completely gone.<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06366amx3.jpg" target="_blank"><img alt="DSC06366amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06366amx3s.jpg" width="300"/></a><br/>Many of you probably expected the crab beam to make an appearance,<br/>but currently the crab beam is in custody with the thought police<br/>undergoing unjust and harsh interrogation,<br/>so there's no part for it this time. Too bad.
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">Products Mentioned in This Article</p>
       <ul>

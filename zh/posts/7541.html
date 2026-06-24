@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/7541.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Gravel Bike First Year</p>
     <h1>把我的Niner自行車踏板換成Crank Brothers</h1>
     <p class="post-meta">June 07, 2025</p>
+    <div class="post-body"><div class="entrytext">我的Niner理論上是一台碎石路車，<br/>但對於車架允許的輪胎寬度25～50C的規格，<br/>我卻裝著下限的25C輪胎，<br/>把手寬度330mm，搭配公路用的LOOK KeO踏板，<br/>運作方式距離碎石路車相當遙遠。<br/><br/>但是，在不久的將來我要和客人一起騎車去某個神社，<br/>並且要在神社境內走路，<br/>所以被迫需要改用能夠走路的鞋底SPD二孔的鎖鞋，<br/>以及對應的踏板。<br/>今年正月去伊勢神宮的時候（→<a href="/zh/posts/7377.html" target="_blank" title="こちら">按這裡</a>）<br/>我換成了用於溪流活動的可摺疊攜帶鞋。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2502amx16.jpg" target="_blank"><img alt="RIMG2502amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2502amx16s.jpg" width="320"/></a><br/>↑前叉<br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2503amx16.jpg" target="_blank"><img alt="RIMG2503amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2503amx16s.jpg" width="320"/></a><br/>↑車架的座管<br/>我的Niner車架上有著等高線一樣的圖案，<br/>由於車架顏色是綠色，<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2505amx16.jpg" target="_blank"><img alt="RIMG2505amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2505amx16s.jpg" width="320"/></a><br/>我早就買好了Crank Brothers的Topo版本的<br/>Mallet E踏板。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2506amx16.jpg" target="_blank"><img alt="RIMG2506amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2506amx16s.jpg" width="320"/></a><br/>所謂Topo版本，是以Crank Brothers創辦地附近的<br/>聖塔阿納山脈的地形圖(TOPOGRAPHY)為設計的限量款，<br/>有平踏板<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Crank+Brothers+Stamp+7+flat+pedal" target="_blank" rel="noopener sponsored" class="amz-inline">Stamp 7</a>的小尺寸和大尺寸，<br/>以及附帶平台的蛋筒式鎖鞋踏板<br/>Mallet E的3款車型。<br/>發表於2023年11月，當時說是一次性生產，<br/>我擔心日後想要的時候會買不到，<br/>所以當時就買了，但實際上供應商<br/>現在還有各款的少量庫存。<br/>Stamp 7的小或大型含稅定價為29,700日圓，<br/>Mallet E含稅定價為30,800日圓，<br/>用這兩者按鎖鞋功能有無來比較本來就不太合適，<br/>但稅前定價差了1,000日圓。<br/><br/>我查了一下標準款相比之下<br/>「Topo版本溢價」究竟是多少，<br/>發現標準款本身從2023年開始就漲價了，<br/>所以Stamp 7小或大型現在的含稅定價是32,600日圓，<br/>再加上那些拋光處理款的<br/>含稅定價為34,800日圓，<br/>Mallet E標準款的<br/>含稅定價也是34,800日圓，<br/>結果反而是以當時定價販售的<br/>限量款更便宜這種<br/>莫名其妙的情況。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2504amx16.jpg" target="_blank"><img alt="RIMG2504amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2504amx16s.jpg" width="320"/></a><br/>↑地形圖設計<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2509amx16.jpg" target="_blank"><img alt="RIMG2509amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2509amx16s.jpg" width="320"/></a><br/>Mallet E在同廠踏板中<br/>踏板軸的長度屬於長軸規格，<br/>所以我進了售後的短軸套件。<br/>這樣曲柄臂踏板安裝面到<br/>鎖鞋機構中心的距離就<br/>大約和LOOK公路用踏板相同。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2512amx16.jpg" target="_blank"><img alt="RIMG2512amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2512amx16s.jpg" width="320"/></a><br/>↑比較起來是這樣<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2513amx16.jpg" target="_blank"><img alt="RIMG2513amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2513amx16s.jpg" width="320"/></a><br/>↑只換了一側的狀態<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2516amx16.jpg" target="_blank"><img alt="RIMG2516amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2516amx16s.jpg" width="320"/></a><br/>雖然叫軸（軸）套件，<br/>但還附送了替換軸承和橡膠密封圈等，<br/>成了翻新套件。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2514amx16.jpg" target="_blank"><img alt="RIMG2514amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2514amx16s.jpg" width="320"/></a><br/>↑踏板軸與曲柄接觸的部分<br/>刻著1條溝。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2515amx16.jpg" target="_blank"><img alt="RIMG2515amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2515amx16s.jpg" width="320"/></a><br/>↑另一側則沒有溝。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2544amx16.jpg" target="_blank"><img alt="RIMG2544amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2544amx16s.jpg" width="320"/></a><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2545amx16.jpg" target="_blank"><img alt="RIMG2545amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2545amx16s.jpg" width="320"/></a><br/>這是跨越廠商的踏板業界規則，<br/>「有溝的一側是左踏板」的意思。<br/>蛋筒式踏板從外觀上很難判斷左右，<br/>所以記住這點很有用。<br/>更換軸的時候也能通過注意<br/>有溝換有溝，無溝換無溝，<br/>來防止左右安裝錯誤。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2517amx16.jpg" target="_blank"><img alt="RIMG2517amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2517amx16s.jpg" width="320"/></a><br/>↑Mallet E附送的鞋釘。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2519amx16.jpg" target="_blank"><img alt="RIMG2519amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2519amx16s.jpg" width="320"/></a><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2520amx16.jpg" target="_blank"><img alt="RIMG2520amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2520amx16s.jpg" width="320"/></a><br/>刻有L和R，爪的形狀左右不對稱。<br/>這個鞋釘是左右各3°的<br/>6°浮動型，<br/>將標有R的裝在右鞋上<br/>用腳跟外側扭動動作會在15°時釋放，<br/>內側扭動動作則在20°時釋放。<br/>通常不會往內側扭，<br/>也就是說，R裝右邊、L裝左邊時是15°釋放，<br/>刻意反裝的話就變成20°釋放的設定。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2521amx16.jpg" target="_blank"><img alt="RIMG2521amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2521amx16s.jpg" width="320"/></a><br/>個人來說，我不需要浮動，<br/>所以買了售後的0°鞋釘。<br/>實際上，幾乎所有廠商都一樣，<br/>自稱0°也還是有微微的活動。<br/><br/>用舊款Delta鞋釘的LOOK踏板<br/>時，鞋側用黑色鞋釘<br/>踏板後部有旋鈕可以調整夾住鞋釘的<br/>舌狀零件的伸出量<br/>(像PP286或CX6等型號），<br/>旋鈕轉到零的情況最接近完全固定。<br/><br/>用Speedplay時，如果把鞋釘側可動域的止動螺釘<br/>前後都靠在C形環上的設定，<br/>好像能完全固定，<br/>但即便如此，鞋釘的爪和踏板爪槽之間<br/>（要求完全固定的程度來說）<br/>還是會有相當的晃動。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2522amx16.jpg" target="_blank"><img alt="RIMG2522amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2522amx16s.jpg" width="320"/></a><br/>為了區別，鞋釘是銀色的，<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2525amx16.jpg" target="_blank"><img alt="RIMG2525amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2525amx16s.jpg" width="320"/></a><br/>從0°固定扭動腳會在15°時釋放。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2532amx16.jpg" target="_blank"><img alt="RIMG2532amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2532amx16s.jpg" width="320"/></a><br/>↑這傢伙<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2533amx16.jpg" target="_blank"><img alt="RIMG2533amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2533amx16s.jpg" width="320"/></a><br/>鞋釘的爪形狀是左右對稱的，<br/>所以R貼左邊結果也不會改變，<br/>但沒理由特地反著來，<br/>所以R就裝右邊、L裝左邊。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2526amx16.jpg" target="_blank"><img alt="RIMG2526amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2526amx16s.jpg" width="320"/></a><br/>↑這和這次的事沒有關係，<br/>但是用蛋筒式踏板和已經買好的公路三孔鞋搭配的<br/>鞋釘套件。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2527amx16.jpg" target="_blank"><img alt="RIMG2527amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2527amx16s.jpg" width="320"/></a><br/>↑單側鞋釘的金屬部分打著點子，<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2528amx16.jpg" target="_blank"><img alt="RIMG2528amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2528amx16s.jpg" width="320"/></a><br/>現行款是2個點子，<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2529amx16.jpg" target="_blank"><img alt="RIMG2529amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2529amx16s.jpg" width="320"/></a><br/>附送的說明書還是舊版的1個點子。<br/>無論如何，有點子的鞋釘貼右腳<br/>就是15°釋放，<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2530amx16.jpg" target="_blank"><img alt="RIMG2530amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2530amx16s.jpg" width="320"/></a><br/>反裝的話就是20°釋放，<br/>和標準鞋釘的規格相同。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2531amx16.jpg" target="_blank"><img alt="RIMG2531amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2531amx16s.jpg" width="320"/></a><br/>浮動也是標準的6°，<br/>但這個鞋釘套件專用的鞋釘金屬部分寬度較窄，<br/>所以無法更換鞋釘金屬部分<br/>或是換成0°鞋釘。<br/><br/>順便說一下，這個怎麼固定在鞋的3個孔上呢？<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2551amx16.jpg" target="_blank"><img alt="RIMG2551amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2551amx16s.jpg" width="320"/></a><br/>↑像這樣橡膠部分能卸下來。<br/><br/>LOOK公司非OEM的，<br/>最初shimano原廠的公路鎖鞋踏板<br/>是SPD二孔規格的，Dura-Ace的踏板型號為<br/>PD-7410。<br/>用的鞋釘是SM-SH71，<br/>鞋釘金屬部分的左右有著<br/>象徵性的走路用浮筒。<br/><br/>Crank Brothers以前出過的<br/>SPD二孔用公路鞋釘<br/>看起來也差不多。<br/>過去即使是公路用走路不便的鞋底，<br/>也經常同時備有LOOK三孔和SPD二孔，<br/>所以能用，但<br/>最近的公路鞋大多只有LOOK三孔，<br/>所以走路用橡膠的面積增加了，<br/>看來是改款了。<br/>廉價款常見的尼龍鞋底鞋搭配<br/>這個鞋釘套件的話，<br/>即使是公路鞋也會變成企鵝步態，<br/>不過還勉強能走。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2535amx16.jpg" target="_blank"><img alt="RIMG2535amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2535amx16s.jpg" width="320"/></a><br/>關於鞋子，根據我的經驗，<br/>我穿Sidi的Mega或Shimano寬版<br/>可以直接穿，無需改造。<br/>我之前把所有SPD二孔的鞋都處理了，<br/>但最近試穿了客人說買了但沒穿過的鞋，<br/>標示尺寸和我平時穿的尺寸一樣，<br/>長度合適但橫幅有點緊，<br/>所以拿到鞋後用鞋撐機拉寬了。<br/>上面圖片右鞋小指橫邊的不自然隆起<br/>就是改造中的狀態。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2537amx16.jpg" target="_blank"><img alt="RIMG2537amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2537amx16s.jpg" width="320"/></a><br/>dhb是那個著名自行車購物網Wiggle的服裝品牌。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2536amx16.jpg" target="_blank"><img alt="RIMG2536amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2536amx16s.jpg" width="320"/></a><br/>↑小指橫邊從內側相當地膨脹，<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2541amx16.jpg" target="_blank"><img alt="RIMG2541amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2541amx16s.jpg" width="320"/></a><br/>即使拉出鞋撐，<br/>形狀變化也有一些留下來。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2538amx16.jpg" target="_blank"><img alt="RIMG2538amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2538amx16s.jpg" width="320"/></a><br/>↑鞋撐機<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2539amx16.jpg" target="_blank"><img alt="RIMG2539amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2539amx16s.jpg" width="320"/></a><br/>很多半孔像香菇原木一樣，<br/>可以在任意位置裝上數種<br/>從圓形到長圓形的<br/>膨脹適配器，<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2540amx16.jpg" target="_blank"><img alt="RIMG2540amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2540amx16s.jpg" width="320"/></a><br/>像巴爾坦星人的夾子一樣<br/>在鞋內吱呀吱呀地開啟。<br/>(V)o¥o(V) ｆｏｕｆｏｕｆｏｕｆｏ<br/>↑順便說一下，這個用IME輸入法能用「ばるたん」變換出來。<br/><br/>當然，沒有膨脹適配器也可以，<br/>單純只拉寬橫幅。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2542amx16.jpg" target="_blank"><img alt="RIMG2542amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2542amx16s.jpg" width="320"/></a><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2543amx16.jpg" target="_blank"><img alt="RIMG2543amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2543amx16s.jpg" width="320"/></a><br/>鞋帶改成了Salomon出的<br/>「QuickLace」。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2553amx16.jpg" target="_blank"><img alt="RIMG2553amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2553amx16s.jpg" width="320"/></a><br/>裝好踏板了。<br/>因為是打算當「寺社閒逛模式」用，<br/>平時可能會再換回公路踏板。<br/>需要檢查一下座管高度的差異。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2554amx16.jpg" target="_blank"><img alt="RIMG2554amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2554amx16s.jpg" width="320"/></a><br/>調整鞋釘的左右位置，<br/>鞋子盡可能貼近曲柄側，<br/>也就是盡可能窄的距離時<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2556amx16.jpg" target="_blank"><img alt="RIMG2556amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2556amx16s.jpg" width="320"/></a><br/>和曲柄臂的間隙很充足。<br/>鞋釘雖然有細微晃動，但是0°固定，<br/>SPD二孔即使鞋釘有點歪斜<br/>腳的角度也可能感覺不直，<br/>所以調整很講究。<br/>前面那張圖也有點歪斜，<br/>等等要修正。<br/><br/>重要的不是「腳的角度是否真的直」，<br/>而是「腳的角度是否感覺直」。<br/>我的情況是用固定鞋釘的話，右鞋腳跟<br/>需要調成極微地向內側傾斜<br/>（鞋本身不直，但體感上直）<br/>不然100km以內膝蓋就會爆炸。<br/>角度調對的話，隨著騎行距離<br/>膝蓋就不會爆炸。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">我的Niner理論上是一台碎石路車，<br/>但對於車架允許的輪胎寬度25～50C的規格，<br/>我卻裝著下限的25C輪胎，<br/>把手寬度330mm，搭配公路用的LOOK KeO踏板，<br/>運作方式距離碎石路車相當遙遠。<br/><br/>但是，在不久的將來我要和客人一起騎車去某個神社，<br/>並且要在神社境內走路，<br/>所以被迫需要改用能夠走路的鞋底SPD二孔的鎖鞋，<br/>以及對應的踏板。<br/>今年正月去伊勢神宮的時候（→<a href="/zh/posts/7377.html" target="_blank" title="こちら">按這裡</a>）<br/>我換成了用於溪流活動的可摺疊攜帶鞋。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2502amx16.jpg" target="_blank"><img alt="RIMG2502amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2502amx16s.jpg" width="320"/></a><br/>↑前叉<br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2503amx16.jpg" target="_blank"><img alt="RIMG2503amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2503amx16s.jpg" width="320"/></a><br/>↑車架的座管<br/>我的Niner車架上有著等高線一樣的圖案，<br/>由於車架顏色是綠色，<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2505amx16.jpg" target="_blank"><img alt="RIMG2505amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2505amx16s.jpg" width="320"/></a><br/>我早就買好了Crank Brothers的Topo版本的<br/>Mallet E踏板。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2506amx16.jpg" target="_blank"><img alt="RIMG2506amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2506amx16s.jpg" width="320"/></a><br/>所謂Topo版本，是以Crank Brothers創辦地附近的<br/>聖塔阿納山脈的地形圖(TOPOGRAPHY)為設計的限量款，<br/>有平踏板<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Crank+Brothers+Stamp+7+flat+pedal" target="_blank" rel="noopener sponsored" class="amz-inline">Stamp 7</a>的小尺寸和大尺寸，<br/>以及附帶平台的蛋筒式鎖鞋踏板<br/>Mallet E的3款車型。<br/>發表於2023年11月，當時說是一次性生產，<br/>我擔心日後想要的時候會買不到，<br/>所以當時就買了，但實際上供應商<br/>現在還有各款的少量庫存。<br/>Stamp 7的小或大型含稅定價為29,700日圓，<br/>Mallet E含稅定價為30,800日圓，<br/>用這兩者按鎖鞋功能有無來比較本來就不太合適，<br/>但稅前定價差了1,000日圓。<br/><br/>我查了一下標準款相比之下<br/>「Topo版本溢價」究竟是多少，<br/>發現標準款本身從2023年開始就漲價了，<br/>所以Stamp 7小或大型現在的含稅定價是32,600日圓，<br/>再加上那些拋光處理款的<br/>含稅定價為34,800日圓，<br/>Mallet E標準款的<br/>含稅定價也是34,800日圓，<br/>結果反而是以當時定價販售的<br/>限量款更便宜這種<br/>莫名其妙的情況。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2504amx16.jpg" target="_blank"><img alt="RIMG2504amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2504amx16s.jpg" width="320"/></a><br/>↑地形圖設計<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2509amx16.jpg" target="_blank"><img alt="RIMG2509amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2509amx16s.jpg" width="320"/></a><br/>Mallet E在同廠踏板中<br/>踏板軸的長度屬於長軸規格，<br/>所以我進了售後的短軸套件。<br/>這樣曲柄臂踏板安裝面到<br/>鎖鞋機構中心的距離就<br/>大約和LOOK公路用踏板相同。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2512amx16.jpg" target="_blank"><img alt="RIMG2512amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2512amx16s.jpg" width="320"/></a><br/>↑比較起來是這樣<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2513amx16.jpg" target="_blank"><img alt="RIMG2513amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2513amx16s.jpg" width="320"/></a><br/>↑只換了一側的狀態<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2516amx16.jpg" target="_blank"><img alt="RIMG2516amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2516amx16s.jpg" width="320"/></a><br/>雖然叫軸（軸）套件，<br/>但還附送了替換軸承和橡膠密封圈等，<br/>成了翻新套件。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2514amx16.jpg" target="_blank"><img alt="RIMG2514amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2514amx16s.jpg" width="320"/></a><br/>↑踏板軸與曲柄接觸的部分<br/>刻著1條溝。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2515amx16.jpg" target="_blank"><img alt="RIMG2515amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2515amx16s.jpg" width="320"/></a><br/>↑另一側則沒有溝。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2544amx16.jpg" target="_blank"><img alt="RIMG2544amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2544amx16s.jpg" width="320"/></a><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2545amx16.jpg" target="_blank"><img alt="RIMG2545amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2545amx16s.jpg" width="320"/></a><br/>這是跨越廠商的踏板業界規則，<br/>「有溝的一側是左踏板」的意思。<br/>蛋筒式踏板從外觀上很難判斷左右，<br/>所以記住這點很有用。<br/>更換軸的時候也能通過注意<br/>有溝換有溝，無溝換無溝，<br/>來防止左右安裝錯誤。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2517amx16.jpg" target="_blank"><img alt="RIMG2517amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2517amx16s.jpg" width="320"/></a><br/>↑Mallet E附送的鞋釘。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2519amx16.jpg" target="_blank"><img alt="RIMG2519amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2519amx16s.jpg" width="320"/></a><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2520amx16.jpg" target="_blank"><img alt="RIMG2520amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2520amx16s.jpg" width="320"/></a><br/>刻有L和R，爪的形狀左右不對稱。<br/>這個鞋釘是左右各3°的<br/>6°浮動型，<br/>將標有R的裝在右鞋上<br/>用腳跟外側扭動動作會在15°時釋放，<br/>內側扭動動作則在20°時釋放。<br/>通常不會往內側扭，<br/>也就是說，R裝右邊、L裝左邊時是15°釋放，<br/>刻意反裝的話就變成20°釋放的設定。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2521amx16.jpg" target="_blank"><img alt="RIMG2521amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2521amx16s.jpg" width="320"/></a><br/>個人來說，我不需要浮動，<br/>所以買了售後的0°鞋釘。<br/>實際上，幾乎所有廠商都一樣，<br/>自稱0°也還是有微微的活動。<br/><br/>用舊款Delta鞋釘的LOOK踏板<br/>時，鞋側用黑色鞋釘<br/>踏板後部有旋鈕可以調整夾住鞋釘的<br/>舌狀零件的伸出量<br/>(像PP286或CX6等型號），<br/>旋鈕轉到零的情況最接近完全固定。<br/><br/>用Speedplay時，如果把鞋釘側可動域的止動螺釘<br/>前後都靠在C形環上的設定，<br/>好像能完全固定，<br/>但即便如此，鞋釘的爪和踏板爪槽之間<br/>（要求完全固定的程度來說）<br/>還是會有相當的晃動。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2522amx16.jpg" target="_blank"><img alt="RIMG2522amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2522amx16s.jpg" width="320"/></a><br/>為了區別，鞋釘是銀色的，<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2525amx16.jpg" target="_blank"><img alt="RIMG2525amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2525amx16s.jpg" width="320"/></a><br/>從0°固定扭動腳會在15°時釋放。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2532amx16.jpg" target="_blank"><img alt="RIMG2532amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2532amx16s.jpg" width="320"/></a><br/>↑這傢伙<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2533amx16.jpg" target="_blank"><img alt="RIMG2533amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2533amx16s.jpg" width="320"/></a><br/>鞋釘的爪形狀是左右對稱的，<br/>所以R貼左邊結果也不會改變，<br/>但沒理由特地反著來，<br/>所以R就裝右邊、L裝左邊。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2526amx16.jpg" target="_blank"><img alt="RIMG2526amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2526amx16s.jpg" width="320"/></a><br/>↑這和這次的事沒有關係，<br/>但是用蛋筒式踏板和已經買好的公路三孔鞋搭配的<br/>鞋釘套件。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2527amx16.jpg" target="_blank"><img alt="RIMG2527amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2527amx16s.jpg" width="320"/></a><br/>↑單側鞋釘的金屬部分打著點子，<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2528amx16.jpg" target="_blank"><img alt="RIMG2528amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2528amx16s.jpg" width="320"/></a><br/>現行款是2個點子，<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2529amx16.jpg" target="_blank"><img alt="RIMG2529amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2529amx16s.jpg" width="320"/></a><br/>附送的說明書還是舊版的1個點子。<br/>無論如何，有點子的鞋釘貼右腳<br/>就是15°釋放，<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2530amx16.jpg" target="_blank"><img alt="RIMG2530amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2530amx16s.jpg" width="320"/></a><br/>反裝的話就是20°釋放，<br/>和標準鞋釘的規格相同。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2531amx16.jpg" target="_blank"><img alt="RIMG2531amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2531amx16s.jpg" width="320"/></a><br/>浮動也是標準的6°，<br/>但這個鞋釘套件專用的鞋釘金屬部分寬度較窄，<br/>所以無法更換鞋釘金屬部分<br/>或是換成0°鞋釘。<br/><br/>順便說一下，這個怎麼固定在鞋的3個孔上呢？<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2551amx16.jpg" target="_blank"><img alt="RIMG2551amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2551amx16s.jpg" width="320"/></a><br/>↑像這樣橡膠部分能卸下來。<br/><br/>LOOK公司非OEM的，<br/>最初shimano原廠的公路鎖鞋踏板<br/>是SPD二孔規格的，Dura-Ace的踏板型號為<br/>PD-7410。<br/>用的鞋釘是SM-SH71，<br/>鞋釘金屬部分的左右有著<br/>象徵性的走路用浮筒。<br/><br/>Crank Brothers以前出過的<br/>SPD二孔用公路鞋釘<br/>看起來也差不多。<br/>過去即使是公路用走路不便的鞋底，<br/>也經常同時備有LOOK三孔和SPD二孔，<br/>所以能用，但<br/>最近的公路鞋大多只有LOOK三孔，<br/>所以走路用橡膠的面積增加了，<br/>看來是改款了。<br/>廉價款常見的尼龍鞋底鞋搭配<br/>這個鞋釘套件的話，<br/>即使是公路鞋也會變成企鵝步態，<br/>不過還勉強能走。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2535amx16.jpg" target="_blank"><img alt="RIMG2535amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2535amx16s.jpg" width="320"/></a><br/>關於鞋子，根據我的經驗，<br/>我穿Sidi的Mega或Shimano寬版<br/>可以直接穿，無需改造。<br/>我之前把所有SPD二孔的鞋都處理了，<br/>但最近試穿了客人說買了但沒穿過的鞋，<br/>標示尺寸和我平時穿的尺寸一樣，<br/>長度合適但橫幅有點緊，<br/>所以拿到鞋後用鞋撐機拉寬了。<br/>上面圖片右鞋小指橫邊的不自然隆起<br/>就是改造中的狀態。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2537amx16.jpg" target="_blank"><img alt="RIMG2537amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2537amx16s.jpg" width="320"/></a><br/>dhb是那個著名自行車購物網Wiggle的服裝品牌。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2536amx16.jpg" target="_blank"><img alt="RIMG2536amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2536amx16s.jpg" width="320"/></a><br/>↑小指橫邊從內側相當地膨脹，<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2541amx16.jpg" target="_blank"><img alt="RIMG2541amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2541amx16s.jpg" width="320"/></a><br/>即使拉出鞋撐，<br/>形狀變化也有一些留下來。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2538amx16.jpg" target="_blank"><img alt="RIMG2538amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2538amx16s.jpg" width="320"/></a><br/>↑鞋撐機<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2539amx16.jpg" target="_blank"><img alt="RIMG2539amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2539amx16s.jpg" width="320"/></a><br/>很多半孔像香菇原木一樣，<br/>可以在任意位置裝上數種<br/>從圓形到長圓形的<br/>膨脹適配器，<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2540amx16.jpg" target="_blank"><img alt="RIMG2540amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2540amx16s.jpg" width="320"/></a><br/>像巴爾坦星人的夾子一樣<br/>在鞋內吱呀吱呀地開啟。<br/>(V)o¥o(V) ｆｏｕｆｏｕｆｏｕｆｏ<br/>↑順便說一下，這個用IME輸入法能用「ばるたん」變換出來。<br/><br/>當然，沒有膨脹適配器也可以，<br/>單純只拉寬橫幅。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2542amx16.jpg" target="_blank"><img alt="RIMG2542amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2542amx16s.jpg" width="320"/></a><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2543amx16.jpg" target="_blank"><img alt="RIMG2543amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2543amx16s.jpg" width="320"/></a><br/>鞋帶改成了Salomon出的<br/>「QuickLace」。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2553amx16.jpg" target="_blank"><img alt="RIMG2553amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2553amx16s.jpg" width="320"/></a><br/>裝好踏板了。<br/>因為是打算當「寺社閒逛模式」用，<br/>平時可能會再換回公路踏板。<br/>需要檢查一下座管高度的差異。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2554amx16.jpg" target="_blank"><img alt="RIMG2554amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2554amx16s.jpg" width="320"/></a><br/>調整鞋釘的左右位置，<br/>鞋子盡可能貼近曲柄側，<br/>也就是盡可能窄的距離時<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2556amx16.jpg" target="_blank"><img alt="RIMG2556amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG2556amx16s.jpg" width="320"/></a><br/>和曲柄臂的間隙很充足。<br/>鞋釘雖然有細微晃動，但是0°固定，<br/>SPD二孔即使鞋釘有點歪斜<br/>腳的角度也可能感覺不直，<br/>所以調整很講究。<br/>前面那張圖也有點歪斜，<br/>等等要修正。<br/><br/>重要的不是「腳的角度是否真的直」，<br/>而是「腳的角度是否感覺直」。<br/>我的情況是用固定鞋釘的話，右鞋腳跟<br/>需要調成極微地向內側傾斜<br/>（鞋本身不直，但體感上直）<br/>不然100km以內膝蓋就會爆炸。<br/>角度調對的話，隨著騎行距離<br/>膝蓋就不會爆炸。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

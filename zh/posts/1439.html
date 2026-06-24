@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/1439.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Headphones &amp; Watches</p>
     <h1>我買了 Fossil 的 GRANT 手錶</h1>
     <p class="post-meta">September 27, 2014</p>
+    <div class="post-body"><div class="entrytext">我買了一只 Fossil 的 GRANT 手錶。<br/>Fossil 是一個以手錶為中心的美國時尚品牌，<br/>除了手錶外，還經營皮製包包和錢包。<br/>如果想以手錶為中心開展時尚品牌業務，<br/>皮製小物件似乎是不錯的搭配，<br/>丹麥的 Skagen（瑞典設計品牌）也在本國採取類似的商品展開。<br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04726amx3.jpg" target="_blank"><img alt="DSC04726amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04726amx3s.jpg" width="300"/></a><br/>我買的確切來說是 GRANT 的計時碼錶款。<br/>石英計時碼錶的無日期（不帶日期）款其實是非常罕見的。<br/><br/>GRANT 的三個副錶盤中，<br/>3 點位置是 24 小時計。實際上只是裝飾。<br/>（我以為這是無日期計時碼錶呢，<br/>結果發現有幾個例子 3 點位置其實是 31 日期顯示）<br/>6 點位置有 60 秒計，9 點位置有 30 分計。<br/>啟動計時碼錶後如果經過了 30 分鐘，<br/>計時就會停止而不是繼續運行。<br/>這大概也是為了防止計時碼錶一直運轉的預防措施。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04727amx3.jpg" target="_blank"><img alt="DSC04727amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04727amx3s.jpg" width="300"/></a><br/>↑錶面採用羅馬數字，但按照手錶的慣例，<br/>4 點不是「IV」而是「IIII」表記。<br/><br/>時針和分針尖端有夜光塗料，<br/>但可能是品質差或塗得太薄，在暗處很快就會消退。<br/><br/>30 分計的刻度是 2.5 分為一檔，所以視認性非常差，<br/>比如說要判別是 16 分還是 17 分就很困難。<br/>計時碼錶的開關手感比我預期的要舒服得多。<br/>要是感覺呆滯的話，我大概就不會買了。<br/>另外，有金屬錶帶和皮錶帶款，<br/>這個金屬錶帶的錶節精度不太好，晃動比較大。<br/>戴在手腕上幾乎察覺不到，但單獨拿起手錶，<br/>輕輕左右搖晃的話就很明顯能感覺到。<br/>用 16000 日幣買的手錶挑毛病好像也不太合適，<br/>但既然有很多手錶做對比，就免不了會在意。<br/>金屬錶帶除了增減錶節外無法微調，<br/>但恰好在某個節數對我來說剛剛好，既不過緊，也完全不滑落，<br/>這點我非常滿意。<br/><br/>Fossil 手錶休閒款的總體趨勢就是「大錶」。<br/>錶殼直徑 44mm 的款式很多，<br/>但我不太喜歡太大的。<br/>雖然有很多款式與 Diesel（迪賽）相似，<br/>但據說 Diesel 的手錶其實是 Fossil 代工的，<br/>所以風格相似也就說得通了。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/FS4944amx3.jpg" target="_blank"><img alt="FS4944amx3.jpg" border="0" height="300" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/FS4944amx3s.jpg" width="300"/></a><br/>↑GRANT 的三針帶小秒盤款。<br/>錶殼直徑 44mm。<br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/FS4736amx3.jpg" target="_blank"><img alt="FS4736amx3.jpg" border="0" height="300" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/FS4736amx3s.jpg" width="300"/></a><br/>↑它的計時碼錶款。<br/>錶殼直徑也是 44mm。<br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/grant38amx3.jpg" target="_blank"><img alt="grant38amx3.jpg" border="0" height="300" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/grant38amx3s.jpg" width="195"/></a><br/>↑這是 GRANT 的 38mm 直徑款。<br/>雖然冷門，但 38mm 也在產品線中。<br/>從 III 時和 XI 時被副錶盤覆蓋的部分可以清楚看出<br/>尺寸差異。<br/>Fossil 本國網站和日本網站的產品展開不同，<br/>這款黑色 GRANT 38mm 在日本沒有銷售。<br/>我店鋪步行範圍內有 Fossil 品牌店，<br/>那裡也沒有 GRANT 的 38mm 款。<br/>我這次買的 GRANT 是 38mm 直徑的，<br/>但這是 Tick Tack（鐵克達克，日本手錶專賣店）的特別訂製款。<br/><br/>然後我突然想到……<br/>如果副錶盤的軸距改變，機芯就無法共用，<br/>那麼 44mm 款和 38mm 款是不是用同樣的機芯，<br/>正因為如此錶面設計才不同？<br/>這個疑問就產生了。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04739amx3.jpg" target="_blank"><img alt="DSC04739amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04739amx3s.jpg" width="300"/></a><br/>於是我測量了我的自稱 38mm 的 GRANT 到底哪裡是 38mm，<br/>結果發現除了龍頭外的錶殼直徑就是如此（通常都是這樣）。<br/>因為廠商的圖片尺寸不是實際尺寸，<br/>我把 38mm 直徑的錶殼調整為 380 像素，<br/>44mm 直徑的錶殼調整為 440 像素，<br/>然後疊在一起……<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/fossil01amx3.jpg" target="_blank"><img alt="fossil01amx3.jpg" border="0" height="300" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/fossil01amx3s.jpg" width="251"/></a><br/>軸距完全吻合。真是偷工減料啊！<br/>不過也算不上什麼大事啦。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04735amx3.jpg" target="_blank"><img alt="DSC04735amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04735amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04737amx3.jpg" target="_blank"><img alt="DSC04737amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04737amx3s.jpg" width="300"/></a><br/>另外還有件事讓我在意，就是斜著看的可視性很差。<br/>高級手錶常見的那種穹頂型鏡面……不，這只是個凸透鏡，<br/>稍微斜著一點就看不清錶面了。<br/>我還有曲率更大的鏡面的手錶，<br/>從斜角也能清楚看到錶面，<br/>所以這不是這種鏡面的特有問題。<br/><br/>Fossil 的網站是在 www.fossil 後面接 .com 還是 .co.jp<br/>來區分英文版和日文版，<br/>比如 GRANT 計時碼錶金屬錶帶款<br/>本國 125 美元，日本 20520 日幣（稅別 19000 日幣），<br/>這樣一來就能輕鬆看出內外價格差，對在意這個的人來說<br/>可能是個不太好看的資訊。<br/><br/>以上，雖然寫得好像在貶低一樣，<br/>但我其實挺喜歡它的。<br/>至少在找無日期計時碼錶的範圍內，<br/>這是我覺得最好的。<br/>手錶不只是看價格。<br/>買自己喜歡的就行了。<br/><br/>上次在留言中有人推薦我 Sinn（辛恩，德國工具手錶品牌）的手錶，<br/>確實很帥！<br/>左邊龍頭的手錶我不太擅長，但 EZM 讓我眼前一亮。<br/><br/>Milgauss（勞力士防磁錶）？那是什麼東西……<br/>我還特地把閃電秒針拍進去了，卻裝作不知道，這也確實有點過分，<br/>但我就當沒看到吧。<br/>日本對勞力士（勞力士）的偏見確實是非常厲害的。<br/><br/>Ventura（汉密尔顿 Ventura 雙鷹）的話，計時款「Chrono」和機械款「Auto」<br/>在設計上遠離了原版 Ventura，<br/>所以我更喜歡普通的 Ventura。<br/>還有 Ventura XXL 這種款式，那真是超級大錶。<br/>第一次看到實物時吃了一驚。<br/>Ventura（普通款）的現行款是石英式，<br/>與原版的電動式不同，<br/>但外觀幾乎一樣。很難相信這是約 60 年前的設計。<br/>對於稍微了解手錶的人而言，「漢密爾頓的～」這種只用型號名稱來稱呼的手錶<br/>應該是比較便宜就能入手的一類吧。<br/>稍微有點在意的是，我擁有的是最新款，<br/>但前一個版本在 6 點刻度兩側<br/>有「SWISS MADE」的標誌印在錶面上。<br/>現款裡面也有 SWISS MADE 標記，不過在錶殼底蓋，<br/>簡潔的錶面會不會更好，我到現在還在糾結。<br/>（買的時候前款也在眼前，可以選擇）<br/><br/>最近我開始對 Tudor（帝舵）的 Heritage Black Bay（海灣黑盤）感興趣。<br/>大概不會買吧。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">我買了一只 Fossil 的 GRANT 手錶。<br/>Fossil 是一個以手錶為中心的美國時尚品牌，<br/>除了手錶外，還經營皮製包包和錢包。<br/>如果想以手錶為中心開展時尚品牌業務，<br/>皮製小物件似乎是不錯的搭配，<br/>丹麥的 Skagen（瑞典設計品牌）也在本國採取類似的商品展開。<br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04726amx3.jpg" target="_blank"><img alt="DSC04726amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04726amx3s.jpg" width="300"/></a><br/>我買的確切來說是 GRANT 的計時碼錶款。<br/>石英計時碼錶的無日期（不帶日期）款其實是非常罕見的。<br/><br/>GRANT 的三個副錶盤中，<br/>3 點位置是 24 小時計。實際上只是裝飾。<br/>（我以為這是無日期計時碼錶呢，<br/>結果發現有幾個例子 3 點位置其實是 31 日期顯示）<br/>6 點位置有 60 秒計，9 點位置有 30 分計。<br/>啟動計時碼錶後如果經過了 30 分鐘，<br/>計時就會停止而不是繼續運行。<br/>這大概也是為了防止計時碼錶一直運轉的預防措施。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04727amx3.jpg" target="_blank"><img alt="DSC04727amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04727amx3s.jpg" width="300"/></a><br/>↑錶面採用羅馬數字，但按照手錶的慣例，<br/>4 點不是「IV」而是「IIII」表記。<br/><br/>時針和分針尖端有夜光塗料，<br/>但可能是品質差或塗得太薄，在暗處很快就會消退。<br/><br/>30 分計的刻度是 2.5 分為一檔，所以視認性非常差，<br/>比如說要判別是 16 分還是 17 分就很困難。<br/>計時碼錶的開關手感比我預期的要舒服得多。<br/>要是感覺呆滯的話，我大概就不會買了。<br/>另外，有金屬錶帶和皮錶帶款，<br/>這個金屬錶帶的錶節精度不太好，晃動比較大。<br/>戴在手腕上幾乎察覺不到，但單獨拿起手錶，<br/>輕輕左右搖晃的話就很明顯能感覺到。<br/>用 16000 日幣買的手錶挑毛病好像也不太合適，<br/>但既然有很多手錶做對比，就免不了會在意。<br/>金屬錶帶除了增減錶節外無法微調，<br/>但恰好在某個節數對我來說剛剛好，既不過緊，也完全不滑落，<br/>這點我非常滿意。<br/><br/>Fossil 手錶休閒款的總體趨勢就是「大錶」。<br/>錶殼直徑 44mm 的款式很多，<br/>但我不太喜歡太大的。<br/>雖然有很多款式與 Diesel（迪賽）相似，<br/>但據說 Diesel 的手錶其實是 Fossil 代工的，<br/>所以風格相似也就說得通了。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/FS4944amx3.jpg" target="_blank"><img alt="FS4944amx3.jpg" border="0" height="300" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/FS4944amx3s.jpg" width="300"/></a><br/>↑GRANT 的三針帶小秒盤款。<br/>錶殼直徑 44mm。<br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/FS4736amx3.jpg" target="_blank"><img alt="FS4736amx3.jpg" border="0" height="300" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/FS4736amx3s.jpg" width="300"/></a><br/>↑它的計時碼錶款。<br/>錶殼直徑也是 44mm。<br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/grant38amx3.jpg" target="_blank"><img alt="grant38amx3.jpg" border="0" height="300" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/grant38amx3s.jpg" width="195"/></a><br/>↑這是 GRANT 的 38mm 直徑款。<br/>雖然冷門，但 38mm 也在產品線中。<br/>從 III 時和 XI 時被副錶盤覆蓋的部分可以清楚看出<br/>尺寸差異。<br/>Fossil 本國網站和日本網站的產品展開不同，<br/>這款黑色 GRANT 38mm 在日本沒有銷售。<br/>我店鋪步行範圍內有 Fossil 品牌店，<br/>那裡也沒有 GRANT 的 38mm 款。<br/>我這次買的 GRANT 是 38mm 直徑的，<br/>但這是 Tick Tack（鐵克達克，日本手錶專賣店）的特別訂製款。<br/><br/>然後我突然想到……<br/>如果副錶盤的軸距改變，機芯就無法共用，<br/>那麼 44mm 款和 38mm 款是不是用同樣的機芯，<br/>正因為如此錶面設計才不同？<br/>這個疑問就產生了。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04739amx3.jpg" target="_blank"><img alt="DSC04739amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04739amx3s.jpg" width="300"/></a><br/>於是我測量了我的自稱 38mm 的 GRANT 到底哪裡是 38mm，<br/>結果發現除了龍頭外的錶殼直徑就是如此（通常都是這樣）。<br/>因為廠商的圖片尺寸不是實際尺寸，<br/>我把 38mm 直徑的錶殼調整為 380 像素，<br/>44mm 直徑的錶殼調整為 440 像素，<br/>然後疊在一起……<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/fossil01amx3.jpg" target="_blank"><img alt="fossil01amx3.jpg" border="0" height="300" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/fossil01amx3s.jpg" width="251"/></a><br/>軸距完全吻合。真是偷工減料啊！<br/>不過也算不上什麼大事啦。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04735amx3.jpg" target="_blank"><img alt="DSC04735amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04735amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04737amx3.jpg" target="_blank"><img alt="DSC04737amx3.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC04737amx3s.jpg" width="300"/></a><br/>另外還有件事讓我在意，就是斜著看的可視性很差。<br/>高級手錶常見的那種穹頂型鏡面……不，這只是個凸透鏡，<br/>稍微斜著一點就看不清錶面了。<br/>我還有曲率更大的鏡面的手錶，<br/>從斜角也能清楚看到錶面，<br/>所以這不是這種鏡面的特有問題。<br/><br/>Fossil 的網站是在 www.fossil 後面接 .com 還是 .co.jp<br/>來區分英文版和日文版，<br/>比如 GRANT 計時碼錶金屬錶帶款<br/>本國 125 美元，日本 20520 日幣（稅別 19000 日幣），<br/>這樣一來就能輕鬆看出內外價格差，對在意這個的人來說<br/>可能是個不太好看的資訊。<br/><br/>以上，雖然寫得好像在貶低一樣，<br/>但我其實挺喜歡它的。<br/>至少在找無日期計時碼錶的範圍內，<br/>這是我覺得最好的。<br/>手錶不只是看價格。<br/>買自己喜歡的就行了。<br/><br/>上次在留言中有人推薦我 Sinn（辛恩，德國工具手錶品牌）的手錶，<br/>確實很帥！<br/>左邊龍頭的手錶我不太擅長，但 EZM 讓我眼前一亮。<br/><br/>Milgauss（勞力士防磁錶）？那是什麼東西……<br/>我還特地把閃電秒針拍進去了，卻裝作不知道，這也確實有點過分，<br/>但我就當沒看到吧。<br/>日本對勞力士（勞力士）的偏見確實是非常厲害的。<br/><br/>Ventura（汉密尔顿 Ventura 雙鷹）的話，計時款「Chrono」和機械款「Auto」<br/>在設計上遠離了原版 Ventura，<br/>所以我更喜歡普通的 Ventura。<br/>還有 Ventura XXL 這種款式，那真是超級大錶。<br/>第一次看到實物時吃了一驚。<br/>Ventura（普通款）的現行款是石英式，<br/>與原版的電動式不同，<br/>但外觀幾乎一樣。很難相信這是約 60 年前的設計。<br/>對於稍微了解手錶的人而言，「漢密爾頓的～」這種只用型號名稱來稱呼的手錶<br/>應該是比較便宜就能入手的一類吧。<br/>稍微有點在意的是，我擁有的是最新款，<br/>但前一個版本在 6 點刻度兩側<br/>有「SWISS MADE」的標誌印在錶面上。<br/>現款裡面也有 SWISS MADE 標記，不過在錶殼底蓋，<br/>簡潔的錶面會不會更好，我到現在還在糾結。<br/>（買的時候前款也在眼前，可以選擇）<br/><br/>最近我開始對 Tudor（帝舵）的 Heritage Black Bay（海灣黑盤）感興趣。<br/>大概不會買吧。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">Related Products on Amazon</p>
       <ul>

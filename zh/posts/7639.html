@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/7639.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>宗達先生宗達先生</h1>
     <p class="post-meta">September 12, 2025</p>
+    <div class="post-body"><div class="entrytext">從客人那裡接收了Campagnolo（義大利自行車零件廠商）的Zonda前後輪<br/>2對進行保養。<br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3453amx16.jpg" target="_blank"><img alt="RIMG3453amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3453amx16s.jpg" width="320"/></a><br/>兩對都不是2WAY-FIT規格，<br/>而是C15窄框圈的最後一代產品。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3454amx16.jpg" target="_blank"><img alt="RIMG3454amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3454amx16s.jpg" width="320"/></a><br/>↑畫面前方的2條<br/>看起來像是未使用品，是非常漂亮的新品，<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3455amx16.jpg" target="_blank"><img alt="RIMG3455amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3455amx16s.jpg" width="320"/></a><br/>↑後方的2條則有明顯的使用痕跡。<br/><br/>兩對都希望進行檢查，<br/>但對於使用感較重的Zonda，<br/>客人說可以由我判斷是否更換框圈，<br/>如果要換的話就用C17框圈<br/>重新組裝。<br/>但Zonda框圈含稅定價<br/>大約29000～30000日圓上下，<br/>而且沒有發現需要更換的<br/>框圈凹陷或損傷，<br/>所以我判斷框圈保持原樣。<br/>客人的要求改成希望我<br/>能把框圈煞車區域<br/>清潔乾淨。<br/><br/>我很久沒寫過這種事了，<br/>但這叫做「忍法Yahoo拍賣的術」，<br/>通過讓輪組的使用痕跡接近新品<br/>來在拍賣會上提高評估價格。<br/>所以對於計畫繼續使用的輪組來說<br/>意義不大（雖然施工直後<br/>煞車會更好用一陣子），<br/>但既然客人有此要求，<br/>那就動手做吧。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3456amx16.jpg" target="_blank"><img alt="RIMG3456amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3456amx16s.jpg" width="320"/></a><br/>首先從看起來幾乎未使用的前輪開始。<br/>煞車區域很乾淨，<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3462amx16.jpg" target="_blank"><img alt="RIMG3462amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3462amx16s.jpg" width="320"/></a><br/>但只要稍微使用過，<br/>浮動飛輪體的花鍵部分<br/>就會留下輕微的使用痕跡，<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3457amx16.jpg" target="_blank"><img alt="RIMG3457amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3457amx16s.jpg" width="320"/></a><br/>還有球座調整螺帽固定螺栓的六角孔，<br/>還有軸端邊緣的齒紋完全沒有污垢，<br/>所以雖然零件有安裝過的履歷，<br/>但最多只是裝在展示車上，<br/>應該是未使用、未走行的狀態。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3458amx16.jpg" target="_blank"><img alt="RIMG3458amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3458amx16s.jpg" width="320"/></a><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3459amx16.jpg" target="_blank"><img alt="RIMG3459amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3459amx16s.jpg" width="320"/></a><br/>暫時中心完全精準，<br/>輪圈跳動也幾乎沒有，修圈後中心還是精準，<br/>因為修圈前後狀態相同，<br/>所以沒有拍修圈後的中心尺的照片。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3461amx16.jpg" target="_blank"><img alt="RIMG3461amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3461amx16s.jpg" width="320"/></a><br/>因為有裝氣嘴蓋，<br/>所以我按照原樣也裝上氣嘴蓋，<br/>但它已經破裂了，所以換成新品。<br/>也就這麼多可寫的。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3463amx16.jpg" target="_blank"><img alt="RIMG3463amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3463amx16s.jpg" width="320"/></a><br/>接著是它的搭檔後輪。<br/>這個也幾乎沒有使用痕跡。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3464amx16.jpg" target="_blank"><img alt="RIMG3464amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3464amx16s.jpg" width="320"/></a><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3465amx16.jpg" target="_blank"><img alt="RIMG3465amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3465amx16s.jpg" width="320"/></a><br/>咦？中心沒有偏移。<br/>我原本預估經過10年以上的閒置，<br/>框圈應該會向右側偏移1～2張紙的距離。<br/>相比前輪，細微的跳動比較多，<br/>但修圈後也沒有中心偏移，<br/>因為修圈前後狀態相同，<br/>所以只拍了暫時中心的照片。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3466amx16.jpg" target="_blank"><img alt="RIMG3466amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3466amx16s.jpg" width="320"/></a><br/>接著，是有使用感的前輪。<br/>當車輪轂的標誌正向可見時，<br/>球座調整螺帽在左側。<br/>之後因為要分解非One規格的轂內部，<br/>所以要記住這一點。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3467amx16.jpg" target="_blank"><img alt="RIMG3467amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3467amx16s.jpg" width="320"/></a><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3468amx16.jpg" target="_blank"><img alt="RIMG3468amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3468amx16s.jpg" width="320"/></a><br/>中心沒有偏移。<br/>有輕微的跳動，<br/>但相對於外觀的使用感，結果還不錯。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3471amx16.jpg" target="_blank"><img alt="RIMG3471amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3471amx16s.jpg" width="320"/></a><br/>忍法Yahoo拍賣的術進行中…<br/>用橡膠砂輪蘸水擦拭煞車區域，<br/>畫面中的泡沫是<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Wako%27s+neutral+detergent+bike+cleaning" target="_blank" rel="noopener sponsored" class="amz-inline">Wako's</a>（日本汽車護理用品廠商）<br/>稀釋後使用的中性洗劑。<br/>不用也可以，但明顯污垢脫落得更好，<br/>所以我一直在用。雖然也有個缺點就是<br/>會讓煞車區域變得難以看清。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3472amx16.jpg" target="_blank"><img alt="RIMG3472amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3472amx16s.jpg" width="320"/></a><br/>↑畫面右半部分是施工後的狀態。<br/>藍色的遮蔽膠帶是貼在氣嘴孔上<br/>以防止框圈內進水。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3470amx16.jpg" target="_blank"><img alt="RIMG3470amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3470amx16s.jpg" width="320"/></a><br/>施工前<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3473amx16.jpg" target="_blank"><img alt="RIMG3473amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3473amx16s.jpg" width="320"/></a><br/>施工後<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3474amx16.jpg" target="_blank"><img alt="RIMG3474amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3474amx16s.jpg" width="320"/></a><br/>標記好左右方向後<br/>分解了非One規格的轂內部進行清洗。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3475amx16.jpg" target="_blank"><img alt="RIMG3475amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3475amx16s.jpg" width="320"/></a><br/>只有右側的球座被換成銀色的。<br/>這是因為同一品號的鋼珠／USB用滾珠軸承<br/>從黑色變更為銀色，<br/>銀色的虫蝕發生率<br/>（特別是USB的情況下）明顯低很多。<br/>說起來，那才是實施仕樣變更的真正原因。<br/><br/>以氣嘴套筒等為例，<br/>Campagnolo偶爾會做<br/>「不變更品號的仕樣變更」。<br/>通過不變更品號，<br/>舊仕樣的產品就無法被特別訂購，<br/>隨著時間推移，最終會變成<br/>「咦？虫蝕容易的<br/>黑色滾珠軸承？有過這種東西嗎？」<br/>「咦？氣嘴難以插入<br/>有時會掉出來丟失的氣嘴套筒？<br/>根本不存在啦」<br/>這樣的局面。<br/><br/>這次的情況是黑色球座沒有虫蝕<br/>轉動也很順暢，<br/>但從長遠來看，<br/>左右球座硬度一致比較好，<br/>所以我把左邊的黑色球座也換成銀色的。<br/>結果因為新品特有的接觸痕跡還沒形成<br/>出現了輕微的濁感，<br/>短期來看轂的轉動性能下降了。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3476amx16.jpg" target="_blank"><img alt="RIMG3476amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3476amx16s.jpg" width="320"/></a><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3477amx16.jpg" target="_blank"><img alt="RIMG3477amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3477amx16s.jpg" width="320"/></a><br/>重新組裝轂並完成修圈後<br/>用中心尺檢查時<br/>沒有發生中心偏移。<br/>對比上面原始狀態的圖像，<br/>可以看出轂軸周圍的零件<br/>因為清洗變得乾淨了。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3478amx16.jpg" target="_blank"><img alt="RIMG3478amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3478amx16s.jpg" width="320"/></a><br/>最後是它的搭檔後輪。<br/>雖然不是功能部品（沒有也不會困擾），<br/>但前輪右側安裝防塵蓋的地方零件丟失了，<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3480amx16.jpg" target="_blank"><img alt="RIMG3480amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3480amx16s.jpg" width="320"/></a><br/>所以我補充了。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3479amx16.jpg" target="_blank"><img alt="RIMG3479amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3479amx16s.jpg" width="320"/></a><br/>轂體側的零件沒有問題，<br/>浮動飛輪的爪彈簧也檢查過了<br/>不需要更換。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3497amx16.jpg" target="_blank"><img alt="RIMG3497amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3497amx16s.jpg" width="320"/></a><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3498amx16.jpg" target="_blank"><img alt="RIMG3498amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3498amx16s.jpg" width="320"/></a><br/>↑忘記拍暫時中心的照片了，所以這是施工後的圖像，<br/>暫時中心碰巧完全精準→<br/>但在這4條中<br/>橫向跳動最多→<br/>只專注修圈的話<br/>框圈一度向左側偏移→<br/>通過浮動飛輪側的增緊調整中心<br/>這樣的內容。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3481amx16.jpg" target="_blank"><img alt="RIMG3481amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3481amx16s.jpg" width="320"/></a><br/>↑施工後的狀態<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3483amx16.jpg" target="_blank"><img alt="RIMG3483amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3483amx16s.jpg" width="320"/></a><br/>↑幾乎未使用的前後輪<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3484amx16.jpg" target="_blank"><img alt="RIMG3484amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3484amx16s.jpg" width="320"/></a><br/>↑使用感很重的前後輪<br/>從先前提供的施工前／施工後圖像開始，<br/>我又更加仔細地磨拭了煞車區域。<br/>就煞車區域來說，<br/><br/>美品☆只跑了1000km左右<br/><br/>這樣的說法應該能站得住腳，<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3485amx16.jpg" target="_blank"><img alt="RIMG3485amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3485amx16s.jpg" width="320"/></a><br/>但貼紙都破爛了。<br/>與其保留不如乾脆剝掉可能更好，<br/>但我會先問問客人。<br/>只是剝掉誰都會，<br/>但如果膠水殘留在框圈上，<br/>除非知道處理方法，<br/>不然會非常難清除。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">從客人那裡接收了Campagnolo（義大利自行車零件廠商）的Zonda前後輪<br/>2對進行保養。<br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3453amx16.jpg" target="_blank"><img alt="RIMG3453amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3453amx16s.jpg" width="320"/></a><br/>兩對都不是2WAY-FIT規格，<br/>而是C15窄框圈的最後一代產品。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3454amx16.jpg" target="_blank"><img alt="RIMG3454amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3454amx16s.jpg" width="320"/></a><br/>↑畫面前方的2條<br/>看起來像是未使用品，是非常漂亮的新品，<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3455amx16.jpg" target="_blank"><img alt="RIMG3455amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3455amx16s.jpg" width="320"/></a><br/>↑後方的2條則有明顯的使用痕跡。<br/><br/>兩對都希望進行檢查，<br/>但對於使用感較重的Zonda，<br/>客人說可以由我判斷是否更換框圈，<br/>如果要換的話就用C17框圈<br/>重新組裝。<br/>但Zonda框圈含稅定價<br/>大約29000～30000日圓上下，<br/>而且沒有發現需要更換的<br/>框圈凹陷或損傷，<br/>所以我判斷框圈保持原樣。<br/>客人的要求改成希望我<br/>能把框圈煞車區域<br/>清潔乾淨。<br/><br/>我很久沒寫過這種事了，<br/>但這叫做「忍法Yahoo拍賣的術」，<br/>通過讓輪組的使用痕跡接近新品<br/>來在拍賣會上提高評估價格。<br/>所以對於計畫繼續使用的輪組來說<br/>意義不大（雖然施工直後<br/>煞車會更好用一陣子），<br/>但既然客人有此要求，<br/>那就動手做吧。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3456amx16.jpg" target="_blank"><img alt="RIMG3456amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3456amx16s.jpg" width="320"/></a><br/>首先從看起來幾乎未使用的前輪開始。<br/>煞車區域很乾淨，<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3462amx16.jpg" target="_blank"><img alt="RIMG3462amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3462amx16s.jpg" width="320"/></a><br/>但只要稍微使用過，<br/>浮動飛輪體的花鍵部分<br/>就會留下輕微的使用痕跡，<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3457amx16.jpg" target="_blank"><img alt="RIMG3457amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3457amx16s.jpg" width="320"/></a><br/>還有球座調整螺帽固定螺栓的六角孔，<br/>還有軸端邊緣的齒紋完全沒有污垢，<br/>所以雖然零件有安裝過的履歷，<br/>但最多只是裝在展示車上，<br/>應該是未使用、未走行的狀態。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3458amx16.jpg" target="_blank"><img alt="RIMG3458amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3458amx16s.jpg" width="320"/></a><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3459amx16.jpg" target="_blank"><img alt="RIMG3459amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3459amx16s.jpg" width="320"/></a><br/>暫時中心完全精準，<br/>輪圈跳動也幾乎沒有，修圈後中心還是精準，<br/>因為修圈前後狀態相同，<br/>所以沒有拍修圈後的中心尺的照片。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3461amx16.jpg" target="_blank"><img alt="RIMG3461amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3461amx16s.jpg" width="320"/></a><br/>因為有裝氣嘴蓋，<br/>所以我按照原樣也裝上氣嘴蓋，<br/>但它已經破裂了，所以換成新品。<br/>也就這麼多可寫的。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3463amx16.jpg" target="_blank"><img alt="RIMG3463amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3463amx16s.jpg" width="320"/></a><br/>接著是它的搭檔後輪。<br/>這個也幾乎沒有使用痕跡。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3464amx16.jpg" target="_blank"><img alt="RIMG3464amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3464amx16s.jpg" width="320"/></a><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3465amx16.jpg" target="_blank"><img alt="RIMG3465amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3465amx16s.jpg" width="320"/></a><br/>咦？中心沒有偏移。<br/>我原本預估經過10年以上的閒置，<br/>框圈應該會向右側偏移1～2張紙的距離。<br/>相比前輪，細微的跳動比較多，<br/>但修圈後也沒有中心偏移，<br/>因為修圈前後狀態相同，<br/>所以只拍了暫時中心的照片。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3466amx16.jpg" target="_blank"><img alt="RIMG3466amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3466amx16s.jpg" width="320"/></a><br/>接著，是有使用感的前輪。<br/>當車輪轂的標誌正向可見時，<br/>球座調整螺帽在左側。<br/>之後因為要分解非One規格的轂內部，<br/>所以要記住這一點。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3467amx16.jpg" target="_blank"><img alt="RIMG3467amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3467amx16s.jpg" width="320"/></a><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3468amx16.jpg" target="_blank"><img alt="RIMG3468amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3468amx16s.jpg" width="320"/></a><br/>中心沒有偏移。<br/>有輕微的跳動，<br/>但相對於外觀的使用感，結果還不錯。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3471amx16.jpg" target="_blank"><img alt="RIMG3471amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3471amx16s.jpg" width="320"/></a><br/>忍法Yahoo拍賣的術進行中…<br/>用橡膠砂輪蘸水擦拭煞車區域，<br/>畫面中的泡沫是<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Wako%27s+neutral+detergent+bike+cleaning" target="_blank" rel="noopener sponsored" class="amz-inline">Wako's</a>（日本汽車護理用品廠商）<br/>稀釋後使用的中性洗劑。<br/>不用也可以，但明顯污垢脫落得更好，<br/>所以我一直在用。雖然也有個缺點就是<br/>會讓煞車區域變得難以看清。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3472amx16.jpg" target="_blank"><img alt="RIMG3472amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3472amx16s.jpg" width="320"/></a><br/>↑畫面右半部分是施工後的狀態。<br/>藍色的遮蔽膠帶是貼在氣嘴孔上<br/>以防止框圈內進水。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3470amx16.jpg" target="_blank"><img alt="RIMG3470amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3470amx16s.jpg" width="320"/></a><br/>施工前<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3473amx16.jpg" target="_blank"><img alt="RIMG3473amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3473amx16s.jpg" width="320"/></a><br/>施工後<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3474amx16.jpg" target="_blank"><img alt="RIMG3474amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3474amx16s.jpg" width="320"/></a><br/>標記好左右方向後<br/>分解了非One規格的轂內部進行清洗。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3475amx16.jpg" target="_blank"><img alt="RIMG3475amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3475amx16s.jpg" width="320"/></a><br/>只有右側的球座被換成銀色的。<br/>這是因為同一品號的鋼珠／USB用滾珠軸承<br/>從黑色變更為銀色，<br/>銀色的虫蝕發生率<br/>（特別是USB的情況下）明顯低很多。<br/>說起來，那才是實施仕樣變更的真正原因。<br/><br/>以氣嘴套筒等為例，<br/>Campagnolo偶爾會做<br/>「不變更品號的仕樣變更」。<br/>通過不變更品號，<br/>舊仕樣的產品就無法被特別訂購，<br/>隨著時間推移，最終會變成<br/>「咦？虫蝕容易的<br/>黑色滾珠軸承？有過這種東西嗎？」<br/>「咦？氣嘴難以插入<br/>有時會掉出來丟失的氣嘴套筒？<br/>根本不存在啦」<br/>這樣的局面。<br/><br/>這次的情況是黑色球座沒有虫蝕<br/>轉動也很順暢，<br/>但從長遠來看，<br/>左右球座硬度一致比較好，<br/>所以我把左邊的黑色球座也換成銀色的。<br/>結果因為新品特有的接觸痕跡還沒形成<br/>出現了輕微的濁感，<br/>短期來看轂的轉動性能下降了。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3476amx16.jpg" target="_blank"><img alt="RIMG3476amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3476amx16s.jpg" width="320"/></a><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3477amx16.jpg" target="_blank"><img alt="RIMG3477amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3477amx16s.jpg" width="320"/></a><br/>重新組裝轂並完成修圈後<br/>用中心尺檢查時<br/>沒有發生中心偏移。<br/>對比上面原始狀態的圖像，<br/>可以看出轂軸周圍的零件<br/>因為清洗變得乾淨了。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3478amx16.jpg" target="_blank"><img alt="RIMG3478amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3478amx16s.jpg" width="320"/></a><br/>最後是它的搭檔後輪。<br/>雖然不是功能部品（沒有也不會困擾），<br/>但前輪右側安裝防塵蓋的地方零件丟失了，<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3480amx16.jpg" target="_blank"><img alt="RIMG3480amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3480amx16s.jpg" width="320"/></a><br/>所以我補充了。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3479amx16.jpg" target="_blank"><img alt="RIMG3479amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3479amx16s.jpg" width="320"/></a><br/>轂體側的零件沒有問題，<br/>浮動飛輪的爪彈簧也檢查過了<br/>不需要更換。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3497amx16.jpg" target="_blank"><img alt="RIMG3497amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3497amx16s.jpg" width="320"/></a><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3498amx16.jpg" target="_blank"><img alt="RIMG3498amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3498amx16s.jpg" width="320"/></a><br/>↑忘記拍暫時中心的照片了，所以這是施工後的圖像，<br/>暫時中心碰巧完全精準→<br/>但在這4條中<br/>橫向跳動最多→<br/>只專注修圈的話<br/>框圈一度向左側偏移→<br/>通過浮動飛輪側的增緊調整中心<br/>這樣的內容。<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3481amx16.jpg" target="_blank"><img alt="RIMG3481amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3481amx16s.jpg" width="320"/></a><br/>↑施工後的狀態<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3483amx16.jpg" target="_blank"><img alt="RIMG3483amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3483amx16s.jpg" width="320"/></a><br/>↑幾乎未使用的前後輪<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3484amx16.jpg" target="_blank"><img alt="RIMG3484amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3484amx16s.jpg" width="320"/></a><br/>↑使用感很重的前後輪<br/>從先前提供的施工前／施工後圖像開始，<br/>我又更加仔細地磨拭了煞車區域。<br/>就煞車區域來說，<br/><br/>美品☆只跑了1000km左右<br/><br/>這樣的說法應該能站得住腳，<br/><br/><a href="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3485amx16.jpg" target="_blank"><img alt="RIMG3485amx16.jpg" border="0" height="240" src="https://blog-imgs-163-origin.fc2.com/p/a/s/pass13/RIMG3485amx16s.jpg" width="320"/></a><br/>但貼紙都破爛了。<br/>與其保留不如乾脆剝掉可能更好，<br/>但我會先問問客人。<br/>只是剝掉誰都會，<br/>但如果膠水殘留在框圈上，<br/>除非知道處理方法，<br/>不然會非常難清除。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

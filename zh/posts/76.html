@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/76.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Spoke Tension</p>
     <h1>輪轂輻條張力左右差的話　其二</h1>
     <p class="post-meta">October 31, 2012</p>
+    <div class="post-body"><div class="entrytext">終於來到這裡了！<br/>接下來要寫的內容接近我的總結。<br/>還有很多題材，但為了寫這篇才一直在寫內穿啦什麼的<br/>一如往常，超級長的文章。<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00177amx.jpg" target="_blank"><img alt="DSC00177amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00177amxs.jpg" width="300"/></a><br/>關於後輪輻條張力的左右差，<br/>上次寫的是從前後方向看輪轂的是正方法。<br/>答案是錯位輞、高低花鼓，<br/>今天則是從左右方向看輪轂的情況。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00178amx.jpg" target="_blank"><img alt="DSC00178amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00178amxs.jpg" width="300"/></a><br/>這張圖中畫的是內穿放射式的輻條，<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00179amx.jpg" target="_blank"><img alt="DSC00179amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00179amxs.jpg" width="300"/></a><br/>放射式組法的輻條從橫向看時的輻條延伸線<br/>（上圖的紅色虛線）會通過花鼓的中心。<br/>今後我稱之為「放射線」。<br/>也可以看作是從圓的半徑取出的線段。<br/>業餘無線電的世界中也存在放射線這個術語，<br/>但完全無關。這是我自己創造的詞。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00181amx.jpg" target="_blank"><img alt="DSC00181amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00181amxs.jpg" width="300"/></a><br/>接下來考慮用內穿和外穿4本交叉組法的情況。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00182amx.jpg" target="_blank"><img alt="DSC00182amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00182amxs.jpg" width="300"/></a><br/>從花鼓孔看內穿的放射線是這樣的。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00183amx.jpg" target="_blank"><img alt="DSC00183amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00183amxs.jpg" width="300"/></a><br/>為了看得清楚，我把外穿去掉只留內穿。<br/>從花鼓出來的輻條最直接地拉扯輞的時候<br/>是輻條與放射線重合時（放射式組法），<br/>從那裡開始交叉組法的交叉數增大，輻條偏離<br/>放射線越遠，輻條張力的損失就越大。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00187amx.jpg" target="_blank"><img alt="DSC00187amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00187amxs.jpg" width="300"/></a><br/>輻條張力（輻條的繃緊程度）<br/>可以透過上圖所示的方法觀察撓曲量來測量。<br/>越粗的輻條越不容易變形（撓曲），所以<br/>實際上不是一個唯一的測量方法，<br/>但也沒有其他辦法，所以我們這樣測量。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00188amx.jpg" target="_blank"><img alt="DSC00188amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00188amxs.jpg" width="300"/></a><br/>↑這張圖中輞與花鼓呈９０°直角，<br/>所以有點奇怪，但請不要吐槽。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00189amx.jpg" target="_blank"><img alt="DSC00189amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00189amxs.jpg" width="300"/></a><br/>旋緊銅螺帽會增大輻條張力。<br/>（上圖的紅色箭頭）<br/>同時銅螺帽的頸部也會咬進輞裡。<br/>（上圖的藍色箭頭）<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00190amx.jpg" target="_blank"><img alt="DSC00190amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00190amxs.jpg" width="300"/></a><br/>如果從這裡無限制地提高輻條張力，<br/>輞、銅螺帽、輻條、花鼓這４個部件中<br/>某一個會損壞，使輪轂無法使用。<br/><br/>如果花鼓很弱，花鼓凸緣會被扯掉。<br/>組装過程中沒發生過，<br/>但放射式組法組好後經過時間損壞的例子確實存在。<br/>這是４個中最不可能發生的現象。<br/><br/>如果輻條很弱，會在頸部折斷。<br/>這在組装過程中也幾乎不會發生，但使用輪轂時<br/>輻條折斷確實會發生（金屬疲勞）。<br/>對用得很久的輪轂進行圓跳動調整時，<br/>旋緊銅螺帽的瞬間輵條會像彈開一樣在頸部斷裂。<br/>這是４個中最容易發生的現象。<br/><br/>如果銅螺帽很弱，銅螺帽咬進輞的部分會<br/>出現環周的裂紋，輵條從輞上脫落。<br/>這是輵條折斷之後最常見的。<br/>一般人也常把這個說成「輵條折斷」。<br/>既然輵條相關部件有損壞需要修理，<br/>這個說法也沒錯。<br/>銅螺帽的材質有黃銅和鋁合金，據說輕質的鋁合金<br/>更容易發生這種情況。<br/>組装輪轂時，鋁合金螺帽的確容易把六角形磨圓，<br/>但說起抗拉強度是否比黃銅弱，我不太這麼認為。<br/>根據個人經驗，鋁合金組装完後反而更堅固，<br/>但我的理論根據不夠充分，所以不敢斷言。<br/>如果鋁合金更堅固的話，（不是對組輪轂的人，而是<br/>只是對使用者來說）就可以無風險地輕量化了。<br/><br/>如果輞很弱，會像上圖那樣輞損壞。<br/>（文字太長上圖看不到了）<br/>有時是因為長期使用造成的，但如果輞的輵條孔耐拉強度<br/>較低，在組装過程中也可能發生。<br/>想說碳纖維輞比鋁合金輞更容易出現這種情況，<br/>但最近反而出現了一些耐輵條張力強度超過鋁合金輞的<br/>產品，所以無法一概而論。<br/>輞製造商規定輵條張力上限值，<br/>就是為了降低發生這種情況的可能性。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00191amx.jpg" target="_blank"><img alt="DSC00191amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00191amxs.jpg" width="300"/></a><br/>這裡把輵條張力記為<span style="color:#FF0000">ＳＴ</span>，<br/>銅螺帽要咬破輞的力記為<span style="color:#0000FF">ＲＫ</span>。<br/><span style="color:#FF0000">Ｓ</span>ｐｏｋｅ<span style="color:#FF0000">Ｔ</span>ｅｎｓｉｏｎ的ＳＴ和<br/><span style="color:#0000FF">Ｒ</span>ｉｍを<span style="color:#0000FF">Ｋ</span>ｕｉ破る的ＲＫ。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00192amx.jpg" target="_blank"><img alt="DSC00192amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00192amxs.jpg" width="300"/></a><br/>回到開頭類似的圖，放射式組法用１００ＳＴ的力張輵條時，<br/>假設輞受到１００ＲＫ的拉力。<br/>製造商關心的是輞破損的ＲＫ，<br/>但ＲＫ無法測量（專業檢測機構可能可以），<br/>通常是用前面說的方法測量ＳＴ。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00194amx.jpg" target="_blank"><img alt="DSC00194amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00194amxs.jpg" width="300"/></a><br/>接下來考慮４本交叉組法要達到１００ＲＫ的情況。<br/>４本交叉的輵條拉力方向偏離放射線，<br/>所以有拉力損失。為了達到１００ＲＫ<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00195amx.jpg" target="_blank"><img alt="DSC00195amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00195amxs.jpg" width="300"/></a><br/>就必須用１００ＳＴ以上的力去拉。<br/>上圖中寫的是１２０ＳＴ，但這不是實際精確值。<br/>肯定是１００ＳＴ以上，不過大概是這個數字吧。<br/>如果製造商說「不要用１００ＳＴ以上組」，<br/>４本交叉也只能１００ＳＴ為上限，<br/>那時的ＲＫ大概會變成８０ＲＫ左右吧。<br/><br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00196amx.jpg" target="_blank"><img alt="DSC00196amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00196amxs.jpg" width="300"/></a><br/>這裡很重要的是，<span style="color:#FF0000">同樣的ＲＫ，放射式組法的輵條張力比交叉式組法更低</span>，這一點。<br/>前面的文章，就是為了說這一點。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00197amx.jpg" target="_blank"><img alt="DSC00197amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00197amxs.jpg" width="300"/></a><br/>ＲＫ與輪轂的縱向硬度直接相關，但輞製造商指定的極限值<br/>是ＳＴ，所以把ＳＴ張到製造商的上限時<br/>ＲＫ最高的是０本交叉（放射式組法）。<br/>「放射式組法的輪轂縱向硬度高」不是迷信，是事實。<br/>從那裡開始２→４→６→８本交叉的交叉式組法，<br/>隨著越來越交叉化，<br/>每単位ＳＴ上升的ＲＫ會因為偏離放射線的損失而減少。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00198amx.jpg" target="_blank"><img alt="DSC00198amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00198amxs.jpg" width="300"/></a><br/>↑這個圖像中藍色塗的輵條是８本交叉的內穿，<br/>和放射線幾乎垂直呢。<br/>很接近圓（花鼓凸緣）的切線。交叉式組法的tangent就是<br/>切線的意思，所以這正是切線式組法。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00200amx.jpg" target="_blank"><img alt="DSC00200amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00200amxs.jpg" width="300"/></a><br/>進行０～８本交叉時，花鼓孔從多少Ｈ開始可以做，我來寫一下。<br/>這裡用ｙ≦４／ｘ。嘿呀，好方便。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00202amx.jpg" target="_blank"><img alt="DSC00202amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00202amxs.jpg" width="300"/></a><br/>看輪轂前後方向時，通常我想是從後面看的圖，<br/>但這次假設是從上面看。<br/>眼光敏銳啊，這個目光看起來很Sharp，<br/>但和Sharp這個牌子無關。<br/>要是Sharp考慮自行車輪轂的話，肯定會<br/>裝上等離子群集。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00240amx.jpg" target="_blank"><img alt="DSC00240amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00240amxs.jpg" width="300"/></a><br/>裝了等離子群集發生器的花鼓組的輪轂<br/>在行駛時，從前面噴蟲子過來，<br/>負離子的效果使得<br/><span style="font-size:large;">蟲子變乾淨了。</span><br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00203amx.jpg" target="_blank"><img alt="DSC00203amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00203amxs.jpg" width="300"/></a><br/>蟲子什麼的不重要啦（那為啥要寫），<br/>看沒裝輪胎的輪轂從上面看。<br/>假設氣門嘴在最上面。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00206amx.jpg" target="_blank"><img alt="DSC00206amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00206amxs.jpg" width="300"/></a><br/>這個輪轂用內穿　其１（→<a href="/zh/posts/19.html" target="_blank" title="這裡">這裡</a>）出現的魔法刀<br/>咔咔地切開。沿著輞的孔位避開切，<br/>花鼓從中間切成兩半。<br/>從有飛輪的一側也能看出，<br/>畫面上方是前進方向。<br/>兩側都是放射式組法，<br/>那是為了看得清楚（笑）。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00207amx.jpg" target="_blank"><img alt="DSC00207amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00207amxs.jpg" width="300"/></a><br/>這次是不展平，只打開。<br/>像蚌殼最大程度打開的樣子。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00208amx.jpg" target="_blank"><img alt="DSC00208amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00208amxs.jpg" width="300"/></a><br/>從輞的切面而非煞車區側看那個樣子就是<br/>上面的圖。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00209amx.jpg" target="_blank"><img alt="DSC00209amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00209amxs.jpg" width="300"/></a><br/>上次說的時候，後輪有飛輪座，<br/>飛輪側的輵條張力會更高，我寫過。<br/>上圖中左右都是交叉式組法。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00210amx.jpg" target="_blank"><img alt="DSC00210amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00210amxs.jpg" width="300"/></a><br/>↑把非飛輪側改成放射式組法的輪轂就是這樣。<br/>「前後輪都全部放射式，空氣動力學和重量最優化，<br/>但飛輪側承受強烈的扭轉，所以<br/>留著抗扭轉能力強的交叉式組法」<br/>這樣的想法。做這個的輪轂製造商實在很多，<br/>代表性的是Easton。還有很多別的。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00211amx.jpg" target="_blank"><img alt="DSC00211amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00211amxs.jpg" width="300"/></a><br/>如前所述，放射式組法會使輵條張力下降。<br/>本來輵條張力就低的非飛輪側<br/>張力變得更低，所以輵條張力的左右差<br/>變得更嚴重。從輪轂左右平衡來看這是最差的組法。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00238amx.jpg" target="_blank"><img alt="DSC00238amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00238amxs.jpg" width="300"/></a><br/>我的謎之宇宙碳纖維輪轂的非飛輪側是放射式組法，<br/>但這是因為輞上的輵條孔的位置<br/>被迫這樣組。<br/>實際握非飛輪側的輵條時，有點鬆。<br/>不過放射式組法的話，輵條間沒有接觸，<br/>不會發出接觸摩擦的吱吱聲，<br/>左邊很鬆這事兒不容易被發現。<br/>用內穿做放射式組法是一點小反抗。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00213amx.jpg" target="_blank"><img alt="DSC00213amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00213amxs.jpg" width="300"/></a><br/>↑那麼把飛輪側改成放射式組法，非飛輪側改成交叉式組法怎麼樣？<br/>這樣飛輪側的輵條張力會下降，<br/>相對地左右輵條平衡會接近。<br/>從輪轂平衡來看這是最好的組法。但是<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09123amx.jpg" target="_blank"><img alt="DSC09123amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09123amxs.jpg" width="300"/></a><br/>放射式組法<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09124amx.jpg" target="_blank"><img alt="DSC09124amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09124amxs.jpg" width="300"/></a><br/>↑對這樣的扭轉很弱呢。<br/>前輪發生的這種扭轉只來自邊煞系統<br/>所以問題不大，但後輪的飛輪側，來自踩踏的<br/>飛輪體的扭轉力非常強大，所以會出現問題。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00218amx.jpg" target="_blank"><img alt="DSC00218amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00218amxs.jpg" width="300"/></a><br/>實際上我手組過飛輪側放射式組法的輪轂。<br/>這是內穿放射式，有原因的。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00220amx.jpg" target="_blank"><img alt="DSC00220amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00220amxs.jpg" width="300"/></a><br/>外穿放射式橫向剛性確保起來很困難。<br/>橫向剛性的計算根據是花鼓凸緣的輵條出口位置，<br/>外穿的那個非常狹窄。<br/>而且放射式組法使輵條張力下降，<br/>也就是說對飛輪的強烈扭轉的抗性也會下降。<br/>在手組輪轂的組法中，這個外穿放射式<br/>從輵條頸部折斷風險來看是最差的組法。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00221amx.jpg" target="_blank"><img alt="DSC00221amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00221amxs.jpg" width="300"/></a><br/>反過來用內穿放射式的話，<br/>因為輵條間不編織，輵條的橫向張出會很大，<br/>後變速器進低檔時，滑輪籠和輵條會接觸，<br/>容易出現故障。<br/>有解決方法，但即便這樣登坡站騎或平地猛踩時<br/>還是會接觸，所以不建議這樣組。<br/>２本交叉的話如果編織輵條，<br/>２本都內穿→可能和後變速器接觸<br/>２本都外穿→橫向剛性低<br/>所以不建議。<br/>不過飛輪側放射式在輵條張力左右差的改善上<br/>確實有大好處。有沒有什麼辦法呢・・・<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00108amx.jpg" target="_blank"><img alt="DSC00108amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00108amxs.jpg" width="300"/></a><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00109amx.jpg" target="_blank"><img alt="DSC00109amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00109amxs.jpg" width="300"/></a><br/>↑「要不把花鼓和輵條專門設計，把輵條改成大徑鋁合金就好了？」<br/>這個超聰明的輪轂，就是「Kyserium」(Mavic馬維克的Ksyrium)。ｷｼﾘｳﾑｷﾀｰ<br/>從花鼓凸緣部分的結構來看，飛輪體的扭轉不會讓輵條變形，<br/>鋁合金輵條也堅牢無比。<br/>在１９９９年的時點想到這個，馬維克真是厲害。<br/>這是我的推測，但Kyserium的出發點應該是<br/>「做一個鋁合金輵條的輪轂」，而不是<br/>「做一個飛輪側放射式輪轂」。<br/>應該是在追求不被飛輪體扭轉所動搖的結構過程中，<br/>才決定採用鋁合金輵條的。<br/><br/><br/><br/>～題外話～<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00122amx.jpg" target="_blank"><img alt="DSC00122amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00122amxs.jpg" width="300"/></a><br/>↑這是７８００系迪拉克斯的完組輪轂。<br/>飛輪側是放射式組法。現行產品中Zipp的輪轂和<br/>馬維克Kyserium Elite是鋼輵條放射式，<br/>靠直輵條才能實現的高張力和聰明的花鼓設計，<br/>鋼輵條也能達到飛輪側放射式沒有問題。<br/>這個輪轂也是一樣，鋼輵條飛輪側放射式。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00125amx.jpg" target="_blank"><img alt="DSC00125amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00125amxs.jpg" width="300"/></a><br/>經常聽說這個年代的迪拉克斯輪轂「難以調整」之類的，<br/>但那和輪轂走不走好沒關係，所以無所謂。<br/>修理是我的工作。<br/>這個輪轂，花鼓內部結構是坎帕尼奧羅的完全抄襲，<br/>組法是Kyserium的完全抄襲，但從輪轂理論的鑽研程度來說<br/>這是我認為的島野（<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+bicycle+components" target="_blank" rel="noopener sponsored" class="amz-inline">Shimano</a>）歷史上最高傑作的後輪轂。<br/>之後就是硬要靠自己的腦子想，結果做出爛輪轂。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00126amx.jpg" target="_blank"><img alt="DSC00126amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00126amxs.jpg" width="300"/></a><br/>左凸緣的位置也放到最外面。聰明！<br/>WH-9000自稱Wide Flange寬凸緣，<br/>幅度和這個差不多啊。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09788amx.jpg" target="_blank"><img alt="DSC09788amx.jpg" border="0" height="300" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09788amxs.jpg" width="225"/></a><br/>說什麼Extra Wide Flange超寬凸緣，<br/>本來WH-7800年代就幾乎是Extra Wide Flange了。<br/>然後昨天還在推銷自己的舊產品（WH-7900），今天就貶低它，真敢啊。<br/><br/>～題外話結束～<br/><br/>感謝T村先生為輪轂拍照提供協助。<br/>那個輪轂是傑作，千萬別放手啊。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00216amx.jpg" target="_blank"><img alt="DSC00216amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00216amxs.jpg" width="300"/></a><br/>飛輪側才能放射式！<br/>（○○先生的漫畫只能在Jump才看到！）<br/>所以，想用手組輪轂的方法盡量改善輵條張力左右差，<br/>試試看有什麼組法。<br/>上圖中左右都寫著０～８本交叉，<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00223amx.jpg" target="_blank"><img alt="DSC00223amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00223amxs.jpg" width="300"/></a><br/>但放射式和２本交叉的問題太大所以排除。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00224amx.jpg" target="_blank"><img alt="DSC00224amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00224amxs.jpg" width="300"/></a><br/>在剩下的組法中，飛輪側是交叉式<br/>而且最接近放射式的，是４本交叉。<br/>４本交叉從１６Ｈ開始可以組，但１６Ｈ以下的手組輪轂<br/>很少見啦。飛輪側就用４本交叉。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00225amx.jpg" target="_blank"><img alt="DSC00225amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00225amxs.jpg" width="300"/></a><br/>非飛輪側，想在輵條數允許的範圍內盡量交叉。<br/>２４Ｈ開始可以６本交叉，３２Ｈ開始可以８本交叉，所以<br/><span style="color:#FF0000">２４Ｈ以上的情況，把非飛輪側改成６本或８本交叉，<br/>相對於飛輪側的輵條張力，非飛輪側的輵條張力會更高。<br/>左右差減少了。</span><br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00063amx.jpg" target="_blank"><img alt="DSC00063amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00063amxs.jpg" width="300"/></a><br/>前面說過這個後輪轂做過左右差改善工作的，就是這個。<br/>這個是２８Ｈ，飛輪側４本交叉，非飛輪側６本交叉。<br/>相比非飛輪側也是４本交叉的情況，左邊可以組得很緊實。<br/>真的完全不同。不過說實話，這個結線焊接的效果<br/>對輵條表觀變形量的減輕貢獻更大，所以<br/>如果做結線焊接的話，非飛輪側４本交叉也差不了多少。<br/>我私下把這個叫「４－６組法」，<br/>但沒結線焊接的話４－４組法和４－６組法差天壤之別。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00226amx.jpg" target="_blank"><img alt="DSC00226amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00226amxs.jpg" width="300"/></a><br/>我說２０Ｈ和２４Ｈ的後輪轂不一樣，就是因為這個。<br/>２０Ｈ做不了４－６組法。<br/>從剛性上考慮少４本輵條和使用者體重來看<br/>２０Ｈ手組後輪轂不值得推薦，這個一般論<br/>當然也是對的。<br/>不過即便是２０Ｈ，我的實驗室輪轂１號<br/>７０ｋｇ以下的人應該完全沒問題。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00242amx.jpg" target="_blank"><img alt="DSC00242amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00242amxs.jpg" width="300"/></a><br/>↑這是我的輪轂，馬維克Reflex WO（Reflex是一款馬維克輞產品）的<br/>CD陶瓷版本。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00244amx.jpg" target="_blank"><img alt="DSC00244amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00244amxs.jpg" width="300"/></a><br/>雷射刻字，工藝水平啊。<br/>同樣處理的Open Pro也存在，<br/>那邊是氧化膜的化學式，更帥。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00228amx.jpg" target="_blank"><img alt="DSC00228amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00228amxs.jpg" width="300"/></a><br/>飛輪側４本交叉，<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00229amx.jpg" target="_blank"><img alt="DSC00229amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00229amxs.jpg" width="300"/></a><br/>非飛輪側８本交叉。<br/>我私下叫這個「４－８組法」。<br/>３２Ｈ的４－８組法是手組輪轂改善輵條張力左右差的最優組法。３６Ｈ也能做４－８組法，<br/>但為什麼３２Ｈ更好，改天再寫。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00230amx.jpg" target="_blank"><img alt="DSC00230amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00230amxs.jpg" width="300"/></a><br/>６本和８本交叉可以編最後一個交叉的前一個交叉。<br/>Ｗ交叉組法。加上這個輪轂的結線焊接，<br/>Ｗ交叉和結線焊接同時做的話，輵條１本飛掉時<br/>需要拆開那根輵條的結線，同時要通過<br/>隔壁輵條的結線才能穿進新輵條，<br/>這樣一圈都要拆。<br/>也就是說，這樣做的話輵條１本飛就得換整個一邊。<br/>所以客戶的輪轂，一般不做，除非他主動要求。<br/>Ｗ交叉要不做的話最多換２本被結線的輵條就行。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00234amx.jpg" target="_blank"><img alt="DSC00234amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00234amxs.jpg" width="300"/></a><br/>↑這不是Ｗ交叉。<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00233amx.jpg" target="_blank"><img alt="DSC00233amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00233amxs.jpg" width="300"/></a><br/>↑夾著紙的部分才是Ｗ交叉。<br/>Ｗ交叉能減少輵條的表觀變形量，<br/>但我覺得４－６組法的效果更大。<br/><br/>我之前那個Reflex是「４－８組法Ｗ交叉結線焊接」，<br/>像拉麵配菜全都加上一樣。<br/>確實和普通組法比完全是兩個東西。<br/>實驗室輪轂２號會把這些理論也融進去。<br/>↑我就為了寫這一句話才長篇大論地寫了一堆。<br/>感謝閱讀（笑）。謝謝你們。<br/><br/>輪轂輵條張力左右差的話　其二<br/>也是「Kyserium很了不起！」的話題，<br/>其三我要寫「Fulcrum（富卡）了不起！」的話題。改天再寫。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">終於來到這裡了！<br/>接下來要寫的內容接近我的總結。<br/>還有很多題材，但為了寫這篇才一直在寫內穿啦什麼的<br/>一如往常，超級長的文章。<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00177amx.jpg" target="_blank"><img alt="DSC00177amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00177amxs.jpg" width="300"/></a><br/>關於後輪輻條張力的左右差，<br/>上次寫的是從前後方向看輪轂的是正方法。<br/>答案是錯位輞、高低花鼓，<br/>今天則是從左右方向看輪轂的情況。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00178amx.jpg" target="_blank"><img alt="DSC00178amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00178amxs.jpg" width="300"/></a><br/>這張圖中畫的是內穿放射式的輻條，<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00179amx.jpg" target="_blank"><img alt="DSC00179amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00179amxs.jpg" width="300"/></a><br/>放射式組法的輻條從橫向看時的輻條延伸線<br/>（上圖的紅色虛線）會通過花鼓的中心。<br/>今後我稱之為「放射線」。<br/>也可以看作是從圓的半徑取出的線段。<br/>業餘無線電的世界中也存在放射線這個術語，<br/>但完全無關。這是我自己創造的詞。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00181amx.jpg" target="_blank"><img alt="DSC00181amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00181amxs.jpg" width="300"/></a><br/>接下來考慮用內穿和外穿4本交叉組法的情況。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00182amx.jpg" target="_blank"><img alt="DSC00182amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00182amxs.jpg" width="300"/></a><br/>從花鼓孔看內穿的放射線是這樣的。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00183amx.jpg" target="_blank"><img alt="DSC00183amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00183amxs.jpg" width="300"/></a><br/>為了看得清楚，我把外穿去掉只留內穿。<br/>從花鼓出來的輻條最直接地拉扯輞的時候<br/>是輻條與放射線重合時（放射式組法），<br/>從那裡開始交叉組法的交叉數增大，輻條偏離<br/>放射線越遠，輻條張力的損失就越大。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00187amx.jpg" target="_blank"><img alt="DSC00187amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00187amxs.jpg" width="300"/></a><br/>輻條張力（輻條的繃緊程度）<br/>可以透過上圖所示的方法觀察撓曲量來測量。<br/>越粗的輻條越不容易變形（撓曲），所以<br/>實際上不是一個唯一的測量方法，<br/>但也沒有其他辦法，所以我們這樣測量。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00188amx.jpg" target="_blank"><img alt="DSC00188amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00188amxs.jpg" width="300"/></a><br/>↑這張圖中輞與花鼓呈９０°直角，<br/>所以有點奇怪，但請不要吐槽。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00189amx.jpg" target="_blank"><img alt="DSC00189amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00189amxs.jpg" width="300"/></a><br/>旋緊銅螺帽會增大輻條張力。<br/>（上圖的紅色箭頭）<br/>同時銅螺帽的頸部也會咬進輞裡。<br/>（上圖的藍色箭頭）<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00190amx.jpg" target="_blank"><img alt="DSC00190amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00190amxs.jpg" width="300"/></a><br/>如果從這裡無限制地提高輻條張力，<br/>輞、銅螺帽、輻條、花鼓這４個部件中<br/>某一個會損壞，使輪轂無法使用。<br/><br/>如果花鼓很弱，花鼓凸緣會被扯掉。<br/>組装過程中沒發生過，<br/>但放射式組法組好後經過時間損壞的例子確實存在。<br/>這是４個中最不可能發生的現象。<br/><br/>如果輻條很弱，會在頸部折斷。<br/>這在組装過程中也幾乎不會發生，但使用輪轂時<br/>輻條折斷確實會發生（金屬疲勞）。<br/>對用得很久的輪轂進行圓跳動調整時，<br/>旋緊銅螺帽的瞬間輵條會像彈開一樣在頸部斷裂。<br/>這是４個中最容易發生的現象。<br/><br/>如果銅螺帽很弱，銅螺帽咬進輞的部分會<br/>出現環周的裂紋，輵條從輞上脫落。<br/>這是輵條折斷之後最常見的。<br/>一般人也常把這個說成「輵條折斷」。<br/>既然輵條相關部件有損壞需要修理，<br/>這個說法也沒錯。<br/>銅螺帽的材質有黃銅和鋁合金，據說輕質的鋁合金<br/>更容易發生這種情況。<br/>組装輪轂時，鋁合金螺帽的確容易把六角形磨圓，<br/>但說起抗拉強度是否比黃銅弱，我不太這麼認為。<br/>根據個人經驗，鋁合金組装完後反而更堅固，<br/>但我的理論根據不夠充分，所以不敢斷言。<br/>如果鋁合金更堅固的話，（不是對組輪轂的人，而是<br/>只是對使用者來說）就可以無風險地輕量化了。<br/><br/>如果輞很弱，會像上圖那樣輞損壞。<br/>（文字太長上圖看不到了）<br/>有時是因為長期使用造成的，但如果輞的輵條孔耐拉強度<br/>較低，在組装過程中也可能發生。<br/>想說碳纖維輞比鋁合金輞更容易出現這種情況，<br/>但最近反而出現了一些耐輵條張力強度超過鋁合金輞的<br/>產品，所以無法一概而論。<br/>輞製造商規定輵條張力上限值，<br/>就是為了降低發生這種情況的可能性。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00191amx.jpg" target="_blank"><img alt="DSC00191amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00191amxs.jpg" width="300"/></a><br/>這裡把輵條張力記為<span style="color:#FF0000">ＳＴ</span>，<br/>銅螺帽要咬破輞的力記為<span style="color:#0000FF">ＲＫ</span>。<br/><span style="color:#FF0000">Ｓ</span>ｐｏｋｅ<span style="color:#FF0000">Ｔ</span>ｅｎｓｉｏｎ的ＳＴ和<br/><span style="color:#0000FF">Ｒ</span>ｉｍを<span style="color:#0000FF">Ｋ</span>ｕｉ破る的ＲＫ。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00192amx.jpg" target="_blank"><img alt="DSC00192amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00192amxs.jpg" width="300"/></a><br/>回到開頭類似的圖，放射式組法用１００ＳＴ的力張輵條時，<br/>假設輞受到１００ＲＫ的拉力。<br/>製造商關心的是輞破損的ＲＫ，<br/>但ＲＫ無法測量（專業檢測機構可能可以），<br/>通常是用前面說的方法測量ＳＴ。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00194amx.jpg" target="_blank"><img alt="DSC00194amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00194amxs.jpg" width="300"/></a><br/>接下來考慮４本交叉組法要達到１００ＲＫ的情況。<br/>４本交叉的輵條拉力方向偏離放射線，<br/>所以有拉力損失。為了達到１００ＲＫ<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00195amx.jpg" target="_blank"><img alt="DSC00195amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00195amxs.jpg" width="300"/></a><br/>就必須用１００ＳＴ以上的力去拉。<br/>上圖中寫的是１２０ＳＴ，但這不是實際精確值。<br/>肯定是１００ＳＴ以上，不過大概是這個數字吧。<br/>如果製造商說「不要用１００ＳＴ以上組」，<br/>４本交叉也只能１００ＳＴ為上限，<br/>那時的ＲＫ大概會變成８０ＲＫ左右吧。<br/><br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00196amx.jpg" target="_blank"><img alt="DSC00196amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00196amxs.jpg" width="300"/></a><br/>這裡很重要的是，<span style="color:#FF0000">同樣的ＲＫ，放射式組法的輵條張力比交叉式組法更低</span>，這一點。<br/>前面的文章，就是為了說這一點。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00197amx.jpg" target="_blank"><img alt="DSC00197amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00197amxs.jpg" width="300"/></a><br/>ＲＫ與輪轂的縱向硬度直接相關，但輞製造商指定的極限值<br/>是ＳＴ，所以把ＳＴ張到製造商的上限時<br/>ＲＫ最高的是０本交叉（放射式組法）。<br/>「放射式組法的輪轂縱向硬度高」不是迷信，是事實。<br/>從那裡開始２→４→６→８本交叉的交叉式組法，<br/>隨著越來越交叉化，<br/>每単位ＳＴ上升的ＲＫ會因為偏離放射線的損失而減少。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00198amx.jpg" target="_blank"><img alt="DSC00198amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00198amxs.jpg" width="300"/></a><br/>↑這個圖像中藍色塗的輵條是８本交叉的內穿，<br/>和放射線幾乎垂直呢。<br/>很接近圓（花鼓凸緣）的切線。交叉式組法的tangent就是<br/>切線的意思，所以這正是切線式組法。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00200amx.jpg" target="_blank"><img alt="DSC00200amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00200amxs.jpg" width="300"/></a><br/>進行０～８本交叉時，花鼓孔從多少Ｈ開始可以做，我來寫一下。<br/>這裡用ｙ≦４／ｘ。嘿呀，好方便。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00202amx.jpg" target="_blank"><img alt="DSC00202amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00202amxs.jpg" width="300"/></a><br/>看輪轂前後方向時，通常我想是從後面看的圖，<br/>但這次假設是從上面看。<br/>眼光敏銳啊，這個目光看起來很Sharp，<br/>但和Sharp這個牌子無關。<br/>要是Sharp考慮自行車輪轂的話，肯定會<br/>裝上等離子群集。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00240amx.jpg" target="_blank"><img alt="DSC00240amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00240amxs.jpg" width="300"/></a><br/>裝了等離子群集發生器的花鼓組的輪轂<br/>在行駛時，從前面噴蟲子過來，<br/>負離子的效果使得<br/><span style="font-size:large;">蟲子變乾淨了。</span><br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00203amx.jpg" target="_blank"><img alt="DSC00203amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00203amxs.jpg" width="300"/></a><br/>蟲子什麼的不重要啦（那為啥要寫），<br/>看沒裝輪胎的輪轂從上面看。<br/>假設氣門嘴在最上面。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00206amx.jpg" target="_blank"><img alt="DSC00206amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00206amxs.jpg" width="300"/></a><br/>這個輪轂用內穿　其１（→<a href="/zh/posts/19.html" target="_blank" title="這裡">這裡</a>）出現的魔法刀<br/>咔咔地切開。沿著輞的孔位避開切，<br/>花鼓從中間切成兩半。<br/>從有飛輪的一側也能看出，<br/>畫面上方是前進方向。<br/>兩側都是放射式組法，<br/>那是為了看得清楚（笑）。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00207amx.jpg" target="_blank"><img alt="DSC00207amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00207amxs.jpg" width="300"/></a><br/>這次是不展平，只打開。<br/>像蚌殼最大程度打開的樣子。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00208amx.jpg" target="_blank"><img alt="DSC00208amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00208amxs.jpg" width="300"/></a><br/>從輞的切面而非煞車區側看那個樣子就是<br/>上面的圖。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00209amx.jpg" target="_blank"><img alt="DSC00209amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00209amxs.jpg" width="300"/></a><br/>上次說的時候，後輪有飛輪座，<br/>飛輪側的輵條張力會更高，我寫過。<br/>上圖中左右都是交叉式組法。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00210amx.jpg" target="_blank"><img alt="DSC00210amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00210amxs.jpg" width="300"/></a><br/>↑把非飛輪側改成放射式組法的輪轂就是這樣。<br/>「前後輪都全部放射式，空氣動力學和重量最優化，<br/>但飛輪側承受強烈的扭轉，所以<br/>留著抗扭轉能力強的交叉式組法」<br/>這樣的想法。做這個的輪轂製造商實在很多，<br/>代表性的是Easton。還有很多別的。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00211amx.jpg" target="_blank"><img alt="DSC00211amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00211amxs.jpg" width="300"/></a><br/>如前所述，放射式組法會使輵條張力下降。<br/>本來輵條張力就低的非飛輪側<br/>張力變得更低，所以輵條張力的左右差<br/>變得更嚴重。從輪轂左右平衡來看這是最差的組法。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00238amx.jpg" target="_blank"><img alt="DSC00238amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00238amxs.jpg" width="300"/></a><br/>我的謎之宇宙碳纖維輪轂的非飛輪側是放射式組法，<br/>但這是因為輞上的輵條孔的位置<br/>被迫這樣組。<br/>實際握非飛輪側的輵條時，有點鬆。<br/>不過放射式組法的話，輵條間沒有接觸，<br/>不會發出接觸摩擦的吱吱聲，<br/>左邊很鬆這事兒不容易被發現。<br/>用內穿做放射式組法是一點小反抗。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00213amx.jpg" target="_blank"><img alt="DSC00213amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00213amxs.jpg" width="300"/></a><br/>↑那麼把飛輪側改成放射式組法，非飛輪側改成交叉式組法怎麼樣？<br/>這樣飛輪側的輵條張力會下降，<br/>相對地左右輵條平衡會接近。<br/>從輪轂平衡來看這是最好的組法。但是<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09123amx.jpg" target="_blank"><img alt="DSC09123amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09123amxs.jpg" width="300"/></a><br/>放射式組法<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09124amx.jpg" target="_blank"><img alt="DSC09124amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09124amxs.jpg" width="300"/></a><br/>↑對這樣的扭轉很弱呢。<br/>前輪發生的這種扭轉只來自邊煞系統<br/>所以問題不大，但後輪的飛輪側，來自踩踏的<br/>飛輪體的扭轉力非常強大，所以會出現問題。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00218amx.jpg" target="_blank"><img alt="DSC00218amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00218amxs.jpg" width="300"/></a><br/>實際上我手組過飛輪側放射式組法的輪轂。<br/>這是內穿放射式，有原因的。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00220amx.jpg" target="_blank"><img alt="DSC00220amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00220amxs.jpg" width="300"/></a><br/>外穿放射式橫向剛性確保起來很困難。<br/>橫向剛性的計算根據是花鼓凸緣的輵條出口位置，<br/>外穿的那個非常狹窄。<br/>而且放射式組法使輵條張力下降，<br/>也就是說對飛輪的強烈扭轉的抗性也會下降。<br/>在手組輪轂的組法中，這個外穿放射式<br/>從輵條頸部折斷風險來看是最差的組法。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00221amx.jpg" target="_blank"><img alt="DSC00221amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00221amxs.jpg" width="300"/></a><br/>反過來用內穿放射式的話，<br/>因為輵條間不編織，輵條的橫向張出會很大，<br/>後變速器進低檔時，滑輪籠和輵條會接觸，<br/>容易出現故障。<br/>有解決方法，但即便這樣登坡站騎或平地猛踩時<br/>還是會接觸，所以不建議這樣組。<br/>２本交叉的話如果編織輵條，<br/>２本都內穿→可能和後變速器接觸<br/>２本都外穿→橫向剛性低<br/>所以不建議。<br/>不過飛輪側放射式在輵條張力左右差的改善上<br/>確實有大好處。有沒有什麼辦法呢・・・<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00108amx.jpg" target="_blank"><img alt="DSC00108amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00108amxs.jpg" width="300"/></a><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00109amx.jpg" target="_blank"><img alt="DSC00109amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00109amxs.jpg" width="300"/></a><br/>↑「要不把花鼓和輵條專門設計，把輵條改成大徑鋁合金就好了？」<br/>這個超聰明的輪轂，就是「Kyserium」(Mavic馬維克的Ksyrium)。ｷｼﾘｳﾑｷﾀｰ<br/>從花鼓凸緣部分的結構來看，飛輪體的扭轉不會讓輵條變形，<br/>鋁合金輵條也堅牢無比。<br/>在１９９９年的時點想到這個，馬維克真是厲害。<br/>這是我的推測，但Kyserium的出發點應該是<br/>「做一個鋁合金輵條的輪轂」，而不是<br/>「做一個飛輪側放射式輪轂」。<br/>應該是在追求不被飛輪體扭轉所動搖的結構過程中，<br/>才決定採用鋁合金輵條的。<br/><br/><br/><br/>～題外話～<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00122amx.jpg" target="_blank"><img alt="DSC00122amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00122amxs.jpg" width="300"/></a><br/>↑這是７８００系迪拉克斯的完組輪轂。<br/>飛輪側是放射式組法。現行產品中Zipp的輪轂和<br/>馬維克Kyserium Elite是鋼輵條放射式，<br/>靠直輵條才能實現的高張力和聰明的花鼓設計，<br/>鋼輵條也能達到飛輪側放射式沒有問題。<br/>這個輪轂也是一樣，鋼輵條飛輪側放射式。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00125amx.jpg" target="_blank"><img alt="DSC00125amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00125amxs.jpg" width="300"/></a><br/>經常聽說這個年代的迪拉克斯輪轂「難以調整」之類的，<br/>但那和輪轂走不走好沒關係，所以無所謂。<br/>修理是我的工作。<br/>這個輪轂，花鼓內部結構是坎帕尼奧羅的完全抄襲，<br/>組法是Kyserium的完全抄襲，但從輪轂理論的鑽研程度來說<br/>這是我認為的島野（<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+bicycle+components" target="_blank" rel="noopener sponsored" class="amz-inline">Shimano</a>）歷史上最高傑作的後輪轂。<br/>之後就是硬要靠自己的腦子想，結果做出爛輪轂。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00126amx.jpg" target="_blank"><img alt="DSC00126amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00126amxs.jpg" width="300"/></a><br/>左凸緣的位置也放到最外面。聰明！<br/>WH-9000自稱Wide Flange寬凸緣，<br/>幅度和這個差不多啊。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09788amx.jpg" target="_blank"><img alt="DSC09788amx.jpg" border="0" height="300" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09788amxs.jpg" width="225"/></a><br/>說什麼Extra Wide Flange超寬凸緣，<br/>本來WH-7800年代就幾乎是Extra Wide Flange了。<br/>然後昨天還在推銷自己的舊產品（WH-7900），今天就貶低它，真敢啊。<br/><br/>～題外話結束～<br/><br/>感謝T村先生為輪轂拍照提供協助。<br/>那個輪轂是傑作，千萬別放手啊。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00216amx.jpg" target="_blank"><img alt="DSC00216amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00216amxs.jpg" width="300"/></a><br/>飛輪側才能放射式！<br/>（○○先生的漫畫只能在Jump才看到！）<br/>所以，想用手組輪轂的方法盡量改善輵條張力左右差，<br/>試試看有什麼組法。<br/>上圖中左右都寫著０～８本交叉，<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00223amx.jpg" target="_blank"><img alt="DSC00223amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00223amxs.jpg" width="300"/></a><br/>但放射式和２本交叉的問題太大所以排除。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00224amx.jpg" target="_blank"><img alt="DSC00224amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00224amxs.jpg" width="300"/></a><br/>在剩下的組法中，飛輪側是交叉式<br/>而且最接近放射式的，是４本交叉。<br/>４本交叉從１６Ｈ開始可以組，但１６Ｈ以下的手組輪轂<br/>很少見啦。飛輪側就用４本交叉。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00225amx.jpg" target="_blank"><img alt="DSC00225amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00225amxs.jpg" width="300"/></a><br/>非飛輪側，想在輵條數允許的範圍內盡量交叉。<br/>２４Ｈ開始可以６本交叉，３２Ｈ開始可以８本交叉，所以<br/><span style="color:#FF0000">２４Ｈ以上的情況，把非飛輪側改成６本或８本交叉，<br/>相對於飛輪側的輵條張力，非飛輪側的輵條張力會更高。<br/>左右差減少了。</span><br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00063amx.jpg" target="_blank"><img alt="DSC00063amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00063amxs.jpg" width="300"/></a><br/>前面說過這個後輪轂做過左右差改善工作的，就是這個。<br/>這個是２８Ｈ，飛輪側４本交叉，非飛輪側６本交叉。<br/>相比非飛輪側也是４本交叉的情況，左邊可以組得很緊實。<br/>真的完全不同。不過說實話，這個結線焊接的效果<br/>對輵條表觀變形量的減輕貢獻更大，所以<br/>如果做結線焊接的話，非飛輪側４本交叉也差不了多少。<br/>我私下把這個叫「４－６組法」，<br/>但沒結線焊接的話４－４組法和４－６組法差天壤之別。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00226amx.jpg" target="_blank"><img alt="DSC00226amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00226amxs.jpg" width="300"/></a><br/>我說２０Ｈ和２４Ｈ的後輪轂不一樣，就是因為這個。<br/>２０Ｈ做不了４－６組法。<br/>從剛性上考慮少４本輵條和使用者體重來看<br/>２０Ｈ手組後輪轂不值得推薦，這個一般論<br/>當然也是對的。<br/>不過即便是２０Ｈ，我的實驗室輪轂１號<br/>７０ｋｇ以下的人應該完全沒問題。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00242amx.jpg" target="_blank"><img alt="DSC00242amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00242amxs.jpg" width="300"/></a><br/>↑這是我的輪轂，馬維克Reflex WO（Reflex是一款馬維克輞產品）的<br/>CD陶瓷版本。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00244amx.jpg" target="_blank"><img alt="DSC00244amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00244amxs.jpg" width="300"/></a><br/>雷射刻字，工藝水平啊。<br/>同樣處理的Open Pro也存在，<br/>那邊是氧化膜的化學式，更帥。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00228amx.jpg" target="_blank"><img alt="DSC00228amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00228amxs.jpg" width="300"/></a><br/>飛輪側４本交叉，<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00229amx.jpg" target="_blank"><img alt="DSC00229amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00229amxs.jpg" width="300"/></a><br/>非飛輪側８本交叉。<br/>我私下叫這個「４－８組法」。<br/>３２Ｈ的４－８組法是手組輪轂改善輵條張力左右差的最優組法。３６Ｈ也能做４－８組法，<br/>但為什麼３２Ｈ更好，改天再寫。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00230amx.jpg" target="_blank"><img alt="DSC00230amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00230amxs.jpg" width="300"/></a><br/>６本和８本交叉可以編最後一個交叉的前一個交叉。<br/>Ｗ交叉組法。加上這個輪轂的結線焊接，<br/>Ｗ交叉和結線焊接同時做的話，輵條１本飛掉時<br/>需要拆開那根輵條的結線，同時要通過<br/>隔壁輵條的結線才能穿進新輵條，<br/>這樣一圈都要拆。<br/>也就是說，這樣做的話輵條１本飛就得換整個一邊。<br/>所以客戶的輪轂，一般不做，除非他主動要求。<br/>Ｗ交叉要不做的話最多換２本被結線的輵條就行。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00234amx.jpg" target="_blank"><img alt="DSC00234amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00234amxs.jpg" width="300"/></a><br/>↑這不是Ｗ交叉。<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00233amx.jpg" target="_blank"><img alt="DSC00233amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00233amxs.jpg" width="300"/></a><br/>↑夾著紙的部分才是Ｗ交叉。<br/>Ｗ交叉能減少輵條的表觀變形量，<br/>但我覺得４－６組法的效果更大。<br/><br/>我之前那個Reflex是「４－８組法Ｗ交叉結線焊接」，<br/>像拉麵配菜全都加上一樣。<br/>確實和普通組法比完全是兩個東西。<br/>實驗室輪轂２號會把這些理論也融進去。<br/>↑我就為了寫這一句話才長篇大論地寫了一堆。<br/>感謝閱讀（笑）。謝謝你們。<br/><br/>輪轂輵條張力左右差的話　其二<br/>也是「Kyserium很了不起！」的話題，<br/>其三我要寫「Fulcrum（富卡）了不起！」的話題。改天再寫。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">Related Products on Amazon</p>
       <ul>

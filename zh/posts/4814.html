@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/4814.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Other Equipment</p>
     <h1>真正的前單速齒盤仕様（重新發佈）</h1>
     <p class="post-meta">August 31, 2019</p>
+    <div class="post-body"><div class="entrytext"><span style="font-size:large;">一開始就要說明，我並沒有生氣。<br/>是真的 相信我。</span><br/>因為有些原因，我要重新刊登標題中提到的8月20日發表的文章。<br/><br/>在大阪的自行車騎士之間很有名的<br/>十三峠（じゅうさんとうげ）這個山坡。<br/>距離大約4公里（大阪側），但平均坡度很陡，<br/>對於某種練習來說是再好不過的，<br/>我從2004年1月開始就在這裡進行練習會。<br/>這個部落格網域名稱中的 pass13 也是源自十三峠。<br/><br/>這個部落格的圖片幾乎都是我自己拍的自拍照。<br/>從網路上撿拾別人的圖片然後寫點評論這種行為<br/>我並不是要否定它，<br/>只是個人覺得這樣缺乏新意，所以我不這樣做。<br/>貼別人部落格的連結這種行為基本上我也不做。<br/>尤其是，我不想做那種借用別人的力量來逞強的事。<br/>所以如果這個部落格裡有貼連結的情況的話<br/>其中大多數都會參考這個部落格的過往文章。<br/><br/>當然，這是我自己訂下的規則，<br/>對於未經許可就連結或引用這個部落格的圖片和論點的行為，<br/>我並不是在禁止別人這樣做。<br/>隨便怎麼做都可以啦<br/>（之前有個腦子不正常的傢伙，把這個部落格的某些圖片截下來，<br/>在自己的部落格上假裝是他自己做的工作貼出來，<br/>那種事情實在是不行的啦）。<br/><br/>關於這篇文章中提到的Cannondale車主<br/>這篇文章中沒有提及，但是<br/>那是因為我不想從店裡這邊說什麼「我們組裝了○○選手的車！」這種話<br/>「使用了nomunlabホイール的○○選手<br/>在某某賽事中獲得優勝、入賞！」<br/>我個人就是不喜歡這樣宣傳。<br/>這不是因為謙虛，只是單純討厭這種事。<br/>選手那邊要自己宣傳我也不會阻止，但是<br/>我沒有主動大聲宣傳過<br/>也從未請選手幫忙宣傳過。<br/><br/>那麼，關於這台Cannondale的車主<br/>在一個叫「十三峠十三分切り」的部落格上被介紹了<br/>在這篇文章重新刊登之前的文章上被放了連結<br/>看到這件事我覺得「有點不開心呢」<br/>（我再囉嗦地說一次 我沒有生氣。<br/>對方可能會因為我做的事 從今以後生氣<br/>那就是說不要貼連結啦），<br/>改變了原文章<br/>在２０１３年１３月（２０１４年１月）１３日１３時１３分發佈了。<br/>想看原文章的人，從日期往回找會花不少時間，<br/>十三峠十三分切り的相關文章（→<a href="http://morimotty.com/umepyons-bike-2019/" target="_blank" title="こちら">這裡</a>）再從連結往下找點進去吧。<br/><span style="color:#FF0000">太好了！互相連結耶！</span>（對方先來）<br/>想要穿著別人的兜襠布去比相撲時<br/>有時候會遭遇什麼樣的下場，就是這麼回事。<br/>一上土俵就在不知不覺中<br/>發現自己穿著女性的內褲。感覺就像這樣。<br/>而且已經被一大群人看到了。<br/>正因為害怕這種陷阱，我才不會在自己的部落格貼別人的連結。<br/><br/>寫給十三峠十三分切樣。<br/>就像我可以自由地改變原文章一樣<br/>在這件事上，你當然也可以自由地刪除文章或隱藏連結逃避，<br/>但那樣做實在是下策，一點都不有趣！<br/>我期待的是能讓我佩服得不禁拍案叫絕的，<br/>某種有趣的行動。<br/>加油啦<br/><br/>9月3日 補記：<br/><span style="font-size:large;">(´･ω･`)○○●○○○○○○○༼❁ɷ❁༽<br/>不行啊…　　　　　　　　　　這傢伙是高級點數賺取者<br/>評分　3／10點</span><br/><br/>2020年1月25日 補充：<br/><span style="font-size:large;">(´･ω･`)●○○○○○○○○○༼❁ɷ❁༽<br/>不行啊…　　　　　　　　　　這傢伙是高級點數賺取者<br/>評分　1／10點</span><br/><br/><span style="font-size:x-small;">今後的發展狀況可能會改變</span><br/><br/><br/>以下是修改前的原文章。<br/><br/>客人（姑且這麼說吧）要求改成乘鞍仕様<br/>所以要把前變速改成單速齒輪<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02726amx12.jpg" target="_blank"><img alt="DSC02726amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02726amx12s.jpg" width="320"/></a><br/>就這麼做了。<br/>實際上最麻煩的工作是，組裝這台車的Cannondale專賣店的<br/>完全沒有品味（不是我說的，是客人自己說的，我也同意）<br/>外變速線的長度和走線得好好整理。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02722amx12.jpg" target="_blank"><img alt="DSC02722amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02722amx12s.jpg" width="320"/></a><br/>如果要改成前單速的話，用SRAM或Campagnolo的變速把<br/>就算把內部零件拆出來，之後也還能復原<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02723amx12.jpg" target="_blank"><img alt="DSC02723amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02723amx12s.jpg" width="320"/></a><br/>我把左邊的變速桿改成煞車桿了。<br/>SRAM 和坎帕尼奧羅的大變速桿回位彈簧<br/>兼任了煞車桿的回位彈簧，<br/>這樣做的話煞車桿就會變成沒有回位彈簧的狀態，<br/>但只要外側的阻力足夠小<br/>單靠煞車卡鉗的彈簧力<br/>煞車桿就會自動回位。<br/>只要組裝得當讓初期性能能保持得更久的話<br/>反而是槓桿的拉力變輕了。<br/><br/>珠粒式外管（看起來像山寨的Nokon）的誤用導致<br/>後煞車的拉力變重，我也一併修好了。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02727amx12.jpg" target="_blank"><img alt="DSC02727amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02727amx12s.jpg" width="320"/></a><br/>前變速機座也可以用鉚釘固定，所以<br/>我就煽動說如果這車架是我自己的就把座子敲掉，結果<br/>被叫去做，但我嫌麻煩就拒絕了。<br/>把槓桿內部掏空，如果是直接焊接的座子的話也一起拆掉才是<br/>「真正的前單速仕樣」啊，我是這麼想的。<br/>關於座管，畢竟是不可逆加工，還是別做比較好。<br/><s>如果是自己的車我絕對會幹！←所以別煽風點火啊</s><br/><br/>這位客人（暫且）有好幾台自行車，<br/>就像我也在做的一樣，可以準備一台爬坡決戰專用車，<br/>平時就裝著前單速齒盤和超輕量輪組，<br/>只在比賽和比賽前調整時才騎的專用車準備一台會比較好，<br/>這樣各種麻煩事都能避免，所以我這樣提議了。<br/><s>把變速器也一起改回前雙盤規格太麻煩了，這也是原因之一。</s><br/><br/><br/>附加好禮<br/>從這裡開始就是我自己的東西了<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02763amx12.jpg" target="_blank"><img alt="DSC02763amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02763amx12s.jpg" width="320"/></a><br/>↑SRAM・初代Rival 左變把<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02769amx12.jpg" target="_blank"><img alt="DSC02769amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02769amx12s.jpg" width="320"/></a><br/>↑Campagnolo・Mirage 左變把<br/>這兩台車都是前單速飛輪<br/>所以把內部零件拆出來了。<br/>從變把的年代來看 Campagnolo是第二代的ErgoPower，<br/>SRAM是第一代的Double Tap，巧合的是 這兩種變把都是<br/>「用這個支架和煞車手把 只是煞車手把」<br/>是單獨推出的。<br/>也可以用那種的，但既然能復原原狀就沒必要買<br/>從有變速功能的左手把拆取零件。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02765amx12.jpg" target="_blank"><img alt="DSC02765amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02765amx12s.jpg" width="320"/></a><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02767amx12.jpg" target="_blank"><img alt="DSC02767amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02767amx12s.jpg" width="320"/></a><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02768amx12.jpg" target="_blank"><img alt="DSC02768amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02768amx12s.jpg" width="320"/></a><br/>Rival的右手把是裝在不需要變速功能的車子上，<br/>這邊也是把內部零件拆出來。<br/>我的煞車設定是左前／右後，而且不拉後煞車，<br/>如果材質是鋁合金的話，用不到的右煞車手把<br/>大量削減重量。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02772amx12.jpg" target="_blank"><img alt="DSC02772amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02772amx12s.jpg" width="320"/></a><br/>Mirage的右把手也是一樣，但這邊裝了變速把手。<br/>把9速把手的內部改成11速（→<a href="/zh/posts/3383.html" target="_blank" title="こちら">這裡</a>）不用在意。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext"><span style="font-size:large;">一開始就要說明，我並沒有生氣。<br/>是真的 相信我。</span><br/>因為有些原因，我要重新刊登標題中提到的8月20日發表的文章。<br/><br/>在大阪的自行車騎士之間很有名的<br/>十三峠（じゅうさんとうげ）這個山坡。<br/>距離大約4公里（大阪側），但平均坡度很陡，<br/>對於某種練習來說是再好不過的，<br/>我從2004年1月開始就在這裡進行練習會。<br/>這個部落格網域名稱中的 pass13 也是源自十三峠。<br/><br/>這個部落格的圖片幾乎都是我自己拍的自拍照。<br/>從網路上撿拾別人的圖片然後寫點評論這種行為<br/>我並不是要否定它，<br/>只是個人覺得這樣缺乏新意，所以我不這樣做。<br/>貼別人部落格的連結這種行為基本上我也不做。<br/>尤其是，我不想做那種借用別人的力量來逞強的事。<br/>所以如果這個部落格裡有貼連結的情況的話<br/>其中大多數都會參考這個部落格的過往文章。<br/><br/>當然，這是我自己訂下的規則，<br/>對於未經許可就連結或引用這個部落格的圖片和論點的行為，<br/>我並不是在禁止別人這樣做。<br/>隨便怎麼做都可以啦<br/>（之前有個腦子不正常的傢伙，把這個部落格的某些圖片截下來，<br/>在自己的部落格上假裝是他自己做的工作貼出來，<br/>那種事情實在是不行的啦）。<br/><br/>關於這篇文章中提到的Cannondale車主<br/>這篇文章中沒有提及，但是<br/>那是因為我不想從店裡這邊說什麼「我們組裝了○○選手的車！」這種話<br/>「使用了nomunlabホイール的○○選手<br/>在某某賽事中獲得優勝、入賞！」<br/>我個人就是不喜歡這樣宣傳。<br/>這不是因為謙虛，只是單純討厭這種事。<br/>選手那邊要自己宣傳我也不會阻止，但是<br/>我沒有主動大聲宣傳過<br/>也從未請選手幫忙宣傳過。<br/><br/>那麼，關於這台Cannondale的車主<br/>在一個叫「十三峠十三分切り」的部落格上被介紹了<br/>在這篇文章重新刊登之前的文章上被放了連結<br/>看到這件事我覺得「有點不開心呢」<br/>（我再囉嗦地說一次 我沒有生氣。<br/>對方可能會因為我做的事 從今以後生氣<br/>那就是說不要貼連結啦），<br/>改變了原文章<br/>在２０１３年１３月（２０１４年１月）１３日１３時１３分發佈了。<br/>想看原文章的人，從日期往回找會花不少時間，<br/>十三峠十三分切り的相關文章（→<a href="http://morimotty.com/umepyons-bike-2019/" target="_blank" title="こちら">這裡</a>）再從連結往下找點進去吧。<br/><span style="color:#FF0000">太好了！互相連結耶！</span>（對方先來）<br/>想要穿著別人的兜襠布去比相撲時<br/>有時候會遭遇什麼樣的下場，就是這麼回事。<br/>一上土俵就在不知不覺中<br/>發現自己穿著女性的內褲。感覺就像這樣。<br/>而且已經被一大群人看到了。<br/>正因為害怕這種陷阱，我才不會在自己的部落格貼別人的連結。<br/><br/>寫給十三峠十三分切樣。<br/>就像我可以自由地改變原文章一樣<br/>在這件事上，你當然也可以自由地刪除文章或隱藏連結逃避，<br/>但那樣做實在是下策，一點都不有趣！<br/>我期待的是能讓我佩服得不禁拍案叫絕的，<br/>某種有趣的行動。<br/>加油啦<br/><br/>9月3日 補記：<br/><span style="font-size:large;">(´･ω･`)○○●○○○○○○○༼❁ɷ❁༽<br/>不行啊…　　　　　　　　　　這傢伙是高級點數賺取者<br/>評分　3／10點</span><br/><br/>2020年1月25日 補充：<br/><span style="font-size:large;">(´･ω･`)●○○○○○○○○○༼❁ɷ❁༽<br/>不行啊…　　　　　　　　　　這傢伙是高級點數賺取者<br/>評分　1／10點</span><br/><br/><span style="font-size:x-small;">今後的發展狀況可能會改變</span><br/><br/><br/>以下是修改前的原文章。<br/><br/>客人（姑且這麼說吧）要求改成乘鞍仕様<br/>所以要把前變速改成單速齒輪<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02726amx12.jpg" target="_blank"><img alt="DSC02726amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02726amx12s.jpg" width="320"/></a><br/>就這麼做了。<br/>實際上最麻煩的工作是，組裝這台車的Cannondale專賣店的<br/>完全沒有品味（不是我說的，是客人自己說的，我也同意）<br/>外變速線的長度和走線得好好整理。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02722amx12.jpg" target="_blank"><img alt="DSC02722amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02722amx12s.jpg" width="320"/></a><br/>如果要改成前單速的話，用SRAM或Campagnolo的變速把<br/>就算把內部零件拆出來，之後也還能復原<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02723amx12.jpg" target="_blank"><img alt="DSC02723amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02723amx12s.jpg" width="320"/></a><br/>我把左邊的變速桿改成煞車桿了。<br/>SRAM 和坎帕尼奧羅的大變速桿回位彈簧<br/>兼任了煞車桿的回位彈簧，<br/>這樣做的話煞車桿就會變成沒有回位彈簧的狀態，<br/>但只要外側的阻力足夠小<br/>單靠煞車卡鉗的彈簧力<br/>煞車桿就會自動回位。<br/>只要組裝得當讓初期性能能保持得更久的話<br/>反而是槓桿的拉力變輕了。<br/><br/>珠粒式外管（看起來像山寨的Nokon）的誤用導致<br/>後煞車的拉力變重，我也一併修好了。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02727amx12.jpg" target="_blank"><img alt="DSC02727amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02727amx12s.jpg" width="320"/></a><br/>前變速機座也可以用鉚釘固定，所以<br/>我就煽動說如果這車架是我自己的就把座子敲掉，結果<br/>被叫去做，但我嫌麻煩就拒絕了。<br/>把槓桿內部掏空，如果是直接焊接的座子的話也一起拆掉才是<br/>「真正的前單速仕樣」啊，我是這麼想的。<br/>關於座管，畢竟是不可逆加工，還是別做比較好。<br/><s>如果是自己的車我絕對會幹！←所以別煽風點火啊</s><br/><br/>這位客人（暫且）有好幾台自行車，<br/>就像我也在做的一樣，可以準備一台爬坡決戰專用車，<br/>平時就裝著前單速齒盤和超輕量輪組，<br/>只在比賽和比賽前調整時才騎的專用車準備一台會比較好，<br/>這樣各種麻煩事都能避免，所以我這樣提議了。<br/><s>把變速器也一起改回前雙盤規格太麻煩了，這也是原因之一。</s><br/><br/><br/>附加好禮<br/>從這裡開始就是我自己的東西了<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02763amx12.jpg" target="_blank"><img alt="DSC02763amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02763amx12s.jpg" width="320"/></a><br/>↑SRAM・初代Rival 左變把<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02769amx12.jpg" target="_blank"><img alt="DSC02769amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02769amx12s.jpg" width="320"/></a><br/>↑Campagnolo・Mirage 左變把<br/>這兩台車都是前單速飛輪<br/>所以把內部零件拆出來了。<br/>從變把的年代來看 Campagnolo是第二代的ErgoPower，<br/>SRAM是第一代的Double Tap，巧合的是 這兩種變把都是<br/>「用這個支架和煞車手把 只是煞車手把」<br/>是單獨推出的。<br/>也可以用那種的，但既然能復原原狀就沒必要買<br/>從有變速功能的左手把拆取零件。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02765amx12.jpg" target="_blank"><img alt="DSC02765amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02765amx12s.jpg" width="320"/></a><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02767amx12.jpg" target="_blank"><img alt="DSC02767amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02767amx12s.jpg" width="320"/></a><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02768amx12.jpg" target="_blank"><img alt="DSC02768amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02768amx12s.jpg" width="320"/></a><br/>Rival的右手把是裝在不需要變速功能的車子上，<br/>這邊也是把內部零件拆出來。<br/>我的煞車設定是左前／右後，而且不拉後煞車，<br/>如果材質是鋁合金的話，用不到的右煞車手把<br/>大量削減重量。<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02772amx12.jpg" target="_blank"><img alt="DSC02772amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02772amx12s.jpg" width="320"/></a><br/>Mirage的右把手也是一樣，但這邊裝了變速把手。<br/>把9速把手的內部改成11速（→<a href="/zh/posts/3383.html" target="_blank" title="こちら">這裡</a>）不用在意。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

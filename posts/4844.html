@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
-    <p>Bicycle Workshop — English Edition</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/index.html">
+        <span class="brand-title">Nomu Lab Diary</span>
+        <span class="brand-subtitle">Bicycle Workshop Archive</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/index.html">Archive</a>
+      <a href="/guides/wheel-building.html">Wheel Guide</a>
+      <a href="/glossary.html">Glossary</a>
+      <a href="/about.html">About</a>
+    </nav>
     <div class="lang-toggle"><span class="lang-btn active">EN</span><a class="lang-btn" href="/zh/posts/4844.html">繁中</a></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/index.html">← All posts</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">News &amp; Updates</p>
     <h1>Extram (or Extreme?) Bar Tape Has Arrived in Stock</h1>
     <p class="post-meta">September 16, 2019</p>
+    <div class="post-body"><div class="entrytext">Are you familiar with a bar tape brand called <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Extram+bar+tape" target="_blank" rel="noopener sponsored" class="amz-inline">Extram</a>?<br/>Well, I'd say very few people know about it at this point.<br/>While the brand itself is new, the manufacturer has existed for a while—they're the OEM manufacturer behind <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Spazz+bar+tape" target="_blank" rel="noopener sponsored" class="amz-inline">Spa〇z</a>, <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Lizard+Skin+bar+tape" target="_blank" rel="noopener sponsored" class="amz-inline">Liza〇d Skin</a>, and more recently <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Fizik+bar+tape" target="_blank" rel="noopener sponsored" class="amz-inline">Fizik's bar tapes</a>, and they've started their own brand.<br/>As for Spa〇z, they're no longer the full OEM supplier; they only supply the outer fabric layer now.<br/>The reason being that only this manufacturer can make that distinctive sticky fabric...<br/><br/>Currently, they're offering bar tapes in these versions:<br/>2.0 Tacky Light<br/>3.0 Tacky Light<br/>2.5 Tacky<br/>2.0 Tacky Hybrid<br/>—where the numbers indicate thickness in millimeters.<br/><br/>Looking at the manufacturer's homepage<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC01884amx12.jpg" target="_blank"><img alt="DSC01884amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC01884amx12s.jpg" width="320"/></a><br/>it's been saying "coming soon" for about two months now.<br/>I wrote "coming soon" (with an extra character) as a jab at a spelling mistake, so don't mind that.<br/><br/>I was planning to hold off on posting this article until they announced it officially, but I can't wait anymore.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03284amx12.jpg" target="_blank"><img alt="DSC03284amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03284amx12s.jpg" width="320"/></a><br/>↑These are the 2.0 and 3.0 Tacky Light versions.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03285amx12.jpg" target="_blank"><img alt="DSC03285amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03285amx12s.jpg" width="320"/></a><br/>The box thickness differs because the bar tape thickness differs.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03286amx12.jpg" target="_blank"><img alt="DSC03286amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03286amx12s.jpg" width="320"/></a><br/>It looks like Liza〇d Skin? Well, of course—they're the manufacturer.<br/>This Tacky Light, especially the 2mm version, sells really well.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03287amx12.jpg" target="_blank"><img alt="DSC03287amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03287amx12s.jpg" width="320"/></a><br/>What's remarkable about this bar tape is that for a tape with decent thickness that actually functions as bar tape, it's incredibly light.<br/>↑By excluding other bar tapes with that definition, I mean things like Cat Eye's Shiny or Sugino's paper bar tape.<br/>When you hold it, you go "whoa!" at how light it is, and your visual expectations don't match the actual weight in your hand.<br/>As shown in the image above, the 2.0 uncut version weighs 25.8g per side, and the stated weight for the pair is 50g, so they're honest about it.<br/>The 3.0 stated weight is 60g, by the way.<br/>I'm not sure how they achieve this lightness (maybe it's porous with air pockets?), but when actually wrapped, the 2.0 feels like Liza〇d Skin's 1.8mm, and the 3.0 feels like Liza〇d Skin's 2.5mm.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03297amx12.jpg" target="_blank"><img alt="DSC03297amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03297amx12s.jpg" width="320"/></a><br/>Tacky Light comes in all 10 colors for both thicknesses.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03299amx12.jpg" target="_blank"><img alt="DSC03299amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03299amx12s.jpg" width="320"/></a><br/>It looks like there are two blacks, but the ones ending in BK is black, GR is gray, and GR1 is light gray.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03300amx12.jpg" target="_blank"><img alt="DSC03300amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03300amx12s.jpg" width="320"/></a><br/>It's not a photography issue—the difference between black and dark gray is actually indistinguishable to the naked eye.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03301amx12.jpg" target="_blank"><img alt="DSC03301amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03301amx12s.jpg" width="320"/></a><br/>Black has a black backing while dark gray has white backing, but this color hardly affects the wrapped appearance...<br/>(Since the side is this color, if you wrap the gray, you'll get a white outline effect).<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03288amx12.jpg" target="_blank"><img alt="DSC03288amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03288amx12s.jpg" width="320"/></a><br/>The bar end caps are plastic,<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03294amx12.jpg" target="_blank"><img alt="DSC03294amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03294amx12s.jpg" width="320"/></a><br/>and the logo portion on the end is made with reflective material.<br/>This specification was proposed by someone at a Japanese distributor, and it seems the brand itself owes a lot to that distributor's leadership.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03296amx12.jpg" target="_blank"><img alt="DSC03296amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03296amx12s.jpg" width="320"/></a><br/>The end tape quality isn't bad either.<br/>It's good enough to actually use.<br/>Most manufacturers' end tape I don't use—I have my own tape I prefer—but this one is decent.<br/><br/>I always use tapes that match the bar tape material, like Spa〇z or Liza〇d Skin, and I absolutely won't use the narrow, oddly stiff, fluttery stuff from O〇K or Si〇va. Fizik's recent complete model change made their end tape feel cheap.<br/><br/>Next I wanted to cover the 2.5 Tacky, but I've never stocked it and don't have photos.<br/>Given that Tacky Light has that incredible lightness, I thought a 2.5 might be a tough sell.<br/>It comes in three colors—black, gray (distinctly different from black), and red—with a stated weight of 90g.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03302amx12.jpg" target="_blank"><img alt="DSC03302amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03302amx12s.jpg" width="320"/></a><br/>Finally, the 2.0 Tacky Hybrid.<br/>Colors are black base with gray text, red text (as in the image above), and white text—three options—with a stated weight of 115g.<br/>It feels substantial to hold, but that's not because it's heavy; it's because the Tacky Light is so light.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02749amx12.jpg" target="_blank"><img alt="DSC02749amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02749amx12s.jpg" width="320"/></a><br/>Here's the gray-text version.<br/>Half the bar tape has a soft, suede-like feel, and the other half has a sticky, grippy texture,<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02750amx12.jpg" target="_blank"><img alt="DSC02750amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02750amx12s.jpg" width="320"/></a><br/>↑and here's what the transition looks like.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02751amx12.jpg" target="_blank"><img alt="DSC02751amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02751amx12s.jpg" width="320"/></a><br/>Here's an actual wrapped example.<br/>Both the distributor and athletes who actually use it recommend putting the soft side on the drop bars, so that's what I did.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02752amx12.jpg" target="_blank"><img alt="DSC02752amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02752amx12s.jpg" width="320"/></a><br/>The transition happens just right at the bracket back, at the final upward wrap...<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02753amx12.jpg" target="_blank"><img alt="DSC02753amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02753amx12s.jpg" width="320"/></a><br/>I did a temporary wrap first,<br/>adjusted the length at the handlebar end, then cut it.<br/>Also, I wrap it thicker around just the bracket area because people who primarily use the bracket position wear through the bar tape quickly with their gloves.<br/><br/>About this brand's name: initially, even the distributor people pronounced it as "Extreme," but then in some materials they handed me recently, it was written as "Extram." So I asked when they came by today, and they said it "hasn't been decided yet."<br/><br/>So I said to them, "If you search 'Extreme Bar Tape' you'll get results for Extreme Tape from saddle brand Astute, so maybe you should avoid using the generic term 'Extreme' and go with 'Extram' instead?" And they were like, "Okay, let's go with that!" Just like that.<br/>If "Extram" gets officially adopted, I guess I was the one who pushed for it last.<br/><br/><br/><br/>Bonus content (might delete if I get yelled at)<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03303amx12.jpg" target="_blank"><img alt="DSC03303amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03303amx12s.jpg" width="320"/></a><br/>My cyclocross bike currently has a 3.0 Tacky Light pilot/prototype version wrapped on it.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03304amx12.jpg" target="_blank"><img alt="DSC03304amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03304amx12s.jpg" width="320"/></a><br/>The end tape and bar end logo differ from the retail version.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03308amx12.jpg" target="_blank"><img alt="DSC03308amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03308amx12s.jpg" width="320"/></a><br/>Also, the packaging and<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03309amx12.jpg" target="_blank"><img alt="DSC03309amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03309amx12s.jpg" width="320"/></a><br/>the pattern on the bar tape's outer layer are different.<br/>There's also a simpler packaging version, and we've been selling these to regular customers for quite a while now (without displaying them in the shop), but the other day a customer came in asking "Do you have Extreme bar tape?" and bought a 2.0 Tacky Hybrid.<br/>When I asked how they knew about Extreme, they said they found out through social media.<br/><br/><br/><br/>One more bonus<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC00613amx12.jpg" target="_blank"><img alt="DSC00613amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC00613amx12s.jpg" width="320"/></a><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC00614amx12.jpg" target="_blank"><img alt="DSC00614amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC00614amx12s.jpg" width="320"/></a><br/>↑This is a customer's bar tape that I photographed for this article—both are 2mm versions of the old Fizik Microtex Tacky bar tape.<br/>This bar tape was, as far as I know, "the ultimate bar tape that doesn't slip even bare-handed," but it's been discontinued.<br/>Rather than discontinued, it was more like it disappeared due to a full model change (apparently they changed OEM manufacturers 〈in a deadpan voice〉).<br/>Before this came out, I used the Microtex Soft Touch 2mm version (→<a href="/posts/1360.html" target="_blank" title="here">here</a>). That's discontinued too.<br/>I mentioned Coca-Cola's New Coke situation earlier, and this is similar—I don't think it's good to casually discontinue existing products when launching new ones.<br/><s>The difference with Coke is that this isn't in-house manufacturing.</s><br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03310amx12.jpg" target="_blank"><img alt="DSC03310amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03310amx12s.jpg" width="320"/></a><br/>Many people don't notice, but the old Fizik bar tape's embossed pattern is Fizik's ":k" logo repeated endlessly.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03312msn2.jpg" target="_blank"><img alt="DSC03312msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03312msn2s.jpg" width="320"/></a><br/>This is the current Fizik Tacky bar tape wrapped on my bike.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03314msn2.jpg" target="_blank"><img alt="DSC03314msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03314msn2s.jpg" width="320"/></a><br/>↑An image I can reuse in the next article<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03317msn2.jpg" target="_blank"><img alt="DSC03317msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03317msn2s.jpg" width="320"/></a><br/>At 2mm thickness, the outer layer pattern looks like this.<br/>The way they don't cut a groove where the logo goes, combined with other details, it looks just like a Vittoria Corsa tire.<br/>There are two approaches to 2mm thickness: the center is 2mm and it tapers toward the edges, or the center and edges are both a uniform 2mm with a square cross-section. The old Fizik uses the former, this one uses the latter.<br/>That's why the bar tape edges create a step, and while the stated 2mm isn't a lie, it feels thicker.<br/><br/>The bare-hand grip feel that I prioritize is good compared to bar tape overall, but it's completely different from the old Fizik Tacky texture.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03316msn2.jpg" target="_blank"><img alt="DSC03316msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03316msn2s.jpg" width="320"/></a><br/>The logo is embossed on both sides of the bar tape—one side stays black, the other becomes white.<br/>If you wrap it to hide the white, it looks completely black; if you show it, you get this speckled look.<br/><br/>Finally, a thought:<br/>While many companies make Tacky bar tapes, I've never seen the opposite—a smooth or slick bar tape with an official name for that category.
+</div></div>
+    <aside class="post-guides">
+      <strong>Technical archive</strong>
+      <nav aria-label="Technical guides">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">Are you familiar with a bar tape brand called <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Extram+bar+tape" target="_blank" rel="noopener sponsored" class="amz-inline">Extram</a>?<br/>Well, I'd say very few people know about it at this point.<br/>While the brand itself is new, the manufacturer has existed for a while—they're the OEM manufacturer behind <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Spazz+bar+tape" target="_blank" rel="noopener sponsored" class="amz-inline">Spa〇z</a>, <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Lizard+Skin+bar+tape" target="_blank" rel="noopener sponsored" class="amz-inline">Liza〇d Skin</a>, and more recently <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Fizik+bar+tape" target="_blank" rel="noopener sponsored" class="amz-inline">Fizik's bar tapes</a>, and they've started their own brand.<br/>As for Spa〇z, they're no longer the full OEM supplier; they only supply the outer fabric layer now.<br/>The reason being that only this manufacturer can make that distinctive sticky fabric...<br/><br/>Currently, they're offering bar tapes in these versions:<br/>2.0 Tacky Light<br/>3.0 Tacky Light<br/>2.5 Tacky<br/>2.0 Tacky Hybrid<br/>—where the numbers indicate thickness in millimeters.<br/><br/>Looking at the manufacturer's homepage<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC01884amx12.jpg" target="_blank"><img alt="DSC01884amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC01884amx12s.jpg" width="320"/></a><br/>it's been saying "coming soon" for about two months now.<br/>I wrote "coming soon" (with an extra character) as a jab at a spelling mistake, so don't mind that.<br/><br/>I was planning to hold off on posting this article until they announced it officially, but I can't wait anymore.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03284amx12.jpg" target="_blank"><img alt="DSC03284amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03284amx12s.jpg" width="320"/></a><br/>↑These are the 2.0 and 3.0 Tacky Light versions.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03285amx12.jpg" target="_blank"><img alt="DSC03285amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03285amx12s.jpg" width="320"/></a><br/>The box thickness differs because the bar tape thickness differs.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03286amx12.jpg" target="_blank"><img alt="DSC03286amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03286amx12s.jpg" width="320"/></a><br/>It looks like Liza〇d Skin? Well, of course—they're the manufacturer.<br/>This Tacky Light, especially the 2mm version, sells really well.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03287amx12.jpg" target="_blank"><img alt="DSC03287amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03287amx12s.jpg" width="320"/></a><br/>What's remarkable about this bar tape is that for a tape with decent thickness that actually functions as bar tape, it's incredibly light.<br/>↑By excluding other bar tapes with that definition, I mean things like Cat Eye's Shiny or Sugino's paper bar tape.<br/>When you hold it, you go "whoa!" at how light it is, and your visual expectations don't match the actual weight in your hand.<br/>As shown in the image above, the 2.0 uncut version weighs 25.8g per side, and the stated weight for the pair is 50g, so they're honest about it.<br/>The 3.0 stated weight is 60g, by the way.<br/>I'm not sure how they achieve this lightness (maybe it's porous with air pockets?), but when actually wrapped, the 2.0 feels like Liza〇d Skin's 1.8mm, and the 3.0 feels like Liza〇d Skin's 2.5mm.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03297amx12.jpg" target="_blank"><img alt="DSC03297amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03297amx12s.jpg" width="320"/></a><br/>Tacky Light comes in all 10 colors for both thicknesses.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03299amx12.jpg" target="_blank"><img alt="DSC03299amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03299amx12s.jpg" width="320"/></a><br/>It looks like there are two blacks, but the ones ending in BK is black, GR is gray, and GR1 is light gray.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03300amx12.jpg" target="_blank"><img alt="DSC03300amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03300amx12s.jpg" width="320"/></a><br/>It's not a photography issue—the difference between black and dark gray is actually indistinguishable to the naked eye.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03301amx12.jpg" target="_blank"><img alt="DSC03301amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03301amx12s.jpg" width="320"/></a><br/>Black has a black backing while dark gray has white backing, but this color hardly affects the wrapped appearance...<br/>(Since the side is this color, if you wrap the gray, you'll get a white outline effect).<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03288amx12.jpg" target="_blank"><img alt="DSC03288amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03288amx12s.jpg" width="320"/></a><br/>The bar end caps are plastic,<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03294amx12.jpg" target="_blank"><img alt="DSC03294amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03294amx12s.jpg" width="320"/></a><br/>and the logo portion on the end is made with reflective material.<br/>This specification was proposed by someone at a Japanese distributor, and it seems the brand itself owes a lot to that distributor's leadership.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03296amx12.jpg" target="_blank"><img alt="DSC03296amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03296amx12s.jpg" width="320"/></a><br/>The end tape quality isn't bad either.<br/>It's good enough to actually use.<br/>Most manufacturers' end tape I don't use—I have my own tape I prefer—but this one is decent.<br/><br/>I always use tapes that match the bar tape material, like Spa〇z or Liza〇d Skin, and I absolutely won't use the narrow, oddly stiff, fluttery stuff from O〇K or Si〇va. Fizik's recent complete model change made their end tape feel cheap.<br/><br/>Next I wanted to cover the 2.5 Tacky, but I've never stocked it and don't have photos.<br/>Given that Tacky Light has that incredible lightness, I thought a 2.5 might be a tough sell.<br/>It comes in three colors—black, gray (distinctly different from black), and red—with a stated weight of 90g.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03302amx12.jpg" target="_blank"><img alt="DSC03302amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03302amx12s.jpg" width="320"/></a><br/>Finally, the 2.0 Tacky Hybrid.<br/>Colors are black base with gray text, red text (as in the image above), and white text—three options—with a stated weight of 115g.<br/>It feels substantial to hold, but that's not because it's heavy; it's because the Tacky Light is so light.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02749amx12.jpg" target="_blank"><img alt="DSC02749amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02749amx12s.jpg" width="320"/></a><br/>Here's the gray-text version.<br/>Half the bar tape has a soft, suede-like feel, and the other half has a sticky, grippy texture,<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02750amx12.jpg" target="_blank"><img alt="DSC02750amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02750amx12s.jpg" width="320"/></a><br/>↑and here's what the transition looks like.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02751amx12.jpg" target="_blank"><img alt="DSC02751amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02751amx12s.jpg" width="320"/></a><br/>Here's an actual wrapped example.<br/>Both the distributor and athletes who actually use it recommend putting the soft side on the drop bars, so that's what I did.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02752amx12.jpg" target="_blank"><img alt="DSC02752amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02752amx12s.jpg" width="320"/></a><br/>The transition happens just right at the bracket back, at the final upward wrap...<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02753amx12.jpg" target="_blank"><img alt="DSC02753amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC02753amx12s.jpg" width="320"/></a><br/>I did a temporary wrap first,<br/>adjusted the length at the handlebar end, then cut it.<br/>Also, I wrap it thicker around just the bracket area because people who primarily use the bracket position wear through the bar tape quickly with their gloves.<br/><br/>About this brand's name: initially, even the distributor people pronounced it as "Extreme," but then in some materials they handed me recently, it was written as "Extram." So I asked when they came by today, and they said it "hasn't been decided yet."<br/><br/>So I said to them, "If you search 'Extreme Bar Tape' you'll get results for Extreme Tape from saddle brand Astute, so maybe you should avoid using the generic term 'Extreme' and go with 'Extram' instead?" And they were like, "Okay, let's go with that!" Just like that.<br/>If "Extram" gets officially adopted, I guess I was the one who pushed for it last.<br/><br/><br/><br/>Bonus content (might delete if I get yelled at)<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03303amx12.jpg" target="_blank"><img alt="DSC03303amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03303amx12s.jpg" width="320"/></a><br/>My cyclocross bike currently has a 3.0 Tacky Light pilot/prototype version wrapped on it.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03304amx12.jpg" target="_blank"><img alt="DSC03304amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03304amx12s.jpg" width="320"/></a><br/>The end tape and bar end logo differ from the retail version.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03308amx12.jpg" target="_blank"><img alt="DSC03308amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03308amx12s.jpg" width="320"/></a><br/>Also, the packaging and<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03309amx12.jpg" target="_blank"><img alt="DSC03309amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03309amx12s.jpg" width="320"/></a><br/>the pattern on the bar tape's outer layer are different.<br/>There's also a simpler packaging version, and we've been selling these to regular customers for quite a while now (without displaying them in the shop), but the other day a customer came in asking "Do you have Extreme bar tape?" and bought a 2.0 Tacky Hybrid.<br/>When I asked how they knew about Extreme, they said they found out through social media.<br/><br/><br/><br/>One more bonus<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC00613amx12.jpg" target="_blank"><img alt="DSC00613amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC00613amx12s.jpg" width="320"/></a><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC00614amx12.jpg" target="_blank"><img alt="DSC00614amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC00614amx12s.jpg" width="320"/></a><br/>↑This is a customer's bar tape that I photographed for this article—both are 2mm versions of the old Fizik Microtex Tacky bar tape.<br/>This bar tape was, as far as I know, "the ultimate bar tape that doesn't slip even bare-handed," but it's been discontinued.<br/>Rather than discontinued, it was more like it disappeared due to a full model change (apparently they changed OEM manufacturers 〈in a deadpan voice〉).<br/>Before this came out, I used the Microtex Soft Touch 2mm version (→<a href="/posts/1360.html" target="_blank" title="here">here</a>). That's discontinued too.<br/>I mentioned Coca-Cola's New Coke situation earlier, and this is similar—I don't think it's good to casually discontinue existing products when launching new ones.<br/><s>The difference with Coke is that this isn't in-house manufacturing.</s><br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03310amx12.jpg" target="_blank"><img alt="DSC03310amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03310amx12s.jpg" width="320"/></a><br/>Many people don't notice, but the old Fizik bar tape's embossed pattern is Fizik's ":k" logo repeated endlessly.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03312msn2.jpg" target="_blank"><img alt="DSC03312msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03312msn2s.jpg" width="320"/></a><br/>This is the current Fizik Tacky bar tape wrapped on my bike.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03314msn2.jpg" target="_blank"><img alt="DSC03314msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03314msn2s.jpg" width="320"/></a><br/>↑An image I can reuse in the next article<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03317msn2.jpg" target="_blank"><img alt="DSC03317msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03317msn2s.jpg" width="320"/></a><br/>At 2mm thickness, the outer layer pattern looks like this.<br/>The way they don't cut a groove where the logo goes, combined with other details, it looks just like a Vittoria Corsa tire.<br/>There are two approaches to 2mm thickness: the center is 2mm and it tapers toward the edges, or the center and edges are both a uniform 2mm with a square cross-section. The old Fizik uses the former, this one uses the latter.<br/>That's why the bar tape edges create a step, and while the stated 2mm isn't a lie, it feels thicker.<br/><br/>The bare-hand grip feel that I prioritize is good compared to bar tape overall, but it's completely different from the old Fizik Tacky texture.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03316msn2.jpg" target="_blank"><img alt="DSC03316msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03316msn2s.jpg" width="320"/></a><br/>The logo is embossed on both sides of the bar tape—one side stays black, the other becomes white.<br/>If you wrap it to hide the white, it looks completely black; if you show it, you get this speckled look.<br/><br/>Finally, a thought:<br/>While many companies make Tacky bar tapes, I've never seen the opposite—a smooth or slick bar tape with an official name for that category.
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">Products Mentioned in This Article</p>
       <ul>

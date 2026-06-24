@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/6525.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>我買了USE的前燈</h1>
     <p class="post-meta">January 02, 2023</p>
+    <div class="post-body"><div class="entrytext">USE 是一個英國零件製造商，生產車把周邊零件和座管等產品。<br/>這是一個英國零件製造商。<br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1255amx15.jpg" target="_blank"><img alt="RIMG1255amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1255amx15s.jpg" width="320"/></a><br/>↑就是這群傢伙<br/>左邊的圖片是一個名叫 Alien 的座管，<br/>圓形管狀部分有鈦合金或碳纖維等規格可選，<br/>但這支是鋁製的。順便說一下，這是之前為了 LOOK 買的，<br/>直徑 25.0mm。用一根 M4 螺栓固定的叉座，設計很輕薄，<br/>因為只用一根螺栓看起來就像一隻眼睛，<br/>這是 USE 稱之為「獨眼巨人」的規格。<br/>後來也出現了 2 孔螺栓規格的龍頭，<br/>為了滿足傳統獨眼巨人使用者的需求，龍頭單體也有單獨販售，<br/>我也買過，<br/>不過那個規格還是只用 M3 螺栓 2 支，同樣很輕薄。<br/><br/>右邊的圖片是叫做 Atom 的莖管，<br/>因為把立握把側的上面封住了，<br/>所以只能在豎管最上端安裝的莖管，<br/>之後推出的版本就變成普通的把立了。<br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1257amx15.jpg" target="_blank"><img alt="RIMG1257amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1257amx15s.jpg" width="320"/></a><br/>圖片裡沒有，但是把立下方有美國品牌USE的蘋果星形零件<br/>一個施加壓力的車管墊片狀零件<br/>裝上去使用。<br/>設計我非常喜歡，<br/>但在日常騎乘的車子上無法調出合適的位置，<br/>目前就先收藏起來了。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1258amx15.jpg" target="_blank"><img alt="RIMG1258amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1258amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1259amx15.jpg" target="_blank"><img alt="RIMG1259amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1259amx15s.jpg" width="320"/></a><br/>31.8mm徑之前的夾持徑通常是26.0mm徑，<br/>這根把立是舊ITM或舊3T的25.8mm直徑。<br/>即使汗水沾到把立上，也不會像一般把立那樣<br/>在上蓋周圍產生鹽害<br/>我曾經在三輪軸上的自行車用過這根把立，<br/>但龍頭的夾持直徑是26.0mm<br/>有一次在鎖緊螺栓時，把立本體下側啪地一聲裂開了。<br/>因為這把立製造得相當嚴格，直徑就是25.8mm，<br/>而且鍛造得太硬了，反而變得很脆。<br/>圖片中的莖管長度和那個一樣，<br/>是我從批發商庫存的最後一個重新買的。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1256amx15.jpg" target="_blank"><img alt="RIMG1256amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1256amx15s.jpg" width="320"/></a><br/>USE是Ultimate Sports Engineering的首字母縮寫，<br/>這個像粒線體一樣的東西是USE的標誌。<br/>雖然也寫著use1.com，但這是舊網域，<br/>現在已經改成exposure-use.com這個網域了。<br/>exposure（曝光）是指<br/>暴露在日光、風雨等自然環境中，露出、<br/>意思是暴露或顯露<br/>也有攝影術語中曝光的意思。<br/>目前USE把自行車零件相關品牌定位為Ultimate，<br/>另外還有燈光相關的品牌叫Exposure，<br/>還有另一個品牌叫OLAS。<br/>OLAS是Overboard Location Alert System的首字母縮寫，<br/>當小型船舶上的人掉進船外時<br/>用聲音和光來通知位置（船內的人的智慧手機也會收到通知）<br/>這是一個穿戴式設備的品牌。<br/>在小型巡洋艦休閒或<br/>帆船帆船運動等使用時的預期。<br/>日本的自行車批發商應該不會販售，<br/>在OLAS品牌中有一款MOB碳製的防水且能浮水的<br/>亮度規格為1000流明的<br/>碳製筒形燈。真想要。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1260amx15.jpg" target="_blank"><img alt="RIMG1260amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1260amx15s.jpg" width="320"/></a><br/>那個Exposure品牌的，<br/>我買了一個叫「Axis」的前燈。<br/><br/>Exposure 的手把安裝支架是<br/>用螺栓牢固固定的類型，按尺寸和亮度<br/>分類為公路車或山地車用，<br/>但像這個 Axis 一樣，手把用的支架是<br/>用矽膠帶固定的話就被<br/>分類為「頭盔用」。<br/>前提是固定在頭盔上，<br/>也可以安裝在把手上的感覺。<br/>同樣被歸類為安全帽用的型號中<br/>有「Diablo」和「搖桿」，<br/>和搖桿一樣的尺寸<br/>被歸類為公路車用的<br/>還有叫「天狼星」的型號。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1261amx15.jpg" target="_blank"><img alt="RIMG1261amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1261amx15s.jpg" width="320"/></a><br/>在 Exposure 這個品牌中<br/>車燈的型號名稱就像是所謂的名跡一樣，<br/>型號名稱後面有MK（馬克）○○，<br/>所以新舊可以清楚地區分。<br/>圖片中的型號可以說是<br/>第8代Exposure屋Axis衛門這樣的東西。<br/><br/>因為Exposure的燈價格設定得相當高，<br/>還有在貓眼帝國的日本賣得不太好的判斷吧，<br/>USE的日本批發商<br/>並不會積極地進貨Exposure的燈。<br/>代理商合約應該還沒有到期，<br/>但近２～３年似乎除了訂單採購外就沒有進貨了。<br/>說起來，這次的Axis也是最後一個了，<br/>所以這篇文章也起不到宣傳的作用。<br/>剛才我說Exposure的燈可以清楚地判斷是第幾代，<br/>現在我就按照以下順序來列舉：<br/>日本批發商的庫存／撰文時點原廠網站刊載的型號<br/>按照這個順序，我逐一寫下來<br/>天狼星 MK2/MK10<br/>搖桿 MK15/MK16<br/>軸線 MK8/MK9<br/>惡魔 MK10/MK13<br/>就是這樣。<br/>上面圖片的軸線MK8是黑色陽極氧化處理顏色，<br/>現行機種全部都是槍金屬灰色的陽極氧化處理<br/>只從本體外觀就能明白這不是最新機種。<br/>在知道這一點之後，我買了 Axis MK8，<br/>嗯，從立場上來說，還是應該從正規代理店購買比較好，<br/>而且 USE 燈的購買履歷如果沒有的話，選配零件就<br/>買不了，這是主要原因。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1271amx15.jpg" target="_blank"><img alt="RIMG1271amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1271amx15s.jpg" width="320"/></a><br/>根據日本批發商的說法，Axis MK8<br/>最大亮度是 1250 流明，<br/>但盒子上寫的是 1300 流明。<br/>Axis MK9 也是 1300 流明，所以<br/>也許AXIS MK8的初期型號是<br/>1250流明的也說不定。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1273amx15.jpg" target="_blank"><img alt="RIMG1273amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1273amx15s.jpg" width="320"/></a><br/>↑大概就是這樣放在盒子裡的，<br/>燈的燈泡側（圖片左側）與盒子之間有空隙，<br/>燈泡側的部分比AXIS更大的Diablo<br/>與盒子共用的關係吧。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1263amx15.jpg" target="_blank"><img alt="RIMG1263amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1263amx15s.jpg" width="320"/></a><br/>Exposure的燈是USE旗下品牌這件事<br/>好像是在隱瞞，不過燈的框圈（邊緣）部分有<br/>總之是有標誌的。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1268amx15.jpg" target="_blank"><img alt="RIMG1268amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1268amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1269amx15.jpg" target="_blank"><img alt="RIMG1269amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1269amx15s.jpg" width="320"/></a><br/>這是燈光後部的圖片。<br/>銀色金屬部分是操作／設定按鈕<br/>充電埠是用叫做防暴雨蓋的誇大名稱的<br/>防水蓋子堵住的。<br/>查了一下才發現「防暴雨蓋」並不是<br/>一個通用術語。<br/>Stans 在自家的密封劑裡有放這個<br/>纖維狀物質的東西被稱為「水晶體」，<br/>就是同樣的東西。<br/><br/>這次沒買，但可以插入這個充電埠的<br/>有線遠端開關或者發紅光的後方LED燈等<br/>選配件也存在。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1275amx15.jpg" target="_blank"><img alt="RIMG1275amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1275amx15s.jpg" width="320"/></a><br/>因為是安全帽用燈這個產品類別，<br/>所以也附帶了安全帽安裝用的轉接器。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1276amx15.jpg" target="_blank"><img alt="RIMG1276amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1276amx15s.jpg" width="320"/></a><br/>附帶的塑膠製M6螺栓是<br/>上面的零件和下面的零件不會碰撞<br/>（在螺栓螺紋露出的範圍內）進行<br/>調整設定。<br/>附屬了２種不同的長度。<br/><br/>軸心具有點擊（輕輕敲擊本體）來<br/>改變亮度模式的功能，<br/>點擊感度也可以分３個階段從靈敏到遲鈍進行設定，<br/>也可以設定關閉點擊功能本身。<br/>廠商說在把它當把手燈使用時，<br/>要把點按功能關掉<br/>（實際上我就是這樣做的，所以關掉了）。<br/>我原本以為這個點按功能有沒有，<br/>就是區分頭盔燈和把手燈的基準，<br/>結果不只是原本設定為把手燈的 Sirius 沒有這功能，<br/>連標榜為頭盔燈的 Joystick 也<br/>沒有點按功能。<br/><br/>這是頭盔用的座架，但孔位是奇數（中間有個孔），<br/>看起來最適合在頭頂附近有孔的頭盔<br/>進行安裝。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1277amx15.jpg" target="_blank"><img alt="RIMG1277amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1277amx15s.jpg" width="320"/></a><br/>雖然是塑膠製的 M6 螺栓，但光看這個<br/>只能想到不好的用法。<br/>以前，在 MTB 的 XC 車上，即使懸叉的車管是金屬製的<br/>也不用星形法蘭螺帽，<br/>而是用多壓力錨 + 頂部蓋來消除車頭的間隙，<br/>之後去掉錨和蓋子來輕量化<br/>在某些地方很流行。<br/>往花管裡面看的話 能看到前輪的狀態。<br/>當然鬆開把立的話 頭管會出現間隙,<br/>但奇妙的是 就算什麼都不做 最終還是會出現間隙。<br/>看來還是需要持續施加壓力的狀態才行。<br/>所以想要讓自行車超級輕的情況下<br/>用金屬螺栓對頭管進行間隙調整並固定把立之後<br/>將頂蓋螺栓換成塑膠的<br/>輕輕地鎖緊這樣的方法。<br/>類似的例子還有，方形軸的BB上，<br/>用鋼螺栓壓入固定曲柄之後<br/>再換成鋁螺栓這樣的做法。<br/>不能用鋁螺栓來施加壓入固定的力<br/>（7700杜拉艾斯或Rotor的3D曲柄之類的<br/>大口徑中空鋁螺栓等情況另當別論）。<br/><br/>順帶一提，我用在那台４公斤級自行車上的<br/>頂蓋鎖緊螺栓是<br/>「月之石」——我給這個謎樣金屬組成起的暱稱。<br/>這裡我不上傳圖片，但按長度來說，比它更輕的<br/>在金屬製品的範疇內我還沒見過。<br/>當然，應該還是比塑膠重。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1278amx15.jpg" target="_blank"><img alt="RIMG1278amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1278amx15s.jpg" width="320"/></a><br/>為了以防萬一脫落，附帶了束帶。<br/>我自己不用，但既然附帶了這個東西，不用卻弄丟就<br/>那就是使用者自己的選擇了。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1280amx15.jpg" target="_blank"><img alt="RIMG1280amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1280amx15s.jpg" width="320"/></a><br/>即使是頭盔燈，也可以用矽膠帶固定。<br/>把手用的支架附贈一個。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1281amx15.jpg" target="_blank"><img alt="RIMG1281amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1281amx15s.jpg" width="320"/></a><br/>貼在把手的接觸面上。<br/>防滑橡膠也有附贈。<br/>不是從一開始就貼上去的。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1287amx15.jpg" target="_blank"><img alt="RIMG1287amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1287amx15s.jpg" width="320"/></a><br/>作為選購配件，我也買了備用支架。<br/>備用的好像是紅色的矽膠帶。<br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1288amx15.jpg" target="_blank"><img alt="RIMG1288amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1288amx15s.jpg" width="320"/></a><br/>附送的防滑橡膠墊也一併包含。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1293amx15.jpg" target="_blank"><img alt="RIMG1293amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1293amx15s.jpg" width="320"/></a><br/>支架本體採用前後不對稱的設計，<br/>矽膠帶掛上去的高度也不同。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1294amx15.jpg" target="_blank"><img alt="RIMG1294amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1294amx15s.jpg" width="320"/></a><br/>矽膠帶在拆卸時，手指容易掛上的那一側<br/>有個把手方便操作，<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1295amx15.jpg" target="_blank"><img alt="RIMG1295amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1295amx15s.jpg" width="320"/></a><br/>如果在較高的掛鉤位置<br/>用把手那一側來掛<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1296amx15.jpg" target="_blank"><img alt="RIMG1296amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1296amx15s.jpg" width="320"/></a><br/>把手就會和燈干涉到<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1297amx15.jpg" target="_blank"><img alt="RIMG1297amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1297amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1298amx15.jpg" target="_blank"><img alt="RIMG1298amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1298amx15s.jpg" width="320"/></a><br/>旋鈕要掛在較低的位置上。<br/>這是一種無言的訴求。<br/>公路車的零件中這種無言的訴求很多，<br/>在同一個零件內改變螺釘的長度或直徑，<br/>反過來試著安裝的話，卡合的部分形狀會<br/>對不上的例子是有的，<br/>但無視那些而進行錯誤安裝的例子，<br/>我也經常看到。<br/><s>就是說低於製造商預想的智力水準啊。</s><br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1292amx15.jpg" target="_blank"><img alt="RIMG1292amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1292amx15s.jpg" width="320"/></a><br/>製造商網站的圖片中，掛鉤位置較低的一側<br/>被安裝在後方，所以我就按照那樣做。<br/>而且說明書也明確指定了要用這個方向安裝。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1289amx15.jpg" target="_blank"><img alt="RIMG1289amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1289amx15s.jpg" width="320"/></a><br/>安裝好了。<br/>對著燈的話，支架那一側就卡進C型夾子裡<br/>啪地一聲就卡進去了，雖然用手推動的話會輕輕移動，<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1290amx15.jpg" target="_blank"><img alt="RIMG1290amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1290amx15s.jpg" width="320"/></a><br/>像這樣燈的位置也不會偏移<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1291amx15.jpg" target="_blank"><img alt="RIMG1291amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1291amx15s.jpg" width="320"/></a><br/>↑這樣的話，車燈的角度就不會出現鞠躬的情況<br/>（我實際騎過一段時間確認了）。<br/><br/>車燈的前後位置用手很容易就能滑動調整，<br/>要改變亮度模式的時候，<br/>用大拇指按壓本體後部的按鈕時，<br/>需要用食指按住本體前部邊緣的部分。<br/>關於鞠躬的問題，我用的是２５．８ｍｍ直徑的把手，<br/>現在很多人用的是３１．８ｍｍ直徑的把手，<br/>在更高張力矽膠帶的31.8mm直徑上<br/>首先應該是沒問題的。<br/><br/>在USE的說明中說不要在越野騎行時使用這個支架，<br/>而更高固定力的另售帶子呢<br/>只是車把側的夾具變成螺栓固定而已<br/>燈側的C型夾片部分是一樣的。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1300amx15.jpg" target="_blank"><img alt="RIMG1300amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1300amx15s.jpg" width="320"/></a><br/>我這次買Exposure的燈<br/>最大的原因就是這個。<br/>表上列舉了Zenith/Axis與搖桿的例子。<br/>Sirius中有相關的例子。<br/>Zenith這款燈，目前是以Zenith MK2這個型號販售，<br/>現行最亮的Axis是1300流明，而這款燈的燈泡部分更大，<br/>亮度最大達1900流明的Diablo MK13，<br/>燈泡部分也比它更大，亮度最大可達2100流明的燈。<br/><br/>剛才提到的用點擊切換模式這個功能，就搭載在<br/>Zenith、Axis和Diablo這3款燈上。<br/>迪亞布羅有一款叫迪亞布羅SYNC（現行是MK4）的<br/>可以通過藍牙連接來設定燈光，<br/>還能讓安全帽和車把上的燈光聯動開關<br/>這樣的型號也有，但SYNC這邊沒有點觸功能。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1301amx15.jpg" target="_blank"><img alt="RIMG1301amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1301amx15s.jpg" width="320"/></a><br/>Exposure的燈光<br/>備有8種模式，可以切換滿電後的點亮時間（＝亮度）由2個或3個組成的<br/>從這些模式中選擇任意一個。<br/>這樣就能實現自由搭配了。<br/>最短的點燈時間是1.5小時，<br/>此時的亮度是公稱1300流明，<br/>（其他點燈時間的確切流明值未公開）。<br/>我非常討厭貓眼的超恆定<br/>（現在已改名為日間超恆定），<br/>在使用VOLT800等燈具時，<br/>想要從低檔切換到高檔的話，<br/>必須經過超恆定這個規格，實在很煩人<br/>我真的覺得很煩。<br/>該公司的自行車碼表有<br/>「可程式化顯示」這樣可以任意選擇要顯示的項目、<br/>隱藏（跳過）的功能，<br/>但我一直在想，為什麼車燈上也不能這樣做呢。<br/>做不到的原因可能是因為USE的專利，<br/>之類的可能性吧。<br/><br/>我從上面的表格中選擇了PGM（程式）5。<br/>這是可以切換2小時亮度和6小時亮度的兩種模式。<br/>這些都是常亮模式，閃爍模式是<br/>可以透過按鈕雙擊操作來切換的，<br/>但我不會使用。<br/>亮度的切換方式是，<br/>變亮時會一瞬間唰地改變感覺<br/>變暗時會比按鈕操作晚一拍<br/>呼地逐步變暗的感覺。<br/><br/>點燈中會根據電池的剩餘電量<br/>本體後部會持續以綠色、琥珀色、紅色點燈<br/>（嚴格來說是 綠點燈→綠閃爍→琥珀點燈→琥珀閃爍→<br/>紅點燈→紅閃爍這樣的順序，所以<br/>不只是點燈，有時也會閃爍）。<br/>雖然只是很微小的電力消耗，但點燈本身所用的電力<br/>還是有點令人在意。<br/>琥珀色是指透過日本批發商正規進口商品附屬的<br/>日文說明書的原文照搬，<br/>將 amber（琥珀）直譯。<br/>以肉眼來看，黃色不如說是更接近橙色，<br/>所以以下我就把琥珀色寫成橙色。<br/>上面的表格中，各模式的 High（H）、Medium（M）、Low（L）時的<br/>從滿電後的點亮時間被寫了出來，<br/>關於點亮時間有2種程式的部分，<br/>是透過切換 H 和 M 來實現的。<br/>不過，嚴格來說這是錯誤的。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1307amx15.jpg" target="_blank"><img alt="RIMG1307amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1307amx15s.jpg" width="320"/></a><br/>除了本體後部顯示電池剩餘量的指示燈亮起外，<br/>切換亮度時，本體後部的顏色會瞬間改變。<br/>如上圖所示，切換到 H 時為綠色，切換到 M 時為橙色，<br/>切換到 L 時為紅色。<br/>我剛才寫道選擇了程式 5 的 2 小時和 6 小時，<br/>在這兩個設定中，確實 2 小時的比較亮，<br/>但這樣的亮度差異是否足以說明運行時間相差 3 倍呢<br/>程度上的差異，街道燈等地方有，雖然是半夜，但光線略微明亮的地方<br/>很難判斷是哪一個模式<br/>（在完全漆黑的山路上的話，２小時和６小時的差異就很清楚了）。<br/>所以能清楚地分辨出切換到了哪一種亮度<br/>這個功能非常有幫助。<br/><br/>設定的程式亮度有３種類時<br/>就如上圖所示，<br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1308amx15.jpg" target="_blank"><img alt="RIMG1308amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1308amx15s.jpg" width="320"/></a><br/>但是當亮度是２種類模式的時候<br/>暗くすると红色亮起，明亮的时候绿色亮起。<br/>我想表达的是，<br/>说明书中明亮度有2种情况时<br/>说是H和M会切换，<br/>但本体的实际表现却是H和L在切换啊，<br/>就是这个问题。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1306amx15.jpg" target="_blank"><img alt="RIMG1306amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1306amx15s.jpg" width="320"/></a><br/>然后看灯体本身，与说明书不同的是<br/>程序5的2小时和6小时位置上是H和L。<br/>順便一提，程式9是觸感靈敏度的設定。<br/>這個程式的切換方式，如果知道怎麼做的話<br/>在等紅綠燈的時間裡就能完成。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1309amx15.jpg" target="_blank"><img alt="RIMG1309amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1309amx15s.jpg" width="320"/></a><br/>流明的中文翻譯是「光通量」，<br/>車燈就像是1流明的牙籤束<br/>按照公稱流明的數量散佈在照射範圍內，這是<br/>我對它的想像。<br/>照射範圍內是否「均勻地」散佈<br/>取決於燈光的設計配光。<br/>VOLT6000是一根1流明的牙籤<br/>散佈著6000根<br/>配光大約上下各45°<br/>散佈在像把正方形的角斜切那樣的寬廣範圍內<br/>尤其是上方向過度發亮<br/>所以我使用時會把本體傾斜得相當低。<br/>VOLT6000從上往下數第4檔亮度是1000流明，<br/>與當時照射範圍中心部分的路面亮度相比<br/>VOLT800的高亮模式（800流明）更亮。<br/>這是因為VOLT800的照射範圍更窄。<br/><br/>以前從貓眼公司內部人士那裡聽說<br/>在非本公司的燈具中 實際檢測時<br/>很多廠商謊報公稱流明數據很高。<br/>在亞馬遜和比亞馬遜還要魔幻的地方（比密林更魔幻啦 真的超扯）<br/>在亞馬遜等平台上銷售的 自稱2萬流明的燈具啊<br/>撇除那些自稱１０００流明卻只賣２千多日元的垃圾不說，<br/>確實有些知名車架品牌旗下的零件品牌<br/>前燈等的公稱流明<br/>往往都吹得有點水份。<br/>根據我之前的調查（以貓眼燈為正確基準），<br/>比ＶＯＬＴ３００的高亮模式明確暗得多<br/>自稱３００流明的燈真的多到不行。<br/>這種燈的ＬＥＤ晶片（我想應該大多是ＣＲＥＥ公司製的），<br/>LED晶片製造商所公布的額定上限值<br/>應該就直接作為車燈的最高流明數了。<br/><br/>不過，其實不應該這樣做啦<br/>把Axis MK8設定為程式1<br/>以1.5小時的亮度（額定1300流明）的設定<br/>用肉眼從正面看了一下。<br/>確實，比VOLT 800的高模式（800流明）<br/>明顯亮得多。超過800根牙籤的<br/>確實扎進了眼球裡，<br/>不過是不是真的有１３００本，我就沒辦法確認了。<br/>因為Axis本來是頭盔用的燈，<br/>照射範圍比VOLT８００還要寬。<br/>所以，中心部分的亮度雖然Axis稍微亮一點，<br/>但整體上沒什麼大差別。<br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1246amx15.jpg" target="_blank"><img alt="RIMG1246amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1246amx15s.jpg" width="320"/></a><br/>↑VOLT８００的高亮模式<br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1247amx15.jpg" target="_blank"><img alt="RIMG1247amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1247amx15s.jpg" width="320"/></a><br/>↑Axis MK８的１．５小時模式<br/>相機的拍攝位置和車燈的光軸是<br/>盡可能地調整到相同的位置，<br/>但由於支架形狀的關係，VOLT800看起來<br/>位置會稍微高一點。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1248amx15.jpg" target="_blank"><img alt="RIMG1248amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1248amx15s.jpg" width="320"/></a><br/>↑兩者都在最高模式點亮，從側面看的狀態<br/>左邊是VOLT800，右邊是Axis MK8。<br/>雖然不清楚這是否能成為亮度的根據，<br/>但光源周圍的光暈也明顯是Axis的更清晰。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1250amx15.jpg" target="_blank"><img alt="RIMG1250amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1250amx15s.jpg" width="320"/></a><br/>接近滿充電時的綠色顯示就是這樣。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1252amx15.jpg" target="_blank"><img alt="RIMG1252amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1252amx15s.jpg" width="320"/></a><br/>在程式1時，切換到M亮度時<br/>一瞬間變成橙色時的顏色。<br/>透過相機看的話，橙色看不太出來，<br/>但用肉眼看的話，橙色就清楚得多，<br/>能夠區別出它跟紅色不同的顏色。<br/><br/><br/>關於車燈的重量。<br/>我是從把手周圍，或者說從車把夾的前端開始<br/>我想盡量減輕重量來騎公路車，<br/>從這個角度來說，顯示地圖的超大尺寸碼表<br/>裝在遠離把手的地方<br/>再加上在下方吊掛高亮度LED燈<br/>從個人來看是無法接受的。<br/>雖然我知道這樣寫是在否定多數派的做法。<br/>所以白天騎車時，我會把<br/>前燈收進背後的口袋裡（如果只是通勤程度的話就不會這樣做）。<br/>關於車把周圍的輕量化 輕視這一點的人是<br/>請一次相信我 把車把上面的所有東西<br/>全部拆掉 稍微試著騎一下。<br/>那就是，正在失去的公路車⋯⋯，不對<br/>被稱為公路競速車的車種的<br/>本來的原始騎乘感受。<br/>雖然這樣說 最能體會到這一點的是<br/>邊拉邊推式剎車加上W把的自行車，<br/>機械式變速或油壓煞車的握把<br/>把手末端會變重，所以真正最完美的狀態<br/>已經不用奢望了。<br/>當然，轉向的爽快輕盈感和<br/>自行車碼表能提供的資訊優點<br/>放在天秤上衡量時，要捨棄後者<br/>在現實上是不可行的，我是理解的。<br/>我目前在把管的旁邊裝著手錶型心率計，<br/>莖管前面有自己製作的座台，<br/>不過現在沒在用。<br/>可視性的話，裝在莖管前面比較<br/>當然是高得多。<br/>還有啊，從莖管內部通往頭管的<br/>碟煞油管那種走線設計的車架，<br/>怎麼樣都會讓轉向變得沉重。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1310amx15.jpg" target="_blank"><img alt="RIMG1310amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1310amx15s.jpg" width="320"/></a><br/>↑沒有支架<br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1311amx15.jpg" target="_blank"><img alt="RIMG1311amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1311amx15s.jpg" width="320"/></a><br/>↑含括號<br/>這是 Axis MK8 的實測重量。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1312amx15.jpg" target="_blank"><img alt="RIMG1312amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1312amx15s.jpg" width="320"/></a><br/>↑不含括號<br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1313amx15.jpg" target="_blank"><img alt="RIMG1313amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1313amx15s.jpg" width="320"/></a><br/>↑含括號（已裁剪至 25.8mm 直徑）<br/>這是 VOLT800 的實測重量。<br/><br/>這次我在選擇 Exposure 車燈時最看重的是<br/>在程式切換功能和一般模式切替的範圍內<br/>沒有閃爍或伴有閃爍的模式這一點，<br/>假如比 VOLT800 稍微重一點程度的話<br/>也不會成為問題。<br/>不過，實際上卻更輕，所以這樣反而很感謝。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1314amx15.jpg" target="_blank"><img alt="RIMG1314amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1314amx15s.jpg" width="320"/></a><br/>啊，我的 VOLT800 前端之所以有塗裝<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1315amx15.jpg" target="_blank"><img alt="RIMG1315amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1315amx15s.jpg" width="320"/></a><br/>是因為以前我以為車燈卡在車把夾上卡得很緊<br/>結果沒有卡緊，在路面的落差處脫落掉下來的時候<br/>前端部分側面的表層被刮掉了，留下了傷痕。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1316amx15.jpg" target="_blank"><img alt="RIMG1316amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1316amx15s.jpg" width="320"/></a><br/>我平時騎的單車是在下管的水壺架孔<br/>在BB附近新開孔，將水壺架的位置<br/>下移螺孔間距整整一格。<br/>所以坐管上不會裝水壺架。<br/>在那裡改用不是橫向安裝，而是裝在坐管前方的安裝座<br/>來裝打氣筒，但是<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1317amx15.jpg" target="_blank"><img alt="RIMG1317amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1317amx15s.jpg" width="320"/></a><br/>那個打氣筒配合VOLT300之後<br/>採用了蟑螂卵系統（順帶一提，這不是官方命名）來<br/>安裝照燈用的備用電池<br/>用矽膠帶固定。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1321amx15.jpg" target="_blank"><img alt="RIMG1321amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1321amx15s.jpg" width="320"/></a><br/>矽膠帶是先前提到的在密林等網站上販售的產品,<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1322amx15.jpg" target="_blank"><img alt="RIMG1322amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1322amx15s.jpg" width="320"/></a><br/>一端裝有克羅普斯公司自有矽膠帶式<br/>小型LED燈固定所採用的S型掛鉤,<br/>我裝上的是他們作為備用零件推出的產品。<br/>這個S型掛鉤通常也在拆卸方一側和不拆卸方一側<br/>的形狀上有著「無言的訴求」呢。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1363amx15.jpg" target="_blank"><img alt="RIMG1363amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1363amx15s.jpg" width="320"/></a><br/>這個矽膠帶搭配的是同一製造商的產品<br/>長的和短的都有，<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1365amx15.jpg" target="_blank"><img alt="RIMG1365amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1365amx15s.jpg" width="320"/></a><br/>是不是想讓倒入模具的材料體積保持一樣呢，<br/>長的那個寬度較窄，固定物有容易晃動的傾向，所以要特別注意。<br/><br/>VOLT的備用電池<br/>當然可以作為VOLT的電池使用，<br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1354amx15.jpg" target="_blank"><img alt="RIMG1354amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1354amx15s.jpg" width="320"/></a><br/>如果用貓眼推出的快速充電座架2（←其實是第二代）<br/>這種東西的話，除了VOLT以外的電池也能充電。<br/>上面的圖是在VOLT電池充電模式下的情況，<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1353amx15.jpg" target="_blank"><img alt="RIMG1353amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1353amx15s.jpg" width="320"/></a><br/>轉動末端的部分的話・・・<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1352amx15.jpg" target="_blank"><img alt="RIMG1352amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1352amx15s.jpg" width="320"/></a><br/>放電用的USB連接埠就會出現。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1355amx15.jpg" target="_blank"><img alt="RIMG1355amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1355amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1356amx15.jpg" target="_blank"><img alt="RIMG1356amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1356amx15s.jpg" width="320"/></a><br/>在這個狀態下，比如換成Lightning線的話<br/>就能對iPhone充電了。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1318amx15.jpg" target="_blank"><img alt="RIMG1318amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1318amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1319amx15.jpg" target="_blank"><img alt="RIMG1319amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1319amx15s.jpg" width="320"/></a><br/>剛才那個矽膠帶呢，<br/>一旦從這樣固定的狀態開始<br/>（S形掛鉤也可以拆下來啦，但容易弄丟所以）<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1320amx15.jpg" target="_blank"><img alt="RIMG1320amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1320amx15s.jpg" width="320"/></a><br/>把帶子拉起來的地方穿過電池的話<br/>就這樣可以固定了。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1366amx15.jpg" target="_blank"><img alt="RIMG1366amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1366amx15s.jpg" width="320"/></a><br/>Axis MK8 除了插進插座的 AC 充電器外，<br/>還附帶了 USB 充電用的連接線，<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1367amx15.jpg" target="_blank"><img alt="RIMG1367amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1367amx15s.jpg" width="320"/></a><br/>也可以用 VOLT 用電池＋充電座 2 進行充電。<br/>還有，我之前忘了提到，<br/>Exposure 的燈具「可以邊充電邊點亮」。<br/>Cateye 的燈具做不到這一點。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1368amx15.jpg" target="_blank"><img alt="RIMG1368amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1368amx15s.jpg" width="320"/></a><br/>我想這類資訊對大多數人來說幫助不大，<br/>這個USB充電線是2015年款以前的<br/>CR123電池不能使用的樣子。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1337amx15.jpg" target="_blank"><img alt="RIMG1337amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1337amx15s.jpg" width="320"/></a><br/>是附在燈上的AC充電器。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1338amx15.jpg" target="_blank"><img alt="RIMG1338amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1338amx15s.jpg" width="320"/></a><br/>配備了充電完成通知燈。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1339amx15.jpg" target="_blank"><img alt="RIMG1339amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1339amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1340amx15.jpg" target="_blank"><img alt="RIMG1340amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1340amx15s.jpg" width="320"/></a><br/>這類充電器經常會有 配合各國插座的<br/>轉接器方式。<br/>日本的批發商販售的<br/>只有附日本用轉接器的產品。<br/><br/>日本的插座其實左右兩邊的孔長度不一樣。<br/>Campagnolo原廠EPS用充電器的<br/>日本插座用的轉接器<br/>有兩個插頭寬度不同的規格<br/>較寬的插頭無法插入孔較短的插座孔裡<br/>這種情況確實發生過。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1341amx15.jpg" target="_blank"><img alt="RIMG1341amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1341amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1342amx15.jpg" target="_blank"><img alt="RIMG1342amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1342amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1343amx15.jpg" target="_blank"><img alt="RIMG1343amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1343amx15s.jpg" width="320"/></a><br/>為了在家裡和店裡都能充電<br/>我買了選配的AC充電器。<br/>尺寸好像比較大，不過性能似乎是一樣的。<br/>充電完成通知燈也有。<br/>Exposure 有 2 種充電器，<br/>最高 2500 流明的 Maxx-D 或<br/>3750 流明的 Six Pack 等<br/>（流明方面依 MK 而有差異）的型號用的<br/>「快速充電器」和<br/>包括 Axis 在內，其他所有型號都適用的<br/>有「智能充電器」。<br/>結果當然就訂購了智能充電器的那個<br/>在這個只有店家才能看的批發商訂購網站上<br/>這個稍微大一點的充電器圖片被列出來<br/>但在面向一般消費者的網站上，隨附在車燈上的那個充電器<br/>被當成智能充電器來刊登。<br/>不過應該沒問題。功能似乎是一樣的，<br/>而且我買到的是最後一個。<br/>今後也許備用零件會<br/>改成比較小型的也說不定。<br/>不過這都是有後續的話啦。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1323amx15.jpg" target="_blank"><img alt="RIMG1323amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1323amx15s.jpg" width="320"/></a><br/>我也買了一個叫 Piggyback 的備用電池。<br/>這個現在想想也許買了也沒必要。<br/>用 VOLT800 的時候，在外面切換到備用電池的情況<br/>大約有 5 次。其中除了忘記充電這種過失以外<br/>從滿電狀態到在外面本體按鈕部分亮起紅色警告燈<br/>交換大概有3次左右吧。<br/>完全天黑以後 從風吹嶺進入 和歌山縣<br/>從24號線或紀之川沿線 進入 奈良縣<br/>經過水越嶺進入大阪府，這樣的路線裡<br/>根據經驗 VOLT800撐不到最後。<br/>亮度差不多是從上面數第二檔<br/>下嶺的時候我會切到最亮模式。<br/><br/>差不多午夜時分抵達高野山山腳的道路驛站<br/>我清楚地記得那件事。<br/>在道路驛站的屋簷下的喇叭上<br/>燕子親鳥在睡覺。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1324amx15.jpg" target="_blank"><img alt="RIMG1324amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1324amx15s.jpg" width="320"/></a><br/>後處理工作相當講究。<br/>這是內部只有一個氣室的產品，<br/>也有氣室三個且車身較粗的規格產品。<br/>雖然是寄生式安裝，但充電的對象<br/>僅限於Exposure的燈。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1326amx15.jpg" target="_blank"><img alt="RIMG1326amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1326amx15s.jpg" width="320"/></a><br/>這是附在Piggyback上的轉接器。<br/>老實說我只想買這個（用途不太光彩）<br/>只能作為Piggyback的附屬品才買得到。<br/>用於搖桿比較堅固的那一個座<br/>很像單售的夾持部分<br/>但關鍵部分的形狀不同。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1327amx15.jpg" target="_blank"><img alt="RIMG1327amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1327amx15s.jpg" width="320"/></a><br/>貼上附帶的防滑和防刮傷的橡膠墊<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1328amx15.jpg" target="_blank"><img alt="RIMG1328amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1328amx15s.jpg" width="320"/></a><br/>把Piggyback卡進C夾這一側。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1329amx15.jpg" target="_blank"><img alt="RIMG1329amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1329amx15s.jpg" width="320"/></a><br/>這次也用附屬的魔鬼氈帶<br/>安裝在把立下方的狀態。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1330amx15.jpg" target="_blank"><img alt="RIMG1330amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1330amx15s.jpg" width="320"/></a><br/>與４螺栓把立在形狀上相性很好。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1331amx15.jpg" target="_blank"><img alt="RIMG1331amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1331amx15s.jpg" width="320"/></a><br/>這是Piggyback的包裝背面。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1332amx15.jpg" target="_blank"><img alt="RIMG1332amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1332amx15s.jpg" width="320"/></a><br/>１節電池的東西 大約是這樣的尺寸感，<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1333amx15.jpg" target="_blank"><img alt="RIMG1333amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1333amx15s.jpg" width="320"/></a><br/>３節電池的話 就是這樣的感覺。<br/>不管哪種情況把立上方都是<br/>剛才只提到名字的Maxx-D這款超高亮度車燈。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1334amx15.jpg" target="_blank"><img alt="RIMG1334amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1334amx15s.jpg" width="320"/></a><br/>安裝在頭盔上的話，可以這樣裝上豬背座。<br/>這樣安裝也是一個不錯的例子。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1335amx15.jpg" target="_blank"><img alt="RIMG1335amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1335amx15s.jpg" width="320"/></a><br/>不知道這是Axis推出前的型號，<br/>還是沒有關於Axis的記載，<br/>燈體在滿充電的狀態下，再加上有無豬背座的差異，<br/>續航時間（包裝上稱為燃燒時間）的長度會<br/>在搖桿或魔鬼手電筒上，一顆電池會變成兩倍，<br/>三顆電池的話會變成四倍。<br/>競賽型號 MaXx-D 配備四盞燈<br/>採用類似的外形，但改為兩盞燈，是體積稍小的型號。<br/>這個在單顆電池時倍率為 1.5 倍，三顆電池時為 2.5 倍，<br/>更高亮度的 MaXx-D 的倍率則更低。<br/>Axis 可以說是體積較小的 Diablo，<br/>所以單顆電池背架式的倍率應該是 2 倍。<br/>程式 5 的 2 小時和 6 小時<br/>分別會變成 4 小時和 12 小時。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1360amx15.jpg" target="_blank"><img alt="RIMG1360amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1360amx15s.jpg" width="320"/></a><br/>我現在用的夾座是２螺栓式的，所以<br/>和Piggyback的相容性不好。<br/>上面的圖片中，轉接器根本沒有沿著夾座的本體。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1361amx15.jpg" target="_blank"><img alt="RIMG1361amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1361amx15s.jpg" width="320"/></a><br/>所以，也可以把燈本體裝在上面。<br/>Piggyback是背著或揹著的意思的單詞<br/>（不是piggy back這個片語，而是piggyback這個單詞）所以<br/>這種方式符合字義。<br/>不過，設定成１．５小時或２小時的亮度的話<br/>本體的前部會相當發熱，所以<br/>如果要背著的話，跟上面的圖片不同，<br/>最好是在後面這邊進行。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1362amx15.jpg" target="_blank"><img alt="RIMG1362amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1362amx15s.jpg" width="320"/></a><br/>如果有頂管包之類的東西的話，<br/>也許可以放進去。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1357amx15.jpg" target="_blank"><img alt="RIMG1357amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1357amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1358amx15.jpg" target="_blank"><img alt="RIMG1358amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1358amx15s.jpg" width="320"/></a><br/>這是剛才提到的通用矽膠束帶的搭配範例。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1359amx15.jpg" target="_blank"><img alt="RIMG1359amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1359amx15s.jpg" width="320"/></a><br/>可以邊充電邊點亮。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1350amx15.jpg" target="_blank"><img alt="RIMG1350amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1350amx15s.jpg" width="320"/></a><br/>或者，一顆電池的背掛式則是<br/>因為剛好卡進車燈用的C夾<br/>把預留購買的車燈用支架<br/>也可以拿來當作副燈架。<br/><br/>這個副燈架，本體出來的線無法拆掉<br/>圓筒部分雖然緊湊，但裝上線材後就會佔空間<br/>防水蓋裝上之後，再用矽膠帶綁在打氣筒上<br/>沒辦法像VOLT電池那樣方便携帶。<br/>結果就只能放在防水袋裡面<br/>我決定把它放進座墊袋裡<br/>但正因為這樣，我不得不把座墊袋<br/>換成更大的尺寸。<br/>既然座墊袋要變大<br/>那我就可以考慮把VOLT的電池加上搖籃2<br/>這個組合放進去<br/>雖然還不到後悔的地步<br/>但我在想，說不定沒必要匆匆忙忙地買那個Piggyback。<br/><br/>對了，這個 Piggyback 的充放電方面<br/>公頭側的連接器只有一個。<br/>充電器側的連接器也是公頭，那要怎麼做呢<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1347amx15.jpg" target="_blank"><img alt="RIMG1347amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1347amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1348amx15.jpg" target="_blank"><img alt="RIMG1348amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1348amx15s.jpg" width="320"/></a><br/>就是用這種兩側都是母頭的連接器，它是附件。<br/>要是把它弄丟了，Piggyback 就完蛋了，得特別注意。<br/><br/>如果是給燈本體充電的話，<br/>燈側也有顯示充電量的功能，所以<br/>充電可以直接用 USB 線也沒問題<br/>Piggyback 的情況下有充電滿時的通知功能<br/>用 AC 充電器來做會比較推薦。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1349amx15.jpg" target="_blank"><img alt="RIMG1349amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1349amx15s.jpg" width="320"/></a><br/>※給家長的提醒<br/>將 Piggyback 的轉接器連接到兩個 AC 充電器<br/>不要同時插入兩個插座。<br/>（因為充電器裡有電容器<br/>這是完全放電後才拍攝的）。<br/><br/><br/>這次的 Axis MK8 呢，<br/>就個人而言，購買後的滿足度非常高。<br/>不過還沒有用到極限過，<br/>除了流明之外，還有另一個可能的謊言，<br/>關於續航時間，我還沒有確認是否符合公稱的時間。<br/>說明書上寫著「如果超過1個月沒有使用，請進行充電。<br/>空電狀態會傷害電池的電芯。」但是<br/>這盞車燈，肯定是在批發商的架子上<br/>睡了大約2～3年的樣子。<br/><br/>而且，這篇文章不太可能成為銷售推廣。<br/>原因是批發商的庫存中<br/>天狼星、搖桿、軸線、惡魔已經售完<s>而<br/>至於MaXx-D，MK11已經售完，<br/>MK8和MK6還有存貨</s>處於這樣的狀態，<br/>即使現在想買，也買不到正規品。<br/><br/>以上是很長的文章，我本來想分成幾篇的，<br/>不過其實還有後續呢<br/>（不過應該不會這麼長啦）。<br/><br/>後續改天再寫囉
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">USE 是一個英國零件製造商，生產車把周邊零件和座管等產品。<br/>這是一個英國零件製造商。<br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1255amx15.jpg" target="_blank"><img alt="RIMG1255amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1255amx15s.jpg" width="320"/></a><br/>↑就是這群傢伙<br/>左邊的圖片是一個名叫 Alien 的座管，<br/>圓形管狀部分有鈦合金或碳纖維等規格可選，<br/>但這支是鋁製的。順便說一下，這是之前為了 LOOK 買的，<br/>直徑 25.0mm。用一根 M4 螺栓固定的叉座，設計很輕薄，<br/>因為只用一根螺栓看起來就像一隻眼睛，<br/>這是 USE 稱之為「獨眼巨人」的規格。<br/>後來也出現了 2 孔螺栓規格的龍頭，<br/>為了滿足傳統獨眼巨人使用者的需求，龍頭單體也有單獨販售，<br/>我也買過，<br/>不過那個規格還是只用 M3 螺栓 2 支，同樣很輕薄。<br/><br/>右邊的圖片是叫做 Atom 的莖管，<br/>因為把立握把側的上面封住了，<br/>所以只能在豎管最上端安裝的莖管，<br/>之後推出的版本就變成普通的把立了。<br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1257amx15.jpg" target="_blank"><img alt="RIMG1257amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1257amx15s.jpg" width="320"/></a><br/>圖片裡沒有，但是把立下方有美國品牌USE的蘋果星形零件<br/>一個施加壓力的車管墊片狀零件<br/>裝上去使用。<br/>設計我非常喜歡，<br/>但在日常騎乘的車子上無法調出合適的位置，<br/>目前就先收藏起來了。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1258amx15.jpg" target="_blank"><img alt="RIMG1258amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1258amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1259amx15.jpg" target="_blank"><img alt="RIMG1259amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1259amx15s.jpg" width="320"/></a><br/>31.8mm徑之前的夾持徑通常是26.0mm徑，<br/>這根把立是舊ITM或舊3T的25.8mm直徑。<br/>即使汗水沾到把立上，也不會像一般把立那樣<br/>在上蓋周圍產生鹽害<br/>我曾經在三輪軸上的自行車用過這根把立，<br/>但龍頭的夾持直徑是26.0mm<br/>有一次在鎖緊螺栓時，把立本體下側啪地一聲裂開了。<br/>因為這把立製造得相當嚴格，直徑就是25.8mm，<br/>而且鍛造得太硬了，反而變得很脆。<br/>圖片中的莖管長度和那個一樣，<br/>是我從批發商庫存的最後一個重新買的。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1256amx15.jpg" target="_blank"><img alt="RIMG1256amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1256amx15s.jpg" width="320"/></a><br/>USE是Ultimate Sports Engineering的首字母縮寫，<br/>這個像粒線體一樣的東西是USE的標誌。<br/>雖然也寫著use1.com，但這是舊網域，<br/>現在已經改成exposure-use.com這個網域了。<br/>exposure（曝光）是指<br/>暴露在日光、風雨等自然環境中，露出、<br/>意思是暴露或顯露<br/>也有攝影術語中曝光的意思。<br/>目前USE把自行車零件相關品牌定位為Ultimate，<br/>另外還有燈光相關的品牌叫Exposure，<br/>還有另一個品牌叫OLAS。<br/>OLAS是Overboard Location Alert System的首字母縮寫，<br/>當小型船舶上的人掉進船外時<br/>用聲音和光來通知位置（船內的人的智慧手機也會收到通知）<br/>這是一個穿戴式設備的品牌。<br/>在小型巡洋艦休閒或<br/>帆船帆船運動等使用時的預期。<br/>日本的自行車批發商應該不會販售，<br/>在OLAS品牌中有一款MOB碳製的防水且能浮水的<br/>亮度規格為1000流明的<br/>碳製筒形燈。真想要。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1260amx15.jpg" target="_blank"><img alt="RIMG1260amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1260amx15s.jpg" width="320"/></a><br/>那個Exposure品牌的，<br/>我買了一個叫「Axis」的前燈。<br/><br/>Exposure 的手把安裝支架是<br/>用螺栓牢固固定的類型，按尺寸和亮度<br/>分類為公路車或山地車用，<br/>但像這個 Axis 一樣，手把用的支架是<br/>用矽膠帶固定的話就被<br/>分類為「頭盔用」。<br/>前提是固定在頭盔上，<br/>也可以安裝在把手上的感覺。<br/>同樣被歸類為安全帽用的型號中<br/>有「Diablo」和「搖桿」，<br/>和搖桿一樣的尺寸<br/>被歸類為公路車用的<br/>還有叫「天狼星」的型號。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1261amx15.jpg" target="_blank"><img alt="RIMG1261amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1261amx15s.jpg" width="320"/></a><br/>在 Exposure 這個品牌中<br/>車燈的型號名稱就像是所謂的名跡一樣，<br/>型號名稱後面有MK（馬克）○○，<br/>所以新舊可以清楚地區分。<br/>圖片中的型號可以說是<br/>第8代Exposure屋Axis衛門這樣的東西。<br/><br/>因為Exposure的燈價格設定得相當高，<br/>還有在貓眼帝國的日本賣得不太好的判斷吧，<br/>USE的日本批發商<br/>並不會積極地進貨Exposure的燈。<br/>代理商合約應該還沒有到期，<br/>但近２～３年似乎除了訂單採購外就沒有進貨了。<br/>說起來，這次的Axis也是最後一個了，<br/>所以這篇文章也起不到宣傳的作用。<br/>剛才我說Exposure的燈可以清楚地判斷是第幾代，<br/>現在我就按照以下順序來列舉：<br/>日本批發商的庫存／撰文時點原廠網站刊載的型號<br/>按照這個順序，我逐一寫下來<br/>天狼星 MK2/MK10<br/>搖桿 MK15/MK16<br/>軸線 MK8/MK9<br/>惡魔 MK10/MK13<br/>就是這樣。<br/>上面圖片的軸線MK8是黑色陽極氧化處理顏色，<br/>現行機種全部都是槍金屬灰色的陽極氧化處理<br/>只從本體外觀就能明白這不是最新機種。<br/>在知道這一點之後，我買了 Axis MK8，<br/>嗯，從立場上來說，還是應該從正規代理店購買比較好，<br/>而且 USE 燈的購買履歷如果沒有的話，選配零件就<br/>買不了，這是主要原因。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1271amx15.jpg" target="_blank"><img alt="RIMG1271amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1271amx15s.jpg" width="320"/></a><br/>根據日本批發商的說法，Axis MK8<br/>最大亮度是 1250 流明，<br/>但盒子上寫的是 1300 流明。<br/>Axis MK9 也是 1300 流明，所以<br/>也許AXIS MK8的初期型號是<br/>1250流明的也說不定。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1273amx15.jpg" target="_blank"><img alt="RIMG1273amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1273amx15s.jpg" width="320"/></a><br/>↑大概就是這樣放在盒子裡的，<br/>燈的燈泡側（圖片左側）與盒子之間有空隙，<br/>燈泡側的部分比AXIS更大的Diablo<br/>與盒子共用的關係吧。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1263amx15.jpg" target="_blank"><img alt="RIMG1263amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1263amx15s.jpg" width="320"/></a><br/>Exposure的燈是USE旗下品牌這件事<br/>好像是在隱瞞，不過燈的框圈（邊緣）部分有<br/>總之是有標誌的。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1268amx15.jpg" target="_blank"><img alt="RIMG1268amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1268amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1269amx15.jpg" target="_blank"><img alt="RIMG1269amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1269amx15s.jpg" width="320"/></a><br/>這是燈光後部的圖片。<br/>銀色金屬部分是操作／設定按鈕<br/>充電埠是用叫做防暴雨蓋的誇大名稱的<br/>防水蓋子堵住的。<br/>查了一下才發現「防暴雨蓋」並不是<br/>一個通用術語。<br/>Stans 在自家的密封劑裡有放這個<br/>纖維狀物質的東西被稱為「水晶體」，<br/>就是同樣的東西。<br/><br/>這次沒買，但可以插入這個充電埠的<br/>有線遠端開關或者發紅光的後方LED燈等<br/>選配件也存在。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1275amx15.jpg" target="_blank"><img alt="RIMG1275amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1275amx15s.jpg" width="320"/></a><br/>因為是安全帽用燈這個產品類別，<br/>所以也附帶了安全帽安裝用的轉接器。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1276amx15.jpg" target="_blank"><img alt="RIMG1276amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1276amx15s.jpg" width="320"/></a><br/>附帶的塑膠製M6螺栓是<br/>上面的零件和下面的零件不會碰撞<br/>（在螺栓螺紋露出的範圍內）進行<br/>調整設定。<br/>附屬了２種不同的長度。<br/><br/>軸心具有點擊（輕輕敲擊本體）來<br/>改變亮度模式的功能，<br/>點擊感度也可以分３個階段從靈敏到遲鈍進行設定，<br/>也可以設定關閉點擊功能本身。<br/>廠商說在把它當把手燈使用時，<br/>要把點按功能關掉<br/>（實際上我就是這樣做的，所以關掉了）。<br/>我原本以為這個點按功能有沒有，<br/>就是區分頭盔燈和把手燈的基準，<br/>結果不只是原本設定為把手燈的 Sirius 沒有這功能，<br/>連標榜為頭盔燈的 Joystick 也<br/>沒有點按功能。<br/><br/>這是頭盔用的座架，但孔位是奇數（中間有個孔），<br/>看起來最適合在頭頂附近有孔的頭盔<br/>進行安裝。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1277amx15.jpg" target="_blank"><img alt="RIMG1277amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1277amx15s.jpg" width="320"/></a><br/>雖然是塑膠製的 M6 螺栓，但光看這個<br/>只能想到不好的用法。<br/>以前，在 MTB 的 XC 車上，即使懸叉的車管是金屬製的<br/>也不用星形法蘭螺帽，<br/>而是用多壓力錨 + 頂部蓋來消除車頭的間隙，<br/>之後去掉錨和蓋子來輕量化<br/>在某些地方很流行。<br/>往花管裡面看的話 能看到前輪的狀態。<br/>當然鬆開把立的話 頭管會出現間隙,<br/>但奇妙的是 就算什麼都不做 最終還是會出現間隙。<br/>看來還是需要持續施加壓力的狀態才行。<br/>所以想要讓自行車超級輕的情況下<br/>用金屬螺栓對頭管進行間隙調整並固定把立之後<br/>將頂蓋螺栓換成塑膠的<br/>輕輕地鎖緊這樣的方法。<br/>類似的例子還有，方形軸的BB上，<br/>用鋼螺栓壓入固定曲柄之後<br/>再換成鋁螺栓這樣的做法。<br/>不能用鋁螺栓來施加壓入固定的力<br/>（7700杜拉艾斯或Rotor的3D曲柄之類的<br/>大口徑中空鋁螺栓等情況另當別論）。<br/><br/>順帶一提，我用在那台４公斤級自行車上的<br/>頂蓋鎖緊螺栓是<br/>「月之石」——我給這個謎樣金屬組成起的暱稱。<br/>這裡我不上傳圖片，但按長度來說，比它更輕的<br/>在金屬製品的範疇內我還沒見過。<br/>當然，應該還是比塑膠重。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1278amx15.jpg" target="_blank"><img alt="RIMG1278amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1278amx15s.jpg" width="320"/></a><br/>為了以防萬一脫落，附帶了束帶。<br/>我自己不用，但既然附帶了這個東西，不用卻弄丟就<br/>那就是使用者自己的選擇了。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1280amx15.jpg" target="_blank"><img alt="RIMG1280amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1280amx15s.jpg" width="320"/></a><br/>即使是頭盔燈，也可以用矽膠帶固定。<br/>把手用的支架附贈一個。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1281amx15.jpg" target="_blank"><img alt="RIMG1281amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1281amx15s.jpg" width="320"/></a><br/>貼在把手的接觸面上。<br/>防滑橡膠也有附贈。<br/>不是從一開始就貼上去的。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1287amx15.jpg" target="_blank"><img alt="RIMG1287amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1287amx15s.jpg" width="320"/></a><br/>作為選購配件，我也買了備用支架。<br/>備用的好像是紅色的矽膠帶。<br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1288amx15.jpg" target="_blank"><img alt="RIMG1288amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1288amx15s.jpg" width="320"/></a><br/>附送的防滑橡膠墊也一併包含。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1293amx15.jpg" target="_blank"><img alt="RIMG1293amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1293amx15s.jpg" width="320"/></a><br/>支架本體採用前後不對稱的設計，<br/>矽膠帶掛上去的高度也不同。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1294amx15.jpg" target="_blank"><img alt="RIMG1294amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1294amx15s.jpg" width="320"/></a><br/>矽膠帶在拆卸時，手指容易掛上的那一側<br/>有個把手方便操作，<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1295amx15.jpg" target="_blank"><img alt="RIMG1295amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1295amx15s.jpg" width="320"/></a><br/>如果在較高的掛鉤位置<br/>用把手那一側來掛<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1296amx15.jpg" target="_blank"><img alt="RIMG1296amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1296amx15s.jpg" width="320"/></a><br/>把手就會和燈干涉到<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1297amx15.jpg" target="_blank"><img alt="RIMG1297amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1297amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1298amx15.jpg" target="_blank"><img alt="RIMG1298amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1298amx15s.jpg" width="320"/></a><br/>旋鈕要掛在較低的位置上。<br/>這是一種無言的訴求。<br/>公路車的零件中這種無言的訴求很多，<br/>在同一個零件內改變螺釘的長度或直徑，<br/>反過來試著安裝的話，卡合的部分形狀會<br/>對不上的例子是有的，<br/>但無視那些而進行錯誤安裝的例子，<br/>我也經常看到。<br/><s>就是說低於製造商預想的智力水準啊。</s><br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1292amx15.jpg" target="_blank"><img alt="RIMG1292amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1292amx15s.jpg" width="320"/></a><br/>製造商網站的圖片中，掛鉤位置較低的一側<br/>被安裝在後方，所以我就按照那樣做。<br/>而且說明書也明確指定了要用這個方向安裝。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1289amx15.jpg" target="_blank"><img alt="RIMG1289amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1289amx15s.jpg" width="320"/></a><br/>安裝好了。<br/>對著燈的話，支架那一側就卡進C型夾子裡<br/>啪地一聲就卡進去了，雖然用手推動的話會輕輕移動，<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1290amx15.jpg" target="_blank"><img alt="RIMG1290amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1290amx15s.jpg" width="320"/></a><br/>像這樣燈的位置也不會偏移<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1291amx15.jpg" target="_blank"><img alt="RIMG1291amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1291amx15s.jpg" width="320"/></a><br/>↑這樣的話，車燈的角度就不會出現鞠躬的情況<br/>（我實際騎過一段時間確認了）。<br/><br/>車燈的前後位置用手很容易就能滑動調整，<br/>要改變亮度模式的時候，<br/>用大拇指按壓本體後部的按鈕時，<br/>需要用食指按住本體前部邊緣的部分。<br/>關於鞠躬的問題，我用的是２５．８ｍｍ直徑的把手，<br/>現在很多人用的是３１．８ｍｍ直徑的把手，<br/>在更高張力矽膠帶的31.8mm直徑上<br/>首先應該是沒問題的。<br/><br/>在USE的說明中說不要在越野騎行時使用這個支架，<br/>而更高固定力的另售帶子呢<br/>只是車把側的夾具變成螺栓固定而已<br/>燈側的C型夾片部分是一樣的。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1300amx15.jpg" target="_blank"><img alt="RIMG1300amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1300amx15s.jpg" width="320"/></a><br/>我這次買Exposure的燈<br/>最大的原因就是這個。<br/>表上列舉了Zenith/Axis與搖桿的例子。<br/>Sirius中有相關的例子。<br/>Zenith這款燈，目前是以Zenith MK2這個型號販售，<br/>現行最亮的Axis是1300流明，而這款燈的燈泡部分更大，<br/>亮度最大達1900流明的Diablo MK13，<br/>燈泡部分也比它更大，亮度最大可達2100流明的燈。<br/><br/>剛才提到的用點擊切換模式這個功能，就搭載在<br/>Zenith、Axis和Diablo這3款燈上。<br/>迪亞布羅有一款叫迪亞布羅SYNC（現行是MK4）的<br/>可以通過藍牙連接來設定燈光，<br/>還能讓安全帽和車把上的燈光聯動開關<br/>這樣的型號也有，但SYNC這邊沒有點觸功能。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1301amx15.jpg" target="_blank"><img alt="RIMG1301amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1301amx15s.jpg" width="320"/></a><br/>Exposure的燈光<br/>備有8種模式，可以切換滿電後的點亮時間（＝亮度）由2個或3個組成的<br/>從這些模式中選擇任意一個。<br/>這樣就能實現自由搭配了。<br/>最短的點燈時間是1.5小時，<br/>此時的亮度是公稱1300流明，<br/>（其他點燈時間的確切流明值未公開）。<br/>我非常討厭貓眼的超恆定<br/>（現在已改名為日間超恆定），<br/>在使用VOLT800等燈具時，<br/>想要從低檔切換到高檔的話，<br/>必須經過超恆定這個規格，實在很煩人<br/>我真的覺得很煩。<br/>該公司的自行車碼表有<br/>「可程式化顯示」這樣可以任意選擇要顯示的項目、<br/>隱藏（跳過）的功能，<br/>但我一直在想，為什麼車燈上也不能這樣做呢。<br/>做不到的原因可能是因為USE的專利，<br/>之類的可能性吧。<br/><br/>我從上面的表格中選擇了PGM（程式）5。<br/>這是可以切換2小時亮度和6小時亮度的兩種模式。<br/>這些都是常亮模式，閃爍模式是<br/>可以透過按鈕雙擊操作來切換的，<br/>但我不會使用。<br/>亮度的切換方式是，<br/>變亮時會一瞬間唰地改變感覺<br/>變暗時會比按鈕操作晚一拍<br/>呼地逐步變暗的感覺。<br/><br/>點燈中會根據電池的剩餘電量<br/>本體後部會持續以綠色、琥珀色、紅色點燈<br/>（嚴格來說是 綠點燈→綠閃爍→琥珀點燈→琥珀閃爍→<br/>紅點燈→紅閃爍這樣的順序，所以<br/>不只是點燈，有時也會閃爍）。<br/>雖然只是很微小的電力消耗，但點燈本身所用的電力<br/>還是有點令人在意。<br/>琥珀色是指透過日本批發商正規進口商品附屬的<br/>日文說明書的原文照搬，<br/>將 amber（琥珀）直譯。<br/>以肉眼來看，黃色不如說是更接近橙色，<br/>所以以下我就把琥珀色寫成橙色。<br/>上面的表格中，各模式的 High（H）、Medium（M）、Low（L）時的<br/>從滿電後的點亮時間被寫了出來，<br/>關於點亮時間有2種程式的部分，<br/>是透過切換 H 和 M 來實現的。<br/>不過，嚴格來說這是錯誤的。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1307amx15.jpg" target="_blank"><img alt="RIMG1307amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1307amx15s.jpg" width="320"/></a><br/>除了本體後部顯示電池剩餘量的指示燈亮起外，<br/>切換亮度時，本體後部的顏色會瞬間改變。<br/>如上圖所示，切換到 H 時為綠色，切換到 M 時為橙色，<br/>切換到 L 時為紅色。<br/>我剛才寫道選擇了程式 5 的 2 小時和 6 小時，<br/>在這兩個設定中，確實 2 小時的比較亮，<br/>但這樣的亮度差異是否足以說明運行時間相差 3 倍呢<br/>程度上的差異，街道燈等地方有，雖然是半夜，但光線略微明亮的地方<br/>很難判斷是哪一個模式<br/>（在完全漆黑的山路上的話，２小時和６小時的差異就很清楚了）。<br/>所以能清楚地分辨出切換到了哪一種亮度<br/>這個功能非常有幫助。<br/><br/>設定的程式亮度有３種類時<br/>就如上圖所示，<br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1308amx15.jpg" target="_blank"><img alt="RIMG1308amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1308amx15s.jpg" width="320"/></a><br/>但是當亮度是２種類模式的時候<br/>暗くすると红色亮起，明亮的时候绿色亮起。<br/>我想表达的是，<br/>说明书中明亮度有2种情况时<br/>说是H和M会切换，<br/>但本体的实际表现却是H和L在切换啊，<br/>就是这个问题。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1306amx15.jpg" target="_blank"><img alt="RIMG1306amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1306amx15s.jpg" width="320"/></a><br/>然后看灯体本身，与说明书不同的是<br/>程序5的2小时和6小时位置上是H和L。<br/>順便一提，程式9是觸感靈敏度的設定。<br/>這個程式的切換方式，如果知道怎麼做的話<br/>在等紅綠燈的時間裡就能完成。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1309amx15.jpg" target="_blank"><img alt="RIMG1309amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1309amx15s.jpg" width="320"/></a><br/>流明的中文翻譯是「光通量」，<br/>車燈就像是1流明的牙籤束<br/>按照公稱流明的數量散佈在照射範圍內，這是<br/>我對它的想像。<br/>照射範圍內是否「均勻地」散佈<br/>取決於燈光的設計配光。<br/>VOLT6000是一根1流明的牙籤<br/>散佈著6000根<br/>配光大約上下各45°<br/>散佈在像把正方形的角斜切那樣的寬廣範圍內<br/>尤其是上方向過度發亮<br/>所以我使用時會把本體傾斜得相當低。<br/>VOLT6000從上往下數第4檔亮度是1000流明，<br/>與當時照射範圍中心部分的路面亮度相比<br/>VOLT800的高亮模式（800流明）更亮。<br/>這是因為VOLT800的照射範圍更窄。<br/><br/>以前從貓眼公司內部人士那裡聽說<br/>在非本公司的燈具中 實際檢測時<br/>很多廠商謊報公稱流明數據很高。<br/>在亞馬遜和比亞馬遜還要魔幻的地方（比密林更魔幻啦 真的超扯）<br/>在亞馬遜等平台上銷售的 自稱2萬流明的燈具啊<br/>撇除那些自稱１０００流明卻只賣２千多日元的垃圾不說，<br/>確實有些知名車架品牌旗下的零件品牌<br/>前燈等的公稱流明<br/>往往都吹得有點水份。<br/>根據我之前的調查（以貓眼燈為正確基準），<br/>比ＶＯＬＴ３００的高亮模式明確暗得多<br/>自稱３００流明的燈真的多到不行。<br/>這種燈的ＬＥＤ晶片（我想應該大多是ＣＲＥＥ公司製的），<br/>LED晶片製造商所公布的額定上限值<br/>應該就直接作為車燈的最高流明數了。<br/><br/>不過，其實不應該這樣做啦<br/>把Axis MK8設定為程式1<br/>以1.5小時的亮度（額定1300流明）的設定<br/>用肉眼從正面看了一下。<br/>確實，比VOLT 800的高模式（800流明）<br/>明顯亮得多。超過800根牙籤的<br/>確實扎進了眼球裡，<br/>不過是不是真的有１３００本，我就沒辦法確認了。<br/>因為Axis本來是頭盔用的燈，<br/>照射範圍比VOLT８００還要寬。<br/>所以，中心部分的亮度雖然Axis稍微亮一點，<br/>但整體上沒什麼大差別。<br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1246amx15.jpg" target="_blank"><img alt="RIMG1246amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1246amx15s.jpg" width="320"/></a><br/>↑VOLT８００的高亮模式<br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1247amx15.jpg" target="_blank"><img alt="RIMG1247amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1247amx15s.jpg" width="320"/></a><br/>↑Axis MK８的１．５小時模式<br/>相機的拍攝位置和車燈的光軸是<br/>盡可能地調整到相同的位置，<br/>但由於支架形狀的關係，VOLT800看起來<br/>位置會稍微高一點。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1248amx15.jpg" target="_blank"><img alt="RIMG1248amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1248amx15s.jpg" width="320"/></a><br/>↑兩者都在最高模式點亮，從側面看的狀態<br/>左邊是VOLT800，右邊是Axis MK8。<br/>雖然不清楚這是否能成為亮度的根據，<br/>但光源周圍的光暈也明顯是Axis的更清晰。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1250amx15.jpg" target="_blank"><img alt="RIMG1250amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1250amx15s.jpg" width="320"/></a><br/>接近滿充電時的綠色顯示就是這樣。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1252amx15.jpg" target="_blank"><img alt="RIMG1252amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1252amx15s.jpg" width="320"/></a><br/>在程式1時，切換到M亮度時<br/>一瞬間變成橙色時的顏色。<br/>透過相機看的話，橙色看不太出來，<br/>但用肉眼看的話，橙色就清楚得多，<br/>能夠區別出它跟紅色不同的顏色。<br/><br/><br/>關於車燈的重量。<br/>我是從把手周圍，或者說從車把夾的前端開始<br/>我想盡量減輕重量來騎公路車，<br/>從這個角度來說，顯示地圖的超大尺寸碼表<br/>裝在遠離把手的地方<br/>再加上在下方吊掛高亮度LED燈<br/>從個人來看是無法接受的。<br/>雖然我知道這樣寫是在否定多數派的做法。<br/>所以白天騎車時，我會把<br/>前燈收進背後的口袋裡（如果只是通勤程度的話就不會這樣做）。<br/>關於車把周圍的輕量化 輕視這一點的人是<br/>請一次相信我 把車把上面的所有東西<br/>全部拆掉 稍微試著騎一下。<br/>那就是，正在失去的公路車⋯⋯，不對<br/>被稱為公路競速車的車種的<br/>本來的原始騎乘感受。<br/>雖然這樣說 最能體會到這一點的是<br/>邊拉邊推式剎車加上W把的自行車，<br/>機械式變速或油壓煞車的握把<br/>把手末端會變重，所以真正最完美的狀態<br/>已經不用奢望了。<br/>當然，轉向的爽快輕盈感和<br/>自行車碼表能提供的資訊優點<br/>放在天秤上衡量時，要捨棄後者<br/>在現實上是不可行的，我是理解的。<br/>我目前在把管的旁邊裝著手錶型心率計，<br/>莖管前面有自己製作的座台，<br/>不過現在沒在用。<br/>可視性的話，裝在莖管前面比較<br/>當然是高得多。<br/>還有啊，從莖管內部通往頭管的<br/>碟煞油管那種走線設計的車架，<br/>怎麼樣都會讓轉向變得沉重。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1310amx15.jpg" target="_blank"><img alt="RIMG1310amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1310amx15s.jpg" width="320"/></a><br/>↑沒有支架<br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1311amx15.jpg" target="_blank"><img alt="RIMG1311amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1311amx15s.jpg" width="320"/></a><br/>↑含括號<br/>這是 Axis MK8 的實測重量。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1312amx15.jpg" target="_blank"><img alt="RIMG1312amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1312amx15s.jpg" width="320"/></a><br/>↑不含括號<br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1313amx15.jpg" target="_blank"><img alt="RIMG1313amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1313amx15s.jpg" width="320"/></a><br/>↑含括號（已裁剪至 25.8mm 直徑）<br/>這是 VOLT800 的實測重量。<br/><br/>這次我在選擇 Exposure 車燈時最看重的是<br/>在程式切換功能和一般模式切替的範圍內<br/>沒有閃爍或伴有閃爍的模式這一點，<br/>假如比 VOLT800 稍微重一點程度的話<br/>也不會成為問題。<br/>不過，實際上卻更輕，所以這樣反而很感謝。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1314amx15.jpg" target="_blank"><img alt="RIMG1314amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1314amx15s.jpg" width="320"/></a><br/>啊，我的 VOLT800 前端之所以有塗裝<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1315amx15.jpg" target="_blank"><img alt="RIMG1315amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1315amx15s.jpg" width="320"/></a><br/>是因為以前我以為車燈卡在車把夾上卡得很緊<br/>結果沒有卡緊，在路面的落差處脫落掉下來的時候<br/>前端部分側面的表層被刮掉了，留下了傷痕。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1316amx15.jpg" target="_blank"><img alt="RIMG1316amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1316amx15s.jpg" width="320"/></a><br/>我平時騎的單車是在下管的水壺架孔<br/>在BB附近新開孔，將水壺架的位置<br/>下移螺孔間距整整一格。<br/>所以坐管上不會裝水壺架。<br/>在那裡改用不是橫向安裝，而是裝在坐管前方的安裝座<br/>來裝打氣筒，但是<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1317amx15.jpg" target="_blank"><img alt="RIMG1317amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1317amx15s.jpg" width="320"/></a><br/>那個打氣筒配合VOLT300之後<br/>採用了蟑螂卵系統（順帶一提，這不是官方命名）來<br/>安裝照燈用的備用電池<br/>用矽膠帶固定。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1321amx15.jpg" target="_blank"><img alt="RIMG1321amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1321amx15s.jpg" width="320"/></a><br/>矽膠帶是先前提到的在密林等網站上販售的產品,<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1322amx15.jpg" target="_blank"><img alt="RIMG1322amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1322amx15s.jpg" width="320"/></a><br/>一端裝有克羅普斯公司自有矽膠帶式<br/>小型LED燈固定所採用的S型掛鉤,<br/>我裝上的是他們作為備用零件推出的產品。<br/>這個S型掛鉤通常也在拆卸方一側和不拆卸方一側<br/>的形狀上有著「無言的訴求」呢。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1363amx15.jpg" target="_blank"><img alt="RIMG1363amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1363amx15s.jpg" width="320"/></a><br/>這個矽膠帶搭配的是同一製造商的產品<br/>長的和短的都有，<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1365amx15.jpg" target="_blank"><img alt="RIMG1365amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1365amx15s.jpg" width="320"/></a><br/>是不是想讓倒入模具的材料體積保持一樣呢，<br/>長的那個寬度較窄，固定物有容易晃動的傾向，所以要特別注意。<br/><br/>VOLT的備用電池<br/>當然可以作為VOLT的電池使用，<br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1354amx15.jpg" target="_blank"><img alt="RIMG1354amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1354amx15s.jpg" width="320"/></a><br/>如果用貓眼推出的快速充電座架2（←其實是第二代）<br/>這種東西的話，除了VOLT以外的電池也能充電。<br/>上面的圖是在VOLT電池充電模式下的情況，<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1353amx15.jpg" target="_blank"><img alt="RIMG1353amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1353amx15s.jpg" width="320"/></a><br/>轉動末端的部分的話・・・<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1352amx15.jpg" target="_blank"><img alt="RIMG1352amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1352amx15s.jpg" width="320"/></a><br/>放電用的USB連接埠就會出現。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1355amx15.jpg" target="_blank"><img alt="RIMG1355amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1355amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1356amx15.jpg" target="_blank"><img alt="RIMG1356amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1356amx15s.jpg" width="320"/></a><br/>在這個狀態下，比如換成Lightning線的話<br/>就能對iPhone充電了。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1318amx15.jpg" target="_blank"><img alt="RIMG1318amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1318amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1319amx15.jpg" target="_blank"><img alt="RIMG1319amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1319amx15s.jpg" width="320"/></a><br/>剛才那個矽膠帶呢，<br/>一旦從這樣固定的狀態開始<br/>（S形掛鉤也可以拆下來啦，但容易弄丟所以）<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1320amx15.jpg" target="_blank"><img alt="RIMG1320amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1320amx15s.jpg" width="320"/></a><br/>把帶子拉起來的地方穿過電池的話<br/>就這樣可以固定了。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1366amx15.jpg" target="_blank"><img alt="RIMG1366amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1366amx15s.jpg" width="320"/></a><br/>Axis MK8 除了插進插座的 AC 充電器外，<br/>還附帶了 USB 充電用的連接線，<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1367amx15.jpg" target="_blank"><img alt="RIMG1367amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1367amx15s.jpg" width="320"/></a><br/>也可以用 VOLT 用電池＋充電座 2 進行充電。<br/>還有，我之前忘了提到，<br/>Exposure 的燈具「可以邊充電邊點亮」。<br/>Cateye 的燈具做不到這一點。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1368amx15.jpg" target="_blank"><img alt="RIMG1368amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1368amx15s.jpg" width="320"/></a><br/>我想這類資訊對大多數人來說幫助不大，<br/>這個USB充電線是2015年款以前的<br/>CR123電池不能使用的樣子。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1337amx15.jpg" target="_blank"><img alt="RIMG1337amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1337amx15s.jpg" width="320"/></a><br/>是附在燈上的AC充電器。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1338amx15.jpg" target="_blank"><img alt="RIMG1338amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1338amx15s.jpg" width="320"/></a><br/>配備了充電完成通知燈。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1339amx15.jpg" target="_blank"><img alt="RIMG1339amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1339amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1340amx15.jpg" target="_blank"><img alt="RIMG1340amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1340amx15s.jpg" width="320"/></a><br/>這類充電器經常會有 配合各國插座的<br/>轉接器方式。<br/>日本的批發商販售的<br/>只有附日本用轉接器的產品。<br/><br/>日本的插座其實左右兩邊的孔長度不一樣。<br/>Campagnolo原廠EPS用充電器的<br/>日本插座用的轉接器<br/>有兩個插頭寬度不同的規格<br/>較寬的插頭無法插入孔較短的插座孔裡<br/>這種情況確實發生過。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1341amx15.jpg" target="_blank"><img alt="RIMG1341amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1341amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1342amx15.jpg" target="_blank"><img alt="RIMG1342amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1342amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1343amx15.jpg" target="_blank"><img alt="RIMG1343amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1343amx15s.jpg" width="320"/></a><br/>為了在家裡和店裡都能充電<br/>我買了選配的AC充電器。<br/>尺寸好像比較大，不過性能似乎是一樣的。<br/>充電完成通知燈也有。<br/>Exposure 有 2 種充電器，<br/>最高 2500 流明的 Maxx-D 或<br/>3750 流明的 Six Pack 等<br/>（流明方面依 MK 而有差異）的型號用的<br/>「快速充電器」和<br/>包括 Axis 在內，其他所有型號都適用的<br/>有「智能充電器」。<br/>結果當然就訂購了智能充電器的那個<br/>在這個只有店家才能看的批發商訂購網站上<br/>這個稍微大一點的充電器圖片被列出來<br/>但在面向一般消費者的網站上，隨附在車燈上的那個充電器<br/>被當成智能充電器來刊登。<br/>不過應該沒問題。功能似乎是一樣的，<br/>而且我買到的是最後一個。<br/>今後也許備用零件會<br/>改成比較小型的也說不定。<br/>不過這都是有後續的話啦。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1323amx15.jpg" target="_blank"><img alt="RIMG1323amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1323amx15s.jpg" width="320"/></a><br/>我也買了一個叫 Piggyback 的備用電池。<br/>這個現在想想也許買了也沒必要。<br/>用 VOLT800 的時候，在外面切換到備用電池的情況<br/>大約有 5 次。其中除了忘記充電這種過失以外<br/>從滿電狀態到在外面本體按鈕部分亮起紅色警告燈<br/>交換大概有3次左右吧。<br/>完全天黑以後 從風吹嶺進入 和歌山縣<br/>從24號線或紀之川沿線 進入 奈良縣<br/>經過水越嶺進入大阪府，這樣的路線裡<br/>根據經驗 VOLT800撐不到最後。<br/>亮度差不多是從上面數第二檔<br/>下嶺的時候我會切到最亮模式。<br/><br/>差不多午夜時分抵達高野山山腳的道路驛站<br/>我清楚地記得那件事。<br/>在道路驛站的屋簷下的喇叭上<br/>燕子親鳥在睡覺。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1324amx15.jpg" target="_blank"><img alt="RIMG1324amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1324amx15s.jpg" width="320"/></a><br/>後處理工作相當講究。<br/>這是內部只有一個氣室的產品，<br/>也有氣室三個且車身較粗的規格產品。<br/>雖然是寄生式安裝，但充電的對象<br/>僅限於Exposure的燈。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1326amx15.jpg" target="_blank"><img alt="RIMG1326amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1326amx15s.jpg" width="320"/></a><br/>這是附在Piggyback上的轉接器。<br/>老實說我只想買這個（用途不太光彩）<br/>只能作為Piggyback的附屬品才買得到。<br/>用於搖桿比較堅固的那一個座<br/>很像單售的夾持部分<br/>但關鍵部分的形狀不同。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1327amx15.jpg" target="_blank"><img alt="RIMG1327amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1327amx15s.jpg" width="320"/></a><br/>貼上附帶的防滑和防刮傷的橡膠墊<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1328amx15.jpg" target="_blank"><img alt="RIMG1328amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1328amx15s.jpg" width="320"/></a><br/>把Piggyback卡進C夾這一側。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1329amx15.jpg" target="_blank"><img alt="RIMG1329amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1329amx15s.jpg" width="320"/></a><br/>這次也用附屬的魔鬼氈帶<br/>安裝在把立下方的狀態。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1330amx15.jpg" target="_blank"><img alt="RIMG1330amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1330amx15s.jpg" width="320"/></a><br/>與４螺栓把立在形狀上相性很好。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1331amx15.jpg" target="_blank"><img alt="RIMG1331amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1331amx15s.jpg" width="320"/></a><br/>這是Piggyback的包裝背面。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1332amx15.jpg" target="_blank"><img alt="RIMG1332amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1332amx15s.jpg" width="320"/></a><br/>１節電池的東西 大約是這樣的尺寸感，<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1333amx15.jpg" target="_blank"><img alt="RIMG1333amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1333amx15s.jpg" width="320"/></a><br/>３節電池的話 就是這樣的感覺。<br/>不管哪種情況把立上方都是<br/>剛才只提到名字的Maxx-D這款超高亮度車燈。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1334amx15.jpg" target="_blank"><img alt="RIMG1334amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1334amx15s.jpg" width="320"/></a><br/>安裝在頭盔上的話，可以這樣裝上豬背座。<br/>這樣安裝也是一個不錯的例子。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1335amx15.jpg" target="_blank"><img alt="RIMG1335amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1335amx15s.jpg" width="320"/></a><br/>不知道這是Axis推出前的型號，<br/>還是沒有關於Axis的記載，<br/>燈體在滿充電的狀態下，再加上有無豬背座的差異，<br/>續航時間（包裝上稱為燃燒時間）的長度會<br/>在搖桿或魔鬼手電筒上，一顆電池會變成兩倍，<br/>三顆電池的話會變成四倍。<br/>競賽型號 MaXx-D 配備四盞燈<br/>採用類似的外形，但改為兩盞燈，是體積稍小的型號。<br/>這個在單顆電池時倍率為 1.5 倍，三顆電池時為 2.5 倍，<br/>更高亮度的 MaXx-D 的倍率則更低。<br/>Axis 可以說是體積較小的 Diablo，<br/>所以單顆電池背架式的倍率應該是 2 倍。<br/>程式 5 的 2 小時和 6 小時<br/>分別會變成 4 小時和 12 小時。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1360amx15.jpg" target="_blank"><img alt="RIMG1360amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1360amx15s.jpg" width="320"/></a><br/>我現在用的夾座是２螺栓式的，所以<br/>和Piggyback的相容性不好。<br/>上面的圖片中，轉接器根本沒有沿著夾座的本體。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1361amx15.jpg" target="_blank"><img alt="RIMG1361amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1361amx15s.jpg" width="320"/></a><br/>所以，也可以把燈本體裝在上面。<br/>Piggyback是背著或揹著的意思的單詞<br/>（不是piggy back這個片語，而是piggyback這個單詞）所以<br/>這種方式符合字義。<br/>不過，設定成１．５小時或２小時的亮度的話<br/>本體的前部會相當發熱，所以<br/>如果要背著的話，跟上面的圖片不同，<br/>最好是在後面這邊進行。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1362amx15.jpg" target="_blank"><img alt="RIMG1362amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1362amx15s.jpg" width="320"/></a><br/>如果有頂管包之類的東西的話，<br/>也許可以放進去。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1357amx15.jpg" target="_blank"><img alt="RIMG1357amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1357amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1358amx15.jpg" target="_blank"><img alt="RIMG1358amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1358amx15s.jpg" width="320"/></a><br/>這是剛才提到的通用矽膠束帶的搭配範例。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1359amx15.jpg" target="_blank"><img alt="RIMG1359amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1359amx15s.jpg" width="320"/></a><br/>可以邊充電邊點亮。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1350amx15.jpg" target="_blank"><img alt="RIMG1350amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1350amx15s.jpg" width="320"/></a><br/>或者，一顆電池的背掛式則是<br/>因為剛好卡進車燈用的C夾<br/>把預留購買的車燈用支架<br/>也可以拿來當作副燈架。<br/><br/>這個副燈架，本體出來的線無法拆掉<br/>圓筒部分雖然緊湊，但裝上線材後就會佔空間<br/>防水蓋裝上之後，再用矽膠帶綁在打氣筒上<br/>沒辦法像VOLT電池那樣方便携帶。<br/>結果就只能放在防水袋裡面<br/>我決定把它放進座墊袋裡<br/>但正因為這樣，我不得不把座墊袋<br/>換成更大的尺寸。<br/>既然座墊袋要變大<br/>那我就可以考慮把VOLT的電池加上搖籃2<br/>這個組合放進去<br/>雖然還不到後悔的地步<br/>但我在想，說不定沒必要匆匆忙忙地買那個Piggyback。<br/><br/>對了，這個 Piggyback 的充放電方面<br/>公頭側的連接器只有一個。<br/>充電器側的連接器也是公頭，那要怎麼做呢<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1347amx15.jpg" target="_blank"><img alt="RIMG1347amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1347amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1348amx15.jpg" target="_blank"><img alt="RIMG1348amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1348amx15s.jpg" width="320"/></a><br/>就是用這種兩側都是母頭的連接器，它是附件。<br/>要是把它弄丟了，Piggyback 就完蛋了，得特別注意。<br/><br/>如果是給燈本體充電的話，<br/>燈側也有顯示充電量的功能，所以<br/>充電可以直接用 USB 線也沒問題<br/>Piggyback 的情況下有充電滿時的通知功能<br/>用 AC 充電器來做會比較推薦。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1349amx15.jpg" target="_blank"><img alt="RIMG1349amx15.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG1349amx15s.jpg" width="320"/></a><br/>※給家長的提醒<br/>將 Piggyback 的轉接器連接到兩個 AC 充電器<br/>不要同時插入兩個插座。<br/>（因為充電器裡有電容器<br/>這是完全放電後才拍攝的）。<br/><br/><br/>這次的 Axis MK8 呢，<br/>就個人而言，購買後的滿足度非常高。<br/>不過還沒有用到極限過，<br/>除了流明之外，還有另一個可能的謊言，<br/>關於續航時間，我還沒有確認是否符合公稱的時間。<br/>說明書上寫著「如果超過1個月沒有使用，請進行充電。<br/>空電狀態會傷害電池的電芯。」但是<br/>這盞車燈，肯定是在批發商的架子上<br/>睡了大約2～3年的樣子。<br/><br/>而且，這篇文章不太可能成為銷售推廣。<br/>原因是批發商的庫存中<br/>天狼星、搖桿、軸線、惡魔已經售完<s>而<br/>至於MaXx-D，MK11已經售完，<br/>MK8和MK6還有存貨</s>處於這樣的狀態，<br/>即使現在想買，也買不到正規品。<br/><br/>以上是很長的文章，我本來想分成幾篇的，<br/>不過其實還有後續呢<br/>（不過應該不會這麼長啦）。<br/><br/>後續改天再寫囉
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

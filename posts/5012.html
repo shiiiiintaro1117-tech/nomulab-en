@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
-    <p>Bicycle Workshop — English Edition</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/index.html">
+        <span class="brand-title">Nomu Lab Diary</span>
+        <span class="brand-subtitle">Bicycle Workshop Archive</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/index.html">Archive</a>
+      <a href="/guides/wheel-building.html">Wheel Guide</a>
+      <a href="/glossary.html">Glossary</a>
+      <a href="/about.html">About</a>
+    </nav>
     <div class="lang-toggle"><span class="lang-btn active">EN</span><a class="lang-btn" href="/zh/posts/5012.html">繁中</a></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/index.html">← All posts</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>Even 9000 Dura-Ace Can&#x27;t Be Repaired</h1>
     <p class="post-meta">January 03, 2020</p>
+    <div class="post-body"><div class="entrytext">I replaced a customer's chain.<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05387amx9.jpg" target="_blank"><img alt="DSC05387amx9.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05387amx9s.jpg" width="320"/></a><br/>This was over a year ago<br/>(according to the image metadata: July 15, 2018),<br/>when I replaced a <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+9000+Dura-Ace+chain" target="_blank" rel="noopener sponsored" class="amz-inline">9000 Dura-Ace chain</a> with a new one.<br/>In the image above, you can already see the chain stretch is quite pronounced.<br/><br/>While not perfectly evenly spaced,<br/>I laid out the <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Kaich%C5%8D+Mini+chain+measuring+tool" target="_blank" rel="noopener sponsored" class="amz-inline">Kaichō Mini</a> (Japanese chain measuring tool) like stations along the chain.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05388amx9.jpg" target="_blank"><img alt="DSC05388amx9.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05388amx9s.jpg" width="320"/></a><br/>The edge (1st)<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05389amx9.jpg" target="_blank"><img alt="DSC05389amx9.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05389amx9s.jpg" width="320"/></a><br/>2nd<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05390amx9.jpg" target="_blank"><img alt="DSC05390amx9.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05390amx9s.jpg" width="320"/></a><br/>3rd<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05391amx9.jpg" target="_blank"><img alt="DSC05391amx9.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05391amx9s.jpg" width="320"/></a><br/>4th<br/>This is bad news. Even the Kaichō Mini was shocked (probably).<br/>At that point I <s>lectured</s> asked the customer<br/>to replace their chain more frequently going forward.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05386amx9.jpg" target="_blank"><img alt="DSC05386amx9.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05386amx9s.jpg" width="320"/></a><br/>The chainrings are worn down smooth as butter.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05385amx9.jpg" target="_blank"><img alt="DSC05385amx9.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05385amx9s.jpg" width="320"/></a><br/>Before (look at those gaps)<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05392amx9.jpg" target="_blank"><img alt="DSC05392amx9.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05392amx9s.jpg" width="320"/></a><br/>After<br/>In this condition, chain skip would almost certainly occur, so<br/>I told them the outer chainring needed replacement.<br/>The next morning, they reported skipping all over the place on flat ground<br/>during their climbing workout<br/>(that day was "inner gear only" punishment),<br/>and they swapped out the chainring right after.<br/><br/>When you have a new chain,<br/>pedaling feels like there's no mechanical loss,<br/>and it feels great (at least you notice the difference right after buying new),<br/>but if you ignore that feeling and just think about cost,<br/>with Campagnolo where sprockets are expensive,<br/>replacing the chain more frequently ends up being cheaper overall.<br/>With Shimano, unless the sprocket is Dura-Ace,<br/>you can buy a new sprocket for about double the chain price,<br/>so it's easy to procrastinate on replacement (in my case).<br/>Also, even when I know tubular tires are getting sketchy,<br/>I think "just use it one more day today, then I'll peel it off and replace it,"<br/>and never get around to it, eventually causing an avoidable flat somewhere out on the road (in my case).<br/><br/>After this incident, the customer<br/>started replacing chainrings pretty regularly.<br/>Actually, front chainrings aren't something<br/>you typically replace that frequently.<br/>They started replacing chains pretty regularly,<br/>so there shouldn't be any issues from that standpoint, but for some reason they don't last a year.<br/>It's true they ride a lot of kilometers.<br/>I don't know the real reason, but according to this customer,<br/>"chainrings that come after the spare parts batch<br/>wear abnormally fast compared to the original spec ones."<br/>Actually, after that first outer chainring replacement,<br/>we replaced it one more time.<br/>Then in March 2019,<br/>we ordered the same chainring (<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+FC-9000+50T+chainring" target="_blank" rel="noopener sponsored" class="amz-inline">FC-9000 50T</a>),<br/>but it still hasn't arrived.<br/>The arrival date display has been confirmed a few times,<br/>but keeps reverting to "TBD" or getting pushed back significantly.<br/>The spare parts for a previous generation Dura-Ace aren't being supplied steadily?<br/>Are you kidding me?<br/><br/>This is a separate issue, but when the PD-R9100 came out,<br/>the supply of <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+PD-9000+pedal+shaft" target="_blank" rel="noopener sponsored" class="amz-inline">PD-9000 pedal shafts</a> ended<br/>(probably because they weren't selling well; the +4mm long shaft is still available).<br/>The part numbers for PD-9000 and PD-R9100 pedal shafts<br/>are not the same, so they're not compatible.<br/>The PD-9000 pedal shaft kit<br/>comes with needle roller bearings, but<br/>the PD-R9100 doesn't.<br/>They're not absent from the pedal body itself,<br/>so repair apparently became unavailable.<br/>In any case, if your PD-9000 pedals get gritchy,<br/>you're supposed to just buy a new PD-R9100.<br/><br/>Also, in the early days of the R9100 release,<br/>I think quite a few shops were still stocking<br/>PD-9000 (non-repairable) parts. That's pretty harsh too.<br/><br/>・・・So does that mean when the FC-9000 chainring wears out,<br/>I'm supposed to replace it with an FC-R9100?<br/>Is the slow supply of spare parts meant to encourage that?<br/>True, there is shifting compatibility across crankset generations.<br/><br/>Let's say the customer had some circumstance where<br/>they couldn't swap cranksets because a third-party power meter sensor<br/>was stuck to their FC-9000—<br/>but that would be an unofficial hack anyway, so<br/>Shimano doesn't care,<br/>and besides, the R9100 has power meter models too,<br/>so just switch to those already—<br/>that would be the response I'd expect.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05382amx9.jpg" target="_blank"><img alt="DSC05382amx9.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05382amx9s.jpg" width="320"/></a><br/>But this customer's crankset is an FC-SR70,<br/>an <span style="color:#FF0000">SRM Shimano-made crankset</span><br/>built on the 9000-spec platform.<br/>If you don't use the original 9000 outer chainring,<br/>the gaps won't line up aesthetically.<br/>Hmm, I think this is still within the period where we should be<br/>providing support for this.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC04338amx12.jpg" target="_blank"><img alt="DSC04338amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC04338amx12s.jpg" width="320"/></a><br/>This is yet another issue, but<br/>I replaced the FC-6750 chainring<br/>with a StrongLight compatible one (gaps line up with the crank arm).<br/>I did this just the other day, and it turns out the 6750 chainring<br/>is still available in both black and silver.<br/>The reason I didn't go with the original is that the StrongLight one<br/>was faster to obtain, and since the customer runs 6770 electronic shifting,<br/>a noticeable worsening of shift quality shouldn't happen<br/>(StrongLight CT2 and Praxis Works chainrings<br/>don't have poor shifting performance to begin with).<br/>What I'm getting at is:<br/>I can get previous-generation Ultegra chainrings,<br/>so why can't I get<br/>current-generation Dura-Ace chainrings right away?<br/><br/>Pedal shafts too—PD-9000 and PD-7900 are discontinued,<br/>but the earlier PD-7810 is still available now.<br/>That's because while production did end,<br/>they made plenty of them back then cost be damned,<br/>and some stock apparently remains.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05087amx12.jpg" target="_blank"><img alt="DSC05087amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05087amx12s.jpg" width="320"/></a><br/>Dura-Ace repair parts are supplied for seven years<br/>after production ends.<br/>In the annual catalog, the 9000 ran until 2016,<br/>and the R9100 started in 2017, so<br/>the 9000 outer chainring should be supplied・・・<br/>Oh wait, we are supplying it,<br/>it's just unavailable for nearly a year.<br/>But by that logic the PD-9000 pedal shaft should also・・・。<br/><br/>This is something I've written about before,<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05085amx12.jpg" target="_blank"><img alt="DSC05085amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05085amx12s.jpg" width="320"/></a><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05086amx12.jpg" target="_blank"><img alt="DSC05086amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05086amx12s.jpg" width="320"/></a><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05082amx12.jpg" target="_blank"><img alt="DSC05082amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05082amx12s.jpg" width="320"/></a><br/>There's a caption that appeared on a catalog page,<br/>accompanying the disassembled 750-series XT rear derailleur,<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05083amx12.jpg" target="_blank"><img alt="DSC05083amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05083amx12s.jpg" width="320"/></a><br/>To support your long relationship with a single product.<br/>This phrase<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05088amx12.jpg" target="_blank"><img alt="DSC05088amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05088amx12s.jpg" width="320"/></a><br/>disappeared sometime around 2012. The image is the same though.<br/><br/>And another separate matter.<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05089amx12.jpg" target="_blank"><img alt="DSC05089amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05089amx12s.jpg" width="320"/></a><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05090amx12.jpg" target="_blank"><img alt="DSC05090amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05090amx12s.jpg" width="320"/></a><br/>On October 8, 2019<br/>I ordered 22 rear right spokes for the <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+WH-9000-C50-CL+wheel+spokes" target="_blank" rel="noopener sponsored" class="amz-inline">WH-9000-C50-CL</a>,<br/>but as of now I've only received 7.<br/>The rest are scheduled to arrive March 8, 2020.<br/>This would never happen with Racing Zero, Bora, or Zonda wheels.<br/>Even Bora WTO, which had no immediate spare parts ready for its new release,<br/>already has plenty of spare spokes stocked at our shop.<br/><br/>What if there really was a customer who needed this spoke<br/>to repair their 9000 wheel?!<br/>What? "If there really was"—what does that mean?<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05091amx12.jpg" target="_blank"><img alt="DSC05091amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05091amx12s.jpg" width="320"/></a><br/>It's because this spoke is for<br/>the silly personal project of "trying to change the spoke weight ratio on my Neutron front wheel."<br/>I know you're going to say the rim heights are totally different,<br/>but the rear right uses tangent lacing, so<br/>it comes closer to the length of a radial lacing with a lower-profile rim.<br/>Thank goodness there was no poor soul trying to repair their WH-9000-C50<br/>who couldn't get the spokes!<br/><br/>・・・Or rather, if someone other than my customers<br/>had needed this spoke for wheel repair (resolved with 7 or fewer spokes)<br/>and it was here instead of available to them,<br/>would that be my fault or Shimano's?<br/><br/><br/><br/>Finally.<br/>Last year, a customer's Neil Pryde frame that had 5600-series 10-speed 105 shifters<br/>got upgraded to 11-speed Ultegra,<br/>but before that the STI lever broke,<br/>so I lent them my ST-7801 to install.<br/>The front derailleur hanger also bent, so I replaced it,<br/>but the cable pull ratio doesn't match on 7900-series and later front derailleurs.<br/>For a front derailleur compatible with 7800-series,<br/>aside from Shimano originals, even first-gen SRAM Rival 10-speed will work.<br/>Actually, I think Shimano changed their cable pull ratio with the 7900<br/>specifically to prevent that.<br/>I won't blame anyone for the original 7800-series component parts being unavailable.<br/>Here's a quiz: what aftermarket front derailleur did I use for the repair?<br/>Try to guess. The answer is below.<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC00341amx12.jpg" target="_blank"><img alt="DSC00341amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC00341amx12s.jpg" width="320"/></a><br/>The answer was <span style="font-size:large;">FSA</span>.<br/>The shifting performance was surprisingly not bad <s>(might have even been better than Rival)</s>.<br/>By the way, I'm asking that applause for this post be limited to those who got the quiz right.<br/><br/><span style="color:#FF0000"><span style="font-size:large;">Addendum: Correct answers below—there's no way there were this many!<br/>Actually, I bet most people are thinking "I've never seen this before!"</span></span>
+</div></div>
+    <aside class="post-guides">
+      <strong>Technical archive</strong>
+      <nav aria-label="Technical guides">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">I replaced a customer's chain.<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05387amx9.jpg" target="_blank"><img alt="DSC05387amx9.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05387amx9s.jpg" width="320"/></a><br/>This was over a year ago<br/>(according to the image metadata: July 15, 2018),<br/>when I replaced a <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+9000+Dura-Ace+chain" target="_blank" rel="noopener sponsored" class="amz-inline">9000 Dura-Ace chain</a> with a new one.<br/>In the image above, you can already see the chain stretch is quite pronounced.<br/><br/>While not perfectly evenly spaced,<br/>I laid out the <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Kaich%C5%8D+Mini+chain+measuring+tool" target="_blank" rel="noopener sponsored" class="amz-inline">Kaichō Mini</a> (Japanese chain measuring tool) like stations along the chain.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05388amx9.jpg" target="_blank"><img alt="DSC05388amx9.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05388amx9s.jpg" width="320"/></a><br/>The edge (1st)<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05389amx9.jpg" target="_blank"><img alt="DSC05389amx9.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05389amx9s.jpg" width="320"/></a><br/>2nd<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05390amx9.jpg" target="_blank"><img alt="DSC05390amx9.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05390amx9s.jpg" width="320"/></a><br/>3rd<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05391amx9.jpg" target="_blank"><img alt="DSC05391amx9.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05391amx9s.jpg" width="320"/></a><br/>4th<br/>This is bad news. Even the Kaichō Mini was shocked (probably).<br/>At that point I <s>lectured</s> asked the customer<br/>to replace their chain more frequently going forward.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05386amx9.jpg" target="_blank"><img alt="DSC05386amx9.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05386amx9s.jpg" width="320"/></a><br/>The chainrings are worn down smooth as butter.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05385amx9.jpg" target="_blank"><img alt="DSC05385amx9.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05385amx9s.jpg" width="320"/></a><br/>Before (look at those gaps)<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05392amx9.jpg" target="_blank"><img alt="DSC05392amx9.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05392amx9s.jpg" width="320"/></a><br/>After<br/>In this condition, chain skip would almost certainly occur, so<br/>I told them the outer chainring needed replacement.<br/>The next morning, they reported skipping all over the place on flat ground<br/>during their climbing workout<br/>(that day was "inner gear only" punishment),<br/>and they swapped out the chainring right after.<br/><br/>When you have a new chain,<br/>pedaling feels like there's no mechanical loss,<br/>and it feels great (at least you notice the difference right after buying new),<br/>but if you ignore that feeling and just think about cost,<br/>with Campagnolo where sprockets are expensive,<br/>replacing the chain more frequently ends up being cheaper overall.<br/>With Shimano, unless the sprocket is Dura-Ace,<br/>you can buy a new sprocket for about double the chain price,<br/>so it's easy to procrastinate on replacement (in my case).<br/>Also, even when I know tubular tires are getting sketchy,<br/>I think "just use it one more day today, then I'll peel it off and replace it,"<br/>and never get around to it, eventually causing an avoidable flat somewhere out on the road (in my case).<br/><br/>After this incident, the customer<br/>started replacing chainrings pretty regularly.<br/>Actually, front chainrings aren't something<br/>you typically replace that frequently.<br/>They started replacing chains pretty regularly,<br/>so there shouldn't be any issues from that standpoint, but for some reason they don't last a year.<br/>It's true they ride a lot of kilometers.<br/>I don't know the real reason, but according to this customer,<br/>"chainrings that come after the spare parts batch<br/>wear abnormally fast compared to the original spec ones."<br/>Actually, after that first outer chainring replacement,<br/>we replaced it one more time.<br/>Then in March 2019,<br/>we ordered the same chainring (<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+FC-9000+50T+chainring" target="_blank" rel="noopener sponsored" class="amz-inline">FC-9000 50T</a>),<br/>but it still hasn't arrived.<br/>The arrival date display has been confirmed a few times,<br/>but keeps reverting to "TBD" or getting pushed back significantly.<br/>The spare parts for a previous generation Dura-Ace aren't being supplied steadily?<br/>Are you kidding me?<br/><br/>This is a separate issue, but when the PD-R9100 came out,<br/>the supply of <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+PD-9000+pedal+shaft" target="_blank" rel="noopener sponsored" class="amz-inline">PD-9000 pedal shafts</a> ended<br/>(probably because they weren't selling well; the +4mm long shaft is still available).<br/>The part numbers for PD-9000 and PD-R9100 pedal shafts<br/>are not the same, so they're not compatible.<br/>The PD-9000 pedal shaft kit<br/>comes with needle roller bearings, but<br/>the PD-R9100 doesn't.<br/>They're not absent from the pedal body itself,<br/>so repair apparently became unavailable.<br/>In any case, if your PD-9000 pedals get gritchy,<br/>you're supposed to just buy a new PD-R9100.<br/><br/>Also, in the early days of the R9100 release,<br/>I think quite a few shops were still stocking<br/>PD-9000 (non-repairable) parts. That's pretty harsh too.<br/><br/>・・・So does that mean when the FC-9000 chainring wears out,<br/>I'm supposed to replace it with an FC-R9100?<br/>Is the slow supply of spare parts meant to encourage that?<br/>True, there is shifting compatibility across crankset generations.<br/><br/>Let's say the customer had some circumstance where<br/>they couldn't swap cranksets because a third-party power meter sensor<br/>was stuck to their FC-9000—<br/>but that would be an unofficial hack anyway, so<br/>Shimano doesn't care,<br/>and besides, the R9100 has power meter models too,<br/>so just switch to those already—<br/>that would be the response I'd expect.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05382amx9.jpg" target="_blank"><img alt="DSC05382amx9.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05382amx9s.jpg" width="320"/></a><br/>But this customer's crankset is an FC-SR70,<br/>an <span style="color:#FF0000">SRM Shimano-made crankset</span><br/>built on the 9000-spec platform.<br/>If you don't use the original 9000 outer chainring,<br/>the gaps won't line up aesthetically.<br/>Hmm, I think this is still within the period where we should be<br/>providing support for this.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC04338amx12.jpg" target="_blank"><img alt="DSC04338amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC04338amx12s.jpg" width="320"/></a><br/>This is yet another issue, but<br/>I replaced the FC-6750 chainring<br/>with a StrongLight compatible one (gaps line up with the crank arm).<br/>I did this just the other day, and it turns out the 6750 chainring<br/>is still available in both black and silver.<br/>The reason I didn't go with the original is that the StrongLight one<br/>was faster to obtain, and since the customer runs 6770 electronic shifting,<br/>a noticeable worsening of shift quality shouldn't happen<br/>(StrongLight CT2 and Praxis Works chainrings<br/>don't have poor shifting performance to begin with).<br/>What I'm getting at is:<br/>I can get previous-generation Ultegra chainrings,<br/>so why can't I get<br/>current-generation Dura-Ace chainrings right away?<br/><br/>Pedal shafts too—PD-9000 and PD-7900 are discontinued,<br/>but the earlier PD-7810 is still available now.<br/>That's because while production did end,<br/>they made plenty of them back then cost be damned,<br/>and some stock apparently remains.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05087amx12.jpg" target="_blank"><img alt="DSC05087amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05087amx12s.jpg" width="320"/></a><br/>Dura-Ace repair parts are supplied for seven years<br/>after production ends.<br/>In the annual catalog, the 9000 ran until 2016,<br/>and the R9100 started in 2017, so<br/>the 9000 outer chainring should be supplied・・・<br/>Oh wait, we are supplying it,<br/>it's just unavailable for nearly a year.<br/>But by that logic the PD-9000 pedal shaft should also・・・。<br/><br/>This is something I've written about before,<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05085amx12.jpg" target="_blank"><img alt="DSC05085amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05085amx12s.jpg" width="320"/></a><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05086amx12.jpg" target="_blank"><img alt="DSC05086amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05086amx12s.jpg" width="320"/></a><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05082amx12.jpg" target="_blank"><img alt="DSC05082amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05082amx12s.jpg" width="320"/></a><br/>There's a caption that appeared on a catalog page,<br/>accompanying the disassembled 750-series XT rear derailleur,<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05083amx12.jpg" target="_blank"><img alt="DSC05083amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05083amx12s.jpg" width="320"/></a><br/>To support your long relationship with a single product.<br/>This phrase<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05088amx12.jpg" target="_blank"><img alt="DSC05088amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05088amx12s.jpg" width="320"/></a><br/>disappeared sometime around 2012. The image is the same though.<br/><br/>And another separate matter.<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05089amx12.jpg" target="_blank"><img alt="DSC05089amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05089amx12s.jpg" width="320"/></a><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05090amx12.jpg" target="_blank"><img alt="DSC05090amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05090amx12s.jpg" width="320"/></a><br/>On October 8, 2019<br/>I ordered 22 rear right spokes for the <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+WH-9000-C50-CL+wheel+spokes" target="_blank" rel="noopener sponsored" class="amz-inline">WH-9000-C50-CL</a>,<br/>but as of now I've only received 7.<br/>The rest are scheduled to arrive March 8, 2020.<br/>This would never happen with Racing Zero, Bora, or Zonda wheels.<br/>Even Bora WTO, which had no immediate spare parts ready for its new release,<br/>already has plenty of spare spokes stocked at our shop.<br/><br/>What if there really was a customer who needed this spoke<br/>to repair their 9000 wheel?!<br/>What? "If there really was"—what does that mean?<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05091amx12.jpg" target="_blank"><img alt="DSC05091amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC05091amx12s.jpg" width="320"/></a><br/>It's because this spoke is for<br/>the silly personal project of "trying to change the spoke weight ratio on my Neutron front wheel."<br/>I know you're going to say the rim heights are totally different,<br/>but the rear right uses tangent lacing, so<br/>it comes closer to the length of a radial lacing with a lower-profile rim.<br/>Thank goodness there was no poor soul trying to repair their WH-9000-C50<br/>who couldn't get the spokes!<br/><br/>・・・Or rather, if someone other than my customers<br/>had needed this spoke for wheel repair (resolved with 7 or fewer spokes)<br/>and it was here instead of available to them,<br/>would that be my fault or Shimano's?<br/><br/><br/><br/>Finally.<br/>Last year, a customer's Neil Pryde frame that had 5600-series 10-speed 105 shifters<br/>got upgraded to 11-speed Ultegra,<br/>but before that the STI lever broke,<br/>so I lent them my ST-7801 to install.<br/>The front derailleur hanger also bent, so I replaced it,<br/>but the cable pull ratio doesn't match on 7900-series and later front derailleurs.<br/>For a front derailleur compatible with 7800-series,<br/>aside from Shimano originals, even first-gen SRAM Rival 10-speed will work.<br/>Actually, I think Shimano changed their cable pull ratio with the 7900<br/>specifically to prevent that.<br/>I won't blame anyone for the original 7800-series component parts being unavailable.<br/>Here's a quiz: what aftermarket front derailleur did I use for the repair?<br/>Try to guess. The answer is below.<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC00341amx12.jpg" target="_blank"><img alt="DSC00341amx12.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC00341amx12s.jpg" width="320"/></a><br/>The answer was <span style="font-size:large;">FSA</span>.<br/>The shifting performance was surprisingly not bad <s>(might have even been better than Rival)</s>.<br/>By the way, I'm asking that applause for this post be limited to those who got the quiz right.<br/><br/><span style="color:#FF0000"><span style="font-size:large;">Addendum: Correct answers below—there's no way there were this many!<br/>Actually, I bet most people are thinking "I've never seen this before!"</span></span>
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">Products Mentioned in This Article</p>
       <ul>

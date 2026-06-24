@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/1601.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>EC90SLX先生</h1>
     <p class="post-meta">December 19, 2014</p>
+    <div class="post-body"><div class="entrytext">從客人那裡接手了一台<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Mavic+EC90SLX+bicycle+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">EC90SLX</a>。<br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06360amx3.jpg" target="_blank"><img alt="DSC06360amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06360amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06358amx3.jpg" target="_blank"><img alt="DSC06358amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06358amx3s.jpg" width="300"/></a><br/>前輪有輕微的輪圈晃動和軸心偏離，<br/>後輪的軸心偏離甚至比前輪更嚴重，<br/>但無論如何都不是什麼大問題。<br/>另外，聽說後輪花鼓軸承在轉動時會發出刮刮的聲音。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06359amx3.jpg" target="_blank"><img alt="DSC06359amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06359amx3s.jpg" width="300"/></a><br/>以上這些都是修理後的照片，<br/>確實當我手工轉動軸心時有刮刮聲。<br/>後輪花鼓的情況下，通常花鼓體上有2個、棘輪體上有2個，<br/>共4個軸承排列在一起。<br/>（這是滾珠軸承的情況。除了Shimano（日本禧瑪諾）7800系時代外，<br/>他們用的是2個杯錐式軸承。<br/>Mavic（法國馬維克）則因為棘輪體上只有1個軸承，<br/>所以是滾珠式的3個軸承）<br/>它們雖然不是強力壓入，但始終與軸心接觸，<br/>所以我無法透過摸索來確定<br/>刮刮聲到底是哪個軸承壞了，<br/>以及壞的軸承有幾個。<br/>有時候其實不是花鼓軸承，只是棘輪體軸承壞掉了，<br/>這種情況也很常見。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06256amx3.jpg" target="_blank"><img alt="DSC06256amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06256amx3s.jpg" width="300"/></a><br/>拆解後才發現，<br/>這次只有花鼓軸承的右側壞了。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06258amx3.jpg" target="_blank"><img alt="DSC06258amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06258amx3s.jpg" width="300"/></a><br/>因為是R4SL花鼓，採用的是陶瓷軸承規格，<br/>軸承鋼球的硬度超過了滾珠軌道，導致軌道被蝕刻，<br/>被刮下來的鐵屑生了鏽。<br/>在上面的照片中，我在撕開密封圈前<br/>噴了零件清潔劑，<br/>就已經看到有鏽水滲出來了。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06340amx3.jpg" target="_blank"><img alt="DSC06340amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06340amx3s.jpg" width="300"/></a><br/>撕開密封圈後再噴，流出了相當多的鏽水，<br/>但我忘記拍照了。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06341amx3.jpg" target="_blank"><img alt="DSC06341amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06341amx3s.jpg" width="300"/></a><br/>當我清洗這個密封圈時……<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06343amx3.jpg" target="_blank"><img alt="DSC06343amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06343amx3s.jpg" width="300"/></a><br/>標注著6902CE-2RS。<br/>6902是軸承尺寸，CE表示陶瓷球，<br/>2RS表示雙面橡膠密封（2 Rubber Seal）。<br/>單面橡膠密封會標注RS，但<br/>有些製造商即使是雙面密封也會標注RS。<br/><br/>6902是外徑28mm／內徑15mm／厚度7mm的<br/>公制規格軸承，所以很容易取得。<br/><span style="color:#FF0000">除非它是陶瓷軸承。</span><br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06350amx3.jpg" target="_blank"><img alt="DSC06350amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06350amx3s.jpg" width="300"/></a><br/>↑棘輪體軸承是6902-2RS的鋼球規格。<br/>這種的話就容易取得了，<br/>嗯……這下麻煩了……。<s>（假裝麻煩）</s><br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06344amx3.jpg" target="_blank"><img alt="DSC06344amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06344amx3s.jpg" width="300"/></a><br/>正當我這麼想的時候，<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Tni+ceramic+bearing+6902" target="_blank" rel="noopener sponsored" class="amz-inline">Tni</a>（日本Tni軸承製造商）推出了陶瓷軸承。<s>（我早就知道了）</s><br/>自行車配件常用的<br/>68××系和69××系尺寸都備齊了。<br/>哎呀，這太方便了！<s>（露骨的廣告）</s><br/><br/>鋼球軸承有好有壞，種類繁多，<br/>陶瓷軸承也一樣有優有劣。<br/>重要的不是軸承鋼球的球度……不對，雖然那也很重要，<br/><span style="color:#FF0000">但關鍵是滾珠軌道的硬度</span>。<br/>如果軌道硬度與陶瓷球的硬度不匹配，<br/>軌道就會被刮損，很快就會出現蝕刻。<br/>Campagnolo（義大利坎帕克）黑色滾珠軌道的USB軸承明顯壽命較短，<br/>就是這個原因。<br/>最近推出的銀色滾珠軌道已經改善了這一點。<br/>考慮到它問世的時間並不長，<br/>蝕刻發生率非常低就說明一切了。<br/>黑色軌道時代的USB軸承，<br/>我使用時都會特意改裝成鋼球的，<br/>（說起來這算不算調校呢）<br/>但銀色軌道似乎就沒有這個必要了。<br/><br/>那麼什麼廠牌的陶瓷軸承最好呢，<br/>根據我個人的看法，還是CeramicSpeed（瑞典陶瓷速度）獨佔鰲頭。<br/>有一款叫COATED的高端型號，但即使不是那款也足夠了。<br/>其次，我覺得CULT和它差不多。<br/>但並不是什麼都能配。<br/>其他的基本上就是龍蛇混雜，不對，應該說盡是濫竽充數的。<br/>和之前鑽頭的說法一樣，標榜鈦金屬鍍膜的軸承<br/>耐久性和低阻力性並沒有特別優秀。<br/>尤其是BB杯這種地方，<span style="color:#FF0000">壽命短得離譜的，就是只在球上偷工減料的劣質品</span>。<br/>軌道硬度低，而且球度恐怕也不夠高。<br/>我之所以不積極向客人推薦陶瓷軸承，<br/>是因為「真正好用的產品太少，而且真正好用的還很貴」。<br/><br/>好久以前，有個客人把Cosmic Carbon Ultimatum（宇宙碳終極版）上的<br/>○○○的陶瓷軸承換成了別的，<br/>但效果不太理想（感受不到什麼區別），<br/>我就說「相信我」，<br/>馬上把它換成了CeramicSpeed的陶瓷軸承。<br/>之後那位客人說「完全不一樣！」<br/>那當然啊，一個是寶玉一個是石頭。<br/>實際上我不只是簡單地換了軸承，<br/>但主要原因還是軸承本身性能的差異。<br/><br/>那麼Tni的這款軸承到底是玉還是石呢，<br/>雖然比不上CeramicSpeed，<br/>但確實是物有所值的。<br/>我自己就把Campagnolo Ultra Torque的USB<br/>換成了這款，一直在用，<br/>至少不是極端短命的那種。<br/>更重要的是，有很多產品比這個貴得多，<br/>質量卻差得遠。<br/>具體是哪些我就不說了。<br/>誰會告訴你啊。<br/>↑哎呀這傢伙真沒禮貌！<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06345amx3.jpg" target="_blank"><img alt="DSC06345amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06345amx3s.jpg" width="300"/></a><br/>抱歉，話題扯遠了。<br/>軸承當然是同樣的尺寸。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06347amx3.jpg" target="_blank"><img alt="DSC06347amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06347amx3s.jpg" width="300"/></a><br/>6902的「RS」標注表示雙面密封。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06349amx3.jpg" target="_blank"><img alt="DSC06349amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06349amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06354amx3.jpg" target="_blank"><img alt="DSC06354amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06354amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06353amx3.jpg" target="_blank"><img alt="DSC06353amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06353amx3s.jpg" width="300"/></a><br/>完成花鼓大修後重新壓入軸承。<br/>刮刮的感覺已經完全消失了。<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06366amx3.jpg" target="_blank"><img alt="DSC06366amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06366amx3s.jpg" width="300"/></a><br/>我想很多人都預感到螃蟹光線會登場，<br/>但目前螃蟹光線正被思想警察拘捕，<br/>遭受不公正且酷刑式的審訊，<br/>所以這次沒有它的出場。令人遺憾。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">從客人那裡接手了一台<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Mavic+EC90SLX+bicycle+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">EC90SLX</a>。<br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06360amx3.jpg" target="_blank"><img alt="DSC06360amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06360amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06358amx3.jpg" target="_blank"><img alt="DSC06358amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06358amx3s.jpg" width="300"/></a><br/>前輪有輕微的輪圈晃動和軸心偏離，<br/>後輪的軸心偏離甚至比前輪更嚴重，<br/>但無論如何都不是什麼大問題。<br/>另外，聽說後輪花鼓軸承在轉動時會發出刮刮的聲音。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06359amx3.jpg" target="_blank"><img alt="DSC06359amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06359amx3s.jpg" width="300"/></a><br/>以上這些都是修理後的照片，<br/>確實當我手工轉動軸心時有刮刮聲。<br/>後輪花鼓的情況下，通常花鼓體上有2個、棘輪體上有2個，<br/>共4個軸承排列在一起。<br/>（這是滾珠軸承的情況。除了Shimano（日本禧瑪諾）7800系時代外，<br/>他們用的是2個杯錐式軸承。<br/>Mavic（法國馬維克）則因為棘輪體上只有1個軸承，<br/>所以是滾珠式的3個軸承）<br/>它們雖然不是強力壓入，但始終與軸心接觸，<br/>所以我無法透過摸索來確定<br/>刮刮聲到底是哪個軸承壞了，<br/>以及壞的軸承有幾個。<br/>有時候其實不是花鼓軸承，只是棘輪體軸承壞掉了，<br/>這種情況也很常見。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06256amx3.jpg" target="_blank"><img alt="DSC06256amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06256amx3s.jpg" width="300"/></a><br/>拆解後才發現，<br/>這次只有花鼓軸承的右側壞了。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06258amx3.jpg" target="_blank"><img alt="DSC06258amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06258amx3s.jpg" width="300"/></a><br/>因為是R4SL花鼓，採用的是陶瓷軸承規格，<br/>軸承鋼球的硬度超過了滾珠軌道，導致軌道被蝕刻，<br/>被刮下來的鐵屑生了鏽。<br/>在上面的照片中，我在撕開密封圈前<br/>噴了零件清潔劑，<br/>就已經看到有鏽水滲出來了。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06340amx3.jpg" target="_blank"><img alt="DSC06340amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06340amx3s.jpg" width="300"/></a><br/>撕開密封圈後再噴，流出了相當多的鏽水，<br/>但我忘記拍照了。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06341amx3.jpg" target="_blank"><img alt="DSC06341amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06341amx3s.jpg" width="300"/></a><br/>當我清洗這個密封圈時……<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06343amx3.jpg" target="_blank"><img alt="DSC06343amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06343amx3s.jpg" width="300"/></a><br/>標注著6902CE-2RS。<br/>6902是軸承尺寸，CE表示陶瓷球，<br/>2RS表示雙面橡膠密封（2 Rubber Seal）。<br/>單面橡膠密封會標注RS，但<br/>有些製造商即使是雙面密封也會標注RS。<br/><br/>6902是外徑28mm／內徑15mm／厚度7mm的<br/>公制規格軸承，所以很容易取得。<br/><span style="color:#FF0000">除非它是陶瓷軸承。</span><br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06350amx3.jpg" target="_blank"><img alt="DSC06350amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06350amx3s.jpg" width="300"/></a><br/>↑棘輪體軸承是6902-2RS的鋼球規格。<br/>這種的話就容易取得了，<br/>嗯……這下麻煩了……。<s>（假裝麻煩）</s><br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06344amx3.jpg" target="_blank"><img alt="DSC06344amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06344amx3s.jpg" width="300"/></a><br/>正當我這麼想的時候，<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Tni+ceramic+bearing+6902" target="_blank" rel="noopener sponsored" class="amz-inline">Tni</a>（日本Tni軸承製造商）推出了陶瓷軸承。<s>（我早就知道了）</s><br/>自行車配件常用的<br/>68××系和69××系尺寸都備齊了。<br/>哎呀，這太方便了！<s>（露骨的廣告）</s><br/><br/>鋼球軸承有好有壞，種類繁多，<br/>陶瓷軸承也一樣有優有劣。<br/>重要的不是軸承鋼球的球度……不對，雖然那也很重要，<br/><span style="color:#FF0000">但關鍵是滾珠軌道的硬度</span>。<br/>如果軌道硬度與陶瓷球的硬度不匹配，<br/>軌道就會被刮損，很快就會出現蝕刻。<br/>Campagnolo（義大利坎帕克）黑色滾珠軌道的USB軸承明顯壽命較短，<br/>就是這個原因。<br/>最近推出的銀色滾珠軌道已經改善了這一點。<br/>考慮到它問世的時間並不長，<br/>蝕刻發生率非常低就說明一切了。<br/>黑色軌道時代的USB軸承，<br/>我使用時都會特意改裝成鋼球的，<br/>（說起來這算不算調校呢）<br/>但銀色軌道似乎就沒有這個必要了。<br/><br/>那麼什麼廠牌的陶瓷軸承最好呢，<br/>根據我個人的看法，還是CeramicSpeed（瑞典陶瓷速度）獨佔鰲頭。<br/>有一款叫COATED的高端型號，但即使不是那款也足夠了。<br/>其次，我覺得CULT和它差不多。<br/>但並不是什麼都能配。<br/>其他的基本上就是龍蛇混雜，不對，應該說盡是濫竽充數的。<br/>和之前鑽頭的說法一樣，標榜鈦金屬鍍膜的軸承<br/>耐久性和低阻力性並沒有特別優秀。<br/>尤其是BB杯這種地方，<span style="color:#FF0000">壽命短得離譜的，就是只在球上偷工減料的劣質品</span>。<br/>軌道硬度低，而且球度恐怕也不夠高。<br/>我之所以不積極向客人推薦陶瓷軸承，<br/>是因為「真正好用的產品太少，而且真正好用的還很貴」。<br/><br/>好久以前，有個客人把Cosmic Carbon Ultimatum（宇宙碳終極版）上的<br/>○○○的陶瓷軸承換成了別的，<br/>但效果不太理想（感受不到什麼區別），<br/>我就說「相信我」，<br/>馬上把它換成了CeramicSpeed的陶瓷軸承。<br/>之後那位客人說「完全不一樣！」<br/>那當然啊，一個是寶玉一個是石頭。<br/>實際上我不只是簡單地換了軸承，<br/>但主要原因還是軸承本身性能的差異。<br/><br/>那麼Tni的這款軸承到底是玉還是石呢，<br/>雖然比不上CeramicSpeed，<br/>但確實是物有所值的。<br/>我自己就把Campagnolo Ultra Torque的USB<br/>換成了這款，一直在用，<br/>至少不是極端短命的那種。<br/>更重要的是，有很多產品比這個貴得多，<br/>質量卻差得遠。<br/>具體是哪些我就不說了。<br/>誰會告訴你啊。<br/>↑哎呀這傢伙真沒禮貌！<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06345amx3.jpg" target="_blank"><img alt="DSC06345amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06345amx3s.jpg" width="300"/></a><br/>抱歉，話題扯遠了。<br/>軸承當然是同樣的尺寸。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06347amx3.jpg" target="_blank"><img alt="DSC06347amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06347amx3s.jpg" width="300"/></a><br/>6902的「RS」標注表示雙面密封。<br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06349amx3.jpg" target="_blank"><img alt="DSC06349amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06349amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06354amx3.jpg" target="_blank"><img alt="DSC06354amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06354amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06353amx3.jpg" target="_blank"><img alt="DSC06353amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06353amx3s.jpg" width="300"/></a><br/>完成花鼓大修後重新壓入軸承。<br/>刮刮的感覺已經完全消失了。<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><a href="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06366amx3.jpg" target="_blank"><img alt="DSC06366amx3.jpg" border="0" height="225" src="https://blog-imgs-61-origin.fc2.com/p/a/s/pass13/DSC06366amx3s.jpg" width="300"/></a><br/>我想很多人都預感到螃蟹光線會登場，<br/>但目前螃蟹光線正被思想警察拘捕，<br/>遭受不公正且酷刑式的審訊，<br/>所以這次沒有它的出場。令人遺憾。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

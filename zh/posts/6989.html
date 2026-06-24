@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/6989.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Drilling Work</p>
     <h1>我重新打孔了GT砂礫車前叉的快拆孔</h1>
     <p class="post-meta">January 23, 2024</p>
+    <div class="post-body"><div class="entrytext">鑽頭在尖叫！<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7411amx15.jpg" target="_blank"><img alt="RIMG7411amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7411amx15s.jpg" width="320"/></a><br/>一位客人拿來了一輛GT的砂礫車。<br/>前叉左右葉片橫側各有３個<br/>M5的快拆孔，左右兩邊的中間和下方的鉚釘螺帽<br/>的卡簧都鬆了，已經報廢，<br/>希望我能設法修理。<br/>這是前陣子打電話詢問的案子，<br/>我當時回答「大概可以修」，<br/>沒想到他竟然從關東的S縣<br/>輪行過來了。<br/>聽說附近的店都拒絕了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7413amx15.jpg" target="_blank"><img alt="RIMG7413amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7413amx15s.jpg" width="320"/></a><br/>↑右邊中間<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7414amx15.jpg" target="_blank"><img alt="RIMG7414amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7414amx15s.jpg" width="320"/></a><br/>↑右邊下方<br/>我本來想直接重新卡簧原來的鉚釘螺帽，<br/>但它變形得太離譜了，<br/>所以決定用新的重新打孔。<br/>這種情況下，得用老虎鉗把鉚釘螺帽的法蘭夾碎，<br/>或者如果卡簧還有些作用的話<br/>就用鑽頭把法蘭削掉，<br/>其他部分就會掉進叉葉裡面。<br/>首先我拆下了立管內的壓力錨，<br/>檢查了叉葉、叉冠、叉管<br/>是否相通，以及空洞是否足以讓鉚釘螺帽的碎片通過。<br/>我把探測用的變速線穿進鉚釘螺帽的孔，<br/>雖然在冠部有點卡到突起物，<br/>但能從叉管的孔穿出來。<br/>它們是相通的。<br/>但鉚釘螺帽的碎片有可能通不過，<br/>所以我得到客人同意後才開始作業，他同意了最壞的情況是<br/>「碎片可能留在叉葉裡」。<br/>結果全部都回收上來了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7415amx15.jpg" target="_blank"><img alt="RIMG7415amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7415amx15s.jpg" width="320"/></a><br/>↑左邊中間<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7416amx15.jpg" target="_blank"><img alt="RIMG7416amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7416amx15s.jpg" width="320"/></a><br/>↑左邊下方<br/>左邊下方看起來像碳纖維裂開了，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7417amx15.jpg" target="_blank"><img alt="RIMG7417amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7417amx15s.jpg" width="320"/></a><br/>但只是漆面和表層而已，沒問題。<br/>這個車架組看起來擦傷不少，<br/>但客人已經背著睡袋進行過<br/>海外自行車環球旅行，<br/>不是使用方式粗暴。<br/>使用條件就是很嚴苛。<br/>我問了他下次要去的國家和路線，<br/>要經過政局不穩的國家，<br/>我就在想這真的沒問題嗎。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7419amx15.jpg" target="_blank"><img alt="RIMG7419amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7419amx15s.jpg" width="320"/></a><br/>用鑽頭削掉了法蘭。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7424amx15.jpg" target="_blank"><img alt="RIMG7424amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7424amx15s.jpg" width="320"/></a><br/>鬆動到會被鑽頭帶著轉的鉚釘螺帽<br/>可以稍微往外拉，<br/>所以用老虎鉗之類的工具把法蘭夾碎，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7425amx15.jpg" target="_blank"><img alt="RIMG7425amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7425amx15s.jpg" width="320"/></a><br/>把剩下的部分掉進去。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7420amx15.jpg" target="_blank"><img alt="RIMG7420amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7420amx15s.jpg" width="320"/></a><br/>↑說真的，這傢伙根本沒怎麼卡簧。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7421amx15.jpg" target="_blank"><img alt="RIMG7421amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7421amx15s.jpg" width="320"/></a><br/>↑右邊中間和下方<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7422amx15.jpg" target="_blank"><img alt="RIMG7422amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7422amx15s.jpg" width="320"/></a><br/>↑左邊中間和下方<br/>重新打了孔，但仔細看左右上面的２個<br/>鉚釘螺帽的法蘭也有浮起來，<br/>所以最後全部６個地方都重新打了。<br/>客人說他只把中間和下面的孔用作快拆，<br/>上面的孔沒在用。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7465amx15.jpg" target="_blank"><img alt="RIMG7465amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7465amx15s.jpg" width="320"/></a><br/>↑更換的零件<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7466amx15.jpg" target="_blank"><img alt="RIMG7466amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7466amx15s.jpg" width="320"/></a><br/>↑削掉或夾碎的鉚釘螺帽法蘭<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7467amx15.jpg" target="_blank"><img alt="RIMG7467amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7467amx15s.jpg" width="320"/></a><br/>↑鉚釘螺帽剩下的部分<br/>根本沒卡簧。<br/>對於GT的砂礫車，<br/>叉上的快拆孔可能只是裝飾而已，<br/>不指望真正使用，<br/>也難怪人家這麼敷衍的做工。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7468amx15.jpg" target="_blank"><img alt="RIMG7468amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7468amx15s.jpg" width="320"/></a><br/>髒兮兮又粘膩的<br/>環氧樹脂接著劑涂了一堆，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7469amx15.jpg" target="_blank"><img alt="RIMG7469amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7469amx15s.jpg" width="320"/></a><br/>我本來想砸開它，<br/>但硬化得連指力都撼不動。<br/>新打進去的鉚釘螺帽我也涂上了<br/>２液式環氧樹脂接著劑作為保險，<br/>但好像當初就是靠這個保險來固定的。<br/><br/>其他５個<br/>用夾著座墊的工作台把車倒過來<br/>相對容易就回收了，<br/>但最後這個非得把前叉<br/>從車架上拔出來才行，<br/>費了好大功夫。<br/>第６個我都快要放棄回收了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7470amx15.jpg" target="_blank"><img alt="RIMG7470amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7470amx15s.jpg" width="320"/></a><br/>↑這種東西也從叉裡掉出來了。<br/>作業首先從右邊中間和下方的２個開始，<br/>回收了鉚釘螺帽的碎片，<br/>那些碎片早就掉進叉裡了，<br/>所以在回收那２個的時候幾乎全部都出來了。<br/>這是什麼東西呢，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7471amx15.jpg" target="_blank"><img alt="RIMG7471amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7471amx15s.jpg" width="320"/></a><br/>↑不確定是不是這個組合，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7472amx15.jpg" target="_blank"><img alt="RIMG7472amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7472amx15s.jpg" width="320"/></a><br/>在涂接著劑前，<br/>先用金屬圓片蓋住鉚釘螺帽的螺紋<br/>防止接著劑進去。<br/>客人說他上面的快拆孔幾乎沒用，<br/>但右上的快拆孔用手電照一下，<br/>孔裡面被這個圓片堵住了。<br/>左上不清楚，但除此之外的４個地方<br/>被長螺栓戳著，圓片都翻掉了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7427amx15.jpg" target="_blank"><img alt="RIMG7427amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7427amx15s.jpg" width="320"/></a><br/>前叉的轮毂轴位可以<br/>从２个位置选择。<br/>现在选的是后面，<br/>但理论上前面更好吧，<br/>我这样跟客人说，<br/>结果他说前面的话<br/>现在装的<br/>碟片转子就没法用了。<br/>那个尺寸是１４０ｍｍ，<br/>他已经买好了１６０ｍｍ转子，<br/>换转子的时候会一起改变轮毂轴的位置。<br/>算了，制动皮的磨损程度到了要人命的地步（不是比喻），<br/>所以我给换了。<br/>后制动也有点磨损，<br/>干脆一起换了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7473amx15.jpg" target="_blank"><img alt="RIMG7473amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7473amx15s.jpg" width="320"/></a><br/>↑更换的制动皮<br/>上面是前制动，<br/>下面是后制动的。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7476amx15.jpg" target="_blank"><img alt="RIMG7476amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7476amx15s.jpg" width="320"/></a><br/>后制动皮还能用，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7477amx15.jpg" target="_blank"><img alt="RIMG7477amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7477amx15s.jpg" width="320"/></a><br/>但前面的皮磨得不行。<br/>回弹弹簧厚度跟皮齐平了。<br/>这不是重点（←实际上很重点），<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7478amx15.jpg" target="_blank"><img alt="RIMG7478amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7478amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7479amx15.jpg" target="_blank"><img alt="RIMG7479amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7479amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7480amx15.jpg" target="_blank"><img alt="RIMG7480amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7480amx15s.jpg" width="320"/></a><br/>前叉设定在后面位置<br/>搭配１４０ｍｍ转子的情况下，<br/>制动皮对碟片转子的贴合<br/>不是按这样的设计来的。<br/>完成车的状态根据年份和等级不同<br/>（这车型的型号名叫「等级」所以有点混淆，<br/>这里说的是零件等级的意思顺便说一下），<br/>碟片转子是前后都１６０ｍｍ，<br/>或者前后１６０／１４０ｍｍ的规格，<br/>所以就算轮毂轴选后面位置<br/>１４０ｍｍ转子也有可能装不了。<br/>查了一下，平嵌式台座位置是<br/>标记１６０ｍｍ的时候转子对应１８０ｍｍ，<br/>标记１４０ｍｍ的时候转子对应１６０ｍｍ，<br/>所以１４０ｍｍ转子确实不兼容。<br/>同样规格的我在佳能代尔的拓荒者车上见过。<br/><br/><br/>这是另外的话题，<br/>后制动卡钳和车架之间<br/>要是垫个铝制垫圈<br/>对应１６０ｍｍ转子，<br/>没垫圈就对应１４０ｍｍ转子……<br/>不是这种规格，<br/>左链条叉台座的高度本身就<br/>跟有垫圈的情况一样，<br/>所以卡钳直接装的话对应１６０ｍｍ，<br/>对１４０ｍｍ不兼容的车架存在。<br/><br/>我有个熟人骑焦点车架，<br/>前面装１４０ｍｍ转子，后面装１６０ｍｍ转子，<br/>这奇特的搭配，问了原因，<br/>首先后面１４０ｍｍ没法装，只能１６０ｍｍ，<br/>前面是１４０ｍｍ因为<br/>早期shimano的公路碟片转子<br/>１６０ｍｍ的话会沙沙响，烦得要死，<br/>所以选了１４０ｍｍ，而且用的是<br/>散热膜没公路那么大<br/>的MTB转子。<br/><br/>我们店的客人买了美利达的圈速赛车架<br/>之后才发现后制动不兼容１４０ｍｍ的，<br/>但车架和完成车的<br/>转子规格兼容，说明书上应该写得更清楚。<br/>前后１６０／１６０ｍｍ的完成车目录上有，<br/>但后面能不能装１４０ｍｍ就没写清楚，<br/>或者１６０／１４０ｍｍ的完成车<br/>前面能不能装１４０ｍｍ<br/>也没有明确标注的例子很多。<br/><br/>Specialized的Aethos<br/>前叉制动安装孔间距<br/>比零件厂家的转接器还宽，<br/>所以要用Aethos专用的转接器，<br/>那个转接器不兼容１４０ｍｍ。<br/>鉴于轻量化车架这个车种的特性，<br/>预计很多人想把前面改成１４０ｍｍ，<br/>但厂商有别的执着<br/>规格就没做成可以的。<br/>关于专用转接器这件事<br/>我有跟Rowell轮毂一样无聊的意见，<br/>问题是前制动１４０ｍｍ转子的安装<br/>（除了改造之外）不可能这事<br/>没有明确周知。<br/>实际上有人买了Aethos才知道这事。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">鑽頭在尖叫！<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7411amx15.jpg" target="_blank"><img alt="RIMG7411amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7411amx15s.jpg" width="320"/></a><br/>一位客人拿來了一輛GT的砂礫車。<br/>前叉左右葉片橫側各有３個<br/>M5的快拆孔，左右兩邊的中間和下方的鉚釘螺帽<br/>的卡簧都鬆了，已經報廢，<br/>希望我能設法修理。<br/>這是前陣子打電話詢問的案子，<br/>我當時回答「大概可以修」，<br/>沒想到他竟然從關東的S縣<br/>輪行過來了。<br/>聽說附近的店都拒絕了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7413amx15.jpg" target="_blank"><img alt="RIMG7413amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7413amx15s.jpg" width="320"/></a><br/>↑右邊中間<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7414amx15.jpg" target="_blank"><img alt="RIMG7414amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7414amx15s.jpg" width="320"/></a><br/>↑右邊下方<br/>我本來想直接重新卡簧原來的鉚釘螺帽，<br/>但它變形得太離譜了，<br/>所以決定用新的重新打孔。<br/>這種情況下，得用老虎鉗把鉚釘螺帽的法蘭夾碎，<br/>或者如果卡簧還有些作用的話<br/>就用鑽頭把法蘭削掉，<br/>其他部分就會掉進叉葉裡面。<br/>首先我拆下了立管內的壓力錨，<br/>檢查了叉葉、叉冠、叉管<br/>是否相通，以及空洞是否足以讓鉚釘螺帽的碎片通過。<br/>我把探測用的變速線穿進鉚釘螺帽的孔，<br/>雖然在冠部有點卡到突起物，<br/>但能從叉管的孔穿出來。<br/>它們是相通的。<br/>但鉚釘螺帽的碎片有可能通不過，<br/>所以我得到客人同意後才開始作業，他同意了最壞的情況是<br/>「碎片可能留在叉葉裡」。<br/>結果全部都回收上來了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7415amx15.jpg" target="_blank"><img alt="RIMG7415amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7415amx15s.jpg" width="320"/></a><br/>↑左邊中間<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7416amx15.jpg" target="_blank"><img alt="RIMG7416amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7416amx15s.jpg" width="320"/></a><br/>↑左邊下方<br/>左邊下方看起來像碳纖維裂開了，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7417amx15.jpg" target="_blank"><img alt="RIMG7417amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7417amx15s.jpg" width="320"/></a><br/>但只是漆面和表層而已，沒問題。<br/>這個車架組看起來擦傷不少，<br/>但客人已經背著睡袋進行過<br/>海外自行車環球旅行，<br/>不是使用方式粗暴。<br/>使用條件就是很嚴苛。<br/>我問了他下次要去的國家和路線，<br/>要經過政局不穩的國家，<br/>我就在想這真的沒問題嗎。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7419amx15.jpg" target="_blank"><img alt="RIMG7419amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7419amx15s.jpg" width="320"/></a><br/>用鑽頭削掉了法蘭。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7424amx15.jpg" target="_blank"><img alt="RIMG7424amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7424amx15s.jpg" width="320"/></a><br/>鬆動到會被鑽頭帶著轉的鉚釘螺帽<br/>可以稍微往外拉，<br/>所以用老虎鉗之類的工具把法蘭夾碎，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7425amx15.jpg" target="_blank"><img alt="RIMG7425amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7425amx15s.jpg" width="320"/></a><br/>把剩下的部分掉進去。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7420amx15.jpg" target="_blank"><img alt="RIMG7420amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7420amx15s.jpg" width="320"/></a><br/>↑說真的，這傢伙根本沒怎麼卡簧。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7421amx15.jpg" target="_blank"><img alt="RIMG7421amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7421amx15s.jpg" width="320"/></a><br/>↑右邊中間和下方<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7422amx15.jpg" target="_blank"><img alt="RIMG7422amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7422amx15s.jpg" width="320"/></a><br/>↑左邊中間和下方<br/>重新打了孔，但仔細看左右上面的２個<br/>鉚釘螺帽的法蘭也有浮起來，<br/>所以最後全部６個地方都重新打了。<br/>客人說他只把中間和下面的孔用作快拆，<br/>上面的孔沒在用。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7465amx15.jpg" target="_blank"><img alt="RIMG7465amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7465amx15s.jpg" width="320"/></a><br/>↑更換的零件<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7466amx15.jpg" target="_blank"><img alt="RIMG7466amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7466amx15s.jpg" width="320"/></a><br/>↑削掉或夾碎的鉚釘螺帽法蘭<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7467amx15.jpg" target="_blank"><img alt="RIMG7467amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7467amx15s.jpg" width="320"/></a><br/>↑鉚釘螺帽剩下的部分<br/>根本沒卡簧。<br/>對於GT的砂礫車，<br/>叉上的快拆孔可能只是裝飾而已，<br/>不指望真正使用，<br/>也難怪人家這麼敷衍的做工。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7468amx15.jpg" target="_blank"><img alt="RIMG7468amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7468amx15s.jpg" width="320"/></a><br/>髒兮兮又粘膩的<br/>環氧樹脂接著劑涂了一堆，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7469amx15.jpg" target="_blank"><img alt="RIMG7469amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7469amx15s.jpg" width="320"/></a><br/>我本來想砸開它，<br/>但硬化得連指力都撼不動。<br/>新打進去的鉚釘螺帽我也涂上了<br/>２液式環氧樹脂接著劑作為保險，<br/>但好像當初就是靠這個保險來固定的。<br/><br/>其他５個<br/>用夾著座墊的工作台把車倒過來<br/>相對容易就回收了，<br/>但最後這個非得把前叉<br/>從車架上拔出來才行，<br/>費了好大功夫。<br/>第６個我都快要放棄回收了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7470amx15.jpg" target="_blank"><img alt="RIMG7470amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7470amx15s.jpg" width="320"/></a><br/>↑這種東西也從叉裡掉出來了。<br/>作業首先從右邊中間和下方的２個開始，<br/>回收了鉚釘螺帽的碎片，<br/>那些碎片早就掉進叉裡了，<br/>所以在回收那２個的時候幾乎全部都出來了。<br/>這是什麼東西呢，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7471amx15.jpg" target="_blank"><img alt="RIMG7471amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7471amx15s.jpg" width="320"/></a><br/>↑不確定是不是這個組合，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7472amx15.jpg" target="_blank"><img alt="RIMG7472amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7472amx15s.jpg" width="320"/></a><br/>在涂接著劑前，<br/>先用金屬圓片蓋住鉚釘螺帽的螺紋<br/>防止接著劑進去。<br/>客人說他上面的快拆孔幾乎沒用，<br/>但右上的快拆孔用手電照一下，<br/>孔裡面被這個圓片堵住了。<br/>左上不清楚，但除此之外的４個地方<br/>被長螺栓戳著，圓片都翻掉了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7427amx15.jpg" target="_blank"><img alt="RIMG7427amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7427amx15s.jpg" width="320"/></a><br/>前叉的轮毂轴位可以<br/>从２个位置选择。<br/>现在选的是后面，<br/>但理论上前面更好吧，<br/>我这样跟客人说，<br/>结果他说前面的话<br/>现在装的<br/>碟片转子就没法用了。<br/>那个尺寸是１４０ｍｍ，<br/>他已经买好了１６０ｍｍ转子，<br/>换转子的时候会一起改变轮毂轴的位置。<br/>算了，制动皮的磨损程度到了要人命的地步（不是比喻），<br/>所以我给换了。<br/>后制动也有点磨损，<br/>干脆一起换了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7473amx15.jpg" target="_blank"><img alt="RIMG7473amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7473amx15s.jpg" width="320"/></a><br/>↑更换的制动皮<br/>上面是前制动，<br/>下面是后制动的。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7476amx15.jpg" target="_blank"><img alt="RIMG7476amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7476amx15s.jpg" width="320"/></a><br/>后制动皮还能用，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7477amx15.jpg" target="_blank"><img alt="RIMG7477amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7477amx15s.jpg" width="320"/></a><br/>但前面的皮磨得不行。<br/>回弹弹簧厚度跟皮齐平了。<br/>这不是重点（←实际上很重点），<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7478amx15.jpg" target="_blank"><img alt="RIMG7478amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7478amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7479amx15.jpg" target="_blank"><img alt="RIMG7479amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7479amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7480amx15.jpg" target="_blank"><img alt="RIMG7480amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7480amx15s.jpg" width="320"/></a><br/>前叉设定在后面位置<br/>搭配１４０ｍｍ转子的情况下，<br/>制动皮对碟片转子的贴合<br/>不是按这样的设计来的。<br/>完成车的状态根据年份和等级不同<br/>（这车型的型号名叫「等级」所以有点混淆，<br/>这里说的是零件等级的意思顺便说一下），<br/>碟片转子是前后都１６０ｍｍ，<br/>或者前后１６０／１４０ｍｍ的规格，<br/>所以就算轮毂轴选后面位置<br/>１４０ｍｍ转子也有可能装不了。<br/>查了一下，平嵌式台座位置是<br/>标记１６０ｍｍ的时候转子对应１８０ｍｍ，<br/>标记１４０ｍｍ的时候转子对应１６０ｍｍ，<br/>所以１４０ｍｍ转子确实不兼容。<br/>同样规格的我在佳能代尔的拓荒者车上见过。<br/><br/><br/>这是另外的话题，<br/>后制动卡钳和车架之间<br/>要是垫个铝制垫圈<br/>对应１６０ｍｍ转子，<br/>没垫圈就对应１４０ｍｍ转子……<br/>不是这种规格，<br/>左链条叉台座的高度本身就<br/>跟有垫圈的情况一样，<br/>所以卡钳直接装的话对应１６０ｍｍ，<br/>对１４０ｍｍ不兼容的车架存在。<br/><br/>我有个熟人骑焦点车架，<br/>前面装１４０ｍｍ转子，后面装１６０ｍｍ转子，<br/>这奇特的搭配，问了原因，<br/>首先后面１４０ｍｍ没法装，只能１６０ｍｍ，<br/>前面是１４０ｍｍ因为<br/>早期shimano的公路碟片转子<br/>１６０ｍｍ的话会沙沙响，烦得要死，<br/>所以选了１４０ｍｍ，而且用的是<br/>散热膜没公路那么大<br/>的MTB转子。<br/><br/>我们店的客人买了美利达的圈速赛车架<br/>之后才发现后制动不兼容１４０ｍｍ的，<br/>但车架和完成车的<br/>转子规格兼容，说明书上应该写得更清楚。<br/>前后１６０／１６０ｍｍ的完成车目录上有，<br/>但后面能不能装１４０ｍｍ就没写清楚，<br/>或者１６０／１４０ｍｍ的完成车<br/>前面能不能装１４０ｍｍ<br/>也没有明确标注的例子很多。<br/><br/>Specialized的Aethos<br/>前叉制动安装孔间距<br/>比零件厂家的转接器还宽，<br/>所以要用Aethos专用的转接器，<br/>那个转接器不兼容１４０ｍｍ。<br/>鉴于轻量化车架这个车种的特性，<br/>预计很多人想把前面改成１４０ｍｍ，<br/>但厂商有别的执着<br/>规格就没做成可以的。<br/>关于专用转接器这件事<br/>我有跟Rowell轮毂一样无聊的意见，<br/>问题是前制动１４０ｍｍ转子的安装<br/>（除了改造之外）不可能这事<br/>没有明确周知。<br/>实际上有人买了Aethos才知道这事。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

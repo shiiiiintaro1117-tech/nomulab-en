@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,39 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/1011.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Spoke Tension</p>
     <h1>輻條張力計與第３的輻條張力</h1>
     <p class="post-meta">March 01, 2014</p>
+    <div class="post-body"><div class="entrytext">我要來寫關於輻條張力和張力計的話題。<br/>要是不寫這個，就沒辦法寫「手組自由端內穿」<br/>「單側凸緣左右異徑組」「０本組但不是內穿」<br/>之類的話題。<br/>去年１２月左右應該就要寫了，<br/>但因為各種原因一直拖到現在。<br/><br/>首先從張力計的原理和使用方法開始。<br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09701amx2.jpg" target="_blank"><img alt="DSC09701amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09701amx2s.jpg" width="300"/></a><br/>為了測量輻條的變形量，用槓桿原理在３個地方按住輻條。<br/>其中２個地方固定，１個地方可動，<br/>從壓縮的阻力測出輻條的變形量。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09703amx2.jpg" target="_blank"><img alt="DSC09703amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09703amx2s.jpg" width="300"/></a><br/>↑把那時的變形量代入張力計附帶的換算表<br/>來調查輻條張力。<br/>這時變形量和輻條張力的關係<br/>形成上圖所示的弓形曲線，但是<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09705amx2.jpg" target="_blank"><img alt="DSC09705amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09705amx2s.jpg" width="300"/></a><br/>如果這條曲線變成直線的話。<br/>再加上「輻條只用２.０mm平頭」<br/>把輻條種類限定為唯一種，<br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09706amx2.jpg" target="_blank"><img alt="DSC09706amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09706amx2s.jpg" width="300"/></a><br/>張力計的讀數本身就能顯示輻條張力<br/>這樣的張力計就能製作出來。<br/>（上圖的虛線是錯開畫的，但在同一直線上）<br/><br/>實際上由於是弓形曲線，加上輻條種類繁多，<br/><span style="color:#FF0000">沒有換算表的情況下是無法使用張力計的</span>。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09731amx2.jpg" target="_blank"><img alt="DSC09731amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09731amx2s.jpg" width="300"/></a><br/>這是非常重要的一點，<br/><span style="color:#0000FF">這個部落格中單純寫「輻條張力」時，<br/>指的是至少３種意思之中的某一種，<br/>但一直沒有詳細說明這一點</span>。<br/>今後基本上也會維持這個立場。<br/><br/>用我個人的說法，<br/>「用張力計測量時輻條的變形量」<br/>是「第１的輻條張力」。<br/>我說「表面上的輻條張力」時<br/>通常是指這個，但重新看過去時又不全是這樣。<br/>關於把輻條變形量稱為輻條張力，<br/>變形量少和輻條張力高之間有因果關係，<br/>所以我把它稱為「輻條張力似的東西」<br/>勉強稱為第１的輻條張力。<br/><br/>接下來，用換算表換算後的輻條張力的概算值<br/>我稱為「第２的輻條張力」。<br/>從過去看，我經常把它稱為「真正的輻條張力」，<br/>但也有很多例外，所以「第２＝真正的」並不總是成立。<br/>這個是一般意義上的，通常說輻條張力時<br/>指的就是「輻條張力」。<br/><br/>接下來是第３的輻條張力。<br/>這不是輻條張力本身。<br/>用第１和第２的輻條張力、<br/>輻條的粗細（嚴格來說是比重）、<br/>輻條和花鼓從徑向感覺上的角度<br/>代入某個常數計算出來的數值。<br/>常數我沒辦法寫。那是我個人的定義。<br/>但根據經驗，第３的輻條張力的多寡<br/>比第２的輻條張力更準確地表現<br/>輪組的性能，我對此深信不疑。<br/>第３的輻條張力大概是「輻條的變形量」，<br/>但和第１不同的是，它還考慮了<br/>輻條的比重和張力的角度。<br/>就算是同樣的輻條張力（←這是第幾個輻條張力呢？）<br/>內穿組和切線組的驅動傳遞效率也不一樣，<br/>輻條的張力角度對性能很重要。<br/>把第３的輻條張力想成「性能的數值化」就行。<br/>有點不同，但大概就是這樣。<br/><br/>「第４的輻條張力」也存在，<br/>但組裝輪組時基本上用不到這個概念，<br/>所以這個部落格還沒提過。<br/>後面會說，但現在無法進行第４的研究。還給我。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09704amx2.jpg" target="_blank"><img alt="DSC09704amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09704amx2s.jpg" width="300"/></a><br/>圓形輻條和扁平輻條有一些例外，<br/>但把粗輻條和細輻條用同一張換算表表示的話就像上圖一樣。<br/>兩者都是曲線，所以張力計的讀數和概算後的輻條張力的關係，<br/>也就是第１和第２的關係，粗輻條和細輻條並不成相同比例。<br/>假設組裝後輪，兩種都是左右同徑組，<br/>但全 <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+Swiss+CX-RAY+spoke" target="_blank" rel="noopener sponsored" class="amz-inline">CX-RAY</a> 的輵條張力左右差<br/>比全 COMPETITION 要少。<br/>都把自由端用第２張力設定為１０００Ｎ吧。<br/>當然組裝方法、輪圈、花鼓都一樣。<br/>那時體感上反自由端的輻條握緊變形量<br/>全 CX-RAY 更有張力感。<br/>用第３的輵條張力計算時，CX-RAY 也是<br/>數值更高。因為第３的計算式裡面包含輵條的比重。<br/><br/><br/>我說「首先從張力計的原理和使用方法開始」，<br/>結果偏離主題不少。<br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09707amx2.jpg" target="_blank"><img alt="DSC09707amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09707amx2s.jpg" width="300"/></a><br/>回到輵條張力計的話題。<br/>首先是 HOZAN 的張力計。<br/>我平常用的就是這個。<br/>未稅定價是４４０００日圓。供參考。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09709amx2.jpg" target="_blank"><img alt="DSC09709amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09709amx2s.jpg" width="300"/></a><br/>把中間的測定子按在輵條上測量變形量。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09710amx2.jpg" target="_blank"><img alt="DSC09710amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09710amx2s.jpg" width="300"/></a><br/>↑校正是通過這裡的雙螺帽鬆緊程度進行，<br/>但絕對不能碰這個。因為會導致校正偏差。<br/>扭力扳手也是一樣，經年使用會磨損，<br/>測量值也會慢慢改變。<br/>HOZAN 的張力計的情況是<br/>可以寄給製造商重新校正。<br/>計測工具能否進行這個操作非常重要。<br/><br/>根據說明書摘錄<br/>「換算值因一件一件產品而異，<span style="color:#FF0000">分別進行公開檢查製作換算表</span>。<br/>換算表請妥善保管。<br/>萬一遺失換算表，本裝置需要重新檢定。」<br/>是這樣寫的。<br/><br/>這個「分別進行」的地方是和其他製造商不同的地方。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09711amx2.jpg" target="_blank"><img alt="DSC09711amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09711amx2s.jpg" width="300"/></a><br/>接著是 DT 的張力計。<br/>沒有這個的話 HOZAN 的張力計就用不了（原因後述）。<br/>未稅定價是７２３８０日圓。供參考。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09712amx2.jpg" target="_blank"><img alt="DSC09712amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09712amx2s.jpg" width="300"/></a><br/>↑在這裡夾輵條。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09713amx2.jpg" target="_blank"><img alt="DSC09713amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09713amx2s.jpg" width="300"/></a><br/>夾住輵條後，握法像握握力訓練器一樣，<br/>測定子被按壓就能測出變形量，<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09714amx2.jpg" target="_blank"><img alt="DSC09714amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09714amx2s.jpg" width="300"/></a><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09715amx2.jpg" target="_blank"><img alt="DSC09715amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09715amx2s.jpg" width="300"/></a><br/>↑測定子是用內六角螺絲鎖在握力器上。<br/>調整這裡就能校正。<br/>HOZAN 剛才說絕對不能碰的校正，<br/>DT 這邊是可以調的。<br/><br/>原因是 DT 的換算表不是每台一張，而是統一的。<br/>換算表的數值是多少，就把計的針調到多少，意思就是這樣。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09720amx2.jpg" target="_blank"><img alt="DSC09720amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09720amx2s.jpg" width="300"/></a><br/>↑這就是那張換算表。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09721amx2.jpg" target="_blank"><img alt="DSC09721amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09721amx2s.jpg" width="300"/></a><br/>參考一下２.０mm <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Champion+spoke+bicycle" target="_blank" rel="noopener sponsored" class="amz-inline">CHAMPION</a>。<br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09722amx2.jpg" target="_blank"><img alt="DSC09722amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09722amx2s.jpg" width="300"/></a><br/>接著是２.０－１.５mm REVOLUTION。<br/><br/>剛才我畫了粗輵條的弓形曲線下面是細輵條的弓形曲線的圖，<br/>但從這兩張看起來好像是一樣。<br/>別被騙了。圖表的最大值和範圍完全不一樣。<br/>舉例來說 CHAMPION 是２.２mm 變形時１０００Ｎ，<br/>REVOLUTION 則是１.３mm 不到就到１０００Ｎ。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09737amx2.jpg" target="_blank"><img alt="DSC09737amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09737amx2s.jpg" width="300"/></a><br/>HOZAN 是每台計都附帶個別的換算表，<br/>和另一台相同型號計的換算表沒有相容性。<br/>而且每次校正時附帶的換算表也會更新。<br/><br/>這張換算表，因為是為一般自行車製作的<br/>只能求１３番、１４番、１５番平頭輵條的<br/>輵條張力。<br/>其他尺寸和空氣動力輵條等特殊輵條<br/>明確寫著不行。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09738amx2.jpg" target="_blank"><img alt="DSC09738amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09738amx2s.jpg" width="300"/></a><br/>DT 的情況是，對唯一的換算表忠實的計被視為<br/>「正確」。<br/>如果有多台 DT 張力計，<br/>都對同一个２.０mm CHAMPION 測量的話<br/>都會指向２.２mm 變形等相同數值。<br/>其中一台長期使用會發生偏差。<br/>這時如果有另一台 DT 計可以作為基準（精度值得相信的話）<br/>使用者側就可以自己校正。<br/>所以最好 DT 的計最少要有２台。<br/>我自己把用２台以上 DT 計來組輪組的方法<br/>私下稱為「零點校準組」，<br/>但現在只有１台，所以做不了。<br/>用現在我的輪組組裝方法的話，零點校準組是否<br/>直接連結到更好的輪組組裝，說實話也不是這樣，所以就算了。<br/><br/>DT 的換算表上載著 DT 所有輵條型號的弓形曲線。<br/>嚴格來說因為鍻接長度不同所以不是同一產品，<br/>但如果把 SAPIM 的 CX-RAY 看作 DT 的 AERO LITE，<br/>RACE 看作 COMPETITION，LASER 看作 REVOLUTION 的話<br/>SAPIM 輵條也能用 DT 計測。<br/>誤差應該很小，所以我就這樣做。<br/>LEADER 和 CHAMPION 都是平頭輵條，差不多沒有差異。<br/><br/>那要是只有１台 DT 計該怎麼辦呢？<br/>即便「CHAMPION ２.０mm 平頭的１０００Ｎ是變形２.２mm」<br/>這個是確定的，但計測出２.２mm 變形時<br/>真的是１０００Ｎ嗎？這個疑問就出來了。<br/>要是有「絕對是１０００Ｎ」的節拍器般的基準<br/>就能微調了……<br/>「先前說的準備２台 DT 計」<br/>就像用樂器彼此對音一樣。<br/><br/>但只要是新品 DT 計精度偏差和個體差異就很少，<br/>只買１台也沒問題。<br/>需要校正是在每天都在組輪組的情況下，<br/>但在這個完組輪盛行的年代，應該沒有這麼積極的人吧。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09740amx2.jpg" target="_blank"><img alt="DSC09740amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09740amx2s.jpg" width="300"/></a><br/>那用 HOZAN 的計怎麼測量鍻接和空氣動力輵條呢，<br/>我是用自己做的換算表，把
+１００Ｎ每段的變形量<br/>用 DT 和 HOZAN 測量比對的結果。<br/>這樣就能換算成「CX-RAY（實際上是 AERO LITE）<br/>在 HOZAN 的○.○mm 變形是○○○○Ｎ」這樣的數值。<br/>這相當於「DT 和 HOZAN 的零點校準組」，<br/>但只要現在的 HOZAN 持續使用到校正，就一直能用。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09732amx2.jpg" target="_blank"><img alt="DSC09732amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09732amx2s.jpg" width="300"/></a><br/>↑換算表之類有３份。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09733amx2.jpg" target="_blank"><img alt="DSC09733amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09733amx2s.jpg" width="300"/></a><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09734amx2.jpg" target="_blank"><img alt="DSC09734amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09734amx2s.jpg" width="300"/></a><br/>測定子的內六角螺絲調整用 PB 製２.５mm 內六角扳手<br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09735amx2.jpg" target="_blank"><img alt="DSC09735amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09735amx2s.jpg" width="300"/></a><br/>３把。<br/><br/>呃，因為把管理交給別人會被亂搞導致遺失，<br/>吃過苦頭，現在我只有１台 DT 計。<br/>沒有換算表的話（DT 的好像還能入手）就是無用之物，<br/>這工具對你來說太好了，別遺失了還給我。<br/><br/>零點校準組做不了倒還好，<br/>要驗證第４的輵條張力的話<br/>DT 計最少要有２台啦啦啦啦！<br/><br/><br/><br/><br/>多虧了 DT 計和換算表，HOZAN 的計<br/>就能用在 COMPETITION 和 CX-RAY 上。<br/>那時候有沒有一邊看換算表一邊用呢，<br/>「CX-RAY １１００Ｎ的話針在這邊」這種<br/>基本上我都記在腦子裡了，<br/>所以經常用的 DT COMPETITION 和 CX-RAY 的情況下我不看換算表。<br/>就用張力計的讀數，也就是第１的輵條張力來組。<br/>其實完組輪製造商中<br/>也有用這個數值來規定輵條張力的地方，<br/>他們指定的方式是「這個輪的自由端用 DT 計測量變形量是多少 mm」<br/>這個做法很聰明。<br/>不一定非得是 DT 製的輵條。<br/>「我們的輪就是用 DT 計來組的」就行了。<br/>因為這樣 DT 計是店鋪必備。<br/>海外製造商輪組修理時有時候不可缺少。<br/>所以就算是以這個理由用著張力計不看換算表也得還給我。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09728amx2.jpg" target="_blank"><img alt="DSC09728amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09728amx2s.jpg" width="300"/></a><br/>最後。<br/>「PARK TOOL 的 TM-1 怎麼樣？」<br/>我想會被問到，所以先寫在這裡。<br/>未稅價１２３００日圓很便宜，推薦給自己動手修的人。<br/>但精度或者說再現性有點可疑，這點要注意。<br/>鉚釘的硬度軟硬個體差異很大，摩擦部分的阻力感因件而異。<br/>而且調整或注油鉚釘，即使同一台機器<br/>指針的上升容易程度也會大幅改變。<br/>為了避免這種情況需要的堅牢性 HOZAN 和 DT 都有，<br/>但那也反映在價格上（儘管如此我還是覺得 DT 很貴）。<br/>結構上是超簡易版的 DT。<br/>我不認為這是專業工具，<br/>但一般人用的話夠了。<br/>只是，之前也寫過保持同樣條件很重要，<br/>所以要在這點上多費心。<br/>有「通過使用方式刻度寬度可變的尺子」這種危險感。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09730amx2.jpg" target="_blank"><img alt="DSC09730amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09730amx2s.jpg" width="300"/></a><br/>PARK TOOL 的工具名稱是「縮寫＋尺寸品號」或<br/>「縮寫＋版本品號」。<br/><br/>花鼓扳手（PARK TOOL 的稱法是 SHOP CONE WRENCH）的話<br/>是 SHOP CONE WRENCH 的縮寫 SCW 加上<br/>１３mm 就是 SCW-13，１７mm 就是 SCW-17<br/>這是尺寸品號。<br/><br/>落地幫浦的話是 PROFESSIONAL FLOOR PUMP 的<br/>縮寫 PFP 後面跟品號，<br/>現存的是 PFP-5、PFP-7 和 PFP-8。<br/>這是版本品號，所以曾經從１開始有過２、３、４、６。<br/><br/>我想說的是 TM-1 是第１台 TENSION METER。<br/>PARK TOOL 察覺到「需要管理輵條張力」<br/>是最近的事。<br/>或者其他公司的可信張力計已經確立市場地位<br/>所以難以參入。<br/>這麼想的話「比別人出的東西便宜得多」這個地方<br/>刻意瞄準，簡便但不廉價，把賣價也控制在合理範圍<br/>這樣出來的極限作品一樣看起來。<br/><br/>如果這世界上只有 TM-1 這一台輵條張力計<br/>當然我就用它。不只靠指尖感覺。<br/>只是如果不計價格我還有別的選擇而已。<br/><br/>要是哪天出了 TM-2 什麼的，如果又卡的穩穩能信任<br/>就算５萬日圓我也不會嫌貴。反而期待。<br/>因為以網路工具有名的披薩切刀都已經是 PZT-2 了呢。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,9 +407,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">我要來寫關於輻條張力和張力計的話題。<br/>要是不寫這個，就沒辦法寫「手組自由端內穿」<br/>「單側凸緣左右異徑組」「０本組但不是內穿」<br/>之類的話題。<br/>去年１２月左右應該就要寫了，<br/>但因為各種原因一直拖到現在。<br/><br/>首先從張力計的原理和使用方法開始。<br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09701amx2.jpg" target="_blank"><img alt="DSC09701amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09701amx2s.jpg" width="300"/></a><br/>為了測量輻條的變形量，用槓桿原理在３個地方按住輻條。<br/>其中２個地方固定，１個地方可動，<br/>從壓縮的阻力測出輻條的變形量。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09703amx2.jpg" target="_blank"><img alt="DSC09703amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09703amx2s.jpg" width="300"/></a><br/>↑把那時的變形量代入張力計附帶的換算表<br/>來調查輻條張力。<br/>這時變形量和輻條張力的關係<br/>形成上圖所示的弓形曲線，但是<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09705amx2.jpg" target="_blank"><img alt="DSC09705amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09705amx2s.jpg" width="300"/></a><br/>如果這條曲線變成直線的話。<br/>再加上「輻條只用２.０mm平頭」<br/>把輻條種類限定為唯一種，<br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09706amx2.jpg" target="_blank"><img alt="DSC09706amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09706amx2s.jpg" width="300"/></a><br/>張力計的讀數本身就能顯示輻條張力<br/>這樣的張力計就能製作出來。<br/>（上圖的虛線是錯開畫的，但在同一直線上）<br/><br/>實際上由於是弓形曲線，加上輻條種類繁多，<br/><span style="color:#FF0000">沒有換算表的情況下是無法使用張力計的</span>。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09731amx2.jpg" target="_blank"><img alt="DSC09731amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09731amx2s.jpg" width="300"/></a><br/>這是非常重要的一點，<br/><span style="color:#0000FF">這個部落格中單純寫「輻條張力」時，<br/>指的是至少３種意思之中的某一種，<br/>但一直沒有詳細說明這一點</span>。<br/>今後基本上也會維持這個立場。<br/><br/>用我個人的說法，<br/>「用張力計測量時輻條的變形量」<br/>是「第１的輻條張力」。<br/>我說「表面上的輻條張力」時<br/>通常是指這個，但重新看過去時又不全是這樣。<br/>關於把輻條變形量稱為輻條張力，<br/>變形量少和輻條張力高之間有因果關係，<br/>所以我把它稱為「輻條張力似的東西」<br/>勉強稱為第１的輻條張力。<br/><br/>接下來，用換算表換算後的輻條張力的概算值<br/>我稱為「第２的輻條張力」。<br/>從過去看，我經常把它稱為「真正的輻條張力」，<br/>但也有很多例外，所以「第２＝真正的」並不總是成立。<br/>這個是一般意義上的，通常說輻條張力時<br/>指的就是「輻條張力」。<br/><br/>接下來是第３的輻條張力。<br/>這不是輻條張力本身。<br/>用第１和第２的輻條張力、<br/>輻條的粗細（嚴格來說是比重）、<br/>輻條和花鼓從徑向感覺上的角度<br/>代入某個常數計算出來的數值。<br/>常數我沒辦法寫。那是我個人的定義。<br/>但根據經驗，第３的輻條張力的多寡<br/>比第２的輻條張力更準確地表現<br/>輪組的性能，我對此深信不疑。<br/>第３的輻條張力大概是「輻條的變形量」，<br/>但和第１不同的是，它還考慮了<br/>輻條的比重和張力的角度。<br/>就算是同樣的輻條張力（←這是第幾個輻條張力呢？）<br/>內穿組和切線組的驅動傳遞效率也不一樣，<br/>輻條的張力角度對性能很重要。<br/>把第３的輻條張力想成「性能的數值化」就行。<br/>有點不同，但大概就是這樣。<br/><br/>「第４的輻條張力」也存在，<br/>但組裝輪組時基本上用不到這個概念，<br/>所以這個部落格還沒提過。<br/>後面會說，但現在無法進行第４的研究。還給我。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09704amx2.jpg" target="_blank"><img alt="DSC09704amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09704amx2s.jpg" width="300"/></a><br/>圓形輻條和扁平輻條有一些例外，<br/>但把粗輻條和細輻條用同一張換算表表示的話就像上圖一樣。<br/>兩者都是曲線，所以張力計的讀數和概算後的輻條張力的關係，<br/>也就是第１和第２的關係，粗輻條和細輻條並不成相同比例。<br/>假設組裝後輪，兩種都是左右同徑組，<br/>但全 <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+Swiss+CX-RAY+spoke" target="_blank" rel="noopener sponsored" class="amz-inline">CX-RAY</a> 的輵條張力左右差<br/>比全 COMPETITION 要少。<br/>都把自由端用第２張力設定為１０００Ｎ吧。<br/>當然組裝方法、輪圈、花鼓都一樣。<br/>那時體感上反自由端的輻條握緊變形量<br/>全 CX-RAY 更有張力感。<br/>用第３的輵條張力計算時，CX-RAY 也是<br/>數值更高。因為第３的計算式裡面包含輵條的比重。<br/><br/><br/>我說「首先從張力計的原理和使用方法開始」，<br/>結果偏離主題不少。<br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09707amx2.jpg" target="_blank"><img alt="DSC09707amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09707amx2s.jpg" width="300"/></a><br/>回到輵條張力計的話題。<br/>首先是 HOZAN 的張力計。<br/>我平常用的就是這個。<br/>未稅定價是４４０００日圓。供參考。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09709amx2.jpg" target="_blank"><img alt="DSC09709amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09709amx2s.jpg" width="300"/></a><br/>把中間的測定子按在輵條上測量變形量。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09710amx2.jpg" target="_blank"><img alt="DSC09710amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09710amx2s.jpg" width="300"/></a><br/>↑校正是通過這裡的雙螺帽鬆緊程度進行，<br/>但絕對不能碰這個。因為會導致校正偏差。<br/>扭力扳手也是一樣，經年使用會磨損，<br/>測量值也會慢慢改變。<br/>HOZAN 的張力計的情況是<br/>可以寄給製造商重新校正。<br/>計測工具能否進行這個操作非常重要。<br/><br/>根據說明書摘錄<br/>「換算值因一件一件產品而異，<span style="color:#FF0000">分別進行公開檢查製作換算表</span>。<br/>換算表請妥善保管。<br/>萬一遺失換算表，本裝置需要重新檢定。」<br/>是這樣寫的。<br/><br/>這個「分別進行」的地方是和其他製造商不同的地方。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09711amx2.jpg" target="_blank"><img alt="DSC09711amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09711amx2s.jpg" width="300"/></a><br/>接著是 DT 的張力計。<br/>沒有這個的話 HOZAN 的張力計就用不了（原因後述）。<br/>未稅定價是７２３８０日圓。供參考。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09712amx2.jpg" target="_blank"><img alt="DSC09712amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09712amx2s.jpg" width="300"/></a><br/>↑在這裡夾輵條。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09713amx2.jpg" target="_blank"><img alt="DSC09713amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09713amx2s.jpg" width="300"/></a><br/>夾住輵條後，握法像握握力訓練器一樣，<br/>測定子被按壓就能測出變形量，<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09714amx2.jpg" target="_blank"><img alt="DSC09714amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09714amx2s.jpg" width="300"/></a><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09715amx2.jpg" target="_blank"><img alt="DSC09715amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09715amx2s.jpg" width="300"/></a><br/>↑測定子是用內六角螺絲鎖在握力器上。<br/>調整這裡就能校正。<br/>HOZAN 剛才說絕對不能碰的校正，<br/>DT 這邊是可以調的。<br/><br/>原因是 DT 的換算表不是每台一張，而是統一的。<br/>換算表的數值是多少，就把計的針調到多少，意思就是這樣。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09720amx2.jpg" target="_blank"><img alt="DSC09720amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09720amx2s.jpg" width="300"/></a><br/>↑這就是那張換算表。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09721amx2.jpg" target="_blank"><img alt="DSC09721amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09721amx2s.jpg" width="300"/></a><br/>參考一下２.０mm <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Champion+spoke+bicycle" target="_blank" rel="noopener sponsored" class="amz-inline">CHAMPION</a>。<br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09722amx2.jpg" target="_blank"><img alt="DSC09722amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09722amx2s.jpg" width="300"/></a><br/>接著是２.０－１.５mm REVOLUTION。<br/><br/>剛才我畫了粗輵條的弓形曲線下面是細輵條的弓形曲線的圖，<br/>但從這兩張看起來好像是一樣。<br/>別被騙了。圖表的最大值和範圍完全不一樣。<br/>舉例來說 CHAMPION 是２.２mm 變形時１０００Ｎ，<br/>REVOLUTION 則是１.３mm 不到就到１０００Ｎ。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09737amx2.jpg" target="_blank"><img alt="DSC09737amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09737amx2s.jpg" width="300"/></a><br/>HOZAN 是每台計都附帶個別的換算表，<br/>和另一台相同型號計的換算表沒有相容性。<br/>而且每次校正時附帶的換算表也會更新。<br/><br/>這張換算表，因為是為一般自行車製作的<br/>只能求１３番、１４番、１５番平頭輵條的<br/>輵條張力。<br/>其他尺寸和空氣動力輵條等特殊輵條<br/>明確寫著不行。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09738amx2.jpg" target="_blank"><img alt="DSC09738amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09738amx2s.jpg" width="300"/></a><br/>DT 的情況是，對唯一的換算表忠實的計被視為<br/>「正確」。<br/>如果有多台 DT 張力計，<br/>都對同一个２.０mm CHAMPION 測量的話<br/>都會指向２.２mm 變形等相同數值。<br/>其中一台長期使用會發生偏差。<br/>這時如果有另一台 DT 計可以作為基準（精度值得相信的話）<br/>使用者側就可以自己校正。<br/>所以最好 DT 的計最少要有２台。<br/>我自己把用２台以上 DT 計來組輪組的方法<br/>私下稱為「零點校準組」，<br/>但現在只有１台，所以做不了。<br/>用現在我的輪組組裝方法的話，零點校準組是否<br/>直接連結到更好的輪組組裝，說實話也不是這樣，所以就算了。<br/><br/>DT 的換算表上載著 DT 所有輵條型號的弓形曲線。<br/>嚴格來說因為鍻接長度不同所以不是同一產品，<br/>但如果把 SAPIM 的 CX-RAY 看作 DT 的 AERO LITE，<br/>RACE 看作 COMPETITION，LASER 看作 REVOLUTION 的話<br/>SAPIM 輵條也能用 DT 計測。<br/>誤差應該很小，所以我就這樣做。<br/>LEADER 和 CHAMPION 都是平頭輵條，差不多沒有差異。<br/><br/>那要是只有１台 DT 計該怎麼辦呢？<br/>即便「CHAMPION ２.０mm 平頭的１０００Ｎ是變形２.２mm」<br/>這個是確定的，但計測出２.２mm 變形時<br/>真的是１０００Ｎ嗎？這個疑問就出來了。<br/>要是有「絕對是１０００Ｎ」的節拍器般的基準<br/>就能微調了……<br/>「先前說的準備２台 DT 計」<br/>就像用樂器彼此對音一樣。<br/><br/>但只要是新品 DT 計精度偏差和個體差異就很少，<br/>只買１台也沒問題。<br/>需要校正是在每天都在組輪組的情況下，<br/>但在這個完組輪盛行的年代，應該沒有這麼積極的人吧。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09740amx2.jpg" target="_blank"><img alt="DSC09740amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09740amx2s.jpg" width="300"/></a><br/>那用 HOZAN 的計怎麼測量鍻接和空氣動力輵條呢，<br/>我是用自己做的換算表，把
-１００Ｎ每段的變形量<br/>用 DT 和 HOZAN 測量比對的結果。<br/>這樣就能換算成「CX-RAY（實際上是 AERO LITE）<br/>在 HOZAN 的○.○mm 變形是○○○○Ｎ」這樣的數值。<br/>這相當於「DT 和 HOZAN 的零點校準組」，<br/>但只要現在的 HOZAN 持續使用到校正，就一直能用。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09732amx2.jpg" target="_blank"><img alt="DSC09732amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09732amx2s.jpg" width="300"/></a><br/>↑換算表之類有３份。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09733amx2.jpg" target="_blank"><img alt="DSC09733amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09733amx2s.jpg" width="300"/></a><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09734amx2.jpg" target="_blank"><img alt="DSC09734amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09734amx2s.jpg" width="300"/></a><br/>測定子的內六角螺絲調整用 PB 製２.５mm 內六角扳手<br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09735amx2.jpg" target="_blank"><img alt="DSC09735amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09735amx2s.jpg" width="300"/></a><br/>３把。<br/><br/>呃，因為把管理交給別人會被亂搞導致遺失，<br/>吃過苦頭，現在我只有１台 DT 計。<br/>沒有換算表的話（DT 的好像還能入手）就是無用之物，<br/>這工具對你來說太好了，別遺失了還給我。<br/><br/>零點校準組做不了倒還好，<br/>要驗證第４的輵條張力的話<br/>DT 計最少要有２台啦啦啦啦！<br/><br/><br/><br/><br/>多虧了 DT 計和換算表，HOZAN 的計<br/>就能用在 COMPETITION 和 CX-RAY 上。<br/>那時候有沒有一邊看換算表一邊用呢，<br/>「CX-RAY １１００Ｎ的話針在這邊」這種<br/>基本上我都記在腦子裡了，<br/>所以經常用的 DT COMPETITION 和 CX-RAY 的情況下我不看換算表。<br/>就用張力計的讀數，也就是第１的輵條張力來組。<br/>其實完組輪製造商中<br/>也有用這個數值來規定輵條張力的地方，<br/>他們指定的方式是「這個輪的自由端用 DT 計測量變形量是多少 mm」<br/>這個做法很聰明。<br/>不一定非得是 DT 製的輵條。<br/>「我們的輪就是用 DT 計來組的」就行了。<br/>因為這樣 DT 計是店鋪必備。<br/>海外製造商輪組修理時有時候不可缺少。<br/>所以就算是以這個理由用著張力計不看換算表也得還給我。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09728amx2.jpg" target="_blank"><img alt="DSC09728amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09728amx2s.jpg" width="300"/></a><br/>最後。<br/>「PARK TOOL 的 TM-1 怎麼樣？」<br/>我想會被問到，所以先寫在這裡。<br/>未稅價１２３００日圓很便宜，推薦給自己動手修的人。<br/>但精度或者說再現性有點可疑，這點要注意。<br/>鉚釘的硬度軟硬個體差異很大，摩擦部分的阻力感因件而異。<br/>而且調整或注油鉚釘，即使同一台機器<br/>指針的上升容易程度也會大幅改變。<br/>為了避免這種情況需要的堅牢性 HOZAN 和 DT 都有，<br/>但那也反映在價格上（儘管如此我還是覺得 DT 很貴）。<br/>結構上是超簡易版的 DT。<br/>我不認為這是專業工具，<br/>但一般人用的話夠了。<br/>只是，之前也寫過保持同樣條件很重要，<br/>所以要在這點上多費心。<br/>有「通過使用方式刻度寬度可變的尺子」這種危險感。<br/><br/><a href="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09730amx2.jpg" target="_blank"><img alt="DSC09730amx2.jpg" border="0" height="225" src="https://blog-imgs-68-origin.fc2.com/p/a/s/pass13/DSC09730amx2s.jpg" width="300"/></a><br/>PARK TOOL 的工具名稱是「縮寫＋尺寸品號」或<br/>「縮寫＋版本品號」。<br/><br/>花鼓扳手（PARK TOOL 的稱法是 SHOP CONE WRENCH）的話<br/>是 SHOP CONE WRENCH 的縮寫 SCW 加上<br/>１３mm 就是 SCW-13，１７mm 就是 SCW-17<br/>這是尺寸品號。<br/><br/>落地幫浦的話是 PROFESSIONAL FLOOR PUMP 的<br/>縮寫 PFP 後面跟品號，<br/>現存的是 PFP-5、PFP-7 和 PFP-8。<br/>這是版本品號，所以曾經從１開始有過２、３、４、６。<br/><br/>我想說的是 TM-1 是第１台 TENSION METER。<br/>PARK TOOL 察覺到「需要管理輵條張力」<br/>是最近的事。<br/>或者其他公司的可信張力計已經確立市場地位<br/>所以難以參入。<br/>這麼想的話「比別人出的東西便宜得多」這個地方<br/>刻意瞄準，簡便但不廉價，把賣價也控制在合理範圍<br/>這樣出來的極限作品一樣看起來。<br/><br/>如果這世界上只有 TM-1 這一台輵條張力計<br/>當然我就用它。不只靠指尖感覺。<br/>只是如果不計價格我還有別的選擇而已。<br/><br/>要是哪天出了 TM-2 什麼的，如果又卡的穩穩能信任<br/>就算５萬日圓我也不會嫌貴。反而期待。<br/>因為以網路工具有名的披薩切刀都已經是 PZT-2 了呢。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

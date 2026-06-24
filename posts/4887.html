@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
-    <p>Bicycle Workshop — English Edition</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/index.html">
+        <span class="brand-title">Nomu Lab Diary</span>
+        <span class="brand-subtitle">Bicycle Workshop Archive</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/index.html">Archive</a>
+      <a href="/guides/wheel-building.html">Wheel Guide</a>
+      <a href="/glossary.html">Glossary</a>
+      <a href="/about.html">About</a>
+    </nav>
     <div class="lang-toggle"><span class="lang-btn active">EN</span><a class="lang-btn" href="/zh/posts/4887.html">繁中</a></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/index.html">← All posts</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Wheel</p>
     <h1>Built the front wheel for Nomu Lab Wheel No. 5</h1>
     <p class="post-meta">October 15, 2019</p>
+    <div class="post-body"><div class="entrytext">I received a rear wheel from a Zentis Squad 2.5 from a customer.<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03809msn2.jpg" target="_blank"><img alt="DSC03809msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03809msn2s.jpg" width="320"/></a><br/>It's loose, so they want it rebuilt.<br/>Loose compared to what? Compared to Nomu Lab Wheel No. 5.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03811msn2.jpg" target="_blank"><img alt="DSC03811msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03811msn2s.jpg" width="320"/></a><br/>All-black <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=CX-RAY+straight+spokes+bicycle" target="_blank" rel="noopener sponsored" class="amz-inline">CX-RAY straight</a> 4x lacing equivalent,<br/>but because the spoke head phases on the freewheel side overlap,<br/>the spoke length calculation differs from the standard single-side 12H x 4-spoke pattern.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03812msn2.jpg" target="_blank"><img alt="DSC03812msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03812msn2s.jpg" width="320"/></a><br/>The hub is XH003—XH presumably stands for Zentis Hub.<br/><br/>I don't need this hub, but to recover the spokes on the non-freewheel side,<br/>I had to remove the non-freewheel side hub bearing.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03817msn2.jpg" target="_blank"><img alt="DSC03817msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03817msn2s.jpg" width="320"/></a><br/>The signature's fading, but<br/>Zentis has a space on the rim for recording maximum radial and lateral runout values,<br/>plus the signature of whoever did the final check—shows they're confident in their precision.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03815msn2.jpg" target="_blank"><img alt="DSC03815msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03815msn2s.jpg" width="320"/></a><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03816msn2.jpg" target="_blank"><img alt="DSC03816msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03816msn2s.jpg" width="320"/></a><br/>This one had no centering error.<br/>A rear wheel with non-freewheel side radial lacing can arrive perfectly centered from the factory<br/>yet drift by about a paper thickness toward the freewheel side with age—so that's a mark in their favor here.<br/>Though it's possible it left the factory shifted a paper thickness the other direction.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03813msn2.jpg" target="_blank"><img alt="DSC03813msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03813msn2s.jpg" width="320"/></a><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03814msn2.jpg" target="_blank"><img alt="DSC03814msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03814msn2s.jpg" width="320"/></a><br/>Both sides have quick-release dropouts, but this situation is bad.<br/>Turning the left dropout makes the hub axle slip, so it's hard to tell,<br/>but when you remove the left dropout and try to turn the axle directly,<br/>it spins backward easily but won't go forward at all.<br/>The freewheel body bearing is so rusted that<br/>the hub axle and freewheel body have become a single seized unit,<br/>and it only rotates in the ratchet's coasting direction.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03818msn2.jpg" target="_blank"><img alt="DSC03818msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03818msn2s.jpg" width="320"/></a><br/>I put a reference tape near the indexing on the freewheel body's spline,<br/>which reads "XH002 and XH003 hub, 11-speed, Shimano."<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03819msn2.jpg" target="_blank"><img alt="DSC03819msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03819msn2s.jpg" width="320"/></a><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03820msn2.jpg" target="_blank"><img alt="DSC03820msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03820msn2s.jpg" width="320"/></a><br/>↑Like this—the freewheel body and hub axle are rusted solid,<br/>so their phases are synchronized.<br/>If you clamp the rear wheel in the frame with a quick-release and pedal,<br/>the rust bond will crack with a "crunch" and release,<br/>so it's technically usable with an abnormally gritty feel.<br/>Either it wasn't ridden much, or the rust seized up during shipping to my shop.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03823msn2.jpg" target="_blank"><img alt="DSC03823msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03823msn2s.jpg" width="320"/></a><br/>I tried pulling the freewheel body off the axle,<br/>but for some reason it won't come out any further. I can push it back in.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03832msn2.jpg" target="_blank"><img alt="DSC03832msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03832msn2s.jpg" width="320"/></a><br/>↑That's as far as it goes.<br/>I tried both <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=bearing+puller+tool+bicycle+hub" target="_blank" rel="noopener sponsored" class="amz-inline">bearing puller</a> method (steady load) and impact puller method (shock load),<br/>but it won't budge, so I gave up.<br/>My goal was just to recover the spokes from the hub anyway.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03822msn2.jpg" target="_blank"><img alt="DSC03822msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03822msn2s.jpg" width="320"/></a><br/>I removed the non-freewheel side bearing with a puller.<br/>Normally this should come out by hand, like removing a ring.<br/>The anodizing on the hub axle is thin with terrible finish,<br/>so it's got the same rust pattern as a corroded yen coin spreading all over it.<br/>I've never seen Campagnolo wheel axles rust like this,<br/>so the axle corrosion doesn't seem unrelated to the bearing's extreme rust and seizure.<br/><br/>Campagnolo does sometimes have the outer freewheel body bearing rust and seize to the axle,<br/>but those aren't impossible to remove, and you can clean the axle's galling nicely.<br/>And the area right under the hub body never corrodes this badly.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03821msn2.jpg" target="_blank"><img alt="DSC03821msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03821msn2s.jpg" width="320"/></a><br/>The bearing seal says EZFO—<br/>that's Ezo, meaning Hokkaido, home of Hokkaido Machine Bearings—<br/>but EZFO bearings aren't bad. They're actually pretty good.<br/>I've even seen them used in Pinarello headset bearings when the headset used<br/>standard industrial bearings like 6806 (top) and 6807 (bottom, for mismatched heights)<br/>instead of tapered bearing races.<br/>6806 is also the bearing for BB30 with a 42mm frame inner diameter, by the way.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03824msn2.jpg" target="_blank"><img alt="DSC03824msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03824msn2s.jpg" width="320"/></a><br/>↑Freewheel side ratchet area<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03825msn2.jpg" target="_blank"><img alt="DSC03825msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03825msn2s.jpg" width="320"/></a><br/>↑Non-freewheel side<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03826msn2.jpg" target="_blank"><img alt="DSC03826msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03826msn2s.jpg" width="320"/></a><br/>I disassembled the hub to pull these spokes.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03827msn2.jpg" target="_blank"><img alt="DSC03827msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03827msn2s.jpg" width="320"/></a><br/>Non-freewheel side<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03828msn2.jpg" target="_blank"><img alt="DSC03828msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03828msn2s.jpg" width="320"/></a><br/>Freewheel side<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03829msn2.jpg" target="_blank"><img alt="DSC03829msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03829msn2s.jpg" width="320"/></a><br/>Non-freewheel side<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03830msn2.jpg" target="_blank"><img alt="DSC03830msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03830msn2s.jpg" width="320"/></a><br/>Freewheel side<br/>I've got a bad feeling about this…<br/>The freewheel side spokes look too long.<br/>The non-freewheel side aren't critically short, but they're on the short side.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03833msn2.jpg" target="_blank"><img alt="DSC03833msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03833msn2s.jpg" width="320"/></a><br/>I carefully disassembled 20 of the 24 spokes, counting from the valve hole.<br/>None of these four spokes' nipples were loosened at all.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03834msn2.jpg" target="_blank"><img alt="DSC03834msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03834msn2s.jpg" width="320"/></a><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03835msn2.jpg" target="_blank"><img alt="DSC03835msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03835msn2s.jpg" width="320"/></a><br/>↑Freewheel side<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03836msn2.jpg" target="_blank"><img alt="DSC03836msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03836msn2s.jpg" width="320"/></a><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03837msn2.jpg" target="_blank"><img alt="DSC03837msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03837msn2s.jpg" width="320"/></a><br/>↑Non-freewheel side<br/>I mentioned earlier how the freewheel side flange holes overlap in phase,<br/>but if you build with standard single-side 12H hub calculations for such a hub,<br/>the spokes actually come out too short for the nipples.<br/>Anyone building would notice if spokes were too long<br/>(if they didn't, the Zentis builder would be an idiot),<br/>and if both sides matched in their excess or shortfall,<br/>I'd think they had philosophy behind that spoke length choice.<br/>But since left and right differ, that's not it.<br/>There's no way they'd use "make freewheel side longer and non-freewheel shorter" as philosophy.<br/>And since they're not building single wheels but production runs,<br/>if the first one looked wrong, just dial it in for the next batch—yet they didn't.<br/>This isn't unique to Zentis (Reynolds, ENVE, ZIPP all do it),<br/>but despite having decent rims, they build garbage wheels<br/>through clueless spoke selection—not understanding spoke proportion—and outdated methods.<br/>The fact they make obviously bad choices without a second thought<br/>suggests they don't think about wheels, or just don't know.<br/>The fact they do this even on hubs that could do other lacing patterns<br/>(→<a href="/posts/3971.html" target="_blank" title="see here">see here</a>) is hopeless.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03838msn2.jpg" target="_blank"><img alt="DSC03838msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03838msn2s.jpg" width="320"/></a><br/>The bearing rust has loosened enough that it spins independently from the axle.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03842msn2.jpg" target="_blank"><img alt="DSC03842msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03842msn2s.jpg" width="320"/></a><br/>Turning the hub axle produces awful rust liquid<br/>grinding out like a millstone.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03840msn2.jpg" target="_blank"><img alt="DSC03840msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03840msn2s.jpg" width="320"/></a><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03841msn2.jpg" target="_blank"><img alt="DSC03841msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03841msn2s.jpg" width="320"/></a><br/>I'm not wild about this flange hole position either.<br/>They've badly misunderstood what matters more for rear wheel lateral stiffness:<br/>the left-right width of the bearing position, or the left-right position of the spoke heads.<br/>It's frustrating that they clearly did this deliberately,<br/>but the real problem is that it's limited to non-freewheel radial lacing in the first place.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03843msn2.jpg" target="_blank"><img alt="DSC03843msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03843msn2s.jpg" width="320"/></a><br/>I reassembled the rear hub as if nothing happened.<br/>For now it spins with an abnormal grinding feel.<br/>It might seize up again eventually.<br/><br/>Today too, wheel—(you know the rest).<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03846msn2.jpg" target="_blank"><img alt="DSC03846msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03846msn2s.jpg" width="320"/></a><br/>Getting back to the title:<br/>I built the front wheel for Nomu Lab Wheel No. 5.<br/>The hub took so long I didn't get to the rear wheel rebuild.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03847msn2.jpg" target="_blank"><img alt="DSC03847msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03847msn2s.jpg" width="320"/></a><br/>Evolite hub 20H, CX-RAY outpoke radial lacing.
+</div></div>
+    <aside class="post-guides">
+      <strong>Technical archive</strong>
+      <nav aria-label="Technical guides">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">I received a rear wheel from a Zentis Squad 2.5 from a customer.<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03809msn2.jpg" target="_blank"><img alt="DSC03809msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03809msn2s.jpg" width="320"/></a><br/>It's loose, so they want it rebuilt.<br/>Loose compared to what? Compared to Nomu Lab Wheel No. 5.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03811msn2.jpg" target="_blank"><img alt="DSC03811msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03811msn2s.jpg" width="320"/></a><br/>All-black <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=CX-RAY+straight+spokes+bicycle" target="_blank" rel="noopener sponsored" class="amz-inline">CX-RAY straight</a> 4x lacing equivalent,<br/>but because the spoke head phases on the freewheel side overlap,<br/>the spoke length calculation differs from the standard single-side 12H x 4-spoke pattern.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03812msn2.jpg" target="_blank"><img alt="DSC03812msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03812msn2s.jpg" width="320"/></a><br/>The hub is XH003—XH presumably stands for Zentis Hub.<br/><br/>I don't need this hub, but to recover the spokes on the non-freewheel side,<br/>I had to remove the non-freewheel side hub bearing.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03817msn2.jpg" target="_blank"><img alt="DSC03817msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03817msn2s.jpg" width="320"/></a><br/>The signature's fading, but<br/>Zentis has a space on the rim for recording maximum radial and lateral runout values,<br/>plus the signature of whoever did the final check—shows they're confident in their precision.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03815msn2.jpg" target="_blank"><img alt="DSC03815msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03815msn2s.jpg" width="320"/></a><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03816msn2.jpg" target="_blank"><img alt="DSC03816msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03816msn2s.jpg" width="320"/></a><br/>This one had no centering error.<br/>A rear wheel with non-freewheel side radial lacing can arrive perfectly centered from the factory<br/>yet drift by about a paper thickness toward the freewheel side with age—so that's a mark in their favor here.<br/>Though it's possible it left the factory shifted a paper thickness the other direction.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03813msn2.jpg" target="_blank"><img alt="DSC03813msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03813msn2s.jpg" width="320"/></a><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03814msn2.jpg" target="_blank"><img alt="DSC03814msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03814msn2s.jpg" width="320"/></a><br/>Both sides have quick-release dropouts, but this situation is bad.<br/>Turning the left dropout makes the hub axle slip, so it's hard to tell,<br/>but when you remove the left dropout and try to turn the axle directly,<br/>it spins backward easily but won't go forward at all.<br/>The freewheel body bearing is so rusted that<br/>the hub axle and freewheel body have become a single seized unit,<br/>and it only rotates in the ratchet's coasting direction.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03818msn2.jpg" target="_blank"><img alt="DSC03818msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03818msn2s.jpg" width="320"/></a><br/>I put a reference tape near the indexing on the freewheel body's spline,<br/>which reads "XH002 and XH003 hub, 11-speed, Shimano."<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03819msn2.jpg" target="_blank"><img alt="DSC03819msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03819msn2s.jpg" width="320"/></a><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03820msn2.jpg" target="_blank"><img alt="DSC03820msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03820msn2s.jpg" width="320"/></a><br/>↑Like this—the freewheel body and hub axle are rusted solid,<br/>so their phases are synchronized.<br/>If you clamp the rear wheel in the frame with a quick-release and pedal,<br/>the rust bond will crack with a "crunch" and release,<br/>so it's technically usable with an abnormally gritty feel.<br/>Either it wasn't ridden much, or the rust seized up during shipping to my shop.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03823msn2.jpg" target="_blank"><img alt="DSC03823msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03823msn2s.jpg" width="320"/></a><br/>I tried pulling the freewheel body off the axle,<br/>but for some reason it won't come out any further. I can push it back in.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03832msn2.jpg" target="_blank"><img alt="DSC03832msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03832msn2s.jpg" width="320"/></a><br/>↑That's as far as it goes.<br/>I tried both <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=bearing+puller+tool+bicycle+hub" target="_blank" rel="noopener sponsored" class="amz-inline">bearing puller</a> method (steady load) and impact puller method (shock load),<br/>but it won't budge, so I gave up.<br/>My goal was just to recover the spokes from the hub anyway.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03822msn2.jpg" target="_blank"><img alt="DSC03822msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03822msn2s.jpg" width="320"/></a><br/>I removed the non-freewheel side bearing with a puller.<br/>Normally this should come out by hand, like removing a ring.<br/>The anodizing on the hub axle is thin with terrible finish,<br/>so it's got the same rust pattern as a corroded yen coin spreading all over it.<br/>I've never seen Campagnolo wheel axles rust like this,<br/>so the axle corrosion doesn't seem unrelated to the bearing's extreme rust and seizure.<br/><br/>Campagnolo does sometimes have the outer freewheel body bearing rust and seize to the axle,<br/>but those aren't impossible to remove, and you can clean the axle's galling nicely.<br/>And the area right under the hub body never corrodes this badly.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03821msn2.jpg" target="_blank"><img alt="DSC03821msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03821msn2s.jpg" width="320"/></a><br/>The bearing seal says EZFO—<br/>that's Ezo, meaning Hokkaido, home of Hokkaido Machine Bearings—<br/>but EZFO bearings aren't bad. They're actually pretty good.<br/>I've even seen them used in Pinarello headset bearings when the headset used<br/>standard industrial bearings like 6806 (top) and 6807 (bottom, for mismatched heights)<br/>instead of tapered bearing races.<br/>6806 is also the bearing for BB30 with a 42mm frame inner diameter, by the way.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03824msn2.jpg" target="_blank"><img alt="DSC03824msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03824msn2s.jpg" width="320"/></a><br/>↑Freewheel side ratchet area<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03825msn2.jpg" target="_blank"><img alt="DSC03825msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03825msn2s.jpg" width="320"/></a><br/>↑Non-freewheel side<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03826msn2.jpg" target="_blank"><img alt="DSC03826msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03826msn2s.jpg" width="320"/></a><br/>I disassembled the hub to pull these spokes.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03827msn2.jpg" target="_blank"><img alt="DSC03827msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03827msn2s.jpg" width="320"/></a><br/>Non-freewheel side<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03828msn2.jpg" target="_blank"><img alt="DSC03828msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03828msn2s.jpg" width="320"/></a><br/>Freewheel side<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03829msn2.jpg" target="_blank"><img alt="DSC03829msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03829msn2s.jpg" width="320"/></a><br/>Non-freewheel side<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03830msn2.jpg" target="_blank"><img alt="DSC03830msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03830msn2s.jpg" width="320"/></a><br/>Freewheel side<br/>I've got a bad feeling about this…<br/>The freewheel side spokes look too long.<br/>The non-freewheel side aren't critically short, but they're on the short side.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03833msn2.jpg" target="_blank"><img alt="DSC03833msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03833msn2s.jpg" width="320"/></a><br/>I carefully disassembled 20 of the 24 spokes, counting from the valve hole.<br/>None of these four spokes' nipples were loosened at all.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03834msn2.jpg" target="_blank"><img alt="DSC03834msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03834msn2s.jpg" width="320"/></a><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03835msn2.jpg" target="_blank"><img alt="DSC03835msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03835msn2s.jpg" width="320"/></a><br/>↑Freewheel side<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03836msn2.jpg" target="_blank"><img alt="DSC03836msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03836msn2s.jpg" width="320"/></a><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03837msn2.jpg" target="_blank"><img alt="DSC03837msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03837msn2s.jpg" width="320"/></a><br/>↑Non-freewheel side<br/>I mentioned earlier how the freewheel side flange holes overlap in phase,<br/>but if you build with standard single-side 12H hub calculations for such a hub,<br/>the spokes actually come out too short for the nipples.<br/>Anyone building would notice if spokes were too long<br/>(if they didn't, the Zentis builder would be an idiot),<br/>and if both sides matched in their excess or shortfall,<br/>I'd think they had philosophy behind that spoke length choice.<br/>But since left and right differ, that's not it.<br/>There's no way they'd use "make freewheel side longer and non-freewheel shorter" as philosophy.<br/>And since they're not building single wheels but production runs,<br/>if the first one looked wrong, just dial it in for the next batch—yet they didn't.<br/>This isn't unique to Zentis (Reynolds, ENVE, ZIPP all do it),<br/>but despite having decent rims, they build garbage wheels<br/>through clueless spoke selection—not understanding spoke proportion—and outdated methods.<br/>The fact they make obviously bad choices without a second thought<br/>suggests they don't think about wheels, or just don't know.<br/>The fact they do this even on hubs that could do other lacing patterns<br/>(→<a href="/posts/3971.html" target="_blank" title="see here">see here</a>) is hopeless.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03838msn2.jpg" target="_blank"><img alt="DSC03838msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03838msn2s.jpg" width="320"/></a><br/>The bearing rust has loosened enough that it spins independently from the axle.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03842msn2.jpg" target="_blank"><img alt="DSC03842msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03842msn2s.jpg" width="320"/></a><br/>Turning the hub axle produces awful rust liquid<br/>grinding out like a millstone.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03840msn2.jpg" target="_blank"><img alt="DSC03840msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03840msn2s.jpg" width="320"/></a><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03841msn2.jpg" target="_blank"><img alt="DSC03841msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03841msn2s.jpg" width="320"/></a><br/>I'm not wild about this flange hole position either.<br/>They've badly misunderstood what matters more for rear wheel lateral stiffness:<br/>the left-right width of the bearing position, or the left-right position of the spoke heads.<br/>It's frustrating that they clearly did this deliberately,<br/>but the real problem is that it's limited to non-freewheel radial lacing in the first place.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03843msn2.jpg" target="_blank"><img alt="DSC03843msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03843msn2s.jpg" width="320"/></a><br/>I reassembled the rear hub as if nothing happened.<br/>For now it spins with an abnormal grinding feel.<br/>It might seize up again eventually.<br/><br/>Today too, wheel—(you know the rest).<br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03846msn2.jpg" target="_blank"><img alt="DSC03846msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03846msn2s.jpg" width="320"/></a><br/>Getting back to the title:<br/>I built the front wheel for Nomu Lab Wheel No. 5.<br/>The hub took so long I didn't get to the rear wheel rebuild.<br/><br/><a href="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03847msn2.jpg" target="_blank"><img alt="DSC03847msn2.jpg" border="0" height="240" src="https://blog-imgs-129-origin.fc2.com/p/a/s/pass13/DSC03847msn2s.jpg" width="320"/></a><br/>Evolite hub 20H, CX-RAY outpoke radial lacing.
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">Products Mentioned in This Article</p>
       <ul>

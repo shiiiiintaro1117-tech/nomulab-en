@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/6955.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Spoke Talk</p>
     <h1>仕入れた WH-R8170-C60-TL 輪轂的輻條</h1>
     <p class="post-meta">December 19, 2023</p>
+    <div class="post-body"><div class="entrytext">我仕入了現行 ULTEGRA C60 前輪的輻條。<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6843amxx15.jpg" target="_blank"><img alt="RIMG6843amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6843amxx15s.jpg" width="320"/></a><br/>左右都是 262mm 的粗製濫造規格<br/>所以作為「ULTEGRA C60 前輪」<br/>只有一種長度。<br/>WH-R8170-C60 這款輪轂<br/>我從來沒見過實物，<br/>說是像鑫茅和尼斯湖水怪一樣<br/>是個不知道是否真的存在的輪轂<br/>所以修理它的機會也許永遠不會來。<br/>儘管如此我還是仕入了它的備用輻條<br/>是為了某個邪惡的目的。<br/><br/>現行 DURA-ACE 和 ULTEGRA 都有<br/>C60 這款輪轂，<br/>ULTEGRA 只有無內胎轂邊規格<br/>而 DURA-ACE 還有管狀輪胎轂邊規格。<br/>DURA-ACE 的 C60 嚴格來說<br/>型號是 WH-R9270-C60<span style="color:#FF0000">-HR</span>-TL（或 TU）<br/>規格中輻條規格加大了。<br/><br/>按照 SHIMANO 官網的原文<br/>寫著「增強剛性的輻條」，<br/>但在左右同徑組裝的範疇內<br/>讓輻條規格變大（把輻條變粗）<br/>也只不過是在說「以增加重量為代價換取剛性」<br/>這種程度的想法罷了。<br/>過去曾經推出左右異徑組裝輪轂的製造商<br/>到了現在卻說這樣的話，真是令人費解。<br/>SHIMANO 過去一般車用內變三段變速搖桿上<br/>有個光學齒輪顯示屏，<br/>三速的顯示曾經寫過「速·平·輕」<br/>（現在是 1·2·3），<br/>我當時就在想為什麼只寫「好事」呢<br/>如果用「重·平·遲」的想法來看的話<br/>DURA-ACE 的 C36 和 C50<br/>就變成「採用了降低剛性的輻條」。<br/><br/>可是 DURA-ACE 的 C60-HR<br/>雖然銷量大概不如 C36 和 C50<br/>開發製造成本卻反而變高了。<br/>只有 C60-HR 的前輪採用 2:1 組裝方式，<br/>使用專用的前花鼓。<br/>輻條是 262mm×16 根和 244mm×8 根。<br/>ULTEGRA 的 C60 前輪<br/>和 C36、C50 一樣用同一花鼓左右同數組裝<br/>輻條是 262mm×24 根。<br/><br/>SHIMANO 從很久以前就有個奇怪的做法<br/>在標記完組輪轂的氣動輻條規格時，<br/>寫的是扁平之前圓形拉吊輻條的<br/>尺寸。<br/>在 DURA-ACE 的 C36 和 C50 上<br/>這個尺寸是 2.0-1.5-2.0mm。<br/>這個尺寸的圓形拉吊輵條<br/>輵條密度約為 65% 弱，<br/>加工成 SAPIM 的 CX-RAY 或<br/>DT 的氣動輕量款也都是 64% 左右<br/>但 DURA-ACE C36 和 C50 的輵條<br/>約 62% 比那些更輕。<br/><br/>SAPIM 的 CX 輵條密度大約是 101.3%<br/>這可以理解為把 14 號直紋（輵條密度 100%）<br/>做成氣動輵條<br/>如果 SHIMANO 在自己輪轂上採用<br/>同樣尺寸的輵條的話<br/>會不會標記為 2.0-2.0-2.0mm？<br/>（應該會的）<br/><br/>ULTEGRA 的 C36、C50 和 C60<br/>輵條按製造商公稱都是<br/>2.0-1.6-2.0mm 的尺寸<br/>除了長度其他都是同一款輵條。<br/>C36 的輵條密度約 71%。<br/>C50 沒有實測足夠可信的數量。<br/>C60 稍後再講。<br/><br/>只有 DURA-ACE C60-HR 的輵條<br/>尺寸是 2.0-1.8-2.0mm<br/>這相當於圓形拉吊輵條的話<br/>是 DT 的 Competition 或 SAPIM 的 Race 級別。<br/>所以輵條密度推測約 85% 左右，<br/>但從 SHIMANO 輵條的傾向看<br/>實際上應該是 80% 左右。<br/><br/>假設 DURA-ACE C60-HR-TL<br/>和 ULTEGRA C60-TL 的無內胎輪邊<br/>重量相同，前輪輵條總長度<br/>因為 262mm 和 244mm 混在一起<br/>DURA-ACE 會短一些，<br/>前花鼓的重量 DURA-ACE 也推測會較輕<br/>但 C60-HR 的輵條密度<br/>超越了這些重量因素<br/>所以 ULTEGRA C60-TL 前輪<br/>公稱重量 738g 的情況下<br/>DURA-ACE C60-HR-TL 前輪<br/>就變成 751g 了。<br/><br/>這次我仕入了 ULTEGRA C60 前輪的<br/>262mm 輵條<br/>如果是邪惡的左右反向異徑組裝目的的話<br/>C60-HR 的 262mm 也許更合適。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6842amxx15.jpg" target="_blank"><img alt="RIMG6842amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6842amxx15s.jpg" width="320"/></a><br/>螺帽不是裝在單獨的袋子裡<br/>而是在螺紋上預先套到一定位置就出貨<br/>但本店進貨時會分開。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6844amxx15.jpg" target="_blank"><img alt="RIMG6844amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6844amxx15s.jpg" width="320"/></a><br/>儘管如此，輵條的螺紋上<br/>還是塗上了看起來從未見過的<br/>濃藍色防鬆膠。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6848amxx15.jpg" target="_blank"><img alt="RIMG6848amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6848amxx15s.jpg" width="320"/></a><br/>48 根重 241.0g。<br/>從這裡計算輵條密度<br/>241.0÷48÷262÷0.0257＝<br/>0.7456609339...所以<br/>約 74.5%。<br/><br/>這在 C36 的輵條上是 70.8% 或 71.1%<br/>所以我說約 71%<br/>但 C36 的前輪也是 <s>同樣粗製濫造</s>左右都 286mm<br/>所以比 C60 短 24mm<br/>兩端的 14 號直紋部分比例會增加，<br/>還有這次的備用輵條螺紋上<br/>防鬆膠涂得相當厚...等因素<br/>也不至於輵條密度會差 3% 以上。<br/>用遊標卡尺量扁平拉吊部分的厚度時<br/>C36 的輵條約 1.2mm<br/>C60 的輵條約 1.3mm。<br/>還有，把輵條放進輵條防轉工具<br/>的同一條凹槽時<br/>C60 的輵條明顯卡得更緊，<br/>手感分明有區別。<br/>還有，從輵條兩端而非<br/>拉吊部分中間用兩指夾住<br/>在彈性變形的範圍內讓輵條彎曲時<br/>明顯 C60 的輵條變形量較少（更硬）。<br/><br/>如果原來的圓形拉吊輵條<br/>輵條密度相同<br/>無論厚度是 1.2mm 還是 1.3mm<br/>輵條密度都不會改變。<br/>好奇心驅使下我也量了寬度<br/>C36 和 C60 都是 1.9mm 幾乎一樣。<br/>如果這個差異是製造誤差的話<br/>C36 的輵條中輵條密度 74.5% 的也可能在市面上流通<br/>但輵條密度差 3% 的東西<br/>是沒辦法當成同一款輵條來對待的。<br/><br/>假如把這次 C60 262mm<br/>輵條密度 74.5% 的<br/>48 根的束重量減少本數<br/>直到輵條密度變成 71% 時的重量為止<br/>理論值是 45.7 根。<br/>把 48 根輵條螺紋上的防鬆膠<br/>全部乾淨地刮下來集合<br/>也不可能達到 2.3 根輵條的重量。<br/>是刻意做成不同規格還是<br/>某個製造批次的輵條密度變大了我不清楚<br/>但不管怎樣 SHIMANO<br/>好像就是把它們稱為<br/>2.0-1.6-2.0mm 拉吊輵條。<br/><br/>「刻意做成不同規格輵條密度差 3.5% 的東西<br/>統一稱為 2.0-1.6-2.0mm 拉吊」<br/>「製作 2.0-1.6-2.0mm 尺寸<br/>相同的氣動輵條結果輵條密度差 3.5%」<br/>↑不管哪一種都太草率了啊。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6857amxx15.jpg" target="_blank"><img alt="RIMG6857amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6857amxx15s.jpg" width="320"/></a><br/>284mm 24 根<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6858amxx15.jpg" target="_blank"><img alt="RIMG6858amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6858amxx15s.jpg" width="320"/></a><br/>264mm 24 根<br/>上面的圖片兩個都是 CX-RAY<br/>是本店常備的長度中<br/>選最接近 286mm 和 262mm 的。<br/>284mm 那邊的輵條密度<br/>111.9÷24÷284÷0.0257＝<br/>0.6388036188...所以<br/>約 63.8% 或 63.9%。<br/><br/>264mm 那邊的輵條密度<br/>103.8÷24÷264÷0.0257＝<br/>0.6374542847...所以<br/>約 63.7%。<br/><br/>CX-RAY 兩端的 14 號直紋部分長度<br/>螺紋側是固定的頸側有些許變化<br/>但這次的 264mm 和 284mm 幾乎相同。<br/>按理拉吊部分相對較長的<br/>284mm 應該輵條密度更小<br/>但這次不是那樣。<br/>不過也就是 0.2% 的事<br/>可以接受的誤差就是這個程度。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6845amxx15.jpg" target="_blank"><img alt="RIMG6845amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6845amxx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6846amxx15.jpg" target="_blank"><img alt="RIMG6846amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6846amxx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6849amxx15.jpg" target="_blank"><img alt="RIMG6849amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6849amxx15s.jpg" width="320"/></a><br/>話說這次 C60 的備用輵條<br/>螺紋側輵條防轉加工<br/>（我不會用它）周圍<br/>異常地有擦傷或脫漆。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6859amxx15.jpg" target="_blank"><img alt="RIMG6859amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6859amxx15s.jpg" width="320"/></a><br/>↑這是從 C36 新輪前輪上<br/>拔下來的輵條<br/>沒有那樣的痕跡。<br/>這是怎樣？袋子裡揉搓一下<br/>就會脫漆的程度的漆？還是這也是「個體差異」？<br/>SHIMANO 輪轂的輵條<br/>從很久以前開始，也就是從初代 7700 系開始<br/>（除了 7800 系的銀輵條）<br/>就很容易脫漆<br/>或者冒出點點鏽斑<br/>用個幾年輪轂就會變髒<br/>破壞自行車的美觀<br/>讓人感覺跟價格不符<br/>削減了擁有的喜悅。<br/><br/>※給家長的提示<br/>這可能是該換輪子的信號。<br/>就像香蕉皮遲早會變褐色一樣<br/>這也許也是「那樣的東西」<br/>想得開的話也許就不會在意了。<br/>話說我很在意。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6861amxx15.jpg" target="_blank"><img alt="RIMG6861amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6861amxx15s.jpg" width="320"/></a><br/>最後。上面的圖片左邊是<br/>這次仕入的<span style="font-size:large;">全新的</span> C60 備用輵條<br/>右邊是從新輪轂拔出的 C36 輵條。<br/>防鬆膠濃度的差別看得一清二楚呢。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">我仕入了現行 ULTEGRA C60 前輪的輻條。<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6843amxx15.jpg" target="_blank"><img alt="RIMG6843amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6843amxx15s.jpg" width="320"/></a><br/>左右都是 262mm 的粗製濫造規格<br/>所以作為「ULTEGRA C60 前輪」<br/>只有一種長度。<br/>WH-R8170-C60 這款輪轂<br/>我從來沒見過實物，<br/>說是像鑫茅和尼斯湖水怪一樣<br/>是個不知道是否真的存在的輪轂<br/>所以修理它的機會也許永遠不會來。<br/>儘管如此我還是仕入了它的備用輻條<br/>是為了某個邪惡的目的。<br/><br/>現行 DURA-ACE 和 ULTEGRA 都有<br/>C60 這款輪轂，<br/>ULTEGRA 只有無內胎轂邊規格<br/>而 DURA-ACE 還有管狀輪胎轂邊規格。<br/>DURA-ACE 的 C60 嚴格來說<br/>型號是 WH-R9270-C60<span style="color:#FF0000">-HR</span>-TL（或 TU）<br/>規格中輻條規格加大了。<br/><br/>按照 SHIMANO 官網的原文<br/>寫著「增強剛性的輻條」，<br/>但在左右同徑組裝的範疇內<br/>讓輻條規格變大（把輻條變粗）<br/>也只不過是在說「以增加重量為代價換取剛性」<br/>這種程度的想法罷了。<br/>過去曾經推出左右異徑組裝輪轂的製造商<br/>到了現在卻說這樣的話，真是令人費解。<br/>SHIMANO 過去一般車用內變三段變速搖桿上<br/>有個光學齒輪顯示屏，<br/>三速的顯示曾經寫過「速·平·輕」<br/>（現在是 1·2·3），<br/>我當時就在想為什麼只寫「好事」呢<br/>如果用「重·平·遲」的想法來看的話<br/>DURA-ACE 的 C36 和 C50<br/>就變成「採用了降低剛性的輻條」。<br/><br/>可是 DURA-ACE 的 C60-HR<br/>雖然銷量大概不如 C36 和 C50<br/>開發製造成本卻反而變高了。<br/>只有 C60-HR 的前輪採用 2:1 組裝方式，<br/>使用專用的前花鼓。<br/>輻條是 262mm×16 根和 244mm×8 根。<br/>ULTEGRA 的 C60 前輪<br/>和 C36、C50 一樣用同一花鼓左右同數組裝<br/>輻條是 262mm×24 根。<br/><br/>SHIMANO 從很久以前就有個奇怪的做法<br/>在標記完組輪轂的氣動輻條規格時，<br/>寫的是扁平之前圓形拉吊輻條的<br/>尺寸。<br/>在 DURA-ACE 的 C36 和 C50 上<br/>這個尺寸是 2.0-1.5-2.0mm。<br/>這個尺寸的圓形拉吊輵條<br/>輵條密度約為 65% 弱，<br/>加工成 SAPIM 的 CX-RAY 或<br/>DT 的氣動輕量款也都是 64% 左右<br/>但 DURA-ACE C36 和 C50 的輵條<br/>約 62% 比那些更輕。<br/><br/>SAPIM 的 CX 輵條密度大約是 101.3%<br/>這可以理解為把 14 號直紋（輵條密度 100%）<br/>做成氣動輵條<br/>如果 SHIMANO 在自己輪轂上採用<br/>同樣尺寸的輵條的話<br/>會不會標記為 2.0-2.0-2.0mm？<br/>（應該會的）<br/><br/>ULTEGRA 的 C36、C50 和 C60<br/>輵條按製造商公稱都是<br/>2.0-1.6-2.0mm 的尺寸<br/>除了長度其他都是同一款輵條。<br/>C36 的輵條密度約 71%。<br/>C50 沒有實測足夠可信的數量。<br/>C60 稍後再講。<br/><br/>只有 DURA-ACE C60-HR 的輵條<br/>尺寸是 2.0-1.8-2.0mm<br/>這相當於圓形拉吊輵條的話<br/>是 DT 的 Competition 或 SAPIM 的 Race 級別。<br/>所以輵條密度推測約 85% 左右，<br/>但從 SHIMANO 輵條的傾向看<br/>實際上應該是 80% 左右。<br/><br/>假設 DURA-ACE C60-HR-TL<br/>和 ULTEGRA C60-TL 的無內胎輪邊<br/>重量相同，前輪輵條總長度<br/>因為 262mm 和 244mm 混在一起<br/>DURA-ACE 會短一些，<br/>前花鼓的重量 DURA-ACE 也推測會較輕<br/>但 C60-HR 的輵條密度<br/>超越了這些重量因素<br/>所以 ULTEGRA C60-TL 前輪<br/>公稱重量 738g 的情況下<br/>DURA-ACE C60-HR-TL 前輪<br/>就變成 751g 了。<br/><br/>這次我仕入了 ULTEGRA C60 前輪的<br/>262mm 輵條<br/>如果是邪惡的左右反向異徑組裝目的的話<br/>C60-HR 的 262mm 也許更合適。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6842amxx15.jpg" target="_blank"><img alt="RIMG6842amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6842amxx15s.jpg" width="320"/></a><br/>螺帽不是裝在單獨的袋子裡<br/>而是在螺紋上預先套到一定位置就出貨<br/>但本店進貨時會分開。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6844amxx15.jpg" target="_blank"><img alt="RIMG6844amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6844amxx15s.jpg" width="320"/></a><br/>儘管如此，輵條的螺紋上<br/>還是塗上了看起來從未見過的<br/>濃藍色防鬆膠。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6848amxx15.jpg" target="_blank"><img alt="RIMG6848amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6848amxx15s.jpg" width="320"/></a><br/>48 根重 241.0g。<br/>從這裡計算輵條密度<br/>241.0÷48÷262÷0.0257＝<br/>0.7456609339...所以<br/>約 74.5%。<br/><br/>這在 C36 的輵條上是 70.8% 或 71.1%<br/>所以我說約 71%<br/>但 C36 的前輪也是 <s>同樣粗製濫造</s>左右都 286mm<br/>所以比 C60 短 24mm<br/>兩端的 14 號直紋部分比例會增加，<br/>還有這次的備用輵條螺紋上<br/>防鬆膠涂得相當厚...等因素<br/>也不至於輵條密度會差 3% 以上。<br/>用遊標卡尺量扁平拉吊部分的厚度時<br/>C36 的輵條約 1.2mm<br/>C60 的輵條約 1.3mm。<br/>還有，把輵條放進輵條防轉工具<br/>的同一條凹槽時<br/>C60 的輵條明顯卡得更緊，<br/>手感分明有區別。<br/>還有，從輵條兩端而非<br/>拉吊部分中間用兩指夾住<br/>在彈性變形的範圍內讓輵條彎曲時<br/>明顯 C60 的輵條變形量較少（更硬）。<br/><br/>如果原來的圓形拉吊輵條<br/>輵條密度相同<br/>無論厚度是 1.2mm 還是 1.3mm<br/>輵條密度都不會改變。<br/>好奇心驅使下我也量了寬度<br/>C36 和 C60 都是 1.9mm 幾乎一樣。<br/>如果這個差異是製造誤差的話<br/>C36 的輵條中輵條密度 74.5% 的也可能在市面上流通<br/>但輵條密度差 3% 的東西<br/>是沒辦法當成同一款輵條來對待的。<br/><br/>假如把這次 C60 262mm<br/>輵條密度 74.5% 的<br/>48 根的束重量減少本數<br/>直到輵條密度變成 71% 時的重量為止<br/>理論值是 45.7 根。<br/>把 48 根輵條螺紋上的防鬆膠<br/>全部乾淨地刮下來集合<br/>也不可能達到 2.3 根輵條的重量。<br/>是刻意做成不同規格還是<br/>某個製造批次的輵條密度變大了我不清楚<br/>但不管怎樣 SHIMANO<br/>好像就是把它們稱為<br/>2.0-1.6-2.0mm 拉吊輵條。<br/><br/>「刻意做成不同規格輵條密度差 3.5% 的東西<br/>統一稱為 2.0-1.6-2.0mm 拉吊」<br/>「製作 2.0-1.6-2.0mm 尺寸<br/>相同的氣動輵條結果輵條密度差 3.5%」<br/>↑不管哪一種都太草率了啊。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6857amxx15.jpg" target="_blank"><img alt="RIMG6857amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6857amxx15s.jpg" width="320"/></a><br/>284mm 24 根<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6858amxx15.jpg" target="_blank"><img alt="RIMG6858amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6858amxx15s.jpg" width="320"/></a><br/>264mm 24 根<br/>上面的圖片兩個都是 CX-RAY<br/>是本店常備的長度中<br/>選最接近 286mm 和 262mm 的。<br/>284mm 那邊的輵條密度<br/>111.9÷24÷284÷0.0257＝<br/>0.6388036188...所以<br/>約 63.8% 或 63.9%。<br/><br/>264mm 那邊的輵條密度<br/>103.8÷24÷264÷0.0257＝<br/>0.6374542847...所以<br/>約 63.7%。<br/><br/>CX-RAY 兩端的 14 號直紋部分長度<br/>螺紋側是固定的頸側有些許變化<br/>但這次的 264mm 和 284mm 幾乎相同。<br/>按理拉吊部分相對較長的<br/>284mm 應該輵條密度更小<br/>但這次不是那樣。<br/>不過也就是 0.2% 的事<br/>可以接受的誤差就是這個程度。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6845amxx15.jpg" target="_blank"><img alt="RIMG6845amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6845amxx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6846amxx15.jpg" target="_blank"><img alt="RIMG6846amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6846amxx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6849amxx15.jpg" target="_blank"><img alt="RIMG6849amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6849amxx15s.jpg" width="320"/></a><br/>話說這次 C60 的備用輵條<br/>螺紋側輵條防轉加工<br/>（我不會用它）周圍<br/>異常地有擦傷或脫漆。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6859amxx15.jpg" target="_blank"><img alt="RIMG6859amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6859amxx15s.jpg" width="320"/></a><br/>↑這是從 C36 新輪前輪上<br/>拔下來的輵條<br/>沒有那樣的痕跡。<br/>這是怎樣？袋子裡揉搓一下<br/>就會脫漆的程度的漆？還是這也是「個體差異」？<br/>SHIMANO 輪轂的輵條<br/>從很久以前開始，也就是從初代 7700 系開始<br/>（除了 7800 系的銀輵條）<br/>就很容易脫漆<br/>或者冒出點點鏽斑<br/>用個幾年輪轂就會變髒<br/>破壞自行車的美觀<br/>讓人感覺跟價格不符<br/>削減了擁有的喜悅。<br/><br/>※給家長的提示<br/>這可能是該換輪子的信號。<br/>就像香蕉皮遲早會變褐色一樣<br/>這也許也是「那樣的東西」<br/>想得開的話也許就不會在意了。<br/>話說我很在意。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6861amxx15.jpg" target="_blank"><img alt="RIMG6861amxx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG6861amxx15s.jpg" width="320"/></a><br/>最後。上面的圖片左邊是<br/>這次仕入的<span style="font-size:large;">全新的</span> C60 備用輵條<br/>右邊是從新輪轂拔出的 C36 輵條。<br/>防鬆膠濃度的差別看得一清二楚呢。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

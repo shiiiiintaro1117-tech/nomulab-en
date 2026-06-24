@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/6277.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Wheel Building</p>
     <h1>使用偏心圈時將偏心量絕對值最小化的討論</h1>
     <p class="post-meta">June 28, 2022</p>
+    <div class="post-body"><div class="entrytext">想從前幾天組裝的Cannondale AI後輪開始談起，<br/>不過在那之前。<br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09437amx14.jpg" target="_blank"><img alt="DSC09437amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09437amx14s.jpg" width="320"/></a><br/>先從圈移動的量度和中心測規與花鼓端面之間產生的<br/>間隙這個話題開始。<br/>以鎖定螺帽外幅１００mm的<br/>夾器制動前輪為例考慮。<br/><span style="color:#FF0000">如果不設定具體的、容易想像的圈寬度就會有白痴搞混淆</span><br/>所以我設定圈寬為２０mm。<br/>這種情況下，若輪組中心對正，<br/>左右兩端（測規接觸面）到圈的距離<br/>左右都是４０mm。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09438amx14.jpg" target="_blank"><img alt="DSC09438amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09438amx14s.jpg" width="320"/></a><br/>從那個位置，圈向左側移動１mm。<br/>此時，左端到圈的距離是４０－１＝３９mm，<br/>右端到圈的距離是４０＋１＝４１mm。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09439amx14.jpg" target="_blank"><img alt="DSC09439amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09439amx14s.jpg" width="320"/></a><br/>所以，端面與圈距離較遠的一側（４１mm側）測得的尺寸<br/>套用到距離較近一側（３９mm側）的圈上時，<br/>端面與圈的間隙就變成２mm。<br/>我常在文章裡貼的中心偏移圖片就是這部分的間隙。<br/>換句話說就是「當圈偏移X mm時，<br/>用中心測規看到的偏移尺寸是２X mm」。<br/><br/>第一次組裝Cannondale AI車架用的後輪時，<br/>被告知「圈要移動６mm」<br/>所以我把左端到圈的距離設成６mm（→<a href="/zh/posts/3880.html" target="_blank" title="這裡">這裡</a>）。<br/>這是後來修正的。<br/>所以<span style="color:#FF0000">開頭說的白痴就是我自己</span>。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09441amx14.jpg" target="_blank"><img alt="DSC09441amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09441amx14s.jpg" width="320"/></a><br/>這是另一個話題，把鎖定螺帽外幅１２６mm的<br/>內變速花鼓（其實不一定要內變速，但做這種事通常都是內變速花鼓）<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09442amx14.jpg" target="_blank"><img alt="DSC09442amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09442amx14s.jpg" width="320"/></a><br/>改成１３０mm時，只在左側延長４mm。<br/>必要的話花鼓軸也要更換。<br/>千萬不能改變右側尺寸。<br/>會改變變速位置的設定。<br/>左右都加２mm的話，輪幅角度不會改變，<br/>反而會改變變速位置的設定。<br/>只在右側加４mm的話，碗碟形會大幅惡化。<br/><br/>只有一側鎖定螺帽外幅延長４mm的情況下，<br/>圈的移動量是２mm。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09443amx14.jpg" target="_blank"><img alt="DSC09443amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09443amx14s.jpg" width="320"/></a><br/>Cannondale的AI，<br/>就是通過讓圈偏移６mm<br/>來減少後輪花鼓碗碟形的一項嘗試。<br/>相比一般車架<br/>輻條左右張力差確實會縮小，<br/>但因為沒有採用相對於一般後輪花鼓、法蘭寬度特別寬的花鼓，<br/>所以橫向剛性也不會有戲劇性的改善。<br/>雖然無法後天加寬法蘭寬度，<br/>但減輕輻條張力左右差（或者說變形量）的辦法有很多，所以我的願望是<br/>就算碗碟形會嚴重一點也沒關係，希望能加寬花鼓的法蘭寬度。<br/>上圖裡寫著的左右法蘭寬度，<br/>是我從Cannondale Topstone完成車附帶的後輪花鼓實測的尺寸。<br/>我測量的法蘭寬度是到法蘭外側的寬度，這和Shimano一樣。<br/>這個法蘭外～外寬在１１S或１２S花鼓的情況下，<br/>除去極端狹窄的產品外，５３mm左右就算偏窄，<br/>５８mm左右就算偏寬<br/>（BOOST規格的話有６２～６３mm的產品，但那是例外）。<br/>之前那個Cannondale花鼓的話<br/>３５．７＋２１．６＝５７．３mm，<br/>雖然不算特別窄，<br/>但尺寸也不是極端的專用品，<br/>而是和一般後輪花鼓差不多的水準。<br/><br/>上圖是裝在普通車架上時圈的位置，<br/>如果鎖定螺帽外幅１４２mm從圈的中心分割，<br/>左右都是７１mm，<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09445amx14.jpg" target="_blank"><img alt="DSC09445amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09445amx14s.jpg" width="320"/></a><br/>但把這個花鼓的尺寸改為<br/>左側７１－６＝６５mm、右側７１＋６＝７７mm<br/>這樣來使用，就是AI。<br/>圈的中心和車架的中心位於６５：７７mm的位置。<br/>到此為止，基本上和過去寫過的內容差不多（→<a href="/zh/posts/3452.html" target="_blank" title="這裡">這裡</a>）。<br/>因為這次是關於偏心圈的討論，所以繼續來談那方面。<br/><br/>把這個花鼓用在普通車架上時，法蘭寬度５７．３mm的內訳是<br/>左法蘭寬：右法蘭寬３５．７：２１．６mm，<br/>但組成AI車架用的輪組後，變成了２９．７：２７．６mm。<br/>碗碟形大幅減輕了。<br/>這是非偏心圈、普通圈的情況，<br/>前幾天改組用的Stanz的Crest MK4<br/>和上一代的MK３（已停產）不同，變成了偏心圈。<br/>找輕的鋁圈就只能這樣了，<br/>這種偏心對我來說反而是多餘的。<br/>要是Crest MK３還在販售、或問屋還有庫存的話，<br/>我會進MK３。<br/>這個花鼓的情況，即使用在AI車架上，<br/>右側法蘭也比較窄，還是正碗碟形。<br/>所以不會把偏心圈反向使用。<br/>Crest MK４的碗碟形量是１．５mm，<br/>用通常的偏心圈方向使用的話<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09446amx14.jpg" target="_blank"><img alt="DSC09446amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09446amx14s.jpg" width="320"/></a><br/>↑會變成這樣。<br/>左法蘭寬變成負１．５mm，右法蘭寬變成正１．５mm，<br/>所以法蘭寬變成２８．２：２９．１mm的反碗碟形。<br/>但法蘭寬的左右差本身從２．１mm減少到０．９mm。<br/>「圈移動１．５mm，法蘭的左右差卻只差１．２mm，這不奇怪嗎」<br/>有人可能這樣想，<br/>但原本是正碗碟形２．１mm，因為偏心圈變成反碗碟形０．９mm，<br/>所以２．１mm和－０．９mm相差３mm。<br/>正碗碟形設為正、反碗碟形設為負，<br/>跨越正負邊界比較絕對值的話就會這樣。<br/>圈偏移１．５mm時法蘭左右差變成<br/>相比原狀態差３mm，這和開頭的原理是一樣的。<br/>只是把「左端到圈的距離～」<br/>換成「左法蘭外側端面到圈的距離～」而已。<br/><br/>雖然是反碗碟形，但量和有時在動力花鼓上見到的碗碟形程度差不多，<br/>所以前幾天那個AI的後輪我採用了左右同直徑同根數組法。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09449amx14.jpg" target="_blank"><img alt="DSC09449amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09449amx14s.jpg" width="320"/></a><br/>接著是前一篇文章的後輪。<br/>花鼓是Surly品牌<br/>鎖定螺帽外幅１３５mm的快拆規格，<br/>一側是固定齒輪台座、另一側是碟式制動盤台座。<br/>法蘭寬度的數值是我的實測值。<br/>右法蘭寬比較寬，是反碗碟形花鼓。<br/>左邊的圖看起來好像差不多從中間分割，<br/>不用在意，只是表示花鼓這個部分的尺寸。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09451amx14.jpg" target="_blank"><img alt="DSC09451amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09451amx14s.jpg" width="320"/></a><br/>同樣是１３５mm寬的快拆花鼓，<br/>我加上了Deore的FH-M6000的標稱尺寸。<br/>選Deore是因為XT和XTR只有通軸花鼓。<br/>如前所述，Shimano的標稱值測量的地方和我一樣，<br/>所以數值可以作為同一種測量方式來比較。<br/>這也是過去提過的，<br/>目前Shimano應該直接刊登左右法蘭寬，<br/>卻只在型錄裡刊登法蘭寬和偏心量這些資訊。<br/>這是用法蘭寬的一半加上偏心量的正負號<br/>就能計算出左右的法蘭寬。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09452amx14.jpg" target="_blank"><img alt="DSC09452amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09452amx14s.jpg" width="320"/></a><br/>計算好了。<br/>另外也用Shimano的方式表示Surly花鼓的方式寫上去了。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09453amx14.jpg" target="_blank"><img alt="DSC09453amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09453amx14s.jpg" width="320"/></a><br/>另外還加上了Dura-Ace場地車單側螺紋山的<br/>大法蘭後輪花鼓的尺寸。<br/>Deore的花鼓是因為飛輪部分比較長所以右法蘭比較窄，<br/>Surly的花鼓雖然鎖定螺帽外幅比Dura-Ace場地車寬１５mm，<br/>但法蘭寬卻差不多，<br/>看起來是被碟式制動盤台座給佔用了，<br/>Surly花鼓的偏心量少得優秀・・・<br/>不過這根本是反碗碟形嘛，之類的<br/>各種事情都能看出來。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09455amx14.jpg" target="_blank"><img alt="DSC09455amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09455amx14s.jpg" width="320"/></a><br/>把圈畫到先前左邊的圖上了。<br/>也把分割法蘭寬的線從中心移開重新畫。<br/><br/>根據問屋的資料，AL22W圈的偏心版本<br/>聽說是３mm偏心，但看起來沒那麼多，<br/>所以我查了一下。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09461amx14.jpg" target="_blank"><img alt="DSC09461amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09461amx14s.jpg" width="320"/></a><br/>有制動區且和玻璃平台嚴絲合縫貼上的<br/>夾器制動規格AL22W偏心圈的<br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09462amx14.jpg" target="_blank"><img alt="DSC09462amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09462amx14s.jpg" width="320"/></a><br/>從圈的端面到穴的端面左右的尺寸和<br/>穴的直徑進行實測。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09457amx14.jpg" target="_blank"><img alt="DSC09457amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09457amx14s.jpg" width="320"/></a><br/>根據我的測量，內訳是這樣的。<br/>３個加起來是２４．０mm，圈的標稱外寬也是２４mm，<br/>但實測圈的外寬卻不知為何約是２４．２mm。<br/>圈孔的直徑也有的量出４．３mm，<br/>左右都有０．１mm級的誤差。<br/>圈孔的左右有穴振，所以我分別測了<br/>右穴振和左穴振各自算出平均。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09458amx14.jpg" target="_blank"><img alt="DSC09458amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09458amx14s.jpg" width="320"/></a><br/>圈孔的直徑設為零，<br/>或是計算圈的端面到孔中心的長度的話<br/>就是９：１５mm。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09459amx14.jpg" target="_blank"><img alt="DSC09459amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09459amx14s.jpg" width="320"/></a><br/>這是從圈本身的中心１２mm的正負３mm，<br/>所以３mm偏心的標稱值是正確的。<br/>數值恰好是３．０mm，<br/>我沒有任意取整。<br/>我本來就覺得即使３mm偏心是真的，<br/>測量和計算的結果也會是２．９mm或３．２mm之類的，<br/>不太會恰好整數３mm。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09460amx14.jpg" target="_blank"><img alt="DSC09460amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09460amx14s.jpg" width="320"/></a><br/>前一篇文章的後輪，<br/>把偏心圈用通常相反的方向來使用，<br/>把反碗碟形反轉了。<br/>從３５．７－３９．１＝－３．４mm<br/>到３８．７－３６．１＝２．６mm，<br/>圈孔３mm的移動讓碗碟形變了６mm。<br/>碗碟形量的絕對值減少了０．８mm。<br/>把圈的偏心量也加進去最終狀態用Shimano方式寫的話<br/>法蘭寬７４．８mm　偏心量１．３mm。<br/>這幾乎沒有碗碟形，<br/>所以重新組輪的話可以用六點組法，<br/>但因為有盡量沿用輻條的條件，<br/>所以採用了四六組法。<br/>結果右側（小齒輪側）的張力較高，<br/>但相比左右同直徑同根數同數組的普通飛輪後輪，<br/>輻條張力（和變形量）的左右差還是少一些。<br/>普通後輪裡反飛輪側輻條張力反而較高這種情況非常詭異<br/>（Roval的碟式制動後輪你們就是啦 你們）<br/>齒輪側輻條稍微硬一點我覺得也還好。<br/>如果組裝過程中覺得特別不好，<br/>我會向客人確認後改變組法。<br/><br/>Shimano型錄裡花鼓的「偏心量」這個數值，<br/>和圈的偏心量可以直接比較，<br/>所以在這種情況下作為思考方式還挺方便的。<br/>不過AI規格的車架、反碗碟形花鼓搭配<br/>偏心圈組輪時，想著要怎樣才能<br/>讓偏心量的絕對值最小化這種情況<br/>本身就是罕見狀況，<br/>那時候是我自己去查的，<br/>所以還是希望能刊登左右法蘭寬的<br/>實際數值會更幫忙。<br/><br/>AI車架的話，用非偏心圈會比較輕鬆。<br/>要是不是偏心圈，就算還留著一點碗碟形<br/>也用不著和Cannondale牽扯上關係、法蘭寬度極端狹窄的花鼓<br/>（特別是左法蘭側比較窄的花鼓）時會不會出現反碗碟形這種事<br/>因為翻轉圈也改變不了什麼，所以也不必在意。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">想從前幾天組裝的Cannondale AI後輪開始談起，<br/>不過在那之前。<br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09437amx14.jpg" target="_blank"><img alt="DSC09437amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09437amx14s.jpg" width="320"/></a><br/>先從圈移動的量度和中心測規與花鼓端面之間產生的<br/>間隙這個話題開始。<br/>以鎖定螺帽外幅１００mm的<br/>夾器制動前輪為例考慮。<br/><span style="color:#FF0000">如果不設定具體的、容易想像的圈寬度就會有白痴搞混淆</span><br/>所以我設定圈寬為２０mm。<br/>這種情況下，若輪組中心對正，<br/>左右兩端（測規接觸面）到圈的距離<br/>左右都是４０mm。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09438amx14.jpg" target="_blank"><img alt="DSC09438amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09438amx14s.jpg" width="320"/></a><br/>從那個位置，圈向左側移動１mm。<br/>此時，左端到圈的距離是４０－１＝３９mm，<br/>右端到圈的距離是４０＋１＝４１mm。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09439amx14.jpg" target="_blank"><img alt="DSC09439amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09439amx14s.jpg" width="320"/></a><br/>所以，端面與圈距離較遠的一側（４１mm側）測得的尺寸<br/>套用到距離較近一側（３９mm側）的圈上時，<br/>端面與圈的間隙就變成２mm。<br/>我常在文章裡貼的中心偏移圖片就是這部分的間隙。<br/>換句話說就是「當圈偏移X mm時，<br/>用中心測規看到的偏移尺寸是２X mm」。<br/><br/>第一次組裝Cannondale AI車架用的後輪時，<br/>被告知「圈要移動６mm」<br/>所以我把左端到圈的距離設成６mm（→<a href="/zh/posts/3880.html" target="_blank" title="這裡">這裡</a>）。<br/>這是後來修正的。<br/>所以<span style="color:#FF0000">開頭說的白痴就是我自己</span>。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09441amx14.jpg" target="_blank"><img alt="DSC09441amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09441amx14s.jpg" width="320"/></a><br/>這是另一個話題，把鎖定螺帽外幅１２６mm的<br/>內變速花鼓（其實不一定要內變速，但做這種事通常都是內變速花鼓）<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09442amx14.jpg" target="_blank"><img alt="DSC09442amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09442amx14s.jpg" width="320"/></a><br/>改成１３０mm時，只在左側延長４mm。<br/>必要的話花鼓軸也要更換。<br/>千萬不能改變右側尺寸。<br/>會改變變速位置的設定。<br/>左右都加２mm的話，輪幅角度不會改變，<br/>反而會改變變速位置的設定。<br/>只在右側加４mm的話，碗碟形會大幅惡化。<br/><br/>只有一側鎖定螺帽外幅延長４mm的情況下，<br/>圈的移動量是２mm。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09443amx14.jpg" target="_blank"><img alt="DSC09443amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09443amx14s.jpg" width="320"/></a><br/>Cannondale的AI，<br/>就是通過讓圈偏移６mm<br/>來減少後輪花鼓碗碟形的一項嘗試。<br/>相比一般車架<br/>輻條左右張力差確實會縮小，<br/>但因為沒有採用相對於一般後輪花鼓、法蘭寬度特別寬的花鼓，<br/>所以橫向剛性也不會有戲劇性的改善。<br/>雖然無法後天加寬法蘭寬度，<br/>但減輕輻條張力左右差（或者說變形量）的辦法有很多，所以我的願望是<br/>就算碗碟形會嚴重一點也沒關係，希望能加寬花鼓的法蘭寬度。<br/>上圖裡寫著的左右法蘭寬度，<br/>是我從Cannondale Topstone完成車附帶的後輪花鼓實測的尺寸。<br/>我測量的法蘭寬度是到法蘭外側的寬度，這和Shimano一樣。<br/>這個法蘭外～外寬在１１S或１２S花鼓的情況下，<br/>除去極端狹窄的產品外，５３mm左右就算偏窄，<br/>５８mm左右就算偏寬<br/>（BOOST規格的話有６２～６３mm的產品，但那是例外）。<br/>之前那個Cannondale花鼓的話<br/>３５．７＋２１．６＝５７．３mm，<br/>雖然不算特別窄，<br/>但尺寸也不是極端的專用品，<br/>而是和一般後輪花鼓差不多的水準。<br/><br/>上圖是裝在普通車架上時圈的位置，<br/>如果鎖定螺帽外幅１４２mm從圈的中心分割，<br/>左右都是７１mm，<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09445amx14.jpg" target="_blank"><img alt="DSC09445amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09445amx14s.jpg" width="320"/></a><br/>但把這個花鼓的尺寸改為<br/>左側７１－６＝６５mm、右側７１＋６＝７７mm<br/>這樣來使用，就是AI。<br/>圈的中心和車架的中心位於６５：７７mm的位置。<br/>到此為止，基本上和過去寫過的內容差不多（→<a href="/zh/posts/3452.html" target="_blank" title="這裡">這裡</a>）。<br/>因為這次是關於偏心圈的討論，所以繼續來談那方面。<br/><br/>把這個花鼓用在普通車架上時，法蘭寬度５７．３mm的內訳是<br/>左法蘭寬：右法蘭寬３５．７：２１．６mm，<br/>但組成AI車架用的輪組後，變成了２９．７：２７．６mm。<br/>碗碟形大幅減輕了。<br/>這是非偏心圈、普通圈的情況，<br/>前幾天改組用的Stanz的Crest MK4<br/>和上一代的MK３（已停產）不同，變成了偏心圈。<br/>找輕的鋁圈就只能這樣了，<br/>這種偏心對我來說反而是多餘的。<br/>要是Crest MK３還在販售、或問屋還有庫存的話，<br/>我會進MK３。<br/>這個花鼓的情況，即使用在AI車架上，<br/>右側法蘭也比較窄，還是正碗碟形。<br/>所以不會把偏心圈反向使用。<br/>Crest MK４的碗碟形量是１．５mm，<br/>用通常的偏心圈方向使用的話<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09446amx14.jpg" target="_blank"><img alt="DSC09446amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09446amx14s.jpg" width="320"/></a><br/>↑會變成這樣。<br/>左法蘭寬變成負１．５mm，右法蘭寬變成正１．５mm，<br/>所以法蘭寬變成２８．２：２９．１mm的反碗碟形。<br/>但法蘭寬的左右差本身從２．１mm減少到０．９mm。<br/>「圈移動１．５mm，法蘭的左右差卻只差１．２mm，這不奇怪嗎」<br/>有人可能這樣想，<br/>但原本是正碗碟形２．１mm，因為偏心圈變成反碗碟形０．９mm，<br/>所以２．１mm和－０．９mm相差３mm。<br/>正碗碟形設為正、反碗碟形設為負，<br/>跨越正負邊界比較絕對值的話就會這樣。<br/>圈偏移１．５mm時法蘭左右差變成<br/>相比原狀態差３mm，這和開頭的原理是一樣的。<br/>只是把「左端到圈的距離～」<br/>換成「左法蘭外側端面到圈的距離～」而已。<br/><br/>雖然是反碗碟形，但量和有時在動力花鼓上見到的碗碟形程度差不多，<br/>所以前幾天那個AI的後輪我採用了左右同直徑同根數組法。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09449amx14.jpg" target="_blank"><img alt="DSC09449amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09449amx14s.jpg" width="320"/></a><br/>接著是前一篇文章的後輪。<br/>花鼓是Surly品牌<br/>鎖定螺帽外幅１３５mm的快拆規格，<br/>一側是固定齒輪台座、另一側是碟式制動盤台座。<br/>法蘭寬度的數值是我的實測值。<br/>右法蘭寬比較寬，是反碗碟形花鼓。<br/>左邊的圖看起來好像差不多從中間分割，<br/>不用在意，只是表示花鼓這個部分的尺寸。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09451amx14.jpg" target="_blank"><img alt="DSC09451amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09451amx14s.jpg" width="320"/></a><br/>同樣是１３５mm寬的快拆花鼓，<br/>我加上了Deore的FH-M6000的標稱尺寸。<br/>選Deore是因為XT和XTR只有通軸花鼓。<br/>如前所述，Shimano的標稱值測量的地方和我一樣，<br/>所以數值可以作為同一種測量方式來比較。<br/>這也是過去提過的，<br/>目前Shimano應該直接刊登左右法蘭寬，<br/>卻只在型錄裡刊登法蘭寬和偏心量這些資訊。<br/>這是用法蘭寬的一半加上偏心量的正負號<br/>就能計算出左右的法蘭寬。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09452amx14.jpg" target="_blank"><img alt="DSC09452amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09452amx14s.jpg" width="320"/></a><br/>計算好了。<br/>另外也用Shimano的方式表示Surly花鼓的方式寫上去了。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09453amx14.jpg" target="_blank"><img alt="DSC09453amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09453amx14s.jpg" width="320"/></a><br/>另外還加上了Dura-Ace場地車單側螺紋山的<br/>大法蘭後輪花鼓的尺寸。<br/>Deore的花鼓是因為飛輪部分比較長所以右法蘭比較窄，<br/>Surly的花鼓雖然鎖定螺帽外幅比Dura-Ace場地車寬１５mm，<br/>但法蘭寬卻差不多，<br/>看起來是被碟式制動盤台座給佔用了，<br/>Surly花鼓的偏心量少得優秀・・・<br/>不過這根本是反碗碟形嘛，之類的<br/>各種事情都能看出來。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09455amx14.jpg" target="_blank"><img alt="DSC09455amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09455amx14s.jpg" width="320"/></a><br/>把圈畫到先前左邊的圖上了。<br/>也把分割法蘭寬的線從中心移開重新畫。<br/><br/>根據問屋的資料，AL22W圈的偏心版本<br/>聽說是３mm偏心，但看起來沒那麼多，<br/>所以我查了一下。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09461amx14.jpg" target="_blank"><img alt="DSC09461amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09461amx14s.jpg" width="320"/></a><br/>有制動區且和玻璃平台嚴絲合縫貼上的<br/>夾器制動規格AL22W偏心圈的<br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09462amx14.jpg" target="_blank"><img alt="DSC09462amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09462amx14s.jpg" width="320"/></a><br/>從圈的端面到穴的端面左右的尺寸和<br/>穴的直徑進行實測。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09457amx14.jpg" target="_blank"><img alt="DSC09457amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09457amx14s.jpg" width="320"/></a><br/>根據我的測量，內訳是這樣的。<br/>３個加起來是２４．０mm，圈的標稱外寬也是２４mm，<br/>但實測圈的外寬卻不知為何約是２４．２mm。<br/>圈孔的直徑也有的量出４．３mm，<br/>左右都有０．１mm級的誤差。<br/>圈孔的左右有穴振，所以我分別測了<br/>右穴振和左穴振各自算出平均。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09458amx14.jpg" target="_blank"><img alt="DSC09458amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09458amx14s.jpg" width="320"/></a><br/>圈孔的直徑設為零，<br/>或是計算圈的端面到孔中心的長度的話<br/>就是９：１５mm。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09459amx14.jpg" target="_blank"><img alt="DSC09459amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09459amx14s.jpg" width="320"/></a><br/>這是從圈本身的中心１２mm的正負３mm，<br/>所以３mm偏心的標稱值是正確的。<br/>數值恰好是３．０mm，<br/>我沒有任意取整。<br/>我本來就覺得即使３mm偏心是真的，<br/>測量和計算的結果也會是２．９mm或３．２mm之類的，<br/>不太會恰好整數３mm。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09460amx14.jpg" target="_blank"><img alt="DSC09460amx14.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC09460amx14s.jpg" width="320"/></a><br/>前一篇文章的後輪，<br/>把偏心圈用通常相反的方向來使用，<br/>把反碗碟形反轉了。<br/>從３５．７－３９．１＝－３．４mm<br/>到３８．７－３６．１＝２．６mm，<br/>圈孔３mm的移動讓碗碟形變了６mm。<br/>碗碟形量的絕對值減少了０．８mm。<br/>把圈的偏心量也加進去最終狀態用Shimano方式寫的話<br/>法蘭寬７４．８mm　偏心量１．３mm。<br/>這幾乎沒有碗碟形，<br/>所以重新組輪的話可以用六點組法，<br/>但因為有盡量沿用輻條的條件，<br/>所以採用了四六組法。<br/>結果右側（小齒輪側）的張力較高，<br/>但相比左右同直徑同根數同數組的普通飛輪後輪，<br/>輻條張力（和變形量）的左右差還是少一些。<br/>普通後輪裡反飛輪側輻條張力反而較高這種情況非常詭異<br/>（Roval的碟式制動後輪你們就是啦 你們）<br/>齒輪側輻條稍微硬一點我覺得也還好。<br/>如果組裝過程中覺得特別不好，<br/>我會向客人確認後改變組法。<br/><br/>Shimano型錄裡花鼓的「偏心量」這個數值，<br/>和圈的偏心量可以直接比較，<br/>所以在這種情況下作為思考方式還挺方便的。<br/>不過AI規格的車架、反碗碟形花鼓搭配<br/>偏心圈組輪時，想著要怎樣才能<br/>讓偏心量的絕對值最小化這種情況<br/>本身就是罕見狀況，<br/>那時候是我自己去查的，<br/>所以還是希望能刊登左右法蘭寬的<br/>實際數值會更幫忙。<br/><br/>AI車架的話，用非偏心圈會比較輕鬆。<br/>要是不是偏心圈，就算還留著一點碗碟形<br/>也用不著和Cannondale牽扯上關係、法蘭寬度極端狹窄的花鼓<br/>（特別是左法蘭側比較窄的花鼓）時會不會出現反碗碟形這種事<br/>因為翻轉圈也改變不了什麼，所以也不必在意。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

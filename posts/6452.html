@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,37 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
-    <p>Bicycle Workshop — English Edition</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/index.html">
+        <span class="brand-title">Nomu Lab Diary</span>
+        <span class="brand-subtitle">Bicycle Workshop Archive</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/index.html">Archive</a>
+      <a href="/guides/wheel-building.html">Wheel Guide</a>
+      <a href="/glossary.html">Glossary</a>
+      <a href="/about.html">About</a>
+    </nav>
     <div class="lang-toggle"><span class="lang-btn active">EN</span><a class="lang-btn" href="/zh/posts/6452.html">繁中</a></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/index.html">← All posts</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>I Rebuilt the ITLAB45 Wheel (Front Wheel Edition)</h1>
     <p class="post-meta">November 04, 2022</p>
+    <div class="post-body"><div class="entrytext">Another day with wheel work (details omitted).<br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0329amx15.jpg" target="_blank"><img alt="RIMG0329amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0329amx15s.jpg" width="320"/></a><br/>A customer brought in an ITLAB45 wheel for work.<br/>Today I'm only touching the front wheel though.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0330amx15.jpg" target="_blank"><img alt="RIMG0330amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0330amx15s.jpg" width="320"/></a><br/><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT180+straight+spoke+bicycle+hub" target="_blank" rel="noopener sponsored" class="amz-inline">DT180 straight spoke hub</a>, 24H<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0331amx15.jpg" target="_blank"><img alt="RIMG0331amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0331amx15s.jpg" width="320"/></a><br/><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Pillar+titanium+bladed+spokes" target="_blank" rel="noopener sponsored" class="amz-inline">Pillar brand custom titanium spokes</a>, built with forced left-right 2-cross lacing<br/>with all final crosses on both wheels built from both sides.<br/><br/>The reason this wheel came in was<br/>that the nipples kept coming loose.<br/>It was apparently sent to ITLAB once for repair,<br/>but it started loosening again after that.<br/>The wheel came with an instruction manual full of dubious nonsense,<br/>but before reading that, from what the customer told me,<br/>the wheel's initial state had slack tension,<br/>and when it came back it was pulled tight as a drum.<br/><br/>I don't necessarily object to building wheels with lower spoke tension<br/>if there are compelling reasons informed by weighing all factors<br/>that make it the best choice,<br/>but building a wheel with low tension that doesn't loosen easily<br/>is genuinely difficult work.<br/>If the person who built this wheel had some clear policy or philosophy<br/>about deliberately building with lower tension, that itself isn't something I'd dispute,<br/>but the fact that the customer could feel a huge difference in tension<br/>between before sending it out and after getting it back—<br/>that means there's no consistency in spoke tension.<br/>If you're going to pull it tight, pull it tight from the start, you know?<br/>That's what I was thinking before I even read the manual.<br/><br/>I did tell the customer "why not send it back to ITLAB?"<br/>but they were concerned it would just happen again if the same place looked at it,<br/>so we decided to have our shop handle it.<br/>In the end, I was able to identify what was causing the loosening.<br/><br/>But reading the manual,<br/>it says not to tension the spokes above 110 kgf.<br/>The "reference" spoke tension is given as<br/>100–105 kgf for both the brake side of the front wheel and the drive side of the rear wheel.<br/>The phrasing "reference spoke tension" rather than specified, recommended, or maximum,<br/>and the distinction between "brake side" and "drive side" is verbatim from the original manual, just so you know.<br/><br/>No, this doesn't make sense.<br/>The customer definitely felt a clear difference in tension before and after sending it in,<br/>but was the pre-send state 100 kgf and the returned state 105 kgf?<br/>There's no way a 5 kgf difference would be noticeable enough to be that obvious, which is one thing.<br/>The other thing is: no matter how precise your rim and low-tolerance your spokes are,<br/>no matter how tight you chase runout when building a wheel,<br/>it's impossible to keep spoke tension variation on one side of a wheel<br/>within 5 kgf using materials that exist in reality.<br/>For example, say you build a 24H wheel with the high-tension side bottom at 105 kgf<br/>(of course, with radial and lateral runout chased down and center perfectly true—that's a baseline assumption).<br/>Then several of the 12 spokes on that side will exceed 110 kgf.<br/>So if you're going to build without ever exceeding 110 kgf,<br/>your only option is to set the ceiling at 105 kgf for the wheel build.<br/>But then several of those 12 spokes on one side will drop below 100 kgf.<br/>That's just unavoidable.<br/>If the returned wheel's high-tension side doesn't exceed 110 kgf on a single spoke,<br/>then there's no way the original wheel was built at 100–105 kgf.<br/><br/>Also, the manual says you can measure this wheel's spoke tension with a <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+Swiss+spoke+tension+meter" target="_blank" rel="noopener sponsored" class="amz-inline">DT tension meter</a>,<br/>but not with Park Tool's TM-1 or Hozan. That's wrong.<br/>For this job, I'm disassembling the wheel and rebuilding it<br/>with the same pre-delivery tension but with the nipples less prone to loosening,<br/>and I took the maximum H1ST reading from the 12 high-tension spokes,<br/>then used that as reference for rebuilding—so a <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Hozan+spoke+tension+meter" target="_blank" rel="noopener sponsored" class="amz-inline">Hozan tension meter</a><br/>can build this wheel just fine.<br/>I did use the DT tension meter since it was specified,<br/>but when I measured both D1ST and H1ST against a given second ST (spoke tension in the conventional sense),<br/>the Hozan didn't detect any values that deviated from its normal parabolic curve of first ST vs. second ST—which is what you'd expect.<br/>Actually, through this work I created a conversion chart from D1ST to second ST to H1ST,<br/>so now with Hozan's tension meter I can build wheels with these same spokes going forward.<br/>The <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Park+Tool+TM-1+spoke+tension+meter" target="_blank" rel="noopener sponsored" class="amz-inline">Park Tool TM-1</a> has issues with unit-to-unit variation and the fact that reducing friction in the sliding parts (including lubrication)<br/>makes the needle go up more easily, but as long as you're careful to use one unit consistently under similar conditions,<br/>it's practically fine.<br/>Since DT and Hozan tension meters are extremely expensive,<br/>the TM-1's value is huge for hobby-level wheel building where that's out of reach.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0332amx15.jpg" target="_blank"><img alt="RIMG0332amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0332amx15s.jpg" width="320"/></a><br/>I loosened the nipples.<br/>These nipples turn from the outside,<br/>and the manual says never grab the inside.<br/>I agree with that. I wouldn't do it anyway.<br/>These nipples have abnormally deep thread pockets—<br/>when you press a spoke in without turning it,<br/>the spoke threads are nearly hidden by how deep the pocket is.<br/>A brittle locking compound was used,<br/>but this only prevents initial loosening and doesn't really increase<br/>friction resistance in the threaded area itself.<br/>In fact, after the contact pressure between the nipple and rim let off,<br/>it turned very easily.<br/>There's another reason for that (more on this later).<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0333amx15.jpg" target="_blank"><img alt="RIMG0333amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0333amx15s.jpg" width="320"/></a><br/>↑That beast<br/>With deep thread pockets, the brittle compound residue is long too.<br/><br/>I should have mentioned this earlier, but the pre-work state had<br/>a centering error about the thickness of one sheet of paper.<br/>Depending on the centering gauge, it would get a perfect reading,<br/>so I'd say the center was true.<br/>I recorded all D1ST and H1ST values from the high-tension side before work.<br/>I'm careful to note that spoke tension barely changed before and after work.<br/>There was also tape marking where loosening occurred, on a rear wheel spoke,<br/>but knowing that, I worked on the front wheel first.<br/>Since I know the H1ST on the high-tension side of the front wheel,<br/>I could now build the rear wheel to reference tension<br/>even if the hub, rim, and spokes came to me as loose components.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0337amx15.jpg" target="_blank"><img alt="RIMG0337amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0337amx15s.jpg" width="320"/></a><br/>The most dangerous thing about this wheel is<br/><span style="color:#FF0000">that they applied generous anti-seize compound to the spoke threads<br/>because they're titanium spokes</span>.<br/>Of course that's going to loosen. There's no way it won't.<br/>This is the cause of loosening I mentioned at the start,<br/>and why the nipples turned so easily after I removed that brittle locking agent earlier.<br/>Maybe the person who built this wheel will claim there's no causal relationship<br/>between applying grease to the threads and nipple loosening,<br/>but given that this wheel has a solid track record of loosening even after being reworked<br/>(whether they rebuilt it completely or just re-tensioned without disassembling, who knows),<br/>any claim like that would have zero credibility.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0341amx15.jpg" target="_blank"><img alt="RIMG0341amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0341amx15s.jpg" width="320"/></a><br/>With brittle locking compound on the spokes,<br/>you can't pull the spokes out of the hub flanges.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0346amx15.jpg" target="_blank"><img alt="RIMG0346amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0346amx15s.jpg" width="320"/></a><br/>Anti-seize compound ended up on the hub flange area,<br/>but I cleaned that off later.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0347amx15.jpg" target="_blank"><img alt="RIMG0347amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0347amx15s.jpg" width="320"/></a><br/>↑12 spokes from one side<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0351amx15.jpg" target="_blank"><img alt="RIMG0351amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0351amx15s.jpg" width="320"/></a><br/>I tilted a stainless steel pan and sprayed parts cleaner along one edge.<br/>The particulates in the grease convected and swirled around.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0353amx15.jpg" target="_blank"><img alt="RIMG0353amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0353amx15s.jpg" width="320"/></a><br/>I call this a shortcut, but the left and right spokes were the same length.<br/>I did separate them into original-right and original-left,<br/>but given how expensive these spokes are per unit (though still only about 6 times the cost of CX-RAY),<br/>maybe they wanted to reduce the variety of spare spoke inventory.<br/>Feel free to make excuses after the fact—like "disc brake fronts with this little offset<br/>are fine with the same length!" I don't care.<br/>It just tells me the builder had that level of understanding about spoke length<br/>when they were building the wheel.<br/><br/>The 12 original-right spokes weighed 33.3g, and<br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0354amx15.jpg" target="_blank"><img alt="RIMG0354amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0354amx15s.jpg" width="320"/></a><br/>the 12 original-left spokes were 33.4g.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0355amx15.jpg" target="_blank"><img alt="RIMG0355amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0355amx15s.jpg" width="320"/></a><br/>All 24 came to 66.7g.<br/>The spoke length was 275mm, so spoke specific gravity is<br/>66.7 (g) ÷ 275 (mm) ÷ 24 (spokes) = 0.010106...,<br/>and dividing that by a 100% reference value of 0.0257 gives<br/>0.0393... = 39.3%.<br/>Straight spokes lack the necked-down portion that bent spokes have<br/>in the spoke length measurement but include in the weight,<br/>so spoke specific gravity tends to come out slightly low.<br/>For estimation purposes, 40% is fine.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0358amx15.jpg" target="_blank"><img alt="RIMG0358amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0358amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0359amx15.jpg" target="_blank"><img alt="RIMG0359amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0359amx15s.jpg" width="320"/></a><br/>On some of the original-right spokes (non-rotor side, low-tension side),<br/>there were wear marks from rubbing at the final cross.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0361amx15.jpg" target="_blank"><img alt="RIMG0361amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0361amx15s.jpg" width="320"/></a><br/>I also cleaned the nipples.<br/>The image above isn't the nipples soaking in the parts cleaner I used on the spokes—<br/>it's fresh cleaner sprayed after washing the pan,<br/>so all the grime shown is purely from the nipples.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0363amx15.jpg" target="_blank"><img alt="RIMG0363amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0363amx15s.jpg" width="320"/></a><br/>↑Like this when you tilt the pan and drip cleaner along an edge<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0365amx15.jpg" target="_blank"><img alt="RIMG0365amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0365amx15s.jpg" width="320"/></a><br/>Parts cleaner is just preliminary cleaning.<br/>I also ran them through ultrasonic cleaning.<br/>The image above shows the nipples submerged.<br/>Right after I hit the switch, black hazy grime poured from the nipple holes,<br/>but I couldn't capture that on camera.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0366amx15.jpg" target="_blank"><img alt="RIMG0366amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0366amx15s.jpg" width="320"/></a><br/>This rim doesn't look like an offset rim.<br/>Even if it's not an offset rim, there's a possibility that there was once a sticker<br/>saying something like "orient this side toward the disc rotor mount on disc-brake fronts<br/>and toward the freewheel body on the rear,"<br/>and it's since peeled off and disappeared.<br/>So the left and right orientation of the rim in its original state must be preserved in the rebuild.<br/>That's why I marked it with tape before disassembling—"original right side goes here."<br/><br/>But that aside, this rim has a different problem.<br/>This rim is a reverse rim.<br/>Using the valve hole as reference, rims where the spoke hole offset matches<br/>what you see on the vast majority of rims in the world I call normal rims,<br/>and rims with the mirror-image offset I call reverse rims.<br/>For some reason, Campagnolo and Fulcrum radial-laced fronts<br/>are almost always reverse rims.<br/>I checked what we have in the shop and found that<br/>Bora WTO rim brake fronts are also reverse rims.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0367amx15.jpg" target="_blank"><img alt="RIMG0367amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0367amx15s.jpg" width="320"/></a><br/>Separate from the valve area, I marked tape on four rim hole locations—two on each side.<br/>Now I'll examine the hole offset, starting from the left in the previous image.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0368amx15.jpg" target="_blank"><img alt="RIMG0368amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0368amx15s.jpg" width="320"/></a><br/>There's a seam-like line down the center from the molding process, but<br/>that rim hole is clearly offset upward from that line.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0370amx15.jpg" target="_blank"><img alt="RIMG0370amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0370amx15s.jpg" width="320"/></a><br/>I drew in an arrow showing hole offset direction.<br/>The reason the hole looks black in the previous image is I had the rim pressed against a wall,<br/>but from here on I'm holding it a bit back.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0371amx15.jpg" target="_blank"><img alt="RIMG0371amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0371amx15s.jpg" width="320"/></a><br/>Here's the next one.<br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0372amx15.jpg" target="_blank"><img alt="RIMG0372amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0372amx15s.jpg" width="320"/></a><br/>Clearly offset downward.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0373amx15.jpg" target="_blank"><img alt="RIMG0373amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0373amx15s.jpg" width="320"/></a><br/>Next, crossing the valve hole<br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0374amx15.jpg" target="_blank"><img alt="RIMG0374amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0374amx15s.jpg" width="320"/></a><br/>Also clearly offset upward.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0375amx15.jpg" target="_blank"><img alt="RIMG0375amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0375amx15s.jpg" width="320"/></a><br/>And finally, the fourth one.<br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0376amx15.jpg" target="_blank"><img alt="RIMG0376amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0376amx15s.jpg" width="320"/></a><br/>Also downward.<br/>The apparent offset amount relative to the centerline isn't perfectly identical<br/>(that's a rim precision issue), but there weren't any holes that looked so centered<br/>that I couldn't tell which direction they were offset.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0377amx15.jpg" target="_blank"><img alt="RIMG0377amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0377amx15s.jpg" width="320"/></a><br/>So this rim is definitely a reverse rim.<br/>And it was originally built as if it were a normal rim.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0388amx15.jpg" target="_blank"><img alt="RIMG0388amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0388amx15s.jpg" width="320"/></a><br/>Separate from the valve area, I'll mark tape on each individual hole<br/>based on which direction it "clearly looks offset to,"<br/>without any preconception that holes must alternate left-right.<br/>For this hole,<br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0389amx15.jpg" target="_blank"><img alt="RIMG0389amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0389amx15s.jpg" width="320"/></a><br/>it's like this.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0391amx15.jpg" target="_blank"><img alt="RIMG0391amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0391amx15s.jpg" width="320"/></a><br/>For this hole,<br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0392amx15.jpg" target="_blank"><img alt="RIMG0392amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0392amx15s.jpg" width="320"/></a><br/>it's like this.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0395amx15.jpg" target="_blank"><img alt="RIMG0395amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0395amx15s.jpg" width="320"/></a><br/>This results in tape marks on alternating left and right again,<br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0396amx15.jpg" target="_blank"><img alt="RIMG0396amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0396amx15s.jpg" width="320"/></a><br/>and this connects consistently with the offset notes from the valve area.<br/><br/>So what's the problem with a reverse rim? For this job, it's that<br/>DT's forced left-right tangent lacing straight-spoke hub is designed for normal rims.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0400amx15.jpg" target="_blank"><img alt="RIMG0400amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0400amx15s.jpg" width="320"/></a><br/>When you look at a normal-offset wheel from the side,<br/>of the left-right pair of spokes at the final cross (four spokes total),<br/>the final cross closer to you appears to progress clockwise.<br/>Reverse rims are the opposite.<br/>With bent spokes and generic bent-spoke hubs, you can create<br/>reverse-rim final cross left-right pairs by switching which way you lay the spoke in initially—<br/>right-drop or left-drop—but a straight-spoke hub designed for normal rims<br/>doesn't give you that flexibility.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0383amx15.jpg" target="_blank"><img alt="RIMG0383amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0383amx15s.jpg" width="320"/></a><br/>This is the 180 hub viewed from the right side.<br/>For work reasons, I threaded all the spokes from the left flange in the outpoke direction first,<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0384amx15.jpg" target="_blank"><img alt="RIMG0384amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0384amx15s.jpg" width="320"/></a><br/>but ignore five of them that aren't relevant here.<br/>This is what the final cross pair looks like for a normal rim.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0402amx15.jpg" target="_blank"><img alt="RIMG0402amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0402amx15s.jpg" width="320"/></a><br/>Following the rim's hole offset pattern, I decided to build this wheel<br/>with a normal-rim hub and a reverse rim.<br/>The spoke marked with tape in this image comes from<br/>the lower flange in the image, but<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0403amx15.jpg" target="_blank"><img alt="RIMG0403amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0403amx15s.jpg" width="320"/></a><br/>it matches the hole offset. Or rather, I matched it.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0404amx15.jpg" target="_blank"><img alt="RIMG0404amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13</div>
+    <aside class="post-guides">
+      <strong>Technical archive</strong>
+      <nav aria-label="Technical guides">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,7 +405,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">Another day with wheel work (details omitted).<br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0329amx15.jpg" target="_blank"><img alt="RIMG0329amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0329amx15s.jpg" width="320"/></a><br/>A customer brought in an ITLAB45 wheel for work.<br/>Today I'm only touching the front wheel though.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0330amx15.jpg" target="_blank"><img alt="RIMG0330amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0330amx15s.jpg" width="320"/></a><br/><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT180+straight+spoke+bicycle+hub" target="_blank" rel="noopener sponsored" class="amz-inline">DT180 straight spoke hub</a>, 24H<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0331amx15.jpg" target="_blank"><img alt="RIMG0331amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0331amx15s.jpg" width="320"/></a><br/><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Pillar+titanium+bladed+spokes" target="_blank" rel="noopener sponsored" class="amz-inline">Pillar brand custom titanium spokes</a>, built with forced left-right 2-cross lacing<br/>with all final crosses on both wheels built from both sides.<br/><br/>The reason this wheel came in was<br/>that the nipples kept coming loose.<br/>It was apparently sent to ITLAB once for repair,<br/>but it started loosening again after that.<br/>The wheel came with an instruction manual full of dubious nonsense,<br/>but before reading that, from what the customer told me,<br/>the wheel's initial state had slack tension,<br/>and when it came back it was pulled tight as a drum.<br/><br/>I don't necessarily object to building wheels with lower spoke tension<br/>if there are compelling reasons informed by weighing all factors<br/>that make it the best choice,<br/>but building a wheel with low tension that doesn't loosen easily<br/>is genuinely difficult work.<br/>If the person who built this wheel had some clear policy or philosophy<br/>about deliberately building with lower tension, that itself isn't something I'd dispute,<br/>but the fact that the customer could feel a huge difference in tension<br/>between before sending it out and after getting it back—<br/>that means there's no consistency in spoke tension.<br/>If you're going to pull it tight, pull it tight from the start, you know?<br/>That's what I was thinking before I even read the manual.<br/><br/>I did tell the customer "why not send it back to ITLAB?"<br/>but they were concerned it would just happen again if the same place looked at it,<br/>so we decided to have our shop handle it.<br/>In the end, I was able to identify what was causing the loosening.<br/><br/>But reading the manual,<br/>it says not to tension the spokes above 110 kgf.<br/>The "reference" spoke tension is given as<br/>100–105 kgf for both the brake side of the front wheel and the drive side of the rear wheel.<br/>The phrasing "reference spoke tension" rather than specified, recommended, or maximum,<br/>and the distinction between "brake side" and "drive side" is verbatim from the original manual, just so you know.<br/><br/>No, this doesn't make sense.<br/>The customer definitely felt a clear difference in tension before and after sending it in,<br/>but was the pre-send state 100 kgf and the returned state 105 kgf?<br/>There's no way a 5 kgf difference would be noticeable enough to be that obvious, which is one thing.<br/>The other thing is: no matter how precise your rim and low-tolerance your spokes are,<br/>no matter how tight you chase runout when building a wheel,<br/>it's impossible to keep spoke tension variation on one side of a wheel<br/>within 5 kgf using materials that exist in reality.<br/>For example, say you build a 24H wheel with the high-tension side bottom at 105 kgf<br/>(of course, with radial and lateral runout chased down and center perfectly true—that's a baseline assumption).<br/>Then several of the 12 spokes on that side will exceed 110 kgf.<br/>So if you're going to build without ever exceeding 110 kgf,<br/>your only option is to set the ceiling at 105 kgf for the wheel build.<br/>But then several of those 12 spokes on one side will drop below 100 kgf.<br/>That's just unavoidable.<br/>If the returned wheel's high-tension side doesn't exceed 110 kgf on a single spoke,<br/>then there's no way the original wheel was built at 100–105 kgf.<br/><br/>Also, the manual says you can measure this wheel's spoke tension with a <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+Swiss+spoke+tension+meter" target="_blank" rel="noopener sponsored" class="amz-inline">DT tension meter</a>,<br/>but not with Park Tool's TM-1 or Hozan. That's wrong.<br/>For this job, I'm disassembling the wheel and rebuilding it<br/>with the same pre-delivery tension but with the nipples less prone to loosening,<br/>and I took the maximum H1ST reading from the 12 high-tension spokes,<br/>then used that as reference for rebuilding—so a <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Hozan+spoke+tension+meter" target="_blank" rel="noopener sponsored" class="amz-inline">Hozan tension meter</a><br/>can build this wheel just fine.<br/>I did use the DT tension meter since it was specified,<br/>but when I measured both D1ST and H1ST against a given second ST (spoke tension in the conventional sense),<br/>the Hozan didn't detect any values that deviated from its normal parabolic curve of first ST vs. second ST—which is what you'd expect.<br/>Actually, through this work I created a conversion chart from D1ST to second ST to H1ST,<br/>so now with Hozan's tension meter I can build wheels with these same spokes going forward.<br/>The <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Park+Tool+TM-1+spoke+tension+meter" target="_blank" rel="noopener sponsored" class="amz-inline">Park Tool TM-1</a> has issues with unit-to-unit variation and the fact that reducing friction in the sliding parts (including lubrication)<br/>makes the needle go up more easily, but as long as you're careful to use one unit consistently under similar conditions,<br/>it's practically fine.<br/>Since DT and Hozan tension meters are extremely expensive,<br/>the TM-1's value is huge for hobby-level wheel building where that's out of reach.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0332amx15.jpg" target="_blank"><img alt="RIMG0332amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0332amx15s.jpg" width="320"/></a><br/>I loosened the nipples.<br/>These nipples turn from the outside,<br/>and the manual says never grab the inside.<br/>I agree with that. I wouldn't do it anyway.<br/>These nipples have abnormally deep thread pockets—<br/>when you press a spoke in without turning it,<br/>the spoke threads are nearly hidden by how deep the pocket is.<br/>A brittle locking compound was used,<br/>but this only prevents initial loosening and doesn't really increase<br/>friction resistance in the threaded area itself.<br/>In fact, after the contact pressure between the nipple and rim let off,<br/>it turned very easily.<br/>There's another reason for that (more on this later).<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0333amx15.jpg" target="_blank"><img alt="RIMG0333amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0333amx15s.jpg" width="320"/></a><br/>↑That beast<br/>With deep thread pockets, the brittle compound residue is long too.<br/><br/>I should have mentioned this earlier, but the pre-work state had<br/>a centering error about the thickness of one sheet of paper.<br/>Depending on the centering gauge, it would get a perfect reading,<br/>so I'd say the center was true.<br/>I recorded all D1ST and H1ST values from the high-tension side before work.<br/>I'm careful to note that spoke tension barely changed before and after work.<br/>There was also tape marking where loosening occurred, on a rear wheel spoke,<br/>but knowing that, I worked on the front wheel first.<br/>Since I know the H1ST on the high-tension side of the front wheel,<br/>I could now build the rear wheel to reference tension<br/>even if the hub, rim, and spokes came to me as loose components.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0337amx15.jpg" target="_blank"><img alt="RIMG0337amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0337amx15s.jpg" width="320"/></a><br/>The most dangerous thing about this wheel is<br/><span style="color:#FF0000">that they applied generous anti-seize compound to the spoke threads<br/>because they're titanium spokes</span>.<br/>Of course that's going to loosen. There's no way it won't.<br/>This is the cause of loosening I mentioned at the start,<br/>and why the nipples turned so easily after I removed that brittle locking agent earlier.<br/>Maybe the person who built this wheel will claim there's no causal relationship<br/>between applying grease to the threads and nipple loosening,<br/>but given that this wheel has a solid track record of loosening even after being reworked<br/>(whether they rebuilt it completely or just re-tensioned without disassembling, who knows),<br/>any claim like that would have zero credibility.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0341amx15.jpg" target="_blank"><img alt="RIMG0341amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0341amx15s.jpg" width="320"/></a><br/>With brittle locking compound on the spokes,<br/>you can't pull the spokes out of the hub flanges.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0346amx15.jpg" target="_blank"><img alt="RIMG0346amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0346amx15s.jpg" width="320"/></a><br/>Anti-seize compound ended up on the hub flange area,<br/>but I cleaned that off later.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0347amx15.jpg" target="_blank"><img alt="RIMG0347amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0347amx15s.jpg" width="320"/></a><br/>↑12 spokes from one side<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0351amx15.jpg" target="_blank"><img alt="RIMG0351amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0351amx15s.jpg" width="320"/></a><br/>I tilted a stainless steel pan and sprayed parts cleaner along one edge.<br/>The particulates in the grease convected and swirled around.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0353amx15.jpg" target="_blank"><img alt="RIMG0353amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0353amx15s.jpg" width="320"/></a><br/>I call this a shortcut, but the left and right spokes were the same length.<br/>I did separate them into original-right and original-left,<br/>but given how expensive these spokes are per unit (though still only about 6 times the cost of CX-RAY),<br/>maybe they wanted to reduce the variety of spare spoke inventory.<br/>Feel free to make excuses after the fact—like "disc brake fronts with this little offset<br/>are fine with the same length!" I don't care.<br/>It just tells me the builder had that level of understanding about spoke length<br/>when they were building the wheel.<br/><br/>The 12 original-right spokes weighed 33.3g, and<br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0354amx15.jpg" target="_blank"><img alt="RIMG0354amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0354amx15s.jpg" width="320"/></a><br/>the 12 original-left spokes were 33.4g.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0355amx15.jpg" target="_blank"><img alt="RIMG0355amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0355amx15s.jpg" width="320"/></a><br/>All 24 came to 66.7g.<br/>The spoke length was 275mm, so spoke specific gravity is<br/>66.7 (g) ÷ 275 (mm) ÷ 24 (spokes) = 0.010106...,<br/>and dividing that by a 100% reference value of 0.0257 gives<br/>0.0393... = 39.3%.<br/>Straight spokes lack the necked-down portion that bent spokes have<br/>in the spoke length measurement but include in the weight,<br/>so spoke specific gravity tends to come out slightly low.<br/>For estimation purposes, 40% is fine.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0358amx15.jpg" target="_blank"><img alt="RIMG0358amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0358amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0359amx15.jpg" target="_blank"><img alt="RIMG0359amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0359amx15s.jpg" width="320"/></a><br/>On some of the original-right spokes (non-rotor side, low-tension side),<br/>there were wear marks from rubbing at the final cross.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0361amx15.jpg" target="_blank"><img alt="RIMG0361amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0361amx15s.jpg" width="320"/></a><br/>I also cleaned the nipples.<br/>The image above isn't the nipples soaking in the parts cleaner I used on the spokes—<br/>it's fresh cleaner sprayed after washing the pan,<br/>so all the grime shown is purely from the nipples.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0363amx15.jpg" target="_blank"><img alt="RIMG0363amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0363amx15s.jpg" width="320"/></a><br/>↑Like this when you tilt the pan and drip cleaner along an edge<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0365amx15.jpg" target="_blank"><img alt="RIMG0365amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0365amx15s.jpg" width="320"/></a><br/>Parts cleaner is just preliminary cleaning.<br/>I also ran them through ultrasonic cleaning.<br/>The image above shows the nipples submerged.<br/>Right after I hit the switch, black hazy grime poured from the nipple holes,<br/>but I couldn't capture that on camera.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0366amx15.jpg" target="_blank"><img alt="RIMG0366amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0366amx15s.jpg" width="320"/></a><br/>This rim doesn't look like an offset rim.<br/>Even if it's not an offset rim, there's a possibility that there was once a sticker<br/>saying something like "orient this side toward the disc rotor mount on disc-brake fronts<br/>and toward the freewheel body on the rear,"<br/>and it's since peeled off and disappeared.<br/>So the left and right orientation of the rim in its original state must be preserved in the rebuild.<br/>That's why I marked it with tape before disassembling—"original right side goes here."<br/><br/>But that aside, this rim has a different problem.<br/>This rim is a reverse rim.<br/>Using the valve hole as reference, rims where the spoke hole offset matches<br/>what you see on the vast majority of rims in the world I call normal rims,<br/>and rims with the mirror-image offset I call reverse rims.<br/>For some reason, Campagnolo and Fulcrum radial-laced fronts<br/>are almost always reverse rims.<br/>I checked what we have in the shop and found that<br/>Bora WTO rim brake fronts are also reverse rims.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0367amx15.jpg" target="_blank"><img alt="RIMG0367amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0367amx15s.jpg" width="320"/></a><br/>Separate from the valve area, I marked tape on four rim hole locations—two on each side.<br/>Now I'll examine the hole offset, starting from the left in the previous image.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0368amx15.jpg" target="_blank"><img alt="RIMG0368amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0368amx15s.jpg" width="320"/></a><br/>There's a seam-like line down the center from the molding process, but<br/>that rim hole is clearly offset upward from that line.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0370amx15.jpg" target="_blank"><img alt="RIMG0370amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0370amx15s.jpg" width="320"/></a><br/>I drew in an arrow showing hole offset direction.<br/>The reason the hole looks black in the previous image is I had the rim pressed against a wall,<br/>but from here on I'm holding it a bit back.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0371amx15.jpg" target="_blank"><img alt="RIMG0371amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0371amx15s.jpg" width="320"/></a><br/>Here's the next one.<br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0372amx15.jpg" target="_blank"><img alt="RIMG0372amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0372amx15s.jpg" width="320"/></a><br/>Clearly offset downward.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0373amx15.jpg" target="_blank"><img alt="RIMG0373amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0373amx15s.jpg" width="320"/></a><br/>Next, crossing the valve hole<br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0374amx15.jpg" target="_blank"><img alt="RIMG0374amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0374amx15s.jpg" width="320"/></a><br/>Also clearly offset upward.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0375amx15.jpg" target="_blank"><img alt="RIMG0375amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0375amx15s.jpg" width="320"/></a><br/>And finally, the fourth one.<br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0376amx15.jpg" target="_blank"><img alt="RIMG0376amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0376amx15s.jpg" width="320"/></a><br/>Also downward.<br/>The apparent offset amount relative to the centerline isn't perfectly identical<br/>(that's a rim precision issue), but there weren't any holes that looked so centered<br/>that I couldn't tell which direction they were offset.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0377amx15.jpg" target="_blank"><img alt="RIMG0377amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0377amx15s.jpg" width="320"/></a><br/>So this rim is definitely a reverse rim.<br/>And it was originally built as if it were a normal rim.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0388amx15.jpg" target="_blank"><img alt="RIMG0388amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0388amx15s.jpg" width="320"/></a><br/>Separate from the valve area, I'll mark tape on each individual hole<br/>based on which direction it "clearly looks offset to,"<br/>without any preconception that holes must alternate left-right.<br/>For this hole,<br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0389amx15.jpg" target="_blank"><img alt="RIMG0389amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0389amx15s.jpg" width="320"/></a><br/>it's like this.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0391amx15.jpg" target="_blank"><img alt="RIMG0391amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0391amx15s.jpg" width="320"/></a><br/>For this hole,<br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0392amx15.jpg" target="_blank"><img alt="RIMG0392amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0392amx15s.jpg" width="320"/></a><br/>it's like this.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0395amx15.jpg" target="_blank"><img alt="RIMG0395amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0395amx15s.jpg" width="320"/></a><br/>This results in tape marks on alternating left and right again,<br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0396amx15.jpg" target="_blank"><img alt="RIMG0396amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0396amx15s.jpg" width="320"/></a><br/>and this connects consistently with the offset notes from the valve area.<br/><br/>So what's the problem with a reverse rim? For this job, it's that<br/>DT's forced left-right tangent lacing straight-spoke hub is designed for normal rims.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0400amx15.jpg" target="_blank"><img alt="RIMG0400amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0400amx15s.jpg" width="320"/></a><br/>When you look at a normal-offset wheel from the side,<br/>of the left-right pair of spokes at the final cross (four spokes total),<br/>the final cross closer to you appears to progress clockwise.<br/>Reverse rims are the opposite.<br/>With bent spokes and generic bent-spoke hubs, you can create<br/>reverse-rim final cross left-right pairs by switching which way you lay the spoke in initially—<br/>right-drop or left-drop—but a straight-spoke hub designed for normal rims<br/>doesn't give you that flexibility.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0383amx15.jpg" target="_blank"><img alt="RIMG0383amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0383amx15s.jpg" width="320"/></a><br/>This is the 180 hub viewed from the right side.<br/>For work reasons, I threaded all the spokes from the left flange in the outpoke direction first,<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0384amx15.jpg" target="_blank"><img alt="RIMG0384amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0384amx15s.jpg" width="320"/></a><br/>but ignore five of them that aren't relevant here.<br/>This is what the final cross pair looks like for a normal rim.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0402amx15.jpg" target="_blank"><img alt="RIMG0402amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0402amx15s.jpg" width="320"/></a><br/>Following the rim's hole offset pattern, I decided to build this wheel<br/>with a normal-rim hub and a reverse rim.<br/>The spoke marked with tape in this image comes from<br/>the lower flange in the image, but<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0403amx15.jpg" target="_blank"><img alt="RIMG0403amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0403amx15s.jpg" width="320"/></a><br/>it matches the hole offset. Or rather, I matched it.<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/RIMG0404amx15.jpg" target="_blank"><img alt="RIMG0404amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13</div>
     <div class="affiliate-box">
       <p class="affiliate-title">Products Mentioned in This Article</p>
       <ul>

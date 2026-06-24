@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/64.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Spoke (Advanced)</p>
     <h1>內穿其４</h1>
     <p class="post-meta">October 25, 2012</p>
+    <div class="post-body"><div class="entrytext">還有很多關於內穿的話題沒有整理，所以慢慢來吧。<br/>今天要講的是放輻組（輻條完全不交叉）時的輻條穿法。<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00001amx.jpg" target="_blank"><img alt="DSC00001amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00001amxs.jpg" width="300"/></a><br/>在此之前。由於很久沒提這件事，我先說明一下。<br/>本部落格把從花鼓凸緣內側穿到外側的輻條<br/>稱為「內穿」，<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00002amx.jpg" target="_blank"><img alt="DSC00002amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00002amxs.jpg" width="300"/></a><br/>把從花鼓凸緣外側穿到內側的輻條<br/>稱為「外穿」。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00007amx.jpg" target="_blank"><img alt="DSC00007amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00007amxs.jpg" width="300"/></a><br/>↑正交組（輻條有交叉）時，穿過凸緣的輻條會是<br/>內穿和外穿交替排列的形狀，<br/>但放輻組則只有內穿或外穿其中之一。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09995amx.jpg" target="_blank"><img alt="DSC09995amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09995amxs.jpg" width="300"/></a><br/>↑這是Shimano的WH-R501，採用外穿放輻組。<br/>頸部折斷輻條規格的完組輪組中，<br/>除了極少數例外，幾乎全部都是採用「外穿放輵組」來組裝的。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00004amx.jpg" target="_blank"><img alt="DSC00004amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00004amxs.jpg" width="300"/></a><br/>昨天的Tni輪組（收到很多詢問，謝謝各位）因為是現成品販售，<br/>所以為了保持低調，採用外穿放輻組。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08510amx.jpg" target="_blank"><img alt="DSC08510amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08510amxs.jpg" width="300"/></a><br/>我剛才說「保持低調」，不過其實在組放輻輪組時，<br/>我有時候會用「內穿放輻組」來組。<br/>這不是常見的組法，但相比外穿放輵組，<br/>內穿放輵組有其優點和缺點，在衡量過後<br/>如果內穿放輻組看起來更有利的話，我就會選擇它。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00008amx.jpg" target="_blank"><img alt="DSC00008amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00008amxs.jpg" width="300"/></a><br/>無論是內穿還是外穿，我都以輻條的根部，<br/>也就是輵條從花鼓凸緣伸出的地方<br/>作為橫向剛性的計算基礎。<br/>外穿的底邊寬度較窄，所以外穿放輵組的橫向剛性<br/>不如內穿（我是這樣認為的）。<br/>這是從剛性面來看外穿放輵組的特性，但<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00009amx.jpg" target="_blank"><img alt="DSC00009amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00009amxs.jpg" width="300"/></a><br/>從空氣動力學角度來看也是如此。<br/>輵條靠近輪圈的部分會被輪圈或輪胎遮擋，<br/>外穿放輵組的正面投影面積較小，<br/>所以空氣動力學上更有利。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00010amx.jpg" target="_blank"><img alt="DSC00010amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00010amxs.jpg" width="300"/></a><br/>對於內穿放輵組來說，相較於外穿放輵組<br/>會有更多的部分露出在輪圈或輪胎外。<br/>空氣動力學上是吃虧的。但輵條的撓曲起點<br/>寬度更大，所以橫向剛性上更有利。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00011amx.jpg" target="_blank"><img alt="DSC00011amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00011amxs.jpg" width="300"/></a><br/>另外，外穿時輵條的頸部從凸緣伸出時<br/>會向外張開。<br/>相反地，內穿的情況下是向內彎折，<br/><span style="color:#FF0000">輵條頸部較不容易斷裂的是內穿</span>。<br/>這是我有時會用內穿放輵組來組輪的最大理由。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00012amx.jpg" target="_blank"><img alt="DSC00012amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00012amxs.jpg" width="300"/></a><br/>頸部折斷輵條規格的完組輪組中，有些<br/>花鼓凸緣非常厚，並且配套使用<br/>輵條頸部彎折前的部分較長的特製輵條，<br/>藉此在採用外穿放輵組的情況下降低頸部折斷風險<br/>的產品。<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Rolf+Prima+wheelset" target="_blank" rel="noopener sponsored" class="amz-inline">Rolf Prima</a>就是這樣。<br/>特製凸緣的White Industries花鼓（因為是成對輵條所以孔位也是特製）搭配<br/>特製尺寸的Sapim輵條，真是費盡心思啊。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00013amx.jpg" target="_blank"><img alt="DSC00013amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00013amxs.jpg" width="300"/></a><br/>製造商迴避內穿放輵組的（大概最大的）理由是，<br/>由於花鼓凸緣形狀（尤其是高度）的關係，輵條和花鼓凸緣可能會互相干涉<br/>的問題。上圖這樣的接觸在外穿放輵組絕對不會發生。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00014amx.jpg" target="_blank"><img alt="DSC00014amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00014amxs.jpg" width="300"/></a><br/>這個問題的嚴重程度也會因輪圈高度而異。<br/>輪圈較低時，內穿的輵條延伸到輪圈的角度較陡，<br/>所以凸緣干涉問題不容易發生，<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00015amx.jpg" target="_blank"><img alt="DSC00015amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00015amxs.jpg" width="300"/></a><br/>但輪圈變高時輵條角度會變得更平緩，<br/>就會發生凸緣干涉問題。<br/>即使我有想用內穿放輵組的理由，<br/>如果輪圈高度太高，我也常常會放棄改用外穿放輵組。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09296amx.jpg" target="_blank"><img alt="DSC09296amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09296amxs.jpg" width="300"/></a><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09930amx.jpg" target="_blank"><img alt="DSC09930amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09930amxs.jpg" width="300"/></a><br/>同樣的輪圈，但這是Edge時代的45輪圈和Enve的45輪圈。<br/>用這個高度的輪圈我也採用了內穿放輻組。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09953amx.jpg" target="_blank"><img alt="DSC09953amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09953amxs.jpg" width="300"/></a><br/>↑我那輛謎之Cosmic Carbon（Shimano的老牌輪組）的反飛輪側放輻輪也是用內穿組的。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08635amx.jpg" target="_blank"><img alt="DSC08635amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08635amxs.jpg" width="300"/></a><br/>用內穿放輵組進行試組的輪子<br/>輵條呈現蓬鬆狀膨脹。<br/>順帶一提花鼓是Sunтur Superb Pro。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08638amx.jpg" target="_blank"><img alt="DSC08638amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08638amxs.jpg" width="300"/></a><br/>組裝前<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08641amx.jpg" target="_blank"><img alt="DSC08641amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08641amxs.jpg" width="300"/></a><br/>組裝後<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00033amx.jpg" target="_blank"><img alt="DSC00033amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00033amxs.jpg" width="300"/></a><br/>話題轉向，<br/>關於Tni AL300輪圈的輪組<br/>經常被問到「剛性感怎麼樣？」<br/><span style="font-size:x-large;">不知道。</span><br/>既然這樣回答也不太好，所以就自己組了一個前輪試試。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00034amx.jpg" target="_blank"><img alt="DSC00034amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00034amxs.jpg" width="300"/></a><br/>這個也是內穿放輻組。<br/>花鼓是White Industries的H2，<br/>輵條是Sapim的CX-RAY。<br/>圖片上方是行進方向。<br/>花鼓的文字會變成倒過來，但這是故意的。理由等等再說。<br/><br/>昨天的のむラボ輪組當然也可以用CX-RAY組裝，<br/>前後輪各加￥5000（20孔的情況）。<br/>24孔的情況則是加￥6000。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09976amx.jpg" target="_blank"><img alt="DSC09976amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09976amxs.jpg" width="300"/></a><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09975amx.jpg" target="_blank"><img alt="DSC09975amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09975amxs.jpg" width="300"/></a><br/>選擇這個花鼓有原因，<br/>花鼓的凸緣不是完全平直的。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00036amx.jpg" target="_blank"><img alt="DSC00036amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00036amxs.jpg" width="300"/></a><br/>↑誇大表現的話大致像這樣。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09979amx.jpg" target="_blank"><img alt="DSC09979amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09979amxs.jpg" width="300"/></a><br/>因為看起來不會發生凸緣干涉問題，所以就選了這個。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09971amx.jpg" target="_blank"><img alt="DSC09971amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09971amxs.jpg" width="300"/></a><br/>與內穿無關的話題就是……<br/>這次我把輪子組裝得讓圖片上方成為行進方向。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09972amx.jpg" target="_blank"><img alt="DSC09972amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09972amxs.jpg" width="300"/></a><br/>文字就會變成倒過來。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09973amx.jpg" target="_blank"><img alt="DSC09973amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09973amxs.jpg" width="300"/></a><br/>花鼓組裝調整用的止動螺釘位於行進方向的左側<br/>應該是正確的方向，但那樣文字就會倒過來。<br/>儘管如此我還是認為這個方向才是對的。<br/>對於後花鼓來說，這個止動螺釘孔位在左側。<br/>（右側有飛輪體無法安裝）<br/>如果「調整機構前後都在左側」，那應該就是這樣。<br/>有另一個製造商的花鼓也支持這個理論。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/201210252334324aa.jpg" target="_blank"><img alt="rear sx 2.0 shima" border="0" height="141" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/201210252334324aas.jpg" width="299"/></a><br/>↑這是Extralight這個製造商的後花鼓。<br/>調整機構當然在左側。<br/>花鼓殼體左側裝著有銼紋加工的轉盤狀物件。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/20121025233432215.jpg" target="_blank"><img alt="ultrafront sx" border="0" height="126" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/20121025233432215s.jpg" width="298"/></a><br/>而這個前花鼓，和後花鼓一樣有著銼紋轉盤<br/>（從文字可讀的方向看）裝在右側。<br/>但花鼓殼體上特別註明了「LeftSide>>」，所以<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/2012102523343227f.jpg" target="_blank"><img alt="ultrafront sx -2" border="0" height="126" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/2012102523343227fs.jpg" width="298"/></a><br/>這樣的方向才是說明書的意思。<br/>也就是後花鼓的標誌在行進方向上是可讀的，<br/>但前花鼓則相反。<br/>基於同樣的邏輯我判斷White的H2花鼓也是如此，<br/>所以這次我用一看起來反向的方向來組。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09986amx.jpg" target="_blank"><img alt="DSC09986amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09986amxs.jpg" width="300"/></a><br/>我那輛4820克的赤松鋁質自行車是用赤松Systema花鼓組前輪。<br/>雖然有比這個更輕的花鼓，<br/>但這裡我選擇了想用這個花鼓的心情而不是輕量。<br/>真的是個好花鼓。好的，我要說了。<br/><span style="font-size:large;">Systema花鼓的廣告文。</span><br/>……抱歉，請忽略。<br/><br/>凸緣寬度較窄，所以結構上無法產生高橫向剛性，<br/>但只要不是狂力踩踏就不會有問題。<br/>既然凸緣寬度本來就窄，<br/>與其用內穿放輵組來追求橫向剛性提升，<br/>我寧可用外穿放輵組來追求究極的輵條正面投影面積最小化。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09989amx.jpg" target="_blank"><img alt="DSC09989amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09989amxs.jpg" width="300"/></a><br/>窄！空氣動力學上是相當不錯的前輪。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09993amx.jpg" target="_blank"><img alt="DSC09993amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09993amxs.jpg" width="300"/></a><br/>White的H2花鼓會變成這樣。<br/>H2花鼓的凸緣寬度非常大，所以這兩個輪組<br/>可以說是放輻組的兩個極端。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00017amx.jpg" target="_blank"><img alt="DSC00017amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00017amxs.jpg" width="300"/></a><br/>Systema花鼓為什麼是窄凸緣呢，那是因為<br/>這個花鼓也是以小徑車使用為前提設計的。<br/>算一下的話，20吋（HE規格）小徑輪圈的輪圈內徑<br/>和700C輪圈大概相當於輪圈高度90mm左右。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00021amx.jpg" target="_blank"><img alt="DSC00021amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00021amxs.jpg" width="300"/></a><br/>若用那個輪圈進行內穿放輻組，輵條角度會相當陡峭。<br/>容易發生凸緣干涉問題呢。<br/>或者即使用正交組，一半也是內穿。<br/>正交組若再加上輵條交叉編織，<br/>內穿從凸緣開始伸出的部分角度比放輵組還陡。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00023amx.jpg" target="_blank"><img alt="DSC00023amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00023amxs.jpg" width="300"/></a><br/>這裡考慮20吋輪圈相同輪圈高度的700C輪圈。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00025amx.jpg" target="_blank"><img alt="DSC00025amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00025amxs.jpg" width="300"/></a><br/>用內穿放輵組組裝這個輪圈的話，<br/>輵條就會變成上圖的紅色虛線。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00027amx.jpg" target="_blank"><img alt="DSC00027amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00027amxs.jpg" width="300"/></a><br/>那個輵條所形成的角度（上圖的藍色角度）如果<br/>想在20吋輪圈上達到相同程度的話<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00030amx.jpg" target="_blank"><img alt="DSC00030amx.jpg" border="0" height="300" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00030amxs.jpg" width="225"/></a><br/>就得把花鼓凸緣往內側縮窄。<br/>這就是Systema花鼓適合小徑車的理由。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00031amx.jpg" target="_blank"><img alt="DSC00031amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00031amxs.jpg" width="300"/></a><br/>在那樣的狀態下用700C輪圈搭配外穿來組的話<br/>從正面投影面積的角度能製作出最好的前輪（作為輻條輪來說）。<br/>我這個前輪就是這樣的目的。<br/><br/><br/>Tni的AL300輪圈如果要內穿放輵組來訂購<br/>也是可以的，但各種原因我不太推薦。<br/>（不是不可能啦）<br/>如果問為什麼Enve 45就用內穿組了，<br/>那就是這裡寫不出來的理由，有點困擾呢……<br/><br/>今天就是「放輻組有兩種穿法喔」的話題。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">還有很多關於內穿的話題沒有整理，所以慢慢來吧。<br/>今天要講的是放輻組（輻條完全不交叉）時的輻條穿法。<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00001amx.jpg" target="_blank"><img alt="DSC00001amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00001amxs.jpg" width="300"/></a><br/>在此之前。由於很久沒提這件事，我先說明一下。<br/>本部落格把從花鼓凸緣內側穿到外側的輻條<br/>稱為「內穿」，<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00002amx.jpg" target="_blank"><img alt="DSC00002amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00002amxs.jpg" width="300"/></a><br/>把從花鼓凸緣外側穿到內側的輻條<br/>稱為「外穿」。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00007amx.jpg" target="_blank"><img alt="DSC00007amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00007amxs.jpg" width="300"/></a><br/>↑正交組（輻條有交叉）時，穿過凸緣的輻條會是<br/>內穿和外穿交替排列的形狀，<br/>但放輻組則只有內穿或外穿其中之一。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09995amx.jpg" target="_blank"><img alt="DSC09995amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09995amxs.jpg" width="300"/></a><br/>↑這是Shimano的WH-R501，採用外穿放輻組。<br/>頸部折斷輻條規格的完組輪組中，<br/>除了極少數例外，幾乎全部都是採用「外穿放輵組」來組裝的。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00004amx.jpg" target="_blank"><img alt="DSC00004amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00004amxs.jpg" width="300"/></a><br/>昨天的Tni輪組（收到很多詢問，謝謝各位）因為是現成品販售，<br/>所以為了保持低調，採用外穿放輻組。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08510amx.jpg" target="_blank"><img alt="DSC08510amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08510amxs.jpg" width="300"/></a><br/>我剛才說「保持低調」，不過其實在組放輻輪組時，<br/>我有時候會用「內穿放輻組」來組。<br/>這不是常見的組法，但相比外穿放輵組，<br/>內穿放輵組有其優點和缺點，在衡量過後<br/>如果內穿放輻組看起來更有利的話，我就會選擇它。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00008amx.jpg" target="_blank"><img alt="DSC00008amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00008amxs.jpg" width="300"/></a><br/>無論是內穿還是外穿，我都以輻條的根部，<br/>也就是輵條從花鼓凸緣伸出的地方<br/>作為橫向剛性的計算基礎。<br/>外穿的底邊寬度較窄，所以外穿放輵組的橫向剛性<br/>不如內穿（我是這樣認為的）。<br/>這是從剛性面來看外穿放輵組的特性，但<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00009amx.jpg" target="_blank"><img alt="DSC00009amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00009amxs.jpg" width="300"/></a><br/>從空氣動力學角度來看也是如此。<br/>輵條靠近輪圈的部分會被輪圈或輪胎遮擋，<br/>外穿放輵組的正面投影面積較小，<br/>所以空氣動力學上更有利。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00010amx.jpg" target="_blank"><img alt="DSC00010amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00010amxs.jpg" width="300"/></a><br/>對於內穿放輵組來說，相較於外穿放輵組<br/>會有更多的部分露出在輪圈或輪胎外。<br/>空氣動力學上是吃虧的。但輵條的撓曲起點<br/>寬度更大，所以橫向剛性上更有利。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00011amx.jpg" target="_blank"><img alt="DSC00011amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00011amxs.jpg" width="300"/></a><br/>另外，外穿時輵條的頸部從凸緣伸出時<br/>會向外張開。<br/>相反地，內穿的情況下是向內彎折，<br/><span style="color:#FF0000">輵條頸部較不容易斷裂的是內穿</span>。<br/>這是我有時會用內穿放輵組來組輪的最大理由。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00012amx.jpg" target="_blank"><img alt="DSC00012amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00012amxs.jpg" width="300"/></a><br/>頸部折斷輵條規格的完組輪組中，有些<br/>花鼓凸緣非常厚，並且配套使用<br/>輵條頸部彎折前的部分較長的特製輵條，<br/>藉此在採用外穿放輵組的情況下降低頸部折斷風險<br/>的產品。<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Rolf+Prima+wheelset" target="_blank" rel="noopener sponsored" class="amz-inline">Rolf Prima</a>就是這樣。<br/>特製凸緣的White Industries花鼓（因為是成對輵條所以孔位也是特製）搭配<br/>特製尺寸的Sapim輵條，真是費盡心思啊。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00013amx.jpg" target="_blank"><img alt="DSC00013amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00013amxs.jpg" width="300"/></a><br/>製造商迴避內穿放輵組的（大概最大的）理由是，<br/>由於花鼓凸緣形狀（尤其是高度）的關係，輵條和花鼓凸緣可能會互相干涉<br/>的問題。上圖這樣的接觸在外穿放輵組絕對不會發生。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00014amx.jpg" target="_blank"><img alt="DSC00014amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00014amxs.jpg" width="300"/></a><br/>這個問題的嚴重程度也會因輪圈高度而異。<br/>輪圈較低時，內穿的輵條延伸到輪圈的角度較陡，<br/>所以凸緣干涉問題不容易發生，<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00015amx.jpg" target="_blank"><img alt="DSC00015amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00015amxs.jpg" width="300"/></a><br/>但輪圈變高時輵條角度會變得更平緩，<br/>就會發生凸緣干涉問題。<br/>即使我有想用內穿放輵組的理由，<br/>如果輪圈高度太高，我也常常會放棄改用外穿放輵組。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09296amx.jpg" target="_blank"><img alt="DSC09296amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09296amxs.jpg" width="300"/></a><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09930amx.jpg" target="_blank"><img alt="DSC09930amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09930amxs.jpg" width="300"/></a><br/>同樣的輪圈，但這是Edge時代的45輪圈和Enve的45輪圈。<br/>用這個高度的輪圈我也採用了內穿放輻組。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09953amx.jpg" target="_blank"><img alt="DSC09953amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09953amxs.jpg" width="300"/></a><br/>↑我那輛謎之Cosmic Carbon（Shimano的老牌輪組）的反飛輪側放輻輪也是用內穿組的。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08635amx.jpg" target="_blank"><img alt="DSC08635amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08635amxs.jpg" width="300"/></a><br/>用內穿放輵組進行試組的輪子<br/>輵條呈現蓬鬆狀膨脹。<br/>順帶一提花鼓是Sunтur Superb Pro。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08638amx.jpg" target="_blank"><img alt="DSC08638amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08638amxs.jpg" width="300"/></a><br/>組裝前<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08641amx.jpg" target="_blank"><img alt="DSC08641amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08641amxs.jpg" width="300"/></a><br/>組裝後<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00033amx.jpg" target="_blank"><img alt="DSC00033amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00033amxs.jpg" width="300"/></a><br/>話題轉向，<br/>關於Tni AL300輪圈的輪組<br/>經常被問到「剛性感怎麼樣？」<br/><span style="font-size:x-large;">不知道。</span><br/>既然這樣回答也不太好，所以就自己組了一個前輪試試。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00034amx.jpg" target="_blank"><img alt="DSC00034amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00034amxs.jpg" width="300"/></a><br/>這個也是內穿放輻組。<br/>花鼓是White Industries的H2，<br/>輵條是Sapim的CX-RAY。<br/>圖片上方是行進方向。<br/>花鼓的文字會變成倒過來，但這是故意的。理由等等再說。<br/><br/>昨天的のむラボ輪組當然也可以用CX-RAY組裝，<br/>前後輪各加￥5000（20孔的情況）。<br/>24孔的情況則是加￥6000。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09976amx.jpg" target="_blank"><img alt="DSC09976amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09976amxs.jpg" width="300"/></a><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09975amx.jpg" target="_blank"><img alt="DSC09975amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09975amxs.jpg" width="300"/></a><br/>選擇這個花鼓有原因，<br/>花鼓的凸緣不是完全平直的。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00036amx.jpg" target="_blank"><img alt="DSC00036amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00036amxs.jpg" width="300"/></a><br/>↑誇大表現的話大致像這樣。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09979amx.jpg" target="_blank"><img alt="DSC09979amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09979amxs.jpg" width="300"/></a><br/>因為看起來不會發生凸緣干涉問題，所以就選了這個。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09971amx.jpg" target="_blank"><img alt="DSC09971amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09971amxs.jpg" width="300"/></a><br/>與內穿無關的話題就是……<br/>這次我把輪子組裝得讓圖片上方成為行進方向。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09972amx.jpg" target="_blank"><img alt="DSC09972amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09972amxs.jpg" width="300"/></a><br/>文字就會變成倒過來。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09973amx.jpg" target="_blank"><img alt="DSC09973amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09973amxs.jpg" width="300"/></a><br/>花鼓組裝調整用的止動螺釘位於行進方向的左側<br/>應該是正確的方向，但那樣文字就會倒過來。<br/>儘管如此我還是認為這個方向才是對的。<br/>對於後花鼓來說，這個止動螺釘孔位在左側。<br/>（右側有飛輪體無法安裝）<br/>如果「調整機構前後都在左側」，那應該就是這樣。<br/>有另一個製造商的花鼓也支持這個理論。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/201210252334324aa.jpg" target="_blank"><img alt="rear sx 2.0 shima" border="0" height="141" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/201210252334324aas.jpg" width="299"/></a><br/>↑這是Extralight這個製造商的後花鼓。<br/>調整機構當然在左側。<br/>花鼓殼體左側裝著有銼紋加工的轉盤狀物件。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/20121025233432215.jpg" target="_blank"><img alt="ultrafront sx" border="0" height="126" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/20121025233432215s.jpg" width="298"/></a><br/>而這個前花鼓，和後花鼓一樣有著銼紋轉盤<br/>（從文字可讀的方向看）裝在右側。<br/>但花鼓殼體上特別註明了「LeftSide>>」，所以<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/2012102523343227f.jpg" target="_blank"><img alt="ultrafront sx -2" border="0" height="126" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/2012102523343227fs.jpg" width="298"/></a><br/>這樣的方向才是說明書的意思。<br/>也就是後花鼓的標誌在行進方向上是可讀的，<br/>但前花鼓則相反。<br/>基於同樣的邏輯我判斷White的H2花鼓也是如此，<br/>所以這次我用一看起來反向的方向來組。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09986amx.jpg" target="_blank"><img alt="DSC09986amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09986amxs.jpg" width="300"/></a><br/>我那輛4820克的赤松鋁質自行車是用赤松Systema花鼓組前輪。<br/>雖然有比這個更輕的花鼓，<br/>但這裡我選擇了想用這個花鼓的心情而不是輕量。<br/>真的是個好花鼓。好的，我要說了。<br/><span style="font-size:large;">Systema花鼓的廣告文。</span><br/>……抱歉，請忽略。<br/><br/>凸緣寬度較窄，所以結構上無法產生高橫向剛性，<br/>但只要不是狂力踩踏就不會有問題。<br/>既然凸緣寬度本來就窄，<br/>與其用內穿放輵組來追求橫向剛性提升，<br/>我寧可用外穿放輵組來追求究極的輵條正面投影面積最小化。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09989amx.jpg" target="_blank"><img alt="DSC09989amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09989amxs.jpg" width="300"/></a><br/>窄！空氣動力學上是相當不錯的前輪。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09993amx.jpg" target="_blank"><img alt="DSC09993amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09993amxs.jpg" width="300"/></a><br/>White的H2花鼓會變成這樣。<br/>H2花鼓的凸緣寬度非常大，所以這兩個輪組<br/>可以說是放輻組的兩個極端。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00017amx.jpg" target="_blank"><img alt="DSC00017amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00017amxs.jpg" width="300"/></a><br/>Systema花鼓為什麼是窄凸緣呢，那是因為<br/>這個花鼓也是以小徑車使用為前提設計的。<br/>算一下的話，20吋（HE規格）小徑輪圈的輪圈內徑<br/>和700C輪圈大概相當於輪圈高度90mm左右。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00021amx.jpg" target="_blank"><img alt="DSC00021amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00021amxs.jpg" width="300"/></a><br/>若用那個輪圈進行內穿放輻組，輵條角度會相當陡峭。<br/>容易發生凸緣干涉問題呢。<br/>或者即使用正交組，一半也是內穿。<br/>正交組若再加上輵條交叉編織，<br/>內穿從凸緣開始伸出的部分角度比放輵組還陡。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00023amx.jpg" target="_blank"><img alt="DSC00023amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00023amxs.jpg" width="300"/></a><br/>這裡考慮20吋輪圈相同輪圈高度的700C輪圈。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00025amx.jpg" target="_blank"><img alt="DSC00025amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00025amxs.jpg" width="300"/></a><br/>用內穿放輵組組裝這個輪圈的話，<br/>輵條就會變成上圖的紅色虛線。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00027amx.jpg" target="_blank"><img alt="DSC00027amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00027amxs.jpg" width="300"/></a><br/>那個輵條所形成的角度（上圖的藍色角度）如果<br/>想在20吋輪圈上達到相同程度的話<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00030amx.jpg" target="_blank"><img alt="DSC00030amx.jpg" border="0" height="300" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00030amxs.jpg" width="225"/></a><br/>就得把花鼓凸緣往內側縮窄。<br/>這就是Systema花鼓適合小徑車的理由。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00031amx.jpg" target="_blank"><img alt="DSC00031amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC00031amxs.jpg" width="300"/></a><br/>在那樣的狀態下用700C輪圈搭配外穿來組的話<br/>從正面投影面積的角度能製作出最好的前輪（作為輻條輪來說）。<br/>我這個前輪就是這樣的目的。<br/><br/><br/>Tni的AL300輪圈如果要內穿放輵組來訂購<br/>也是可以的，但各種原因我不太推薦。<br/>（不是不可能啦）<br/>如果問為什麼Enve 45就用內穿組了，<br/>那就是這裡寫不出來的理由，有點困擾呢……<br/><br/>今天就是「放輻組有兩種穿法喔」的話題。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

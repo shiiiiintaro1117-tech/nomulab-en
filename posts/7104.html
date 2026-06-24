@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,37 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
-    <p>Bicycle Workshop — English Edition</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/index.html">
+        <span class="brand-title">Nomu Lab Diary</span>
+        <span class="brand-subtitle">Bicycle Workshop Archive</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/index.html">Archive</a>
+      <a href="/guides/wheel-building.html">Wheel Guide</a>
+      <a href="/glossary.html">Glossary</a>
+      <a href="/about.html">About</a>
+    </nav>
     <div class="lang-toggle"><span class="lang-btn active">EN</span><a class="lang-btn" href="/zh/posts/7104.html">繁中</a></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/index.html">← All posts</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Wheel Building</p>
     <h1>About the Rear Wheel on that Previous Gokiso Post</h1>
     <p class="post-meta">May 11, 2024</p>
+    <div class="post-body"><div class="entrytext">・・・I asked the customer about the history of the wheel<br/>and it turned out to be a factory-assembled complete wheel from the manufacturer (Gokiso) itself.<br/>I'd been thinking it might not be a manufacturer's complete wheel<br/>because there were so many unbelievable things done wrong with it.<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8842amx15.jpg" target="_blank"><img alt="RIMG8842amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8842amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8843amx15.jpg" target="_blank"><img alt="RIMG8843amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8843amx15s.jpg" width="320"/></a><br/>There was quite a significant center offset,<br/>but actually this isn't that much of a problem in itself.<br/>The wheel was probably centered perfectly when first assembled,<br/>or the rim had only a slight offset to the right,<br/>and over time the rim has shifted further right.<br/>This shift happens even without active use—just with age.<br/>If you build a rear wheel on a hub with an OCO offset<br/>and confirm the center is perfect at the time of assembly,<br/>then leave it unused on a stand for 10 years,<br/>the rim should still drift right enough to be measurable with a center gauge.<br/>This depends on spoke tension, but<br/>higher tension causes faster drift.<br/>Of course, aging under use is faster than aging at rest.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8845amx15.jpg" target="_blank"><img alt="RIMG8845amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8845amx15s.jpg" width="320"/></a><br/>This wheel is laced radial on the freewheel side,<br/>and radial lacing means there's no angle loss in the spoke trajectory when viewing the wheel from the side,<br/>so the center drift over time tends to progress faster<br/>than with left-right tangent-laced rear wheels.<br/><br/>Everything up to this point is natural and I'm not criticizing it.<br/><br/>Now it gets bad.<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8841amx15.jpg" target="_blank"><img alt="RIMG8841amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8841amx15s.jpg" width="320"/></a><br/>The rim's left and right sides were assembled backwards.<br/>The side with the silver serial number sticker<br/>near the valve hole—and there was also a warning sticker<br/>(now removed from this rim) saying to use genuine brake shoes—<br/>needs to face the left side when building.<br/><br/>To be precise, this rule only applies to rear rims.<br/>With the nomunlab wheel #2 rims from the same manufacturer,<br/>the hole count specs are 18, 20, 24, and 28H,<br/>where the first two are 18F and 20F front rims<br/>and the latter two are 24R and 28R rear rims.<br/>You'd almost never build a rear wheel on an 18F rim,<br/>but it's possible to build a 20H rear wheel on a 20F rim.<br/>However, the 24R and 28R rims have directionality built in—<br/>whether or not there's hole offset on the inner side of the rim—<br/>that accounts for the OCO offset.<br/>On the nomunlab wheel #2 rims, it's honestly not visible to the eye,<br/>but there's no reason to deliberately go against what the manufacturer says.<br/><br/>Addendum: Verification in this article confirmed the directionality exists.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8879amx15.jpg" target="_blank"><img alt="RIMG8879amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8879amx15s.jpg" width="320"/></a><br/>↑Apparently it's set up this way.<br/>If they'd only gotten the rim's left-right orientation wrong,<br/>that would've been bad enough, but...<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8846amx15.jpg" target="_blank"><img alt="RIMG8846amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8846amx15s.jpg" width="320"/></a><br/>↑Freewheel side<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8847amx15.jpg" target="_blank"><img alt="RIMG8847amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8847amx15s.jpg" width="320"/></a><br/>↑Non-freewheel side<br/>They assembled the wheel treating it like a reverse-orientation rim.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8848amx15.jpg" target="_blank"><img alt="RIMG8848amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8848amx15s.jpg" width="320"/></a><br/>But when I looked at the rim's outer-side holes,<br/>there was clear hole offset,<br/>and checking the orientation showed it was actually a normal-orientation rim.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8849amx15.jpg" target="_blank"><img alt="RIMG8849amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8849amx15s.jpg" width="320"/></a><br/>↑The rim hole in the center of the image—<br/>the spokes from the freewheel-side flange pass through it,<br/>so if you offset the rim holes according to the spoke trajectory extension,<br/>the holes should be offset toward the bottom of the image,<br/>but as you can see, they've assembled a normal-offset rim<br/>as if it were reverse-offset,<br/>so the holes are offset toward the top of the image instead.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8851amx15.jpg" target="_blank"><img alt="RIMG8851amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8851amx15s.jpg" width="320"/></a><br/>↑Like this<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8852amx15.jpg" target="_blank"><img alt="RIMG8852amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8852amx15s.jpg" width="320"/></a><br/>Close-up for emphasis.<br/>Since it doesn't follow the hole offset,<br/>the 3.2mm wrench that grips the square fitting<br/>scrapes hard against the rim hole rim.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8853amx15.jpg" target="_blank"><img alt="RIMG8853amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8853amx15s.jpg" width="320"/></a><br/>↑The neighboring rim hole looks like this<br/>You'd have to be pretty damn stupid not to notice something wrong<br/>during and after the trial assembly.<br/>So either Gokiso's builder is pretty damn stupid,<br/>or they noticed the mistake but forced the wheel assembly anyway—<br/>either way, it's a problem.<br/>The quality of work doesn't match the price they charge for the wheel.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8854amx15.jpg" target="_blank"><img alt="RIMG8854amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8854amx15s.jpg" width="320"/></a><br/>The front rim had no hole offset on its outer side, by the way.<br/>Also, the original front wheel had been assembled<br/>treating it as a normal-orientation rim.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8856amx15.jpg" target="_blank"><img alt="RIMG8856amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8856amx15s.jpg" width="320"/></a><br/>For the rebuild, the spokes have different lengths and colors,<br/>so I won't reuse them, but<br/>if I cut spokes while they're under tension,<br/>the damage would reach the rim I'm returning to the customer,<br/>so I gradually loosen all the nipples in sequence.<br/>During this process, the rim's front-back direction and hub's left-right direction<br/>aren't perpendicular—they tilt as shown in the image above—<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8855amx15.jpg" target="_blank"><img alt="RIMG8855amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8855amx15s.jpg" width="320"/></a><br/>and I found there were holes where the wrench couldn't engage the nipple at all.<br/>In the image above, you can see the freewheel body on the left side,<br/>and the rim hole should be designed for spokes coming from the non-freewheel side.<br/>The nipple is offset toward the bottom of the image<br/>because of the incoming angle from tangent lacing on the non-outpoke side.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8858amx15.jpg" target="_blank"><img alt="RIMG8858amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8858amx15s.jpg" width="320"/></a><br/>They were using a universal nipple reversed<br/>instead of an internal nipple.<br/>I do this myself sometimes, but<br/>universal nipples have a slot that internal nipples don't have,<br/>and this can mill the rim's contact surface,<br/>leaving carbon debris in the slot.<br/>Also, internal nipples have a slight clearance dimension at the inner end<br/>before the threads start, so<br/>the appropriate spoke length range shifts slightly.<br/><br/>The problem here is that they used<br/>14mm-length nipples from the <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+Swiss+CX-RAY+spoke" target="_blank" rel="noopener sponsored" class="amz-inline">CX-RAY</a> accessory kit.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8880amx15.jpg" target="_blank"><img alt="RIMG8880amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8880amx15s.jpg" width="320"/></a><br/>Depending on rim height and outer hole offset,<br/>the longer the reversed nipple is,<br/>the harder it is to grip firmly with the tool.<br/><br/>The diagram above shows a tubular rim, but<br/>the recently-built 25mm-height Alchemy Lightweight wheel<br/>uses 12mm <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+Swiss+Pro+Lock+nipple" target="_blank" rel="noopener sponsored" class="amz-inline">DT Pro Lock nipples</a> according to the manufacturer's assembly specs,<br/>but even 12mm was tight to fully assemble<br/>(we got it to decent tension after trial assembly),<br/>so I switched to ENVE internal 10mm-length nipples<br/>for the rebuild.<br/>That 2mm difference is huge.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8857amx15.jpg" target="_blank"><img alt="RIMG8857amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8857amx15s.jpg" width="320"/></a><br/>So, with reversed hole offset and forced assembly using long nipples,<br/>there were traces that after trial assembly<br/>the tool was only engaging shallowly with the nipple.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8868amx15.jpg" target="_blank"><img alt="RIMG8868amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8868amx15s.jpg" width="320"/></a><br/>You can't tell with the wheel assembled,<br/>but looking carefully at just the rim,<br/>there's hole offset on the inner side too.<br/>Looking from left to right in the image, it appears to offset<br/>right, left, right, left, but<br/>looking more carefully, it offsets center, left, center, left.<br/>If the right and left offset amplitudes were equal,<br/>the rim would have no left-right distinction, but<br/>the freewheel-side hole doesn't offset horizontally at rim center,<br/>so this rim does have left-right distinction.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8869amx15.jpg" target="_blank"><img alt="RIMG8869amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8869amx15s.jpg" width="320"/></a><br/>↑This is a slightly blurry close-up, but<br/>the left of the image shows the rim-center hole for freewheel-side spokes,<br/>and the right shows an offset hole, so it's for non-freewheel-side spokes.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8872amx15.jpg" target="_blank"><img alt="RIMG8872amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8872amx15s.jpg" width="320"/></a><br/>This is super important, but<br/>I passed a #14 plain black straight spoke<br/>through the rim-center freewheel-side spoke hole<br/>and threaded it onto the nipple.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8874amx15.jpg" target="_blank"><img alt="RIMG8874amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8874amx15s.jpg" width="320"/></a><br/>I leveled the rim horizontally<br/>and measured how much it sags under its own weight.<br/>You can see the silver sticker indicating the left side in the background of the image.<br/><br/>In other words, the state in the image above<br/>means the side of the rim pointing down<br/>is the side that would be the wheel's left side.<br/>Since I'm running the spoke through the freewheel-side hole,<br/>the direction the spoke sags is opposite to the intended trajectory.<br/><br/>From here, I flip the rim using the image's edges as a rotation axis.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8875amx15.jpg" target="_blank"><img alt="RIMG8875amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8875amx15s.jpg" width="320"/></a><br/>The amount of spoke sag is dramatically different.<br/>This would be routine if the rim holes had offset,<br/>but the key point is that it's happening at what appears to be a center hole.<br/>In other words, there's directionality built in<br/>beyond just the hole offset on the rim holes themselves.<br/><br/>The original wheel committed not one but two errors:<br/>getting the rim's left-right orientation wrong, AND<br/>assembling a normal-orientation rim as if it were reverse-orientation.<br/>So even if I hadn't changed the rim,<br/>a rebuild was absolutely necessary.<br/><br/>The left-right rim mix-up is one thing (though it shouldn't be),<br/>but there's a Gokiso-specific reason for the error<br/>of treating a normal rim as reverse-oriented.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8898amx15.jpg" target="_blank"><img alt="RIMG8898amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8898amx15s.jpg" width="320"/></a><br/>Let me recap what I mean by<br/>normal-orientation vs. reverse-orientation rim:<br/>When viewing an equal-sided-spoke-count wheel from the side,<br/>there's a hub flange toward you (near side)<br/>and one away from you (far side).<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8899amx15.jpg" target="_blank"><img alt="RIMG8899amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8899amx15s.jpg" width="320"/></a><br/>When rim holes have offset,<br/>the vast majority of rims in the market<br/>are designed so that the spoke coming from the far hub flange<br/>goes into the hole that's clockwise from the valve hole<br/>(when tracing holes clockwise from the valve)—<br/>these are "normal-offset rims" (normal rims),<br/>and those that don't follow this pattern are "reverse-offset rims" (reverse rims).<br/>The diagram above is a normal rim.<br/>This relationship holds even if you flip the rim.<br/>Examples of reverse rims include<br/>the front rim of Racing Zeros for rim brakes,<br/>some Colima rims,<br/>and what appears to be a manufacturing error in Formula Chrono 20 rims<br/>from some periods of Ambrosio<br/>(the 32H is normal while some 28H versions are reverse),<br/>and Duke-brand IT wheel rims<br/>(other Duke rims are normal) for unknown reasons.<br/>↑Those were assembled as normal rims<br/>by someone who didn't know better.<br/>Also, Reynolds has carbon rims without hole offset<br/>that are assembled as reverse rims on the front wheel only in some cases.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8900amx15.jpg" target="_blank"><img alt="RIMG8900amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8900amx15s.jpg" width="320"/></a><br/>I built it as a left-right tangent-laced wheel.<br/>Looking at the rear wheel from the right,<br/>the spoke drawn in red is the freewheel side,<br/>and the spoke drawn in blue is the non-freewheel side.<br/><br/>If from this state, the rim holes are offset incorrectly<br/>while keeping the hub and spoke shapes unchanged,<br/>and only the rim shifts by one hole space,<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8901amx15.jpg" target="_blank"><img alt="RIMG8901amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8901amx15s.jpg" width="320"/></a><br/>in both cases, the valve hole ends up<br/>in the crotch of the final tangent crossing,<br/>creating an ugly-looking wheel.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8902amx15.jpg" target="_blank"><img alt="RIMG8902amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8902amx15s.jpg" width="320"/></a><br/>With single-side radial lacing<br/>(non-freewheel side radial in this diagram),<br/>only position B avoids the valve hole looking awkward<br/>at its final crossing position.<br/>So at first glance, it doesn't look like<br/>the hole offset is wrong (reverse rim treatment).<br/>In the diagram, viewing the wheel from the right with the valve hole at position B,<br/>the adjacent spoke counterclockwise is a non-freewheel-side spoke from the far flange,<br/>and the adjacent spoke clockwise is a freewheel-side spoke from the near flange,<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8846amx15.jpg" target="_blank"><img alt="RIMG8846amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8846amx15s.jpg" width="320"/></a><br/>↑and on the actual wheel viewed from the right with the valve hole,<br/>the adjacent spoke counterclockwise is a non-freewheel-side spoke from the far flange,<br/>and the adjacent spoke clockwise is a freewheel-side spoke from the near flange,<br/>so it matched.<br/><br/>Non-freewheel-side radial lacing makes hole offset errors<br/>harder to detect, so<br/>this is a Gokiso-specific type of mistake—<br/>but scraping the rim hole rim hard with the tool wrench<br/>while the tool isn't fully seating on the nipple<br/>and not noticing or choosing to force through the assembly anyway<br/>is unacceptable either way.<br/><br/><br/><span style="color:#FF0000">Addendum: Something I forgot to write in the wheel article</span><br/>Gokiso's factory-assembled complete wheels<br/>have extremely high spoke tension.<br/><br/>With a wheel where spoke tension is adequate for the wheel to function,<br/>if you loosen all nipples on both sides equally—say, one full turn each—<br/>the lower the tension, the larger the tension drop per turn.<br/>Conversely, once a wheel is already at high tension,<br/>over-tightening nipples from there barely changes the feel.<br/><br/>With 24H wheels both fully built with CX-RAY<br/>in 4-0 (44 spoke) and 4-4 (equal) rear wheel configurations,<br/>starting from a state where "both have equal freewheel-side tension<br/>and are centered,"<br/>as you loosen all nipples equally on both wheels,<br/>the 4-0 wheel with larger freewheel-side tension difference<br/>will have the non-freewheel-side spokes become so loose<br/>you can wiggle them side-to-side like a squishy toy<br/>before a tension meter reading is even possible<br/>(meter doesn't move from zero).<br/>Say both wheels have all nipples loosened 4 full turns from final assembly—<br/>the 4-4 wheel treated the same way<br/>will still be squishy but not in the "you'll die if you ride it" category.<br/><br/>What I'm saying is:<br/>with equal-sided-spoke rear wheels using non-freewheel-side radial lacing,<br/>you have to crank the tension to absolutely maximum<br/>to get the non-freewheel-side spokes past the squishy stage.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8861amx15.jpg" target="_blank"><img alt="RIMG8861amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8861amx15s.jpg" width="320"/></a><br/>In contrast, Gokiso's hubs<br/>are extremely hard materially—<br/>the inpoke holes showed no bite marks from spoke seats.<br/>There were only faint scratches on the hub flange sides<br/>where spokes rubbed.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8862amx15.jpg" target="_blank"><img alt="RIMG8862amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8862amx15s.jpg" width="320"/></a><br/>It was already like this, but<br/>if I tried to align the hub shell phase with the logo<br/>as visible through the valve hole,<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8864amx15.jpg" target="_blank"><img alt="RIMG8864amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8864amx15s.jpg" width="320"/></a><br/>the starting hole for the outpoke spoke on the freewheel side<br/>matched between before and after rebuild.<br/>The image on the right shows the former inpoke hole from the earlier image.<br/>By the way, with 4-6 Italian lacing,<br/>the first spoke is a "right drop" as shown.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8865amx15.jpg" target="_blank"><img alt="RIMG8865amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8865amx15s.jpg" width="320"/></a><br/>↑After rebuild, looking through the valve hole in the rim, it looks like this<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8876amx15.jpg" target="_blank"><img alt="RIMG8876amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8876amx15s.jpg" width="320"/></a><br/>↑Front rim 20F no outer hole offset<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8877amx15.jpg" target="_blank"><img alt="RIMG8877amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8877amx15s.jpg" width="320"/></a><br/>↑Rear rim 24R with outer hole offset<br/>The rim was absurdly heavy.<br/>The rear rim had a weight difference as if it were an offset rim,<br/>even though it's not an offset rim.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8878amx15.jpg" target="_blank"><img alt="RIMG8878amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8878amx15s.jpg" width="320"/></a><br/>The weight difference was so extreme<br/>I thought the scale wasn't zeroing when I weighed the rear rim,<br/>so I lifted it to double-check.<br/><br/>This is a Gokiso custom rim, and<br/>I can only think that to make their hub's rotation quality stand out<br/>and to stage a more impressive magic trick—<br/>for the manufacturer's own self-satisfaction—<br/>they've made the rim heavy way beyond the range of normal products.<br/>For wheels that are NOT Gokiso's factory-assembled complete wheels<br/>but just built with their hubs,<br/>I wouldn't be making this claim.<br/>But for Gokiso's factory-assembled complete wheels specifically,<br/>the absurd rim weight also contributes<br/>to extending the spin time when doing the magic trick of<br/>"put it on a stand and give it a flick,<br/>and watch it keep spinning."<br/>The speed boost on descents and the free-rolling feel on flats<br/>when you stop pedaling are certainly good,<br/>but I question whether people using this complete wheel<br/>are aware of and accepting the rim's abnormal weight.<br/></div>
+    <aside class="post-guides">
+      <strong>Technical archive</strong>
+      <nav aria-label="Technical guides">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,7 +405,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">・・・I asked the customer about the history of the wheel<br/>and it turned out to be a factory-assembled complete wheel from the manufacturer (Gokiso) itself.<br/>I'd been thinking it might not be a manufacturer's complete wheel<br/>because there were so many unbelievable things done wrong with it.<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8842amx15.jpg" target="_blank"><img alt="RIMG8842amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8842amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8843amx15.jpg" target="_blank"><img alt="RIMG8843amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8843amx15s.jpg" width="320"/></a><br/>There was quite a significant center offset,<br/>but actually this isn't that much of a problem in itself.<br/>The wheel was probably centered perfectly when first assembled,<br/>or the rim had only a slight offset to the right,<br/>and over time the rim has shifted further right.<br/>This shift happens even without active use—just with age.<br/>If you build a rear wheel on a hub with an OCO offset<br/>and confirm the center is perfect at the time of assembly,<br/>then leave it unused on a stand for 10 years,<br/>the rim should still drift right enough to be measurable with a center gauge.<br/>This depends on spoke tension, but<br/>higher tension causes faster drift.<br/>Of course, aging under use is faster than aging at rest.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8845amx15.jpg" target="_blank"><img alt="RIMG8845amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8845amx15s.jpg" width="320"/></a><br/>This wheel is laced radial on the freewheel side,<br/>and radial lacing means there's no angle loss in the spoke trajectory when viewing the wheel from the side,<br/>so the center drift over time tends to progress faster<br/>than with left-right tangent-laced rear wheels.<br/><br/>Everything up to this point is natural and I'm not criticizing it.<br/><br/>Now it gets bad.<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8841amx15.jpg" target="_blank"><img alt="RIMG8841amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8841amx15s.jpg" width="320"/></a><br/>The rim's left and right sides were assembled backwards.<br/>The side with the silver serial number sticker<br/>near the valve hole—and there was also a warning sticker<br/>(now removed from this rim) saying to use genuine brake shoes—<br/>needs to face the left side when building.<br/><br/>To be precise, this rule only applies to rear rims.<br/>With the nomunlab wheel #2 rims from the same manufacturer,<br/>the hole count specs are 18, 20, 24, and 28H,<br/>where the first two are 18F and 20F front rims<br/>and the latter two are 24R and 28R rear rims.<br/>You'd almost never build a rear wheel on an 18F rim,<br/>but it's possible to build a 20H rear wheel on a 20F rim.<br/>However, the 24R and 28R rims have directionality built in—<br/>whether or not there's hole offset on the inner side of the rim—<br/>that accounts for the OCO offset.<br/>On the nomunlab wheel #2 rims, it's honestly not visible to the eye,<br/>but there's no reason to deliberately go against what the manufacturer says.<br/><br/>Addendum: Verification in this article confirmed the directionality exists.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8879amx15.jpg" target="_blank"><img alt="RIMG8879amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8879amx15s.jpg" width="320"/></a><br/>↑Apparently it's set up this way.<br/>If they'd only gotten the rim's left-right orientation wrong,<br/>that would've been bad enough, but...<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8846amx15.jpg" target="_blank"><img alt="RIMG8846amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8846amx15s.jpg" width="320"/></a><br/>↑Freewheel side<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8847amx15.jpg" target="_blank"><img alt="RIMG8847amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8847amx15s.jpg" width="320"/></a><br/>↑Non-freewheel side<br/>They assembled the wheel treating it like a reverse-orientation rim.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8848amx15.jpg" target="_blank"><img alt="RIMG8848amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8848amx15s.jpg" width="320"/></a><br/>But when I looked at the rim's outer-side holes,<br/>there was clear hole offset,<br/>and checking the orientation showed it was actually a normal-orientation rim.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8849amx15.jpg" target="_blank"><img alt="RIMG8849amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8849amx15s.jpg" width="320"/></a><br/>↑The rim hole in the center of the image—<br/>the spokes from the freewheel-side flange pass through it,<br/>so if you offset the rim holes according to the spoke trajectory extension,<br/>the holes should be offset toward the bottom of the image,<br/>but as you can see, they've assembled a normal-offset rim<br/>as if it were reverse-offset,<br/>so the holes are offset toward the top of the image instead.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8851amx15.jpg" target="_blank"><img alt="RIMG8851amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8851amx15s.jpg" width="320"/></a><br/>↑Like this<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8852amx15.jpg" target="_blank"><img alt="RIMG8852amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8852amx15s.jpg" width="320"/></a><br/>Close-up for emphasis.<br/>Since it doesn't follow the hole offset,<br/>the 3.2mm wrench that grips the square fitting<br/>scrapes hard against the rim hole rim.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8853amx15.jpg" target="_blank"><img alt="RIMG8853amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8853amx15s.jpg" width="320"/></a><br/>↑The neighboring rim hole looks like this<br/>You'd have to be pretty damn stupid not to notice something wrong<br/>during and after the trial assembly.<br/>So either Gokiso's builder is pretty damn stupid,<br/>or they noticed the mistake but forced the wheel assembly anyway—<br/>either way, it's a problem.<br/>The quality of work doesn't match the price they charge for the wheel.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8854amx15.jpg" target="_blank"><img alt="RIMG8854amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8854amx15s.jpg" width="320"/></a><br/>The front rim had no hole offset on its outer side, by the way.<br/>Also, the original front wheel had been assembled<br/>treating it as a normal-orientation rim.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8856amx15.jpg" target="_blank"><img alt="RIMG8856amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8856amx15s.jpg" width="320"/></a><br/>For the rebuild, the spokes have different lengths and colors,<br/>so I won't reuse them, but<br/>if I cut spokes while they're under tension,<br/>the damage would reach the rim I'm returning to the customer,<br/>so I gradually loosen all the nipples in sequence.<br/>During this process, the rim's front-back direction and hub's left-right direction<br/>aren't perpendicular—they tilt as shown in the image above—<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8855amx15.jpg" target="_blank"><img alt="RIMG8855amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8855amx15s.jpg" width="320"/></a><br/>and I found there were holes where the wrench couldn't engage the nipple at all.<br/>In the image above, you can see the freewheel body on the left side,<br/>and the rim hole should be designed for spokes coming from the non-freewheel side.<br/>The nipple is offset toward the bottom of the image<br/>because of the incoming angle from tangent lacing on the non-outpoke side.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8858amx15.jpg" target="_blank"><img alt="RIMG8858amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8858amx15s.jpg" width="320"/></a><br/>They were using a universal nipple reversed<br/>instead of an internal nipple.<br/>I do this myself sometimes, but<br/>universal nipples have a slot that internal nipples don't have,<br/>and this can mill the rim's contact surface,<br/>leaving carbon debris in the slot.<br/>Also, internal nipples have a slight clearance dimension at the inner end<br/>before the threads start, so<br/>the appropriate spoke length range shifts slightly.<br/><br/>The problem here is that they used<br/>14mm-length nipples from the <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+Swiss+CX-RAY+spoke" target="_blank" rel="noopener sponsored" class="amz-inline">CX-RAY</a> accessory kit.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8880amx15.jpg" target="_blank"><img alt="RIMG8880amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8880amx15s.jpg" width="320"/></a><br/>Depending on rim height and outer hole offset,<br/>the longer the reversed nipple is,<br/>the harder it is to grip firmly with the tool.<br/><br/>The diagram above shows a tubular rim, but<br/>the recently-built 25mm-height Alchemy Lightweight wheel<br/>uses 12mm <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+Swiss+Pro+Lock+nipple" target="_blank" rel="noopener sponsored" class="amz-inline">DT Pro Lock nipples</a> according to the manufacturer's assembly specs,<br/>but even 12mm was tight to fully assemble<br/>(we got it to decent tension after trial assembly),<br/>so I switched to ENVE internal 10mm-length nipples<br/>for the rebuild.<br/>That 2mm difference is huge.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8857amx15.jpg" target="_blank"><img alt="RIMG8857amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8857amx15s.jpg" width="320"/></a><br/>So, with reversed hole offset and forced assembly using long nipples,<br/>there were traces that after trial assembly<br/>the tool was only engaging shallowly with the nipple.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8868amx15.jpg" target="_blank"><img alt="RIMG8868amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8868amx15s.jpg" width="320"/></a><br/>You can't tell with the wheel assembled,<br/>but looking carefully at just the rim,<br/>there's hole offset on the inner side too.<br/>Looking from left to right in the image, it appears to offset<br/>right, left, right, left, but<br/>looking more carefully, it offsets center, left, center, left.<br/>If the right and left offset amplitudes were equal,<br/>the rim would have no left-right distinction, but<br/>the freewheel-side hole doesn't offset horizontally at rim center,<br/>so this rim does have left-right distinction.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8869amx15.jpg" target="_blank"><img alt="RIMG8869amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8869amx15s.jpg" width="320"/></a><br/>↑This is a slightly blurry close-up, but<br/>the left of the image shows the rim-center hole for freewheel-side spokes,<br/>and the right shows an offset hole, so it's for non-freewheel-side spokes.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8872amx15.jpg" target="_blank"><img alt="RIMG8872amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8872amx15s.jpg" width="320"/></a><br/>This is super important, but<br/>I passed a #14 plain black straight spoke<br/>through the rim-center freewheel-side spoke hole<br/>and threaded it onto the nipple.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8874amx15.jpg" target="_blank"><img alt="RIMG8874amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8874amx15s.jpg" width="320"/></a><br/>I leveled the rim horizontally<br/>and measured how much it sags under its own weight.<br/>You can see the silver sticker indicating the left side in the background of the image.<br/><br/>In other words, the state in the image above<br/>means the side of the rim pointing down<br/>is the side that would be the wheel's left side.<br/>Since I'm running the spoke through the freewheel-side hole,<br/>the direction the spoke sags is opposite to the intended trajectory.<br/><br/>From here, I flip the rim using the image's edges as a rotation axis.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8875amx15.jpg" target="_blank"><img alt="RIMG8875amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8875amx15s.jpg" width="320"/></a><br/>The amount of spoke sag is dramatically different.<br/>This would be routine if the rim holes had offset,<br/>but the key point is that it's happening at what appears to be a center hole.<br/>In other words, there's directionality built in<br/>beyond just the hole offset on the rim holes themselves.<br/><br/>The original wheel committed not one but two errors:<br/>getting the rim's left-right orientation wrong, AND<br/>assembling a normal-orientation rim as if it were reverse-orientation.<br/>So even if I hadn't changed the rim,<br/>a rebuild was absolutely necessary.<br/><br/>The left-right rim mix-up is one thing (though it shouldn't be),<br/>but there's a Gokiso-specific reason for the error<br/>of treating a normal rim as reverse-oriented.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8898amx15.jpg" target="_blank"><img alt="RIMG8898amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8898amx15s.jpg" width="320"/></a><br/>Let me recap what I mean by<br/>normal-orientation vs. reverse-orientation rim:<br/>When viewing an equal-sided-spoke-count wheel from the side,<br/>there's a hub flange toward you (near side)<br/>and one away from you (far side).<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8899amx15.jpg" target="_blank"><img alt="RIMG8899amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8899amx15s.jpg" width="320"/></a><br/>When rim holes have offset,<br/>the vast majority of rims in the market<br/>are designed so that the spoke coming from the far hub flange<br/>goes into the hole that's clockwise from the valve hole<br/>(when tracing holes clockwise from the valve)—<br/>these are "normal-offset rims" (normal rims),<br/>and those that don't follow this pattern are "reverse-offset rims" (reverse rims).<br/>The diagram above is a normal rim.<br/>This relationship holds even if you flip the rim.<br/>Examples of reverse rims include<br/>the front rim of Racing Zeros for rim brakes,<br/>some Colima rims,<br/>and what appears to be a manufacturing error in Formula Chrono 20 rims<br/>from some periods of Ambrosio<br/>(the 32H is normal while some 28H versions are reverse),<br/>and Duke-brand IT wheel rims<br/>(other Duke rims are normal) for unknown reasons.<br/>↑Those were assembled as normal rims<br/>by someone who didn't know better.<br/>Also, Reynolds has carbon rims without hole offset<br/>that are assembled as reverse rims on the front wheel only in some cases.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8900amx15.jpg" target="_blank"><img alt="RIMG8900amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8900amx15s.jpg" width="320"/></a><br/>I built it as a left-right tangent-laced wheel.<br/>Looking at the rear wheel from the right,<br/>the spoke drawn in red is the freewheel side,<br/>and the spoke drawn in blue is the non-freewheel side.<br/><br/>If from this state, the rim holes are offset incorrectly<br/>while keeping the hub and spoke shapes unchanged,<br/>and only the rim shifts by one hole space,<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8901amx15.jpg" target="_blank"><img alt="RIMG8901amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8901amx15s.jpg" width="320"/></a><br/>in both cases, the valve hole ends up<br/>in the crotch of the final tangent crossing,<br/>creating an ugly-looking wheel.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8902amx15.jpg" target="_blank"><img alt="RIMG8902amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8902amx15s.jpg" width="320"/></a><br/>With single-side radial lacing<br/>(non-freewheel side radial in this diagram),<br/>only position B avoids the valve hole looking awkward<br/>at its final crossing position.<br/>So at first glance, it doesn't look like<br/>the hole offset is wrong (reverse rim treatment).<br/>In the diagram, viewing the wheel from the right with the valve hole at position B,<br/>the adjacent spoke counterclockwise is a non-freewheel-side spoke from the far flange,<br/>and the adjacent spoke clockwise is a freewheel-side spoke from the near flange,<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8846amx15.jpg" target="_blank"><img alt="RIMG8846amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8846amx15s.jpg" width="320"/></a><br/>↑and on the actual wheel viewed from the right with the valve hole,<br/>the adjacent spoke counterclockwise is a non-freewheel-side spoke from the far flange,<br/>and the adjacent spoke clockwise is a freewheel-side spoke from the near flange,<br/>so it matched.<br/><br/>Non-freewheel-side radial lacing makes hole offset errors<br/>harder to detect, so<br/>this is a Gokiso-specific type of mistake—<br/>but scraping the rim hole rim hard with the tool wrench<br/>while the tool isn't fully seating on the nipple<br/>and not noticing or choosing to force through the assembly anyway<br/>is unacceptable either way.<br/><br/><br/><span style="color:#FF0000">Addendum: Something I forgot to write in the wheel article</span><br/>Gokiso's factory-assembled complete wheels<br/>have extremely high spoke tension.<br/><br/>With a wheel where spoke tension is adequate for the wheel to function,<br/>if you loosen all nipples on both sides equally—say, one full turn each—<br/>the lower the tension, the larger the tension drop per turn.<br/>Conversely, once a wheel is already at high tension,<br/>over-tightening nipples from there barely changes the feel.<br/><br/>With 24H wheels both fully built with CX-RAY<br/>in 4-0 (44 spoke) and 4-4 (equal) rear wheel configurations,<br/>starting from a state where "both have equal freewheel-side tension<br/>and are centered,"<br/>as you loosen all nipples equally on both wheels,<br/>the 4-0 wheel with larger freewheel-side tension difference<br/>will have the non-freewheel-side spokes become so loose<br/>you can wiggle them side-to-side like a squishy toy<br/>before a tension meter reading is even possible<br/>(meter doesn't move from zero).<br/>Say both wheels have all nipples loosened 4 full turns from final assembly—<br/>the 4-4 wheel treated the same way<br/>will still be squishy but not in the "you'll die if you ride it" category.<br/><br/>What I'm saying is:<br/>with equal-sided-spoke rear wheels using non-freewheel-side radial lacing,<br/>you have to crank the tension to absolutely maximum<br/>to get the non-freewheel-side spokes past the squishy stage.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8861amx15.jpg" target="_blank"><img alt="RIMG8861amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8861amx15s.jpg" width="320"/></a><br/>In contrast, Gokiso's hubs<br/>are extremely hard materially—<br/>the inpoke holes showed no bite marks from spoke seats.<br/>There were only faint scratches on the hub flange sides<br/>where spokes rubbed.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8862amx15.jpg" target="_blank"><img alt="RIMG8862amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8862amx15s.jpg" width="320"/></a><br/>It was already like this, but<br/>if I tried to align the hub shell phase with the logo<br/>as visible through the valve hole,<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8864amx15.jpg" target="_blank"><img alt="RIMG8864amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8864amx15s.jpg" width="320"/></a><br/>the starting hole for the outpoke spoke on the freewheel side<br/>matched between before and after rebuild.<br/>The image on the right shows the former inpoke hole from the earlier image.<br/>By the way, with 4-6 Italian lacing,<br/>the first spoke is a "right drop" as shown.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8865amx15.jpg" target="_blank"><img alt="RIMG8865amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8865amx15s.jpg" width="320"/></a><br/>↑After rebuild, looking through the valve hole in the rim, it looks like this<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8876amx15.jpg" target="_blank"><img alt="RIMG8876amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8876amx15s.jpg" width="320"/></a><br/>↑Front rim 20F no outer hole offset<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8877amx15.jpg" target="_blank"><img alt="RIMG8877amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8877amx15s.jpg" width="320"/></a><br/>↑Rear rim 24R with outer hole offset<br/>The rim was absurdly heavy.<br/>The rear rim had a weight difference as if it were an offset rim,<br/>even though it's not an offset rim.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8878amx15.jpg" target="_blank"><img alt="RIMG8878amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG8878amx15s.jpg" width="320"/></a><br/>The weight difference was so extreme<br/>I thought the scale wasn't zeroing when I weighed the rear rim,<br/>so I lifted it to double-check.<br/><br/>This is a Gokiso custom rim, and<br/>I can only think that to make their hub's rotation quality stand out<br/>and to stage a more impressive magic trick—<br/>for the manufacturer's own self-satisfaction—<br/>they've made the rim heavy way beyond the range of normal products.<br/>For wheels that are NOT Gokiso's factory-assembled complete wheels<br/>but just built with their hubs,<br/>I wouldn't be making this claim.<br/>But for Gokiso's factory-assembled complete wheels specifically,<br/>the absurd rim weight also contributes<br/>to extending the spin time when doing the magic trick of<br/>"put it on a stand and give it a flick,<br/>and watch it keep spinning."<br/>The speed boost on descents and the free-rolling feel on flats<br/>when you stop pedaling are certainly good,<br/>but I question whether people using this complete wheel<br/>are aware of and accepting the rim's abnormal weight.<br/></div>
     <div class="affiliate-box">
       <p class="affiliate-title">Products Mentioned in This Article</p>
       <ul>

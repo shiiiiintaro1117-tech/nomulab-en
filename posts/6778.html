@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
-    <p>Bicycle Workshop — English Edition</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/index.html">
+        <span class="brand-title">Nomu Lab Diary</span>
+        <span class="brand-subtitle">Bicycle Workshop Archive</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/index.html">Archive</a>
+      <a href="/guides/wheel-building.html">Wheel Guide</a>
+      <a href="/glossary.html">Glossary</a>
+      <a href="/about.html">About</a>
+    </nav>
     <div class="lang-toggle"><span class="lang-btn active">EN</span><a class="lang-btn" href="/zh/posts/6778.html">繁中</a></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/index.html">← All posts</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>Campagnolo Spine Explosion Sale</h1>
     <p class="post-meta">July 27, 2023</p>
+    <div class="post-body"><div class="entrytext">I attended a Campagnolo training session on July 19th, and while the technical instruction on the wireless Super Record EPS was fine enough,<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4190amx15.jpg" target="_blank"><img alt="IMG_4190amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4190amx15s.jpg" width="320"/></a><br/>there was a <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Campagnolo+Hyperon+Ultra+DB+bicycle+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">Hyperon Ultra DB</a> on display.<br/>The rim height is 37mm, making it taller than the <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Campagnolo+Bora+WTO+bicycle+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">Bora WTO</a>, which is the lowest rim height at 33mm.<br/>The rear wheel has equal spoke count on both sides (not G3), and<br/>the front wheel uses a 2:1 pattern,<br/>but even then it's not G3 laced, so that's how it's differentiated.<br/>The front wheel's 2:1 pattern is XI (X-eye) lacing.<br/>Since the front wheel has only modest flange height and uses high-low flanges,<br/>I guess they figured XI lacing could work.<br/>Personally speaking, for a wheel of this character,<br/>I prefer <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Fulcrum+Speed+25+bicycle+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">Fulcrum's Speed 25</a>.<br/>The reason is it's closer to "the strongest wheel design I came up with,"<br/>but Speed 25 has a rim height of 26mm (not 25mm),<br/>and the front wheel uses 2:1 lacing only<br/>with (2+1)×8 pairs at 24H with Ж (jay) lacing,<br/>but since there's not much radial difference between the high and low flanges,<br/>the final tangent crossing of the tangent lacing<br/>is quite close to the hub.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4188amx15.jpg" target="_blank"><img alt="IMG_4188amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4188amx15s.jpg" width="320"/></a><br/>The Hyperon Ultra DB comes in tubular rim specification, but<br/>the image above is the 2WAY-FIT rim (tubeless rim) specification.<br/>The split-in spacer-like part attached to the hub axle<br/>is unrelated to the hub end as a whole, so<br/>even with it removed, the wheel functions.<br/>This spacer-like part<br/>hides the notch where the hub wrench goes, and<br/>should the bearing adjustment nut loosen by any chance,<br/>it acts as a stopper that only allows it to loosen until it hits this part.<br/>The specification of this part is the same as the Bora WTO that's been around for a while.<br/>In other words, the hub axle is also a common part with the Bora WTO.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4189amx15.jpg" target="_blank"><img alt="IMG_4189amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4189amx15s.jpg" width="320"/></a><br/>In the tubular specification, the end of the split part<br/>was changed to a shape related to the locknut dimension.<br/>I do wonder about having a split part where wheel fixing pressure is applied,<br/>but <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Chris+King+R45D+bicycle+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Chris King's R45D hub</a> has a similar structure.<br/><br/>Since the dimensions and shapes of the hub axle differ when removing these two types of ends and split parts,<br/>they are not compatible.<br/>Not just the end part, but the hub axle itself is different.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4192amx15.jpg" target="_blank"><img alt="IMG_4192amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4192amx15s.jpg" width="320"/></a><br/>↑2WAY-FIT<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4191amx15.jpg" target="_blank"><img alt="IMG_4191amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4191amx15s.jpg" width="320"/></a><br/>↑Tubular<br/>The rim specification difference means the front wheel end is different too.<br/>Whether only the initial batch of Hyperon Ultra DB<br/>uses the same hub axle specification as the Bora WTO<br/>and subsequently both 2WAY-FIT and tubular will move to the same spec,<br/>or whether this difference is the correct state, remains unclear at this point.<br/><br/><br/>The person from the wholesaler most knowledgeable about Campagnolo in Japan<br/>recently had a spinal fracture, so they were wearing a corset.<br/>When I asked about it later, apparently they were riding an MTB,<br/>fell on their back,<br/>and happened to have something hard on their back at the time,<br/>which caused their spine to fracture.<br/><s>When asked whether the components on that MTB were Campagnolo,<br/>they didn't answer.</s><br/><br/>So this time, we're having what we're calling the Spine Explosion Sale,<br/>selling Campagnolo short-sleeve jerseys and the Bora WTO DB<br/>at special prices.<br/>Some might say it's bad taste to make merchandise out of someone else's misfortune (injury)...<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4768amx15.jpg" target="_blank"><img alt="RIMG4768amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4768amx15s.jpg" width="320"/></a><br/>This is part of an order FAX our shop sent to the wholesaler most knowledgeable about Campagnolo in Japan.<br/>For the long vowel marks in Campagnolo,<br/>we draw them as a wiggly snake,<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4767amx15.jpg" target="_blank"><img alt="RIMG4767amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4767amx15s.jpg" width="320"/></a><br/>and among the order items, Campagnolo parts are<br/>listed below a fluffy speech bubble with Campagnolo written inside,<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4770amx15.jpg" target="_blank"><img alt="RIMG4770amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4770amx15s.jpg" width="320"/></a><br/>and Fulcrum parts are listed<br/>below a long-bodied dog with three hind legs and Fulcrum written on its body.<br/>We follow this requested format every time (→<a href="/posts/2956.html" target="_blank" title="here">here</a>).<br/>I don't know if other shops do the same.<br/>By the way, the official name of this dog is Fulcrum Ken (犬).<br/>Calling it Fulcrum Inu (犬) is apparently incorrect.<br/>They seem to have a particular fastidiousness, like calling it Matsusaka Ushi (牛) or Akita Inu (犬).<br/><br/>On the day, I was given a wear order form, but<br/>instead of sending it back by FAX later, I collected the order right there on the spot,<br/>and on the blank space of the paper, I drew a Fulcrum dog wearing a corset around its body and handed it over...<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/fdogamx15.jpg" target="_blank"><img alt="fdogamx15.jpg" border="0" height="218" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/fdogamx15s.jpg" width="320"/></a><br/>The person from the wholesaler most knowledgeable about Campagnolo in Japan<br/>has set that Fulcrum dog I drew at that moment as their Facebook profile icon,<br/>so since they're making it a joke too, I judged it was okay to make it a joke!<br/><br/>This morning, when I stopped by the wholesaler that's the only one in Japan handling Pinarello for some business,<br/>someone from that wholesaler's staff told me about this.<br/>Apparently by the next day (July 20th) after the training session,<br/>it had become this.<br/><br/>So first, here's the introduction to the discounted wear.<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4756amx15.jpg" target="_blank"><img alt="RIMG4756amx15.jpg" border="0" height="320" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4756amx15s.jpg" width="240"/></a><br/>This is the <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Campagnolo+Indio+Jersey+cycling" target="_blank" rel="noopener sponsored" class="amz-inline">Indio Jersey</a>, a short-sleeve jersey.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4757amx15.jpg" target="_blank"><img alt="RIMG4757amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4757amx15s.jpg" width="320"/></a><br/>Like the color scheme of Campagnolo's current wheelbag,<br/>in blue/light blue, and<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4755amx15.jpg" target="_blank"><img alt="RIMG4755amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4755amx15s.jpg" width="320"/></a><br/>black/gray we've stocked.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4758amx15.jpg" target="_blank"><img alt="RIMG4758amx15.jpg" border="0" height="320" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4758amx15s.jpg" width="240"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4760amx15.jpg" target="_blank"><img alt="RIMG4760amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4760amx15s.jpg" width="320"/></a><br/>This is the Paradio Jersey, a short-sleeve jersey.<br/>At the Japanese wholesaler it's listed as New Paradio Jersey,<br/>so there must be an older model with the same name and they avoid confusion that way.<br/>The color name is black, but what's called the black part<br/>is more of a dark gray if anything.<br/>And it has the Italian tricolor running through the body section.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4761amx15.jpg" target="_blank"><img alt="RIMG4761amx15.jpg" border="0" height="320" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4761amx15s.jpg" width="240"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4762amx15.jpg" target="_blank"><img alt="RIMG4762amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4762amx15s.jpg" width="320"/></a><br/>This is also Paradio Jersey<br/>with the color name Terra di Siena/Blue, but<br/>since that seemed unclear,<br/>the Japanese wholesaler calls it Brown/Blue instead.<br/>The blue here too is more of a navy<br/>that's almost gray rather than truly blue.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4763amx15.jpg" target="_blank"><img alt="RIMG4763amx15.jpg" border="0" height="320" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4763amx15s.jpg" width="240"/></a><br/>Listed in Japan as Azote Vest,<br/>but it's essentially a gilet.<br/>The label on the bag says<br/>Azote Gilet.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4764amx15.jpg" target="_blank"><img alt="RIMG4764amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4764amx15s.jpg" width="320"/></a><br/>The front is windbreaker material,<br/>but the back is mesh for heat dissipation priority.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4765amx15.jpg" target="_blank"><img alt="RIMG4765amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4765amx15s.jpg" width="320"/></a><br/>We're selling these in size M and L mainly at special prices.<br/>I can't write the price. That's an in-store customer benefit.<br/><s>↑I didn't need to put out all of them with duplicates,<br/>but well, saying "these are all the ones we have" is easier, so whatever</s><br/>As long as the wholesaler has stock, we can order<br/>other models (※) and sizes.<br/>※Neon Jersey and Ossigeno Jersey can also be ordered.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4771amx15.jpg" target="_blank"><img alt="RIMG4771amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4771amx15s.jpg" width="320"/></a><br/>We're posting the sale price and colors at our shop.<br/>This is the Paradio Jersey from earlier, and<br/>as expected, the catalog images<br/>look better than our hangers on display.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4773amx15.jpg" target="_blank"><img alt="RIMG4773amx15.jpg" border="0" height="320" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4773amx15s.jpg" width="240"/></a><br/>Next, the Indio Jersey.<br/>Green can also be ordered if it's not sold out.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4772amx15.jpg" target="_blank"><img alt="RIMG4772amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4772amx15s.jpg" width="320"/></a><br/>This is the Neon Jersey model,<br/>which we didn't stock this time,<br/>but its blue is closer to the wheelbag color than the Indio Jersey's blue.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4774amx15.jpg" target="_blank"><img alt="RIMG4774amx15.jpg" border="0" height="320" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4774amx15s.jpg" width="240"/></a><br/>This is the Ossigeno Jersey model.<br/>The version with gray as the color name, white body and gray sleeves,<br/>is already sold out.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4775amx15.jpg" target="_blank"><img alt="RIMG4775amx15.jpg" border="0" height="320" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4775amx15s.jpg" width="240"/></a><br/>Potaggio Socks we didn't stock this time,<br/>but gray-black and solid black versions can be ordered.<br/>But...<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4777amx15.jpg" target="_blank"><img alt="RIMG4777amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4777amx15s.jpg" width="320"/></a><br/>The blue version we do have a bit of inventory of at the shop.<br/>This isn't from when I stocked some previously and<br/>wrote an article about it (→<a href="/posts/6440.html" target="_blank" title="here">here</a>),<br/>but when I later said I wanted to order more,<br/>the wholesaler suggested,<br/>"You know that story where a university coop accidentally ordered thousands of milk tea and pudding,<br/>tweeted 'Please buy them! Help us!' and it went viral and everyone came to buy them and saved the day?<br/>Why don't you write an article pretending to be that kind of situation, like 'we overbought teehee'?"<br/>They proposed I do a self-parody of an accidental overorder.<br/>I said if it's okay to write about that background, I'll buy them,<br/>so "alright, send all you have," but<br/>not very much arrived,<br/>so when I asked about it later,<br/>they said that when they did a quick sale event at Cycle Mode Tokyo,<br/>almost all of it sold, sorry about that.<br/>Since blue was sold out by the time of this sale,<br/>it seems this really was the final inventory.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4766amx15.jpg" target="_blank"><img alt="RIMG4766amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4766amx15s.jpg" width="320"/></a><br/>Next,<br/>the introduction to the special sale on Bora WTO DB (not Ultra).<br/>The regular retail price including tax is ¥388,300, but<br/>the selling price is posted in the usual place.<br/>My personal preference for non-Ultra Bora WTO DB is<br/>33 spokes, but general popularity is obviously<br/>45 spokes, so I stocked the 45 dark label.<br/>This sale runs until August 10th, but<br/>during the sale period, 33 and 60 spoke versions and the 45 bright label<br/>can also be ordered at the same price.<br/>Please consider it.<br/><br/>Also, part of the sales from this sale will,<br/>as the sale name itself suggests,<br/>go toward purchasing supplements reputed to help with bone fractures<br/>as a gift for the wholesaler staff member whose spine fractured.
+</div></div>
+    <aside class="post-guides">
+      <strong>Technical archive</strong>
+      <nav aria-label="Technical guides">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">I attended a Campagnolo training session on July 19th, and while the technical instruction on the wireless Super Record EPS was fine enough,<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4190amx15.jpg" target="_blank"><img alt="IMG_4190amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4190amx15s.jpg" width="320"/></a><br/>there was a <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Campagnolo+Hyperon+Ultra+DB+bicycle+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">Hyperon Ultra DB</a> on display.<br/>The rim height is 37mm, making it taller than the <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Campagnolo+Bora+WTO+bicycle+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">Bora WTO</a>, which is the lowest rim height at 33mm.<br/>The rear wheel has equal spoke count on both sides (not G3), and<br/>the front wheel uses a 2:1 pattern,<br/>but even then it's not G3 laced, so that's how it's differentiated.<br/>The front wheel's 2:1 pattern is XI (X-eye) lacing.<br/>Since the front wheel has only modest flange height and uses high-low flanges,<br/>I guess they figured XI lacing could work.<br/>Personally speaking, for a wheel of this character,<br/>I prefer <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Fulcrum+Speed+25+bicycle+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">Fulcrum's Speed 25</a>.<br/>The reason is it's closer to "the strongest wheel design I came up with,"<br/>but Speed 25 has a rim height of 26mm (not 25mm),<br/>and the front wheel uses 2:1 lacing only<br/>with (2+1)×8 pairs at 24H with Ж (jay) lacing,<br/>but since there's not much radial difference between the high and low flanges,<br/>the final tangent crossing of the tangent lacing<br/>is quite close to the hub.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4188amx15.jpg" target="_blank"><img alt="IMG_4188amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4188amx15s.jpg" width="320"/></a><br/>The Hyperon Ultra DB comes in tubular rim specification, but<br/>the image above is the 2WAY-FIT rim (tubeless rim) specification.<br/>The split-in spacer-like part attached to the hub axle<br/>is unrelated to the hub end as a whole, so<br/>even with it removed, the wheel functions.<br/>This spacer-like part<br/>hides the notch where the hub wrench goes, and<br/>should the bearing adjustment nut loosen by any chance,<br/>it acts as a stopper that only allows it to loosen until it hits this part.<br/>The specification of this part is the same as the Bora WTO that's been around for a while.<br/>In other words, the hub axle is also a common part with the Bora WTO.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4189amx15.jpg" target="_blank"><img alt="IMG_4189amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4189amx15s.jpg" width="320"/></a><br/>In the tubular specification, the end of the split part<br/>was changed to a shape related to the locknut dimension.<br/>I do wonder about having a split part where wheel fixing pressure is applied,<br/>but <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Chris+King+R45D+bicycle+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Chris King's R45D hub</a> has a similar structure.<br/><br/>Since the dimensions and shapes of the hub axle differ when removing these two types of ends and split parts,<br/>they are not compatible.<br/>Not just the end part, but the hub axle itself is different.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4192amx15.jpg" target="_blank"><img alt="IMG_4192amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4192amx15s.jpg" width="320"/></a><br/>↑2WAY-FIT<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4191amx15.jpg" target="_blank"><img alt="IMG_4191amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/IMG_4191amx15s.jpg" width="320"/></a><br/>↑Tubular<br/>The rim specification difference means the front wheel end is different too.<br/>Whether only the initial batch of Hyperon Ultra DB<br/>uses the same hub axle specification as the Bora WTO<br/>and subsequently both 2WAY-FIT and tubular will move to the same spec,<br/>or whether this difference is the correct state, remains unclear at this point.<br/><br/><br/>The person from the wholesaler most knowledgeable about Campagnolo in Japan<br/>recently had a spinal fracture, so they were wearing a corset.<br/>When I asked about it later, apparently they were riding an MTB,<br/>fell on their back,<br/>and happened to have something hard on their back at the time,<br/>which caused their spine to fracture.<br/><s>When asked whether the components on that MTB were Campagnolo,<br/>they didn't answer.</s><br/><br/>So this time, we're having what we're calling the Spine Explosion Sale,<br/>selling Campagnolo short-sleeve jerseys and the Bora WTO DB<br/>at special prices.<br/>Some might say it's bad taste to make merchandise out of someone else's misfortune (injury)...<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4768amx15.jpg" target="_blank"><img alt="RIMG4768amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4768amx15s.jpg" width="320"/></a><br/>This is part of an order FAX our shop sent to the wholesaler most knowledgeable about Campagnolo in Japan.<br/>For the long vowel marks in Campagnolo,<br/>we draw them as a wiggly snake,<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4767amx15.jpg" target="_blank"><img alt="RIMG4767amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4767amx15s.jpg" width="320"/></a><br/>and among the order items, Campagnolo parts are<br/>listed below a fluffy speech bubble with Campagnolo written inside,<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4770amx15.jpg" target="_blank"><img alt="RIMG4770amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4770amx15s.jpg" width="320"/></a><br/>and Fulcrum parts are listed<br/>below a long-bodied dog with three hind legs and Fulcrum written on its body.<br/>We follow this requested format every time (→<a href="/posts/2956.html" target="_blank" title="here">here</a>).<br/>I don't know if other shops do the same.<br/>By the way, the official name of this dog is Fulcrum Ken (犬).<br/>Calling it Fulcrum Inu (犬) is apparently incorrect.<br/>They seem to have a particular fastidiousness, like calling it Matsusaka Ushi (牛) or Akita Inu (犬).<br/><br/>On the day, I was given a wear order form, but<br/>instead of sending it back by FAX later, I collected the order right there on the spot,<br/>and on the blank space of the paper, I drew a Fulcrum dog wearing a corset around its body and handed it over...<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/fdogamx15.jpg" target="_blank"><img alt="fdogamx15.jpg" border="0" height="218" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/fdogamx15s.jpg" width="320"/></a><br/>The person from the wholesaler most knowledgeable about Campagnolo in Japan<br/>has set that Fulcrum dog I drew at that moment as their Facebook profile icon,<br/>so since they're making it a joke too, I judged it was okay to make it a joke!<br/><br/>This morning, when I stopped by the wholesaler that's the only one in Japan handling Pinarello for some business,<br/>someone from that wholesaler's staff told me about this.<br/>Apparently by the next day (July 20th) after the training session,<br/>it had become this.<br/><br/>So first, here's the introduction to the discounted wear.<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4756amx15.jpg" target="_blank"><img alt="RIMG4756amx15.jpg" border="0" height="320" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4756amx15s.jpg" width="240"/></a><br/>This is the <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Campagnolo+Indio+Jersey+cycling" target="_blank" rel="noopener sponsored" class="amz-inline">Indio Jersey</a>, a short-sleeve jersey.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4757amx15.jpg" target="_blank"><img alt="RIMG4757amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4757amx15s.jpg" width="320"/></a><br/>Like the color scheme of Campagnolo's current wheelbag,<br/>in blue/light blue, and<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4755amx15.jpg" target="_blank"><img alt="RIMG4755amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4755amx15s.jpg" width="320"/></a><br/>black/gray we've stocked.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4758amx15.jpg" target="_blank"><img alt="RIMG4758amx15.jpg" border="0" height="320" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4758amx15s.jpg" width="240"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4760amx15.jpg" target="_blank"><img alt="RIMG4760amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4760amx15s.jpg" width="320"/></a><br/>This is the Paradio Jersey, a short-sleeve jersey.<br/>At the Japanese wholesaler it's listed as New Paradio Jersey,<br/>so there must be an older model with the same name and they avoid confusion that way.<br/>The color name is black, but what's called the black part<br/>is more of a dark gray if anything.<br/>And it has the Italian tricolor running through the body section.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4761amx15.jpg" target="_blank"><img alt="RIMG4761amx15.jpg" border="0" height="320" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4761amx15s.jpg" width="240"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4762amx15.jpg" target="_blank"><img alt="RIMG4762amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4762amx15s.jpg" width="320"/></a><br/>This is also Paradio Jersey<br/>with the color name Terra di Siena/Blue, but<br/>since that seemed unclear,<br/>the Japanese wholesaler calls it Brown/Blue instead.<br/>The blue here too is more of a navy<br/>that's almost gray rather than truly blue.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4763amx15.jpg" target="_blank"><img alt="RIMG4763amx15.jpg" border="0" height="320" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4763amx15s.jpg" width="240"/></a><br/>Listed in Japan as Azote Vest,<br/>but it's essentially a gilet.<br/>The label on the bag says<br/>Azote Gilet.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4764amx15.jpg" target="_blank"><img alt="RIMG4764amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4764amx15s.jpg" width="320"/></a><br/>The front is windbreaker material,<br/>but the back is mesh for heat dissipation priority.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4765amx15.jpg" target="_blank"><img alt="RIMG4765amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4765amx15s.jpg" width="320"/></a><br/>We're selling these in size M and L mainly at special prices.<br/>I can't write the price. That's an in-store customer benefit.<br/><s>↑I didn't need to put out all of them with duplicates,<br/>but well, saying "these are all the ones we have" is easier, so whatever</s><br/>As long as the wholesaler has stock, we can order<br/>other models (※) and sizes.<br/>※Neon Jersey and Ossigeno Jersey can also be ordered.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4771amx15.jpg" target="_blank"><img alt="RIMG4771amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4771amx15s.jpg" width="320"/></a><br/>We're posting the sale price and colors at our shop.<br/>This is the Paradio Jersey from earlier, and<br/>as expected, the catalog images<br/>look better than our hangers on display.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4773amx15.jpg" target="_blank"><img alt="RIMG4773amx15.jpg" border="0" height="320" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4773amx15s.jpg" width="240"/></a><br/>Next, the Indio Jersey.<br/>Green can also be ordered if it's not sold out.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4772amx15.jpg" target="_blank"><img alt="RIMG4772amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4772amx15s.jpg" width="320"/></a><br/>This is the Neon Jersey model,<br/>which we didn't stock this time,<br/>but its blue is closer to the wheelbag color than the Indio Jersey's blue.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4774amx15.jpg" target="_blank"><img alt="RIMG4774amx15.jpg" border="0" height="320" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4774amx15s.jpg" width="240"/></a><br/>This is the Ossigeno Jersey model.<br/>The version with gray as the color name, white body and gray sleeves,<br/>is already sold out.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4775amx15.jpg" target="_blank"><img alt="RIMG4775amx15.jpg" border="0" height="320" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4775amx15s.jpg" width="240"/></a><br/>Potaggio Socks we didn't stock this time,<br/>but gray-black and solid black versions can be ordered.<br/>But...<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4777amx15.jpg" target="_blank"><img alt="RIMG4777amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4777amx15s.jpg" width="320"/></a><br/>The blue version we do have a bit of inventory of at the shop.<br/>This isn't from when I stocked some previously and<br/>wrote an article about it (→<a href="/posts/6440.html" target="_blank" title="here">here</a>),<br/>but when I later said I wanted to order more,<br/>the wholesaler suggested,<br/>"You know that story where a university coop accidentally ordered thousands of milk tea and pudding,<br/>tweeted 'Please buy them! Help us!' and it went viral and everyone came to buy them and saved the day?<br/>Why don't you write an article pretending to be that kind of situation, like 'we overbought teehee'?"<br/>They proposed I do a self-parody of an accidental overorder.<br/>I said if it's okay to write about that background, I'll buy them,<br/>so "alright, send all you have," but<br/>not very much arrived,<br/>so when I asked about it later,<br/>they said that when they did a quick sale event at Cycle Mode Tokyo,<br/>almost all of it sold, sorry about that.<br/>Since blue was sold out by the time of this sale,<br/>it seems this really was the final inventory.<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4766amx15.jpg" target="_blank"><img alt="RIMG4766amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4766amx15s.jpg" width="320"/></a><br/>Next,<br/>the introduction to the special sale on Bora WTO DB (not Ultra).<br/>The regular retail price including tax is ¥388,300, but<br/>the selling price is posted in the usual place.<br/>My personal preference for non-Ultra Bora WTO DB is<br/>33 spokes, but general popularity is obviously<br/>45 spokes, so I stocked the 45 dark label.<br/>This sale runs until August 10th, but<br/>during the sale period, 33 and 60 spoke versions and the 45 bright label<br/>can also be ordered at the same price.<br/>Please consider it.<br/><br/>Also, part of the sales from this sale will,<br/>as the sale name itself suggests,<br/>go toward purchasing supplements reputed to help with bone fractures<br/>as a gift for the wholesaler staff member whose spine fractured.
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">Products Mentioned in This Article</p>
       <ul>

@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
-    <p>Bicycle Workshop — English Edition</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/index.html">
+        <span class="brand-title">Nomu Lab Diary</span>
+        <span class="brand-subtitle">Bicycle Workshop Archive</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/index.html">Archive</a>
+      <a href="/guides/wheel-building.html">Wheel Guide</a>
+      <a href="/glossary.html">Glossary</a>
+      <a href="/about.html">About</a>
+    </nav>
     <div class="lang-toggle"><span class="lang-btn active">EN</span><a class="lang-btn" href="/zh/posts/7196.html">繁中</a></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/index.html">← All posts</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>Corima 47mm Aero and Lightweight Disc Wheels</h1>
     <p class="post-meta">July 25, 2024</p>
+    <div class="post-body"><div class="entrytext">A customer dropped off front and rear wheels that appear to be intended for use on a time trial bike.<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0125amx15x.jpg" target="_blank"><img alt="RIMG0125amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0125amx15xs.jpg" width="320"/></a><br/>The front wheel is a Corima 47mm high rim wheel,<br/>the "47mm."<br/>Tubular tires are already mounted,<br/>and since it uses internal nipples, I can't true it.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0105amx15x.jpg" target="_blank"><img alt="RIMG0105amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0105amx15xs.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0106amx15x.jpg" target="_blank"><img alt="RIMG0106amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0106amx15xs.jpg" width="320"/></a><br/>If the hub bearings are bad, replace them,<br/>and if not bad, they want me to grease them anyway.<br/>I didn't really feel it was necessary<br/>(adding grease just makes rotation heavier),<br/>but I applied something that wouldn't affect rotation too much.<br/><br/>I was planning to just check the hub bearings on the front wheel,<br/>but<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0126amx15x.jpg" target="_blank"><img alt="RIMG0126amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0126amx15xs.jpg" width="320"/></a><br/>the <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Panaracer+Agilist+tubular+tire" target="_blank" rel="noopener sponsored" class="amz-inline">Panaracer Agilist tubular tire</a><br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0127amx15x.jpg" target="_blank"><img alt="RIMG0127amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0127amx15xs.jpg" width="320"/></a><br/>doesn't appear to be properly mounted.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0129amx15x.jpg" target="_blank"><img alt="RIMG0129amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0129amx15xs.jpg" width="320"/></a><br/>It came off pretty easily.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0131amx15x.jpg" target="_blank"><img alt="RIMG0131amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0131amx15xs.jpg" width="320"/></a><br/>There are rim cement marks on the rim side, but<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0130amx15x.jpg" target="_blank"><img alt="RIMG0130amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0130amx15xs.jpg" width="320"/></a><br/>near the valve hole, no rim cement was applied at all.<br/>Some people do this with rim tape too,<br/>it's a life hack (laugh) for making tires easier to remove.<br/>Certainly, around where the valve passes through,<br/>the tire won't slide sideways off the rim,<br/>but it will move loosely at one point.<br/>I sometimes do something similar where I prioritize easy removal—applying cement only to the rim (not the tire) on the rear wheel—<br/>but that's completely different from not applying cement or tape in a certain section at all.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0132amx15x.jpg" target="_blank"><img alt="RIMG0132amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0132amx15xs.jpg" width="320"/></a><br/>The label directly below the valve shows the maker name (Panaracer),<br/>with no rim cement attached.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0133amx15x.jpg" target="_blank"><img alt="RIMG0133amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0133amx15xs.jpg" width="320"/></a><br/>On the opposite side is the model name label (Agilist),<br/>and from that side, the tire wasn't properly mounted.<br/>Since there's no rim cement on the entire tire base,<br/>it's just one coat applied only to the rim (avoiding the valve hole area).<br/>The tire mounting history on this wheel is probably no more than three times.<br/>The customer is not the original owner of these wheels.<br/>And after acquiring these front and rear wheels,<br/><s>because the current condition seemed untrustworthy,</s> they sent them to me before use.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0137amx15x.jpg" target="_blank"><img alt="RIMG0137amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0137amx15xs.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0138amx15x.jpg" target="_blank"><img alt="RIMG0138amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0138amx15xs.jpg" width="320"/></a><br/>I thought, "If the tire were properly mounted, I wouldn't need to remove it just to check.<br/>But if I'm removing it anyway, I should true it."<br/>There was enough lateral runout to justify that, so I trued it.<br/>The image above is after the work, but there was no center offset originally.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0134amx15x.jpg" target="_blank"><img alt="RIMG0134amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0134amx15xs.jpg" width="320"/></a><br/>The tire shows almost no signs of use,<br/>and even has the sprue from the injection mold still on it—<br/>not just no center line.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0135amx15x.jpg" target="_blank"><img alt="RIMG0135amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0135amx15xs.jpg" width="320"/></a><br/>The tread pattern is a center slick with crosshatch siping on the sides,<br/>and since there are two "彡" marks in the siping,<br/>the general rotation direction of the tire would be<br/>→→→toward the right side of the image→→→,<br/>but<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0136amx15x.jpg" target="_blank"><img alt="RIMG0136amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0136amx15xs.jpg" width="320"/></a><br/>the manufacturer's specified direction is the opposite,<br/>so I follow that.<br/><br/>After this, I applied rim cement to the rim side—just one coat, but quite thick.<br/>I also applied rim cement to the tire side.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0139amx15x.jpg" target="_blank"><img alt="RIMG0139amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0139amx15xs.jpg" width="320"/></a><br/>Next, the rear wheel.<br/>It's a lightweight disc wheel.<br/>The freebody is a <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+Star+Ratchet+freebody+hub" target="_blank" rel="noopener sponsored" class="amz-inline">DT Star Ratchet</a> type for Campagnolo,<br/>but the customer wants it changed to Shimano 11-speed (12-speed compatible too).<br/><br/>The freebody isn't in the customer's possession,<br/>so I ordered it through the shop.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0141amx15x.jpg" target="_blank"><img alt="RIMG0141amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0141amx15xs.jpg" width="320"/></a><br/>The customer had already noticed,<br/>but the valve is quite tilted.<br/>The force stretching the tire after inserting the valve<br/>wasn't equal left and right.<br/>The reason I'm being cautious is that the serial number<br/>is completely visible.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0140amx15x.jpg" target="_blank"><img alt="RIMG0140amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0140amx15xs.jpg" width="320"/></a><br/>This tire also came off easily.<br/>The rim cement has turned dark brown and hardened completely,<br/>so several years have passed,<br/>but since the tire is an Agilist, it shouldn't be that old.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0142amx15x.jpg" target="_blank"><img alt="RIMG0142amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0142amx15xs.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0144amx15x.jpg" target="_blank"><img alt="RIMG0144amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0144amx15xs.jpg" width="320"/></a><br/>Like the front wheel, near the valve hole,<br/>no rim cement was applied,<br/>but the extent is ridiculous.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0145amx15x.jpg" target="_blank"><img alt="RIMG0145amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0145amx15xs.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0146amx15x.jpg" target="_blank"><img alt="RIMG0146amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0146amx15xs.jpg" width="320"/></a><br/>When I used my usual center gauge,<br/>it registered the rim as extremely offset to the left,<br/>but<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0147amx15x.jpg" target="_blank"><img alt="RIMG0147amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0147amx15xs.jpg" width="320"/></a><br/>this is because the gauge contacts the lens-shaped bulge of the disc section,<br/>and the bulge differs left and right.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0148amx15x.jpg" target="_blank"><img alt="RIMG0148amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0148amx15xs.jpg" width="320"/></a><br/>So I used a <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Park+Tool+center+gauge+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">Park Tool center gauge</a>,<br/>which has slightly lower measurement precision<br/>but can measure only on the outermost edge of the rim,<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0149amx15x.jpg" target="_blank"><img alt="RIMG0149amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0149amx15xs.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0150amx15x.jpg" target="_blank"><img alt="RIMG0150amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0150amx15xs.jpg" width="320"/></a><br/>↑and got these results.<br/>Naturally, disc wheels and batten wheels cannot be trued or centered.<br/><br/>DT calls the freebody + right dropout end kit a "Rotor Kit,"<br/>and the right end width differs completely between<br/>Shimano 10-speed (still current as the 11-speed standard for MTB), Shimano 11-speed, and Campagnolo.<br/><br/>When changing the rotor kit from Shimano 10-speed to 11-speed,<br/>the hub's over-locknut dimension increases only on the right end,<br/>so the lateral rim position shifts left compared to before.<br/>When Shimano components moved from 7900 to 9000 series,<br/>many non-Shimano 10-speed complete wheels converted to 11-speed (→<a href="/posts/1071.html" target="_blank" title="here</a>),<br/>but Trek Japan claimed at the time that<br/>you should NOT correct the rim offset to center when 11-speed converting<br/>Bontrager wheels that use DT Star Ratchet hubs.<br/>I somewhat understand why they'd say that.<br/><br/>If all the lousy shops that can't build wheels properly<br/>across the country simultaneously attempted centering adjustments for 11-speed,<br/>complaints would likely arise.<br/>Bontrager's complete wheels at that time were rim-brake only<br/>(the need to specify this shows how times have changed),<br/>all-aero, all-light, equal spoke counts both sides—basically 40-spoke equivalent,<br/>meaning anti-freewheel-side radial lacing.<br/>To shift the rim right by loosening the anti-freewheel side is easiest,<br/>but doing so lowers already-low tension even further,<br/>and spokes become so loose you can wiggle them with your fingers.<br/>Then you have to tighten the freewheel side,<br/>but the freewheel side is already at maximum tension,<br/>and the lateral movement per nipple rotation is smaller than the anti-freewheel side,<br/>so correcting the same amount of center offset requires<br/>more nipple rotation than the anti-freewheel side.<br/>Thus, Bontrager's rear wheels of that era were<br/>very inconvenient for re-centering.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0153amx15x.jpg" target="_blank"><img alt="RIMG0153amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0153amx15xs.jpg" width="320"/></a><br/>This rear wheel uses a Campagnolo-spec freebody,<br/>but the customer is not the original owner,<br/>so they don't have the Shimano 11-speed freebody.<br/>However, I suspect the original spec of this rear wheel<br/>was a Shimano freebody.<br/>Before I write my reasoning...<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0155amx15x.jpg" target="_blank"><img alt="RIMG0155amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0155amx15xs.jpg" width="320"/></a><br/>Recently, since many right ends are thru-axle types,<br/>they're sold separately rather than as rotor kits—<br/>the rotor (freebody part) and right end<br/>as separate components.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0151amx15x.jpg" target="_blank"><img alt="RIMG0151amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0151amx15xs.jpg" width="320"/></a><br/>Reason 1: The bamboo-shoot spring orientation on the freebody was wrong.<br/><br/>If this freebody had been original,<br/>this couldn't have happened.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0152amx15x.jpg" target="_blank"><img alt="RIMG0152amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0152amx15xs.jpg" width="320"/></a><br/>The hub body side orientation was correct.<br/>The correct orientation is "the side facing the ratchet parts has the smaller diameter."<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0156amx15x.jpg" target="_blank"><img alt="RIMG0156amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0156amx15xs.jpg" width="320"/></a><br/>Reason 2: The Star Ratchet's proprietary grease<br/>was completely absent.<br/><br/>The image above is after I reapplied it,<br/>but the original ratchet parts had no trace of proprietary grease.<br/>Lower-grade ratchet parts have no lightening,<br/>but mid-range and above have U-shaped cross-section lightening.<br/>The proprietary grease remains pink in those lightened hollow spaces,<br/>but there was none, and even if the grease was dirty,<br/>you can identify it by its characteristic gray color, which wasn't there either.<br/><br/>The only way this happens is if the freebody was changed,<br/>cleaned with parts cleaner to remove the grease,<br/>and then no proprietary grease was reapplied.<br/><br/>Therefore, this couldn't originally have been a Campagnolo-spec freebody.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0157amx15x.jpg" target="_blank"><img alt="RIMG0157amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0157amx15xs.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0160amx15x.jpg" target="_blank"><img alt="RIMG0160amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0160amx15xs.jpg" width="320"/></a><br/>After swapping to the Shimano 11-speed rotor kit,<br/>I checked with the center gauge again.<br/>The rim still trends left-offset,<br/>and the amount of offset appears even greater.<br/>There's runout too, so depending on the section,<br/>it might look like the offset decreased, but<br/>it looks about the same at best.<br/><br/>The Shimano 10-speed right dropout end is the shortest,<br/>so using that would move the rim relatively rightward.<br/>Even with that end, the over-locknut dimension is of course above 130mm.<br/>After swapping to Shimano 11-speed rotor kit,<br/>it's around 132mm, which is the bare minimum for fitting<br/>130mm-spec frames.<br/>Most frame makers don't accept any amount below 130mm<br/>but allow up to 132mm on the plus side.<br/>Tni Evolution Lite hubs change left-right spacers with freebody changes,<br/>so the freewheel offset varies,<br/>but actually the over-locknut dimension stays constant at around 131mm.<br/>Rear hubs exceeding 130mm are actually fairly common.<br/><br/>If only the right end were Shimano 10-speed,<br/>the rim would move closer to the wheel center,<br/>but with a Campagnolo freebody,<br/>the right end face would be nearly flush with the sprocket lockring,<br/>causing the rear wheel not to rotate, so<br/>I have no choice but to accept the current condition.<br/><s>Well, there are workarounds with machining,</s><br/>The reason I didn't use a rotor kit with Shimano 11-speed freebody + Shimano 10-speed right end<br/>is because it would become "wheel-specific derailleur adjustment,"<br/>but someone with a TT frame and a lightweight disc wheel—<br/>would they really swap rear wheels around?<br/>If not, wouldn't "wheel-specific shift position" be okay?<br/>I thought that, but since the customer needs it this coming weekend for a duathlon,<br/>I figured someone with a triathlon bike would use non-disc rear wheels sometimes,<br/>so I went with the manufacturer's standard rotor kit configuration.<br/><br/>While I'm at it, I'll note that the DT Star Ratchet hub's<br/>low gear engagement position—the sprocket lateral position—is<br/>quite unconventional, further out than Shimano's standard.<br/>However, DT hand-built wheels and wheels made by companies like<br/>Rovelaki, Bontrager, and GIANT who have DT manufacture their hubs<br/>work together fine, so for certain individuals it's not a problem.<br/>Pairing with Fulcrum or Mavic gets a bit complicated.<br/><br/>From 10-speed to 11-speed, and 11-speed to 12-speed,<br/>shift adjustment becomes increasingly sensitive.<br/>Shimano electronic component shift adjustment position settings follow<br/>2n+1 steps (initial position plus/minus n steps)<br/>where at 9070 series 11-speed this is n=12 for 25 steps<br/>(initial position with ±12 steps each).<br/>If this step count stayed the same but sprocket count increased,<br/>the adjustment range per step would become coarser.<br/>So current 12-speed components allow n=18 for 37-step adjustment.<br/>The 6770 (10-speed) is oddly n=15 for 31 steps,<br/>allowing finer adjustment than the later 9070 due to fewer sprockets,<br/>but don't worry about it.<br/>Also, R9150 (11-speed) is n=16 for 32 steps (not 33)<br/>which is more than 9070.<br/><br/>Since there are two factors—sprocket count and adjustment step count—<br/>I can't say definitively, but when swapping from<br/>a DT hub rear wheel to most non-DT rear wheels,<br/>Shimano electronic components may require<br/>adjustment around 3 steps.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0162amx15x.jpg" target="_blank"><img alt="RIMG0162amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0162amx15xs.jpg" width="320"/></a><br/>I installed this rear wheel on my personal frame.<br/>I thought about securing it with a quick release<br/>if it was a loose fit, but the over-locknut dimension's plus tolerance is so large<br/>it fits snugly on the frame.<br/>In the image above, the freebody is on the left end,<br/>so I've installed the rear wheel backwards from normal.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0161amx15x.jpg" target="_blank"><img alt="RIMG0161amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0161amx15xs.jpg" width="320"/></a><br/>Looking around the BB area,<br/>I can see the rim is offset downward (in the image)<br/>relative to the gap between the left and right chainstays.<br/>The center gauge showed the rim shifted left,<br/>so this aligns.<br/><br/>I'll now reinstall the wheel flipped the other way,<br/>but factors like the left and right chainstay shapes<br/>potentially being different or frame runout aren't relevant.<br/>If the wheel center is correct,<br/>flipping and reinstalling the wheel<br/>(or rather, with the flip already done),<br/>the visual result should be the same.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0163amx15x.jpg" target="_blank"><img alt="RIMG0163amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0163amx15xs.jpg" width="320"/></a><br/>I installed it with the wheel's left end<br/>aligned to the frame's left end.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0164amx15x.jpg" target="_blank"><img alt="RIMG0164amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0164amx15xs.jpg" width="320"/></a><br/>The rim position has moved more to the left (upward in the image)<br/>compared to before.<br/>I lack the rigor of shooting from the same angle<br/>(I should have aligned the valve hole position)<br/>but even with a more tapered chainstay shape,<br/>there's enough clearance that the tubular tire won't rub.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0165amx15x.jpg" target="_blank"><img alt="RIMG0165amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0165amx15xs.jpg" width="320"/></a><br/>I remounted the tire so the valve sits straight.<br/>There are examples of lightweight rear wheels with DT freewheel<br/>that achieve near-perfect centering (→<a href="/posts/1061.html" target="_blank" title="here</a>),<br/>but naturally those details are kept private.<br/>In that example, the final state happens to be<br/>"wheel-specific shift position."
+</div></div>
+    <aside class="post-guides">
+      <strong>Technical archive</strong>
+      <nav aria-label="Technical guides">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">A customer dropped off front and rear wheels that appear to be intended for use on a time trial bike.<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0125amx15x.jpg" target="_blank"><img alt="RIMG0125amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0125amx15xs.jpg" width="320"/></a><br/>The front wheel is a Corima 47mm high rim wheel,<br/>the "47mm."<br/>Tubular tires are already mounted,<br/>and since it uses internal nipples, I can't true it.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0105amx15x.jpg" target="_blank"><img alt="RIMG0105amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0105amx15xs.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0106amx15x.jpg" target="_blank"><img alt="RIMG0106amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0106amx15xs.jpg" width="320"/></a><br/>If the hub bearings are bad, replace them,<br/>and if not bad, they want me to grease them anyway.<br/>I didn't really feel it was necessary<br/>(adding grease just makes rotation heavier),<br/>but I applied something that wouldn't affect rotation too much.<br/><br/>I was planning to just check the hub bearings on the front wheel,<br/>but<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0126amx15x.jpg" target="_blank"><img alt="RIMG0126amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0126amx15xs.jpg" width="320"/></a><br/>the <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Panaracer+Agilist+tubular+tire" target="_blank" rel="noopener sponsored" class="amz-inline">Panaracer Agilist tubular tire</a><br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0127amx15x.jpg" target="_blank"><img alt="RIMG0127amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0127amx15xs.jpg" width="320"/></a><br/>doesn't appear to be properly mounted.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0129amx15x.jpg" target="_blank"><img alt="RIMG0129amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0129amx15xs.jpg" width="320"/></a><br/>It came off pretty easily.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0131amx15x.jpg" target="_blank"><img alt="RIMG0131amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0131amx15xs.jpg" width="320"/></a><br/>There are rim cement marks on the rim side, but<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0130amx15x.jpg" target="_blank"><img alt="RIMG0130amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0130amx15xs.jpg" width="320"/></a><br/>near the valve hole, no rim cement was applied at all.<br/>Some people do this with rim tape too,<br/>it's a life hack (laugh) for making tires easier to remove.<br/>Certainly, around where the valve passes through,<br/>the tire won't slide sideways off the rim,<br/>but it will move loosely at one point.<br/>I sometimes do something similar where I prioritize easy removal—applying cement only to the rim (not the tire) on the rear wheel—<br/>but that's completely different from not applying cement or tape in a certain section at all.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0132amx15x.jpg" target="_blank"><img alt="RIMG0132amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0132amx15xs.jpg" width="320"/></a><br/>The label directly below the valve shows the maker name (Panaracer),<br/>with no rim cement attached.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0133amx15x.jpg" target="_blank"><img alt="RIMG0133amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0133amx15xs.jpg" width="320"/></a><br/>On the opposite side is the model name label (Agilist),<br/>and from that side, the tire wasn't properly mounted.<br/>Since there's no rim cement on the entire tire base,<br/>it's just one coat applied only to the rim (avoiding the valve hole area).<br/>The tire mounting history on this wheel is probably no more than three times.<br/>The customer is not the original owner of these wheels.<br/>And after acquiring these front and rear wheels,<br/><s>because the current condition seemed untrustworthy,</s> they sent them to me before use.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0137amx15x.jpg" target="_blank"><img alt="RIMG0137amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0137amx15xs.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0138amx15x.jpg" target="_blank"><img alt="RIMG0138amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0138amx15xs.jpg" width="320"/></a><br/>I thought, "If the tire were properly mounted, I wouldn't need to remove it just to check.<br/>But if I'm removing it anyway, I should true it."<br/>There was enough lateral runout to justify that, so I trued it.<br/>The image above is after the work, but there was no center offset originally.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0134amx15x.jpg" target="_blank"><img alt="RIMG0134amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0134amx15xs.jpg" width="320"/></a><br/>The tire shows almost no signs of use,<br/>and even has the sprue from the injection mold still on it—<br/>not just no center line.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0135amx15x.jpg" target="_blank"><img alt="RIMG0135amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0135amx15xs.jpg" width="320"/></a><br/>The tread pattern is a center slick with crosshatch siping on the sides,<br/>and since there are two "彡" marks in the siping,<br/>the general rotation direction of the tire would be<br/>→→→toward the right side of the image→→→,<br/>but<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0136amx15x.jpg" target="_blank"><img alt="RIMG0136amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0136amx15xs.jpg" width="320"/></a><br/>the manufacturer's specified direction is the opposite,<br/>so I follow that.<br/><br/>After this, I applied rim cement to the rim side—just one coat, but quite thick.<br/>I also applied rim cement to the tire side.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0139amx15x.jpg" target="_blank"><img alt="RIMG0139amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0139amx15xs.jpg" width="320"/></a><br/>Next, the rear wheel.<br/>It's a lightweight disc wheel.<br/>The freebody is a <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+Star+Ratchet+freebody+hub" target="_blank" rel="noopener sponsored" class="amz-inline">DT Star Ratchet</a> type for Campagnolo,<br/>but the customer wants it changed to Shimano 11-speed (12-speed compatible too).<br/><br/>The freebody isn't in the customer's possession,<br/>so I ordered it through the shop.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0141amx15x.jpg" target="_blank"><img alt="RIMG0141amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0141amx15xs.jpg" width="320"/></a><br/>The customer had already noticed,<br/>but the valve is quite tilted.<br/>The force stretching the tire after inserting the valve<br/>wasn't equal left and right.<br/>The reason I'm being cautious is that the serial number<br/>is completely visible.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0140amx15x.jpg" target="_blank"><img alt="RIMG0140amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0140amx15xs.jpg" width="320"/></a><br/>This tire also came off easily.<br/>The rim cement has turned dark brown and hardened completely,<br/>so several years have passed,<br/>but since the tire is an Agilist, it shouldn't be that old.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0142amx15x.jpg" target="_blank"><img alt="RIMG0142amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0142amx15xs.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0144amx15x.jpg" target="_blank"><img alt="RIMG0144amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0144amx15xs.jpg" width="320"/></a><br/>Like the front wheel, near the valve hole,<br/>no rim cement was applied,<br/>but the extent is ridiculous.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0145amx15x.jpg" target="_blank"><img alt="RIMG0145amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0145amx15xs.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0146amx15x.jpg" target="_blank"><img alt="RIMG0146amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0146amx15xs.jpg" width="320"/></a><br/>When I used my usual center gauge,<br/>it registered the rim as extremely offset to the left,<br/>but<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0147amx15x.jpg" target="_blank"><img alt="RIMG0147amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0147amx15xs.jpg" width="320"/></a><br/>this is because the gauge contacts the lens-shaped bulge of the disc section,<br/>and the bulge differs left and right.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0148amx15x.jpg" target="_blank"><img alt="RIMG0148amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0148amx15xs.jpg" width="320"/></a><br/>So I used a <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Park+Tool+center+gauge+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">Park Tool center gauge</a>,<br/>which has slightly lower measurement precision<br/>but can measure only on the outermost edge of the rim,<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0149amx15x.jpg" target="_blank"><img alt="RIMG0149amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0149amx15xs.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0150amx15x.jpg" target="_blank"><img alt="RIMG0150amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0150amx15xs.jpg" width="320"/></a><br/>↑and got these results.<br/>Naturally, disc wheels and batten wheels cannot be trued or centered.<br/><br/>DT calls the freebody + right dropout end kit a "Rotor Kit,"<br/>and the right end width differs completely between<br/>Shimano 10-speed (still current as the 11-speed standard for MTB), Shimano 11-speed, and Campagnolo.<br/><br/>When changing the rotor kit from Shimano 10-speed to 11-speed,<br/>the hub's over-locknut dimension increases only on the right end,<br/>so the lateral rim position shifts left compared to before.<br/>When Shimano components moved from 7900 to 9000 series,<br/>many non-Shimano 10-speed complete wheels converted to 11-speed (→<a href="/posts/1071.html" target="_blank" title="here</a>),<br/>but Trek Japan claimed at the time that<br/>you should NOT correct the rim offset to center when 11-speed converting<br/>Bontrager wheels that use DT Star Ratchet hubs.<br/>I somewhat understand why they'd say that.<br/><br/>If all the lousy shops that can't build wheels properly<br/>across the country simultaneously attempted centering adjustments for 11-speed,<br/>complaints would likely arise.<br/>Bontrager's complete wheels at that time were rim-brake only<br/>(the need to specify this shows how times have changed),<br/>all-aero, all-light, equal spoke counts both sides—basically 40-spoke equivalent,<br/>meaning anti-freewheel-side radial lacing.<br/>To shift the rim right by loosening the anti-freewheel side is easiest,<br/>but doing so lowers already-low tension even further,<br/>and spokes become so loose you can wiggle them with your fingers.<br/>Then you have to tighten the freewheel side,<br/>but the freewheel side is already at maximum tension,<br/>and the lateral movement per nipple rotation is smaller than the anti-freewheel side,<br/>so correcting the same amount of center offset requires<br/>more nipple rotation than the anti-freewheel side.<br/>Thus, Bontrager's rear wheels of that era were<br/>very inconvenient for re-centering.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0153amx15x.jpg" target="_blank"><img alt="RIMG0153amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0153amx15xs.jpg" width="320"/></a><br/>This rear wheel uses a Campagnolo-spec freebody,<br/>but the customer is not the original owner,<br/>so they don't have the Shimano 11-speed freebody.<br/>However, I suspect the original spec of this rear wheel<br/>was a Shimano freebody.<br/>Before I write my reasoning...<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0155amx15x.jpg" target="_blank"><img alt="RIMG0155amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0155amx15xs.jpg" width="320"/></a><br/>Recently, since many right ends are thru-axle types,<br/>they're sold separately rather than as rotor kits—<br/>the rotor (freebody part) and right end<br/>as separate components.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0151amx15x.jpg" target="_blank"><img alt="RIMG0151amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0151amx15xs.jpg" width="320"/></a><br/>Reason 1: The bamboo-shoot spring orientation on the freebody was wrong.<br/><br/>If this freebody had been original,<br/>this couldn't have happened.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0152amx15x.jpg" target="_blank"><img alt="RIMG0152amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0152amx15xs.jpg" width="320"/></a><br/>The hub body side orientation was correct.<br/>The correct orientation is "the side facing the ratchet parts has the smaller diameter."<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0156amx15x.jpg" target="_blank"><img alt="RIMG0156amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0156amx15xs.jpg" width="320"/></a><br/>Reason 2: The Star Ratchet's proprietary grease<br/>was completely absent.<br/><br/>The image above is after I reapplied it,<br/>but the original ratchet parts had no trace of proprietary grease.<br/>Lower-grade ratchet parts have no lightening,<br/>but mid-range and above have U-shaped cross-section lightening.<br/>The proprietary grease remains pink in those lightened hollow spaces,<br/>but there was none, and even if the grease was dirty,<br/>you can identify it by its characteristic gray color, which wasn't there either.<br/><br/>The only way this happens is if the freebody was changed,<br/>cleaned with parts cleaner to remove the grease,<br/>and then no proprietary grease was reapplied.<br/><br/>Therefore, this couldn't originally have been a Campagnolo-spec freebody.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0157amx15x.jpg" target="_blank"><img alt="RIMG0157amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0157amx15xs.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0160amx15x.jpg" target="_blank"><img alt="RIMG0160amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0160amx15xs.jpg" width="320"/></a><br/>After swapping to the Shimano 11-speed rotor kit,<br/>I checked with the center gauge again.<br/>The rim still trends left-offset,<br/>and the amount of offset appears even greater.<br/>There's runout too, so depending on the section,<br/>it might look like the offset decreased, but<br/>it looks about the same at best.<br/><br/>The Shimano 10-speed right dropout end is the shortest,<br/>so using that would move the rim relatively rightward.<br/>Even with that end, the over-locknut dimension is of course above 130mm.<br/>After swapping to Shimano 11-speed rotor kit,<br/>it's around 132mm, which is the bare minimum for fitting<br/>130mm-spec frames.<br/>Most frame makers don't accept any amount below 130mm<br/>but allow up to 132mm on the plus side.<br/>Tni Evolution Lite hubs change left-right spacers with freebody changes,<br/>so the freewheel offset varies,<br/>but actually the over-locknut dimension stays constant at around 131mm.<br/>Rear hubs exceeding 130mm are actually fairly common.<br/><br/>If only the right end were Shimano 10-speed,<br/>the rim would move closer to the wheel center,<br/>but with a Campagnolo freebody,<br/>the right end face would be nearly flush with the sprocket lockring,<br/>causing the rear wheel not to rotate, so<br/>I have no choice but to accept the current condition.<br/><s>Well, there are workarounds with machining,</s><br/>The reason I didn't use a rotor kit with Shimano 11-speed freebody + Shimano 10-speed right end<br/>is because it would become "wheel-specific derailleur adjustment,"<br/>but someone with a TT frame and a lightweight disc wheel—<br/>would they really swap rear wheels around?<br/>If not, wouldn't "wheel-specific shift position" be okay?<br/>I thought that, but since the customer needs it this coming weekend for a duathlon,<br/>I figured someone with a triathlon bike would use non-disc rear wheels sometimes,<br/>so I went with the manufacturer's standard rotor kit configuration.<br/><br/>While I'm at it, I'll note that the DT Star Ratchet hub's<br/>low gear engagement position—the sprocket lateral position—is<br/>quite unconventional, further out than Shimano's standard.<br/>However, DT hand-built wheels and wheels made by companies like<br/>Rovelaki, Bontrager, and GIANT who have DT manufacture their hubs<br/>work together fine, so for certain individuals it's not a problem.<br/>Pairing with Fulcrum or Mavic gets a bit complicated.<br/><br/>From 10-speed to 11-speed, and 11-speed to 12-speed,<br/>shift adjustment becomes increasingly sensitive.<br/>Shimano electronic component shift adjustment position settings follow<br/>2n+1 steps (initial position plus/minus n steps)<br/>where at 9070 series 11-speed this is n=12 for 25 steps<br/>(initial position with ±12 steps each).<br/>If this step count stayed the same but sprocket count increased,<br/>the adjustment range per step would become coarser.<br/>So current 12-speed components allow n=18 for 37-step adjustment.<br/>The 6770 (10-speed) is oddly n=15 for 31 steps,<br/>allowing finer adjustment than the later 9070 due to fewer sprockets,<br/>but don't worry about it.<br/>Also, R9150 (11-speed) is n=16 for 32 steps (not 33)<br/>which is more than 9070.<br/><br/>Since there are two factors—sprocket count and adjustment step count—<br/>I can't say definitively, but when swapping from<br/>a DT hub rear wheel to most non-DT rear wheels,<br/>Shimano electronic components may require<br/>adjustment around 3 steps.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0162amx15x.jpg" target="_blank"><img alt="RIMG0162amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0162amx15xs.jpg" width="320"/></a><br/>I installed this rear wheel on my personal frame.<br/>I thought about securing it with a quick release<br/>if it was a loose fit, but the over-locknut dimension's plus tolerance is so large<br/>it fits snugly on the frame.<br/>In the image above, the freebody is on the left end,<br/>so I've installed the rear wheel backwards from normal.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0161amx15x.jpg" target="_blank"><img alt="RIMG0161amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0161amx15xs.jpg" width="320"/></a><br/>Looking around the BB area,<br/>I can see the rim is offset downward (in the image)<br/>relative to the gap between the left and right chainstays.<br/>The center gauge showed the rim shifted left,<br/>so this aligns.<br/><br/>I'll now reinstall the wheel flipped the other way,<br/>but factors like the left and right chainstay shapes<br/>potentially being different or frame runout aren't relevant.<br/>If the wheel center is correct,<br/>flipping and reinstalling the wheel<br/>(or rather, with the flip already done),<br/>the visual result should be the same.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0163amx15x.jpg" target="_blank"><img alt="RIMG0163amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0163amx15xs.jpg" width="320"/></a><br/>I installed it with the wheel's left end<br/>aligned to the frame's left end.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0164amx15x.jpg" target="_blank"><img alt="RIMG0164amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0164amx15xs.jpg" width="320"/></a><br/>The rim position has moved more to the left (upward in the image)<br/>compared to before.<br/>I lack the rigor of shooting from the same angle<br/>(I should have aligned the valve hole position)<br/>but even with a more tapered chainstay shape,<br/>there's enough clearance that the tubular tire won't rub.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0165amx15x.jpg" target="_blank"><img alt="RIMG0165amx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG0165amx15xs.jpg" width="320"/></a><br/>I remounted the tire so the valve sits straight.<br/>There are examples of lightweight rear wheels with DT freewheel<br/>that achieve near-perfect centering (→<a href="/posts/1061.html" target="_blank" title="here</a>),<br/>but naturally those details are kept private.<br/>In that example, the final state happens to be<br/>"wheel-specific shift position."
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">Products Mentioned in This Article</p>
       <ul>

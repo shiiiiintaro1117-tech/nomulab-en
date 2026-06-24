@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/7377.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>去伊勢神宮參拜了</h1>
     <p class="post-meta">January 06, 2025</p>
+    <div class="post-body"><div class="entrytext">前天，1月4日傍晚，某位客人（姑且算是）跟我說<br/>「去年正月在伊勢神宮買的破魔矢要還回去<br/>要買新的破魔矢，所以<br/>今天25時（5日凌晨1時）<br/>在內外環狀線也就是479號線的<br/>『綠1』十字路口的羅森便利店集合」<br/>我就這樣被叫出門了。<br/><br/>破魔矢是護身符加上<br/>畫有十二生肖的繪馬的破魔矢，<br/>去年的上面貼著辰年的繪馬。<br/>這次是把它換成貼著巳（蛇）年繪馬的<br/>今年版本的自助式單車之旅。<br/>在綠1十字路口集合是因為<br/>它與國道163號線相交，<br/>我們決定從大阪出發翻越的山峰<br/>就是同時也是163號線的清瀧峠。<br/>如果一直沿著163號線跑的話會跑到三重縣津那邊，<br/>所以必須從某個地方改走松阪→伊勢的路線，<br/>同行者說他過去跑過的自行車長距離耐久賽<br/>「神戶～伊勢神宮」的路線還存在<br/>他的<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Garmin+1040+cycling+computer" target="_blank" rel="noopener sponsored" class="amz-inline">Garmin 1040</a>裡面，<br/>所以我們大致上就按那個路線跑。<br/>凌晨1點集合要去伊勢——這樣說的話<br/>當然不會有人聚集，最後參加者就只有2人。<br/>回程則是用輪行（拆解自行車裝進袋子）運回。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/ise010502amxx15x.jpg" target="_blank"><img alt="ise010502amxx15x.jpg" border="0" height="144" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/ise010502amxx15xs.jpg" width="320"/></a><br/>↑這是Sram <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=SRAM+Karoo+bike+computer" target="_blank" rel="noopener sponsored" class="amz-inline">Karoo</a>的騎乘記錄。<br/>路線上那兩個紫色的圓圈<br/>是我設定圈速的位置，<br/>但其實都是誤操作。<br/>目標點和<br/>實際記錄終點有點差異，是因為<br/>目標點設在內宮，<br/>實際終點是在外宮的停車場，<br/>兩者相隔幾公里。<br/><br/>最初出現的那個山峰就是清瀧峠。<br/>50公里處左右有3個<br/>像鋸齒一樣的上下起伏，<br/>那是因為163號線的北大河原繞線（北大河原隧道）<br/>禁止自行車通行，所以要繞路，<br/>但這個路線就是「剛才爬升的標高馬上就在下坡時白白浪費掉」<br/>這樣的反覆。<br/>雖然我說是繞路，但繞線興建之前<br/>也只有這條路可以走，<br/>所以對自行車來說根本不是繞路。<br/>之後有段長長的緩爬是長野峠，<br/>從大阪過來的話是很緩很長的坡道，<br/>但反方向會是相當陡峭的坡度。<br/><br/>在繞過北大河原繞線的地方<br/>時間是凌晨2點半左右，<br/>長野峠隧道出口時<br/>已經是上午5點左右，<br/>據Karoo記錄，這段期間的氣溫<br/>是從-2℃到-6℃，<br/>我騎的是<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Niner+gravel+bike" target="_blank" rel="noopener sponsored" class="amz-inline">Niner</a>（美國自行車品牌）牌的砂石車，<br/>雖然只裝了一個水瓶架，<br/>但平常都用工具瓶填著，<br/>所以我把輪行用品全塞進了<br/>裝著<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Hydro+Flask+water+bottle" target="_blank" rel="noopener sponsored" class="amz-inline">Hydro Flask</a>（保溫水瓶品牌）水袋的背包裡，<br/>結果吸管和飲嘴都凍住了，<br/>一直到上午8點完全天亮、在松阪附近<br/>我才喝到水袋裡的水。<br/>同行者的水瓶用的是<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Polar+Bottle+insulated+water+bottle" target="_blank" rel="noopener sponsored" class="amz-inline">Polar Bottle</a>（保溫水瓶品牌）<br/>保溫瓶，但瓶蓋不是隔熱材質，<br/>所以裡面的水凍住了，幾乎喝不了。<br/>路上我們停了大約3次便利店<br/>買溫飲料。<br/><br/>衣著也很輕便，我通常<br/>整個冬天都只靠腳尖套鞋套度過，<br/>但這天冷氣穿透了鞋套。<br/>手套是冬用的，但右手的無名指和小指<br/>一度失去了知覺。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG0826amxx15x.jpg" target="_blank"><img alt="RIMG0826amxx15x.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG0826amxx15xs.jpg" width="320"/></a><br/>在伊賀上野的Family Mart<br/>凌晨4點42分買了脖圍，<br/>沒有它的話我可能真的會凍死。<br/><br/>路肩的雜草被車燈照到時<br/>閃閃發光，<br/>霜凍成了冰沙狀。<br/>在長野峠的爬升路段，沒有地熱的橋面<br/>薄薄地結著冰，在上面慢慢騎的時候<br/>能感受到沙沙的觸感，所以我在下坡時<br/>沒有高速衝下去，而是慢慢下，<br/>因為這是條陌生的路，<br/>但結果橋幾乎沒有，杞人憂天了。<br/><br/>根據Karoo的記錄<br/>總爬升高度是1129公尺，<br/>總下降高度是1140公尺。<br/>起點靠近淀川，伊勢靠近海邊，<br/>兩個地方都差不多是海拔0公尺。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG0824amxx15x.jpg" target="_blank"><img alt="RIMG0824amxx15x.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG0824amxx15xs.jpg" width="320"/></a><br/>↑這是從飲む研（日本補給品品牌）Lab到伊勢神宮<br/>按照Karoo導航的<br/>路線高度圖。<br/>預期爬升高度是1796公尺，<br/>長野峠的最高點超過500公尺，<br/>但那是因為它導航的是舊道，<br/>這次我們在長野峠走的是<br/>允許自行車通行的繞線（隧道），Karoo實測的最高點是366公尺。<br/>除此之外還經過了好幾條舊道迴避隧道，<br/>每次都重新修正這個路線圖，<br/>一開始認定的爬升區間有16個，<br/>實際上變成了13個。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/ise010503amxx15x.jpg" target="_blank"><img alt="ise010503amxx15x.jpg" border="0" height="145" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/ise010503amxx15xs.jpg" width="320"/></a><br/>在長野峠之後，<br/>我們改而按照同行者的Garmin路線走，<br/>而不是Karoo的導航，<br/>路上又新增了1個爬升認定區間，<br/>所以最後總共是14個。<br/>路線高度圖下面的藍色部分<br/>就是爬升區間。<br/>Garmin 1040也有爬升區間提示功能，<br/>但Karoo認定的爬升<br/>有時候Garmin認測不出來，<br/>反過來完全沒有，<br/>所以兩者的判定標準似乎有點不同。<br/>不過，在兩個都認定的爬升路段中，<br/>如果我們互相確認剩餘距離和剩餘高度，<br/>剩餘距離差不多一樣，<br/>但Garmin的剩餘高度<br/>會略微偏高。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/ise010501amxx15x.jpg" target="_blank"><img alt="ise010501amxx15x.jpg" border="0" height="107" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/ise010501amxx15xs.jpg" width="320"/></a><br/>這是Polar心率計的騎乘記錄。<br/>Karoo和Polar顯示的速度都是基於GPS，<br/>所以進入長隧道時<br/>速度會變慢，騎乘距離也不更新。<br/><br/>不過行為有差異。<br/>Polar會在失去衛星捕捉的地點和<br/>重新捕捉衛星的地點之間<br/>用直線連接，然後事後<br/>把那段距離加進去做「帳簿平衡」。<br/>所以重新捕捉後，<br/>每次顯示數據更新時<br/>騎乘距離會一下子增加幾十公尺到200公尺左右，<br/>這大約相當於隧道長度。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/ise010504amxx15x.jpg" target="_blank"><img alt="ise010504amxx15x.jpg" border="0" height="110" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/ise010504amxx15xs.jpg" width="320"/></a><br/>↑新長野隧道附近的放大圖。<br/>衛星信號喪失到重新捕捉之間變成直線，<br/>這段直線會加進騎乘距離裡。<br/>隧道出口的記錄軌跡有點彎曲，<br/>是因為我停下來換前燈<br/>「蝴蝶模式」啟動了。<br/><br/>蝴蝶模式是我自己取的名字，<br/>指的是——騎行時GPS軌跡是條漂亮的直線，<br/>但靜止時間長的話，<br/>明明應該是完全靜止的位置<br/>GPS軌跡卻像蝴蝶飛來飛去一樣<br/>亂七八糟地記錄下來的現象。<br/><br/><br/>這個故事跟現在的行程無關，<br/>但去年11月我夜間去犬鳴山時，<br/>在十字路口的斑馬線旁，<br/>有兩個大學生（大概）把機車停在旁邊，<br/>各自拿著手機燈和鑰匙圈上的小手電筒<br/>在斑馬線前的路上照來照去，<br/>看起來在找什麼東西，<br/>我就問「掉東西了嗎？要不要我一起幫你找？」<br/><br/>那時候，我把<br/>裝著Karoo和Polar心率計的自行車<br/>靠在人行道柵欄上（完全靜止），<br/>打著最短運作時間1.5小時、公稱1300流明的<br/>USE Axis MK10手電筒（→<a href="/zh/posts/7307.html" target="_blank" title="這裡">這裡</a>），<br/>我把運作時間設成高檔2小時/低檔6小時，<br/>我用的是高檔，<br/>所以亮度應該超過1100流明，<br/>從十字路口往回找了大約100公尺<br/>幫他們找失物<s>（USE的置入性廣告）</s>。<br/><br/>失物是全罩安全帽的帽檐<br/>上下調節的支點零件，<br/>可以用硬幣當螺絲來拆裝。<br/>他說信號等紅燈時帽檐搖晃，<br/>才發現掉了。<br/>看看帽子上剩下的那個零件，<br/>是白色和銀色的、500日圓硬幣大小的圓形物品，<br/>如果掉的不是黑色的話，<br/>在十字路口往回100公尺內掉的東西<br/>應該不可能找不到才對，<br/>但怎麼找都找不著，<br/>所以我們判斷應該是在從車站過來的路上<br/>某個地方掉的，<br/>不是在十字路口周邊。<br/>他說要不要再往回找一點，<br/>就在那時候，其中一個學生<br/>說了句「踏板磨損很浪費，算了」<br/>嚇了我一跳。<br/>我問他是不是自行車騎手，<br/>他說他不是，但朋友是自行車騎手，<br/>所以他知道踏板這個用語。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/inunaki001amxx15x.jpg" target="_blank"><img alt="inunaki001amxx15x.jpg" border="0" height="108" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/inunaki001amxx15xs.jpg" width="320"/></a><br/>↑就是那時候的Polar記錄，還有<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/inunaki002amxx15x.jpg" target="_blank"><img alt="inunaki002amxx15x.jpg" border="0" height="143" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/inunaki002amxx15xs.jpg" width="320"/></a><br/>↑Karoo的記錄。<br/>Karoo的蝴蝶飛舞軌跡<br/>沒有Polar那麼亂。<br/>我沒有設定自動開始/停止，<br/>所以等紅燈或在自動販賣機停一下<br/>不會停止計測，這個靜止期間<br/>Karoo和Polar都沒有停止計測。<br/><br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/ise010505amxx15x.jpg" target="_blank"><img alt="ise010505amxx15x.jpg" border="0" height="140" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/ise010505amxx15xs.jpg" width="320"/></a><br/>回到伊勢參拜的話題。<br/>Polar標示為Shinnagano Tunnel，<br/>Karoo則寫著「長野峠繞線」。<br/>衛星信號喪失和重新捕捉的兩點<br/>也是用直線連接，但這條直線<br/>不會加進騎乘距離裡。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/ise010506amxx15x.jpg" target="_blank"><img alt="ise010506amxx15x.jpg" border="0" height="204" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/ise010506amxx15xs.jpg" width="320"/></a><br/>↑放大得很厲害，但重新捕捉後<br/>只有非常輕微的蝴蝶模式。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/ise010507amxx15x.jpg" target="_blank"><img alt="ise010507amxx15x.jpg" border="0" height="127" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/ise010507amxx15xs.jpg" width="320"/></a><br/>↑放大的Polar蝴蝶模式<br/>重新捕捉後直線的連接點<br/>在隧道出口後的脇道上，<br/>當然我沒有進那條路。<br/><br/>因為這個規格差異，如果經過許多隧道，<br/>Polar和Karoo的騎乘距離測量值會有差異。<br/>這次的騎乘距離是Karoo 138.8公里，<br/>Polar 140.50公里。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/IMG_8388amxx15x.jpg" target="_blank"><img alt="IMG_8388amxx15x.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/IMG_8388amxx15xs.jpg" width="320"/></a><br/>在伊勢神宮，即使不在禁止拍照區，<br/>我也幾乎沒有拍照，<br/>加上同行者、他的自行車或<br/>路人的臉經常會入鏡，<br/>幾乎沒有能用的圖片，<br/>裁切或打馬賽克太麻煩了，<br/>所以我就只用能用的圖片。<br/><br/>我先去外宮參拜，再去內宮，<br/>在內宮前面的「御可垣橫丁」<br/>的Snoopy Village 伊勢<br/>替喜歡Snoopy的朋友<br/>主要買了伊勢店限定商品當土產。<br/><br/>還有，<s>在觀光客向的</s>伊勢烏冬店<br/>吃了伊勢烏冬，<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/IMG_8392amxx15x.jpg" target="_blank"><img alt="IMG_8392amxx15x.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/IMG_8392amxx15xs.jpg" width="320"/></a><br/>在赤福本店吃了<br/>放在盤子上的赤福2個和茶的套餐，<br/>這裡的赤福雖然應該和盒裝土產是同一種，<br/>但年糕的硬度完全不同。<br/>感覺味道也略有差異。<br/>赤福保存期限很短，從製造日開始只有2天（※），<br/>但第1天和第2天的硬度就已經差很多，<br/>所以在製造後可能只是數小時內的狀態<br/>就是這種食感，讓我很驚訝。<br/><br/>※嚴格來說製造日起<br/>夏季2天、冬季3天，官方網站寫著<br/>「從2024年10月5日開始改為3天」，<br/>所以本文刊登時是3天。<br/><br/><br/>完全巧合，或者是Garmin存留的<br/>自行車長距離耐久賽路線<br/>本來就特意納入的關係，<br/>前往伊勢神宮的路上有「變婆餅」本店，<br/>我買了招牌的變婆餅（因為店內飲食關閉中，所以外帶）<br/><s>當作騎乘補給食</s><br/>第一次吃，非常美味。<br/>我本來想買500日圓的赤飯便當，<br/>但想說回程要輪行，行李會增加，<br/>就沒買。現在還是有點後悔呢。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">前天，1月4日傍晚，某位客人（姑且算是）跟我說<br/>「去年正月在伊勢神宮買的破魔矢要還回去<br/>要買新的破魔矢，所以<br/>今天25時（5日凌晨1時）<br/>在內外環狀線也就是479號線的<br/>『綠1』十字路口的羅森便利店集合」<br/>我就這樣被叫出門了。<br/><br/>破魔矢是護身符加上<br/>畫有十二生肖的繪馬的破魔矢，<br/>去年的上面貼著辰年的繪馬。<br/>這次是把它換成貼著巳（蛇）年繪馬的<br/>今年版本的自助式單車之旅。<br/>在綠1十字路口集合是因為<br/>它與國道163號線相交，<br/>我們決定從大阪出發翻越的山峰<br/>就是同時也是163號線的清瀧峠。<br/>如果一直沿著163號線跑的話會跑到三重縣津那邊，<br/>所以必須從某個地方改走松阪→伊勢的路線，<br/>同行者說他過去跑過的自行車長距離耐久賽<br/>「神戶～伊勢神宮」的路線還存在<br/>他的<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Garmin+1040+cycling+computer" target="_blank" rel="noopener sponsored" class="amz-inline">Garmin 1040</a>裡面，<br/>所以我們大致上就按那個路線跑。<br/>凌晨1點集合要去伊勢——這樣說的話<br/>當然不會有人聚集，最後參加者就只有2人。<br/>回程則是用輪行（拆解自行車裝進袋子）運回。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/ise010502amxx15x.jpg" target="_blank"><img alt="ise010502amxx15x.jpg" border="0" height="144" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/ise010502amxx15xs.jpg" width="320"/></a><br/>↑這是Sram <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=SRAM+Karoo+bike+computer" target="_blank" rel="noopener sponsored" class="amz-inline">Karoo</a>的騎乘記錄。<br/>路線上那兩個紫色的圓圈<br/>是我設定圈速的位置，<br/>但其實都是誤操作。<br/>目標點和<br/>實際記錄終點有點差異，是因為<br/>目標點設在內宮，<br/>實際終點是在外宮的停車場，<br/>兩者相隔幾公里。<br/><br/>最初出現的那個山峰就是清瀧峠。<br/>50公里處左右有3個<br/>像鋸齒一樣的上下起伏，<br/>那是因為163號線的北大河原繞線（北大河原隧道）<br/>禁止自行車通行，所以要繞路，<br/>但這個路線就是「剛才爬升的標高馬上就在下坡時白白浪費掉」<br/>這樣的反覆。<br/>雖然我說是繞路，但繞線興建之前<br/>也只有這條路可以走，<br/>所以對自行車來說根本不是繞路。<br/>之後有段長長的緩爬是長野峠，<br/>從大阪過來的話是很緩很長的坡道，<br/>但反方向會是相當陡峭的坡度。<br/><br/>在繞過北大河原繞線的地方<br/>時間是凌晨2點半左右，<br/>長野峠隧道出口時<br/>已經是上午5點左右，<br/>據Karoo記錄，這段期間的氣溫<br/>是從-2℃到-6℃，<br/>我騎的是<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Niner+gravel+bike" target="_blank" rel="noopener sponsored" class="amz-inline">Niner</a>（美國自行車品牌）牌的砂石車，<br/>雖然只裝了一個水瓶架，<br/>但平常都用工具瓶填著，<br/>所以我把輪行用品全塞進了<br/>裝著<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Hydro+Flask+water+bottle" target="_blank" rel="noopener sponsored" class="amz-inline">Hydro Flask</a>（保溫水瓶品牌）水袋的背包裡，<br/>結果吸管和飲嘴都凍住了，<br/>一直到上午8點完全天亮、在松阪附近<br/>我才喝到水袋裡的水。<br/>同行者的水瓶用的是<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Polar+Bottle+insulated+water+bottle" target="_blank" rel="noopener sponsored" class="amz-inline">Polar Bottle</a>（保溫水瓶品牌）<br/>保溫瓶，但瓶蓋不是隔熱材質，<br/>所以裡面的水凍住了，幾乎喝不了。<br/>路上我們停了大約3次便利店<br/>買溫飲料。<br/><br/>衣著也很輕便，我通常<br/>整個冬天都只靠腳尖套鞋套度過，<br/>但這天冷氣穿透了鞋套。<br/>手套是冬用的，但右手的無名指和小指<br/>一度失去了知覺。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG0826amxx15x.jpg" target="_blank"><img alt="RIMG0826amxx15x.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG0826amxx15xs.jpg" width="320"/></a><br/>在伊賀上野的Family Mart<br/>凌晨4點42分買了脖圍，<br/>沒有它的話我可能真的會凍死。<br/><br/>路肩的雜草被車燈照到時<br/>閃閃發光，<br/>霜凍成了冰沙狀。<br/>在長野峠的爬升路段，沒有地熱的橋面<br/>薄薄地結著冰，在上面慢慢騎的時候<br/>能感受到沙沙的觸感，所以我在下坡時<br/>沒有高速衝下去，而是慢慢下，<br/>因為這是條陌生的路，<br/>但結果橋幾乎沒有，杞人憂天了。<br/><br/>根據Karoo的記錄<br/>總爬升高度是1129公尺，<br/>總下降高度是1140公尺。<br/>起點靠近淀川，伊勢靠近海邊，<br/>兩個地方都差不多是海拔0公尺。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG0824amxx15x.jpg" target="_blank"><img alt="RIMG0824amxx15x.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/RIMG0824amxx15xs.jpg" width="320"/></a><br/>↑這是從飲む研（日本補給品品牌）Lab到伊勢神宮<br/>按照Karoo導航的<br/>路線高度圖。<br/>預期爬升高度是1796公尺，<br/>長野峠的最高點超過500公尺，<br/>但那是因為它導航的是舊道，<br/>這次我們在長野峠走的是<br/>允許自行車通行的繞線（隧道），Karoo實測的最高點是366公尺。<br/>除此之外還經過了好幾條舊道迴避隧道，<br/>每次都重新修正這個路線圖，<br/>一開始認定的爬升區間有16個，<br/>實際上變成了13個。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/ise010503amxx15x.jpg" target="_blank"><img alt="ise010503amxx15x.jpg" border="0" height="145" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/ise010503amxx15xs.jpg" width="320"/></a><br/>在長野峠之後，<br/>我們改而按照同行者的Garmin路線走，<br/>而不是Karoo的導航，<br/>路上又新增了1個爬升認定區間，<br/>所以最後總共是14個。<br/>路線高度圖下面的藍色部分<br/>就是爬升區間。<br/>Garmin 1040也有爬升區間提示功能，<br/>但Karoo認定的爬升<br/>有時候Garmin認測不出來，<br/>反過來完全沒有，<br/>所以兩者的判定標準似乎有點不同。<br/>不過，在兩個都認定的爬升路段中，<br/>如果我們互相確認剩餘距離和剩餘高度，<br/>剩餘距離差不多一樣，<br/>但Garmin的剩餘高度<br/>會略微偏高。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/ise010501amxx15x.jpg" target="_blank"><img alt="ise010501amxx15x.jpg" border="0" height="107" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/ise010501amxx15xs.jpg" width="320"/></a><br/>這是Polar心率計的騎乘記錄。<br/>Karoo和Polar顯示的速度都是基於GPS，<br/>所以進入長隧道時<br/>速度會變慢，騎乘距離也不更新。<br/><br/>不過行為有差異。<br/>Polar會在失去衛星捕捉的地點和<br/>重新捕捉衛星的地點之間<br/>用直線連接，然後事後<br/>把那段距離加進去做「帳簿平衡」。<br/>所以重新捕捉後，<br/>每次顯示數據更新時<br/>騎乘距離會一下子增加幾十公尺到200公尺左右，<br/>這大約相當於隧道長度。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/ise010504amxx15x.jpg" target="_blank"><img alt="ise010504amxx15x.jpg" border="0" height="110" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/ise010504amxx15xs.jpg" width="320"/></a><br/>↑新長野隧道附近的放大圖。<br/>衛星信號喪失到重新捕捉之間變成直線，<br/>這段直線會加進騎乘距離裡。<br/>隧道出口的記錄軌跡有點彎曲，<br/>是因為我停下來換前燈<br/>「蝴蝶模式」啟動了。<br/><br/>蝴蝶模式是我自己取的名字，<br/>指的是——騎行時GPS軌跡是條漂亮的直線，<br/>但靜止時間長的話，<br/>明明應該是完全靜止的位置<br/>GPS軌跡卻像蝴蝶飛來飛去一樣<br/>亂七八糟地記錄下來的現象。<br/><br/><br/>這個故事跟現在的行程無關，<br/>但去年11月我夜間去犬鳴山時，<br/>在十字路口的斑馬線旁，<br/>有兩個大學生（大概）把機車停在旁邊，<br/>各自拿著手機燈和鑰匙圈上的小手電筒<br/>在斑馬線前的路上照來照去，<br/>看起來在找什麼東西，<br/>我就問「掉東西了嗎？要不要我一起幫你找？」<br/><br/>那時候，我把<br/>裝著Karoo和Polar心率計的自行車<br/>靠在人行道柵欄上（完全靜止），<br/>打著最短運作時間1.5小時、公稱1300流明的<br/>USE Axis MK10手電筒（→<a href="/zh/posts/7307.html" target="_blank" title="這裡">這裡</a>），<br/>我把運作時間設成高檔2小時/低檔6小時，<br/>我用的是高檔，<br/>所以亮度應該超過1100流明，<br/>從十字路口往回找了大約100公尺<br/>幫他們找失物<s>（USE的置入性廣告）</s>。<br/><br/>失物是全罩安全帽的帽檐<br/>上下調節的支點零件，<br/>可以用硬幣當螺絲來拆裝。<br/>他說信號等紅燈時帽檐搖晃，<br/>才發現掉了。<br/>看看帽子上剩下的那個零件，<br/>是白色和銀色的、500日圓硬幣大小的圓形物品，<br/>如果掉的不是黑色的話，<br/>在十字路口往回100公尺內掉的東西<br/>應該不可能找不到才對，<br/>但怎麼找都找不著，<br/>所以我們判斷應該是在從車站過來的路上<br/>某個地方掉的，<br/>不是在十字路口周邊。<br/>他說要不要再往回找一點，<br/>就在那時候，其中一個學生<br/>說了句「踏板磨損很浪費，算了」<br/>嚇了我一跳。<br/>我問他是不是自行車騎手，<br/>他說他不是，但朋友是自行車騎手，<br/>所以他知道踏板這個用語。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/inunaki001amxx15x.jpg" target="_blank"><img alt="inunaki001amxx15x.jpg" border="0" height="108" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/inunaki001amxx15xs.jpg" width="320"/></a><br/>↑就是那時候的Polar記錄，還有<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/inunaki002amxx15x.jpg" target="_blank"><img alt="inunaki002amxx15x.jpg" border="0" height="143" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/inunaki002amxx15xs.jpg" width="320"/></a><br/>↑Karoo的記錄。<br/>Karoo的蝴蝶飛舞軌跡<br/>沒有Polar那麼亂。<br/>我沒有設定自動開始/停止，<br/>所以等紅燈或在自動販賣機停一下<br/>不會停止計測，這個靜止期間<br/>Karoo和Polar都沒有停止計測。<br/><br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/ise010505amxx15x.jpg" target="_blank"><img alt="ise010505amxx15x.jpg" border="0" height="140" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/ise010505amxx15xs.jpg" width="320"/></a><br/>回到伊勢參拜的話題。<br/>Polar標示為Shinnagano Tunnel，<br/>Karoo則寫著「長野峠繞線」。<br/>衛星信號喪失和重新捕捉的兩點<br/>也是用直線連接，但這條直線<br/>不會加進騎乘距離裡。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/ise010506amxx15x.jpg" target="_blank"><img alt="ise010506amxx15x.jpg" border="0" height="204" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/ise010506amxx15xs.jpg" width="320"/></a><br/>↑放大得很厲害，但重新捕捉後<br/>只有非常輕微的蝴蝶模式。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/ise010507amxx15x.jpg" target="_blank"><img alt="ise010507amxx15x.jpg" border="0" height="127" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/ise010507amxx15xs.jpg" width="320"/></a><br/>↑放大的Polar蝴蝶模式<br/>重新捕捉後直線的連接點<br/>在隧道出口後的脇道上，<br/>當然我沒有進那條路。<br/><br/>因為這個規格差異，如果經過許多隧道，<br/>Polar和Karoo的騎乘距離測量值會有差異。<br/>這次的騎乘距離是Karoo 138.8公里，<br/>Polar 140.50公里。<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/IMG_8388amxx15x.jpg" target="_blank"><img alt="IMG_8388amxx15x.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/IMG_8388amxx15xs.jpg" width="320"/></a><br/>在伊勢神宮，即使不在禁止拍照區，<br/>我也幾乎沒有拍照，<br/>加上同行者、他的自行車或<br/>路人的臉經常會入鏡，<br/>幾乎沒有能用的圖片，<br/>裁切或打馬賽克太麻煩了，<br/>所以我就只用能用的圖片。<br/><br/>我先去外宮參拜，再去內宮，<br/>在內宮前面的「御可垣橫丁」<br/>的Snoopy Village 伊勢<br/>替喜歡Snoopy的朋友<br/>主要買了伊勢店限定商品當土產。<br/><br/>還有，<s>在觀光客向的</s>伊勢烏冬店<br/>吃了伊勢烏冬，<br/><br/><a href="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/IMG_8392amxx15x.jpg" target="_blank"><img alt="IMG_8392amxx15x.jpg" border="0" height="240" src="https://blog-imgs-160-origin.fc2.com/p/a/s/pass13/IMG_8392amxx15xs.jpg" width="320"/></a><br/>在赤福本店吃了<br/>放在盤子上的赤福2個和茶的套餐，<br/>這裡的赤福雖然應該和盒裝土產是同一種，<br/>但年糕的硬度完全不同。<br/>感覺味道也略有差異。<br/>赤福保存期限很短，從製造日開始只有2天（※），<br/>但第1天和第2天的硬度就已經差很多，<br/>所以在製造後可能只是數小時內的狀態<br/>就是這種食感，讓我很驚訝。<br/><br/>※嚴格來說製造日起<br/>夏季2天、冬季3天，官方網站寫著<br/>「從2024年10月5日開始改為3天」，<br/>所以本文刊登時是3天。<br/><br/><br/>完全巧合，或者是Garmin存留的<br/>自行車長距離耐久賽路線<br/>本來就特意納入的關係，<br/>前往伊勢神宮的路上有「變婆餅」本店，<br/>我買了招牌的變婆餅（因為店內飲食關閉中，所以外帶）<br/><s>當作騎乘補給食</s><br/>第一次吃，非常美味。<br/>我本來想買500日圓的赤飯便當，<br/>但想說回程要輪行，行李會增加，<br/>就沒買。現在還是有點後悔呢。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

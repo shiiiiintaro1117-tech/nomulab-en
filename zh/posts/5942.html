@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/5942.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>組裝Racing Zero後輪</h1>
     <p class="post-meta">October 31, 2021</p>
+    <div class="post-body"><div class="entrytext">今天也是輪組（以下略）。<br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05507msn4.jpg" target="_blank"><img alt="DSC05507msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05507msn4s.jpg" width="320"/></a><br/>前陣子Racing Zero前輪的另一半，後輪要開始組了。<br/><br/>根據推測，應該沒錯的話，這件事的發展流程是：<br/>・第一位車主在拍賣網站上賣了轂心和輻條<br/>・第二位車主買下了它們，<br/>　然後入手了前輪輞，試著組裝出像樣的輪組<br/>・第三位車主（帶來我們店裡的客人）買下了這個輪組<br/>就是這樣的感覺。<br/><br/>第二位車主對自己組裝的前輪<br/>說「跳動在１mm以內」，但根據說法，<br/>即使只看橫向跳動也超過了那個範圍，<br/>縱向跳動和中心偏移都達不到輪組的標準。<br/>他在說明中提到「尼普爾有點小傷痕」之類的，<br/>但也提到被鉗子夾過的痕跡有點多，<br/>這真的是只有賣家才能說出來的那種呢言。不過撇開這個不談，<br/>對於鋁合金輻條的刻印，<br/>說明中寫著「在『乃村實驗室日記』這個部落格中有詳細說明」，<br/>但我寫的只不過是「如果刻印相同，即使顏色不同長度也絕對一樣」<br/>這種程度的內容，並沒有詳盡說明<br/>哪個刻印對應哪個年代的哪個部位之類的事。<br/>不過，無論第三位車主是誰，<br/>帶來我們店裡的機率看起來非常高應該是沒錯的。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05508msn4.jpg" target="_blank"><img alt="DSC05508msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05508msn4s.jpg" width="320"/></a><br/>轂身是碳纖維的，右邊法蘭是大直徑化之前的版本。<br/>初代Racing Zero是無防漏胎WO輞・<br/>領帶輻條・後輞孔均勻間距・紅色鋁合金轂身，<br/>初代Racing Zero 2WAY-FIT是和Shamal Ultra一樣的直輻條・<br/>後輞孔有休止位相・碳纖維轂身，<br/>這兩種在同一個年份並行銷售過。<br/>之後，非防漏輞的Racing Zero也<br/>採用了和2WAY-FIT一樣的轂心（上圖就是），<br/>以及有休止位相的後輞。<br/><br/>我想說的是，既然轂身是碳纖維的，<br/>就無法用均勻間距孔的輞來組裝。<br/>雖然輻條長度不同也是問題，<br/>但更重要的是，如果輞孔的位相不符合<br/>後輪轂心所設計的位相，<br/>來自轂法蘭的切口和輻條會相互干涉。<br/>有過用鋼輻條忽視這點而組裝的例子，但・・・（→<a href="/zh/posts/5598.html" target="_blank" title="這裡">這裡</a>）。<br/><br/>還有另一個困難的問題。<br/>不是領帶輵條的Racing Zero（含2WAY-FIT），<br/>基本上沒有紅色陽極氧化輞。<br/>至少正規款是沒有的。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05501msn4.jpg" target="_blank"><img alt="DSC05501msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05501msn4s.jpg" width="320"/></a><br/>這個後輞是我們店裡進貨的。<br/>是限定款的替換零件，<br/>進貨需要一點小技巧。<br/>國外線上購物等管道應該是拿不到的，<br/>所以第二位車主應該不是先只買前輞，<br/>而是根本就買不到後輞吧。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05513msn4.jpg" target="_blank"><img alt="DSC05513msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05513msn4s.jpg" width="320"/></a><br/>為了保險起見，先臨時組了飛輪側。<br/>感覺有一根輻條短了點，不過現在先不管。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05514msn4.jpg" target="_blank"><img alt="DSC05514msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05514msn4s.jpg" width="320"/></a><br/>啊，這樣是組得起來的。我明白了。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05521msn4.jpg" target="_blank"><img alt="DSC05521msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05521msn4s.jpg" width="320"/></a><br/>輞上配附了尼普爾，<br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05522msn4.jpg" target="_blank"><img alt="DSC05522msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05522msn4s.jpg" width="320"/></a><br/>拆開時留下了工具的痕跡，<br/>不過沒有被鉗子夾住把手的跡象，<br/>還是可以重複使用的程度。<br/>這個相對乾淨也是「最初拆輪組的人和<br/>組裝前輪樣品的人是不同的人」的根據。<br/>非常抱歉讓素人誤會了Fulcrum的尼普爾<br/>都是要用鉗子轉動的。<br/><br/>後輪的尼普爾我也改用了有防鬆尼龍的款式。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05510msn4.jpg" target="_blank"><img alt="DSC05510msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05510msn4s.jpg" width="320"/></a><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05511msn4.jpg" target="_blank"><img alt="DSC05511msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05511msn4s.jpg" width="320"/></a><br/>↑有一個尼普爾裡堵著尼龍碎屑，<br/>我想說邊轉動輵條邊螺紋進去的話應該會自動排出，<br/>但事實並沒有這麼簡單，<br/>所以<br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05512msn4.jpg" target="_blank"><img alt="DSC05512msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05512msn4s.jpg" width="320"/></a><br/>把它取出來了。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05516msn4.jpg" target="_blank"><img alt="DSC05516msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05516msn4s.jpg" width="320"/></a><br/>客人（第三位車主）那邊已經<br/>清洗好輵條，分成了飛輪側１４根、<br/>反飛輪側７根，所以就按這樣臨時組裝，<br/>但發現有一根輵條放反了。<br/><br/>像上圖一樣，反飛輪側輵條的刻印是豎３條「III」，<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05517msn4.jpg" target="_blank"><img alt="DSC05517msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05517msn4s.jpg" width="320"/></a><br/>飛輪側是前輪一樣的豎４條「IIII」，但<br/>（Mega右邊法蘭之前是以<br/>盡量減少輵條長度種類為目標來設計的），<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05518msn4.jpg" target="_blank"><img alt="DSC05518msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05518msn4s.jpg" width="320"/></a><br/>果然還是有１根放反了。<br/>危險啊危險啊。<br/>我絕不要踩同一個以前說過的某爛店（→<a href="/zh/posts/5850.html" target="_blank" title="這裡">這裡</a>）的覆轍。<br/>不過，現在看起來也還是，那家店作為「專業」(笑)幹的活，<br/>尼普爾的把手磨損得實在太厲害了。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05519msn4.jpg" target="_blank"><img alt="DSC05519msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05519msn4s.jpg" width="320"/></a><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05520msn4.jpg" target="_blank"><img alt="DSC05520msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05520msn4s.jpg" width="320"/></a><br/>組好了。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05503msn4.jpg" target="_blank"><img alt="DSC05503msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05503msn4s.jpg" width="320"/></a><br/>Racing Zero等輞在氣嘴孔附近<br/>開著小孔，<br/>這在防漏胎用的2WAY-FIT輞上<br/>孔被後來堵住了，由此推測<br/>製造工程上開孔是不可避免的。<br/>上圖就是那個痕跡。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05505msn4.jpg" target="_blank"><img alt="DSC05505msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05505msn4s.jpg" width="320"/></a><br/>2WAY-FIT輞在氣嘴孔周邊和<br/>輞的接縫處（上圖），塗有某種接著劑乾燥後那種<br/>稍微有點柔軟觸感的塗層。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05471amx14.jpg" target="_blank"><img alt="DSC05471amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05471amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05472amx14.jpg" target="_blank"><img alt="DSC05472amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05472amx14s.jpg" width="320"/></a><br/>↑這是防漏胎非對應的前陣子前輪輞，<br/>孔就這樣留著，接縫部分相當粗糙。<br/>可能是因為之後打算推出防漏輞，<br/>或者是輞中央的凹陷，即使用WO輪胎加壓內胎也<br/>珠紋邊邊的豎起程度有點差。<br/><br/>不一定在中央、６根前後方向走向的突起，<br/>有可能給內胎留下像龜裂般的永久變形印痕，<br/>尤其乳膠內胎會特別明顯，<br/>所以和客人商量後，貼上了Stans的防漏膠帶。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">今天也是輪組（以下略）。<br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05507msn4.jpg" target="_blank"><img alt="DSC05507msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05507msn4s.jpg" width="320"/></a><br/>前陣子Racing Zero前輪的另一半，後輪要開始組了。<br/><br/>根據推測，應該沒錯的話，這件事的發展流程是：<br/>・第一位車主在拍賣網站上賣了轂心和輻條<br/>・第二位車主買下了它們，<br/>　然後入手了前輪輞，試著組裝出像樣的輪組<br/>・第三位車主（帶來我們店裡的客人）買下了這個輪組<br/>就是這樣的感覺。<br/><br/>第二位車主對自己組裝的前輪<br/>說「跳動在１mm以內」，但根據說法，<br/>即使只看橫向跳動也超過了那個範圍，<br/>縱向跳動和中心偏移都達不到輪組的標準。<br/>他在說明中提到「尼普爾有點小傷痕」之類的，<br/>但也提到被鉗子夾過的痕跡有點多，<br/>這真的是只有賣家才能說出來的那種呢言。不過撇開這個不談，<br/>對於鋁合金輻條的刻印，<br/>說明中寫著「在『乃村實驗室日記』這個部落格中有詳細說明」，<br/>但我寫的只不過是「如果刻印相同，即使顏色不同長度也絕對一樣」<br/>這種程度的內容，並沒有詳盡說明<br/>哪個刻印對應哪個年代的哪個部位之類的事。<br/>不過，無論第三位車主是誰，<br/>帶來我們店裡的機率看起來非常高應該是沒錯的。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05508msn4.jpg" target="_blank"><img alt="DSC05508msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05508msn4s.jpg" width="320"/></a><br/>轂身是碳纖維的，右邊法蘭是大直徑化之前的版本。<br/>初代Racing Zero是無防漏胎WO輞・<br/>領帶輻條・後輞孔均勻間距・紅色鋁合金轂身，<br/>初代Racing Zero 2WAY-FIT是和Shamal Ultra一樣的直輻條・<br/>後輞孔有休止位相・碳纖維轂身，<br/>這兩種在同一個年份並行銷售過。<br/>之後，非防漏輞的Racing Zero也<br/>採用了和2WAY-FIT一樣的轂心（上圖就是），<br/>以及有休止位相的後輞。<br/><br/>我想說的是，既然轂身是碳纖維的，<br/>就無法用均勻間距孔的輞來組裝。<br/>雖然輻條長度不同也是問題，<br/>但更重要的是，如果輞孔的位相不符合<br/>後輪轂心所設計的位相，<br/>來自轂法蘭的切口和輻條會相互干涉。<br/>有過用鋼輻條忽視這點而組裝的例子，但・・・（→<a href="/zh/posts/5598.html" target="_blank" title="這裡">這裡</a>）。<br/><br/>還有另一個困難的問題。<br/>不是領帶輵條的Racing Zero（含2WAY-FIT），<br/>基本上沒有紅色陽極氧化輞。<br/>至少正規款是沒有的。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05501msn4.jpg" target="_blank"><img alt="DSC05501msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05501msn4s.jpg" width="320"/></a><br/>這個後輞是我們店裡進貨的。<br/>是限定款的替換零件，<br/>進貨需要一點小技巧。<br/>國外線上購物等管道應該是拿不到的，<br/>所以第二位車主應該不是先只買前輞，<br/>而是根本就買不到後輞吧。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05513msn4.jpg" target="_blank"><img alt="DSC05513msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05513msn4s.jpg" width="320"/></a><br/>為了保險起見，先臨時組了飛輪側。<br/>感覺有一根輻條短了點，不過現在先不管。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05514msn4.jpg" target="_blank"><img alt="DSC05514msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05514msn4s.jpg" width="320"/></a><br/>啊，這樣是組得起來的。我明白了。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05521msn4.jpg" target="_blank"><img alt="DSC05521msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05521msn4s.jpg" width="320"/></a><br/>輞上配附了尼普爾，<br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05522msn4.jpg" target="_blank"><img alt="DSC05522msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05522msn4s.jpg" width="320"/></a><br/>拆開時留下了工具的痕跡，<br/>不過沒有被鉗子夾住把手的跡象，<br/>還是可以重複使用的程度。<br/>這個相對乾淨也是「最初拆輪組的人和<br/>組裝前輪樣品的人是不同的人」的根據。<br/>非常抱歉讓素人誤會了Fulcrum的尼普爾<br/>都是要用鉗子轉動的。<br/><br/>後輪的尼普爾我也改用了有防鬆尼龍的款式。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05510msn4.jpg" target="_blank"><img alt="DSC05510msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05510msn4s.jpg" width="320"/></a><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05511msn4.jpg" target="_blank"><img alt="DSC05511msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05511msn4s.jpg" width="320"/></a><br/>↑有一個尼普爾裡堵著尼龍碎屑，<br/>我想說邊轉動輵條邊螺紋進去的話應該會自動排出，<br/>但事實並沒有這麼簡單，<br/>所以<br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05512msn4.jpg" target="_blank"><img alt="DSC05512msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05512msn4s.jpg" width="320"/></a><br/>把它取出來了。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05516msn4.jpg" target="_blank"><img alt="DSC05516msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05516msn4s.jpg" width="320"/></a><br/>客人（第三位車主）那邊已經<br/>清洗好輵條，分成了飛輪側１４根、<br/>反飛輪側７根，所以就按這樣臨時組裝，<br/>但發現有一根輵條放反了。<br/><br/>像上圖一樣，反飛輪側輵條的刻印是豎３條「III」，<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05517msn4.jpg" target="_blank"><img alt="DSC05517msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05517msn4s.jpg" width="320"/></a><br/>飛輪側是前輪一樣的豎４條「IIII」，但<br/>（Mega右邊法蘭之前是以<br/>盡量減少輵條長度種類為目標來設計的），<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05518msn4.jpg" target="_blank"><img alt="DSC05518msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05518msn4s.jpg" width="320"/></a><br/>果然還是有１根放反了。<br/>危險啊危險啊。<br/>我絕不要踩同一個以前說過的某爛店（→<a href="/zh/posts/5850.html" target="_blank" title="這裡">這裡</a>）的覆轍。<br/>不過，現在看起來也還是，那家店作為「專業」(笑)幹的活，<br/>尼普爾的把手磨損得實在太厲害了。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05519msn4.jpg" target="_blank"><img alt="DSC05519msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05519msn4s.jpg" width="320"/></a><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05520msn4.jpg" target="_blank"><img alt="DSC05520msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05520msn4s.jpg" width="320"/></a><br/>組好了。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05503msn4.jpg" target="_blank"><img alt="DSC05503msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05503msn4s.jpg" width="320"/></a><br/>Racing Zero等輞在氣嘴孔附近<br/>開著小孔，<br/>這在防漏胎用的2WAY-FIT輞上<br/>孔被後來堵住了，由此推測<br/>製造工程上開孔是不可避免的。<br/>上圖就是那個痕跡。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05505msn4.jpg" target="_blank"><img alt="DSC05505msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05505msn4s.jpg" width="320"/></a><br/>2WAY-FIT輞在氣嘴孔周邊和<br/>輞的接縫處（上圖），塗有某種接著劑乾燥後那種<br/>稍微有點柔軟觸感的塗層。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05471amx14.jpg" target="_blank"><img alt="DSC05471amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05471amx14s.jpg" width="320"/></a><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05472amx14.jpg" target="_blank"><img alt="DSC05472amx14.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC05472amx14s.jpg" width="320"/></a><br/>↑這是防漏胎非對應的前陣子前輪輞，<br/>孔就這樣留著，接縫部分相當粗糙。<br/>可能是因為之後打算推出防漏輞，<br/>或者是輞中央的凹陷，即使用WO輪胎加壓內胎也<br/>珠紋邊邊的豎起程度有點差。<br/><br/>不一定在中央、６根前後方向走向的突起，<br/>有可能給內胎留下像龜裂般的永久變形印痕，<br/>尤其乳膠內胎會特別明顯，<br/>所以和客人商量後，貼上了Stans的防漏膠帶。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

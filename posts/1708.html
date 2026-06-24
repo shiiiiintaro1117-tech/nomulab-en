@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,37 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
-    <p>Bicycle Workshop — English Edition</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/index.html">
+        <span class="brand-title">Nomu Lab Diary</span>
+        <span class="brand-subtitle">Bicycle Workshop Archive</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/index.html">Archive</a>
+      <a href="/guides/wheel-building.html">Wheel Guide</a>
+      <a href="/glossary.html">Glossary</a>
+      <a href="/about.html">About</a>
+    </nav>
     <div class="lang-toggle"><span class="lang-btn active">EN</span><a class="lang-btn" href="/zh/posts/1708.html">繁中</a></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/index.html">← All posts</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Other Equipment</p>
     <h1>RD-6800-GS The Mechanism of Intimidation</h1>
     <p class="post-meta">February 06, 2015</p>
+    <div class="post-body"><div class="entrytext">Recently I've been impressed by something about the long-cage rear derailleur for 11S Altegra,<br/>the "<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+RD-6800-GS+long+cage+rear+derailleur+11+speed" target="_blank" rel="noopener sponsored" class="amz-inline">RD-6800-GS</a>",<br/>so I'm going to write about it.<br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07480amx3.jpg" target="_blank"><img alt="DSC07480amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07480amx3s.jpg" width="300"/></a><br/>Before that.<br/>The image above is<br/>an utterly unremarkable (※) Altegra rear derailleur on my bike.<br/><br/>※Don't worry about this, it's not asking for input<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07493amx3.jpg" target="_blank"><img alt="DSC07493amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07493amx3s.jpg" width="300"/></a><br/>Regarding the position where the shift cable is fixed,<br/>when viewing the rear derailleur from the right side in the direction of travel,<br/>the cable is anchored on the far side of the fixing bolt.<br/>From here on in this article, I'll call this "rear pull".<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07489amx3.jpg" target="_blank"><img alt="DSC07489amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07489amx3s.jpg" width="300"/></a><br/>↑Next, I deliberately anchored the shift cable on the near side of the fixing bolt incorrectly.<br/>From here on, I'll call this "front pull".<br/><br/>Between rear pull and front pull, the cable length differs only slightly<br/>from the cable stop onward to the fixing bolt,<br/>but with just this tiny difference, the incorrect method causes shifting to misalign.<br/>When I actually tried shifting this way,<br/>on the second shift operation it wouldn't align at all.<br/><br/>A rear derailleur designed for rear pull must use rear pull,<br/>and a rear derailleur designed for front pull must use front pull<br/>for cable anchoring.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07486amx3.jpg" target="_blank"><img alt="DSC07486amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07486amx3s.jpg" width="300"/></a><br/>↑When you look at the rear derailleur from below, it looks like this,<br/>the length of cable from the cable stop to the fixing bolt<br/>shown in color in the image above<br/>I'll call the "cable length" in this article.<br/><br/>If the cable length changes even slightly,<br/>when you pull a fixed amount of shift cable (when you shift via the lever),<br/>the amount the rear derailleur's parallelogram moves also changes.<br/>So the cable length of the rear derailleur and the length of the parallelogram's sides<br/>are considered with precision in their totality.<br/><br/><br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07513amx3.jpg" target="_blank"><img alt="DSC07513amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07513amx3s.jpg" width="300"/></a><br/>Now the topic shifts,<br/>this is the world's first STI lever and the corresponding rear derailleur<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07512amx3.jpg" target="_blank"><img alt="DSC07512amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07512amx3s.jpg" width="300"/></a><br/>the <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+ST-7400+STI+lever+road+bike+shifter" target="_blank" rel="noopener sponsored" class="amz-inline">ST-7400</a> and<br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07510amx3.jpg" target="_blank"><img alt="DSC07510amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07510amx3s.jpg" width="300"/></a><br/><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+RD-7402+rear+derailleur" target="_blank" rel="noopener sponsored" class="amz-inline">RD-7402</a>.<br/><br/>Later, STI levers also appeared in the second-tier 600 Altegra,<br/>but after releasing the ST-7400, Shimano apparently reconsidered something<br/>and changed the amount of cable the STI lever pulls in per shift operation<br/>(probably wanting lighter action even if it meant increasing stroke),<br/>so there is no compatibility between the ST-7400 and <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+ST-6400+Altegra+STI+lever+shifter" target="_blank" rel="noopener sponsored" class="amz-inline">ST-6400</a>.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07504amx3.jpg" target="_blank"><img alt="DSC07504amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07504amx3s.jpg" width="300"/></a><br/>↑That's the situation.<br/>Just to add, the shift from top to second gear<br/>pulls more cable than the other shifts.<br/>In response to this lever difference,<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07515amx3.jpg" target="_blank"><img alt="DSC07515amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07515amx3s.jpg" width="300"/></a><br/>the rear derailleur doesn't change the parallelogram length<br/>but rather changes the<br/>"cable length" to match<br/>the STI lever's cable pull, and<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07516amx3.jpg" target="_blank"><img alt="DSC07516amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07516amx3s.jpg" width="300"/></a><br/>keeps the rear derailleur's range of motion (= the tooth spacing of the corresponding sprocket)<br/>the same.<br/><br/>From this point onward through the 7900 series, basically<br/>the ratio of "parallelogram length / cable length" remains the same.<br/>Only the RD-7402 has a unique ratio.<br/>Speaking roughly and ignoring pulley width, for example<br/>the ST-7900 and <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+RD-6401+rear+derailleur+11+speed" target="_blank" rel="noopener sponsored" class="amz-inline">RD-6401</a> do 10S rear shifting,<br/><span style="color:#FF0000">the ST-7800 and RD-7700 do 10S rear shifting,</span><br/>the ST-7700 and RD-7800 do 9S rear shifting,<br/>and the ST-6400 and RD-7900 do 8S rear shifting.<br/>In other words, it follows the lever's speed count.<br/>That combination in red on the second line from the top—<br/>when the 7800 series first came out and supply couldn't keep up,<br/>Shimano-sponsored cyclists' bikes were basically set up this way.<br/><br/>The important thing to note here is that, for example, the RD-7700 and RD-7800<br/>don't have the same parallelogram length.<br/>They combine to maintain the same ratio overall with cable length.<br/><br/>Regarding this cable length, Shimano's road rear derailleurs<br/>have made an interesting public statement just once in the past, and<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07517amx3.jpg" target="_blank"><img alt="DSC07517amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07517amx3s.jpg" width="300"/></a><br/>↑if you want to use the ST-7400 with an RD-6402 or later rear derailleur,<br/>you can anchor the cable at position B in the diagram above and it will work.<br/>Position B in this diagram differs from the front pull at the beginning,<br/>but you can think of it as front pull. In other words,<br/>ST-7400 × RD-7402 rear pull and<br/>ST-6400 × RD-6401 rear pull and<br/>ST-7400 × RD-6401 front pull<br/>all have the "same" range of motion per shift operation.<br/>In my assessment, this "same" is not "exactly the same".<br/>If this counts as the same,<br/>then the tooth spacing of current Shimano 11S and Campagnolo 11S sprockets<br/>should also count as "the same", I think.<br/>Well, shifting was less critical back then, and<br/>it was likely stated as a rescue measure for users who'd already bought the ST-7400.<br/><br/>Just to add,<br/>if you use a 10S lever with RD-6401 through RD-7900 rear derailleurs<br/>and pull at position B, the motion per shift operation<br/>approximates 9S.<br/>Though this probably wasn't guaranteed by the maker.<br/><br/>～Preamble end～<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06623amx3.jpg" target="_blank"><img alt="DSC06623amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06623amx3s.jpg" width="300"/></a><br/>The main topic.<br/>Here are two RD-6800s, but<br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06624amx3.jpg" target="_blank"><img alt="DSC06624amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06624amx3s.jpg" width="300"/></a><br/>↑the left is the long-cage GS, the right is the short-cage SS.<br/>In past Shimano road rear derailleurs,<br/>when both SS and GS were offered, the GS was for front triple use.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07494amx3.jpg" target="_blank"><img alt="DSC07494amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07494amx3s.jpg" width="300"/></a><br/>Why make the cage longer.<br/>With multi-speed drivetrains, the chain length changes<br/>depending on the combination of front and rear gears after shifting,<br/>and with a 22S system (front × rear), there are 22 possible chain lengths.<br/>The longest one, outer × low,<br/>needs adequate slack, but<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07496amx3.jpg" target="_blank"><img alt="DSC07496amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07496amx3s.jpg" width="300"/></a><br/>when shifting to the shortest combination,<br/>inner × top,<br/>the rear derailleur needs enough chain slack to prevent<br/>the lower run and upper pulley from making contact.<br/>With a front double, you don't need<br/>to make the pulley cage that long, but<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07497amx3.jpg" target="_blank"><img alt="DSC07497amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07497amx3s.jpg" width="300"/></a><br/>with a front triple, you really do have to make the pulley cage longer.<br/>The diagram above shows 52-42-30T,<br/>which is the tooth count for Shimano's front triple except on the 7703 series.<br/>When shifting to a 30T front ring,<br/>the lower run of chain can't maintain a straight line (slack can't be taken up),<br/>so you have to make the pulley cage longer—you can imagine this.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07498amx3.jpg" target="_blank"><img alt="DSC07498amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07498amx3s.jpg" width="300"/></a><br/>But the 6800 has no front triple version.<br/>The RD-6800-GS is characterized by<br/>supporting a 30T low sprocket—which the 9000 Dura-Ace lacks a GS version for.<br/>The 9000 and 9070 rear derailleurs support up to 28T, but<br/>when you think in terms of roughly half a chain wrap,<br/>28T and 30T differ by just 1T (one chain link).<br/><br/>So the question was why an RD-6800,<br/>designed without a front triple in mind,<br/>would need a GS version.<br/>Until I saw the actual parts.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07499amx3.jpg" target="_blank"><img alt="DSC07499amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07499amx3s.jpg" width="300"/></a><br/>The angle through which a rear derailleur's parallelogram strokes<br/>is called "slant angle", and this differs considerably between road and MTB.<br/>MTB, which has larger low gear teeth, has<br/>a deeper slant angle.<br/><br/>As for the RD-6800,<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06629amx3.jpg" target="_blank"><img alt="DSC06629amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06629amx3s.jpg" width="300"/></a><br/>↑SS<br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06630amx3.jpg" target="_blank"><img alt="DSC06630amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06630amx3s.jpg" width="300"/></a><br/>↑GS<br/><span style="color:#FF0000">the GS has a deeper slant angle.</span><br/>Look at the angular difference between the rear derailleur mounting bolt and the parallelogram.<br/>Not all rear derailleurs have their adjustment screws aligned perpendicular to slant angle,<br/>but the RD-6800 roughly does,<br/>so if it's hard to see, just look at the angle of the adjustment screws.<br/>This is where it first becomes impressive.<br/>Previous GS rear derailleurs were just "lazy lengthening of the cage"<br/>with no differences from the SS except the cage,<br/>but this GS is purpose-designed from the parallelogram section onward.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06632amx3.jpg" target="_blank"><img alt="DSC06632amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06632amx3s.jpg" width="300"/></a><br/>↑SS<br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06633amx3.jpg" target="_blank"><img alt="DSC06633amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06633amx3s.jpg" width="300"/></a><br/>↑GS<br/>The backing plate markings are both "RD-6800", but<br/>these are not the same part.<br/><span style="color:#FF0000">The GS has a longer distance between the parallelogram's pivot points</span>.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06644amx3.jpg" target="_blank"><img alt="DSC06644amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06644amx3s.jpg" width="300"/></a><br/>↑SS<br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06643amx3.jpg" target="_blank"><img alt="DSC06643amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06643amx3s.jpg" width="300"/></a><br/>↑GS<br/>If you look closely, you can see the fine details differ.<br/>When the parallelogram gets longer,<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07501amx3.jpg" target="_blank"><img alt="DSC07501amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07501amx3s.jpg" width="300"/></a><br/>the lateral movement per degree of angle increases, so<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07502amx3.jpg" target="_blank"><img alt="DSC07502amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07502amx3s.jpg" width="300"/></a><br/>when you have a large low gear and apply a deep slant angle,<br/>the parallelogram doesn't run out of available travel.<br/><br/>Now, if you just lengthened the parallelogram,<br/>naturally the cable pull required for shifting would also change, so<br/>you'd have to prepare a dedicated STI and sprockets,<br/>which doesn't make sense cost-wise,<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06634amx3.jpg" target="_blank"><img alt="DSC06634amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06634amx3s.jpg" width="300"/></a><br/>↑SS<br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06635amx3.jpg" target="_blank"><img alt="DSC06635amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06635amx3s.jpg" width="300"/></a><br/>↑GS<br/>so they're handling it by adjusting the "cable length" mentioned at the outset<br/>in conjunction with the parallelogram pivot-to-pivot distance.<br/>Notice how the front plate shape and cable anchor position are completely different between SS and GS.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07524amx3.jpg" target="_blank"><img alt="DSC07524amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07524amx3s.jpg" width="300"/></a><br/>A downside of the RD-9000 series mechanical rear derailleur is that when shifting to the top gear,<br/>the shift cable bends quite sharply.<br/>These days a liner comes standard, but<br/>only the very early RD-9000 didn't have one.<br/>I fitted one on my own initiative,<br/>but it had to be quite thin diameter, which was challenging.<br/>With the RD-6800-GS, this angle becomes even more severe, and<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06625amx3.jpg" target="_blank"><img alt="DSC06625amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06625amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06626amx3.jpg" target="_blank"><img alt="DSC06626amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06626amx3s.jpg" width="300"/></a><br/>where the SS uses front pull,<br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06627amx3.jpg" target="_blank"><img alt="DSC06627amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06627amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06628amx3.jpg" target="_blank"><img alt="DSC06628amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06628amx3s.jpg" width="300"/></a><br/>the GS switches to rear pull.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06638amx3.jpg" target="_blank"><img alt="DSC06638amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06638amx3s.jpg" width="300"/></a><br/>↑SS (front pull)<br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06639amx3.jpg" target="_blank"><img alt="DSC06639amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06639amx3s.jpg" width="300"/></a><br/>↑GS (rear pull)<br/>That's what you see when comparing from below.<br/>You can see how severe it would be if the GS weren't using rear pull.<br/>Also, I tried to keep camera distance consistent, so<br/>you should be able to see the difference in parallelogram length.<br/><br/>To summarize, whereas previously GS was just the SS converted to a long cage,<br/>with the RD-6800, the GS<br/>・changed the slant angle<br/>・changed the parallelogram length<br/>・set the cable anchor position for the corresponding "cable length"<br/>・and to address cable angle concerns, switched from front pull to rear pull<br/><br/>What's impressive about this is that Altegra isn't the top-tier group.<br/>"You can't first adopt on Dura-Ace,<br/>then pay off development costs by just changing finish and material as you go down the grades."<br/>However, as the highest tier supporting 30T low gears,<br/>if this geometry is successively adopted by 105 and Tiagra,<br/>it might be worthwhile.<br/><br/>While I won't say "low-gear 30T road bikes" will become universal,<br/>they do seem to be increasing,<br/>so maybe Shimano went all-out precisely to promote that.<br/>Yes, I felt like I saw Shimano's serious side.<br/><br/>The whole thing started because I noticed the GS was using rear pull.<br/><br/>Also,<br/>"SS = short parallelogram / short cable length" and<br/>"GS = long parallelogram / long cable length"<br/>even if their ratios match,<br/>the shifting feel shouldn't be identical.<br/>But because the frame-side conditions differ<br/>(presence or absence of internal cable routing, outer length, etc.)<br/>there's no noticeable difference to the rider.</div></div>
+    <aside class="post-guides">
+      <strong>Technical archive</strong>
+      <nav aria-label="Technical guides">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,7 +405,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">Recently I've been impressed by something about the long-cage rear derailleur for 11S Altegra,<br/>the "<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+RD-6800-GS+long+cage+rear+derailleur+11+speed" target="_blank" rel="noopener sponsored" class="amz-inline">RD-6800-GS</a>",<br/>so I'm going to write about it.<br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07480amx3.jpg" target="_blank"><img alt="DSC07480amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07480amx3s.jpg" width="300"/></a><br/>Before that.<br/>The image above is<br/>an utterly unremarkable (※) Altegra rear derailleur on my bike.<br/><br/>※Don't worry about this, it's not asking for input<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07493amx3.jpg" target="_blank"><img alt="DSC07493amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07493amx3s.jpg" width="300"/></a><br/>Regarding the position where the shift cable is fixed,<br/>when viewing the rear derailleur from the right side in the direction of travel,<br/>the cable is anchored on the far side of the fixing bolt.<br/>From here on in this article, I'll call this "rear pull".<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07489amx3.jpg" target="_blank"><img alt="DSC07489amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07489amx3s.jpg" width="300"/></a><br/>↑Next, I deliberately anchored the shift cable on the near side of the fixing bolt incorrectly.<br/>From here on, I'll call this "front pull".<br/><br/>Between rear pull and front pull, the cable length differs only slightly<br/>from the cable stop onward to the fixing bolt,<br/>but with just this tiny difference, the incorrect method causes shifting to misalign.<br/>When I actually tried shifting this way,<br/>on the second shift operation it wouldn't align at all.<br/><br/>A rear derailleur designed for rear pull must use rear pull,<br/>and a rear derailleur designed for front pull must use front pull<br/>for cable anchoring.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07486amx3.jpg" target="_blank"><img alt="DSC07486amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07486amx3s.jpg" width="300"/></a><br/>↑When you look at the rear derailleur from below, it looks like this,<br/>the length of cable from the cable stop to the fixing bolt<br/>shown in color in the image above<br/>I'll call the "cable length" in this article.<br/><br/>If the cable length changes even slightly,<br/>when you pull a fixed amount of shift cable (when you shift via the lever),<br/>the amount the rear derailleur's parallelogram moves also changes.<br/>So the cable length of the rear derailleur and the length of the parallelogram's sides<br/>are considered with precision in their totality.<br/><br/><br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07513amx3.jpg" target="_blank"><img alt="DSC07513amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07513amx3s.jpg" width="300"/></a><br/>Now the topic shifts,<br/>this is the world's first STI lever and the corresponding rear derailleur<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07512amx3.jpg" target="_blank"><img alt="DSC07512amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07512amx3s.jpg" width="300"/></a><br/>the <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+ST-7400+STI+lever+road+bike+shifter" target="_blank" rel="noopener sponsored" class="amz-inline">ST-7400</a> and<br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07510amx3.jpg" target="_blank"><img alt="DSC07510amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07510amx3s.jpg" width="300"/></a><br/><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+RD-7402+rear+derailleur" target="_blank" rel="noopener sponsored" class="amz-inline">RD-7402</a>.<br/><br/>Later, STI levers also appeared in the second-tier 600 Altegra,<br/>but after releasing the ST-7400, Shimano apparently reconsidered something<br/>and changed the amount of cable the STI lever pulls in per shift operation<br/>(probably wanting lighter action even if it meant increasing stroke),<br/>so there is no compatibility between the ST-7400 and <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+ST-6400+Altegra+STI+lever+shifter" target="_blank" rel="noopener sponsored" class="amz-inline">ST-6400</a>.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07504amx3.jpg" target="_blank"><img alt="DSC07504amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07504amx3s.jpg" width="300"/></a><br/>↑That's the situation.<br/>Just to add, the shift from top to second gear<br/>pulls more cable than the other shifts.<br/>In response to this lever difference,<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07515amx3.jpg" target="_blank"><img alt="DSC07515amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07515amx3s.jpg" width="300"/></a><br/>the rear derailleur doesn't change the parallelogram length<br/>but rather changes the<br/>"cable length" to match<br/>the STI lever's cable pull, and<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07516amx3.jpg" target="_blank"><img alt="DSC07516amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07516amx3s.jpg" width="300"/></a><br/>keeps the rear derailleur's range of motion (= the tooth spacing of the corresponding sprocket)<br/>the same.<br/><br/>From this point onward through the 7900 series, basically<br/>the ratio of "parallelogram length / cable length" remains the same.<br/>Only the RD-7402 has a unique ratio.<br/>Speaking roughly and ignoring pulley width, for example<br/>the ST-7900 and <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+RD-6401+rear+derailleur+11+speed" target="_blank" rel="noopener sponsored" class="amz-inline">RD-6401</a> do 10S rear shifting,<br/><span style="color:#FF0000">the ST-7800 and RD-7700 do 10S rear shifting,</span><br/>the ST-7700 and RD-7800 do 9S rear shifting,<br/>and the ST-6400 and RD-7900 do 8S rear shifting.<br/>In other words, it follows the lever's speed count.<br/>That combination in red on the second line from the top—<br/>when the 7800 series first came out and supply couldn't keep up,<br/>Shimano-sponsored cyclists' bikes were basically set up this way.<br/><br/>The important thing to note here is that, for example, the RD-7700 and RD-7800<br/>don't have the same parallelogram length.<br/>They combine to maintain the same ratio overall with cable length.<br/><br/>Regarding this cable length, Shimano's road rear derailleurs<br/>have made an interesting public statement just once in the past, and<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07517amx3.jpg" target="_blank"><img alt="DSC07517amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07517amx3s.jpg" width="300"/></a><br/>↑if you want to use the ST-7400 with an RD-6402 or later rear derailleur,<br/>you can anchor the cable at position B in the diagram above and it will work.<br/>Position B in this diagram differs from the front pull at the beginning,<br/>but you can think of it as front pull. In other words,<br/>ST-7400 × RD-7402 rear pull and<br/>ST-6400 × RD-6401 rear pull and<br/>ST-7400 × RD-6401 front pull<br/>all have the "same" range of motion per shift operation.<br/>In my assessment, this "same" is not "exactly the same".<br/>If this counts as the same,<br/>then the tooth spacing of current Shimano 11S and Campagnolo 11S sprockets<br/>should also count as "the same", I think.<br/>Well, shifting was less critical back then, and<br/>it was likely stated as a rescue measure for users who'd already bought the ST-7400.<br/><br/>Just to add,<br/>if you use a 10S lever with RD-6401 through RD-7900 rear derailleurs<br/>and pull at position B, the motion per shift operation<br/>approximates 9S.<br/>Though this probably wasn't guaranteed by the maker.<br/><br/>～Preamble end～<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06623amx3.jpg" target="_blank"><img alt="DSC06623amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06623amx3s.jpg" width="300"/></a><br/>The main topic.<br/>Here are two RD-6800s, but<br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06624amx3.jpg" target="_blank"><img alt="DSC06624amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06624amx3s.jpg" width="300"/></a><br/>↑the left is the long-cage GS, the right is the short-cage SS.<br/>In past Shimano road rear derailleurs,<br/>when both SS and GS were offered, the GS was for front triple use.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07494amx3.jpg" target="_blank"><img alt="DSC07494amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07494amx3s.jpg" width="300"/></a><br/>Why make the cage longer.<br/>With multi-speed drivetrains, the chain length changes<br/>depending on the combination of front and rear gears after shifting,<br/>and with a 22S system (front × rear), there are 22 possible chain lengths.<br/>The longest one, outer × low,<br/>needs adequate slack, but<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07496amx3.jpg" target="_blank"><img alt="DSC07496amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07496amx3s.jpg" width="300"/></a><br/>when shifting to the shortest combination,<br/>inner × top,<br/>the rear derailleur needs enough chain slack to prevent<br/>the lower run and upper pulley from making contact.<br/>With a front double, you don't need<br/>to make the pulley cage that long, but<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07497amx3.jpg" target="_blank"><img alt="DSC07497amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07497amx3s.jpg" width="300"/></a><br/>with a front triple, you really do have to make the pulley cage longer.<br/>The diagram above shows 52-42-30T,<br/>which is the tooth count for Shimano's front triple except on the 7703 series.<br/>When shifting to a 30T front ring,<br/>the lower run of chain can't maintain a straight line (slack can't be taken up),<br/>so you have to make the pulley cage longer—you can imagine this.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07498amx3.jpg" target="_blank"><img alt="DSC07498amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07498amx3s.jpg" width="300"/></a><br/>But the 6800 has no front triple version.<br/>The RD-6800-GS is characterized by<br/>supporting a 30T low sprocket—which the 9000 Dura-Ace lacks a GS version for.<br/>The 9000 and 9070 rear derailleurs support up to 28T, but<br/>when you think in terms of roughly half a chain wrap,<br/>28T and 30T differ by just 1T (one chain link).<br/><br/>So the question was why an RD-6800,<br/>designed without a front triple in mind,<br/>would need a GS version.<br/>Until I saw the actual parts.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07499amx3.jpg" target="_blank"><img alt="DSC07499amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07499amx3s.jpg" width="300"/></a><br/>The angle through which a rear derailleur's parallelogram strokes<br/>is called "slant angle", and this differs considerably between road and MTB.<br/>MTB, which has larger low gear teeth, has<br/>a deeper slant angle.<br/><br/>As for the RD-6800,<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06629amx3.jpg" target="_blank"><img alt="DSC06629amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06629amx3s.jpg" width="300"/></a><br/>↑SS<br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06630amx3.jpg" target="_blank"><img alt="DSC06630amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06630amx3s.jpg" width="300"/></a><br/>↑GS<br/><span style="color:#FF0000">the GS has a deeper slant angle.</span><br/>Look at the angular difference between the rear derailleur mounting bolt and the parallelogram.<br/>Not all rear derailleurs have their adjustment screws aligned perpendicular to slant angle,<br/>but the RD-6800 roughly does,<br/>so if it's hard to see, just look at the angle of the adjustment screws.<br/>This is where it first becomes impressive.<br/>Previous GS rear derailleurs were just "lazy lengthening of the cage"<br/>with no differences from the SS except the cage,<br/>but this GS is purpose-designed from the parallelogram section onward.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06632amx3.jpg" target="_blank"><img alt="DSC06632amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06632amx3s.jpg" width="300"/></a><br/>↑SS<br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06633amx3.jpg" target="_blank"><img alt="DSC06633amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06633amx3s.jpg" width="300"/></a><br/>↑GS<br/>The backing plate markings are both "RD-6800", but<br/>these are not the same part.<br/><span style="color:#FF0000">The GS has a longer distance between the parallelogram's pivot points</span>.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06644amx3.jpg" target="_blank"><img alt="DSC06644amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06644amx3s.jpg" width="300"/></a><br/>↑SS<br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06643amx3.jpg" target="_blank"><img alt="DSC06643amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06643amx3s.jpg" width="300"/></a><br/>↑GS<br/>If you look closely, you can see the fine details differ.<br/>When the parallelogram gets longer,<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07501amx3.jpg" target="_blank"><img alt="DSC07501amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07501amx3s.jpg" width="300"/></a><br/>the lateral movement per degree of angle increases, so<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07502amx3.jpg" target="_blank"><img alt="DSC07502amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07502amx3s.jpg" width="300"/></a><br/>when you have a large low gear and apply a deep slant angle,<br/>the parallelogram doesn't run out of available travel.<br/><br/>Now, if you just lengthened the parallelogram,<br/>naturally the cable pull required for shifting would also change, so<br/>you'd have to prepare a dedicated STI and sprockets,<br/>which doesn't make sense cost-wise,<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06634amx3.jpg" target="_blank"><img alt="DSC06634amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06634amx3s.jpg" width="300"/></a><br/>↑SS<br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06635amx3.jpg" target="_blank"><img alt="DSC06635amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06635amx3s.jpg" width="300"/></a><br/>↑GS<br/>so they're handling it by adjusting the "cable length" mentioned at the outset<br/>in conjunction with the parallelogram pivot-to-pivot distance.<br/>Notice how the front plate shape and cable anchor position are completely different between SS and GS.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07524amx3.jpg" target="_blank"><img alt="DSC07524amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC07524amx3s.jpg" width="300"/></a><br/>A downside of the RD-9000 series mechanical rear derailleur is that when shifting to the top gear,<br/>the shift cable bends quite sharply.<br/>These days a liner comes standard, but<br/>only the very early RD-9000 didn't have one.<br/>I fitted one on my own initiative,<br/>but it had to be quite thin diameter, which was challenging.<br/>With the RD-6800-GS, this angle becomes even more severe, and<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06625amx3.jpg" target="_blank"><img alt="DSC06625amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06625amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06626amx3.jpg" target="_blank"><img alt="DSC06626amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06626amx3s.jpg" width="300"/></a><br/>where the SS uses front pull,<br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06627amx3.jpg" target="_blank"><img alt="DSC06627amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06627amx3s.jpg" width="300"/></a><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06628amx3.jpg" target="_blank"><img alt="DSC06628amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06628amx3s.jpg" width="300"/></a><br/>the GS switches to rear pull.<br/><br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06638amx3.jpg" target="_blank"><img alt="DSC06638amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06638amx3s.jpg" width="300"/></a><br/>↑SS (front pull)<br/><a href="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06639amx3.jpg" target="_blank"><img alt="DSC06639amx3.jpg" border="0" height="225" src="https://blog-imgs-71-origin.fc2.com/p/a/s/pass13/DSC06639amx3s.jpg" width="300"/></a><br/>↑GS (rear pull)<br/>That's what you see when comparing from below.<br/>You can see how severe it would be if the GS weren't using rear pull.<br/>Also, I tried to keep camera distance consistent, so<br/>you should be able to see the difference in parallelogram length.<br/><br/>To summarize, whereas previously GS was just the SS converted to a long cage,<br/>with the RD-6800, the GS<br/>・changed the slant angle<br/>・changed the parallelogram length<br/>・set the cable anchor position for the corresponding "cable length"<br/>・and to address cable angle concerns, switched from front pull to rear pull<br/><br/>What's impressive about this is that Altegra isn't the top-tier group.<br/>"You can't first adopt on Dura-Ace,<br/>then pay off development costs by just changing finish and material as you go down the grades."<br/>However, as the highest tier supporting 30T low gears,<br/>if this geometry is successively adopted by 105 and Tiagra,<br/>it might be worthwhile.<br/><br/>While I won't say "low-gear 30T road bikes" will become universal,<br/>they do seem to be increasing,<br/>so maybe Shimano went all-out precisely to promote that.<br/>Yes, I felt like I saw Shimano's serious side.<br/><br/>The whole thing started because I noticed the GS was using rear pull.<br/><br/>Also,<br/>"SS = short parallelogram / short cable length" and<br/>"GS = long parallelogram / long cable length"<br/>even if their ratios match,<br/>the shifting feel shouldn't be identical.<br/>But because the frame-side conditions differ<br/>(presence or absence of internal cable routing, outer length, etc.)<br/>there's no noticeable difference to the rider.</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">Products Mentioned in This Article</p>
       <ul>

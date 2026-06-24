@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/678.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Wheel Building</p>
     <h1>輪輻左右平衡是否看得見的問題</h1>
     <p class="post-meta">August 27, 2013</p>
+    <div class="post-body"><div class="entrytext">我想寫一些關於輪輻左右平衡的事。<br/>這也是一個故事，講述一個男人因為過度幻視<span style="color:#0000FF">藍色虛線</span>而最終精神錯亂的故事。呃呃呃。<br/><br/>不過在此之前。在這篇文章中，我會頻繁使用「飛輪側」和「反飛輪側」這些詞語，<br/>所以我決定將飛輪側稱為「右側」，反飛輪側稱為「左側」。<br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06382amx.jpg" target="_blank"><img alt="DSC06382amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06382amxs.jpg" width="300"/></a><br/>我畫了一個後轂。<br/>法蘭寬度（端到端）是５７ｍｍ，<br/>從轂心到右法蘭端為１９ｍｍ，左側為３８ｍｍ。<br/>轂心用黑色虛線表示。<br/>這個法蘭寬度是普通轂的標準。<br/>後面要寫的內容不是為了取得優勢而故意設定的條件。<br/>法蘭直徑設定為左右同徑。<br/>用這個後轂，可以將輪輻組成<br/>左右輻條張力相同的狀態。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06385amx.jpg" target="_blank"><img alt="DSC06385amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06385amxs.jpg" width="300"/></a><br/>將輪圈中心設在法蘭寬度的中心，而不是轂全寬的中心，<br/>就能實現這一點。<br/>作為前提條件，需要左右同數組裝。<br/>輪圈中心用<span style="color:#FF0000">紅色虛線</span>表示。<br/>所謂「輪圈中心」，是指非偏心輪圈的左右孔位偏差的中點，<br/>或者沒有孔位偏差的輪圈的中心。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06387amx.jpg" target="_blank"><img alt="DSC06387amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06387amxs.jpg" width="300"/></a><br/>讓我們考慮這時候的「輪輻左右平衡」。<br/>暫且不談轂整體對輪圈位置的左右偏差，<br/>從法蘭寬度和輪圈的關係來看，與前輪相同，<br/>所以輪輻的左右平衡也沒有偏差。<br/>我用<span style="color:#0000FF">藍色虛線</span>的左右位置來表示輻條張力偏差的大小。<br/>在這種情況下，左右沒有偏差，所以藍色虛線與紅色虛線重合。<br/>我用虛線是為了即使重合也能畫出來。<br/>紅色虛線是肉眼可見的（因為是輪圈的位置），<br/>但要精確了解左右的偏移，需要用輪圈中心測量器。<br/>藍色虛線肉眼看不見，但用輵條張力測量器測量輵條張力，<br/>可以從左右差計算出理論位置。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06389amx.jpg" target="_blank"><img alt="DSC06389amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06389amxs.jpg" width="300"/></a><br/>從之前的狀態變成高低法蘭了。<br/>輪圈的左右位置不變。<br/>因為左側法蘭變小了，左側的輵條張力上升。<br/>左右平衡偏了。<br/><span style="color:#0000FF">關於藍色虛線，<br/>「向張力高的一方偏移，偏差越大越向橫向偏移」。</span><br/>從今以後，藍色虛線的偏移稱為「朝向輵條張力高的一側＋偏」的方式，<br/>稱為「向右偏」或「向左偏」。<br/><s>當然和政治思想沒有任何關係。</s><br/><br/>在這種情況下，左側的輵條張力更高，<br/>所以輪輻平衡向左偏了。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06391amx.jpg" target="_blank"><img alt="DSC06391amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06391amxs.jpg" width="300"/></a><br/>從之前的狀態進一步變成左右異數組裝。<br/>（暫且假設是３２Ｈ的４８組裝）<br/>藍色虛線進一步向左偏。<br/><br/>這個後輪是紅色虛線在法蘭寬度中心的情況，這在實際中是不可能的。<br/>實際後輪的紅色虛線在哪裡呢，<br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06392amx.jpg" target="_blank"><img alt="DSC06392amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06392amxs.jpg" width="300"/></a><br/>↑當然是在轂整體的中心。<br/>紅色虛線與之前的黑色虛線位置相同。<br/>（輪圈中心＝轂中心）<br/>在這個一般的後輪上加上藍色虛線的話<br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06393amx.jpg" target="_blank"><img alt="DSC06393amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06393amxs.jpg" width="300"/></a><br/>大約會是這裡。<br/>不過這取決於感覺問題，精確位置是否就是這裡會因定義而改變。<br/>我想說的是<span style="font-size:large;">絕望地向右偏</span>。<br/><span style="color:#FF0000">向右偏當然是多檔位變速的副作用，完組輪和手組輪都在以各種方法設法將其向左推移，<br/>這是一個重大課題。</span><br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06395amx.jpg" target="_blank"><img alt="DSC06395amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06395amxs.jpg" width="300"/></a><br/>我曾想沒有人會進一步向右偏移，<br/>但事實並非如此。<br/>如果右側為切線組裝、左側為徑向組裝，<br/>藍色虛線會進一步向右偏。恐怕是因為<br/>「前後左右全部徑向組裝最輕且空氣動力學有利，<br/>但後輪右側為了應對踏踏板扭矩的扭轉而採用切線組裝」<br/>的想法而生的，<br/>但輵條的些許減重或流線效果不可能<br/>大過左側輻條易於觸碰而降低的橫向剛性。<br/><br/>後文會提到例外，但基本上<span style="color:#FF0000">反飛輪側徑向組裝是過時的組裝方式</span>。<br/>Shimano（日本變速變速器製造商）輪子以前科３犯寬法蘭詐騙<br/>和規格頻繁變更而聞名，但卻從未無故採用反飛輪側徑向組裝。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06397amx.jpg" target="_blank"><img alt="DSC06397amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06397amxs.jpg" width="300"/></a><br/>有很多方法可以向左偏移。<br/>從上往下順序寫。<br/><br/>高低法蘭，但輪輵中心和輵條夾角（以下簡稱夾角）會改變。<br/>左右差糾正度不是很大，但有和沒有是有區別的，所以是有意義的。<br/><br/>偏心輪圈，通過改變理論上的紅色虛線位置來<br/>改變夾角，這是個很棒的想法。<br/>厲害之處在於可以同時讓右側鈍化、左側銳化，<br/>遺憾的是（公路車的情況）輪圈寬度約２０ｍｍ左右，<br/>偏心的自由度不如轂側那麼大。<br/>左右糾正度稍大。<br/><br/>左右異數組裝，終極形式是Ksyrium（日本品牌）的<br/>「右側徑向組裝、左側切線組裝」。<br/>如果做到那樣程度左右糾正度就很大，但<br/>對於首折輵條（手組），「右側４本組＋左側６本組以上」<br/>考慮輵條飛散和踏踏板扭矩損失，應該是極限。<br/>左側的切線組裝（最好是最切線組裝）<br/>與高低法蘭合用時左右糾正度會下降。<br/>但做了比不做好得多。<br/><br/>左右異數組裝，大多情況是指用右２：左１的輵條本數<br/>來組裝輪輵。<br/>這種的左右糾正度是絕大的。<br/>如果用２：１輵條做左右異本組裝，輵條張力可能無法左右一致。<br/>一致意味著藍色虛線和紅色虛線重合。<br/>具體來說，用３２Ｈ轂組裝右１６Ｈ：左８Ｈ的後輪時，<br/>如果左８Ｈ採用切線組裝，根據轂的尺寸，<br/>有時輵條張力會反向。<br/>我認為２：１組裝本身用首折輵條組裝是有風險的，<br/>但左側採用切線組裝會增加更多問題，所以<br/>即使在理論上某個點是最高的，我也不組裝。<br/><br/>前面提到的「反飛輪側徑向組裝的例外」就是指這個。<br/>對於２：１輵條，反飛輪側徑向組裝反而弊端較少<br/>（不寫成優點多的方式之處是賺飯錢的暗碼），<br/>所以這種情況下可以。<br/><br/>我所寫的「略有不同」的左右異徑組裝和<br/>輵條張力低的一側（通常是左側）的搭接，<br/>在輵條張力計的數值上會有差異，但<br/>本質上的左右差糾正略有不同，我是這樣認為的。<br/>這個我也因賺飯錢的暗碼而無法寫。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06398amx.jpg" target="_blank"><img alt="DSC06398amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06398amxs.jpg" width="300"/></a><br/>根據以上內容，右側平衡似乎是絕對的壞，但不應該<br/>只對輵條張力左右差的糾正<span style="font-size:large;">固執</span>，這是短視的想法。<br/>就像偏心輪圈改變輪圈側一樣，如果將左側轂法蘭向中心靠攏，<br/>左右平衡會戲劇性地糾正。<br/>但法蘭寬度縮小會使橫向剛性也戲劇性地下降。<br/>由此下降的橫向剛性，用提高輵條張力等手段<br/>根本無法恢復。即使加大法蘭直徑也幾乎沒有意義。<br/>如果這有效的話，前輪對空氣動力學比後輪更重要，<br/>早應該有寬度窄、直徑大的前轂問世了。<br/>我寫到美國經典（美國自行車品牌）轂的尺寸不夠精細時，<br/>經常收到異議評論，但這是事實，所以我不讓步。<br/>左右輵條張力一致與橫向剛性提升無關。<br/>我的雙飛輪轂法蘭寬度約４２ｍｍ，左右寬度相同，<br/>所以左右輵條張力也一致，但無論怎樣組都無法提升橫向剛性。<br/>美國經典的轂法蘭寬度約５０ｍｍ，<br/>（某些型號約５３ｍｍ）<br/>這大約是普通轂和雙飛輪轂的中間。<br/><br/>很久前收到還沒回答的評論，<br/>有人問「Gokiso（日本品牌）的轂怎麼樣？」，<br/>趁此機會我來回答一下。<br/>首先Gokiso的轂，我也組裝過，<br/>它有超低阻力的軸承轉動。<br/>在這方面沒有其他廠家能追上。完全是另一個境界。<br/>重量確實重（普通型號後轂比PowerTap（瑞士自行車功率計品牌）PRO重一點），<br/>但因為是為了低阻力轉動的結構而產生的重量，<br/>且處於轂的內周部，<br/>如果追求卓越的轉動性能的話，我認為是必要的。<br/>問題在於後轂的法蘭寬度太窄。<br/>號稱寬法蘭的那種也只有約４４ｍｍ，無法獲得橫向剛性。<br/><br/><span style="color:#FF0000">追記：關於Gokiso轂的法蘭寬度有人指正。<br/>「不是４４ｍｍ，而是更寬」，但<br/>Shimano８、９速規格和Shimano１０速專用規格轂的情況下約４８ｍｍ，<br/>Shimano１１速對應的轂則約４４ｍｍ。</span><br/>這都是公路用寬法蘭的情況，<br/>小徑車用窄法蘭且Shimano１１速對應的約４２ｍｍ。<br/><br/>自行車靜止狀態下抓住後輪上方，左右晃動時，<br/>與普通轂相比（特別是左側）會晃動的輪輵，<br/>即使在騎乘時進行動態評估，轉動性能的優秀也無法幫助橫向剛性。<br/>Gokiso自稱「不為前例所束縛的技術團隊」，<br/>但也有「溫故知新」這樣的說法，不應該輕視<br/>由「前例」的積累最終導致現有各種轂<br/>達到一定寬度（換句話說是常識性的）尺寸的過程和結果。<br/><span style="font-size:x-small;">寫上技術方向音痴之類的會引起騷擾，所以就不寫了。<br/>用這個字號應該會被忽略</span><br/><br/>重的轂（＝平地無所謂）和<br/>窄法蘭（＝不做立撑就無所謂），<br/>如果用在碟輪的後轂部分，應該會很有意思。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06399amx.jpg" target="_blank"><img alt="DSC06399amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06399amxs.jpg" width="300"/></a><br/>最近，無論是手組還是完組，我看輪輵時<br/>都開始幻視每個輪輵的藍色虛線，也就是「平衡線」。<br/>對於可以重新組裝的輪輵，我特別注意<br/>重組後平衡線是否比重組前更靠近中心。<br/>關於輵條張力，「拉高就行」這種想法是不對的，<br/>對「比重組前更緊實」的執著不是很強。<br/>客人要求的話經常會變成這樣，但。<br/><br/>關於平衡線的幻視，我想看過這個部落格「讀懂輪輵」的人<br/>中可能也會出現類似症狀，<br/>我的情況是如上圖所示，<br/>看得見平衡線的人最好還是不要告訴別人比較好。<br/><br/><br/><br/>寫的時候原本沒打算寫這麼長，<br/>最後變成了最近關於我的輪輵的總論一樣。<br/>
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">我想寫一些關於輪輻左右平衡的事。<br/>這也是一個故事，講述一個男人因為過度幻視<span style="color:#0000FF">藍色虛線</span>而最終精神錯亂的故事。呃呃呃。<br/><br/>不過在此之前。在這篇文章中，我會頻繁使用「飛輪側」和「反飛輪側」這些詞語，<br/>所以我決定將飛輪側稱為「右側」，反飛輪側稱為「左側」。<br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06382amx.jpg" target="_blank"><img alt="DSC06382amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06382amxs.jpg" width="300"/></a><br/>我畫了一個後轂。<br/>法蘭寬度（端到端）是５７ｍｍ，<br/>從轂心到右法蘭端為１９ｍｍ，左側為３８ｍｍ。<br/>轂心用黑色虛線表示。<br/>這個法蘭寬度是普通轂的標準。<br/>後面要寫的內容不是為了取得優勢而故意設定的條件。<br/>法蘭直徑設定為左右同徑。<br/>用這個後轂，可以將輪輻組成<br/>左右輻條張力相同的狀態。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06385amx.jpg" target="_blank"><img alt="DSC06385amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06385amxs.jpg" width="300"/></a><br/>將輪圈中心設在法蘭寬度的中心，而不是轂全寬的中心，<br/>就能實現這一點。<br/>作為前提條件，需要左右同數組裝。<br/>輪圈中心用<span style="color:#FF0000">紅色虛線</span>表示。<br/>所謂「輪圈中心」，是指非偏心輪圈的左右孔位偏差的中點，<br/>或者沒有孔位偏差的輪圈的中心。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06387amx.jpg" target="_blank"><img alt="DSC06387amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06387amxs.jpg" width="300"/></a><br/>讓我們考慮這時候的「輪輻左右平衡」。<br/>暫且不談轂整體對輪圈位置的左右偏差，<br/>從法蘭寬度和輪圈的關係來看，與前輪相同，<br/>所以輪輻的左右平衡也沒有偏差。<br/>我用<span style="color:#0000FF">藍色虛線</span>的左右位置來表示輻條張力偏差的大小。<br/>在這種情況下，左右沒有偏差，所以藍色虛線與紅色虛線重合。<br/>我用虛線是為了即使重合也能畫出來。<br/>紅色虛線是肉眼可見的（因為是輪圈的位置），<br/>但要精確了解左右的偏移，需要用輪圈中心測量器。<br/>藍色虛線肉眼看不見，但用輵條張力測量器測量輵條張力，<br/>可以從左右差計算出理論位置。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06389amx.jpg" target="_blank"><img alt="DSC06389amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06389amxs.jpg" width="300"/></a><br/>從之前的狀態變成高低法蘭了。<br/>輪圈的左右位置不變。<br/>因為左側法蘭變小了，左側的輵條張力上升。<br/>左右平衡偏了。<br/><span style="color:#0000FF">關於藍色虛線，<br/>「向張力高的一方偏移，偏差越大越向橫向偏移」。</span><br/>從今以後，藍色虛線的偏移稱為「朝向輵條張力高的一側＋偏」的方式，<br/>稱為「向右偏」或「向左偏」。<br/><s>當然和政治思想沒有任何關係。</s><br/><br/>在這種情況下，左側的輵條張力更高，<br/>所以輪輻平衡向左偏了。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06391amx.jpg" target="_blank"><img alt="DSC06391amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06391amxs.jpg" width="300"/></a><br/>從之前的狀態進一步變成左右異數組裝。<br/>（暫且假設是３２Ｈ的４８組裝）<br/>藍色虛線進一步向左偏。<br/><br/>這個後輪是紅色虛線在法蘭寬度中心的情況，這在實際中是不可能的。<br/>實際後輪的紅色虛線在哪裡呢，<br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06392amx.jpg" target="_blank"><img alt="DSC06392amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06392amxs.jpg" width="300"/></a><br/>↑當然是在轂整體的中心。<br/>紅色虛線與之前的黑色虛線位置相同。<br/>（輪圈中心＝轂中心）<br/>在這個一般的後輪上加上藍色虛線的話<br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06393amx.jpg" target="_blank"><img alt="DSC06393amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06393amxs.jpg" width="300"/></a><br/>大約會是這裡。<br/>不過這取決於感覺問題，精確位置是否就是這裡會因定義而改變。<br/>我想說的是<span style="font-size:large;">絕望地向右偏</span>。<br/><span style="color:#FF0000">向右偏當然是多檔位變速的副作用，完組輪和手組輪都在以各種方法設法將其向左推移，<br/>這是一個重大課題。</span><br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06395amx.jpg" target="_blank"><img alt="DSC06395amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06395amxs.jpg" width="300"/></a><br/>我曾想沒有人會進一步向右偏移，<br/>但事實並非如此。<br/>如果右側為切線組裝、左側為徑向組裝，<br/>藍色虛線會進一步向右偏。恐怕是因為<br/>「前後左右全部徑向組裝最輕且空氣動力學有利，<br/>但後輪右側為了應對踏踏板扭矩的扭轉而採用切線組裝」<br/>的想法而生的，<br/>但輵條的些許減重或流線效果不可能<br/>大過左側輻條易於觸碰而降低的橫向剛性。<br/><br/>後文會提到例外，但基本上<span style="color:#FF0000">反飛輪側徑向組裝是過時的組裝方式</span>。<br/>Shimano（日本變速變速器製造商）輪子以前科３犯寬法蘭詐騙<br/>和規格頻繁變更而聞名，但卻從未無故採用反飛輪側徑向組裝。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06397amx.jpg" target="_blank"><img alt="DSC06397amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06397amxs.jpg" width="300"/></a><br/>有很多方法可以向左偏移。<br/>從上往下順序寫。<br/><br/>高低法蘭，但輪輵中心和輵條夾角（以下簡稱夾角）會改變。<br/>左右差糾正度不是很大，但有和沒有是有區別的，所以是有意義的。<br/><br/>偏心輪圈，通過改變理論上的紅色虛線位置來<br/>改變夾角，這是個很棒的想法。<br/>厲害之處在於可以同時讓右側鈍化、左側銳化，<br/>遺憾的是（公路車的情況）輪圈寬度約２０ｍｍ左右，<br/>偏心的自由度不如轂側那麼大。<br/>左右糾正度稍大。<br/><br/>左右異數組裝，終極形式是Ksyrium（日本品牌）的<br/>「右側徑向組裝、左側切線組裝」。<br/>如果做到那樣程度左右糾正度就很大，但<br/>對於首折輵條（手組），「右側４本組＋左側６本組以上」<br/>考慮輵條飛散和踏踏板扭矩損失，應該是極限。<br/>左側的切線組裝（最好是最切線組裝）<br/>與高低法蘭合用時左右糾正度會下降。<br/>但做了比不做好得多。<br/><br/>左右異數組裝，大多情況是指用右２：左１的輵條本數<br/>來組裝輪輵。<br/>這種的左右糾正度是絕大的。<br/>如果用２：１輵條做左右異本組裝，輵條張力可能無法左右一致。<br/>一致意味著藍色虛線和紅色虛線重合。<br/>具體來說，用３２Ｈ轂組裝右１６Ｈ：左８Ｈ的後輪時，<br/>如果左８Ｈ採用切線組裝，根據轂的尺寸，<br/>有時輵條張力會反向。<br/>我認為２：１組裝本身用首折輵條組裝是有風險的，<br/>但左側採用切線組裝會增加更多問題，所以<br/>即使在理論上某個點是最高的，我也不組裝。<br/><br/>前面提到的「反飛輪側徑向組裝的例外」就是指這個。<br/>對於２：１輵條，反飛輪側徑向組裝反而弊端較少<br/>（不寫成優點多的方式之處是賺飯錢的暗碼），<br/>所以這種情況下可以。<br/><br/>我所寫的「略有不同」的左右異徑組裝和<br/>輵條張力低的一側（通常是左側）的搭接，<br/>在輵條張力計的數值上會有差異，但<br/>本質上的左右差糾正略有不同，我是這樣認為的。<br/>這個我也因賺飯錢的暗碼而無法寫。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06398amx.jpg" target="_blank"><img alt="DSC06398amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06398amxs.jpg" width="300"/></a><br/>根據以上內容，右側平衡似乎是絕對的壞，但不應該<br/>只對輵條張力左右差的糾正<span style="font-size:large;">固執</span>，這是短視的想法。<br/>就像偏心輪圈改變輪圈側一樣，如果將左側轂法蘭向中心靠攏，<br/>左右平衡會戲劇性地糾正。<br/>但法蘭寬度縮小會使橫向剛性也戲劇性地下降。<br/>由此下降的橫向剛性，用提高輵條張力等手段<br/>根本無法恢復。即使加大法蘭直徑也幾乎沒有意義。<br/>如果這有效的話，前輪對空氣動力學比後輪更重要，<br/>早應該有寬度窄、直徑大的前轂問世了。<br/>我寫到美國經典（美國自行車品牌）轂的尺寸不夠精細時，<br/>經常收到異議評論，但這是事實，所以我不讓步。<br/>左右輵條張力一致與橫向剛性提升無關。<br/>我的雙飛輪轂法蘭寬度約４２ｍｍ，左右寬度相同，<br/>所以左右輵條張力也一致，但無論怎樣組都無法提升橫向剛性。<br/>美國經典的轂法蘭寬度約５０ｍｍ，<br/>（某些型號約５３ｍｍ）<br/>這大約是普通轂和雙飛輪轂的中間。<br/><br/>很久前收到還沒回答的評論，<br/>有人問「Gokiso（日本品牌）的轂怎麼樣？」，<br/>趁此機會我來回答一下。<br/>首先Gokiso的轂，我也組裝過，<br/>它有超低阻力的軸承轉動。<br/>在這方面沒有其他廠家能追上。完全是另一個境界。<br/>重量確實重（普通型號後轂比PowerTap（瑞士自行車功率計品牌）PRO重一點），<br/>但因為是為了低阻力轉動的結構而產生的重量，<br/>且處於轂的內周部，<br/>如果追求卓越的轉動性能的話，我認為是必要的。<br/>問題在於後轂的法蘭寬度太窄。<br/>號稱寬法蘭的那種也只有約４４ｍｍ，無法獲得橫向剛性。<br/><br/><span style="color:#FF0000">追記：關於Gokiso轂的法蘭寬度有人指正。<br/>「不是４４ｍｍ，而是更寬」，但<br/>Shimano８、９速規格和Shimano１０速專用規格轂的情況下約４８ｍｍ，<br/>Shimano１１速對應的轂則約４４ｍｍ。</span><br/>這都是公路用寬法蘭的情況，<br/>小徑車用窄法蘭且Shimano１１速對應的約４２ｍｍ。<br/><br/>自行車靜止狀態下抓住後輪上方，左右晃動時，<br/>與普通轂相比（特別是左側）會晃動的輪輵，<br/>即使在騎乘時進行動態評估，轉動性能的優秀也無法幫助橫向剛性。<br/>Gokiso自稱「不為前例所束縛的技術團隊」，<br/>但也有「溫故知新」這樣的說法，不應該輕視<br/>由「前例」的積累最終導致現有各種轂<br/>達到一定寬度（換句話說是常識性的）尺寸的過程和結果。<br/><span style="font-size:x-small;">寫上技術方向音痴之類的會引起騷擾，所以就不寫了。<br/>用這個字號應該會被忽略</span><br/><br/>重的轂（＝平地無所謂）和<br/>窄法蘭（＝不做立撑就無所謂），<br/>如果用在碟輪的後轂部分，應該會很有意思。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06399amx.jpg" target="_blank"><img alt="DSC06399amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06399amxs.jpg" width="300"/></a><br/>最近，無論是手組還是完組，我看輪輵時<br/>都開始幻視每個輪輵的藍色虛線，也就是「平衡線」。<br/>對於可以重新組裝的輪輵，我特別注意<br/>重組後平衡線是否比重組前更靠近中心。<br/>關於輵條張力，「拉高就行」這種想法是不對的，<br/>對「比重組前更緊實」的執著不是很強。<br/>客人要求的話經常會變成這樣，但。<br/><br/>關於平衡線的幻視，我想看過這個部落格「讀懂輪輵」的人<br/>中可能也會出現類似症狀，<br/>我的情況是如上圖所示，<br/>看得見平衡線的人最好還是不要告訴別人比較好。<br/><br/><br/><br/>寫的時候原本沒打算寫這麼長，<br/>最後變成了最近關於我的輪輵的總論一樣。<br/>
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

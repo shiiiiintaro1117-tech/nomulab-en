@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,37 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/6804.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>用EDGE1-45輞圈和Hyperon轂組裝後輪</h1>
     <p class="post-meta">August 14, 2023</p>
+    <div class="post-body"><div class="entrytext">今天也是輪組（以下略）。<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5061amx15.jpg" target="_blank"><img alt="RIMG5061amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5061amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5060amx15.jpg" target="_blank"><img alt="RIMG5060amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5060amx15s.jpg" width="320"/></a><br/>從顧客（姑且算是吧）那裡接到了<br/>用EDGE的1-45輞圈組裝的<br/>後輪。<br/>轂是Tni的Evolite轂的前一代產品Evo轂，<br/>24孔 全<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Sapim+CX-RAY+bicycle+spoke" target="_blank" rel="noopener sponsored" class="amz-inline">CX-RAY</a> Yon-Zero組法。<br/>明顯是不夠流暢的組法，<br/>但組換要求太麻煩了，所以<br/>前段時間只是檢查一下就想敷衍過去，<br/>結果還是不行。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5062amx15.jpg" target="_blank"><img alt="RIMG5062amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5062amx15s.jpg" width="320"/></a><br/>序號是6位，103000號台，<br/>正好是EDGE變成ENVE之前的邊界時期。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5059amx15.jpg" target="_blank"><img alt="RIMG5059amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5059amx15s.jpg" width="320"/></a><br/>作為要組換的後輪轂<br/>收到了Hyperon（一個高端輪組品牌）的轂。<br/>但這很困難。<br/>不是因為輻條長度計算問題，<br/>而是就算用這個轂重新組裝，<br/>左右同數組法和反花鼓側輻向組法的特性還是不變。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5099amx15.jpg" target="_blank"><img alt="RIMG5099amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5099amx15s.jpg" width="320"/></a><br/>↑靠近氣門孔的上方視圖<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5097amx15.jpg" target="_blank"><img alt="RIMG5097amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5097amx15s.jpg" width="320"/></a><br/>↑從右邊<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5098amx15.jpg" target="_blank"><img alt="RIMG5098amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5098amx15s.jpg" width="320"/></a><br/>↑從左邊<br/>這是Hyperon的後輪。<br/>Hyperon的後輪採用了偏心輞圈和<br/>相當極端的左右異徑組法以及高低花鼓，<br/>雖然是反花鼓側輵向組法，但<br/>與非偏心輞圈、左右同數24孔、<br/>全CX-RAY Yon-Yon組法的後輪相比<br/>略微優勝一籌，這是一個<br/>相當罕見的後輪。<br/>在通常範圍內，反花鼓側輵向組法的輪組<br/>要達到反花鼓側切向組法輪組<br/>輵條難以變形的程度是不可能的。<br/><br/>ENVE的輞圈不是偏心輞圈，所以<br/>即便擴大輵條左右比重差，<br/>也無法克服偏心輞圈這個主要因素的影響。<br/>相同的Hyperon後輪轂，<br/>輵條番數和輞圈分別是正廠Hyperon產品<br/>（也就是現成的Hyperon本身）和<br/>輵條是半競技級、輞圈是1-45的情況下，<br/>雙方都是輪組中心對齊的前提下<br/>組裝完成的輪組握住輵條時，<br/>正廠Hyperon的反花鼓側輵條變形<br/>應該會更少。<br/>但有一個元素可能逆轉這種情況。<br/>ENVE輞圈的輵條張力容許極限更高。<br/>當然只有花鼓側能張到容許極限前，<br/>反花鼓側則由於偏心量而相應減少，<br/>但如果能夠追隨的話……<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5067amx15.jpg" target="_blank"><img alt="RIMG5067amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5067amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5068amx15.jpg" target="_blank"><img alt="RIMG5068amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5068amx15s.jpg" width="320"/></a><br/>這個Hyperon轂裡<br/>裝著陶瓷球保持器。<br/>這在年代上有些奇怪。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5069amx15.jpg" target="_blank"><img alt="RIMG5069amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5069amx15s.jpg" width="320"/></a><br/>因為球道是黑色的。<br/>2004年<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Campagnolo+Hyperon+Ultra+wheelset" target="_blank" rel="noopener sponsored" class="amz-inline">Hyperon Ultra</a>問世時<br/>那是首款WO碳輞圈輪組，<br/>當時Hyperon仍然只有管胎規格<br/>採用鐵珠軸承。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5070amx15.jpg" target="_blank"><img alt="RIMG5070amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5070amx15s.jpg" width="320"/></a><br/>黑色球道+陶瓷球是早期USB的特色，<br/>但這個組合球道磨損嚴重，<br/>容易產生蝕孔。<br/>擦掉潤滑脂檢查後，這個轂的<br/>磨痕很乾淨，沒有蝕孔。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5124amx15.jpg" target="_blank"><img alt="RIMG5124amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5124amx15s.jpg" width="320"/></a><br/>重新整理Hyperon Ultra時期的年代順序。<br/>這是2003年的備用零件目錄。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5125amx15.jpg" target="_blank"><img alt="RIMG5125amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5125amx15s.jpg" width="320"/></a><br/>只有Hyperon。<br/>碳製WO輞圈這種東西還不存在，<br/>所以不用特別說明，只有管胎輞圈規格。<br/>軸承球是HB-RE023這種鐵珠。<br/>HB是轂的零件代號，RE是Record等級，<br/>023等末尾的X23是分配給軸承球的編號。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5115amx15.jpg" target="_blank"><img alt="RIMG5115amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5115amx15s.jpg" width="320"/></a><br/>2004年的目錄一時找不到<br/>所以這是2005年的目錄。<br/>初代Hyperon Ultra<br/>只在2004年和2005年出過，<br/>這兩年Hyperon的情況相同。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5116amx15.jpg" target="_blank"><img alt="RIMG5116amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5116amx15s.jpg" width="320"/></a><br/>Hyperon、Hyperon Ultra、Bora、<br/>Neutron、Eurus（雖然正式名是Eurus，但我私下用這個名字<br/>區別鋼絲輻條款式）共5款<br/>轂展開圖頁面，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5117amx15.jpg" target="_blank"><img alt="RIMG5117amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5117amx15s.jpg" width="320"/></a><br/>只有Hyperon Ultra採用陶瓷球規格，<br/>零件編號也是Hyperon品牌的HY。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5118amx15.jpg" target="_blank"><img alt="RIMG5118amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5118amx15s.jpg" width="320"/></a><br/>轂防塵蓋末尾編號是011，<br/>傳統的黑蓋是Bora品牌的BO011，<br/>初代Hyperon Ultra限定的紅蓋<br/>編號是HY011。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5119amx15.jpg" target="_blank"><img alt="RIMG5119amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5119amx15s.jpg" width="320"/></a><br/>接下來是2006年和2007年的目錄。<br/>Hyperon周邊的內容相同。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5120amx15.jpg" target="_blank"><img alt="RIMG5120amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5120amx15s.jpg" width="320"/></a><br/>Hyperon和Hyperon Ultra<br/>被放在同一頁面整理，但……<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5121amx15.jpg" target="_blank"><img alt="RIMG5121amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5121amx15s.jpg" width="320"/></a><br/>只有鐵珠軸承規格，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5122amx15.jpg" target="_blank"><img alt="RIMG5122amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5122amx15s.jpg" width="320"/></a><br/>只有黑蓋規格。<br/>這個二代Hyperon Ultra<br/>是「放棄」了初代的陶瓷軸承和紅蓋的產品，<br/>內容上只不過是傳統管胎輞圈Hyperon的<br/>WO輞圈版本罷了。<br/>從這個陶瓷軸承的尷尬失敗開始，<br/>有一段時間只有鐵珠軸承，<br/>之後CULT才問世，<br/>再往後USB問世時<br/>初期是黑球道+陶瓷球，<br/>跟初代Hyperon Ultra相同內容，<br/>我當時想「這又是馬上會蝕孔的組合吧！」<br/>果然頻繁出現蝕孔事例，所以<br/>通過沒有預告、也沒改編號的仕樣變更<br/>改成了銀球道（自產的疑似CULT）後，<br/>蝕孔事例大幅減少。<br/>順便一提，初代Hyperon Ultra的<br/>陶瓷球保持器編號是HY023，<br/>現行CULT和USB的同類零件編號是HY123，<br/>百位進位了，是不同的零件。<br/><br/>收到的Hyperon轂<br/>配著陶瓷球和黑蓋，<br/>所以年代有矛盾。<br/><br/>可能的情況有：<br/>・初代Hyperon Ultra的轂只換了黑蓋<br/>・2004～2005年期間某時期的轂<br/>後來裝入了HB-HY123的陶瓷球<br/>其中一種濃厚。<br/>不同於CULT需要潤滑脂，<br/>無法獲得CULT特有的輕順轉動，所以<br/>把球道改成鐵珠軸承來降低蝕孔風險，<br/>迴轉性能基本不變。<br/>或者反過來把球道換成CULT品，但……<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5072amx15.jpg" target="_blank"><img alt="RIMG5072amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5072amx15s.jpg" width="320"/></a><br/>這個年代的Hyperon和Bora的碳轂<br/>前輪的左右和後輪的左側，輵條穿過後<br/>就無法更換花鼓了。<br/>要換成CULT花鼓嗎？沒有這樣提議就<br/>直接組裝輪組了，所以CULT化被否決！<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5063amx15.jpg" target="_blank"><img alt="RIMG5063amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5063amx15s.jpg" width="320"/></a><br/>原來的輪組，所有的套筒都鬆了好幾圈<br/>確保輵條張力充分鬆弛後<br/>才切斷輵條。<br/>上面的圖片是那些輵條，<br/>現行的ENVE是第4代內蔵套筒，<br/>這個輞圈是EDGE的後期產品，<br/>用的是第2代內蔵套筒。<br/>但有個第2代特有的常見錯誤——<br/>方向裝反了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5064amx15.jpg" target="_blank"><img alt="RIMG5064amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5064amx15s.jpg" width="320"/></a><br/>↑有缺口尺寸的這一側是內周側。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5065amx15.jpg" target="_blank"><img alt="RIMG5065amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5065amx15s.jpg" width="320"/></a><br/>↑套筒的這一側沒有缺口，<br/>螺紋直接開始，<br/>若輵條長度哪怕稍長<br/>就會用完螺紋而頂死。<br/>從輵條螺紋深處附著的碳污垢來看<br/>還有2～3圈的餘量。<br/>初代內蔵套筒也是鋁六角柱，<br/>但外周側端部有防鬆尼龍嵌入，<br/>就算再白癡也幾乎不可能裝反。<br/>所以這種反向套筒只在第2代常見。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5073amx15.jpg" target="_blank"><img alt="RIMG5073amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5073amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5074amx15.jpg" target="_blank"><img alt="RIMG5074amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5074amx15s.jpg" width="320"/></a><br/>終於……到達了……。<br/>這個中心對齐的瞬間<br/>就像指尖碰到了山峰。<br/>真長啊……。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5075amx15.jpg" target="_blank"><img alt="RIMG5075amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5075amx15s.jpg" width="320"/></a><br/>組好了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5079amx15.jpg" target="_blank"><img alt="RIMG5079amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5079amx15s.jpg" width="320"/></a><br/>花鼓側是黑色競技級。<br/>編織最後交叉，<br/>這一點正廠Hyperon也一樣。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5078amx15.jpg" target="_blank"><img alt="RIMG5078amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5078amx15s.jpg" width="320"/></a><br/>反花鼓側是黑色CX-RAY。<br/>相比正廠Hyperon，輵條左右比重差<br/>（花鼓側較大，反花鼓側基本相同）稍大一些。<br/>相比原來的Evo轂，左花鼓寬度更寬、偏心量更大，<br/>橫向剛性容易取得，反花鼓側應該會變軟，<br/>但比原來的Evo轂+全CX-RAY，反花鼓側還是更張緊了。<br/>原來狀態反花鼓側軟綿綿地撓曲，<br/>重新組裝後的輪組基本沒有這種情況。<br/>特別說明一下，原來的狀態是指我檢查過<br/>做了圓周校正和略微增張後的狀態。<br/>不過即便如此，反花鼓側的硬度<br/>還是不如正廠Hyperon，<br/>也不如一般尺寸24孔轂的半競技級Yon-Roku組法無結線。<br/>但在「反花鼓側用CX-RAY輵向組法<br/>1-45輞圈的後輪」中，<br/>這可能是反花鼓側最硬的後輪。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5094amx15.jpg" target="_blank"><img alt="RIMG5094amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5094amx15s.jpg" width="320"/></a><br/>Hyperon的前後輪都是反向輞圈輪組。<br/>所以從右側看輪組時<br/>氣門孔順時針方向的相鄰輞圈孔<br/>是花鼓側的輵條（自己看來從前花鼓過來的）。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5076amx15.jpg" target="_blank"><img alt="RIMG5076amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5076amx15s.jpg" width="320"/></a><br/>這次重新組裝的後輪，按正向輞圈組裝。<br/>輞圈側的孔沒有孔振。<br/>從右側看輪組時，氣門孔順時針方向的相鄰輞圈孔<br/>是反花鼓側的輵條（自己看來從後花鼓過來的）。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5100amx15.jpg" target="_blank"><img alt="RIMG5100amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5100amx15s.jpg" width="320"/></a><br/>正向輞圈輪組從右側看時<br/>（單側角度，但以右側為准）<br/>左右切向組法最後交叉1對4本的示意圖。<br/>正向輞圈的另一種表達方式是，<br/>「自己看來前面的最後交叉<br/>比後面的最後交叉更向順時針方向扭轉」。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5101amx15.jpg" target="_blank"><img alt="RIMG5101amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5101amx15s.jpg" width="320"/></a><br/>把輞圈內周圓弧和轂花鼓圓弧<br/>都變成等長的平行直線。<br/>從這裡把左輵條圖<br/>用與向下折相反的步驟打開的結果是<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5102amx15.jpg" target="_blank"><img alt="RIMG5102amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5102amx15s.jpg" width="320"/></a><br/>輞圈～轂～輞圈型輪組的展開圖。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5103amx15.jpg" target="_blank"><img alt="RIMG5103amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5103amx15s.jpg" width="320"/></a><br/>再畫一次循環。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5105amx15.jpg" target="_blank"><img alt="RIMG5105amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5105amx15s.jpg" width="320"/></a><br/>決定氣門孔位相時，<br/>展開圖中只有這裡<br/>能畫出不與輵條接觸的垂直線。<br/>右輞圈側的最後交叉<br/>在圖裡向右偏移，<br/>這是因為正向輞圈。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5106amx15.jpg" target="_blank"><img alt="RIMG5106amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5106amx15s.jpg" width="320"/></a><br/>反向輞圈在輪組展開圖中<br/>與正向輞圈鏡像相反。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5107amx15.jpg" target="_blank"><img alt="RIMG5107amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p</div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,7 +405,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">今天也是輪組（以下略）。<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5061amx15.jpg" target="_blank"><img alt="RIMG5061amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5061amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5060amx15.jpg" target="_blank"><img alt="RIMG5060amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5060amx15s.jpg" width="320"/></a><br/>從顧客（姑且算是吧）那裡接到了<br/>用EDGE的1-45輞圈組裝的<br/>後輪。<br/>轂是Tni的Evolite轂的前一代產品Evo轂，<br/>24孔 全<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Sapim+CX-RAY+bicycle+spoke" target="_blank" rel="noopener sponsored" class="amz-inline">CX-RAY</a> Yon-Zero組法。<br/>明顯是不夠流暢的組法，<br/>但組換要求太麻煩了，所以<br/>前段時間只是檢查一下就想敷衍過去，<br/>結果還是不行。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5062amx15.jpg" target="_blank"><img alt="RIMG5062amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5062amx15s.jpg" width="320"/></a><br/>序號是6位，103000號台，<br/>正好是EDGE變成ENVE之前的邊界時期。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5059amx15.jpg" target="_blank"><img alt="RIMG5059amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5059amx15s.jpg" width="320"/></a><br/>作為要組換的後輪轂<br/>收到了Hyperon（一個高端輪組品牌）的轂。<br/>但這很困難。<br/>不是因為輻條長度計算問題，<br/>而是就算用這個轂重新組裝，<br/>左右同數組法和反花鼓側輻向組法的特性還是不變。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5099amx15.jpg" target="_blank"><img alt="RIMG5099amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5099amx15s.jpg" width="320"/></a><br/>↑靠近氣門孔的上方視圖<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5097amx15.jpg" target="_blank"><img alt="RIMG5097amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5097amx15s.jpg" width="320"/></a><br/>↑從右邊<br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5098amx15.jpg" target="_blank"><img alt="RIMG5098amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5098amx15s.jpg" width="320"/></a><br/>↑從左邊<br/>這是Hyperon的後輪。<br/>Hyperon的後輪採用了偏心輞圈和<br/>相當極端的左右異徑組法以及高低花鼓，<br/>雖然是反花鼓側輵向組法，但<br/>與非偏心輞圈、左右同數24孔、<br/>全CX-RAY Yon-Yon組法的後輪相比<br/>略微優勝一籌，這是一個<br/>相當罕見的後輪。<br/>在通常範圍內，反花鼓側輵向組法的輪組<br/>要達到反花鼓側切向組法輪組<br/>輵條難以變形的程度是不可能的。<br/><br/>ENVE的輞圈不是偏心輞圈，所以<br/>即便擴大輵條左右比重差，<br/>也無法克服偏心輞圈這個主要因素的影響。<br/>相同的Hyperon後輪轂，<br/>輵條番數和輞圈分別是正廠Hyperon產品<br/>（也就是現成的Hyperon本身）和<br/>輵條是半競技級、輞圈是1-45的情況下，<br/>雙方都是輪組中心對齊的前提下<br/>組裝完成的輪組握住輵條時，<br/>正廠Hyperon的反花鼓側輵條變形<br/>應該會更少。<br/>但有一個元素可能逆轉這種情況。<br/>ENVE輞圈的輵條張力容許極限更高。<br/>當然只有花鼓側能張到容許極限前，<br/>反花鼓側則由於偏心量而相應減少，<br/>但如果能夠追隨的話……<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5067amx15.jpg" target="_blank"><img alt="RIMG5067amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5067amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5068amx15.jpg" target="_blank"><img alt="RIMG5068amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5068amx15s.jpg" width="320"/></a><br/>這個Hyperon轂裡<br/>裝著陶瓷球保持器。<br/>這在年代上有些奇怪。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5069amx15.jpg" target="_blank"><img alt="RIMG5069amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5069amx15s.jpg" width="320"/></a><br/>因為球道是黑色的。<br/>2004年<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Campagnolo+Hyperon+Ultra+wheelset" target="_blank" rel="noopener sponsored" class="amz-inline">Hyperon Ultra</a>問世時<br/>那是首款WO碳輞圈輪組，<br/>當時Hyperon仍然只有管胎規格<br/>採用鐵珠軸承。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5070amx15.jpg" target="_blank"><img alt="RIMG5070amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5070amx15s.jpg" width="320"/></a><br/>黑色球道+陶瓷球是早期USB的特色，<br/>但這個組合球道磨損嚴重，<br/>容易產生蝕孔。<br/>擦掉潤滑脂檢查後，這個轂的<br/>磨痕很乾淨，沒有蝕孔。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5124amx15.jpg" target="_blank"><img alt="RIMG5124amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5124amx15s.jpg" width="320"/></a><br/>重新整理Hyperon Ultra時期的年代順序。<br/>這是2003年的備用零件目錄。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5125amx15.jpg" target="_blank"><img alt="RIMG5125amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5125amx15s.jpg" width="320"/></a><br/>只有Hyperon。<br/>碳製WO輞圈這種東西還不存在，<br/>所以不用特別說明，只有管胎輞圈規格。<br/>軸承球是HB-RE023這種鐵珠。<br/>HB是轂的零件代號，RE是Record等級，<br/>023等末尾的X23是分配給軸承球的編號。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5115amx15.jpg" target="_blank"><img alt="RIMG5115amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5115amx15s.jpg" width="320"/></a><br/>2004年的目錄一時找不到<br/>所以這是2005年的目錄。<br/>初代Hyperon Ultra<br/>只在2004年和2005年出過，<br/>這兩年Hyperon的情況相同。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5116amx15.jpg" target="_blank"><img alt="RIMG5116amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5116amx15s.jpg" width="320"/></a><br/>Hyperon、Hyperon Ultra、Bora、<br/>Neutron、Eurus（雖然正式名是Eurus，但我私下用這個名字<br/>區別鋼絲輻條款式）共5款<br/>轂展開圖頁面，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5117amx15.jpg" target="_blank"><img alt="RIMG5117amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5117amx15s.jpg" width="320"/></a><br/>只有Hyperon Ultra採用陶瓷球規格，<br/>零件編號也是Hyperon品牌的HY。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5118amx15.jpg" target="_blank"><img alt="RIMG5118amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5118amx15s.jpg" width="320"/></a><br/>轂防塵蓋末尾編號是011，<br/>傳統的黑蓋是Bora品牌的BO011，<br/>初代Hyperon Ultra限定的紅蓋<br/>編號是HY011。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5119amx15.jpg" target="_blank"><img alt="RIMG5119amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5119amx15s.jpg" width="320"/></a><br/>接下來是2006年和2007年的目錄。<br/>Hyperon周邊的內容相同。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5120amx15.jpg" target="_blank"><img alt="RIMG5120amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5120amx15s.jpg" width="320"/></a><br/>Hyperon和Hyperon Ultra<br/>被放在同一頁面整理，但……<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5121amx15.jpg" target="_blank"><img alt="RIMG5121amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5121amx15s.jpg" width="320"/></a><br/>只有鐵珠軸承規格，<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5122amx15.jpg" target="_blank"><img alt="RIMG5122amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5122amx15s.jpg" width="320"/></a><br/>只有黑蓋規格。<br/>這個二代Hyperon Ultra<br/>是「放棄」了初代的陶瓷軸承和紅蓋的產品，<br/>內容上只不過是傳統管胎輞圈Hyperon的<br/>WO輞圈版本罷了。<br/>從這個陶瓷軸承的尷尬失敗開始，<br/>有一段時間只有鐵珠軸承，<br/>之後CULT才問世，<br/>再往後USB問世時<br/>初期是黑球道+陶瓷球，<br/>跟初代Hyperon Ultra相同內容，<br/>我當時想「這又是馬上會蝕孔的組合吧！」<br/>果然頻繁出現蝕孔事例，所以<br/>通過沒有預告、也沒改編號的仕樣變更<br/>改成了銀球道（自產的疑似CULT）後，<br/>蝕孔事例大幅減少。<br/>順便一提，初代Hyperon Ultra的<br/>陶瓷球保持器編號是HY023，<br/>現行CULT和USB的同類零件編號是HY123，<br/>百位進位了，是不同的零件。<br/><br/>收到的Hyperon轂<br/>配著陶瓷球和黑蓋，<br/>所以年代有矛盾。<br/><br/>可能的情況有：<br/>・初代Hyperon Ultra的轂只換了黑蓋<br/>・2004～2005年期間某時期的轂<br/>後來裝入了HB-HY123的陶瓷球<br/>其中一種濃厚。<br/>不同於CULT需要潤滑脂，<br/>無法獲得CULT特有的輕順轉動，所以<br/>把球道改成鐵珠軸承來降低蝕孔風險，<br/>迴轉性能基本不變。<br/>或者反過來把球道換成CULT品，但……<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5072amx15.jpg" target="_blank"><img alt="RIMG5072amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5072amx15s.jpg" width="320"/></a><br/>這個年代的Hyperon和Bora的碳轂<br/>前輪的左右和後輪的左側，輵條穿過後<br/>就無法更換花鼓了。<br/>要換成CULT花鼓嗎？沒有這樣提議就<br/>直接組裝輪組了，所以CULT化被否決！<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5063amx15.jpg" target="_blank"><img alt="RIMG5063amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5063amx15s.jpg" width="320"/></a><br/>原來的輪組，所有的套筒都鬆了好幾圈<br/>確保輵條張力充分鬆弛後<br/>才切斷輵條。<br/>上面的圖片是那些輵條，<br/>現行的ENVE是第4代內蔵套筒，<br/>這個輞圈是EDGE的後期產品，<br/>用的是第2代內蔵套筒。<br/>但有個第2代特有的常見錯誤——<br/>方向裝反了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5064amx15.jpg" target="_blank"><img alt="RIMG5064amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5064amx15s.jpg" width="320"/></a><br/>↑有缺口尺寸的這一側是內周側。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5065amx15.jpg" target="_blank"><img alt="RIMG5065amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5065amx15s.jpg" width="320"/></a><br/>↑套筒的這一側沒有缺口，<br/>螺紋直接開始，<br/>若輵條長度哪怕稍長<br/>就會用完螺紋而頂死。<br/>從輵條螺紋深處附著的碳污垢來看<br/>還有2～3圈的餘量。<br/>初代內蔵套筒也是鋁六角柱，<br/>但外周側端部有防鬆尼龍嵌入，<br/>就算再白癡也幾乎不可能裝反。<br/>所以這種反向套筒只在第2代常見。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5073amx15.jpg" target="_blank"><img alt="RIMG5073amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5073amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5074amx15.jpg" target="_blank"><img alt="RIMG5074amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5074amx15s.jpg" width="320"/></a><br/>終於……到達了……。<br/>這個中心對齐的瞬間<br/>就像指尖碰到了山峰。<br/>真長啊……。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5075amx15.jpg" target="_blank"><img alt="RIMG5075amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5075amx15s.jpg" width="320"/></a><br/>組好了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5079amx15.jpg" target="_blank"><img alt="RIMG5079amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5079amx15s.jpg" width="320"/></a><br/>花鼓側是黑色競技級。<br/>編織最後交叉，<br/>這一點正廠Hyperon也一樣。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5078amx15.jpg" target="_blank"><img alt="RIMG5078amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5078amx15s.jpg" width="320"/></a><br/>反花鼓側是黑色CX-RAY。<br/>相比正廠Hyperon，輵條左右比重差<br/>（花鼓側較大，反花鼓側基本相同）稍大一些。<br/>相比原來的Evo轂，左花鼓寬度更寬、偏心量更大，<br/>橫向剛性容易取得，反花鼓側應該會變軟，<br/>但比原來的Evo轂+全CX-RAY，反花鼓側還是更張緊了。<br/>原來狀態反花鼓側軟綿綿地撓曲，<br/>重新組裝後的輪組基本沒有這種情況。<br/>特別說明一下，原來的狀態是指我檢查過<br/>做了圓周校正和略微增張後的狀態。<br/>不過即便如此，反花鼓側的硬度<br/>還是不如正廠Hyperon，<br/>也不如一般尺寸24孔轂的半競技級Yon-Roku組法無結線。<br/>但在「反花鼓側用CX-RAY輵向組法<br/>1-45輞圈的後輪」中，<br/>這可能是反花鼓側最硬的後輪。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5094amx15.jpg" target="_blank"><img alt="RIMG5094amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5094amx15s.jpg" width="320"/></a><br/>Hyperon的前後輪都是反向輞圈輪組。<br/>所以從右側看輪組時<br/>氣門孔順時針方向的相鄰輞圈孔<br/>是花鼓側的輵條（自己看來從前花鼓過來的）。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5076amx15.jpg" target="_blank"><img alt="RIMG5076amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5076amx15s.jpg" width="320"/></a><br/>這次重新組裝的後輪，按正向輞圈組裝。<br/>輞圈側的孔沒有孔振。<br/>從右側看輪組時，氣門孔順時針方向的相鄰輞圈孔<br/>是反花鼓側的輵條（自己看來從後花鼓過來的）。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5100amx15.jpg" target="_blank"><img alt="RIMG5100amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5100amx15s.jpg" width="320"/></a><br/>正向輞圈輪組從右側看時<br/>（單側角度，但以右側為准）<br/>左右切向組法最後交叉1對4本的示意圖。<br/>正向輞圈的另一種表達方式是，<br/>「自己看來前面的最後交叉<br/>比後面的最後交叉更向順時針方向扭轉」。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5101amx15.jpg" target="_blank"><img alt="RIMG5101amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5101amx15s.jpg" width="320"/></a><br/>把輞圈內周圓弧和轂花鼓圓弧<br/>都變成等長的平行直線。<br/>從這裡把左輵條圖<br/>用與向下折相反的步驟打開的結果是<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5102amx15.jpg" target="_blank"><img alt="RIMG5102amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5102amx15s.jpg" width="320"/></a><br/>輞圈～轂～輞圈型輪組的展開圖。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5103amx15.jpg" target="_blank"><img alt="RIMG5103amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5103amx15s.jpg" width="320"/></a><br/>再畫一次循環。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5105amx15.jpg" target="_blank"><img alt="RIMG5105amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5105amx15s.jpg" width="320"/></a><br/>決定氣門孔位相時，<br/>展開圖中只有這裡<br/>能畫出不與輵條接觸的垂直線。<br/>右輞圈側的最後交叉<br/>在圖裡向右偏移，<br/>這是因為正向輞圈。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5106amx15.jpg" target="_blank"><img alt="RIMG5106amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5106amx15s.jpg" width="320"/></a><br/>反向輞圈在輪組展開圖中<br/>與正向輞圈鏡像相反。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG5107amx15.jpg" target="_blank"><img alt="RIMG5107amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p</div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

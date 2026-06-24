@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
-    <p>Bicycle Workshop — English Edition</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/index.html">
+        <span class="brand-title">Nomu Lab Diary</span>
+        <span class="brand-subtitle">Bicycle Workshop Archive</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/index.html">Archive</a>
+      <a href="/guides/wheel-building.html">Wheel Guide</a>
+      <a href="/glossary.html">Glossary</a>
+      <a href="/about.html">About</a>
+    </nav>
     <div class="lang-toggle"><span class="lang-btn active">EN</span><a class="lang-btn" href="/zh/posts/396.html">繁中</a></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/index.html">← All posts</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Wheel Building</p>
     <h1>Answering Comments (About Wheels That Look Like Reverse Italian Lacing)</h1>
     <p class="post-meta">March 29, 2013</p>
+    <div class="post-body"><div class="entrytext">The other day I briefly wrote something like "there's some merit to reverse Italian lacing on the freewheel side," and someone asked me "why?" in the comments, so today I'm writing about that.<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03255amx.jpg" target="_blank"><img alt="DSC03255amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03255amxs.jpg" width="300"/></a><br/>↑The image on the left is my <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=ZIPP+bicycle+hub" target="_blank" rel="noopener sponsored" class="amz-inline">ZIPP</a> from a while back, and on the right is an <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=FSA+bicycle+hub" target="_blank" rel="noopener sponsored" class="amz-inline">FSA hub</a>.<br/>The FSA hub is a normal flange hub.<br/>In the case of tangential lacing, from the same flange<br/>we get spokes going in both the porcupine direction and the reverse porcupine direction.<br/>I'm going to call this type of normal hub flange a <span style="font-size:large;">"coaxial flange"</span> from now on.<br/><br/>By contrast, with the ZIPP hub,<br/>the porcupine direction and reverse porcupine direction spokes<br/>clearly exit from different positions. There's a left-right offset in their positions.<br/>I'm going to call this type of hub a <span style="font-size:large;">"biaxial flange"</span> from now on.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03258amx.jpg" target="_blank"><img alt="DSC03258amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03258amxs.jpg" width="300"/></a><br/>A little tangent here.<br/>Not directly related to today's discussion, but while I'm at it.<br/>The flange width I use as the basis for calculating lateral stiffness<br/>is, strictly speaking, the width between "spoke exit positions."<br/>That's the Xmm (the width between the red lines) in the diagram above.<br/>Normal hub flanges are usually about just under 3.5mm thick, but<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03261amx.jpg" target="_blank"><img alt="DSC03261amx.jpg" border="0" height="300" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03261amxs.jpg" width="225"/></a><br/>suppose you had a front wheel with all outpoke radial lacing,<br/>and you built it on a front hub with biaxial flanges 7mm narrower—<br/>you could make the argument that despite different flange widths, the lateral stiffness is the same.<br/>This is also the basis for why I build almost all of my personal wheels with all inpoke lacing,<br/>but because most radial lacing in the world uses all outpoke,<br/>I don't push this point strongly myself.<br/>It's also why it's not basically adopted on Nmu Lab wheels.<br/>However, if someone asks me to "build it with inpoke radial," I'd normally say yes.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03262amx.jpg" target="_blank"><img alt="DSC03262amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03262amxs.jpg" width="300"/></a><br/>With tangential lacing, we're alternating between inpoke and outpoke,<br/>and in this case I use the flange center as the basis for lateral stiffness calculation.<br/><br/>As a side note, spoke length is calculated from the flange outside-to-outside width,<br/>so the calculated spoke length is the inpoke length.<br/>Since there's not much difference, I just build the outpoke at that length too.<br/><br/>End of tangent<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03264amx.jpg" target="_blank"><img alt="DSC03264amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03264amxs.jpg" width="300"/></a><br/>When you stomp on the pedal and the rear wheel tire pushes off the ground,<br/>the spokes' job is to transmit the hub's forward twisting power to the rim.<br/>The spokes mainly doing work at that moment are the porcupine direction spokes.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/20121211154346dd7.jpg" target="_blank"><img alt="G3 09amx" border="0" height="168" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/20121211154346dd7s.jpg" width="299"/></a><br/>This is a frame grab from a Campagnolo video,<br/>and regarding power transmission they only evaluate<br/>the porcupine direction spokes.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03265amx.jpg" target="_blank"><img alt="DSC03265amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03265amxs.jpg" width="300"/></a><br/>And so the <span style="color:#FF0000">porcupine direction spokes hold the key to drive efficiency</span>,<br/>but if you focus only on drive efficiency, the porcupine direction spokes<br/>should ideally be closer to the hub center (directly below the rim).<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03266amx.jpg" target="_blank"><img alt="DSC03266amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03266amxs.jpg" width="300"/></a><br/>Applying this to a biaxial flange hub,<br/>you'd route the porcupine direction spokes through the red hole in the diagram above.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/20120317112922fee.jpg" target="_blank"><img alt="20120317112922fee.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/20120317112922fees.jpg" width="300"/></a><br/>↑That's this configuration.<br/>On the biaxial flange, the porcupine direction spokes<br/>are positioned toward the side closer to directly below the rim.<br/>However, you'll notice the rightmost spoke here<br/>is reverse porcupine direction. Depending on your perspective, that's reverse Italian lacing.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03272amx.jpg" target="_blank"><img alt="DSC03272amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03272amxs.jpg" width="300"/></a><br/>Actually, the old ZIPP is the same way.<br/>The hole's machined geometry specifies which direction the spoke goes through.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/201210252334324aa.jpg" target="_blank"><img alt="rear sx 2.0 shima" border="0" height="141" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/201210252334324aas.jpg" width="299"/></a><br/>This is an ExtraLite hub, and despite being biaxial flange,<br/>it's designed so you can thread spokes either way. Clever.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03273amx.jpg" target="_blank"><img alt="DSC03273amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03273amxs.jpg" width="300"/></a><br/>With the old ZIPP, you have to thread the spokes this way.<br/>If you look at it from a coaxial flange perspective, it's definitely reverse Italian lacing.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03274amx.jpg" target="_blank"><img alt="DSC03274amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03274amxs.jpg" width="300"/></a><br/>But looking at it this way, I can sense the intention to position<br/>the porcupine direction spokes toward the side closer to directly below the rim.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03267amx.jpg" target="_blank"><img alt="DSC03267amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03267amxs.jpg" width="300"/></a><br/>With Colima, the hole position is only barely biaxial flange enough,<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03268amx.jpg" target="_blank"><img alt="DSC03268amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03268amxs.jpg" width="300"/></a><br/>and the wheel is built in the direction interpretable as Italian lacing (the orientation in the image above).<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03269amx.jpg" target="_blank"><img alt="DSC03269amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03269amxs.jpg" width="300"/></a><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03271amx.jpg" target="_blank"><img alt="DSC03271amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03271amxs.jpg" width="300"/></a><br/>↑Regular hub (coaxial flange) Italian lacing looks like this.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/reynolds_rzr_46t_rh_600.jpg" target="_blank"><img alt="reynolds_rzr_46t_rh_600.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/reynolds_rzr_46t_rh_600s.jpg" width="300"/></a><br/>Back in the day, FSA and <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Reynolds+RZR+bicycle+wheel+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Reynolds RZR</a> had three-flange hubs.<br/>The image above is an RZR, and the rear wheel has left-right radial lacing.<br/>Since the spoke and hub flange are locked down tight in carbon,<br/>this works.<br/>Looking at the middle flange's position carefully, it's at the hub center.<br/>Directly below the rim.<br/><span style="color:#FF0000">Since it's responsible for driving torque transmission,<br/>it only has porcupine direction spokes</span>.<br/>Like in the Campagnolo video image earlier,<br/>reverse porcupine direction spokes are ignored<br/>in terms of drive transmission efficiency.<br/><br/><br/>The following is my personal opinion, but<br/>if you go as far as installing a third flange at the hub center,<br/>then having porcupine direction spokes directly below the rim makes sense.<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03276amx.jpg" target="_blank"><img alt="DSC03276amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03276amxs.jpg" width="300"/></a><br/>However, with the biaxial flange design of <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+offset+flange+bicycle+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Shimano</a> or ZIPP,<br/>the freewheel-side center-ish hole isn't dramatically more centered.<br/>Plus, the rightmost spoke is reverse porcupine direction<br/>and runs nearly tangentially, so during pedaling with forward twisting power<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03277amx.jpg" target="_blank"><img alt="DSC03277amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03277amxs.jpg" width="300"/></a><br/>I can't shake the image that the spoke might slip out<br/>under that kind of stress.<br/>In reality it won't happen because there's spoke tension,<br/>but I don't like the thought that it "might."<br/><br/><span style="color:#FF0000">The RZR has no reverse porcupine direction spokes</span>—<br/>that's a thoughtfully engineered design.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03278amx.jpg" target="_blank"><img alt="DSC03278amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03278amxs.jpg" width="300"/></a><br/>With Shimano, the biaxial flange hub ends up being laced reverse Italian style.<br/>The same goes for the freewheel side of the current Optaval (<span style="color:#FF0000">O</span>RIGINAL <span style="color:#FF0000">P</span>ATENT <span style="color:#FF0000">B</span>Y RO<span style="color:#FF0000">VAL</span>?).<br/><br/>Way back during the 7850 era, I asked about this reverse Italian lacing equivalent<br/>at a Shimano seminar, and the answer was basically "we think that's best for us." Fine, you think that.<br/>If they were going to copy 2:1 lacing for Optaval anyway,<br/>they should've just gone with high-low flanges.<br/>Though that would've made it look like "we're just offering Fulcrum Racing Speed in different rim heights."<br/><br/>The image above is a WH-R500 (coaxial flange hub),<br/>and this is built Italian lacing style.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02424amx.jpg" target="_blank"><img alt="DSC02424amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02424amxs.jpg" width="300"/></a><br/>With <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Easton+bicycle+wheel+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Easton</a>, the biaxial flange is about the same degree as coaxial flange,<br/>but they use what can be interpreted as reverse Italian lacing.<br/>Since the spokes stand much more upright than tangential angle,<br/>it looks better against "spoke root pull-out stress."<br/><br/>At Easton, even their butted spoke model (coaxial flange hub) is<br/>reverse Italian laced.<br/>Like the PowerTap in-house wheel I mentioned the other day, there seems to be<br/>a philosophy in hand-building that favors reverse Italian lacing too.<br/>This is what I meant at the start by "there's some merit to reverse Italian lacing,"<br/>but I don't think it's right, so for rear wheels (if rim-brake-side)<br/>I do Italian lacing exclusively.<br/>Actually, I've been asked in comments before: "Isn't reverse Italian lacing more drive efficient?"<br/>In this article I'm calling the regular hub "coaxial flange," but<br/>even then, there's still about 3.5mm of flange thickness that makes it biaxial.<br/>With reverse Italian lacing, the porcupine direction spoke gets about 3.5mm<br/>closer to directly below the rim.<br/>If you only look at that, reverse Italian seems better, but<br/>when you factor in behavior during hard braking and<br/>wanting the spoke that gets pulled during pedaling to be in the position<br/>closest to the sprocket, I think Italian lacing is better overall.<br/>Many manufacturers build straight spokes with reverse Italian equivalent lacing,<br/>but besides small ones, only Shimano and Easton do this.<br/>Mavic, Campagnolo, and Fulcrum use Italian lacing equivalent.<br/>(Which means they don't have as much biaxial flange design, but)<br/><br/>My conclusion is that even accounting for the merit in reverse Italian lacing,<br/>it's not good practice.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03255amx.jpg" target="_blank"><img alt="DSC03255amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03255amxs.jpg" width="300"/></a><br/>↑Here's that opening image again.<br/>Even though it's called biaxial flange, the dimensions are actually barely different from coaxial flange.
+</div></div>
+    <aside class="post-guides">
+      <strong>Technical archive</strong>
+      <nav aria-label="Technical guides">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">The other day I briefly wrote something like "there's some merit to reverse Italian lacing on the freewheel side," and someone asked me "why?" in the comments, so today I'm writing about that.<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03255amx.jpg" target="_blank"><img alt="DSC03255amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03255amxs.jpg" width="300"/></a><br/>↑The image on the left is my <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=ZIPP+bicycle+hub" target="_blank" rel="noopener sponsored" class="amz-inline">ZIPP</a> from a while back, and on the right is an <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=FSA+bicycle+hub" target="_blank" rel="noopener sponsored" class="amz-inline">FSA hub</a>.<br/>The FSA hub is a normal flange hub.<br/>In the case of tangential lacing, from the same flange<br/>we get spokes going in both the porcupine direction and the reverse porcupine direction.<br/>I'm going to call this type of normal hub flange a <span style="font-size:large;">"coaxial flange"</span> from now on.<br/><br/>By contrast, with the ZIPP hub,<br/>the porcupine direction and reverse porcupine direction spokes<br/>clearly exit from different positions. There's a left-right offset in their positions.<br/>I'm going to call this type of hub a <span style="font-size:large;">"biaxial flange"</span> from now on.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03258amx.jpg" target="_blank"><img alt="DSC03258amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03258amxs.jpg" width="300"/></a><br/>A little tangent here.<br/>Not directly related to today's discussion, but while I'm at it.<br/>The flange width I use as the basis for calculating lateral stiffness<br/>is, strictly speaking, the width between "spoke exit positions."<br/>That's the Xmm (the width between the red lines) in the diagram above.<br/>Normal hub flanges are usually about just under 3.5mm thick, but<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03261amx.jpg" target="_blank"><img alt="DSC03261amx.jpg" border="0" height="300" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03261amxs.jpg" width="225"/></a><br/>suppose you had a front wheel with all outpoke radial lacing,<br/>and you built it on a front hub with biaxial flanges 7mm narrower—<br/>you could make the argument that despite different flange widths, the lateral stiffness is the same.<br/>This is also the basis for why I build almost all of my personal wheels with all inpoke lacing,<br/>but because most radial lacing in the world uses all outpoke,<br/>I don't push this point strongly myself.<br/>It's also why it's not basically adopted on Nmu Lab wheels.<br/>However, if someone asks me to "build it with inpoke radial," I'd normally say yes.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03262amx.jpg" target="_blank"><img alt="DSC03262amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03262amxs.jpg" width="300"/></a><br/>With tangential lacing, we're alternating between inpoke and outpoke,<br/>and in this case I use the flange center as the basis for lateral stiffness calculation.<br/><br/>As a side note, spoke length is calculated from the flange outside-to-outside width,<br/>so the calculated spoke length is the inpoke length.<br/>Since there's not much difference, I just build the outpoke at that length too.<br/><br/>End of tangent<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03264amx.jpg" target="_blank"><img alt="DSC03264amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03264amxs.jpg" width="300"/></a><br/>When you stomp on the pedal and the rear wheel tire pushes off the ground,<br/>the spokes' job is to transmit the hub's forward twisting power to the rim.<br/>The spokes mainly doing work at that moment are the porcupine direction spokes.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/20121211154346dd7.jpg" target="_blank"><img alt="G3 09amx" border="0" height="168" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/20121211154346dd7s.jpg" width="299"/></a><br/>This is a frame grab from a Campagnolo video,<br/>and regarding power transmission they only evaluate<br/>the porcupine direction spokes.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03265amx.jpg" target="_blank"><img alt="DSC03265amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03265amxs.jpg" width="300"/></a><br/>And so the <span style="color:#FF0000">porcupine direction spokes hold the key to drive efficiency</span>,<br/>but if you focus only on drive efficiency, the porcupine direction spokes<br/>should ideally be closer to the hub center (directly below the rim).<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03266amx.jpg" target="_blank"><img alt="DSC03266amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03266amxs.jpg" width="300"/></a><br/>Applying this to a biaxial flange hub,<br/>you'd route the porcupine direction spokes through the red hole in the diagram above.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/20120317112922fee.jpg" target="_blank"><img alt="20120317112922fee.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/20120317112922fees.jpg" width="300"/></a><br/>↑That's this configuration.<br/>On the biaxial flange, the porcupine direction spokes<br/>are positioned toward the side closer to directly below the rim.<br/>However, you'll notice the rightmost spoke here<br/>is reverse porcupine direction. Depending on your perspective, that's reverse Italian lacing.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03272amx.jpg" target="_blank"><img alt="DSC03272amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03272amxs.jpg" width="300"/></a><br/>Actually, the old ZIPP is the same way.<br/>The hole's machined geometry specifies which direction the spoke goes through.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/201210252334324aa.jpg" target="_blank"><img alt="rear sx 2.0 shima" border="0" height="141" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/201210252334324aas.jpg" width="299"/></a><br/>This is an ExtraLite hub, and despite being biaxial flange,<br/>it's designed so you can thread spokes either way. Clever.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03273amx.jpg" target="_blank"><img alt="DSC03273amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03273amxs.jpg" width="300"/></a><br/>With the old ZIPP, you have to thread the spokes this way.<br/>If you look at it from a coaxial flange perspective, it's definitely reverse Italian lacing.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03274amx.jpg" target="_blank"><img alt="DSC03274amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03274amxs.jpg" width="300"/></a><br/>But looking at it this way, I can sense the intention to position<br/>the porcupine direction spokes toward the side closer to directly below the rim.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03267amx.jpg" target="_blank"><img alt="DSC03267amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03267amxs.jpg" width="300"/></a><br/>With Colima, the hole position is only barely biaxial flange enough,<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03268amx.jpg" target="_blank"><img alt="DSC03268amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03268amxs.jpg" width="300"/></a><br/>and the wheel is built in the direction interpretable as Italian lacing (the orientation in the image above).<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03269amx.jpg" target="_blank"><img alt="DSC03269amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03269amxs.jpg" width="300"/></a><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03271amx.jpg" target="_blank"><img alt="DSC03271amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03271amxs.jpg" width="300"/></a><br/>↑Regular hub (coaxial flange) Italian lacing looks like this.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/reynolds_rzr_46t_rh_600.jpg" target="_blank"><img alt="reynolds_rzr_46t_rh_600.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/reynolds_rzr_46t_rh_600s.jpg" width="300"/></a><br/>Back in the day, FSA and <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Reynolds+RZR+bicycle+wheel+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Reynolds RZR</a> had three-flange hubs.<br/>The image above is an RZR, and the rear wheel has left-right radial lacing.<br/>Since the spoke and hub flange are locked down tight in carbon,<br/>this works.<br/>Looking at the middle flange's position carefully, it's at the hub center.<br/>Directly below the rim.<br/><span style="color:#FF0000">Since it's responsible for driving torque transmission,<br/>it only has porcupine direction spokes</span>.<br/>Like in the Campagnolo video image earlier,<br/>reverse porcupine direction spokes are ignored<br/>in terms of drive transmission efficiency.<br/><br/><br/>The following is my personal opinion, but<br/>if you go as far as installing a third flange at the hub center,<br/>then having porcupine direction spokes directly below the rim makes sense.<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03276amx.jpg" target="_blank"><img alt="DSC03276amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03276amxs.jpg" width="300"/></a><br/>However, with the biaxial flange design of <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+offset+flange+bicycle+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Shimano</a> or ZIPP,<br/>the freewheel-side center-ish hole isn't dramatically more centered.<br/>Plus, the rightmost spoke is reverse porcupine direction<br/>and runs nearly tangentially, so during pedaling with forward twisting power<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03277amx.jpg" target="_blank"><img alt="DSC03277amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03277amxs.jpg" width="300"/></a><br/>I can't shake the image that the spoke might slip out<br/>under that kind of stress.<br/>In reality it won't happen because there's spoke tension,<br/>but I don't like the thought that it "might."<br/><br/><span style="color:#FF0000">The RZR has no reverse porcupine direction spokes</span>—<br/>that's a thoughtfully engineered design.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03278amx.jpg" target="_blank"><img alt="DSC03278amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03278amxs.jpg" width="300"/></a><br/>With Shimano, the biaxial flange hub ends up being laced reverse Italian style.<br/>The same goes for the freewheel side of the current Optaval (<span style="color:#FF0000">O</span>RIGINAL <span style="color:#FF0000">P</span>ATENT <span style="color:#FF0000">B</span>Y RO<span style="color:#FF0000">VAL</span>?).<br/><br/>Way back during the 7850 era, I asked about this reverse Italian lacing equivalent<br/>at a Shimano seminar, and the answer was basically "we think that's best for us." Fine, you think that.<br/>If they were going to copy 2:1 lacing for Optaval anyway,<br/>they should've just gone with high-low flanges.<br/>Though that would've made it look like "we're just offering Fulcrum Racing Speed in different rim heights."<br/><br/>The image above is a WH-R500 (coaxial flange hub),<br/>and this is built Italian lacing style.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02424amx.jpg" target="_blank"><img alt="DSC02424amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02424amxs.jpg" width="300"/></a><br/>With <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Easton+bicycle+wheel+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Easton</a>, the biaxial flange is about the same degree as coaxial flange,<br/>but they use what can be interpreted as reverse Italian lacing.<br/>Since the spokes stand much more upright than tangential angle,<br/>it looks better against "spoke root pull-out stress."<br/><br/>At Easton, even their butted spoke model (coaxial flange hub) is<br/>reverse Italian laced.<br/>Like the PowerTap in-house wheel I mentioned the other day, there seems to be<br/>a philosophy in hand-building that favors reverse Italian lacing too.<br/>This is what I meant at the start by "there's some merit to reverse Italian lacing,"<br/>but I don't think it's right, so for rear wheels (if rim-brake-side)<br/>I do Italian lacing exclusively.<br/>Actually, I've been asked in comments before: "Isn't reverse Italian lacing more drive efficient?"<br/>In this article I'm calling the regular hub "coaxial flange," but<br/>even then, there's still about 3.5mm of flange thickness that makes it biaxial.<br/>With reverse Italian lacing, the porcupine direction spoke gets about 3.5mm<br/>closer to directly below the rim.<br/>If you only look at that, reverse Italian seems better, but<br/>when you factor in behavior during hard braking and<br/>wanting the spoke that gets pulled during pedaling to be in the position<br/>closest to the sprocket, I think Italian lacing is better overall.<br/>Many manufacturers build straight spokes with reverse Italian equivalent lacing,<br/>but besides small ones, only Shimano and Easton do this.<br/>Mavic, Campagnolo, and Fulcrum use Italian lacing equivalent.<br/>(Which means they don't have as much biaxial flange design, but)<br/><br/>My conclusion is that even accounting for the merit in reverse Italian lacing,<br/>it's not good practice.<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03255amx.jpg" target="_blank"><img alt="DSC03255amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC03255amxs.jpg" width="300"/></a><br/>↑Here's that opening image again.<br/>Even though it's called biaxial flange, the dimensions are actually barely different from coaxial flange.
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">Products Mentioned in This Article</p>
       <ul>

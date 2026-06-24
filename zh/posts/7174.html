@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/7174.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>WAKE6560 的後輪</h1>
     <p class="post-meta">July 06, 2024</p>
+    <div class="post-body"><div class="entrytext">從客人那裡領取了普林斯頓的 WAKE6560 後輪。<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9761hmr15.jpg" target="_blank"><img alt="RIMG9761hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9761hmr15s.jpg" width="320"/></a><br/>之前已經更換過前輪的軸承（→<a href="/zh/posts/6845.html" target="_blank" title="こちら">請參閱</a>），<br/>後輪的花鼓軸據說有鬆動。<br/>我看起來不太像是側向鬆動，<br/>而是花鼓本身的轉動不順暢，<br/>花鼓殼左右兩側與飛輪體前後兩側這四個位置中<br/>至少有一個以上的軸承損壞了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9762hmr15.jpg" target="_blank"><img alt="RIMG9762hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9762hmr15s.jpg" width="320"/></a><br/>WAKE 是型號名稱，<br/>6560 表示採用 65mm 高和 60mm 高的波浪形狀。<br/>最近 Fulcrum（飛克魯姆）推出了很像要被普林斯頓告狀的輪組，<br/>但不知道是沒事啦。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9763hmr15.jpg" target="_blank"><img alt="RIMG9763hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9763hmr15s.jpg" width="320"/></a><br/>客人說他自己試著往飛輪體上的潤滑脂噴槍裡加潤滑脂，<br/>結果分解花鼓時發現 O 形環斷了，<br/>希望我們能幫忙準備替換品。<br/>關於前輪的連結文章，我自己當時還沒理解透徹，<br/>超薄墊片和這個 O 形環是重要的功能零件。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9764hmr15.jpg" target="_blank"><img alt="RIMG9764hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9764hmr15s.jpg" width="320"/></a><br/>戰術賽車這個花鼓品牌，<br/>在普林斯頓官方網站選擇輪組規格時，<br/>會和 <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+bicycle+hub" target="_blank" rel="noopener sponsored" class="amz-inline">DT</a>、<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Chris+King+bicycle+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Chris King</a>、White Industries 等<br/>知名花鼓廠商並列出現，<br/>但其實這是普林斯頓碳纖維工廠<br/>自有的花鼓品牌。<br/>產品傾向不是質樸堅牢，<br/>而是不在意耐久性、一味追求<br/>小氣的輕量化，<br/>向量上雖有些不同，但有著和 ExtraLite 花鼓相似的味道。<br/>如果在同樣的使用情況下，<br/>DT 或 Chris King 的花鼓幾乎不會發生這類問題。<br/>如果我事先知道這個花鼓的結構後才去訂購普林斯頓輪組，<br/>就不會選戰術的花鼓。<br/>戰術花鼓輕這點是事實，<br/>但我大概會選 DT。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9765hmr15.jpg" target="_blank"><img alt="RIMG9765hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9765hmr15s.jpg" width="320"/></a><br/>左側軸承座周圍的縫隙<br/>已經開始出現鏽色。<br/>我說軸承座，<br/>但花鼓軸外徑和軸承座內徑的寸法公差<br/>可以說是壓入級別的緊湊。<br/>如果不是剛裝軸承座直後，<br/>沒有合適工具的話通常是外不了的。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9766hmr15.jpg" target="_blank"><img alt="RIMG9766hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9766hmr15s.jpg" width="320"/></a><br/>拔掉了左側軸承座。<br/>接觸軸承面有白鏽。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9767hmr15.jpg" target="_blank"><img alt="RIMG9767hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9767hmr15s.jpg" width="320"/></a><br/>↑拔掉軸承座後的花鼓殼左側<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9770hmr15.jpg" target="_blank"><img alt="RIMG9770hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9770hmr15s.jpg" width="320"/></a><br/>鏽跡、油污和沙粒積累成了泥狀的髒污。<br/>上面的圖片只有左半邊被擦掉了。<br/><br/><br/>～非標準軸承的話題～<br/>上圖的軸承是標準軸承 6803。<br/>非標準軸承的內徑／外徑／厚度用毫米寸法並列寫法的話是 17265。<br/>「常用的軸承外徑到 30mm 左右的機械運動項目」<br/>也就是競速自行車的世界裡，<br/>有各式各樣從標準軸承只改了內徑或外徑的非標準軸承。<br/>大多工業製品是為了成本考量<br/>對應已有的標準軸承來決定製品寸法，<br/>但在競速自行車的世界裡，可能因為<br/>成本是否符合需求量，或者寸法特殊的原因<br/>而製造非標準軸承。<br/><br/>shimano 的 HG 飛輪體是，<br/>shimano 製花鼓中採用了如 bossfreewheel hub 延伸的構造<br/>（或者說出生背景就是這樣），<br/>但其他大多廠商都放了兩個滾珠軸承。<br/>最初通常用的是 6902，也就是 15287，<br/>但外徑 28mm 的話飛輪體花鍵<br/>谷部的厚度就會變得非常薄，<br/>所以「要是有個只把 6902 的外徑改成 26mm 的軸承就好了～，<br/>標準軸承裡沒這東西啦」<br/>就這樣製造出來 15267。<br/>這肯定是自行車的世界率先要求的。<br/><br/>後輪花鼓軸上要通過外徑 12mm 的快速扣軸，<br/>所以花鼓軸內徑是 12mm，<br/>內徑 12mm 的花鼓軸外徑雖說 15mm 也不是不可能，<br/>但最好還是 17mm，<br/>所以通常會用 6903 也就是 17307，<br/>但 mavic 的 InstantDrive360 花鼓<br/>有些花鼓軸的凸頭部分寸法是 18mm，<br/>就用了從 6903 只改內徑成 18mm 的<br/>18307 軸承。<br/>順帶一提，內徑 18mm 在所有標準軸承中<br/>本來就不存在的寸法。<br/><br/>shimano HollowTech II 初期的 BB 裡放的是<br/>6805 也就是 25377。<br/>這個內徑 25mm 蓋上塑膠蓋<br/>變成內徑 24mm，讓外徑 24mm 的曲軸<br/>不經過金屬接觸就通過去。<br/>campagnolo 的 UltraTorque 中<br/>曲軸外徑是 25mm，<br/>看起來像直接通過 6805，<br/>但 UltraTorque 曲臂根部的軸承<br/>是「把 6805 的厚度改成 6mm 的東西」，<br/>換句話說是 25376。<br/>應該是非得要薄 1mm 才能避免設計的牽強。<br/>不應該是為了避免用通用軸承修復而故意刁難……。<br/>最近看到讓我驚訝的是<br/>T47 規格的 BB 裡放的軸承<br/>是把 6805 的內徑改成 24mm 的<br/>24377，用軸承內輪接觸的方式<br/>通著 shimano 曲軸的。<br/>BB30 的命名是因為曲軸外徑是 30mm，<br/>cannondale 初期的 BB30<br/>用通用軸承直接壓進車架、用 C 形環承接<br/>的做法，用的是 6806 也就是 30427 軸承。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9769hmr15.jpg" target="_blank"><img alt="RIMG9769hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9769hmr15s.jpg" width="320"/></a><br/>那麼這次戰術的花鼓<br/>花鼓殼右側軸承是從 6903 也就是 17307<br/>只改外徑縮小 2mm 的 17287<br/>被用上了。<br/>相當特殊，但可以取得。<br/>除此之外三個軸承都是 6803，<br/>外徑 17mm 的花鼓軸<br/>就這樣筆直貫通了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9768hmr15.jpg" target="_blank"><img alt="RIMG9768hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9768hmr15s.jpg" width="320"/></a><br/>如果軸承外徑半徑大 1mm、直徑大 2mm 的話<br/>這個棘輪周圍的結構就成立不了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9772hmr15.jpg" target="_blank"><img alt="RIMG9772hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9772hmr15s.jpg" width="320"/></a><br/>面棘輪的彈簧是單向推動式，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9773hmr15.jpg" target="_blank"><img alt="RIMG9773hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9773hmr15s.jpg" width="320"/></a><br/>放在花鼓殼這邊<br/>（DT 的棘輪 EXP 是飛輪體這邊）。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9775hmr15.jpg" target="_blank"><img alt="RIMG9775hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9775hmr15s.jpg" width="320"/></a><br/>面棘輪的接觸面是錐形。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9939msn5.jpg" target="_blank"><img alt="RIMG9939msn5.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9939msn5s.jpg" width="320"/></a><br/>↑這是 Novatech 的飛輪體，<br/>飛輪體不與花鼓殼軸承面接觸<br/>（不要推內輪以外的地方）<br/>寸法上稍微凸出來的墊片放在裡面。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9938msn5.jpg" target="_blank"><img alt="RIMG9938msn5.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9938msn5s.jpg" width="320"/></a><br/>↑拔出來是這樣<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9774hmr15.jpg" target="_blank"><img alt="RIMG9774hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9774hmr15s.jpg" width="320"/></a><br/>相當的零件<br/>在戰術這邊是塑膠製的。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9776hmr15.jpg" target="_blank"><img alt="RIMG9776hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9776hmr15s.jpg" width="320"/></a><br/>飛輪體的軸承<br/>不是都從外側放進去，<br/>裡面的軸承是從內側放進去的方式。<br/>只有這個軸承，不能說是壓入，寸法公差很鬆散<br/>可以用手拆卸。<br/>應該不是飛輪體這邊磨耗才變這樣的。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9777hmr15.jpg" target="_blank"><img alt="RIMG9777hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9777hmr15s.jpg" width="320"/></a><br/>飛輪體軸承的內側內輪間支撑用墊片被省略了。<br/>Newman 的花鼓有把軸承座對著花鼓軸做到頂面接觸<br/>（對快速扣軸的傻瓜鎖更強）的例子<br/>但飛輪體外側和花鼓殼左側（左右端的軸承）<br/>會馬上壞掉（→<a href="/zh/posts/6967.html" target="_blank" title="こちら">請參閱</a>）。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9778hmr15.jpg" target="_blank"><img alt="RIMG9778hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9778hmr15s.jpg" width="320"/></a><br/>飛輪體從外側看是這樣<br/><br/>軸承部分，花鼓殼右側的 17287 以外的<br/>三個 6803 程度差異不同，都需要更換。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9847amx15.jpg" target="_blank"><img alt="RIMG9847amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9847amx15s.jpg" width="320"/></a><br/>拔出了左右軸承座內側放的<br/>薄墊片。<br/>上面的圖片，髒的是左側朝外的面<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9848amx15.jpg" target="_blank"><img alt="RIMG9848amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9848amx15s.jpg" width="320"/></a><br/>↑朝內側的面是這樣。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9854amx15.jpg" target="_blank"><img alt="RIMG9854amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9854amx15s.jpg" width="320"/></a><br/>可能的範圍內去掉了鏽跡，<br/>但左側實際上重了兩片。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9851amx15.jpg" target="_blank"><img alt="RIMG9851amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9851amx15s.jpg" width="320"/></a><br/>花鼓軸上有幾個洞，<br/>這不是排水孔，而是花鼓軸插入時<br/>為了防止伸縮式高壓<br/>的空氣孔意義更大。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9853amx15.jpg" target="_blank"><img alt="RIMG9853amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9853amx15s.jpg" width="320"/></a><br/>在 180° 相位上有兩個孔，<br/>直看的話能看出是貫通的。<br/>這個孔和不是滾珠軸承的<br/>所以軸承內徑和花鼓軸外徑沒有<br/>緊密閉合的<br/>杯錐式的 shimano 完組輪<br/>花鼓軸上也有。<br/>即便是這樣快速扣軸和<br/>花鼓軸的關係也是緊密伸縮式，<br/>所以不是針對花鼓軸和花鼓殼<br/>而可能是針對快速扣軸和花鼓軸的關係<br/>才開的孔。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9856amx15.jpg" target="_blank"><img alt="RIMG9856amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9856amx15s.jpg" width="320"/></a><br/>左右端都是軸承座接觸到底，<br/>所以上圖的花鼓軸＋右端也應該可以分開，<br/>但壓入級別地套著，所以不是很好外。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9857amx15.jpg" target="_blank"><img alt="RIMG9857amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9857amx15s.jpg" width="320"/></a><br/>↑洗淨的左端從接觸花鼓殼面看的樣子。<br/>只推軸承內輪的凸起，<br/>實際上還有另外一個溝要放 O 形環<br/>還要夾進極薄墊片，<br/>所以這個端不是直接接觸軸承內輪。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9858amx15.jpg" target="_blank"><img alt="RIMG9858amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9858amx15s.jpg" width="320"/></a><br/>右端內側有<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9859amx15.jpg" target="_blank"><img alt="RIMG9859amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9859amx15s.jpg" width="320"/></a><br/>原廠的 O 形環沒斷，還留著。<br/>連結文章的前輪記事中的時候<br/>我沒意識到它的重要性，<br/>但依照花鼓的結構，這是必需的功能零件。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9863amx15.jpg" target="_blank"><img alt="RIMG9863amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9863amx15s.jpg" width="320"/></a><br/>↑畫面正中央是從右端取出的原廠品，<br/>右邊是和原廠內徑／外徑、線徑相同的<br/>我找到的通用品，<br/>左邊是線徑相同、<br/>內徑／外徑比右邊的大 1mm 的<br/>以防萬一準備的。<br/>畫面中原廠的線徑看起來比較細，<br/>但本來是一樣的。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9860amx15.jpg" target="_blank"><img alt="RIMG9860amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9860amx15s.jpg" width="320"/></a><br/>極薄墊片只是剛好不卡住軸承外輪的寸法。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9861amx15.jpg" target="_blank"><img alt="RIMG9861amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9861amx15s.jpg" width="320"/></a><br/>↑稍微挪開的話就是這樣<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9865amx15.jpg" target="_blank"><img alt="RIMG9865amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9865amx15s.jpg" width="320"/></a><br/>內徑／外徑和原廠相同的<br/>通用 O 形環卡進了溝裡。<br/>看起來好像凸出來，<br/>最後會正確地卡進去。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9866amx15.jpg" target="_blank"><img alt="RIMG9866amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9866amx15s.jpg" width="320"/></a><br/>放進了極薄墊片。<br/>右側所以和原本一樣是一片。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9867amx15.jpg" target="_blank"><img alt="RIMG9867amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9867amx15s.jpg" width="320"/></a><br/>↑墊片融進背景裡不太看得出，<br/>不過 O 形環沒有萎縮的話是這樣。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9926amx15.jpg" target="_blank"><img alt="RIMG9926amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9926amx15s.jpg" width="320"/></a><br/>這個花鼓，首先是兩側端都對著花鼓軸做到頂面，<br/>即使快速扣軸壓下去，<br/>左右端間寸法也不會改變<br/>這樣做成的。<br/>如此一來飛輪體和花鼓殼裡面<br/>軸承內輪的支撑墊片不需要，<br/>飛輪體頂部防撞墊片做成塑膠<br/>這種荒唐規格也能應付。<br/><br/>左右端間寸法<br/>比花鼓殼左側到飛輪體右側的<br/>軸承外～外寸法要長。<br/>如果前者比較小的話，軸承內輪會被過度推壓，<br/>花鼓轉動會變得異常沉重或根本轉不動。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9925amx15.jpg" target="_blank"><img alt="RIMG9925amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9925amx15s.jpg" width="320"/></a><br/>然後 O 形環和極薄墊片<br/>像曲軸和左右其中一邊曲臂<br/>用螺絲固定型曲軸組<br/>的間隙調整波形墊圈那樣<br/>適當地推壓著軸承內輪<br/>這就是這個花鼓荒唐的結構。<br/><br/>花鼓軸承，特別是外側兩個內部磨耗<br/>外輪對內輪產生左右方向的動作（也就是側向鬆動）的量<br/>這個 O 形環和極薄墊片無法吸收的話<br/>花鼓軸就會出現側向鬆動。<br/><br/>我領取的時候，<br/>比起客人申報的花鼓軸鬆動，<br/>我比較在意的是根本轉動不順暢，<br/>所以沒怎麼看鬆動的部分，<br/>但根據這個結構，O 形環只要一斷<br/>就有可能出現鬆動。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9868amx15.jpg" target="_blank"><img alt="RIMG9868amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9868amx15s.jpg" width="320"/></a><br/>前輪的時候，客人從戰術賽車那邊<br/>「如果發現軸承好像不行的話就用這個」<br/>接收到的軸承我也在這邊。<br/>花鼓殼右側的 17287 轉動完全沒有澀感，<br/>所以這次沒有更換。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9869amx15.jpg" target="_blank"><img alt="RIMG9869amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9869amx15s.jpg" width="320"/></a><br/>除了那個以外的 6803 全部換掉。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9872amx15.jpg" target="_blank"><img alt="RIMG9872amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9872amx15s.jpg" width="320"/></a><br/>最嚴重的花鼓殼左側<br/>最後才換，<br/>領取的軸承 6803 用完了，<br/>所以用了本店的庫存軸承。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9871amx15.jpg" target="_blank"><img alt="RIMG9871amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9871amx15s.jpg" width="320"/></a><br/>↑最嚴重的花鼓殼左側軸承。<br/>內部完全生鏽了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9870amx15.jpg" target="_blank"><img alt="RIMG9870amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9870amx15s.jpg" width="320"/></a><br/>拔花鼓軸的時候<br/>飛輪體軸承有卡頓感，<br/>所以懷疑是鏽蝕卡住還是<br/>寸法公差太小，<br/>但用新軸承的話就沒這問題了<br/>確實寸法公差感覺偏緊，<br/>但飛輪體對花鼓軸的滑動還是很順暢。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9873amx15.jpg" target="_blank"><img alt="RIMG9873amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9873amx15s.jpg" width="320"/></a><br/>被彈簧頂起來的棘輪零件<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9874amx15.jpg" target="_blank"><img alt="RIMG9874amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9874amx15s.jpg" width="320"/></a><br/>↑按下去是這樣<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9875amx15.jpg" target="_blank"><img alt="RIMG9875amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9875amx15s.jpg" width="320"/></a><br/>塗上了 DT 星形棘輪專用潤滑脂。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9877amx15.jpg" target="_blank"><img alt="RIMG9877amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9877amx15s.jpg" width="320"/></a><br/>左端這邊跟原來一樣放了兩片墊片。<br/>可能「左側放兩片」是某種標準規格，<br/>放兩片然後花鼓轉太沉的話<br/>改成一片，靠 O 形環的適當壓著期望，<br/>可能在做個體配合。<br/>順帶一提，這個厚度的墊片只放單側的話<br/>輪圈中心會偏移這厚度的一半，<br/>不過用中心規可能會被發現。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9879amx15.jpg" target="_blank"><img alt="RIMG9879amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9879amx15s.jpg" width="320"/></a><br/>修好了。<br/>也做了擺正和中心調整。<br/>中心規用的是不用拆輪胎的那種。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9878amx15.jpg" target="_blank"><img alt="RIMG9878amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9878amx15s.jpg" width="320"/></a><br/>↑這是從右側看輪胎側面的圖片。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9880amx15.jpg" target="_blank"><img alt="RIMG9880amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9880amx15s.jpg" width="320"/></a><br/>胎紋方向反了，<br/>至少和廠商指定的相反。<br/>我問客人，他說自己裝的。<br/>封膠什麼的看起來麻煩，<br/>修正就交給客人自己處理了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9897amx15.jpg" target="_blank"><img alt="RIMG9897amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9897amx15s.jpg" width="320"/></a><br/>↑這次客人領取回去的軸承，<br/>袋子上的字是我寫的，<br/>前輪的時候我回給客人的換下來的也在。<br/>只是當作換掉的證據回給客人，<br/>看過就可以丟掉的……。<br/><br/>上面的圖片左上是前輪花鼓的前左側，<br/>右上是前輪花鼓的前右側（有鏽跡），<br/>左下是新品卻轉動咔咔響的，<br/>壓入前的軸承單體<br/>咔咔響的東西通常不太行。<br/>以上全部是 6803，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9898amx15.jpg" target="_blank"><img alt="RIMG9898amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9898amx15s.jpg" width="320"/></a><br/>右下的 17287 則是作為無恙的新品保存著。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9899amx15.jpg" target="_blank"><img alt="RIMG9899amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9899amx15s.jpg" width="320"/></a><br/>無恙的右側和斷掉的左側<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9900amx15.jpg" target="_blank"><img alt="RIMG9900amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9900amx15s.jpg" width="320"/></a><br/>原廠 O 形環會退回給客人。<br/>這次的部分我用藍色筆寫在袋子上。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9901amx15.jpg" target="_blank"><img alt="RIMG9901amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9901amx15s.jpg" width="320"/></a><br/>通用 O 形環<br/>除了花鼓用的以外額外多付了一些。<br/>照片拍完才在第三行寫上 O 形環的寸法。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9904amx15.jpg" target="_blank"><img alt="RIMG9904amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9904amx15s.jpg" width="320"/></a><br/>怎樣都好啦，<br/>普林斯頓的輪組袋子<br/>外周的拉鍊部分很長<br/>像貝殼一樣張得很開。<br/><br/>
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">從客人那裡領取了普林斯頓的 WAKE6560 後輪。<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9761hmr15.jpg" target="_blank"><img alt="RIMG9761hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9761hmr15s.jpg" width="320"/></a><br/>之前已經更換過前輪的軸承（→<a href="/zh/posts/6845.html" target="_blank" title="こちら">請參閱</a>），<br/>後輪的花鼓軸據說有鬆動。<br/>我看起來不太像是側向鬆動，<br/>而是花鼓本身的轉動不順暢，<br/>花鼓殼左右兩側與飛輪體前後兩側這四個位置中<br/>至少有一個以上的軸承損壞了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9762hmr15.jpg" target="_blank"><img alt="RIMG9762hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9762hmr15s.jpg" width="320"/></a><br/>WAKE 是型號名稱，<br/>6560 表示採用 65mm 高和 60mm 高的波浪形狀。<br/>最近 Fulcrum（飛克魯姆）推出了很像要被普林斯頓告狀的輪組，<br/>但不知道是沒事啦。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9763hmr15.jpg" target="_blank"><img alt="RIMG9763hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9763hmr15s.jpg" width="320"/></a><br/>客人說他自己試著往飛輪體上的潤滑脂噴槍裡加潤滑脂，<br/>結果分解花鼓時發現 O 形環斷了，<br/>希望我們能幫忙準備替換品。<br/>關於前輪的連結文章，我自己當時還沒理解透徹，<br/>超薄墊片和這個 O 形環是重要的功能零件。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9764hmr15.jpg" target="_blank"><img alt="RIMG9764hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9764hmr15s.jpg" width="320"/></a><br/>戰術賽車這個花鼓品牌，<br/>在普林斯頓官方網站選擇輪組規格時，<br/>會和 <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+bicycle+hub" target="_blank" rel="noopener sponsored" class="amz-inline">DT</a>、<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Chris+King+bicycle+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Chris King</a>、White Industries 等<br/>知名花鼓廠商並列出現，<br/>但其實這是普林斯頓碳纖維工廠<br/>自有的花鼓品牌。<br/>產品傾向不是質樸堅牢，<br/>而是不在意耐久性、一味追求<br/>小氣的輕量化，<br/>向量上雖有些不同，但有著和 ExtraLite 花鼓相似的味道。<br/>如果在同樣的使用情況下，<br/>DT 或 Chris King 的花鼓幾乎不會發生這類問題。<br/>如果我事先知道這個花鼓的結構後才去訂購普林斯頓輪組，<br/>就不會選戰術的花鼓。<br/>戰術花鼓輕這點是事實，<br/>但我大概會選 DT。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9765hmr15.jpg" target="_blank"><img alt="RIMG9765hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9765hmr15s.jpg" width="320"/></a><br/>左側軸承座周圍的縫隙<br/>已經開始出現鏽色。<br/>我說軸承座，<br/>但花鼓軸外徑和軸承座內徑的寸法公差<br/>可以說是壓入級別的緊湊。<br/>如果不是剛裝軸承座直後，<br/>沒有合適工具的話通常是外不了的。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9766hmr15.jpg" target="_blank"><img alt="RIMG9766hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9766hmr15s.jpg" width="320"/></a><br/>拔掉了左側軸承座。<br/>接觸軸承面有白鏽。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9767hmr15.jpg" target="_blank"><img alt="RIMG9767hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9767hmr15s.jpg" width="320"/></a><br/>↑拔掉軸承座後的花鼓殼左側<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9770hmr15.jpg" target="_blank"><img alt="RIMG9770hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9770hmr15s.jpg" width="320"/></a><br/>鏽跡、油污和沙粒積累成了泥狀的髒污。<br/>上面的圖片只有左半邊被擦掉了。<br/><br/><br/>～非標準軸承的話題～<br/>上圖的軸承是標準軸承 6803。<br/>非標準軸承的內徑／外徑／厚度用毫米寸法並列寫法的話是 17265。<br/>「常用的軸承外徑到 30mm 左右的機械運動項目」<br/>也就是競速自行車的世界裡，<br/>有各式各樣從標準軸承只改了內徑或外徑的非標準軸承。<br/>大多工業製品是為了成本考量<br/>對應已有的標準軸承來決定製品寸法，<br/>但在競速自行車的世界裡，可能因為<br/>成本是否符合需求量，或者寸法特殊的原因<br/>而製造非標準軸承。<br/><br/>shimano 的 HG 飛輪體是，<br/>shimano 製花鼓中採用了如 bossfreewheel hub 延伸的構造<br/>（或者說出生背景就是這樣），<br/>但其他大多廠商都放了兩個滾珠軸承。<br/>最初通常用的是 6902，也就是 15287，<br/>但外徑 28mm 的話飛輪體花鍵<br/>谷部的厚度就會變得非常薄，<br/>所以「要是有個只把 6902 的外徑改成 26mm 的軸承就好了～，<br/>標準軸承裡沒這東西啦」<br/>就這樣製造出來 15267。<br/>這肯定是自行車的世界率先要求的。<br/><br/>後輪花鼓軸上要通過外徑 12mm 的快速扣軸，<br/>所以花鼓軸內徑是 12mm，<br/>內徑 12mm 的花鼓軸外徑雖說 15mm 也不是不可能，<br/>但最好還是 17mm，<br/>所以通常會用 6903 也就是 17307，<br/>但 mavic 的 InstantDrive360 花鼓<br/>有些花鼓軸的凸頭部分寸法是 18mm，<br/>就用了從 6903 只改內徑成 18mm 的<br/>18307 軸承。<br/>順帶一提，內徑 18mm 在所有標準軸承中<br/>本來就不存在的寸法。<br/><br/>shimano HollowTech II 初期的 BB 裡放的是<br/>6805 也就是 25377。<br/>這個內徑 25mm 蓋上塑膠蓋<br/>變成內徑 24mm，讓外徑 24mm 的曲軸<br/>不經過金屬接觸就通過去。<br/>campagnolo 的 UltraTorque 中<br/>曲軸外徑是 25mm，<br/>看起來像直接通過 6805，<br/>但 UltraTorque 曲臂根部的軸承<br/>是「把 6805 的厚度改成 6mm 的東西」，<br/>換句話說是 25376。<br/>應該是非得要薄 1mm 才能避免設計的牽強。<br/>不應該是為了避免用通用軸承修復而故意刁難……。<br/>最近看到讓我驚訝的是<br/>T47 規格的 BB 裡放的軸承<br/>是把 6805 的內徑改成 24mm 的<br/>24377，用軸承內輪接觸的方式<br/>通著 shimano 曲軸的。<br/>BB30 的命名是因為曲軸外徑是 30mm，<br/>cannondale 初期的 BB30<br/>用通用軸承直接壓進車架、用 C 形環承接<br/>的做法，用的是 6806 也就是 30427 軸承。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9769hmr15.jpg" target="_blank"><img alt="RIMG9769hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9769hmr15s.jpg" width="320"/></a><br/>那麼這次戰術的花鼓<br/>花鼓殼右側軸承是從 6903 也就是 17307<br/>只改外徑縮小 2mm 的 17287<br/>被用上了。<br/>相當特殊，但可以取得。<br/>除此之外三個軸承都是 6803，<br/>外徑 17mm 的花鼓軸<br/>就這樣筆直貫通了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9768hmr15.jpg" target="_blank"><img alt="RIMG9768hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9768hmr15s.jpg" width="320"/></a><br/>如果軸承外徑半徑大 1mm、直徑大 2mm 的話<br/>這個棘輪周圍的結構就成立不了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9772hmr15.jpg" target="_blank"><img alt="RIMG9772hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9772hmr15s.jpg" width="320"/></a><br/>面棘輪的彈簧是單向推動式，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9773hmr15.jpg" target="_blank"><img alt="RIMG9773hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9773hmr15s.jpg" width="320"/></a><br/>放在花鼓殼這邊<br/>（DT 的棘輪 EXP 是飛輪體這邊）。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9775hmr15.jpg" target="_blank"><img alt="RIMG9775hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9775hmr15s.jpg" width="320"/></a><br/>面棘輪的接觸面是錐形。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9939msn5.jpg" target="_blank"><img alt="RIMG9939msn5.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9939msn5s.jpg" width="320"/></a><br/>↑這是 Novatech 的飛輪體，<br/>飛輪體不與花鼓殼軸承面接觸<br/>（不要推內輪以外的地方）<br/>寸法上稍微凸出來的墊片放在裡面。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9938msn5.jpg" target="_blank"><img alt="RIMG9938msn5.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9938msn5s.jpg" width="320"/></a><br/>↑拔出來是這樣<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9774hmr15.jpg" target="_blank"><img alt="RIMG9774hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9774hmr15s.jpg" width="320"/></a><br/>相當的零件<br/>在戰術這邊是塑膠製的。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9776hmr15.jpg" target="_blank"><img alt="RIMG9776hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9776hmr15s.jpg" width="320"/></a><br/>飛輪體的軸承<br/>不是都從外側放進去，<br/>裡面的軸承是從內側放進去的方式。<br/>只有這個軸承，不能說是壓入，寸法公差很鬆散<br/>可以用手拆卸。<br/>應該不是飛輪體這邊磨耗才變這樣的。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9777hmr15.jpg" target="_blank"><img alt="RIMG9777hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9777hmr15s.jpg" width="320"/></a><br/>飛輪體軸承的內側內輪間支撑用墊片被省略了。<br/>Newman 的花鼓有把軸承座對著花鼓軸做到頂面接觸<br/>（對快速扣軸的傻瓜鎖更強）的例子<br/>但飛輪體外側和花鼓殼左側（左右端的軸承）<br/>會馬上壞掉（→<a href="/zh/posts/6967.html" target="_blank" title="こちら">請參閱</a>）。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9778hmr15.jpg" target="_blank"><img alt="RIMG9778hmr15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9778hmr15s.jpg" width="320"/></a><br/>飛輪體從外側看是這樣<br/><br/>軸承部分，花鼓殼右側的 17287 以外的<br/>三個 6803 程度差異不同，都需要更換。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9847amx15.jpg" target="_blank"><img alt="RIMG9847amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9847amx15s.jpg" width="320"/></a><br/>拔出了左右軸承座內側放的<br/>薄墊片。<br/>上面的圖片，髒的是左側朝外的面<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9848amx15.jpg" target="_blank"><img alt="RIMG9848amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9848amx15s.jpg" width="320"/></a><br/>↑朝內側的面是這樣。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9854amx15.jpg" target="_blank"><img alt="RIMG9854amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9854amx15s.jpg" width="320"/></a><br/>可能的範圍內去掉了鏽跡，<br/>但左側實際上重了兩片。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9851amx15.jpg" target="_blank"><img alt="RIMG9851amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9851amx15s.jpg" width="320"/></a><br/>花鼓軸上有幾個洞，<br/>這不是排水孔，而是花鼓軸插入時<br/>為了防止伸縮式高壓<br/>的空氣孔意義更大。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9853amx15.jpg" target="_blank"><img alt="RIMG9853amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9853amx15s.jpg" width="320"/></a><br/>在 180° 相位上有兩個孔，<br/>直看的話能看出是貫通的。<br/>這個孔和不是滾珠軸承的<br/>所以軸承內徑和花鼓軸外徑沒有<br/>緊密閉合的<br/>杯錐式的 shimano 完組輪<br/>花鼓軸上也有。<br/>即便是這樣快速扣軸和<br/>花鼓軸的關係也是緊密伸縮式，<br/>所以不是針對花鼓軸和花鼓殼<br/>而可能是針對快速扣軸和花鼓軸的關係<br/>才開的孔。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9856amx15.jpg" target="_blank"><img alt="RIMG9856amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9856amx15s.jpg" width="320"/></a><br/>左右端都是軸承座接觸到底，<br/>所以上圖的花鼓軸＋右端也應該可以分開，<br/>但壓入級別地套著，所以不是很好外。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9857amx15.jpg" target="_blank"><img alt="RIMG9857amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9857amx15s.jpg" width="320"/></a><br/>↑洗淨的左端從接觸花鼓殼面看的樣子。<br/>只推軸承內輪的凸起，<br/>實際上還有另外一個溝要放 O 形環<br/>還要夾進極薄墊片，<br/>所以這個端不是直接接觸軸承內輪。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9858amx15.jpg" target="_blank"><img alt="RIMG9858amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9858amx15s.jpg" width="320"/></a><br/>右端內側有<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9859amx15.jpg" target="_blank"><img alt="RIMG9859amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9859amx15s.jpg" width="320"/></a><br/>原廠的 O 形環沒斷，還留著。<br/>連結文章的前輪記事中的時候<br/>我沒意識到它的重要性，<br/>但依照花鼓的結構，這是必需的功能零件。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9863amx15.jpg" target="_blank"><img alt="RIMG9863amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9863amx15s.jpg" width="320"/></a><br/>↑畫面正中央是從右端取出的原廠品，<br/>右邊是和原廠內徑／外徑、線徑相同的<br/>我找到的通用品，<br/>左邊是線徑相同、<br/>內徑／外徑比右邊的大 1mm 的<br/>以防萬一準備的。<br/>畫面中原廠的線徑看起來比較細，<br/>但本來是一樣的。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9860amx15.jpg" target="_blank"><img alt="RIMG9860amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9860amx15s.jpg" width="320"/></a><br/>極薄墊片只是剛好不卡住軸承外輪的寸法。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9861amx15.jpg" target="_blank"><img alt="RIMG9861amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9861amx15s.jpg" width="320"/></a><br/>↑稍微挪開的話就是這樣<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9865amx15.jpg" target="_blank"><img alt="RIMG9865amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9865amx15s.jpg" width="320"/></a><br/>內徑／外徑和原廠相同的<br/>通用 O 形環卡進了溝裡。<br/>看起來好像凸出來，<br/>最後會正確地卡進去。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9866amx15.jpg" target="_blank"><img alt="RIMG9866amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9866amx15s.jpg" width="320"/></a><br/>放進了極薄墊片。<br/>右側所以和原本一樣是一片。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9867amx15.jpg" target="_blank"><img alt="RIMG9867amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9867amx15s.jpg" width="320"/></a><br/>↑墊片融進背景裡不太看得出，<br/>不過 O 形環沒有萎縮的話是這樣。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9926amx15.jpg" target="_blank"><img alt="RIMG9926amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9926amx15s.jpg" width="320"/></a><br/>這個花鼓，首先是兩側端都對著花鼓軸做到頂面，<br/>即使快速扣軸壓下去，<br/>左右端間寸法也不會改變<br/>這樣做成的。<br/>如此一來飛輪體和花鼓殼裡面<br/>軸承內輪的支撑墊片不需要，<br/>飛輪體頂部防撞墊片做成塑膠<br/>這種荒唐規格也能應付。<br/><br/>左右端間寸法<br/>比花鼓殼左側到飛輪體右側的<br/>軸承外～外寸法要長。<br/>如果前者比較小的話，軸承內輪會被過度推壓，<br/>花鼓轉動會變得異常沉重或根本轉不動。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9925amx15.jpg" target="_blank"><img alt="RIMG9925amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9925amx15s.jpg" width="320"/></a><br/>然後 O 形環和極薄墊片<br/>像曲軸和左右其中一邊曲臂<br/>用螺絲固定型曲軸組<br/>的間隙調整波形墊圈那樣<br/>適當地推壓著軸承內輪<br/>這就是這個花鼓荒唐的結構。<br/><br/>花鼓軸承，特別是外側兩個內部磨耗<br/>外輪對內輪產生左右方向的動作（也就是側向鬆動）的量<br/>這個 O 形環和極薄墊片無法吸收的話<br/>花鼓軸就會出現側向鬆動。<br/><br/>我領取的時候，<br/>比起客人申報的花鼓軸鬆動，<br/>我比較在意的是根本轉動不順暢，<br/>所以沒怎麼看鬆動的部分，<br/>但根據這個結構，O 形環只要一斷<br/>就有可能出現鬆動。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9868amx15.jpg" target="_blank"><img alt="RIMG9868amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9868amx15s.jpg" width="320"/></a><br/>前輪的時候，客人從戰術賽車那邊<br/>「如果發現軸承好像不行的話就用這個」<br/>接收到的軸承我也在這邊。<br/>花鼓殼右側的 17287 轉動完全沒有澀感，<br/>所以這次沒有更換。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9869amx15.jpg" target="_blank"><img alt="RIMG9869amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9869amx15s.jpg" width="320"/></a><br/>除了那個以外的 6803 全部換掉。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9872amx15.jpg" target="_blank"><img alt="RIMG9872amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9872amx15s.jpg" width="320"/></a><br/>最嚴重的花鼓殼左側<br/>最後才換，<br/>領取的軸承 6803 用完了，<br/>所以用了本店的庫存軸承。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9871amx15.jpg" target="_blank"><img alt="RIMG9871amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9871amx15s.jpg" width="320"/></a><br/>↑最嚴重的花鼓殼左側軸承。<br/>內部完全生鏽了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9870amx15.jpg" target="_blank"><img alt="RIMG9870amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9870amx15s.jpg" width="320"/></a><br/>拔花鼓軸的時候<br/>飛輪體軸承有卡頓感，<br/>所以懷疑是鏽蝕卡住還是<br/>寸法公差太小，<br/>但用新軸承的話就沒這問題了<br/>確實寸法公差感覺偏緊，<br/>但飛輪體對花鼓軸的滑動還是很順暢。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9873amx15.jpg" target="_blank"><img alt="RIMG9873amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9873amx15s.jpg" width="320"/></a><br/>被彈簧頂起來的棘輪零件<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9874amx15.jpg" target="_blank"><img alt="RIMG9874amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9874amx15s.jpg" width="320"/></a><br/>↑按下去是這樣<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9875amx15.jpg" target="_blank"><img alt="RIMG9875amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9875amx15s.jpg" width="320"/></a><br/>塗上了 DT 星形棘輪專用潤滑脂。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9877amx15.jpg" target="_blank"><img alt="RIMG9877amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9877amx15s.jpg" width="320"/></a><br/>左端這邊跟原來一樣放了兩片墊片。<br/>可能「左側放兩片」是某種標準規格，<br/>放兩片然後花鼓轉太沉的話<br/>改成一片，靠 O 形環的適當壓著期望，<br/>可能在做個體配合。<br/>順帶一提，這個厚度的墊片只放單側的話<br/>輪圈中心會偏移這厚度的一半，<br/>不過用中心規可能會被發現。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9879amx15.jpg" target="_blank"><img alt="RIMG9879amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9879amx15s.jpg" width="320"/></a><br/>修好了。<br/>也做了擺正和中心調整。<br/>中心規用的是不用拆輪胎的那種。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9878amx15.jpg" target="_blank"><img alt="RIMG9878amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9878amx15s.jpg" width="320"/></a><br/>↑這是從右側看輪胎側面的圖片。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9880amx15.jpg" target="_blank"><img alt="RIMG9880amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9880amx15s.jpg" width="320"/></a><br/>胎紋方向反了，<br/>至少和廠商指定的相反。<br/>我問客人，他說自己裝的。<br/>封膠什麼的看起來麻煩，<br/>修正就交給客人自己處理了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9897amx15.jpg" target="_blank"><img alt="RIMG9897amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9897amx15s.jpg" width="320"/></a><br/>↑這次客人領取回去的軸承，<br/>袋子上的字是我寫的，<br/>前輪的時候我回給客人的換下來的也在。<br/>只是當作換掉的證據回給客人，<br/>看過就可以丟掉的……。<br/><br/>上面的圖片左上是前輪花鼓的前左側，<br/>右上是前輪花鼓的前右側（有鏽跡），<br/>左下是新品卻轉動咔咔響的，<br/>壓入前的軸承單體<br/>咔咔響的東西通常不太行。<br/>以上全部是 6803，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9898amx15.jpg" target="_blank"><img alt="RIMG9898amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9898amx15s.jpg" width="320"/></a><br/>右下的 17287 則是作為無恙的新品保存著。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9899amx15.jpg" target="_blank"><img alt="RIMG9899amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9899amx15s.jpg" width="320"/></a><br/>無恙的右側和斷掉的左側<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9900amx15.jpg" target="_blank"><img alt="RIMG9900amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9900amx15s.jpg" width="320"/></a><br/>原廠 O 形環會退回給客人。<br/>這次的部分我用藍色筆寫在袋子上。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9901amx15.jpg" target="_blank"><img alt="RIMG9901amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9901amx15s.jpg" width="320"/></a><br/>通用 O 形環<br/>除了花鼓用的以外額外多付了一些。<br/>照片拍完才在第三行寫上 O 形環的寸法。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9904amx15.jpg" target="_blank"><img alt="RIMG9904amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9904amx15s.jpg" width="320"/></a><br/>怎樣都好啦，<br/>普林斯頓的輪組袋子<br/>外周的拉鍊部分很長<br/>像貝殼一樣張得很開。<br/><br/>
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

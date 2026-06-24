@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/7139.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">SRAM Calu</p>
     <h1>關於 SRAM Karoo 網路相關的操作與行為</h1>
     <p class="post-meta">June 08, 2024</p>
+    <div class="post-body"><div class="entrytext">隸屬 SRAM 旗下的品牌 Hammerhead 推出的<br/>「<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=SRAM+Karoo+cycle+computer+GPS" target="_blank" rel="noopener sponsored" class="amz-inline">SRAM Karoo</a>」關於<br/>網路相關方面的發現，我把它們寫下來。<br/>還有幾篇文章我計劃要寫，<br/>所以為 Karoo 設立了「關於 SRAM 的 Karoo」<br/>這樣的文章分類。<br/><br/>我個人在家裡完全不會把筆記型電腦<br/>從放置位置移動<br/>（把透過無線區域網路連接網際網路的電腦隨身攜帶）<br/>所以我只使用路由器的<br/>有線 LAN 電纜連接。<br/>不過在美國，無線區域網路，也就是 Wi-Fi 的環境<br/>比日本還要完善，<br/>所以使用 Karoo 的<br/>前提條件就是必須有 Wi-Fi 環境。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9434amx15.jpg" target="_blank"><img alt="RIMG9434amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9434amx15s.jpg" width="320"/></a><br/>以下，在白板上<br/>需要 Wi-Fi 的事項用<span style="color:#FF0000">紅色</span>文字標示，<br/>不需要的事項用<span style="color:#0000FF">藍色</span>文字標示。<br/><br/>作為網路服務，<br/>可以管理騎乘記錄（行駛日誌）和<br/>手動建立路線等功能的<br/>Hammerhead Dashboard<br/>（以下簡稱 Dashboard）網站存在，<br/>所以 Hammerhead 自行車碼表的使用者<br/>需要建立帳戶。<br/>我在這裡不限於 SRAM Karoo，<br/>而是寫「Hammerhead 自行車碼表」，<br/>是因為儘管在日本幾乎沒有流通，<br/>該公司的舊款產品如 <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Hammerhead+Karoo+2+cycle+computer+GPS" target="_blank" rel="noopener sponsored" class="amz-inline">Karoo 2</a> 的使用者<br/>也能使用。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9435amx15.jpg" target="_blank"><img alt="RIMG9435amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9435amx15s.jpg" width="320"/></a><br/>首先，在 Karoo 上建立 Hammerhead 帳戶<br/>Wi-Fi 是必需的。<br/>稍後會提到的智慧型手機上的<br/>Hammerhead Companion 應用程式，<br/>從 Karoo 到智慧型手機是藍牙連接，<br/>從智慧型手機到 Dashboard 是網際網路連接<br/>這樣的合作關係<br/>對於 Karoo 上的 Hammerhead 帳戶建立<br/>和之前文章中提到的<br/>日本地區地圖下載<br/>一點幫助都沒有。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/024amx15kar4.jpg" target="_blank"><img alt="024amx15kar4.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/024amx15kar4s.jpg" width="320"/></a><br/>↑這是 Karoo 的設定畫面。<br/>從這裡選右下角的 Settings，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/053amx15kar4.jpg" target="_blank"><img alt="053amx15kar4.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/053amx15kar4s.jpg" width="320"/></a><br/>最上面有 Hammerhead Account<br/>這樣的項目，選擇它的話<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/049amx15kar4.jpg" target="_blank"><img alt="049amx15kar4.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/049amx15kar4s.jpg" width="320"/></a><br/>會出現選項，要用 QR 碼登入<br/>還是輸入電子郵件位址登入。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/050amx15kar4.jpg" target="_blank"><img alt="050amx15kar4.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/050amx15kar4s.jpg" width="320"/></a><br/>在未連接 Wi-Fi 的狀態下<br/>選擇 QR 碼的情況。<br/>變形的 QR 碼瞬間出現，<br/>下方顯示「發生錯誤」，<br/>然後被帶回前一個畫面。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/051amx15kar4.jpg" target="_blank"><img alt="051amx15kar4.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/051amx15kar4s.jpg" width="320"/></a><br/>接著<br/>在未連接 Wi-Fi 的狀態下<br/>選擇用電子郵件註冊的情況，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/052amx15kar4.jpg" target="_blank"><img alt="052amx15kar4.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/052amx15kar4s.jpg" width="320"/></a><br/>輸入必填項目，<br/>按右下角的核取標記後<br/>會出現「沒有連接網路<br/>確認網路連接後再試一次」<br/>的訊息，但這裡的網路連接<br/>僅限於 Wi-Fi。<br/>沒有 Karoo 本體連接到電腦、透過 USB 電纜<br/>進行傳輸的選項<br/>（順便說一下，Polar 的心率計有這個選項）。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/002amx15kar.jpg" target="_blank"><img alt="002amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/002amx15kars.jpg" width="320"/></a><br/>成功登入 Hammerhead Account 的狀態下<br/>選擇 Hammerhead Account 項目時，<br/>畫面上會顯示註冊的電子郵件位址，<br/>畫面下方會出現 Sign Out 的選項，<br/>但只要之後不登出，<br/>即使關閉本體電源<br/>登入狀態也會繼續保持。<br/>而且，不應該選擇 Sign Out。<br/>如果選了的話・・・<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/024amx15kar4.jpg" target="_blank"><img alt="024amx15kar4.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/024amx15kar4s.jpg" width="320"/></a><br/>設定畫面右中央的<br/>Profile Settings 會被初始化！<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/001amx15kar.jpg" target="_blank"><img alt="001amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/001amx15kars.jpg" width="320"/></a><br/>我設定的檔案名稱「巴魯坦星人」消失了，<br/>所以把 Basic Profile 中的<br/>Profile 部分<br/>改為用羅馬字「Profile」。<br/>這是登出狀態，<br/>但如果再次登入→登出的話・・・<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/003amx15kar.jpg" target="_blank"><img alt="003amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/003amx15kars.jpg" width="320"/></a><br/>被刪除的預設檔案復活了，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/005amx15kar.jpg" target="_blank"><img alt="005amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/005amx15kars.jpg" width="320"/></a><br/>檔案名稱也恢復原狀了。<br/>還有，上面的畫面中 Basic 之後有換行，<br/>變成 Profile，<br/>但檔案名稱的輸入欄位沒有換行，<br/>所以我調查了怎樣換行的，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/041amx15kar4.jpg" target="_blank"><img alt="041amx15kar4.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/041amx15kar4s.jpg" width="320"/></a><br/>發現第一個單字之後有空格，<br/>下一個單字以大寫開頭，<br/>下一個單字的字數超過兩行時，<br/>即使第一個單字還沒到行尾的字數，<br/>似乎也會換行。<br/>從上面的名稱輸入刪除空格，<br/>連接成 BasicProfile 的話<br/>就會變成一行。<br/><br/>把 e 增加一個變成 BasicProfilee 的話<br/>正好超過了一行的顯示上限，<br/>所以變成了<br/>BasicProfile<br/>e<br/>這樣的兩行顯示。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9437amx15.jpg" target="_blank"><img alt="RIMG9437amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9437amx15s.jpg" width="320"/></a><br/>輸入 Basicp Roflie，把 p 加在 basic 末尾，<br/>把 R 改為大寫的話<br/>變成<br/>Basicp<br/>Roflie<br/>這樣的兩行顯示。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9136amx15.jpg" target="_blank"><img alt="RIMG9136amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9136amx15s.jpg" width="320"/></a><br/>所以在之前的文章中<br/>用空格填到第二行為止，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9439amx15.jpg" target="_blank"><img alt="RIMG9439amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9439amx15s.jpg" width="320"/></a><br/>輸入這樣的內容<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9438amx15.jpg" target="_blank"><img alt="RIMG9438amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9438amx15s.jpg" width="320"/></a><br/>↑會變成這樣。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9440amx15.jpg" target="_blank"><img alt="RIMG9440amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9440amx15s.jpg" width="320"/></a><br/>要把在 Dashboard 建立的手動騎乘路線<br/>傳送到 Karoo 也需要 Wi-Fi 環境。<br/>與其說需要 Wi-Fi 環境，<br/>不如說沒有其他手段才是問題。<br/><br/>之前在 Dashboard 建立並傳送到 Karoo 的<br/>長居公園外周道路的路線存在，<br/>但路線資料在登出後也消失了。<br/>還好離線地圖沒有消失。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9443amx15.jpg" target="_blank"><img alt="RIMG9443amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9443amx15s.jpg" width="320"/></a><br/>關於 Hammerhead 的應用程式。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9444amx15.jpg" target="_blank"><img alt="RIMG9444amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9444amx15s.jpg" width="320"/></a><br/>↑這是在智慧型手機上下載應用程式並<br/>打開時的首頁。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9445amx15.jpg" target="_blank"><img alt="RIMG9445amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9445amx15s.jpg" width="320"/></a><br/>↑這是還沒有配對手機的<br/>Karoo 畫面。<br/>從這裡按右下角的「NEW PHONE」部分<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9446amx15.jpg" target="_blank"><img alt="RIMG9446amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9446amx15s.jpg" width="320"/></a><br/>會出現 QR 碼。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9447amx15.jpg" target="_blank"><img alt="RIMG9447amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9447amx15s.jpg" width="320"/></a><br/>用「智慧型手機的相機功能」看的話<br/>圖片上寫的是 sram.com，<br/>但會跳轉到<br/>Hammerhead 應用程式的<br/>下載頁面。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9448amx15.jpg" target="_blank"><img alt="RIMG9448amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9448amx15s.jpg" width="320"/></a><br/>不是用智慧型手機的相機功能，<br/>而是選擇應用程式的「開始」時會變成這個頁面，<br/>再選「下一步」<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9449amx15.jpg" target="_blank"><img alt="RIMG9449amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9449amx15s.jpg" width="320"/></a><br/>就會打開「應用程式的相機功能」，<br/>把它對準 Karoo 的 QR 碼<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/037amx15kar4.jpg" target="_blank"><img alt="037amx15kar4.jpg" border="0" height="320" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/037amx15kar4s.jpg" width="148"/></a><br/>↑看到這種黃色圓圈旋轉的畫面<br/>幾秒鐘後，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9450amx15.jpg" target="_blank"><img alt="RIMG9450amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9450amx15s.jpg" width="320"/></a><br/>會要求輸入<br/>配對碼的<br/>6 位數字。<br/>這個數字每次都會改變，<br/>所以上傳到這裡也沒問題。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9454amx15.jpg" target="_blank"><img alt="RIMG9454amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9454amx15s.jpg" width="320"/></a><br/>裝有應用程式的智慧型手機和 Karoo 的配對完成了！<br/>會有一個打馬賽克的地方是因為<br/>Karoo 的識別號碼<br/>出現在畫面上了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9453amx15.jpg" target="_blank"><img alt="RIMG9453amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9453amx15s.jpg" width="320"/></a><br/>↑如果允許這個（我有允許），<br/>智慧型手機的通知會進入到正在騎乘的 Karoo，<br/>但在與騎乘狀況無關的地方<br/>突然發出巨大的嗶聲<br/>會讓人嚇一跳，所以要注意。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9455amx15.jpg" target="_blank"><img alt="RIMG9455amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9455amx15s.jpg" width="320"/></a><br/>↑之後按應用程式的圖示就會<br/>變成這個首頁。<br/><br/>這個應用程式和 Karoo 的配對也一樣，<br/>最好不要刪除。<br/>因為如果從這裡用應用程式這邊<br/>刪除配對的話<br/>（要刪除的話要選右下的「詳細」，<br/>在下一頁的最下面<br/>選用紅字顯示的「移除」），<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9441amx15.jpg" target="_blank"><img alt="RIMG9441amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9441amx15s.jpg" width="320"/></a><br/>智慧型手機這邊會回到配對前的首頁，<br/>表現得像是和 Karoo 乾脆俐落地分手了，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9458amx15.jpg" target="_blank"><img alt="RIMG9458amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9458amx15s.jpg" width="320"/></a><br/>但 Karoo 那邊還認為自己還在和智慧型手機交往，<br/>變成了一個複雜的狀態。<br/><br/>會出現這種狀態，<br/>是因為<br/>智慧型手機的藍牙設定畫面上<br/>還殘留著「KAROO+識別號碼」這個裝置的名稱。<br/>刪除它的話，Karoo 那邊的顯示也會<br/>回到配對前的狀態。<br/><br/>然後再試著從應用程式重新連接 Karoo 的話<br/>QR 碼掃描的瞬間<br/>會出現「配對失敗」，<br/>或是沒有黃色圓圈旋轉的畫面<br/>直接出現 6 位數配對碼，<br/>但輸入後也會出現「配對失敗」，<br/>經常陷入莫名其妙的狀態，<br/>所以最好不要刪除應用程式和 Karoo 的配對。<br/>當只有配對失敗這個結果時，<br/>一旦關閉智慧型手機電源再重新啟動<br/>就能成功的例子有過。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9457amx15.jpg" target="_blank"><img alt="RIMG9457amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9457amx15s.jpg" width="320"/></a><br/>如果 Karoo 那邊還認為自己在交往的狀態，<br/>就無法在 QR 碼的畫面上出現，<br/>所以最初用過的連接方法就無法使用。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9461amx15.jpg" target="_blank"><img alt="RIMG9461amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9461amx15s.jpg" width="320"/></a><br/>然後看「應用程式的相機功能」畫面的下方，<br/>會有困難時按這裡的提示，按一下<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9462amx15.jpg" target="_blank"><img alt="RIMG9462amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9462amx15s.jpg" width="320"/></a><br/>（這時藍牙範圍內<br/>只有 1 個，<br/>就會變成選擇自己的 Karoo 的畫面，<br/>選擇它的話，配對又完成了。<br/>・・・咦？用這個方法成功還是第一次呢。<br/>不知道為什麼這個方法<br/>每次都配對失敗。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9455amx15.jpg" target="_blank"><img alt="RIMG9455amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9455amx15s.jpg" width="320"/></a><br/>然後配對完成後的這個智慧型手機首頁<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9470amx15.jpg" target="_blank"><img alt="RIMG9470amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9470amx15s.jpg" width="320"/></a><br/>按左上角這個圖示會<br/>出現一個頁面，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9472amx15.jpg" target="_blank"><img alt="RIMG9472amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9472amx15s.jpg" width="320"/></a><br/>下方有<br/>「上傳日誌」可選擇<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9473amx15.jpg" target="_blank"><img alt="RIMG9473amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9473amx15s.jpg" width="320"/></a><br/>短時間內<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9474amx15.jpg" target="_blank"><img alt="RIMG9474amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9474amx15s.jpg" width="320"/></a><br/>就會出現核取標記！<br/>順便說一下，上面的 Launch Tour 是<br/>應用程式功能說明的簡短影片，<br/>但目前只有英文版本，<br/>除此之外（對我來說）<br/>完全沒用。<br/><br/>然後這個應用程式的日誌上傳<br/>發生了什麼事呢，<br/>騎乘記錄（行駛日誌）不經過 Wi-Fi<br/>而是直接傳到 Dashboard！<br/>這個核取標記出現直後<br/>只要更新電腦瀏覽器<br/>記錄就已經被加入了，速度就是這麼快。<br/><br/>這是非常便利的一點，<br/>而這個應用程式對目前在美國應該是使用者最多的<br/>Karoo 2 不相容，<br/>這一點讓這個應用程式的評論怨聲載道。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9476amx15.jpg" target="_blank"><img alt="RIMG9476amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9476amx15s.jpg" width="320"/></a><br/>建立了 4 秒的騎乘記錄日誌。<br/>根據騎乘的時間會自動取名為 Morning Ride 或<br/>Night Ride 等，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9477amx15.jpg" target="_blank"><img alt="RIMG9477amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9477amx15s.jpg" width="320"/></a><br/>因為是 4 秒，所以改名為「４秒」。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9478amx15.jpg" target="_blank"><img alt="RIMG9478amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9478amx15s.jpg" width="320"/></a><br/>這是電腦版 Dashboard 的<br/>騎乘記錄頁面。<br/>雖然只有 2 個日誌，<br/>但沒關係。<br/>選擇應用程式的「上傳日誌」，<br/>核取標記出現直後<br/>更新瀏覽器的話<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9479amx15.jpg" target="_blank"><img alt="RIMG9479amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9479amx15s.jpg" width="320"/></a><br/>「４秒」已經被加入了。<br/>日誌容量很小，<br/>可能因為這樣才立刻被加入（需要驗證），<br/>但不經過 Wi-Fi 就能這樣做是確定的。<br/>進一步，建立了 5 秒和 6 秒的日誌後<br/>沒有選擇應用程式的「上傳日誌」<br/>只要更新瀏覽器就看到日誌被加入了。<br/>接著把智慧型手機的顯示切到首頁後建立 7 秒日誌，<br/>不打開應用程式直接更新瀏覽器<br/>日誌也被加入了。<br/>進一步，把智慧型手機螢幕設為休眠後<br/>建立 12 秒日誌，更新瀏覽器後<br/>日誌也被加入了。<br/>把首頁或休眠狀態時<br/>應用程式仍在運作，所以是理所當然的結果。<br/>為了避免「其實連上 Wi-Fi 了」這種蠢事，<br/>我把 Karoo 的設定中的 Wi-Fi 關掉了。<br/><br/>然後關閉智慧型手機電源後建立 17 秒日誌，<br/>更新瀏覽器後日誌沒有被加入。<br/>之後打開智慧型手機電源<br/>日誌還是沒被加入。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9481amx15.jpg" target="_blank"><img alt="RIMG9481amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9481amx15s.jpg" width="320"/></a><br/>打開應用程式後陷入<br/>一直找不到 Karoo 的狀態。<br/>這・・・感覺不太妙・・・。<br/>但如果能寫故障排除的文章<br/>反而是篇有價值的內容，說不定賺到了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9484amx15.jpg" target="_blank"><img alt="RIMG9484amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9484amx15s.jpg" width="320"/></a><br/>首先打開「應用程式的相機功能」頁面，<br/>按下面的註意文字，<br/>這次能成功連接的地方<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9486amx15.jpg" target="_blank"><img alt="RIMG9486amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9486amx15s.jpg" width="320"/></a><br/>被告知找不到 Karoo。<br/>目前 Karoo 無法出現 QR 碼，<br/>處於「還認為自己在交往的狀態」，<br/>所以首先刪除了<br/>智慧型手機的藍牙設定頁面中<br/>「KAROO+識別號碼」裝置的註冊。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9493amx15.jpg" target="_blank"><img alt="RIMG9493amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9493amx15s.jpg" width="320"/></a><br/>就這樣 Karoo 畫面上<br/>能出現 QR 碼的狀態了，<br/>但用應用程式的相機功能看<br/>沒有出現黃色圓圈，沒有反應<br/>（通常用應用程式的相機<br/>看 QR 碼時<br/>會瞬間出現黃色圓圈，<br/>所以根本沒有機會拍到上面的畫面）。<br/><br/>所以回到首頁<br/>選擇右下詳細→移除，<br/>再從應用程式的相機功能<br/>看 QR 碼的話<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9494samx15.jpg" target="_blank"><img alt="RIMG9494samx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9494samx15s.jpg" width="320"/></a><br/>馬上出現黃色圓圈，配對成功了。<br/>然後在配對後<br/>沒有選擇應用程式的「上傳日誌」，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9496amx15.jpg" target="_blank"><img alt="RIMG9496amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9496amx15s.jpg" width="320"/></a><br/>（沒有改名為「１７秒」，<br/>但 17 秒的日誌已經被加入 Dashboard 了。<br/>大概是<br/>「騎乘結束後在 Karoo 上保存騎乘記錄的瞬間，<br/>如果藍牙範圍內有已配對的應用程式智慧型手機，<br/>就立刻把日誌傳到 Dashboard，<br/>上傳日誌圖示<br/>只是為了以防萬一可以手動傳送」<br/>這樣的規格。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9480amx15.jpg" target="_blank"><img alt="RIMG9480amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9480amx15s.jpg" width="320"/></a><br/>因此 Karoo 本體・Dashboard・智慧型手機應用程式的<br/>關係可以整理成這樣。<br/>上面的圖沒有，<br/>但從智慧型手機也可以用智慧型手機版瀏覽器<br/>瀏覽 Dashboard 的網站。<br/><br/>上圖中 Dashboard 指向 Karoo 的<br/>「手動建立路線的上傳」<br/>需要 Wi-Fi。<br/><br/><br/><br/><br/>總結這次的內容，<br/>Karoo 本體只要做一次的<br/>Hammerhead Account 設定和<br/>離線地圖下載<br/>都需要 Wi-Fi。<br/><br/>和智慧型手機的配對，在關閉智慧型手機電源<br/>或是 Karoo 和智慧型手機分離<br/>無法進行重新自動配對的情況<br/>（後者的「Karoo 和智慧型手機<br/>離開藍牙範圍」，<br/>通常只要雙方電源打開<br/>應用程式左下的 ※搜尋中<br/>馬上變成<span style="color:#00FF00">●</span>已連接的狀態）<br/>1．要讓 Karoo 畫面出現 QR 碼，<br/>需要刪除<br/>智慧型手機藍牙設定中殘留的<br/>「KAROO+識別號碼」這個裝置的連接。<br/>之後選擇 Settings→Phone Pairing<br/>按右下的「NEW PHONE」圖示<br/>就會出現 QR 碼畫面。<br/>2．如果應用程式的相機功能<br/>無法讀取 QR 碼，<br/>選擇應用程式首頁右下詳細→<br/>移除（紅字）<br/>就能讀取 QR 碼，<br/>變成黃色圓圈旋轉的畫面，<br/>Karoo 側會出現 6 位數配對碼的<br/>輸入要求，就在智慧型手機側輸入。<br/>上述 1 和 2 做了的話和智慧型手機的配對就恢復了，<br/>但如果黃色圓圈沒有出現<br/>直接出現配對碼的話，不知道為什麼會失敗，<br/>那時應用程式的相機功能<br/>畫面下的「連接有問題嗎？<br/>點這裡，從列表中<br/>選擇 Karoo。」按下<br/>選擇自己的 Karoo 的方法也<br/>經常配對失敗，<br/>那時就把智慧型手機電源<br/>一旦關掉再打開，<br/>再執行一次上述 1 和 2，<br/>至今為止<br/>按照我的了解<br/>都沒有出現無法和智慧型手機配對的狀況。<br/><br/>而且 Karoo 本體側的設定完成<br/>能和應用程式配對的話，<br/>之後需要 Wi-Fi 的<br/>就只有<br/>「把 Dashboard 手動建立的路線<br/>上傳到 Karoo 本體」<br/>了。<br/><br/><span style="font-size:large;"><span style="color:#FF0000">更正補充：</span></span><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/038amx15kar4.jpg" target="_blank"><img alt="038amx15kar4.jpg" border="0" height="320" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/038amx15kar4s.jpg" width="148"/></a><br/>在電腦上的 Dashboard，<br/>雖然沒有實際騎乘<br/>但建立了一條叫「大和川河川敷」的路線。<br/><br/>用智慧型手機登入 Dashboard<br/>看這條路線的是上面的圖。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/062amx15kar4.jpg" target="_blank"><img alt="062amx15kar4.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/062amx15kar4s.jpg" width="320"/></a><br/>用 Wi-Fi 連接把手動路線匯入 Karoo。<br/>但只有地圖縮圖顯示<br/>地圖還沒進入 Karoo<br/>右下出現下載圖示。<br/>在這個狀態無法獲得這條路線的引導，<br/>所以<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/063amx15kar4.jpg" target="_blank"><img alt="063amx15kar4.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/063amx15kar4s.jpg" width="320"/></a><br/>按了下載圖示。<br/>無線區域網路的環境也有關係，<br/>但才 5.8 公里的課程，<br/>沒有經過檢查點的課程<br/>竟然要幾十秒才能取得。<br/>這樣的話取得武裝自行車課程<br/>會耗費非常多時間。<br/>咦？上次取得長居公園路線的時候<br/>不是一瞬間嗎？<br/>而且我也不記得有選擇是否下載。<br/><br/>在文章中寫了這樣的內容，<br/>但關於這個地圖縮圖右下角<br/>出現下載圖示的狀態<br/>之後再也無法重現。<br/>作為更正前文章中我的勘誤，<br/>在和應用程式配對狀態時<br/>路線下載會更快這一點<br/>應用程式完全沒有涉及<br/>「把 Dashboard 手動建立的路線<br/>上傳到 Karoo 本體」這個動作。<br/><br/>在未連接 Wi-Fi 的狀態<br/>用只用智慧型手機應用程式的功能<br/>「把 Dashboard 手動建立的路線<br/>上傳到 Karoo 本體」是做不了的。<br/>相反，在智慧型手機沒有在手邊或<br/>電源關閉的狀態<br/>把 Karoo 本體連接 Wi-Fi<br/>就能取得路線了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/024amx15kar4.jpg" target="_blank"><img alt="024amx15kar4.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/024amx15kar4s.jpg" width="320"/></a><br/>↑從設定畫面選右上的「Routes」，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/046amx15kar4.jpg" target="_blank"><img alt="046amx15kar4.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/046amx15kar4s.jpg" width="320"/></a><br/>沒有匯入任何路線時<br/>會是這個畫面，<br/>從這裡按右上的「・・・」<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/004amx15kar3.jpg" target="_blank"><img alt="004amx15kar3.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/004amx15kar3s.jpg" width="320"/></a><br/>就會變成這個畫面。<br/>這時如果連接了 Wi-Fi<br/>從上到下<br/>・從 Dashboard 同期路線<br/>・地圖縮圖表示<br/>・路線的顯示順序排序<br/>這 3 個選項都是黑色文字<br/>（上面的圖就是這樣）。<br/>未連接 Wi-Fi 時<br/>這部分的文字會變成淡灰色，<br/>任何項目都無法選擇<br/>（用手指按也沒有反應）。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/006amx15kar3.jpg" target="_blank"><img alt="006amx15kar3.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/006amx15kar3s.jpg" width="320"/></a><br/>按最上面的 Sync（同期），<br/>資料容量應該很大的<br/>Dashboard 上為了測試建立的<br/>超級長的路線<br/>一瞬間就被匯入了。<br/><br/>在同期時只匯入縮圖，<br/>下載變成選擇式<br/>這個行為可能是<br/>當 Karoo 判斷 Wi-Fi 電波很弱時<br/>才會出現的行為。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">隸屬 SRAM 旗下的品牌 Hammerhead 推出的<br/>「<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=SRAM+Karoo+cycle+computer+GPS" target="_blank" rel="noopener sponsored" class="amz-inline">SRAM Karoo</a>」關於<br/>網路相關方面的發現，我把它們寫下來。<br/>還有幾篇文章我計劃要寫，<br/>所以為 Karoo 設立了「關於 SRAM 的 Karoo」<br/>這樣的文章分類。<br/><br/>我個人在家裡完全不會把筆記型電腦<br/>從放置位置移動<br/>（把透過無線區域網路連接網際網路的電腦隨身攜帶）<br/>所以我只使用路由器的<br/>有線 LAN 電纜連接。<br/>不過在美國，無線區域網路，也就是 Wi-Fi 的環境<br/>比日本還要完善，<br/>所以使用 Karoo 的<br/>前提條件就是必須有 Wi-Fi 環境。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9434amx15.jpg" target="_blank"><img alt="RIMG9434amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9434amx15s.jpg" width="320"/></a><br/>以下，在白板上<br/>需要 Wi-Fi 的事項用<span style="color:#FF0000">紅色</span>文字標示，<br/>不需要的事項用<span style="color:#0000FF">藍色</span>文字標示。<br/><br/>作為網路服務，<br/>可以管理騎乘記錄（行駛日誌）和<br/>手動建立路線等功能的<br/>Hammerhead Dashboard<br/>（以下簡稱 Dashboard）網站存在，<br/>所以 Hammerhead 自行車碼表的使用者<br/>需要建立帳戶。<br/>我在這裡不限於 SRAM Karoo，<br/>而是寫「Hammerhead 自行車碼表」，<br/>是因為儘管在日本幾乎沒有流通，<br/>該公司的舊款產品如 <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Hammerhead+Karoo+2+cycle+computer+GPS" target="_blank" rel="noopener sponsored" class="amz-inline">Karoo 2</a> 的使用者<br/>也能使用。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9435amx15.jpg" target="_blank"><img alt="RIMG9435amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9435amx15s.jpg" width="320"/></a><br/>首先，在 Karoo 上建立 Hammerhead 帳戶<br/>Wi-Fi 是必需的。<br/>稍後會提到的智慧型手機上的<br/>Hammerhead Companion 應用程式，<br/>從 Karoo 到智慧型手機是藍牙連接，<br/>從智慧型手機到 Dashboard 是網際網路連接<br/>這樣的合作關係<br/>對於 Karoo 上的 Hammerhead 帳戶建立<br/>和之前文章中提到的<br/>日本地區地圖下載<br/>一點幫助都沒有。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/024amx15kar4.jpg" target="_blank"><img alt="024amx15kar4.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/024amx15kar4s.jpg" width="320"/></a><br/>↑這是 Karoo 的設定畫面。<br/>從這裡選右下角的 Settings，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/053amx15kar4.jpg" target="_blank"><img alt="053amx15kar4.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/053amx15kar4s.jpg" width="320"/></a><br/>最上面有 Hammerhead Account<br/>這樣的項目，選擇它的話<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/049amx15kar4.jpg" target="_blank"><img alt="049amx15kar4.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/049amx15kar4s.jpg" width="320"/></a><br/>會出現選項，要用 QR 碼登入<br/>還是輸入電子郵件位址登入。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/050amx15kar4.jpg" target="_blank"><img alt="050amx15kar4.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/050amx15kar4s.jpg" width="320"/></a><br/>在未連接 Wi-Fi 的狀態下<br/>選擇 QR 碼的情況。<br/>變形的 QR 碼瞬間出現，<br/>下方顯示「發生錯誤」，<br/>然後被帶回前一個畫面。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/051amx15kar4.jpg" target="_blank"><img alt="051amx15kar4.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/051amx15kar4s.jpg" width="320"/></a><br/>接著<br/>在未連接 Wi-Fi 的狀態下<br/>選擇用電子郵件註冊的情況，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/052amx15kar4.jpg" target="_blank"><img alt="052amx15kar4.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/052amx15kar4s.jpg" width="320"/></a><br/>輸入必填項目，<br/>按右下角的核取標記後<br/>會出現「沒有連接網路<br/>確認網路連接後再試一次」<br/>的訊息，但這裡的網路連接<br/>僅限於 Wi-Fi。<br/>沒有 Karoo 本體連接到電腦、透過 USB 電纜<br/>進行傳輸的選項<br/>（順便說一下，Polar 的心率計有這個選項）。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/002amx15kar.jpg" target="_blank"><img alt="002amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/002amx15kars.jpg" width="320"/></a><br/>成功登入 Hammerhead Account 的狀態下<br/>選擇 Hammerhead Account 項目時，<br/>畫面上會顯示註冊的電子郵件位址，<br/>畫面下方會出現 Sign Out 的選項，<br/>但只要之後不登出，<br/>即使關閉本體電源<br/>登入狀態也會繼續保持。<br/>而且，不應該選擇 Sign Out。<br/>如果選了的話・・・<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/024amx15kar4.jpg" target="_blank"><img alt="024amx15kar4.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/024amx15kar4s.jpg" width="320"/></a><br/>設定畫面右中央的<br/>Profile Settings 會被初始化！<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/001amx15kar.jpg" target="_blank"><img alt="001amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/001amx15kars.jpg" width="320"/></a><br/>我設定的檔案名稱「巴魯坦星人」消失了，<br/>所以把 Basic Profile 中的<br/>Profile 部分<br/>改為用羅馬字「Profile」。<br/>這是登出狀態，<br/>但如果再次登入→登出的話・・・<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/003amx15kar.jpg" target="_blank"><img alt="003amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/003amx15kars.jpg" width="320"/></a><br/>被刪除的預設檔案復活了，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/005amx15kar.jpg" target="_blank"><img alt="005amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/005amx15kars.jpg" width="320"/></a><br/>檔案名稱也恢復原狀了。<br/>還有，上面的畫面中 Basic 之後有換行，<br/>變成 Profile，<br/>但檔案名稱的輸入欄位沒有換行，<br/>所以我調查了怎樣換行的，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/041amx15kar4.jpg" target="_blank"><img alt="041amx15kar4.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/041amx15kar4s.jpg" width="320"/></a><br/>發現第一個單字之後有空格，<br/>下一個單字以大寫開頭，<br/>下一個單字的字數超過兩行時，<br/>即使第一個單字還沒到行尾的字數，<br/>似乎也會換行。<br/>從上面的名稱輸入刪除空格，<br/>連接成 BasicProfile 的話<br/>就會變成一行。<br/><br/>把 e 增加一個變成 BasicProfilee 的話<br/>正好超過了一行的顯示上限，<br/>所以變成了<br/>BasicProfile<br/>e<br/>這樣的兩行顯示。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9437amx15.jpg" target="_blank"><img alt="RIMG9437amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9437amx15s.jpg" width="320"/></a><br/>輸入 Basicp Roflie，把 p 加在 basic 末尾，<br/>把 R 改為大寫的話<br/>變成<br/>Basicp<br/>Roflie<br/>這樣的兩行顯示。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9136amx15.jpg" target="_blank"><img alt="RIMG9136amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9136amx15s.jpg" width="320"/></a><br/>所以在之前的文章中<br/>用空格填到第二行為止，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9439amx15.jpg" target="_blank"><img alt="RIMG9439amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9439amx15s.jpg" width="320"/></a><br/>輸入這樣的內容<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9438amx15.jpg" target="_blank"><img alt="RIMG9438amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9438amx15s.jpg" width="320"/></a><br/>↑會變成這樣。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9440amx15.jpg" target="_blank"><img alt="RIMG9440amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9440amx15s.jpg" width="320"/></a><br/>要把在 Dashboard 建立的手動騎乘路線<br/>傳送到 Karoo 也需要 Wi-Fi 環境。<br/>與其說需要 Wi-Fi 環境，<br/>不如說沒有其他手段才是問題。<br/><br/>之前在 Dashboard 建立並傳送到 Karoo 的<br/>長居公園外周道路的路線存在，<br/>但路線資料在登出後也消失了。<br/>還好離線地圖沒有消失。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9443amx15.jpg" target="_blank"><img alt="RIMG9443amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9443amx15s.jpg" width="320"/></a><br/>關於 Hammerhead 的應用程式。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9444amx15.jpg" target="_blank"><img alt="RIMG9444amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9444amx15s.jpg" width="320"/></a><br/>↑這是在智慧型手機上下載應用程式並<br/>打開時的首頁。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9445amx15.jpg" target="_blank"><img alt="RIMG9445amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9445amx15s.jpg" width="320"/></a><br/>↑這是還沒有配對手機的<br/>Karoo 畫面。<br/>從這裡按右下角的「NEW PHONE」部分<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9446amx15.jpg" target="_blank"><img alt="RIMG9446amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9446amx15s.jpg" width="320"/></a><br/>會出現 QR 碼。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9447amx15.jpg" target="_blank"><img alt="RIMG9447amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9447amx15s.jpg" width="320"/></a><br/>用「智慧型手機的相機功能」看的話<br/>圖片上寫的是 sram.com，<br/>但會跳轉到<br/>Hammerhead 應用程式的<br/>下載頁面。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9448amx15.jpg" target="_blank"><img alt="RIMG9448amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9448amx15s.jpg" width="320"/></a><br/>不是用智慧型手機的相機功能，<br/>而是選擇應用程式的「開始」時會變成這個頁面，<br/>再選「下一步」<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9449amx15.jpg" target="_blank"><img alt="RIMG9449amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9449amx15s.jpg" width="320"/></a><br/>就會打開「應用程式的相機功能」，<br/>把它對準 Karoo 的 QR 碼<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/037amx15kar4.jpg" target="_blank"><img alt="037amx15kar4.jpg" border="0" height="320" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/037amx15kar4s.jpg" width="148"/></a><br/>↑看到這種黃色圓圈旋轉的畫面<br/>幾秒鐘後，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9450amx15.jpg" target="_blank"><img alt="RIMG9450amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9450amx15s.jpg" width="320"/></a><br/>會要求輸入<br/>配對碼的<br/>6 位數字。<br/>這個數字每次都會改變，<br/>所以上傳到這裡也沒問題。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9454amx15.jpg" target="_blank"><img alt="RIMG9454amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9454amx15s.jpg" width="320"/></a><br/>裝有應用程式的智慧型手機和 Karoo 的配對完成了！<br/>會有一個打馬賽克的地方是因為<br/>Karoo 的識別號碼<br/>出現在畫面上了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9453amx15.jpg" target="_blank"><img alt="RIMG9453amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9453amx15s.jpg" width="320"/></a><br/>↑如果允許這個（我有允許），<br/>智慧型手機的通知會進入到正在騎乘的 Karoo，<br/>但在與騎乘狀況無關的地方<br/>突然發出巨大的嗶聲<br/>會讓人嚇一跳，所以要注意。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9455amx15.jpg" target="_blank"><img alt="RIMG9455amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9455amx15s.jpg" width="320"/></a><br/>↑之後按應用程式的圖示就會<br/>變成這個首頁。<br/><br/>這個應用程式和 Karoo 的配對也一樣，<br/>最好不要刪除。<br/>因為如果從這裡用應用程式這邊<br/>刪除配對的話<br/>（要刪除的話要選右下的「詳細」，<br/>在下一頁的最下面<br/>選用紅字顯示的「移除」），<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9441amx15.jpg" target="_blank"><img alt="RIMG9441amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9441amx15s.jpg" width="320"/></a><br/>智慧型手機這邊會回到配對前的首頁，<br/>表現得像是和 Karoo 乾脆俐落地分手了，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9458amx15.jpg" target="_blank"><img alt="RIMG9458amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9458amx15s.jpg" width="320"/></a><br/>但 Karoo 那邊還認為自己還在和智慧型手機交往，<br/>變成了一個複雜的狀態。<br/><br/>會出現這種狀態，<br/>是因為<br/>智慧型手機的藍牙設定畫面上<br/>還殘留著「KAROO+識別號碼」這個裝置的名稱。<br/>刪除它的話，Karoo 那邊的顯示也會<br/>回到配對前的狀態。<br/><br/>然後再試著從應用程式重新連接 Karoo 的話<br/>QR 碼掃描的瞬間<br/>會出現「配對失敗」，<br/>或是沒有黃色圓圈旋轉的畫面<br/>直接出現 6 位數配對碼，<br/>但輸入後也會出現「配對失敗」，<br/>經常陷入莫名其妙的狀態，<br/>所以最好不要刪除應用程式和 Karoo 的配對。<br/>當只有配對失敗這個結果時，<br/>一旦關閉智慧型手機電源再重新啟動<br/>就能成功的例子有過。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9457amx15.jpg" target="_blank"><img alt="RIMG9457amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9457amx15s.jpg" width="320"/></a><br/>如果 Karoo 那邊還認為自己在交往的狀態，<br/>就無法在 QR 碼的畫面上出現，<br/>所以最初用過的連接方法就無法使用。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9461amx15.jpg" target="_blank"><img alt="RIMG9461amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9461amx15s.jpg" width="320"/></a><br/>然後看「應用程式的相機功能」畫面的下方，<br/>會有困難時按這裡的提示，按一下<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9462amx15.jpg" target="_blank"><img alt="RIMG9462amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9462amx15s.jpg" width="320"/></a><br/>（這時藍牙範圍內<br/>只有 1 個，<br/>就會變成選擇自己的 Karoo 的畫面，<br/>選擇它的話，配對又完成了。<br/>・・・咦？用這個方法成功還是第一次呢。<br/>不知道為什麼這個方法<br/>每次都配對失敗。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9455amx15.jpg" target="_blank"><img alt="RIMG9455amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9455amx15s.jpg" width="320"/></a><br/>然後配對完成後的這個智慧型手機首頁<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9470amx15.jpg" target="_blank"><img alt="RIMG9470amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9470amx15s.jpg" width="320"/></a><br/>按左上角這個圖示會<br/>出現一個頁面，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9472amx15.jpg" target="_blank"><img alt="RIMG9472amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9472amx15s.jpg" width="320"/></a><br/>下方有<br/>「上傳日誌」可選擇<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9473amx15.jpg" target="_blank"><img alt="RIMG9473amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9473amx15s.jpg" width="320"/></a><br/>短時間內<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9474amx15.jpg" target="_blank"><img alt="RIMG9474amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9474amx15s.jpg" width="320"/></a><br/>就會出現核取標記！<br/>順便說一下，上面的 Launch Tour 是<br/>應用程式功能說明的簡短影片，<br/>但目前只有英文版本，<br/>除此之外（對我來說）<br/>完全沒用。<br/><br/>然後這個應用程式的日誌上傳<br/>發生了什麼事呢，<br/>騎乘記錄（行駛日誌）不經過 Wi-Fi<br/>而是直接傳到 Dashboard！<br/>這個核取標記出現直後<br/>只要更新電腦瀏覽器<br/>記錄就已經被加入了，速度就是這麼快。<br/><br/>這是非常便利的一點，<br/>而這個應用程式對目前在美國應該是使用者最多的<br/>Karoo 2 不相容，<br/>這一點讓這個應用程式的評論怨聲載道。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9476amx15.jpg" target="_blank"><img alt="RIMG9476amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9476amx15s.jpg" width="320"/></a><br/>建立了 4 秒的騎乘記錄日誌。<br/>根據騎乘的時間會自動取名為 Morning Ride 或<br/>Night Ride 等，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9477amx15.jpg" target="_blank"><img alt="RIMG9477amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9477amx15s.jpg" width="320"/></a><br/>因為是 4 秒，所以改名為「４秒」。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9478amx15.jpg" target="_blank"><img alt="RIMG9478amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9478amx15s.jpg" width="320"/></a><br/>這是電腦版 Dashboard 的<br/>騎乘記錄頁面。<br/>雖然只有 2 個日誌，<br/>但沒關係。<br/>選擇應用程式的「上傳日誌」，<br/>核取標記出現直後<br/>更新瀏覽器的話<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9479amx15.jpg" target="_blank"><img alt="RIMG9479amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9479amx15s.jpg" width="320"/></a><br/>「４秒」已經被加入了。<br/>日誌容量很小，<br/>可能因為這樣才立刻被加入（需要驗證），<br/>但不經過 Wi-Fi 就能這樣做是確定的。<br/>進一步，建立了 5 秒和 6 秒的日誌後<br/>沒有選擇應用程式的「上傳日誌」<br/>只要更新瀏覽器就看到日誌被加入了。<br/>接著把智慧型手機的顯示切到首頁後建立 7 秒日誌，<br/>不打開應用程式直接更新瀏覽器<br/>日誌也被加入了。<br/>進一步，把智慧型手機螢幕設為休眠後<br/>建立 12 秒日誌，更新瀏覽器後<br/>日誌也被加入了。<br/>把首頁或休眠狀態時<br/>應用程式仍在運作，所以是理所當然的結果。<br/>為了避免「其實連上 Wi-Fi 了」這種蠢事，<br/>我把 Karoo 的設定中的 Wi-Fi 關掉了。<br/><br/>然後關閉智慧型手機電源後建立 17 秒日誌，<br/>更新瀏覽器後日誌沒有被加入。<br/>之後打開智慧型手機電源<br/>日誌還是沒被加入。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9481amx15.jpg" target="_blank"><img alt="RIMG9481amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9481amx15s.jpg" width="320"/></a><br/>打開應用程式後陷入<br/>一直找不到 Karoo 的狀態。<br/>這・・・感覺不太妙・・・。<br/>但如果能寫故障排除的文章<br/>反而是篇有價值的內容，說不定賺到了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9484amx15.jpg" target="_blank"><img alt="RIMG9484amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9484amx15s.jpg" width="320"/></a><br/>首先打開「應用程式的相機功能」頁面，<br/>按下面的註意文字，<br/>這次能成功連接的地方<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9486amx15.jpg" target="_blank"><img alt="RIMG9486amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9486amx15s.jpg" width="320"/></a><br/>被告知找不到 Karoo。<br/>目前 Karoo 無法出現 QR 碼，<br/>處於「還認為自己在交往的狀態」，<br/>所以首先刪除了<br/>智慧型手機的藍牙設定頁面中<br/>「KAROO+識別號碼」裝置的註冊。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9493amx15.jpg" target="_blank"><img alt="RIMG9493amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9493amx15s.jpg" width="320"/></a><br/>就這樣 Karoo 畫面上<br/>能出現 QR 碼的狀態了，<br/>但用應用程式的相機功能看<br/>沒有出現黃色圓圈，沒有反應<br/>（通常用應用程式的相機<br/>看 QR 碼時<br/>會瞬間出現黃色圓圈，<br/>所以根本沒有機會拍到上面的畫面）。<br/><br/>所以回到首頁<br/>選擇右下詳細→移除，<br/>再從應用程式的相機功能<br/>看 QR 碼的話<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9494samx15.jpg" target="_blank"><img alt="RIMG9494samx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9494samx15s.jpg" width="320"/></a><br/>馬上出現黃色圓圈，配對成功了。<br/>然後在配對後<br/>沒有選擇應用程式的「上傳日誌」，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9496amx15.jpg" target="_blank"><img alt="RIMG9496amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9496amx15s.jpg" width="320"/></a><br/>（沒有改名為「１７秒」，<br/>但 17 秒的日誌已經被加入 Dashboard 了。<br/>大概是<br/>「騎乘結束後在 Karoo 上保存騎乘記錄的瞬間，<br/>如果藍牙範圍內有已配對的應用程式智慧型手機，<br/>就立刻把日誌傳到 Dashboard，<br/>上傳日誌圖示<br/>只是為了以防萬一可以手動傳送」<br/>這樣的規格。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9480amx15.jpg" target="_blank"><img alt="RIMG9480amx15.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9480amx15s.jpg" width="320"/></a><br/>因此 Karoo 本體・Dashboard・智慧型手機應用程式的<br/>關係可以整理成這樣。<br/>上面的圖沒有，<br/>但從智慧型手機也可以用智慧型手機版瀏覽器<br/>瀏覽 Dashboard 的網站。<br/><br/>上圖中 Dashboard 指向 Karoo 的<br/>「手動建立路線的上傳」<br/>需要 Wi-Fi。<br/><br/><br/><br/><br/>總結這次的內容，<br/>Karoo 本體只要做一次的<br/>Hammerhead Account 設定和<br/>離線地圖下載<br/>都需要 Wi-Fi。<br/><br/>和智慧型手機的配對，在關閉智慧型手機電源<br/>或是 Karoo 和智慧型手機分離<br/>無法進行重新自動配對的情況<br/>（後者的「Karoo 和智慧型手機<br/>離開藍牙範圍」，<br/>通常只要雙方電源打開<br/>應用程式左下的 ※搜尋中<br/>馬上變成<span style="color:#00FF00">●</span>已連接的狀態）<br/>1．要讓 Karoo 畫面出現 QR 碼，<br/>需要刪除<br/>智慧型手機藍牙設定中殘留的<br/>「KAROO+識別號碼」這個裝置的連接。<br/>之後選擇 Settings→Phone Pairing<br/>按右下的「NEW PHONE」圖示<br/>就會出現 QR 碼畫面。<br/>2．如果應用程式的相機功能<br/>無法讀取 QR 碼，<br/>選擇應用程式首頁右下詳細→<br/>移除（紅字）<br/>就能讀取 QR 碼，<br/>變成黃色圓圈旋轉的畫面，<br/>Karoo 側會出現 6 位數配對碼的<br/>輸入要求，就在智慧型手機側輸入。<br/>上述 1 和 2 做了的話和智慧型手機的配對就恢復了，<br/>但如果黃色圓圈沒有出現<br/>直接出現配對碼的話，不知道為什麼會失敗，<br/>那時應用程式的相機功能<br/>畫面下的「連接有問題嗎？<br/>點這裡，從列表中<br/>選擇 Karoo。」按下<br/>選擇自己的 Karoo 的方法也<br/>經常配對失敗，<br/>那時就把智慧型手機電源<br/>一旦關掉再打開，<br/>再執行一次上述 1 和 2，<br/>至今為止<br/>按照我的了解<br/>都沒有出現無法和智慧型手機配對的狀況。<br/><br/>而且 Karoo 本體側的設定完成<br/>能和應用程式配對的話，<br/>之後需要 Wi-Fi 的<br/>就只有<br/>「把 Dashboard 手動建立的路線<br/>上傳到 Karoo 本體」<br/>了。<br/><br/><span style="font-size:large;"><span style="color:#FF0000">更正補充：</span></span><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/038amx15kar4.jpg" target="_blank"><img alt="038amx15kar4.jpg" border="0" height="320" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/038amx15kar4s.jpg" width="148"/></a><br/>在電腦上的 Dashboard，<br/>雖然沒有實際騎乘<br/>但建立了一條叫「大和川河川敷」的路線。<br/><br/>用智慧型手機登入 Dashboard<br/>看這條路線的是上面的圖。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/062amx15kar4.jpg" target="_blank"><img alt="062amx15kar4.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/062amx15kar4s.jpg" width="320"/></a><br/>用 Wi-Fi 連接把手動路線匯入 Karoo。<br/>但只有地圖縮圖顯示<br/>地圖還沒進入 Karoo<br/>右下出現下載圖示。<br/>在這個狀態無法獲得這條路線的引導，<br/>所以<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/063amx15kar4.jpg" target="_blank"><img alt="063amx15kar4.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/063amx15kar4s.jpg" width="320"/></a><br/>按了下載圖示。<br/>無線區域網路的環境也有關係，<br/>但才 5.8 公里的課程，<br/>沒有經過檢查點的課程<br/>竟然要幾十秒才能取得。<br/>這樣的話取得武裝自行車課程<br/>會耗費非常多時間。<br/>咦？上次取得長居公園路線的時候<br/>不是一瞬間嗎？<br/>而且我也不記得有選擇是否下載。<br/><br/>在文章中寫了這樣的內容，<br/>但關於這個地圖縮圖右下角<br/>出現下載圖示的狀態<br/>之後再也無法重現。<br/>作為更正前文章中我的勘誤，<br/>在和應用程式配對狀態時<br/>路線下載會更快這一點<br/>應用程式完全沒有涉及<br/>「把 Dashboard 手動建立的路線<br/>上傳到 Karoo 本體」這個動作。<br/><br/>在未連接 Wi-Fi 的狀態<br/>用只用智慧型手機應用程式的功能<br/>「把 Dashboard 手動建立的路線<br/>上傳到 Karoo 本體」是做不了的。<br/>相反，在智慧型手機沒有在手邊或<br/>電源關閉的狀態<br/>把 Karoo 本體連接 Wi-Fi<br/>就能取得路線了。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/024amx15kar4.jpg" target="_blank"><img alt="024amx15kar4.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/024amx15kar4s.jpg" width="320"/></a><br/>↑從設定畫面選右上的「Routes」，<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/046amx15kar4.jpg" target="_blank"><img alt="046amx15kar4.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/046amx15kar4s.jpg" width="320"/></a><br/>沒有匯入任何路線時<br/>會是這個畫面，<br/>從這裡按右上的「・・・」<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/004amx15kar3.jpg" target="_blank"><img alt="004amx15kar3.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/004amx15kar3s.jpg" width="320"/></a><br/>就會變成這個畫面。<br/>這時如果連接了 Wi-Fi<br/>從上到下<br/>・從 Dashboard 同期路線<br/>・地圖縮圖表示<br/>・路線的顯示順序排序<br/>這 3 個選項都是黑色文字<br/>（上面的圖就是這樣）。<br/>未連接 Wi-Fi 時<br/>這部分的文字會變成淡灰色，<br/>任何項目都無法選擇<br/>（用手指按也沒有反應）。<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/006amx15kar3.jpg" target="_blank"><img alt="006amx15kar3.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/006amx15kar3s.jpg" width="320"/></a><br/>按最上面的 Sync（同期），<br/>資料容量應該很大的<br/>Dashboard 上為了測試建立的<br/>超級長的路線<br/>一瞬間就被匯入了。<br/><br/>在同期時只匯入縮圖，<br/>下載變成選擇式<br/>這個行為可能是<br/>當 Karoo 判斷 Wi-Fi 電波很弱時<br/>才會出現的行為。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

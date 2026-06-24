@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/8.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Spoke Talk</p>
     <h1>關於輻條每毫米的重量</h1>
     <p class="post-meta">September 21, 2012</p>
+    <div class="post-body"><div class="entrytext">白板用得很頻繁。<span style="color:#0000FF">買對了。</span><br/><br/>今天要談的是輻條每毫米的重量。<br/>說是這樣說，但這個表達方式並不完全準確，<br/>嚴格來說應該是「將Ｘ毫米的輻條從輻條中心向外分成Ｘ份時的重量」。<br/>我只是把它稱為每毫米的重量而已。<br/>各位可能會一頭霧水，但我會慢慢解釋下去。<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08722amx.jpg" target="_blank"><img alt="DSC08722amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08722amxs.jpg" width="300"/></a><br/>↑這就是輻條。請各位見諒這種幼稚的圖畫（笑）。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08723amx.jpg" target="_blank"><img alt="DSC08723amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08723amxs.jpg" width="300"/></a><br/>運動自行車的輻條粗細基本上只有上述兩種。<br/>２．０毫米和１．８毫米的。<br/>輻條的粗細稱為規格，<br/>２．０毫米叫１４規格，１．８毫米叫１５規格。<br/>除了宇宙碳纖(<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Cosmic+Carbon+bicycle+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">Cosmic Carbon</a>)專用輻條採用２．３４毫米(１３規格)等例外狀況，<br/>基本上就是這２．０和１．８兩種。<br/><br/>１．８比較細，所以重量當然是１．８比較輕。<br/><br/>完組輪組上如果用的是上述那種通用規格的輻條，<br/>基本上１００％都是２．０毫米的輻條。<br/>即使是前後配對不足１０００克的ＬＥＷ的ＶＴ－１圈的完組輪組，<br/>也是使用２．０毫米輻條。<br/><br/>我平時組手工輪組主要也用２．０的。<br/>這裡面有原因（後述）。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08726amx.jpg" target="_blank"><img alt="DSC08726amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08726amxs.jpg" width="300"/></a><br/>螺帽也有２．０用和１．８用的，兩者不相容。<br/>材質是黃銅或鋁合金。鋁合金比較輕，但<br/>完組輪組上如果用的是通用螺帽，基本上１００％是黃銅。<br/>ＦＦＷ​Ｄ的輪組用的是通用螺帽，所以是黃銅。<br/>（完組輪組如果採用自家企劃的專用螺帽，多半是鋁合金）<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08728amx.jpg" target="_blank"><img alt="DSC08728amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08728amxs.jpg" width="300"/></a><br/>「輻條斷了」的情況，大多數都是脖子部分的斷裂（上圖的紅線）。<br/>１．８的輻條脖子也是１．８毫米，相比２．０的輻條<br/>這部分的斷裂風險就高得多。<br/>這就是完組輪組不用１．８的原因，<br/>也是我不常用１．８的原因。<br/>用１．８組後輪的話尤其明顯。明顯比２．０的脖子更容易飛掉。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08729amx.jpg" target="_blank"><img alt="DSC08729amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08729amxs.jpg" width="300"/></a><br/>如果是螺帽引起的斷裂，有時會在上圖紅線的部分發生斷裂。<br/>不只是鋁合金，黃銅也會出現這種狀況。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08730amx.jpg" target="_blank"><img alt="DSC08730amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08730amxs.jpg" width="300"/></a><br/>輻條斷裂基本上１００％是脖子斷。中間不會斷。<br/>鏈條掉進最小齒盤內側，鏈條和輻條卡住導致<br/>輻條反向刮削，最後中間斷裂，這種狀況是有的，但<br/>除了這種外在因素外，「輻條斷裂＝脖子斷」這個說法是成立的。<br/><br/>為了輕量化，脖子和螺紋部分保持２．０，中間部分細化的輻條就這樣誕生了。<br/>中間基本上不會斷，所以<br/>可以在不增加輻條脖子斷裂風險的情況下減輕重量。<br/><br/>從一端到另一端始終同一直徑的輻條叫「直輻條(Plain Spoke)」，<br/>中間細化的輻條叫「花鼓輻條(Butted Spoke)」。<br/>瑞士輻條製造商ＤＴ把直輻條稱為Champion，<br/>花鼓輻條稱為Competition。<br/>Competition的２．０的話，花鼓部分是１．８。<br/>上圖沒有，但Competition的１．８的話<br/>花鼓部分是１．６。<br/><br/>Champion的２．０我就記為 ２．０。<br/>Competition的２．０我就記為 ２．０－１．８－２．０。<br/>就是把脖子－花鼓部分－螺紋部分的直徑並排寫出來。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08731amx.jpg" target="_blank"><img alt="DSC08731amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08731amxs.jpg" width="300"/></a><br/>ＤＴ還有更輕的花鼓輻條Revolution型號。<br/>有２．０和１．８，但花鼓部分都是１．５。<br/>比Competition的花鼓部分比例更長，所以<br/>這一點也使它更輕。<br/>Revolution的２．０我就記為 ２．０－１．５－２．０。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08739amx.jpg" target="_blank"><img alt="DSC08739amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08739amxs.jpg" width="300"/></a><br/>我常用的輻條是ＤＴ的Champion和Competition，但<br/>還有一種我常用的輻條，比利時Sapim的ＣＸ－ＲＡＹ。<br/>這是花鼓部分呈扁平狀的輻條，<br/>屬於所謂的空力輻條(Aero Spoke)。<br/>空力部分的斷面在最扁平處是０．９毫米，<br/>最寬處是２．３毫米。<br/>做成這種形狀主要是為了空力特性，但ＣＸ-ＲＡＹ的情況是<br/>也兼具輕量化的設計。<br/>這個我就記為 ２．０－(０．９－２．３)－２．０。<br/>Sapim有１．８的直輻條在產品線中，但<br/>其他花鼓輻條和空力輻條型號沒有１．８毫米的。<br/>所以ＣＸ-ＲＡＹ沒有１．８的。<br/>（特製品可能有，但）<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08733amx.jpg" target="_blank"><img alt="DSC08733amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08733amxs.jpg" width="300"/></a><br/>現在才是重點。<br/>想求輻條每毫米的重量，但<br/>比如上圖那樣分成十等份的話，Ａ和Ｂ的重量會不同。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08734amx.jpg" target="_blank"><img alt="DSC08734amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08734amxs.jpg" width="300"/></a><br/>所以思想實驗一下，從輻條中心放射狀等分。<br/>上圖是五等份，但看起來完全不像五等份是因為我的圖畫得不好，<br/>反正就想象成這樣分割。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08736amx.jpg" target="_blank"><img alt="DSC08736amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08736amxs.jpg" width="300"/></a><br/>２００毫米的輻條分成２００份，<br/>３００毫米的輻條分成３００份，考慮其中１份。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08737amx.jpg" target="_blank"><img alt="DSC08737amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08737amxs.jpg" width="300"/></a><br/>順便說一下Ｘ毫米的輻條分成Ｘ份的情況。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08738amx.jpg" target="_blank"><img alt="DSC08738amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08738amxs.jpg" width="300"/></a><br/>１份的中心角如上圖所示。<br/>我想說的是，<br/><span style="color:#0000FF"><span style="font-size:large;">「這些１份的重量可能幾乎相同」</span></span><br/>這樣一個事實。<br/><br/>話雖這樣說，直輵條還好理解，但花鼓輵條的話<br/>花鼓部分在輵條長度中佔的比例會因為輵條長度而改變，<br/>所以怎麼也想不到會一樣。<br/>５０毫米的Revolution和１億毫米的Revolution，<br/>重量除以長度的話，長的那個當然會更輕。<br/><br/>話題轉一下，我到目前為止組過很多「改造過的完組輪組」。<br/>很多不太好意思光明正大寫「居然能這樣做！」的東西，<br/>先放著慢慢在部落格裡寫（笑），其中之一就是<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/IMG_0232amx.jpg" target="_blank"><img alt="IMG_0232amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/IMG_0232amxs.jpg" width="300"/></a><br/>「用普通車輪組手組的Cosmic Carbon 80」，<br/>這個的輻條長度，細節就不寫了，大約是２３０毫米。<br/>除了想××(自主審核)Campagnolo的Bullet 105的情況外，<br/>比這更短的輵條在７００Ｃ輪組裡幾乎不存在。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08759amx.jpg" target="_blank"><img alt="DSC08759amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08759amxs.jpg" width="300"/></a><br/>↑這是我越野自行車的前輪，用Open Pro的３２H組Monoplan組法。<br/>「用比較低圈高的舊時代管狀輪胎圈的３６Ｈ做８本組Monoplan組的」<br/>應該是７００Ｃ輵條最長的組法，那種情況大約<br/>３１０毫米左右（不過我實際上是清楚知道的）。<br/><br/>也就是說，公路自行車可能出現的輵條長度<br/>基本上全部落在２３０毫米到３１０毫米之間。<br/>花鼓加工帶來的重量變化會非常有限。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08740amx.jpg" target="_blank"><img alt="DSC08740amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08740amxs.jpg" width="300"/></a><br/>實際調查的結果出來了。寫的是３種，但實際樣本更多。<br/>用只能量１克或０．１克重量差的秤量單根輵條<br/>太粗糙了。上面的情況碰巧全是３２本，但<br/>用相當數量的同長輵條一起量，再除以本數，能相當精確地<br/>算出每根的重量。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08741amx.jpg" target="_blank"><img alt="DSC08741amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08741amxs.jpg" width="300"/></a><br/>出來了。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08742amx.jpg" target="_blank"><img alt="DSC08742amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08742amxs.jpg" width="300"/></a><br/><span style="color:#0000FF">再除以長度。</span><br/>寫成每毫米的重量，但如開頭所述<br/>嚴格來說是從中心分割的１片的重量。<br/>因為用長度去除，所以用每毫米來表達。<br/>這個應該可以說差不多吧。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08744amx.jpg" target="_blank"><img alt="DSC08744amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08744amxs.jpg" width="300"/></a><br/>Sapim的ＣＸ－ＲＡＹ也試試看。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08745amx.jpg" target="_blank"><img alt="DSC08745amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08745amxs.jpg" width="300"/></a><br/>總重量是這樣，<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08748amx.jpg" target="_blank"><img alt="DSC08748amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08748amxs.jpg" width="300"/></a><br/>每根的重量是這樣。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08749amx.jpg" target="_blank"><img alt="DSC08749amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08749amxs.jpg" width="300"/></a><br/>再除以長度。有點變化，<br/>最大是每毫米１０００分之４克的變化。<br/>樣本還有更多，這是變化最大的。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08751amx.jpg" target="_blank"><img alt="DSC08751amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08751amxs.jpg" width="300"/></a><br/>再試試２．０直輵條的ＤＴ Champion。<br/><br/>Sapim也有２．０直輵條的Leader型號。<br/>星工業有２．０直輵條的Star Bright型號。<br/>這些嚴格來說不是不鏽鋼輵條。<br/>是不鏽鋼，但和一般意義上的不鏽鋼有點不同。<br/>要寫這個又會變長，留到後天寫。<br/>ＤＴ、Sapim、星，或其他製造商的輵條添加物和配比<br/>不可能完全相同，所以２．０毫米的直輵條也許<br/>樣本足夠多的話會出現比重差異。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08752amx.jpg" target="_blank"><img alt="DSC08752amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08752amxs.jpg" width="300"/></a><br/>不過，暫時先拿上面ＤＴ Champion２．０的每毫米重量０．０２５７克<br/>當作１００％，求各輵條的重量比。<br/>之所以還有這張圖是因為白板是雙面的。<br/>真的買對了。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08753amx.jpg" target="_blank"><img alt="DSC08753amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08753amxs.jpg" width="300"/></a><br/>↑這樣出來。變化取中位值。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08754amx.jpg" target="_blank"><img alt="DSC08754amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08754amxs.jpg" width="300"/></a><br/>↑也加上了Champion的１．８。<br/>當然比Competition的２．０－１．８－２．０輕。<br/><br/>Revolution的２．０和ＣＸ－ＲＡＹ相比直輵條的２．０<br/>是把材料削到約２／３，真厲害。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08755amx.jpg" target="_blank"><img alt="DSC08755amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08755amxs.jpg" width="300"/></a><br/>這樣一來就能計算考慮到長度的輵條重量了。<br/>因為做了３次乘法，可能會有誤差，但<br/>作為Fermi估計的方法，我認為相當精確。<br/>最後的係數就代入前面紅字的百分比。<br/>有了這個，在進貨輵條前或組輪組前<br/>就能大致知道重量了（不過得知道係數）。<br/>而且，這邊沒寫，但世界上有２種輵條的係數低於６０％。<br/>要組真正輕的輵條輪組的話，用它們是必要條件。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08756amx.jpg" target="_blank"><img alt="DSC08756amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08756amxs.jpg" width="300"/></a><br/>螺帽的重量也寫一下。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08757amx.jpg" target="_blank"><img alt="DSC08757amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08757amxs.jpg" width="300"/></a><br/>這樣一來就能概算出輪組構成要素中輵條和螺帽的重量了。<br/>車輪和圈的話最好量實物，但如果沒有就用型錄重量計算。<br/>多數情況下應該會比型錄重量重，所以<br/>桌面計算得到的重量足以當作「大約這麼重，但肯定會更重」的目安。<br/><br/>每次組輪組時量一下輵條束，就能<br/>為算出更準確的係數積累數據。<br/>這種積累很重要。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">白板用得很頻繁。<span style="color:#0000FF">買對了。</span><br/><br/>今天要談的是輻條每毫米的重量。<br/>說是這樣說，但這個表達方式並不完全準確，<br/>嚴格來說應該是「將Ｘ毫米的輻條從輻條中心向外分成Ｘ份時的重量」。<br/>我只是把它稱為每毫米的重量而已。<br/>各位可能會一頭霧水，但我會慢慢解釋下去。<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08722amx.jpg" target="_blank"><img alt="DSC08722amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08722amxs.jpg" width="300"/></a><br/>↑這就是輻條。請各位見諒這種幼稚的圖畫（笑）。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08723amx.jpg" target="_blank"><img alt="DSC08723amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08723amxs.jpg" width="300"/></a><br/>運動自行車的輻條粗細基本上只有上述兩種。<br/>２．０毫米和１．８毫米的。<br/>輻條的粗細稱為規格，<br/>２．０毫米叫１４規格，１．８毫米叫１５規格。<br/>除了宇宙碳纖(<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Cosmic+Carbon+bicycle+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">Cosmic Carbon</a>)專用輻條採用２．３４毫米(１３規格)等例外狀況，<br/>基本上就是這２．０和１．８兩種。<br/><br/>１．８比較細，所以重量當然是１．８比較輕。<br/><br/>完組輪組上如果用的是上述那種通用規格的輻條，<br/>基本上１００％都是２．０毫米的輻條。<br/>即使是前後配對不足１０００克的ＬＥＷ的ＶＴ－１圈的完組輪組，<br/>也是使用２．０毫米輻條。<br/><br/>我平時組手工輪組主要也用２．０的。<br/>這裡面有原因（後述）。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08726amx.jpg" target="_blank"><img alt="DSC08726amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08726amxs.jpg" width="300"/></a><br/>螺帽也有２．０用和１．８用的，兩者不相容。<br/>材質是黃銅或鋁合金。鋁合金比較輕，但<br/>完組輪組上如果用的是通用螺帽，基本上１００％是黃銅。<br/>ＦＦＷ​Ｄ的輪組用的是通用螺帽，所以是黃銅。<br/>（完組輪組如果採用自家企劃的專用螺帽，多半是鋁合金）<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08728amx.jpg" target="_blank"><img alt="DSC08728amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08728amxs.jpg" width="300"/></a><br/>「輻條斷了」的情況，大多數都是脖子部分的斷裂（上圖的紅線）。<br/>１．８的輻條脖子也是１．８毫米，相比２．０的輻條<br/>這部分的斷裂風險就高得多。<br/>這就是完組輪組不用１．８的原因，<br/>也是我不常用１．８的原因。<br/>用１．８組後輪的話尤其明顯。明顯比２．０的脖子更容易飛掉。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08729amx.jpg" target="_blank"><img alt="DSC08729amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08729amxs.jpg" width="300"/></a><br/>如果是螺帽引起的斷裂，有時會在上圖紅線的部分發生斷裂。<br/>不只是鋁合金，黃銅也會出現這種狀況。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08730amx.jpg" target="_blank"><img alt="DSC08730amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08730amxs.jpg" width="300"/></a><br/>輻條斷裂基本上１００％是脖子斷。中間不會斷。<br/>鏈條掉進最小齒盤內側，鏈條和輻條卡住導致<br/>輻條反向刮削，最後中間斷裂，這種狀況是有的，但<br/>除了這種外在因素外，「輻條斷裂＝脖子斷」這個說法是成立的。<br/><br/>為了輕量化，脖子和螺紋部分保持２．０，中間部分細化的輻條就這樣誕生了。<br/>中間基本上不會斷，所以<br/>可以在不增加輻條脖子斷裂風險的情況下減輕重量。<br/><br/>從一端到另一端始終同一直徑的輻條叫「直輻條(Plain Spoke)」，<br/>中間細化的輻條叫「花鼓輻條(Butted Spoke)」。<br/>瑞士輻條製造商ＤＴ把直輻條稱為Champion，<br/>花鼓輻條稱為Competition。<br/>Competition的２．０的話，花鼓部分是１．８。<br/>上圖沒有，但Competition的１．８的話<br/>花鼓部分是１．６。<br/><br/>Champion的２．０我就記為 ２．０。<br/>Competition的２．０我就記為 ２．０－１．８－２．０。<br/>就是把脖子－花鼓部分－螺紋部分的直徑並排寫出來。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08731amx.jpg" target="_blank"><img alt="DSC08731amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08731amxs.jpg" width="300"/></a><br/>ＤＴ還有更輕的花鼓輻條Revolution型號。<br/>有２．０和１．８，但花鼓部分都是１．５。<br/>比Competition的花鼓部分比例更長，所以<br/>這一點也使它更輕。<br/>Revolution的２．０我就記為 ２．０－１．５－２．０。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08739amx.jpg" target="_blank"><img alt="DSC08739amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08739amxs.jpg" width="300"/></a><br/>我常用的輻條是ＤＴ的Champion和Competition，但<br/>還有一種我常用的輻條，比利時Sapim的ＣＸ－ＲＡＹ。<br/>這是花鼓部分呈扁平狀的輻條，<br/>屬於所謂的空力輻條(Aero Spoke)。<br/>空力部分的斷面在最扁平處是０．９毫米，<br/>最寬處是２．３毫米。<br/>做成這種形狀主要是為了空力特性，但ＣＸ-ＲＡＹ的情況是<br/>也兼具輕量化的設計。<br/>這個我就記為 ２．０－(０．９－２．３)－２．０。<br/>Sapim有１．８的直輻條在產品線中，但<br/>其他花鼓輻條和空力輻條型號沒有１．８毫米的。<br/>所以ＣＸ-ＲＡＹ沒有１．８的。<br/>（特製品可能有，但）<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08733amx.jpg" target="_blank"><img alt="DSC08733amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08733amxs.jpg" width="300"/></a><br/>現在才是重點。<br/>想求輻條每毫米的重量，但<br/>比如上圖那樣分成十等份的話，Ａ和Ｂ的重量會不同。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08734amx.jpg" target="_blank"><img alt="DSC08734amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08734amxs.jpg" width="300"/></a><br/>所以思想實驗一下，從輻條中心放射狀等分。<br/>上圖是五等份，但看起來完全不像五等份是因為我的圖畫得不好，<br/>反正就想象成這樣分割。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08736amx.jpg" target="_blank"><img alt="DSC08736amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08736amxs.jpg" width="300"/></a><br/>２００毫米的輻條分成２００份，<br/>３００毫米的輻條分成３００份，考慮其中１份。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08737amx.jpg" target="_blank"><img alt="DSC08737amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08737amxs.jpg" width="300"/></a><br/>順便說一下Ｘ毫米的輻條分成Ｘ份的情況。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08738amx.jpg" target="_blank"><img alt="DSC08738amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08738amxs.jpg" width="300"/></a><br/>１份的中心角如上圖所示。<br/>我想說的是，<br/><span style="color:#0000FF"><span style="font-size:large;">「這些１份的重量可能幾乎相同」</span></span><br/>這樣一個事實。<br/><br/>話雖這樣說，直輵條還好理解，但花鼓輵條的話<br/>花鼓部分在輵條長度中佔的比例會因為輵條長度而改變，<br/>所以怎麼也想不到會一樣。<br/>５０毫米的Revolution和１億毫米的Revolution，<br/>重量除以長度的話，長的那個當然會更輕。<br/><br/>話題轉一下，我到目前為止組過很多「改造過的完組輪組」。<br/>很多不太好意思光明正大寫「居然能這樣做！」的東西，<br/>先放著慢慢在部落格裡寫（笑），其中之一就是<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/IMG_0232amx.jpg" target="_blank"><img alt="IMG_0232amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/IMG_0232amxs.jpg" width="300"/></a><br/>「用普通車輪組手組的Cosmic Carbon 80」，<br/>這個的輻條長度，細節就不寫了，大約是２３０毫米。<br/>除了想××(自主審核)Campagnolo的Bullet 105的情況外，<br/>比這更短的輵條在７００Ｃ輪組裡幾乎不存在。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08759amx.jpg" target="_blank"><img alt="DSC08759amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08759amxs.jpg" width="300"/></a><br/>↑這是我越野自行車的前輪，用Open Pro的３２H組Monoplan組法。<br/>「用比較低圈高的舊時代管狀輪胎圈的３６Ｈ做８本組Monoplan組的」<br/>應該是７００Ｃ輵條最長的組法，那種情況大約<br/>３１０毫米左右（不過我實際上是清楚知道的）。<br/><br/>也就是說，公路自行車可能出現的輵條長度<br/>基本上全部落在２３０毫米到３１０毫米之間。<br/>花鼓加工帶來的重量變化會非常有限。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08740amx.jpg" target="_blank"><img alt="DSC08740amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08740amxs.jpg" width="300"/></a><br/>實際調查的結果出來了。寫的是３種，但實際樣本更多。<br/>用只能量１克或０．１克重量差的秤量單根輵條<br/>太粗糙了。上面的情況碰巧全是３２本，但<br/>用相當數量的同長輵條一起量，再除以本數，能相當精確地<br/>算出每根的重量。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08741amx.jpg" target="_blank"><img alt="DSC08741amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08741amxs.jpg" width="300"/></a><br/>出來了。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08742amx.jpg" target="_blank"><img alt="DSC08742amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08742amxs.jpg" width="300"/></a><br/><span style="color:#0000FF">再除以長度。</span><br/>寫成每毫米的重量，但如開頭所述<br/>嚴格來說是從中心分割的１片的重量。<br/>因為用長度去除，所以用每毫米來表達。<br/>這個應該可以說差不多吧。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08744amx.jpg" target="_blank"><img alt="DSC08744amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08744amxs.jpg" width="300"/></a><br/>Sapim的ＣＸ－ＲＡＹ也試試看。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08745amx.jpg" target="_blank"><img alt="DSC08745amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08745amxs.jpg" width="300"/></a><br/>總重量是這樣，<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08748amx.jpg" target="_blank"><img alt="DSC08748amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08748amxs.jpg" width="300"/></a><br/>每根的重量是這樣。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08749amx.jpg" target="_blank"><img alt="DSC08749amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08749amxs.jpg" width="300"/></a><br/>再除以長度。有點變化，<br/>最大是每毫米１０００分之４克的變化。<br/>樣本還有更多，這是變化最大的。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08751amx.jpg" target="_blank"><img alt="DSC08751amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08751amxs.jpg" width="300"/></a><br/>再試試２．０直輵條的ＤＴ Champion。<br/><br/>Sapim也有２．０直輵條的Leader型號。<br/>星工業有２．０直輵條的Star Bright型號。<br/>這些嚴格來說不是不鏽鋼輵條。<br/>是不鏽鋼，但和一般意義上的不鏽鋼有點不同。<br/>要寫這個又會變長，留到後天寫。<br/>ＤＴ、Sapim、星，或其他製造商的輵條添加物和配比<br/>不可能完全相同，所以２．０毫米的直輵條也許<br/>樣本足夠多的話會出現比重差異。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08752amx.jpg" target="_blank"><img alt="DSC08752amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08752amxs.jpg" width="300"/></a><br/>不過，暫時先拿上面ＤＴ Champion２．０的每毫米重量０．０２５７克<br/>當作１００％，求各輵條的重量比。<br/>之所以還有這張圖是因為白板是雙面的。<br/>真的買對了。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08753amx.jpg" target="_blank"><img alt="DSC08753amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08753amxs.jpg" width="300"/></a><br/>↑這樣出來。變化取中位值。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08754amx.jpg" target="_blank"><img alt="DSC08754amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08754amxs.jpg" width="300"/></a><br/>↑也加上了Champion的１．８。<br/>當然比Competition的２．０－１．８－２．０輕。<br/><br/>Revolution的２．０和ＣＸ－ＲＡＹ相比直輵條的２．０<br/>是把材料削到約２／３，真厲害。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08755amx.jpg" target="_blank"><img alt="DSC08755amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08755amxs.jpg" width="300"/></a><br/>這樣一來就能計算考慮到長度的輵條重量了。<br/>因為做了３次乘法，可能會有誤差，但<br/>作為Fermi估計的方法，我認為相當精確。<br/>最後的係數就代入前面紅字的百分比。<br/>有了這個，在進貨輵條前或組輪組前<br/>就能大致知道重量了（不過得知道係數）。<br/>而且，這邊沒寫，但世界上有２種輵條的係數低於６０％。<br/>要組真正輕的輵條輪組的話，用它們是必要條件。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08756amx.jpg" target="_blank"><img alt="DSC08756amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08756amxs.jpg" width="300"/></a><br/>螺帽的重量也寫一下。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08757amx.jpg" target="_blank"><img alt="DSC08757amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC08757amxs.jpg" width="300"/></a><br/>這樣一來就能概算出輪組構成要素中輵條和螺帽的重量了。<br/>車輪和圈的話最好量實物，但如果沒有就用型錄重量計算。<br/>多數情況下應該會比型錄重量重，所以<br/>桌面計算得到的重量足以當作「大約這麼重，但肯定會更重」的目安。<br/><br/>每次組輪組時量一下輵條束，就能<br/>為算出更準確的係數積累數據。<br/>這種積累很重要。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

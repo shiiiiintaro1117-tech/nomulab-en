@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
-    <p>Bicycle Workshop — English Edition</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/index.html">
+        <span class="brand-title">Nomu Lab Diary</span>
+        <span class="brand-subtitle">Bicycle Workshop Archive</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/index.html">Archive</a>
+      <a href="/guides/wheel-building.html">Wheel Guide</a>
+      <a href="/glossary.html">Glossary</a>
+      <a href="/about.html">About</a>
+    </nav>
     <div class="lang-toggle"><span class="lang-btn active">EN</span><a class="lang-btn" href="/zh/posts/7168.html">繁中</a></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/index.html">← All posts</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">SRAM Calu</p>
     <h1>About &quot;Butterfly Mode&quot; and the First 0.1 km</h1>
     <p class="post-meta">June 30, 2024</p>
+    <div class="post-body"><div class="entrytext">I'm going to write about the GPS behavior of <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=SRAM+Quarq+cycling+computer+GPS" target="_blank" rel="noopener sponsored" class="amz-inline">SRAM's Quarq</a>.<br/>Based on my actual experience with equipment,<br/>I've used <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Polar+heart+rate+monitor+GPS" target="_blank" rel="noopener sponsored" class="amz-inline">Polar's heart rate monitors</a> with GPS function and<br/><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Pioneer+SGX-CA500+cycling+computer" target="_blank" rel="noopener sponsored" class="amz-inline">Pioneer's SGX-CA500</a>, and<br/>when I set running speed and distance based solely on GPS,<br/>it's clear that running distance is (assuming speed updates every second)<br/>NOT an accumulation of speed readings moment by moment.<br/>While current speed displays the result of GPS communication,<br/>distance measurement is being done separately from that.<br/><br/>Polar's running distance updates in 0.01 km (10 meter) increments,<br/>but the current speed shows a "lingering" effect for several seconds after stopping.<br/>What I mean is, for example, if you go from 30 km/h<br/>and stop at a traffic light,<br/>the display shows 28.2...21.3...17.8...9.6...<br/>3.4.....0 km!<br/>Like that—even though you're clearly stopped,<br/>the displayed speed just won't drop to zero quickly.<br/>If running distance were based on the accumulation of displayed speed,<br/>this "lingering" accumulation should result in 10 meters of distance<br/>and add 0.01 km during the stop,<br/>but I've never once observed that happening.<br/><br/>As more definitive evidence:<br/>when entering a reasonably long tunnel (depending on speed, 200+ meters),<br/>the GPS signal is lost, and<br/>when it's reacquired just after exiting the tunnel,<br/>the running distance suddenly increases by roughly the tunnel's length.<br/>If the tunnel is 600 meters long, about 600 meters gets added,<br/>with running distance jumping as the two GPS points (signal lost and reacquired) are connected.<br/>Even if the actual tunnel trajectory curves somewhat,<br/>since it's connected as a straight line, some error occurs,<br/>but it's not really a problem.<br/>If running distance were an accumulation of speed display,<br/>it would be strange for the 0 km/h reading during the tunnel<br/>to suddenly add the straight-line distance amount when exiting the tunnel.<br/><br/><br/>About butterfly mode.<br/>With GPS position measurement,<br/>when you stand completely still without moving,<br/>the GPS current position history<br/>doesn't stay fixed at one point—<br/>instead, like a pen tip scribbling within a narrow range,<br/>it traces a line that looks like a butterfly's flight path.<br/>I call this "butterfly mode,"<br/>and it seems the difference in how GPS signals are processed<br/>lies with the receiving end (the cycle computer side).<br/>Polar's drift is more like a snail<br/>rather than a butterfly,<br/>while Pioneer's CA500<br/>flutters around quite a range (radius of tens of meters).<br/>As for SRAM's Quarq—it was quite an energetic butterfly.<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9706msn5.jpg" target="_blank"><img alt="RIMG9706msn5.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9706msn5s.jpg" width="320"/></a><br/>After acquiring the GPS signal<br/>and the map appeared on the screen,<br/>I started measuring without moving it at all.<br/>In the image above, speed shows 0.0 km,<br/>but without moving or touching it at all,<br/>sometimes it shows 1.4 km or similar.<br/>Even while stationary, the speed doesn't stay at 0.0 km—<br/>this is the same with Pioneer's CA500.<br/>In this respect, Polar does it well:<br/>although there's a long lingering effect when stopped, once it shows 0.0 km,<br/>unless you clearly start moving (probably around 3 km/h),<br/>the display stays at 0.0 km.<br/>About 13 minutes after starting measurement,<br/>it was already showing 0.1 km traveled,<br/>so I stopped measuring.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9709msn5.jpg" target="_blank"><img alt="RIMG9709msn5.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9709msn5s.jpg" width="320"/></a><br/>Looking at the movement history,<br/>the butterfly illegally trespassed to the trophy shop across the street (→<a href="/posts/1663.html" target="_blank" title="here">here</a>).<br/>I forgot to capture it, but zooming in more on the map<br/>shows a chaotic trajectory around the starting point.<br/>As for this distance, excluding the butterfly trajectory,<br/>the simple straight-line distance is less than 0.1 km.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/021amx15kar.jpg" target="_blank"><img alt="021amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/021amx15kars.jpg" width="320"/></a><br/>Polar's sensors like heart rate, speed, and cadence<br/>only support Bluetooth.<br/>Incidentally, two generations ago they only supported their own proprietary standard.<br/>Quarq supports Bluetooth and also<br/>ANT+ in addition.<br/>ANT+ broadcasts information to all nearby receiving devices<br/>when there are multiple pairing targets on the transmitting side,<br/>but Bluetooth is one-to-one,<br/>so in the image above, since I connected with Polar first,<br/>the Quarq doesn't display heart rate.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/022amx15kar.jpg" target="_blank"><img alt="022amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/022amx15kars.jpg" width="320"/></a><br/>When I disconnected the heart rate monitor, heart rate immediately appeared on the Quarq side.<br/>Once that happens, unless you disconnect Quarq's connection,<br/>heart rate won't display on Polar's side.<br/><br/>The reason I continue to support Polar no matter how its market share narrows in the cycling world<br/>is because it's the original pioneer of heart rate monitors in sports,<br/>and especially because I trust its calorie burn calculation.<br/>So even now, I gauge other manufacturers' calorie burn from devices with heart rate function as<br/>"higher/lower than Polar."<br/>Though most people probably don't know this anymore,<br/>there was a long era when heart rate monitors from anyone but Polar<br/>were essentially toys.<br/>Well, compared to actual medical devices,<br/>maybe Polar is toy-like too.<br/><br/>With Polar, you first input your date of birth.<br/>This automatically becomes an age field that updates.<br/>Additionally, by inputting gender, height, weight data and<br/>self-reported exercise frequency (hours per week),<br/>the calorie burn value is<br/>"for someone of this age, gender, height, and weight<br/>exercising at this reported frequency level<br/>at this heart rate,<br/>the calorie burn per measurement interval would be this amount,"<br/>and those previously mentioned items become the calculation basis.<br/>But with Quarq, the only item required for calorie burn calculation is body weight,<br/>and the calculation basis is actually power output.<br/>In other words, even if you display heart rate on Quarq,<br/>it's not used as the basis for calorie burn calculation.<br/>And calorie calculation requires a power meter.<br/><s>Since I haven't adopted a power meter,<br/>I can't conduct ongoing research on whether Quarq's power-based calorie burn<br/>tends to be higher/lower than Polar.<br/>Well, I'll adopt one eventually.</s><br/><br/>So currently, I've<br/>removed the heart rate transmitter from<br/>Quarq's pairing.<br/>I have Quarq mounted on my disc road bike,<br/>which is my regular-use bike and<br/>the only one with a 31.8 mm handlebar clamp diameter<br/>(besides that there's a sub-4 kg bike with 31.8 mm,<br/>others are 26.0 mm or 25.8 mm).<br/>For commuting on the disc road, I don't use the heart rate monitor,<br/>and with heart rate monitors it's annoying to delete logs,<br/>but Quarq lets you choose to save or delete logs at the end of measurement,<br/>so for commutes I usually don't save them.<br/><br/>When I want to keep GPS logs from rides of meaningful distance,<br/>I also use the Polar heart rate monitor.<br/>I want to manage my ride logs all in one place<br/>in Polar Flow (Polar's cloud management software),<br/>and while exporting Quarq's ride logs to Strava is easy—basically a service the manufacturer provides—<br/>transferring to Polar Flow is somewhat tedious due to file extension issues. I'll cover that in a separate post.<br/><br/>So before I start riding, I confirm both Polar and Quarq<br/>have acquired GPS signal, and<br/>start logging with just a 2-3 second difference,<br/>then ride off. The GPS distance data<br/>doesn't differ drastically between them,<br/>proving both are accurate, but<br/>I've noticed a certain tendency.<br/>Polar displays distance in 0.01 km increments,<br/>while Quarq displays in 0.1 km increments.<br/>When Polar's second decimal place is 7-9,<br/>Quarq's distance is larger,<br/>and when it's 1-3, Polar's distance is larger—<br/>that's the tendency I see.<br/>For example, when Polar shows 9.27 km,<br/>Quarq shows 9.3 km.<br/>This isn't just coincidence—<br/>it's based on sustained observation over time.<br/>Somehow, Quarq's running distance seems to be<br/>about 0.05 km (50 meters)<br/>ahead of schedule<br/>(more precisely, it likely rounds the 0.05–0.14 km range to 0.1 km).<br/><br/>So when I started Polar and Quarq as close to simultaneously as possible (within 1 second)<br/>and rode straight and carefully, I confirmed that<br/>when Polar switches from 0.03 km to 0.04 km,<br/>Quarq shows 0.1 km.<br/>I've tested this several times.<br/>Even without using Polar simultaneously,<br/>I've confirmed that Quarq shows 0.1 km within 0.06 km (60 meters)<br/>even when riding somewhat faster.<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/033amx15kar.jpg" target="_blank"><img alt="033amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/033amx15kars.jpg" width="320"/></a><br/>↑Like this, for routes I've created or pins I've placed,<br/>the remaining distance to the goal often differs by 0.1 km<br/>between the numeric distance display and<br/>the upcoming elevation profile,<br/>which suggests the rounding method for distances under 0.1 km<br/>differs depending on the display item.<br/><br/>So that butterfly trajectory I mentioned earlier<br/>that "trespassed" to the trophy shop across the street<br/>is probably actually about 70–80 meters of distance.<br/><br/>Even during a ~1 minute stop at a traffic light,<br/>we can't rule out butterfly mode occurring,<br/>but even over about 100 km of riding,<br/>Polar and Quarq's distances maintain a state where<br/>Quarq is about 0.05 km ahead<br/>and never diverge significantly.<br/><br/>I have the auto start/stop function (which automatically stops time tracking when stopped) turned off<br/>on both Polar and Quarq, and don't stop for brief traffic lights,<br/>so during traffic waits both experience fine butterfly mode similarly,<br/>and they might appear correct simply because both are equally off.<br/>From sustained observation of butterfly mode,<br/>Polar seems to have less variance<br/>(it's snail-like as I mentioned before).<br/><br/>SRAM Quarq is expected to become more prevalent<br/>as an accessory with the new RED (E1) going forward,<br/>but Quarq standalone is already available from distributors,<br/>so I'm having fun verifying it.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9844msn5.jpg" target="_blank"><img alt="RIMG9844msn5.jpg" border="0" height="320" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9844msn5s.jpg" width="240"/></a><br/>Separate from the program named "Baltan Starmen,"<br/>I created another program.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9845msn5.jpg" target="_blank"><img alt="RIMG9845msn5.jpg" border="0" height="320" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9845msn5s.jpg" width="240"/></a><br/>It's on the right, so I swipe.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9846msn5.jpg" target="_blank"><img alt="RIMG9846msn5.jpg" border="0" height="320" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9846msn5s.jpg" width="240"/></a><br/>A two-line Zaku II emoji art made with the character range available in Quarq's text input.<br/>Please accept this.
+</div></div>
+    <aside class="post-guides">
+      <strong>Technical archive</strong>
+      <nav aria-label="Technical guides">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">I'm going to write about the GPS behavior of <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=SRAM+Quarq+cycling+computer+GPS" target="_blank" rel="noopener sponsored" class="amz-inline">SRAM's Quarq</a>.<br/>Based on my actual experience with equipment,<br/>I've used <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Polar+heart+rate+monitor+GPS" target="_blank" rel="noopener sponsored" class="amz-inline">Polar's heart rate monitors</a> with GPS function and<br/><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Pioneer+SGX-CA500+cycling+computer" target="_blank" rel="noopener sponsored" class="amz-inline">Pioneer's SGX-CA500</a>, and<br/>when I set running speed and distance based solely on GPS,<br/>it's clear that running distance is (assuming speed updates every second)<br/>NOT an accumulation of speed readings moment by moment.<br/>While current speed displays the result of GPS communication,<br/>distance measurement is being done separately from that.<br/><br/>Polar's running distance updates in 0.01 km (10 meter) increments,<br/>but the current speed shows a "lingering" effect for several seconds after stopping.<br/>What I mean is, for example, if you go from 30 km/h<br/>and stop at a traffic light,<br/>the display shows 28.2...21.3...17.8...9.6...<br/>3.4.....0 km!<br/>Like that—even though you're clearly stopped,<br/>the displayed speed just won't drop to zero quickly.<br/>If running distance were based on the accumulation of displayed speed,<br/>this "lingering" accumulation should result in 10 meters of distance<br/>and add 0.01 km during the stop,<br/>but I've never once observed that happening.<br/><br/>As more definitive evidence:<br/>when entering a reasonably long tunnel (depending on speed, 200+ meters),<br/>the GPS signal is lost, and<br/>when it's reacquired just after exiting the tunnel,<br/>the running distance suddenly increases by roughly the tunnel's length.<br/>If the tunnel is 600 meters long, about 600 meters gets added,<br/>with running distance jumping as the two GPS points (signal lost and reacquired) are connected.<br/>Even if the actual tunnel trajectory curves somewhat,<br/>since it's connected as a straight line, some error occurs,<br/>but it's not really a problem.<br/>If running distance were an accumulation of speed display,<br/>it would be strange for the 0 km/h reading during the tunnel<br/>to suddenly add the straight-line distance amount when exiting the tunnel.<br/><br/><br/>About butterfly mode.<br/>With GPS position measurement,<br/>when you stand completely still without moving,<br/>the GPS current position history<br/>doesn't stay fixed at one point—<br/>instead, like a pen tip scribbling within a narrow range,<br/>it traces a line that looks like a butterfly's flight path.<br/>I call this "butterfly mode,"<br/>and it seems the difference in how GPS signals are processed<br/>lies with the receiving end (the cycle computer side).<br/>Polar's drift is more like a snail<br/>rather than a butterfly,<br/>while Pioneer's CA500<br/>flutters around quite a range (radius of tens of meters).<br/>As for SRAM's Quarq—it was quite an energetic butterfly.<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9706msn5.jpg" target="_blank"><img alt="RIMG9706msn5.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9706msn5s.jpg" width="320"/></a><br/>After acquiring the GPS signal<br/>and the map appeared on the screen,<br/>I started measuring without moving it at all.<br/>In the image above, speed shows 0.0 km,<br/>but without moving or touching it at all,<br/>sometimes it shows 1.4 km or similar.<br/>Even while stationary, the speed doesn't stay at 0.0 km—<br/>this is the same with Pioneer's CA500.<br/>In this respect, Polar does it well:<br/>although there's a long lingering effect when stopped, once it shows 0.0 km,<br/>unless you clearly start moving (probably around 3 km/h),<br/>the display stays at 0.0 km.<br/>About 13 minutes after starting measurement,<br/>it was already showing 0.1 km traveled,<br/>so I stopped measuring.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9709msn5.jpg" target="_blank"><img alt="RIMG9709msn5.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9709msn5s.jpg" width="320"/></a><br/>Looking at the movement history,<br/>the butterfly illegally trespassed to the trophy shop across the street (→<a href="/posts/1663.html" target="_blank" title="here">here</a>).<br/>I forgot to capture it, but zooming in more on the map<br/>shows a chaotic trajectory around the starting point.<br/>As for this distance, excluding the butterfly trajectory,<br/>the simple straight-line distance is less than 0.1 km.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/021amx15kar.jpg" target="_blank"><img alt="021amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/021amx15kars.jpg" width="320"/></a><br/>Polar's sensors like heart rate, speed, and cadence<br/>only support Bluetooth.<br/>Incidentally, two generations ago they only supported their own proprietary standard.<br/>Quarq supports Bluetooth and also<br/>ANT+ in addition.<br/>ANT+ broadcasts information to all nearby receiving devices<br/>when there are multiple pairing targets on the transmitting side,<br/>but Bluetooth is one-to-one,<br/>so in the image above, since I connected with Polar first,<br/>the Quarq doesn't display heart rate.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/022amx15kar.jpg" target="_blank"><img alt="022amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/022amx15kars.jpg" width="320"/></a><br/>When I disconnected the heart rate monitor, heart rate immediately appeared on the Quarq side.<br/>Once that happens, unless you disconnect Quarq's connection,<br/>heart rate won't display on Polar's side.<br/><br/>The reason I continue to support Polar no matter how its market share narrows in the cycling world<br/>is because it's the original pioneer of heart rate monitors in sports,<br/>and especially because I trust its calorie burn calculation.<br/>So even now, I gauge other manufacturers' calorie burn from devices with heart rate function as<br/>"higher/lower than Polar."<br/>Though most people probably don't know this anymore,<br/>there was a long era when heart rate monitors from anyone but Polar<br/>were essentially toys.<br/>Well, compared to actual medical devices,<br/>maybe Polar is toy-like too.<br/><br/>With Polar, you first input your date of birth.<br/>This automatically becomes an age field that updates.<br/>Additionally, by inputting gender, height, weight data and<br/>self-reported exercise frequency (hours per week),<br/>the calorie burn value is<br/>"for someone of this age, gender, height, and weight<br/>exercising at this reported frequency level<br/>at this heart rate,<br/>the calorie burn per measurement interval would be this amount,"<br/>and those previously mentioned items become the calculation basis.<br/>But with Quarq, the only item required for calorie burn calculation is body weight,<br/>and the calculation basis is actually power output.<br/>In other words, even if you display heart rate on Quarq,<br/>it's not used as the basis for calorie burn calculation.<br/>And calorie calculation requires a power meter.<br/><s>Since I haven't adopted a power meter,<br/>I can't conduct ongoing research on whether Quarq's power-based calorie burn<br/>tends to be higher/lower than Polar.<br/>Well, I'll adopt one eventually.</s><br/><br/>So currently, I've<br/>removed the heart rate transmitter from<br/>Quarq's pairing.<br/>I have Quarq mounted on my disc road bike,<br/>which is my regular-use bike and<br/>the only one with a 31.8 mm handlebar clamp diameter<br/>(besides that there's a sub-4 kg bike with 31.8 mm,<br/>others are 26.0 mm or 25.8 mm).<br/>For commuting on the disc road, I don't use the heart rate monitor,<br/>and with heart rate monitors it's annoying to delete logs,<br/>but Quarq lets you choose to save or delete logs at the end of measurement,<br/>so for commutes I usually don't save them.<br/><br/>When I want to keep GPS logs from rides of meaningful distance,<br/>I also use the Polar heart rate monitor.<br/>I want to manage my ride logs all in one place<br/>in Polar Flow (Polar's cloud management software),<br/>and while exporting Quarq's ride logs to Strava is easy—basically a service the manufacturer provides—<br/>transferring to Polar Flow is somewhat tedious due to file extension issues. I'll cover that in a separate post.<br/><br/>So before I start riding, I confirm both Polar and Quarq<br/>have acquired GPS signal, and<br/>start logging with just a 2-3 second difference,<br/>then ride off. The GPS distance data<br/>doesn't differ drastically between them,<br/>proving both are accurate, but<br/>I've noticed a certain tendency.<br/>Polar displays distance in 0.01 km increments,<br/>while Quarq displays in 0.1 km increments.<br/>When Polar's second decimal place is 7-9,<br/>Quarq's distance is larger,<br/>and when it's 1-3, Polar's distance is larger—<br/>that's the tendency I see.<br/>For example, when Polar shows 9.27 km,<br/>Quarq shows 9.3 km.<br/>This isn't just coincidence—<br/>it's based on sustained observation over time.<br/>Somehow, Quarq's running distance seems to be<br/>about 0.05 km (50 meters)<br/>ahead of schedule<br/>(more precisely, it likely rounds the 0.05–0.14 km range to 0.1 km).<br/><br/>So when I started Polar and Quarq as close to simultaneously as possible (within 1 second)<br/>and rode straight and carefully, I confirmed that<br/>when Polar switches from 0.03 km to 0.04 km,<br/>Quarq shows 0.1 km.<br/>I've tested this several times.<br/>Even without using Polar simultaneously,<br/>I've confirmed that Quarq shows 0.1 km within 0.06 km (60 meters)<br/>even when riding somewhat faster.<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/033amx15kar.jpg" target="_blank"><img alt="033amx15kar.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/033amx15kars.jpg" width="320"/></a><br/>↑Like this, for routes I've created or pins I've placed,<br/>the remaining distance to the goal often differs by 0.1 km<br/>between the numeric distance display and<br/>the upcoming elevation profile,<br/>which suggests the rounding method for distances under 0.1 km<br/>differs depending on the display item.<br/><br/>So that butterfly trajectory I mentioned earlier<br/>that "trespassed" to the trophy shop across the street<br/>is probably actually about 70–80 meters of distance.<br/><br/>Even during a ~1 minute stop at a traffic light,<br/>we can't rule out butterfly mode occurring,<br/>but even over about 100 km of riding,<br/>Polar and Quarq's distances maintain a state where<br/>Quarq is about 0.05 km ahead<br/>and never diverge significantly.<br/><br/>I have the auto start/stop function (which automatically stops time tracking when stopped) turned off<br/>on both Polar and Quarq, and don't stop for brief traffic lights,<br/>so during traffic waits both experience fine butterfly mode similarly,<br/>and they might appear correct simply because both are equally off.<br/>From sustained observation of butterfly mode,<br/>Polar seems to have less variance<br/>(it's snail-like as I mentioned before).<br/><br/>SRAM Quarq is expected to become more prevalent<br/>as an accessory with the new RED (E1) going forward,<br/>but Quarq standalone is already available from distributors,<br/>so I'm having fun verifying it.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9844msn5.jpg" target="_blank"><img alt="RIMG9844msn5.jpg" border="0" height="320" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9844msn5s.jpg" width="240"/></a><br/>Separate from the program named "Baltan Starmen,"<br/>I created another program.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9845msn5.jpg" target="_blank"><img alt="RIMG9845msn5.jpg" border="0" height="320" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9845msn5s.jpg" width="240"/></a><br/>It's on the right, so I swipe.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9846msn5.jpg" target="_blank"><img alt="RIMG9846msn5.jpg" border="0" height="320" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9846msn5s.jpg" width="240"/></a><br/>A two-line Zaku II emoji art made with the character range available in Quarq's text input.<br/>Please accept this.
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">Products Mentioned in This Article</p>
       <ul>

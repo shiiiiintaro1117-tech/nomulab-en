@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
-    <p>Bicycle Workshop — English Edition</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/index.html">
+        <span class="brand-title">Nomu Lab Diary</span>
+        <span class="brand-subtitle">Bicycle Workshop Archive</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/index.html">Archive</a>
+      <a href="/guides/wheel-building.html">Wheel Guide</a>
+      <a href="/glossary.html">Glossary</a>
+      <a href="/about.html">About</a>
+    </nav>
     <div class="lang-toggle"><span class="lang-btn active">EN</span><a class="lang-btn" href="/zh/posts/5976.html">繁中</a></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/index.html">← All posts</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>Deer Seeker 2 (Supplementary Notes on Nabeyatoge Pass)</h1>
     <p class="post-meta">November 22, 2021</p>
+    <div class="post-body"><div class="entrytext">The previous article on deer seeker (Shika Seeker) is (→<a href="/posts/1308.html" target="_blank" title="here">here</a>).<br/>Despite the title, there are no deer in this article.<br/><br/>I recently wrote an article about<br/>Nabeyatoge Pass with its freshly resurfaced asphalt (→<a href="/posts/5970.html" target="_blank" title="here">here</a>),<br/>and I'll write some supplementary notes about that first.<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05903amx14.jpg" target="_blank"><img alt="DSC05903amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05903amx14s.jpg" width="320"/></a><br/>In the previous article, I wrote that the new Route 480 cuts straight through<br/>the old Route 480, which is also Prefectural Road 226.<br/>About this, as shown in the diagram, initially<br/>I was taking a route that crossed the new Route 480 twice,<br/>but the new Route 480 is an expressway limited to automobiles, and bicycles<br/>cannot travel through the tunnel below it or the bypass tunnel further ahead.<br/>So this route that crosses the new Route 480<br/>might be problematic under traffic law,<br/>and a regular customer pointed this out to me today,<br/>but I actually thought so too, and I climbed Nabeyatoge Pass again<br/>early this morning for research purposes.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/20211123021747d89.jpg" target="_blank"><img alt="image0 (1)msn4" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/20211123021747d89s.jpg" width="320"/></a><br/>This is an image after arriving home, with a Sony action camera and<br/>a <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=VOLT+6000+bicycle+handlebar+light" target="_blank" rel="noopener sponsored" class="amz-inline">VOLT 6000</a> (handlebar light) mounted on the handlebar.<br/><s>Am I the only one who gets flustered by the term "action camera"?<br/>It reminds me of Scola and Della Beppin.</s><br/><br/>Today the probability of precipitation was 20% until 6 AM,<br/>and 100% after 6 AM, but I didn't make it to the summit of Nabeyatoge Pass.<br/>Around 4:30 AM on the way up, light rain started to fall<br/>and hit my face, so I got scared and decided to descend,<br/>but after that there was no sign of rain,<br/>and I thought "I could've made it to the summit!"<br/>Then when I was just 2 km from home, it suddenly started raining hard,<br/>and I got caught in a brief shower.<br/>If I had gone to the summit, I would've had to<br/>ride through about 20 minutes of steady rain.<br/><br/>Below are still images from video shot with the action camera<br/>mixed with images from my smartphone camera.<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/202111230229325ec.jpg" target="_blank"><img alt="image2 (1)msn4" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/202111230229325ecs.jpg" width="320"/></a><br/>↑This is where it merges with the new Route 480.<br/>About 30 meters before this, there was a sign saying<br/>bicycles should walk through the bypass section (new Route 480).<br/>This doesn't mean to carry your bike across the new Route 480,<br/>but rather to walk on the green area shown in the image.<br/>True, that way you won't have an accident dealing with automobiles on the road.<br/><br/>However, this sidewalk-like path is not asphalt paved<br/>but has a continuous cover of fine-mesh grating,<br/>and there are sections so narrow that bicycles can barely pass each other.<br/>Also, it's quite a long walk, so walking is not realistic,<br/>and in practice you'd probably ride the whole way,<br/>but the sign is probably there just as a gesture to show<br/>"we did at least put up a warning to walk".<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/261msn4.jpg" target="_blank"><img alt="261msn4.jpg" border="0" height="150" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/261msn4s.jpg" width="320"/></a><br/>This is a still from video of riding on the sidewalk on the way back,<br/>from the upper merge point to the lower merge point.<br/>From here I turned left and entered the sidewalk,<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/262msn4.jpg" target="_blank"><img alt="262msn4.jpg" border="0" height="149" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/262msn4s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/263msn4.jpg" target="_blank"><img alt="263msn4.jpg" border="0" height="173" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/263msn4s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/264msn4.jpg" target="_blank"><img alt="264msn4.jpg" border="0" height="150" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/264msn4s.jpg" width="320"/></a><br/>This far is asphalt,<br/>but beyond this the road surface gets narrower.<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/265msn4.jpg" target="_blank"><img alt="265msn4.jpg" border="0" height="170" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/265msn4s.jpg" width="320"/></a><br/>Where there are posts instead of guardrails,<br/>you have no choice but to ride over metal covers.<br/>If they're wet (or frozen in winter),<br/>there's a risk of slipping and it's dangerous.<br/>...Yeah, better to walk after all! ←official line<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/266msn4.jpg" target="_blank"><img alt="266msn4.jpg" border="0" height="155" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/266msn4s.jpg" width="320"/></a><br/>I've reached the lower merge point.<br/><br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/20211123025902d8e.jpg" target="_blank"><img alt="image1 (1)msn41" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/20211123025902d8es.jpg" width="320"/></a><br/>Going back in the timeline, this is at the sign of the sawmill<br/>on the old road before the merge point, which was once<br/>one of the starting points for timing passes at the summit.<br/>On the utility pole in the image that has a street light,<br/>there used to be a weather-related blue sign.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image3msn41.jpg" target="_blank"><img alt="image3msn41.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image3msn41s.jpg" width="320"/></a><br/>This is the Jizo (statue) curve.<br/>If starting from the sawmill, the time to here is<br/>roughly 1/3 of the time to the finish.<br/>This is pretty consistent whether you're slow or fast.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image20msn41.jpg" target="_blank"><img alt="image20msn41.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image20msn41s.jpg" width="320"/></a><br/>The stainless steel flower vases on both sides of this Jizo statue<br/>were made by Nabeyatoge Pass Legend (Nabeyatoge-suto) (→<a href="https://yuipapa711.hatenablog.com/entry/20090608/1244491105" target="_blank" title="here">here</a>).<br/>In the image they're a bit withered,<br/>but flowers at this Jizo have regularly been changed by someone.<br/>This mountain road has no shops or houses along the way,<br/>not even vending machines, and if you were walking to get here,<br/>it would be quite a journey,<br/>but the fact that someone regularly makes the effort to come all the way here<br/>just to care for the Jizo, not as an afterthought but on purpose,<br/>tells you something about this place.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image4msn41.jpg" target="_blank"><img alt="image4msn41.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image4msn41s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image7msn41.jpg" target="_blank"><img alt="image7msn41.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image7msn41s.jpg" width="320"/></a><br/>This is the location I wrote about in the previous article, where<br/>there's a staple-shaped yellow ladder on the right slope.<br/>By time, you should be around 2/3 of the way here.<br/>There's another identical ladder a bit further ahead,<br/>but the intermediate lap is taken at the one before this.<br/>Just before this ladder, the gradient becomes noticeably less steep,<br/>and there's a visible seam in the asphalt color,<br/>and that's where the lap was taken when passing through,<br/>but the asphalt seam that was used as a marker<br/>has disappeared due to repairs.<br/>Since starting from the sawmill is no longer done anyway,<br/>it might not be useful as a timing reference.<br/>But knowing that the gradient becomes easier after this ladder is useful information.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05904amx14.jpg" target="_blank"><img alt="DSC05904amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05904amx14s.jpg" width="320"/></a><br/>About the blind left corner on the descent in<br/>the diagram from the previous article:<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image10msn41.jpg" target="_blank"><img alt="image10msn41.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image10msn41s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image12msn41.jpg" target="_blank"><img alt="image12msn41.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image12msn41s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image16msn41.jpg" target="_blank"><img alt="image16msn41.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image16msn41s.jpg" width="320"/></a><br/>↑These are all different locations, but<br/>they have in common a sharp left corner<br/>after a straightaway.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image13msn41.jpg" target="_blank"><img alt="image13msn41.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image13msn41s.jpg" width="320"/></a><br/>Higher up there were lots of fallen leaves.<br/>If they're wet, they can be surprisingly slippery, so be careful.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image6msn41.jpg" target="_blank"><img alt="image6msn41.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image6msn41s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image8msn41.jpg" target="_blank"><img alt="image8msn41.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image8msn41s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image9msn41.jpg" target="_blank"><img alt="image9msn41.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image9msn41s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image11msn41.jpg" target="_blank"><img alt="image11msn41.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image11msn41s.jpg" width="320"/></a><br/>These look like the same image repeated,<br/>but actually they're all different bridges.<br/>Concrete paving on the bridge with right corners alternates<br/>with the left corners I mentioned earlier, continuing over and over.<br/>Since I turned back around where the yellow ladder is when light rain started,<br/>the images are only from below that point, but<br/>there are similar features above as well.<br/><br/>Before the repairs, there were tricky steps at the boundaries<br/>between these bridge surfaces and the surrounding pavement,<br/>but they've been neatly filled in on almost all bridges.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image18msn41.jpg" target="_blank"><img alt="image18msn41.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image18msn41s.jpg" width="320"/></a><br/>This concrete section fairly far down is<br/>the only bridge with an angled cut like a slice of hanpen (fish cake),<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image19msn41.jpg" target="_blank"><img alt="image19msn41.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image19msn41s.jpg" width="320"/></a><br/>and it has a somewhat larger seam, so be careful.<br/><br/>Next, about the deer seeker element in this article.<br/>I used the action camera because the last time I climbed Nabeyatoge Pass,<br/>I encountered a raccoon.<br/>Not a tanuki (racoon dog). The tail had complete stripes.<br/>Two of them were on the right side of the road when I suddenly appeared,<br/>they got scared, zipped across in front of me, and escaped into the grass on the left,<br/>and I spotted another individual separately.<br/>I wanted to film that, so I mounted the action camera<br/>on the handlebar, but I didn't encounter any raccoons.<br/>However...<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/230msn41.jpg" target="_blank"><img alt="230msn41.jpg" border="0" height="179" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/230msn41s.jpg" width="320"/></a><br/>I encountered a Mountain hare on the descent!<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/231-1msn41.jpg" target="_blank"><img alt="231-1msn41.jpg" border="0" height="163" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/231-1msn41s.jpg" width="320"/></a><br/>Super quick!<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/231-2msn41.jpg" target="_blank"><img alt="231-2msn41.jpg" border="0" height="162" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/231-2msn41.jpg" width="179"/></a><br/>↑This guy<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/232msn41.jpg" target="_blank"><img alt="232msn41.jpg" border="0" height="165" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/232msn41s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/232-1msn4.jpg" target="_blank"><img alt="232-1msn4.jpg" border="0" height="129" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/232-1msn4.jpg" width="151"/></a><br/>↑This frame looks most rabbit-like.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/233msn41.jpg" target="_blank"><img alt="233msn41.jpg" border="0" height="160" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/233msn41s.jpg" width="320"/></a><br/>After this, it ducked under the guardrail on the right<br/>and escaped into the forest...<br/><br/><br/>On the same Izumi mountain range as Nabeyatoge,<br/>there's a pass called Inunaki-yama (dog-bark mountain).<br/>The hot spring there is read as Inunaki "yama".<br/>There's also a hot spring called Jimpu (Jimpu-onsen) along the road,<br/>so it's sometimes called Jimpu Pass.<br/>The tunnel at the summit is also called Inunaki Tunnel,<br/>but its official name is Ikeda Tunnel.<br/>Previously, on a climb there, I saw quite a large raccoon,<br/>two of them in the center line of the road,<br/>and on the descent I saw a mountain hare on the left white line,<br/>so later I went twice with an action camera mounted,<br/>but both times came up empty.<br/>However, I did go to the summit tunnel and take photos.<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/240msn4.jpg" target="_blank"><img alt="240msn4.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/240msn4s.jpg" width="320"/></a><br/>↑Ikeda Tunnel, Wakayama side<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/241msn4.jpg" target="_blank"><img alt="241msn4.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/241msn4s.jpg" width="320"/></a><br/>↑Ikeda Tunnel, Osaka side<br/>It has a spooky vibe.<br/>These weren't taken on the same day—<br/>the second one is 5 days after the first.<br/>Also, though I wrote Osaka side on the second one,<br/>the truth is this tunnel is not at the prefectural border;<br/>the border is about 2 km before the tunnel,<br/>and even the Jimpu hot spring beyond that<br/>is located in Kino-kawa, Wakayama Prefecture.<br/>The descent on the Osaka side there is useful for checking<br/>whether my homemade chain guide (→<a href="/posts/5896.html" target="_blank" title="here">here</a>) is working<br/>(whether chain drop is occurring), so<br/>that was originally my motivation for the climb,<br/>and seeing the raccoon and hare motivated my two subsequent visits.<br/>This was in August, when during the COVID situation<br/>there was stronger social pressure against traveling to other prefectures,<br/>so I didn't descend to the Wakayama side.<br/><br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/242msn4.jpg" target="_blank"><img alt="242msn4.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/242msn4s.jpg" width="320"/></a><br/>This is another matter, also on the Izumi mountain range, the<br/>newer tunnel of the newly switched road at Kazahaki Pass.<br/>This was in June, the time was around 6:40 AM,<br/>but at this time of year now, sunrise is around then so it wouldn't be this bright.<br/>Before this tunnel there were (at least back then)<br/>multiple signs like "Please avoid non-essential outings!"<br/>and the pressure to not come to Wakayama for no good reason was so strong<br/>that even though I didn't have a real purpose, I turned right around<br/>and went back the way I came.<br/>Actually, the prefectural border here is just a bit before the rest area,<br/>so technically I did cross into Wakayama Prefecture.<br/>At this time I had a Fizik Adaptive saddle mounted,<br/>and I'll write an article about that eventually.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/243msn4.jpg" target="_blank"><img alt="243msn4.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/243msn4s.jpg" width="320"/></a><br/>↑In front of the rest area toilet I just mentioned<br/>The time I came before, there was<br/>a swallow nest with chicks in the building housing the toilet,<br/>but since it was near the entrance of the women's restroom,<br/>I was afraid of being misunderstood, so I didn't take a photo.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/244msn4.jpg" target="_blank"><img alt="244msn4.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/244msn4s.jpg" width="320"/></a><br/>↑Snail Sensei<br/>When I dripped some water from my bottle on it, it seemed to perk right up.
+</div></div>
+    <aside class="post-guides">
+      <strong>Technical archive</strong>
+      <nav aria-label="Technical guides">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">The previous article on deer seeker (Shika Seeker) is (→<a href="/posts/1308.html" target="_blank" title="here">here</a>).<br/>Despite the title, there are no deer in this article.<br/><br/>I recently wrote an article about<br/>Nabeyatoge Pass with its freshly resurfaced asphalt (→<a href="/posts/5970.html" target="_blank" title="here">here</a>),<br/>and I'll write some supplementary notes about that first.<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05903amx14.jpg" target="_blank"><img alt="DSC05903amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05903amx14s.jpg" width="320"/></a><br/>In the previous article, I wrote that the new Route 480 cuts straight through<br/>the old Route 480, which is also Prefectural Road 226.<br/>About this, as shown in the diagram, initially<br/>I was taking a route that crossed the new Route 480 twice,<br/>but the new Route 480 is an expressway limited to automobiles, and bicycles<br/>cannot travel through the tunnel below it or the bypass tunnel further ahead.<br/>So this route that crosses the new Route 480<br/>might be problematic under traffic law,<br/>and a regular customer pointed this out to me today,<br/>but I actually thought so too, and I climbed Nabeyatoge Pass again<br/>early this morning for research purposes.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/20211123021747d89.jpg" target="_blank"><img alt="image0 (1)msn4" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/20211123021747d89s.jpg" width="320"/></a><br/>This is an image after arriving home, with a Sony action camera and<br/>a <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=VOLT+6000+bicycle+handlebar+light" target="_blank" rel="noopener sponsored" class="amz-inline">VOLT 6000</a> (handlebar light) mounted on the handlebar.<br/><s>Am I the only one who gets flustered by the term "action camera"?<br/>It reminds me of Scola and Della Beppin.</s><br/><br/>Today the probability of precipitation was 20% until 6 AM,<br/>and 100% after 6 AM, but I didn't make it to the summit of Nabeyatoge Pass.<br/>Around 4:30 AM on the way up, light rain started to fall<br/>and hit my face, so I got scared and decided to descend,<br/>but after that there was no sign of rain,<br/>and I thought "I could've made it to the summit!"<br/>Then when I was just 2 km from home, it suddenly started raining hard,<br/>and I got caught in a brief shower.<br/>If I had gone to the summit, I would've had to<br/>ride through about 20 minutes of steady rain.<br/><br/>Below are still images from video shot with the action camera<br/>mixed with images from my smartphone camera.<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/202111230229325ec.jpg" target="_blank"><img alt="image2 (1)msn4" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/202111230229325ecs.jpg" width="320"/></a><br/>↑This is where it merges with the new Route 480.<br/>About 30 meters before this, there was a sign saying<br/>bicycles should walk through the bypass section (new Route 480).<br/>This doesn't mean to carry your bike across the new Route 480,<br/>but rather to walk on the green area shown in the image.<br/>True, that way you won't have an accident dealing with automobiles on the road.<br/><br/>However, this sidewalk-like path is not asphalt paved<br/>but has a continuous cover of fine-mesh grating,<br/>and there are sections so narrow that bicycles can barely pass each other.<br/>Also, it's quite a long walk, so walking is not realistic,<br/>and in practice you'd probably ride the whole way,<br/>but the sign is probably there just as a gesture to show<br/>"we did at least put up a warning to walk".<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/261msn4.jpg" target="_blank"><img alt="261msn4.jpg" border="0" height="150" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/261msn4s.jpg" width="320"/></a><br/>This is a still from video of riding on the sidewalk on the way back,<br/>from the upper merge point to the lower merge point.<br/>From here I turned left and entered the sidewalk,<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/262msn4.jpg" target="_blank"><img alt="262msn4.jpg" border="0" height="149" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/262msn4s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/263msn4.jpg" target="_blank"><img alt="263msn4.jpg" border="0" height="173" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/263msn4s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/264msn4.jpg" target="_blank"><img alt="264msn4.jpg" border="0" height="150" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/264msn4s.jpg" width="320"/></a><br/>This far is asphalt,<br/>but beyond this the road surface gets narrower.<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/265msn4.jpg" target="_blank"><img alt="265msn4.jpg" border="0" height="170" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/265msn4s.jpg" width="320"/></a><br/>Where there are posts instead of guardrails,<br/>you have no choice but to ride over metal covers.<br/>If they're wet (or frozen in winter),<br/>there's a risk of slipping and it's dangerous.<br/>...Yeah, better to walk after all! ←official line<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/266msn4.jpg" target="_blank"><img alt="266msn4.jpg" border="0" height="155" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/266msn4s.jpg" width="320"/></a><br/>I've reached the lower merge point.<br/><br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/20211123025902d8e.jpg" target="_blank"><img alt="image1 (1)msn41" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/20211123025902d8es.jpg" width="320"/></a><br/>Going back in the timeline, this is at the sign of the sawmill<br/>on the old road before the merge point, which was once<br/>one of the starting points for timing passes at the summit.<br/>On the utility pole in the image that has a street light,<br/>there used to be a weather-related blue sign.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image3msn41.jpg" target="_blank"><img alt="image3msn41.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image3msn41s.jpg" width="320"/></a><br/>This is the Jizo (statue) curve.<br/>If starting from the sawmill, the time to here is<br/>roughly 1/3 of the time to the finish.<br/>This is pretty consistent whether you're slow or fast.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image20msn41.jpg" target="_blank"><img alt="image20msn41.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image20msn41s.jpg" width="320"/></a><br/>The stainless steel flower vases on both sides of this Jizo statue<br/>were made by Nabeyatoge Pass Legend (Nabeyatoge-suto) (→<a href="https://yuipapa711.hatenablog.com/entry/20090608/1244491105" target="_blank" title="here">here</a>).<br/>In the image they're a bit withered,<br/>but flowers at this Jizo have regularly been changed by someone.<br/>This mountain road has no shops or houses along the way,<br/>not even vending machines, and if you were walking to get here,<br/>it would be quite a journey,<br/>but the fact that someone regularly makes the effort to come all the way here<br/>just to care for the Jizo, not as an afterthought but on purpose,<br/>tells you something about this place.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image4msn41.jpg" target="_blank"><img alt="image4msn41.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image4msn41s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image7msn41.jpg" target="_blank"><img alt="image7msn41.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image7msn41s.jpg" width="320"/></a><br/>This is the location I wrote about in the previous article, where<br/>there's a staple-shaped yellow ladder on the right slope.<br/>By time, you should be around 2/3 of the way here.<br/>There's another identical ladder a bit further ahead,<br/>but the intermediate lap is taken at the one before this.<br/>Just before this ladder, the gradient becomes noticeably less steep,<br/>and there's a visible seam in the asphalt color,<br/>and that's where the lap was taken when passing through,<br/>but the asphalt seam that was used as a marker<br/>has disappeared due to repairs.<br/>Since starting from the sawmill is no longer done anyway,<br/>it might not be useful as a timing reference.<br/>But knowing that the gradient becomes easier after this ladder is useful information.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05904amx14.jpg" target="_blank"><img alt="DSC05904amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05904amx14s.jpg" width="320"/></a><br/>About the blind left corner on the descent in<br/>the diagram from the previous article:<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image10msn41.jpg" target="_blank"><img alt="image10msn41.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image10msn41s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image12msn41.jpg" target="_blank"><img alt="image12msn41.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image12msn41s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image16msn41.jpg" target="_blank"><img alt="image16msn41.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image16msn41s.jpg" width="320"/></a><br/>↑These are all different locations, but<br/>they have in common a sharp left corner<br/>after a straightaway.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image13msn41.jpg" target="_blank"><img alt="image13msn41.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image13msn41s.jpg" width="320"/></a><br/>Higher up there were lots of fallen leaves.<br/>If they're wet, they can be surprisingly slippery, so be careful.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image6msn41.jpg" target="_blank"><img alt="image6msn41.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image6msn41s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image8msn41.jpg" target="_blank"><img alt="image8msn41.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image8msn41s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image9msn41.jpg" target="_blank"><img alt="image9msn41.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image9msn41s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image11msn41.jpg" target="_blank"><img alt="image11msn41.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image11msn41s.jpg" width="320"/></a><br/>These look like the same image repeated,<br/>but actually they're all different bridges.<br/>Concrete paving on the bridge with right corners alternates<br/>with the left corners I mentioned earlier, continuing over and over.<br/>Since I turned back around where the yellow ladder is when light rain started,<br/>the images are only from below that point, but<br/>there are similar features above as well.<br/><br/>Before the repairs, there were tricky steps at the boundaries<br/>between these bridge surfaces and the surrounding pavement,<br/>but they've been neatly filled in on almost all bridges.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image18msn41.jpg" target="_blank"><img alt="image18msn41.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image18msn41s.jpg" width="320"/></a><br/>This concrete section fairly far down is<br/>the only bridge with an angled cut like a slice of hanpen (fish cake),<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image19msn41.jpg" target="_blank"><img alt="image19msn41.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/image19msn41s.jpg" width="320"/></a><br/>and it has a somewhat larger seam, so be careful.<br/><br/>Next, about the deer seeker element in this article.<br/>I used the action camera because the last time I climbed Nabeyatoge Pass,<br/>I encountered a raccoon.<br/>Not a tanuki (racoon dog). The tail had complete stripes.<br/>Two of them were on the right side of the road when I suddenly appeared,<br/>they got scared, zipped across in front of me, and escaped into the grass on the left,<br/>and I spotted another individual separately.<br/>I wanted to film that, so I mounted the action camera<br/>on the handlebar, but I didn't encounter any raccoons.<br/>However...<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/230msn41.jpg" target="_blank"><img alt="230msn41.jpg" border="0" height="179" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/230msn41s.jpg" width="320"/></a><br/>I encountered a Mountain hare on the descent!<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/231-1msn41.jpg" target="_blank"><img alt="231-1msn41.jpg" border="0" height="163" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/231-1msn41s.jpg" width="320"/></a><br/>Super quick!<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/231-2msn41.jpg" target="_blank"><img alt="231-2msn41.jpg" border="0" height="162" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/231-2msn41.jpg" width="179"/></a><br/>↑This guy<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/232msn41.jpg" target="_blank"><img alt="232msn41.jpg" border="0" height="165" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/232msn41s.jpg" width="320"/></a><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/232-1msn4.jpg" target="_blank"><img alt="232-1msn4.jpg" border="0" height="129" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/232-1msn4.jpg" width="151"/></a><br/>↑This frame looks most rabbit-like.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/233msn41.jpg" target="_blank"><img alt="233msn41.jpg" border="0" height="160" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/233msn41s.jpg" width="320"/></a><br/>After this, it ducked under the guardrail on the right<br/>and escaped into the forest...<br/><br/><br/>On the same Izumi mountain range as Nabeyatoge,<br/>there's a pass called Inunaki-yama (dog-bark mountain).<br/>The hot spring there is read as Inunaki "yama".<br/>There's also a hot spring called Jimpu (Jimpu-onsen) along the road,<br/>so it's sometimes called Jimpu Pass.<br/>The tunnel at the summit is also called Inunaki Tunnel,<br/>but its official name is Ikeda Tunnel.<br/>Previously, on a climb there, I saw quite a large raccoon,<br/>two of them in the center line of the road,<br/>and on the descent I saw a mountain hare on the left white line,<br/>so later I went twice with an action camera mounted,<br/>but both times came up empty.<br/>However, I did go to the summit tunnel and take photos.<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/240msn4.jpg" target="_blank"><img alt="240msn4.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/240msn4s.jpg" width="320"/></a><br/>↑Ikeda Tunnel, Wakayama side<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/241msn4.jpg" target="_blank"><img alt="241msn4.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/241msn4s.jpg" width="320"/></a><br/>↑Ikeda Tunnel, Osaka side<br/>It has a spooky vibe.<br/>These weren't taken on the same day—<br/>the second one is 5 days after the first.<br/>Also, though I wrote Osaka side on the second one,<br/>the truth is this tunnel is not at the prefectural border;<br/>the border is about 2 km before the tunnel,<br/>and even the Jimpu hot spring beyond that<br/>is located in Kino-kawa, Wakayama Prefecture.<br/>The descent on the Osaka side there is useful for checking<br/>whether my homemade chain guide (→<a href="/posts/5896.html" target="_blank" title="here">here</a>) is working<br/>(whether chain drop is occurring), so<br/>that was originally my motivation for the climb,<br/>and seeing the raccoon and hare motivated my two subsequent visits.<br/>This was in August, when during the COVID situation<br/>there was stronger social pressure against traveling to other prefectures,<br/>so I didn't descend to the Wakayama side.<br/><br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/242msn4.jpg" target="_blank"><img alt="242msn4.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/242msn4s.jpg" width="320"/></a><br/>This is another matter, also on the Izumi mountain range, the<br/>newer tunnel of the newly switched road at Kazahaki Pass.<br/>This was in June, the time was around 6:40 AM,<br/>but at this time of year now, sunrise is around then so it wouldn't be this bright.<br/>Before this tunnel there were (at least back then)<br/>multiple signs like "Please avoid non-essential outings!"<br/>and the pressure to not come to Wakayama for no good reason was so strong<br/>that even though I didn't have a real purpose, I turned right around<br/>and went back the way I came.<br/>Actually, the prefectural border here is just a bit before the rest area,<br/>so technically I did cross into Wakayama Prefecture.<br/>At this time I had a Fizik Adaptive saddle mounted,<br/>and I'll write an article about that eventually.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/243msn4.jpg" target="_blank"><img alt="243msn4.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/243msn4s.jpg" width="320"/></a><br/>↑In front of the rest area toilet I just mentioned<br/>The time I came before, there was<br/>a swallow nest with chicks in the building housing the toilet,<br/>but since it was near the entrance of the women's restroom,<br/>I was afraid of being misunderstood, so I didn't take a photo.<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/244msn4.jpg" target="_blank"><img alt="244msn4.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/244msn4s.jpg" width="320"/></a><br/>↑Snail Sensei<br/>When I dripped some water from my bottle on it, it seemed to perk right up.
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">Products Mentioned in This Article</p>
       <ul>

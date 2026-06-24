@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,37 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
-    <p>Bicycle Workshop — English Edition</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/index.html">
+        <span class="brand-title">Nomu Lab Diary</span>
+        <span class="brand-subtitle">Bicycle Workshop Archive</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/index.html">Archive</a>
+      <a href="/guides/wheel-building.html">Wheel Guide</a>
+      <a href="/glossary.html">Glossary</a>
+      <a href="/about.html">About</a>
+    </nav>
     <div class="lang-toggle"><span class="lang-btn active">EN</span><a class="lang-btn" href="/zh/posts/4245.html">繁中</a></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/index.html">← All posts</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">News &amp; Updates</p>
     <h1>I Basically Bought Out All the Colima Saddles</h1>
     <p class="post-meta">August 31, 2018</p>
+    <div class="post-body"><div class="entrytext">Before I get into the main story.<br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/cc-rd100pamx9.jpg" target="_blank"><img alt="cc-rd100pamx9.jpg" border="0" height="320" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/cc-rd100pamx9s.jpg" width="247"/></a><br/>I used to really like the <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=CatEye+CC-RD100+wired+cycle+computer" target="_blank" rel="noopener sponsored" class="amz-inline">CC-RD100</a> (wired, no cadence), the first model in CatEye's "Strada" series,<br/>but the click-tech mechanism adopted after this model<br/>(where the operation button is on the underside rather than the top, and the unit itself moves to push the button in a click-like fashion)<br/>has problems, and with regular use the unit becomes wobbly relative to the mount.<br/>With my usage frequency, it didn't last two years.<br/>You could say it was about three battery lifespans worth of durability.<br/>Even if you replace the mount-side parts, it's the grooves on the unit itself that are worn away,<br/>so replacement doesn't actually solve the problem. And this issue still hasn't been fixed today.<br/><br/>The CC-RD200 model, which is the wired cadence version of this same design,<br/>is still going strong for some reason,<br/>but the cadence-less wireless CC-RD300W (Wireless) and<br/>the cadence-equipped wireless CC-RD400DW (Double Wireless) have been discontinued.<br/>The 300 and 400 are models from around 2008.<br/>This is just speculation, but when high-brightness LED front lights and<br/>wireless cycle computers are placed too close together,<br/>the cycle computer's reception can be interfered with and speed and other information disappears,<br/>and this effect was probably more pronounced with the 300 and 400's radio system, so maybe they discontinued them early.<br/>The fact that the wired 200 from before that is still alive today seems to support this theory.<br/>If CatEye were only a lights manufacturer or only a cycle computer manufacturer,<br/>they could have ignored it, but having their own products interfering with each other<br/>probably wasn't a good look.<br/><br/>I liked the RD100 because it had no problems even when used together with heart rate monitors,<br/>which were notoriously unstable at the time regardless of manufacturer.<br/>By the time the RD100 was discontinued, simple wired cycle computers like it<br/>had become an endangered species even from other makers, and that's when I happened to notice<br/>the cycle computer in the image above.<br/>It's the CC-RD100 model exactly, but it was released as a Pinarello accessory,<br/>and it was still obtainable years after the RD100 was discontinued<br/>(though it's unobtainable now).<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06448amx9.jpg" target="_blank"><img alt="DSC06448amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06448amx9s.jpg" width="320"/></a><br/>I've stocked some Colima saddles.<br/>Looking at the catalog images, the base model appears to be a Selle Italia <span style="color:#FF0000">Flite</span>,<br/>with Colima branding stitched on.<br/>I'd been curious about this for a while,<br/>and I thought "could this actually be a <span style="color:#0000FF">Flite</span>?" so I stocked them.<br/><br/>This might sound confusing, but<br/>the <span style="color:#FF0000">Flite</span> in the previous sentence is Flite in the broad sense, and the <span style="color:#0000FF">Flite</span> is Flite in the narrow sense.<br/>Since I was uncertain whether it was a true <span style="color:#0000FF">Flite</span>, I started with just one,<br/>and once I confirmed it was a <span style="color:#0000FF">Flite</span>, I boldly stocked many more.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06260msn2.jpg" target="_blank"><img alt="DSC06260msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06260msn2s.jpg" width="320"/></a><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06261msn2.jpg" target="_blank"><img alt="DSC06261msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06261msn2s.jpg" width="320"/></a><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06262msn2.jpg" target="_blank"><img alt="DSC06262msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06262msn2s.jpg" width="320"/></a><br/>Changing subjects, I'm a collector of <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Selle+Italia+Turbo+saddle" target="_blank" rel="noopener sponsored" class="amz-inline">Selle Italia Turbos</a>,<br/>and I mentioned early on in this blog that I'd write about them someday,<br/>but I still haven't.<br/>I have the regular Turbo, the striped BioTurbo, the squishy gel Turbo Gel,<br/>the Turbo Special with metal attachments front and rear like a San Marco Rolls,<br/>the Turbo Triathlon with a central groove, the Lady Turbo with a wider rear,<br/>the Lady Turbo Special with a wider rear in Turbo Special specs,<br/>the Turbo Junior (Turbo Uniore) with shorter front and rear for juniors,<br/>the Turbo SLG (Super Leggera) with aluminum rails,<br/>the Pro Team Turbo with manganese rails, and others.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06267msn2.jpg" target="_blank"><img alt="DSC06267msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06267msn2s.jpg" width="320"/></a><br/>↑This is an Inoe Turbo with Bernard Inoue's name on the nose,<br/>and while I also have the standard Turbo Inoe,<br/>this is a Turbo Junior Inoe.<br/>I pestered—no, rather <s>forcibly seized...</s> respectfully received it from the one who was my spiritual mentor in those days.<br/>The animal depicted between Bernard and Inoue is a badger.<br/>Because Inoue's nickname was "The Badger of Brittany."<br/>However, Inoue actually used mainly a San Marco Rolls at the time.<br/>There are cases where a manufacturer prepared a signature model for a rider but they never actually used it—<br/>like Mario Cipollini's Selle Italia Century with lion stitching<br/>(he only used San Marco Regals)<br/>or the 3T handlebar "Merckx" named after Eddy Merckx<br/>(he mainly used a Cinelli Number 64).<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06268msn2.jpg" target="_blank"><img alt="DSC06268msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06268msn2s.jpg" width="320"/></a><br/>Now, the Turbo has a "<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Selle+Italia+Turbo+1980+reissue+saddle" target="_blank" rel="noopener sponsored" class="amz-inline">Turbo 1980</a>" reissue model,<br/>and the one in the image above is my personal one with brown Nuback that's aged nicely.<br/>The Turbo 1980, even by me—a Turbo expert (not a state-certified qualification)—<br/>is so well executed as a reissue that it's hard to tell from the side view whether it's a reissue or not.<br/>Well, unless it's clearly on some oldster's vintage bike,<br/>pretty much any Turbo you see these days is definitely a Turbo 1980.<br/><br/>The Flite saddle, if you count major shape changes as generations, is currently in its third generation.<br/>The second generation had a hole in the nose<br/>with a plastic piece marked "Flite" that fit in it.<br/>My personal thought about saddles is that<br/>"if it becomes a completely different thing, they shouldn't keep the same model name."<br/>I haven't used the third generation, but when I used the second generation Flite<br/>I thought "this isn't a Flite at all."<br/>Not to say the second generation Flite is a bad saddle—<br/>I just would have wanted it to inherit the majority of Flite's characteristics<br/>as befits the name Flite.<br/>Among Selle Italia saddles, only the SLR seems to inherit this philosophy without too much compromise.<br/>The second generation Flite is discontinued, but the first generation Flite has<br/>a reissue model like the Turbo.<br/>That's the <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Selle+Italia+Flite+1990+saddle" target="_blank" rel="noopener sponsored" class="amz-inline">Flite 1990</a>.<br/><br/>However, unlike the Turbo 1980, the Flite 1990 is hard to call<br/>a genuine reissue of the original Flite—it's rather ambiguous in execution.<br/>So I planned to write an article about it and asked friend A,<br/>"You had a bike with a Flite 1990 on it, right? Can you bring it over?"<br/>and he came right away. But...<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06271msn2.jpg" target="_blank"><img alt="DSC06271msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06271msn2s.jpg" width="320"/></a><br/>Hey, this is an original Flite, not a Flite 1990!<br/>This won't work as article material! (Although it did)<br/>Friend A definitely has a Flite 1990 as well.<br/>The reason being that when the original Flite became unobtainable,<br/>he bought a Flite 1990 "as a substitute, even if it's not quite the same."<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06440msn2.jpg" target="_blank"><img alt="DSC06440msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06440msn2s.jpg" width="320"/></a><br/>So,<br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06441msn2.jpg" target="_blank"><img alt="DSC06441msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06441msn2s.jpg" width="320"/></a><br/>I stocked some for the article.<br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06443msn2.jpg" target="_blank"><img alt="DSC06443msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06443msn2s.jpg" width="320"/></a><br/>Can you spot the difference?<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06445msn2.jpg" target="_blank"><img alt="DSC06445msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06445msn2s.jpg" width="320"/></a><br/>↑This is a Colima Flite.<br/>The Flite saddle was, for its time, remarkably thin<br/>and switching from a conventional saddle gave you an extra 2-3 cm of seatpost extension.<br/>At the time, only horizontal top-tube frames existed,<br/>so many people were concerned about the appearance of limited seatpost extension.<br/>To increase seatpost extension, the saddle needed to be not just thin,<br/>but also have a "non-raised-rail" shape.<br/>The original Flite has the base and rails very close together,<br/>and it's thinner than many of today's thin saddles.<br/>Since there's some cushioning thickness in the base padding, it's somewhat thicker than a carbon spatula-like saddle,<br/>but still remarkably slim.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06444msn2.jpg" target="_blank"><img alt="DSC06444msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06444msn2s.jpg" width="320"/></a><br/>With the Flite 1990, the rails are raised.<br/>This was a necessary measure, I understand.<br/>The original Flite's base and rails are so close that<br/>if the seatpost's clamp bracket's upper parts are thick,<br/>they interfere immediately.<br/>They probably changed to raised rails to avoid this,<br/>but, well, it's hard to call this a proper reissue of the original Flite...<br/><br/>To be clear, the Flite 1990 isn't a bad saddle.<br/>There are probably people who find the Flite 1990 the most comfortable saddle they've ever used.<br/>Regardless of that,<br/>treating the Flite 1990 as identical to the original Flite is a stretch.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06275msn2.jpg" target="_blank"><img alt="DSC06275msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06275msn2s.jpg" width="320"/></a><br/>Thinking it might help with the article,<br/>friend A also brought a Flite with Pinarello stitching,<br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06274msn2.jpg" target="_blank"><img alt="DSC06274msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06274msn2s.jpg" width="320"/></a><br/>and I placed them side by side.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06276msn2.jpg" target="_blank"><img alt="DSC06276msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06276msn2s.jpg" width="320"/></a><br/>I also placed the Colima saddle side by side.<br/>By the way, as a replacement for the worn-out Flite at the bottom,<br/>one of the Colima saddles was sold to friend A.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06186msn2.jpg" target="_blank"><img alt="DSC06186msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06186msn2s.jpg" width="320"/></a><br/>↑Going back in time a bit,<br/>this was the first Colima saddle I hesitantly stocked, thinking<br/>"could this actually be an original Flite?"<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06187msn2.jpg" target="_blank"><img alt="DSC06187msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06187msn2s.jpg" width="320"/></a><br/>It has Colima stitching.<br/>Honestly, I would have preferred a print...<br/>Having stitching on the rear area accelerates pad degradation.<br/>The Sella SMP stitched versions from that period are especially notorious for this.<br/>Anyone who's used one knows that the chamois doesn't just pill—<br/>the friction damage penetrates through to the skin.<br/><br/>Don't say mean things about the stitching!<br/><span style="color:#0000FF">Thanks to this stitching, original Flites are available new in 2018!</span><br/>Yes, exactly—this parallel to how the CC-RD100 remained obtainable years after its discontinuation because it was a Pinarello accessory.<br/>That's what I wanted to illustrate with this narrative.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06189msn2.jpg" target="_blank"><img alt="DSC06189msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06189msn2s.jpg" width="320"/></a><br/>That wax-seal-looking tie on the rails is nostalgic.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06188msn2.jpg" target="_blank"><img alt="DSC06188msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06188msn2s.jpg" width="320"/></a><br/>The Marco Pantani model Flite shown here has later-period stitching.<br/>The first Flite I ever bought was a Pantani model with earlier-period stitching.<br/>That was around 1996.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06191msn2.jpg" target="_blank"><img alt="DSC06191msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06191msn2s.jpg" width="320"/></a><br/>The included mini-catalog says 1999,<br/>but this Colima saddle is from 2001 (more on that later).<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06190msn2.jpg" target="_blank"><img alt="DSC06190msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06190msn2s.jpg" width="320"/></a><br/>I found a full-size 1999 catalog.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06192msn2.jpg" target="_blank"><img alt="DSC06192msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06192msn2s.jpg" width="320"/></a><br/>Wow! (Sorry for getting carried away)<br/>Users of the original Pantani Flite shown here include<br/>from left: Fausto Coppi, Eddy Merckx, Fiorenzo Magni,<br/>Miguel Indurain, and Marco Pantani—quite an impressive lineup.<br/>By the way, the first saddle to get Pantani stitching wasn't the Flite.<br/>It was a model called the Sintesi TCS.<br/>If you're interested, search for "SINTESI TCS PANTANI."<br/>I should have one too, but I can't find it.<br/><br/>Anyway, Selle Italia saddles have traceable manufacturing dates.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06266msn2.jpg" target="_blank"><img alt="DSC06266msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06266msn2s.jpg" width="320"/></a><br/>This is the Inoe Turbo Junior from earlier.<br/>The central number indicates the manufacturing year, and the surrounding letters represent the month.<br/><s>This has nothing to do with the clock in the Sanctuary from Saint Seiya.</s><br/>The sequence G, F, M, A, M, G, L, A, S, O, N, D represents<br/>the first letters of the months in Italian (1-12),<br/>but since all except January, June, and July match English month initials,<br/>you can kind of figure it out.<br/>Dots are used to mark the manufacturing month—if dots are missing from G, F, M, A onwards,<br/>that would indicate April manufacturing, and so on.<br/>But in the image above, only August and December are missing dots.<br/>How sloppy!<br/>Maybe 1986 was when they concentrated on making Turbos in August and December.<br/>By the way, pre-1985 saddles sometimes lack this manufacturing date marking altogether.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06270msn2.jpg" target="_blank"><img alt="DSC06270msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06270msn2s.jpg" width="320"/></a><br/>January, June, and July start with G because Italian has no J in its alphabet.<br/>J appears in borrowed words like Jeep, judo, and jazz,<br/>so the Italian JoJo's Bizarre Adventure Part 5 has the protagonist spelled GIOGGIO instead of JOJO.<br/>Though nobody calls him JoJo anyway,<br/>which isn't unique to Part 5, so we shouldn't dwell on it.<br/><br/>The manufacturing date marking has changed in current models to<br/>"an arrow pointing across the center of the year indicates the manufacturing month"<br/>but<br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06194msn2.jpg" target="_blank"><img alt="DSC06194msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06194msn2s.jpg" width="320"/></a><br/>this Colima Flite had both the dot-missing and arrow systems marked.<br/>It's from November 2001, or at least definitely 2001.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06264msn2.jpg" target="_blank"><img alt="DSC06264msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06264msn2s.jpg" width="320"/></a><br/>Friend A's black Flite was from May 1996.<br/>Why the 1996 version lacks the dot marking that the 2001 version has is unclear.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06446msn2.jpg" target="_blank"><img alt="DSC06446msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06446msn2s.jpg" width="320"/></a><br/>The Flite 1990 featured in the article is from September 2017.<br/>Also note that months are now shown in Arabic numerals.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06196msn2.jpg" target="_blank"><img alt="DSC06196msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06196msn2s.jpg" width="320"/></a><br/>I laid out some of the seatposts from a certain drawer in our shop.<br/>From left: Sugino 75, 3T Criterium Aero, LOOK Ergopost,<br/>Campagnolo C Record Aero, Sugino 75, Sugino Aero Mighty,<br/>Sugino 75, Dura-Ace AX, LOOK Ergopost.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06197msn2.jpg" target="_blank"><img alt="DSC06197msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06197msn2s.jpg" width="320"/></a><br/>The 3T Criterium seatpost has a round cross-section with grooves,<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06198msn2.jpg" target="_blank"><img alt="DSC06198msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06198msn2s.jpg" width="320"/></a><br/>while the Aero version has no grooves, with the front half round<br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06199msn2.jpg" target="_blank"><img alt="DSC06199msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06199msn2s.jpg" width="320"/></a><br/>and the rear half aero-shaped,<br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06201msn2.jpg" target="_blank"><img alt="DSC06201msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06201msn2s.jpg" width="320"/></a><br/>with the clamp bracket identical to the Criterium.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06200msn2.jpg" target="_blank"><img alt="DSC06200msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06200msn2s.jpg" width="320"/></a><br/>↑An older 3T logo. There's an even older generation logo too.<br/>27.2mm diameter was unusual for the time,<br/>but it exists because Columbus SLX seat tubes are 27.2mm ID.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06202msn2.jpg" target="_blank"><img alt="DSC06202msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06202msn2s.jpg" width="320"/></a><br/>I pulled the thick-upper clamp bracket all the way back.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06204msn2.jpg" target="_blank"><img alt="DSC06204msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06204msn2s.jpg" width="320"/></a><br/>Not quite touching—actually, the nut above the clamp is contacting the base.<br/>This is why the original Flite is picky about seatposts,<br/>and why they got skittish and went to raised rails with the Flite 1990.<br/>Even if it looks like it's just barely touching, contact happens due to flex.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06203msn2.jpg" target="_blank"><img alt="DSC06203msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06203msn2s.jpg" width="320"/></a><br/>Also, where the clamp bracket contacts around the back of the "Titanium" marking,<br/>the leather develops a permanent square indentation,<br/>which is commonly seen on original Flites.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06209msn2.jpg" target="_blank"><img alt="DSC06209msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06209msn2s.jpg" width="320"/></a><br/>A Campagnolo Euclid seatpost, from their MTB component line.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06208msn2.jpg" target="_blank"><img alt="DSC06208msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06208msn2s.jpg" width="320"/></a><br/>My LOOK seatpost is</div>
+    <aside class="post-guides">
+      <strong>Technical archive</strong>
+      <nav aria-label="Technical guides">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,7 +405,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">Before I get into the main story.<br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/cc-rd100pamx9.jpg" target="_blank"><img alt="cc-rd100pamx9.jpg" border="0" height="320" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/cc-rd100pamx9s.jpg" width="247"/></a><br/>I used to really like the <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=CatEye+CC-RD100+wired+cycle+computer" target="_blank" rel="noopener sponsored" class="amz-inline">CC-RD100</a> (wired, no cadence), the first model in CatEye's "Strada" series,<br/>but the click-tech mechanism adopted after this model<br/>(where the operation button is on the underside rather than the top, and the unit itself moves to push the button in a click-like fashion)<br/>has problems, and with regular use the unit becomes wobbly relative to the mount.<br/>With my usage frequency, it didn't last two years.<br/>You could say it was about three battery lifespans worth of durability.<br/>Even if you replace the mount-side parts, it's the grooves on the unit itself that are worn away,<br/>so replacement doesn't actually solve the problem. And this issue still hasn't been fixed today.<br/><br/>The CC-RD200 model, which is the wired cadence version of this same design,<br/>is still going strong for some reason,<br/>but the cadence-less wireless CC-RD300W (Wireless) and<br/>the cadence-equipped wireless CC-RD400DW (Double Wireless) have been discontinued.<br/>The 300 and 400 are models from around 2008.<br/>This is just speculation, but when high-brightness LED front lights and<br/>wireless cycle computers are placed too close together,<br/>the cycle computer's reception can be interfered with and speed and other information disappears,<br/>and this effect was probably more pronounced with the 300 and 400's radio system, so maybe they discontinued them early.<br/>The fact that the wired 200 from before that is still alive today seems to support this theory.<br/>If CatEye were only a lights manufacturer or only a cycle computer manufacturer,<br/>they could have ignored it, but having their own products interfering with each other<br/>probably wasn't a good look.<br/><br/>I liked the RD100 because it had no problems even when used together with heart rate monitors,<br/>which were notoriously unstable at the time regardless of manufacturer.<br/>By the time the RD100 was discontinued, simple wired cycle computers like it<br/>had become an endangered species even from other makers, and that's when I happened to notice<br/>the cycle computer in the image above.<br/>It's the CC-RD100 model exactly, but it was released as a Pinarello accessory,<br/>and it was still obtainable years after the RD100 was discontinued<br/>(though it's unobtainable now).<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06448amx9.jpg" target="_blank"><img alt="DSC06448amx9.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06448amx9s.jpg" width="320"/></a><br/>I've stocked some Colima saddles.<br/>Looking at the catalog images, the base model appears to be a Selle Italia <span style="color:#FF0000">Flite</span>,<br/>with Colima branding stitched on.<br/>I'd been curious about this for a while,<br/>and I thought "could this actually be a <span style="color:#0000FF">Flite</span>?" so I stocked them.<br/><br/>This might sound confusing, but<br/>the <span style="color:#FF0000">Flite</span> in the previous sentence is Flite in the broad sense, and the <span style="color:#0000FF">Flite</span> is Flite in the narrow sense.<br/>Since I was uncertain whether it was a true <span style="color:#0000FF">Flite</span>, I started with just one,<br/>and once I confirmed it was a <span style="color:#0000FF">Flite</span>, I boldly stocked many more.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06260msn2.jpg" target="_blank"><img alt="DSC06260msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06260msn2s.jpg" width="320"/></a><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06261msn2.jpg" target="_blank"><img alt="DSC06261msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06261msn2s.jpg" width="320"/></a><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06262msn2.jpg" target="_blank"><img alt="DSC06262msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06262msn2s.jpg" width="320"/></a><br/>Changing subjects, I'm a collector of <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Selle+Italia+Turbo+saddle" target="_blank" rel="noopener sponsored" class="amz-inline">Selle Italia Turbos</a>,<br/>and I mentioned early on in this blog that I'd write about them someday,<br/>but I still haven't.<br/>I have the regular Turbo, the striped BioTurbo, the squishy gel Turbo Gel,<br/>the Turbo Special with metal attachments front and rear like a San Marco Rolls,<br/>the Turbo Triathlon with a central groove, the Lady Turbo with a wider rear,<br/>the Lady Turbo Special with a wider rear in Turbo Special specs,<br/>the Turbo Junior (Turbo Uniore) with shorter front and rear for juniors,<br/>the Turbo SLG (Super Leggera) with aluminum rails,<br/>the Pro Team Turbo with manganese rails, and others.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06267msn2.jpg" target="_blank"><img alt="DSC06267msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06267msn2s.jpg" width="320"/></a><br/>↑This is an Inoe Turbo with Bernard Inoue's name on the nose,<br/>and while I also have the standard Turbo Inoe,<br/>this is a Turbo Junior Inoe.<br/>I pestered—no, rather <s>forcibly seized...</s> respectfully received it from the one who was my spiritual mentor in those days.<br/>The animal depicted between Bernard and Inoue is a badger.<br/>Because Inoue's nickname was "The Badger of Brittany."<br/>However, Inoue actually used mainly a San Marco Rolls at the time.<br/>There are cases where a manufacturer prepared a signature model for a rider but they never actually used it—<br/>like Mario Cipollini's Selle Italia Century with lion stitching<br/>(he only used San Marco Regals)<br/>or the 3T handlebar "Merckx" named after Eddy Merckx<br/>(he mainly used a Cinelli Number 64).<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06268msn2.jpg" target="_blank"><img alt="DSC06268msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06268msn2s.jpg" width="320"/></a><br/>Now, the Turbo has a "<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Selle+Italia+Turbo+1980+reissue+saddle" target="_blank" rel="noopener sponsored" class="amz-inline">Turbo 1980</a>" reissue model,<br/>and the one in the image above is my personal one with brown Nuback that's aged nicely.<br/>The Turbo 1980, even by me—a Turbo expert (not a state-certified qualification)—<br/>is so well executed as a reissue that it's hard to tell from the side view whether it's a reissue or not.<br/>Well, unless it's clearly on some oldster's vintage bike,<br/>pretty much any Turbo you see these days is definitely a Turbo 1980.<br/><br/>The Flite saddle, if you count major shape changes as generations, is currently in its third generation.<br/>The second generation had a hole in the nose<br/>with a plastic piece marked "Flite" that fit in it.<br/>My personal thought about saddles is that<br/>"if it becomes a completely different thing, they shouldn't keep the same model name."<br/>I haven't used the third generation, but when I used the second generation Flite<br/>I thought "this isn't a Flite at all."<br/>Not to say the second generation Flite is a bad saddle—<br/>I just would have wanted it to inherit the majority of Flite's characteristics<br/>as befits the name Flite.<br/>Among Selle Italia saddles, only the SLR seems to inherit this philosophy without too much compromise.<br/>The second generation Flite is discontinued, but the first generation Flite has<br/>a reissue model like the Turbo.<br/>That's the <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Selle+Italia+Flite+1990+saddle" target="_blank" rel="noopener sponsored" class="amz-inline">Flite 1990</a>.<br/><br/>However, unlike the Turbo 1980, the Flite 1990 is hard to call<br/>a genuine reissue of the original Flite—it's rather ambiguous in execution.<br/>So I planned to write an article about it and asked friend A,<br/>"You had a bike with a Flite 1990 on it, right? Can you bring it over?"<br/>and he came right away. But...<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06271msn2.jpg" target="_blank"><img alt="DSC06271msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06271msn2s.jpg" width="320"/></a><br/>Hey, this is an original Flite, not a Flite 1990!<br/>This won't work as article material! (Although it did)<br/>Friend A definitely has a Flite 1990 as well.<br/>The reason being that when the original Flite became unobtainable,<br/>he bought a Flite 1990 "as a substitute, even if it's not quite the same."<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06440msn2.jpg" target="_blank"><img alt="DSC06440msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06440msn2s.jpg" width="320"/></a><br/>So,<br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06441msn2.jpg" target="_blank"><img alt="DSC06441msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06441msn2s.jpg" width="320"/></a><br/>I stocked some for the article.<br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06443msn2.jpg" target="_blank"><img alt="DSC06443msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06443msn2s.jpg" width="320"/></a><br/>Can you spot the difference?<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06445msn2.jpg" target="_blank"><img alt="DSC06445msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06445msn2s.jpg" width="320"/></a><br/>↑This is a Colima Flite.<br/>The Flite saddle was, for its time, remarkably thin<br/>and switching from a conventional saddle gave you an extra 2-3 cm of seatpost extension.<br/>At the time, only horizontal top-tube frames existed,<br/>so many people were concerned about the appearance of limited seatpost extension.<br/>To increase seatpost extension, the saddle needed to be not just thin,<br/>but also have a "non-raised-rail" shape.<br/>The original Flite has the base and rails very close together,<br/>and it's thinner than many of today's thin saddles.<br/>Since there's some cushioning thickness in the base padding, it's somewhat thicker than a carbon spatula-like saddle,<br/>but still remarkably slim.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06444msn2.jpg" target="_blank"><img alt="DSC06444msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06444msn2s.jpg" width="320"/></a><br/>With the Flite 1990, the rails are raised.<br/>This was a necessary measure, I understand.<br/>The original Flite's base and rails are so close that<br/>if the seatpost's clamp bracket's upper parts are thick,<br/>they interfere immediately.<br/>They probably changed to raised rails to avoid this,<br/>but, well, it's hard to call this a proper reissue of the original Flite...<br/><br/>To be clear, the Flite 1990 isn't a bad saddle.<br/>There are probably people who find the Flite 1990 the most comfortable saddle they've ever used.<br/>Regardless of that,<br/>treating the Flite 1990 as identical to the original Flite is a stretch.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06275msn2.jpg" target="_blank"><img alt="DSC06275msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06275msn2s.jpg" width="320"/></a><br/>Thinking it might help with the article,<br/>friend A also brought a Flite with Pinarello stitching,<br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06274msn2.jpg" target="_blank"><img alt="DSC06274msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06274msn2s.jpg" width="320"/></a><br/>and I placed them side by side.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06276msn2.jpg" target="_blank"><img alt="DSC06276msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06276msn2s.jpg" width="320"/></a><br/>I also placed the Colima saddle side by side.<br/>By the way, as a replacement for the worn-out Flite at the bottom,<br/>one of the Colima saddles was sold to friend A.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06186msn2.jpg" target="_blank"><img alt="DSC06186msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06186msn2s.jpg" width="320"/></a><br/>↑Going back in time a bit,<br/>this was the first Colima saddle I hesitantly stocked, thinking<br/>"could this actually be an original Flite?"<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06187msn2.jpg" target="_blank"><img alt="DSC06187msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06187msn2s.jpg" width="320"/></a><br/>It has Colima stitching.<br/>Honestly, I would have preferred a print...<br/>Having stitching on the rear area accelerates pad degradation.<br/>The Sella SMP stitched versions from that period are especially notorious for this.<br/>Anyone who's used one knows that the chamois doesn't just pill—<br/>the friction damage penetrates through to the skin.<br/><br/>Don't say mean things about the stitching!<br/><span style="color:#0000FF">Thanks to this stitching, original Flites are available new in 2018!</span><br/>Yes, exactly—this parallel to how the CC-RD100 remained obtainable years after its discontinuation because it was a Pinarello accessory.<br/>That's what I wanted to illustrate with this narrative.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06189msn2.jpg" target="_blank"><img alt="DSC06189msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06189msn2s.jpg" width="320"/></a><br/>That wax-seal-looking tie on the rails is nostalgic.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06188msn2.jpg" target="_blank"><img alt="DSC06188msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06188msn2s.jpg" width="320"/></a><br/>The Marco Pantani model Flite shown here has later-period stitching.<br/>The first Flite I ever bought was a Pantani model with earlier-period stitching.<br/>That was around 1996.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06191msn2.jpg" target="_blank"><img alt="DSC06191msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06191msn2s.jpg" width="320"/></a><br/>The included mini-catalog says 1999,<br/>but this Colima saddle is from 2001 (more on that later).<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06190msn2.jpg" target="_blank"><img alt="DSC06190msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06190msn2s.jpg" width="320"/></a><br/>I found a full-size 1999 catalog.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06192msn2.jpg" target="_blank"><img alt="DSC06192msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06192msn2s.jpg" width="320"/></a><br/>Wow! (Sorry for getting carried away)<br/>Users of the original Pantani Flite shown here include<br/>from left: Fausto Coppi, Eddy Merckx, Fiorenzo Magni,<br/>Miguel Indurain, and Marco Pantani—quite an impressive lineup.<br/>By the way, the first saddle to get Pantani stitching wasn't the Flite.<br/>It was a model called the Sintesi TCS.<br/>If you're interested, search for "SINTESI TCS PANTANI."<br/>I should have one too, but I can't find it.<br/><br/>Anyway, Selle Italia saddles have traceable manufacturing dates.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06266msn2.jpg" target="_blank"><img alt="DSC06266msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06266msn2s.jpg" width="320"/></a><br/>This is the Inoe Turbo Junior from earlier.<br/>The central number indicates the manufacturing year, and the surrounding letters represent the month.<br/><s>This has nothing to do with the clock in the Sanctuary from Saint Seiya.</s><br/>The sequence G, F, M, A, M, G, L, A, S, O, N, D represents<br/>the first letters of the months in Italian (1-12),<br/>but since all except January, June, and July match English month initials,<br/>you can kind of figure it out.<br/>Dots are used to mark the manufacturing month—if dots are missing from G, F, M, A onwards,<br/>that would indicate April manufacturing, and so on.<br/>But in the image above, only August and December are missing dots.<br/>How sloppy!<br/>Maybe 1986 was when they concentrated on making Turbos in August and December.<br/>By the way, pre-1985 saddles sometimes lack this manufacturing date marking altogether.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06270msn2.jpg" target="_blank"><img alt="DSC06270msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06270msn2s.jpg" width="320"/></a><br/>January, June, and July start with G because Italian has no J in its alphabet.<br/>J appears in borrowed words like Jeep, judo, and jazz,<br/>so the Italian JoJo's Bizarre Adventure Part 5 has the protagonist spelled GIOGGIO instead of JOJO.<br/>Though nobody calls him JoJo anyway,<br/>which isn't unique to Part 5, so we shouldn't dwell on it.<br/><br/>The manufacturing date marking has changed in current models to<br/>"an arrow pointing across the center of the year indicates the manufacturing month"<br/>but<br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06194msn2.jpg" target="_blank"><img alt="DSC06194msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06194msn2s.jpg" width="320"/></a><br/>this Colima Flite had both the dot-missing and arrow systems marked.<br/>It's from November 2001, or at least definitely 2001.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06264msn2.jpg" target="_blank"><img alt="DSC06264msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06264msn2s.jpg" width="320"/></a><br/>Friend A's black Flite was from May 1996.<br/>Why the 1996 version lacks the dot marking that the 2001 version has is unclear.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06446msn2.jpg" target="_blank"><img alt="DSC06446msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06446msn2s.jpg" width="320"/></a><br/>The Flite 1990 featured in the article is from September 2017.<br/>Also note that months are now shown in Arabic numerals.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06196msn2.jpg" target="_blank"><img alt="DSC06196msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06196msn2s.jpg" width="320"/></a><br/>I laid out some of the seatposts from a certain drawer in our shop.<br/>From left: Sugino 75, 3T Criterium Aero, LOOK Ergopost,<br/>Campagnolo C Record Aero, Sugino 75, Sugino Aero Mighty,<br/>Sugino 75, Dura-Ace AX, LOOK Ergopost.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06197msn2.jpg" target="_blank"><img alt="DSC06197msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06197msn2s.jpg" width="320"/></a><br/>The 3T Criterium seatpost has a round cross-section with grooves,<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06198msn2.jpg" target="_blank"><img alt="DSC06198msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06198msn2s.jpg" width="320"/></a><br/>while the Aero version has no grooves, with the front half round<br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06199msn2.jpg" target="_blank"><img alt="DSC06199msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06199msn2s.jpg" width="320"/></a><br/>and the rear half aero-shaped,<br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06201msn2.jpg" target="_blank"><img alt="DSC06201msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06201msn2s.jpg" width="320"/></a><br/>with the clamp bracket identical to the Criterium.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06200msn2.jpg" target="_blank"><img alt="DSC06200msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06200msn2s.jpg" width="320"/></a><br/>↑An older 3T logo. There's an even older generation logo too.<br/>27.2mm diameter was unusual for the time,<br/>but it exists because Columbus SLX seat tubes are 27.2mm ID.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06202msn2.jpg" target="_blank"><img alt="DSC06202msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06202msn2s.jpg" width="320"/></a><br/>I pulled the thick-upper clamp bracket all the way back.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06204msn2.jpg" target="_blank"><img alt="DSC06204msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06204msn2s.jpg" width="320"/></a><br/>Not quite touching—actually, the nut above the clamp is contacting the base.<br/>This is why the original Flite is picky about seatposts,<br/>and why they got skittish and went to raised rails with the Flite 1990.<br/>Even if it looks like it's just barely touching, contact happens due to flex.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06203msn2.jpg" target="_blank"><img alt="DSC06203msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06203msn2s.jpg" width="320"/></a><br/>Also, where the clamp bracket contacts around the back of the "Titanium" marking,<br/>the leather develops a permanent square indentation,<br/>which is commonly seen on original Flites.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06209msn2.jpg" target="_blank"><img alt="DSC06209msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06209msn2s.jpg" width="320"/></a><br/>A Campagnolo Euclid seatpost, from their MTB component line.<br/><br/><a href="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06208msn2.jpg" target="_blank"><img alt="DSC06208msn2.jpg" border="0" height="240" src="https://blog-imgs-122-origin.fc2.com/p/a/s/pass13/DSC06208msn2s.jpg" width="320"/></a><br/>My LOOK seatpost is</div>
     <div class="affiliate-box">
       <p class="affiliate-title">Products Mentioned in This Article</p>
       <ul>

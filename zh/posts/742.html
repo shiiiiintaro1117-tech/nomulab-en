@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/742.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>功率計轂的大修及其他事項</h1>
     <p class="post-meta">September 29, 2013</p>
+    <div class="post-body"><div class="entrytext">今天也是輪組（以下略）。<br/>本來不是要變成這樣的輪組。<br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06970amx.jpg" target="_blank"><img alt="DSC06970amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06970amxs.jpg" width="300"/></a><br/>收到了功率計（Power Tap）的後輪。<br/>客人希望進行轂的大修。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06977amx.jpg" target="_blank"><img alt="DSC06977amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06977amxs.jpg" width="300"/></a><br/>鋁圈是DT的R450。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06973amx.jpg" target="_blank"><img alt="DSC06973amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06973amxs.jpg" width="300"/></a><br/>用4-4組法組裝的，但不知怎麼反飛輪側有點鬆散⋯⋯。<br/>最近我反而不常組普通輪組（左右同本數組法）了，<br/>所以「普通的手組」可能就是這樣的水準。<br/><br/>結果最後還是拆了，沒有看中心，<br/>不過應該是完全居中或幾乎居中。<br/>在那個狀態下飛輪側的輻條張力充足。<br/>這樣說有點傲慢，抱歉，但組得確實不錯。<br/>DT的R450的鋁圈高度跟Kinlin的XR200差不多，<br/>這個輪組飛輪側的輻條張力<br/>大約是我自己組的「野村實驗室輪組5號」普通組法的105%。<br/>這已經非常接近鋁圈的極限值了。<br/>（「不普通的情況」是指被要求「張得緊一點」之類的）<br/><br/>輻條全部是黑色的<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+Competition+bicycle+spokes" target="_blank" rel="noopener sponsored" class="amz-inline">DT Competition</a>，<br/>用這個部落格的說法就是「全Competition 4-4組法」。<br/>飛輪側輻條張力充足，鋁圈居中的話，<br/>那就已經走進死胡同了。<br/>（鬆散的反飛輪側提高張力會使鋁圈往反飛輪側偏，<br/>要把偏掉的鋁圈往飛輪側拉回，<br/>從輻條張力的角度根本做不到，這就是那種狀況）<br/><br/>在守住「鋁圈居中」這個理所當然前提條件的基礎上，<br/>把飛輪側輻條張力調到這個值，<br/>以這個轂、這個輻條、這種組法來說，<br/>反飛輪側輻條張力對飛輪側的追隨度<br/>無論誰來組都會是一樣的。<br/>我平時在這個部落格寫的內容，<br/>主要就是<br/>「用平凡的材料、非特殊設計的轂之類的，<br/>想盡可能最大化這種追隨度」。<br/><br/>實際上用這個輪組和野村實驗室輪組5號，<br/>「飛輪側都是Competition、張力幾乎相同（這個輪組稍微更高）<br/>結果5號的反飛輪側卻張得更緊得多」<br/>我今天在店裡給客人看過了。<br/><br/>我一直都有提到的，<br/>「因為是我（野村實驗室）組的輪組所以很厲害」這種說法根本不存在。<br/>這種怪力亂神應該首先排除。<br/><br/>買家對輪組不了解不是罪，<br/>但賣家這樣就是罪。<br/>用類比方式分析和用數位方式分析同一個東西，<br/>結論應該是一樣的，但賣家把客人的無知當藉口，<br/>用類比手段摻雜怪力亂神來賣，<br/>這種事在自行車業界橫行（其他行業可能也一樣）。<br/>最近聽說因為這個部落格，經銷商變得更難騙客人了，<br/>但那跟我沒關係。<br/>只要騙不了客人也不會困擾我的工作，<br/>淡淡地做好就行。<br/><br/>自行車店傳統上有種氣氛<br/>「賣家再傲慢的態度也沒關係」。<br/>有些店老闆翹著腿說教，<br/>但如果換成其他行業的個人商店，早就倒閉了。<br/>我想這導致了進店的門檻高（店不好進）<br/>和網路購物的普及⋯⋯。<br/><br/>喔不對，再寫下去太危險了。而且我跑題得很離譜。<br/><br/>回到主題一下，最近用左右同徑輻條、左右異本數組法，<br/>讓我自己都覺得「真厲害」的<br/>是28H功率計轂的全Competition 4-8組法。<br/>有幾個客人摸過輻條，<br/>被左右張力的小差異逗得笑出來。真的。<br/>有人說「反飛輪側好像張得更緊」，<br/>但那不可能。<br/>那是為了營造「觸感」的「結線」方法，<br/>也是我區分「真實輻條張力」和「表觀輻條張力」的原因。<br/>「輻條張力」就是「輵條的」「張力」，<br/>所以跟輵條粗細沒有關係。<br/>是「施加在某個粗細的輵條上」「的張力」。<br/>鎖蓋要把鋁圈咬爛的力量「RK（這個部落格的造語）」<br/>不是純粹與輵條張力成比例，而是跟斷面積之類的有關。<br/>如果是純粹比例的話就不需要創造RK這個詞了。<br/>最近有人在留言說「用左右異徑輵條組了前輪」。<br/>張力計的數字確實會這樣，<br/>但我看的不是那個數字本身的差異，而是從中推導出來的「某個東西」。<br/>我想縮小這個「某個東西」的左右差。<br/>這跟「不是讓輵條伸長方向接近切線」，<br/>而是「在不超過二分線的範圍內，盡可能增加反飛輪側n本組法的n」<br/>組法也有關係。<br/><br/>喔我不能再寫了。這次是往另一個方向跑題了。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06978amx.jpg" target="_blank"><img alt="DSC06978amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06978amxs.jpg" width="300"/></a><br/>得到客人同意，要改成4-6組法。<br/>所以把輪組拆了。<br/>轂內部的潤滑脂，已經不只是髒了，<br/>而是完全乾枯了。<br/>飛輪體的密封圈，不是在飛輪體上，而是留在轂體側。<br/>這不是什麼定律，<br/>但潤滑脂乾枯時，好像很容易發生這種情況（沒根據）。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06979amx.jpg" target="_blank"><img alt="DSC06979amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06979amxs.jpg" width="300"/></a><br/>敷衍的膠帶<br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06980amx.jpg" target="_blank"><img alt="DSC06980amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06980amxs.jpg" width="300"/></a><br/>膠帶的膠水冒出來了，所以<br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06981amx.jpg" target="_blank"><img alt="DSC06981amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06981amxs.jpg" width="300"/></a><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06982amx.jpg" target="_blank"><img alt="DSC06982amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06982amxs.jpg" width="300"/></a><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06983amx.jpg" target="_blank"><img alt="DSC06983amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06983amxs.jpg" width="300"/></a><br/>用常規的熱收縮管處理了。<br/>功率計轂的軸承壓入相對來說比較鬆。<br/>比如跟Mavic相比，就鬆得多。<br/>軸承本身是規格品，所以製造商之間的公差<br/>和同一製造商同一產品的個體差異應該很小，<br/>應該是轂側壓入部的尺寸偏大。<br/>我在全新功率計轂的情況下，<br/>不會特別拆軸承來把磁鐵膠帶換成熱收縮管。<br/>但因為功率計轂軸承壓入比較鬆，<br/>即使拆全新軸承，我認為也不太可能損傷。<br/>如果客人說「全新但想換成熱收縮管」，我會做，<br/>所以請放心。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06984amx.jpg" target="_blank"><img alt="DSC06984amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06984amxs.jpg" width="300"/></a><br/><span style="font-size:large;">洗好了</span><br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06985amx.jpg" target="_blank"><img alt="DSC06985amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06985amxs.jpg" width="300"/></a><br/><span style="font-size:large;">組好了</span><br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06975amx.jpg" target="_blank"><img alt="DSC06975amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06975amxs.jpg" width="300"/></a><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06987amx.jpg" target="_blank"><img alt="DSC06987amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06987amxs.jpg" width="300"/></a><br/><span style="font-size:x-small;">悄悄地把反義大利亞組法改成義大利亞組法了<br/>（因為習慣用大字，用這種小字應該沒人發現）</span><br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06988amx.jpg" target="_blank"><img alt="DSC06988amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06988amxs.jpg" width="300"/></a><br/>還有，像我經常寫的一樣。<br/>亮晶晶的銀色轂真的很不錯呢。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">今天也是輪組（以下略）。<br/>本來不是要變成這樣的輪組。<br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06970amx.jpg" target="_blank"><img alt="DSC06970amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06970amxs.jpg" width="300"/></a><br/>收到了功率計（Power Tap）的後輪。<br/>客人希望進行轂的大修。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06977amx.jpg" target="_blank"><img alt="DSC06977amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06977amxs.jpg" width="300"/></a><br/>鋁圈是DT的R450。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06973amx.jpg" target="_blank"><img alt="DSC06973amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06973amxs.jpg" width="300"/></a><br/>用4-4組法組裝的，但不知怎麼反飛輪側有點鬆散⋯⋯。<br/>最近我反而不常組普通輪組（左右同本數組法）了，<br/>所以「普通的手組」可能就是這樣的水準。<br/><br/>結果最後還是拆了，沒有看中心，<br/>不過應該是完全居中或幾乎居中。<br/>在那個狀態下飛輪側的輻條張力充足。<br/>這樣說有點傲慢，抱歉，但組得確實不錯。<br/>DT的R450的鋁圈高度跟Kinlin的XR200差不多，<br/>這個輪組飛輪側的輻條張力<br/>大約是我自己組的「野村實驗室輪組5號」普通組法的105%。<br/>這已經非常接近鋁圈的極限值了。<br/>（「不普通的情況」是指被要求「張得緊一點」之類的）<br/><br/>輻條全部是黑色的<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+Competition+bicycle+spokes" target="_blank" rel="noopener sponsored" class="amz-inline">DT Competition</a>，<br/>用這個部落格的說法就是「全Competition 4-4組法」。<br/>飛輪側輻條張力充足，鋁圈居中的話，<br/>那就已經走進死胡同了。<br/>（鬆散的反飛輪側提高張力會使鋁圈往反飛輪側偏，<br/>要把偏掉的鋁圈往飛輪側拉回，<br/>從輻條張力的角度根本做不到，這就是那種狀況）<br/><br/>在守住「鋁圈居中」這個理所當然前提條件的基礎上，<br/>把飛輪側輻條張力調到這個值，<br/>以這個轂、這個輻條、這種組法來說，<br/>反飛輪側輻條張力對飛輪側的追隨度<br/>無論誰來組都會是一樣的。<br/>我平時在這個部落格寫的內容，<br/>主要就是<br/>「用平凡的材料、非特殊設計的轂之類的，<br/>想盡可能最大化這種追隨度」。<br/><br/>實際上用這個輪組和野村實驗室輪組5號，<br/>「飛輪側都是Competition、張力幾乎相同（這個輪組稍微更高）<br/>結果5號的反飛輪側卻張得更緊得多」<br/>我今天在店裡給客人看過了。<br/><br/>我一直都有提到的，<br/>「因為是我（野村實驗室）組的輪組所以很厲害」這種說法根本不存在。<br/>這種怪力亂神應該首先排除。<br/><br/>買家對輪組不了解不是罪，<br/>但賣家這樣就是罪。<br/>用類比方式分析和用數位方式分析同一個東西，<br/>結論應該是一樣的，但賣家把客人的無知當藉口，<br/>用類比手段摻雜怪力亂神來賣，<br/>這種事在自行車業界橫行（其他行業可能也一樣）。<br/>最近聽說因為這個部落格，經銷商變得更難騙客人了，<br/>但那跟我沒關係。<br/>只要騙不了客人也不會困擾我的工作，<br/>淡淡地做好就行。<br/><br/>自行車店傳統上有種氣氛<br/>「賣家再傲慢的態度也沒關係」。<br/>有些店老闆翹著腿說教，<br/>但如果換成其他行業的個人商店，早就倒閉了。<br/>我想這導致了進店的門檻高（店不好進）<br/>和網路購物的普及⋯⋯。<br/><br/>喔不對，再寫下去太危險了。而且我跑題得很離譜。<br/><br/>回到主題一下，最近用左右同徑輻條、左右異本數組法，<br/>讓我自己都覺得「真厲害」的<br/>是28H功率計轂的全Competition 4-8組法。<br/>有幾個客人摸過輻條，<br/>被左右張力的小差異逗得笑出來。真的。<br/>有人說「反飛輪側好像張得更緊」，<br/>但那不可能。<br/>那是為了營造「觸感」的「結線」方法，<br/>也是我區分「真實輻條張力」和「表觀輻條張力」的原因。<br/>「輻條張力」就是「輵條的」「張力」，<br/>所以跟輵條粗細沒有關係。<br/>是「施加在某個粗細的輵條上」「的張力」。<br/>鎖蓋要把鋁圈咬爛的力量「RK（這個部落格的造語）」<br/>不是純粹與輵條張力成比例，而是跟斷面積之類的有關。<br/>如果是純粹比例的話就不需要創造RK這個詞了。<br/>最近有人在留言說「用左右異徑輵條組了前輪」。<br/>張力計的數字確實會這樣，<br/>但我看的不是那個數字本身的差異，而是從中推導出來的「某個東西」。<br/>我想縮小這個「某個東西」的左右差。<br/>這跟「不是讓輵條伸長方向接近切線」，<br/>而是「在不超過二分線的範圍內，盡可能增加反飛輪側n本組法的n」<br/>組法也有關係。<br/><br/>喔我不能再寫了。這次是往另一個方向跑題了。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06978amx.jpg" target="_blank"><img alt="DSC06978amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06978amxs.jpg" width="300"/></a><br/>得到客人同意，要改成4-6組法。<br/>所以把輪組拆了。<br/>轂內部的潤滑脂，已經不只是髒了，<br/>而是完全乾枯了。<br/>飛輪體的密封圈，不是在飛輪體上，而是留在轂體側。<br/>這不是什麼定律，<br/>但潤滑脂乾枯時，好像很容易發生這種情況（沒根據）。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06979amx.jpg" target="_blank"><img alt="DSC06979amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06979amxs.jpg" width="300"/></a><br/>敷衍的膠帶<br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06980amx.jpg" target="_blank"><img alt="DSC06980amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06980amxs.jpg" width="300"/></a><br/>膠帶的膠水冒出來了，所以<br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06981amx.jpg" target="_blank"><img alt="DSC06981amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06981amxs.jpg" width="300"/></a><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06982amx.jpg" target="_blank"><img alt="DSC06982amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06982amxs.jpg" width="300"/></a><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06983amx.jpg" target="_blank"><img alt="DSC06983amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06983amxs.jpg" width="300"/></a><br/>用常規的熱收縮管處理了。<br/>功率計轂的軸承壓入相對來說比較鬆。<br/>比如跟Mavic相比，就鬆得多。<br/>軸承本身是規格品，所以製造商之間的公差<br/>和同一製造商同一產品的個體差異應該很小，<br/>應該是轂側壓入部的尺寸偏大。<br/>我在全新功率計轂的情況下，<br/>不會特別拆軸承來把磁鐵膠帶換成熱收縮管。<br/>但因為功率計轂軸承壓入比較鬆，<br/>即使拆全新軸承，我認為也不太可能損傷。<br/>如果客人說「全新但想換成熱收縮管」，我會做，<br/>所以請放心。<br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06984amx.jpg" target="_blank"><img alt="DSC06984amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06984amxs.jpg" width="300"/></a><br/><span style="font-size:large;">洗好了</span><br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06985amx.jpg" target="_blank"><img alt="DSC06985amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06985amxs.jpg" width="300"/></a><br/><span style="font-size:large;">組好了</span><br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06975amx.jpg" target="_blank"><img alt="DSC06975amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06975amxs.jpg" width="300"/></a><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06987amx.jpg" target="_blank"><img alt="DSC06987amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06987amxs.jpg" width="300"/></a><br/><span style="font-size:x-small;">悄悄地把反義大利亞組法改成義大利亞組法了<br/>（因為習慣用大字，用這種小字應該沒人發現）</span><br/><br/><a href="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06988amx.jpg" target="_blank"><img alt="DSC06988amx.jpg" border="0" height="225" src="https://blog-imgs-57-origin.fc2.com/p/a/s/pass13/DSC06988amxs.jpg" width="300"/></a><br/>還有，像我經常寫的一樣。<br/>亮晶晶的銀色轂真的很不錯呢。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

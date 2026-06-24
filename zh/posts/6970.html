@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,37 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/6970.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>我把日常騎乘的自行車改成了7速</h1>
     <p class="post-meta">January 03, 2024</p>
+    <div class="post-body"><div class="entrytext">斯坦（SRAM）的MTB套件零件中有<br/>一款PG-720這樣的越野下坡用的<br/>HG花鼓體對應的7速飛輪。<br/>齒數配置是11-13-15-17-19到這裡都是跳2齒，<br/>之後是-22-25跳3齒的<br/>11-25T。<br/>雖然是7速，但飛輪的齒間距離<br/>與11速相同，下坡側的4片用<br/>塑膠墊片填充。<br/>大概因為是入門款<br/>飛輪沒有蜘蛛臂結構<br/>是每片飛輪與墊片交替安裝的規格，<br/>材質是鋼鐵（廠商說法是鉻鉬鋼）。<br/>含稅定價6600日圓，公稱重量224g，<br/>相比之下Shimano Dura-Ace R9200的<br/>11-30T公稱223g、<br/>11-34T公稱253g來看<br/>算是輕的。<br/>同樣概念的7速飛輪高端版本有<br/>XD花鼓體對應的<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=SRAM+XG-795+7-speed+cassette+sprocket+XD" target="_blank" rel="noopener sponsored" class="amz-inline">XG-795</a>這款，<br/>齒數配置是從PG-720<br/>所有齒都小1齒的10-24T，<br/>材質也是鉻鉬鋼，不過<br/>銑削處理極致，公稱重量只有136g，超輕量，<br/>但含稅定價也是71500日圓，價格離譜，<br/>錢包的輕量化也挺驚人的。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7056amx15.jpg" target="_blank"><img alt="RIMG7056amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7056amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7057amx15.jpg" target="_blank"><img alt="RIMG7057amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7057amx15s.jpg" width="320"/></a><br/>↑大概是這樣（PG-720）<br/>後輪轂是<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+FH-9000+rear+hub" target="_blank" rel="noopener sponsored" class="amz-inline">FH-9000</a>，<br/>是公路用的11速花鍵，所以<br/>塑膠墊片前面<br/>我裝了1.85mm的墊片。<br/><br/>調整完變速後，我想著<br/>只要把下坡側的調整螺栓轉到底應該就可以了，<br/>但果然超出了後變速器的預想範圍，<br/>調整螺栓的頭部從要接觸的凸起處<br/>脫離了，所以必須想對策。<br/>要放到從上往下數第8片時<br/>很容易就跨越塑膠墊片，<br/>實際上雖然沒試過，但很容易就能<br/>掉鏈到內側。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7022amx15.jpg" target="_blank"><img alt="RIMG7022amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7022amx15s.jpg" width="320"/></a><br/>後變速器是Campagnolo Athena 11速，<br/>從打開紙箱那天起（※）內外平行四邊形的夾板<br/>就做了減重孔。內側夾板有圓孔，<br/>而且是U字形斷面，<br/>我打算利用這個特點來製造「螺栓接觸點」。<br/><br/>※我沒寫「打開紙箱時」<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7042amx15.jpg" target="_blank"><img alt="RIMG7042amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7042amx15s.jpg" width="320"/></a><br/>拆下後輪，大概在11速的低檔變速時<br/>的平行四邊形位置，讓調整螺栓接觸<br/>就是這樣的感覺。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7043amx15.jpg" target="_blank"><img alt="RIMG7043amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7043amx15s.jpg" width="320"/></a><br/>裝上後輪，變到7速低檔。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7044amx15.jpg" target="_blank"><img alt="RIMG7044amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7044amx15s.jpg" width="320"/></a><br/>在那個平行四邊形位置，<br/>螺栓的頭部沒有可以接觸的凸起。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7045amx15.jpg" target="_blank"><img alt="RIMG7045amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7045amx15s.jpg" width="320"/></a><br/>這是非原廠的長螺栓，<br/>鎖進去時會變成這樣。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7046amx15.jpg" target="_blank"><img alt="RIMG7046amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7046amx15s.jpg" width="320"/></a><br/>平行四邊形內側夾板的下側<br/>螺栓螺紋稍微擦過的位置。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7025amx15.jpg" target="_blank"><img alt="RIMG7025amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7025amx15s.jpg" width="320"/></a><br/>最近Ridley的，為了通過碟煞油管而<br/>做成D形斷面的車叉杯管的切割邊緣<br/>平面部分切下來<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7023amx15.jpg" target="_blank"><img alt="RIMG7023amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7023amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7024amx15.jpg" target="_blank"><img alt="RIMG7024amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7024amx15s.jpg" width="320"/></a><br/>↑製作了這樣的東西。<br/>用膠水貼著兩片碳纖維板。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7026amx15.jpg" target="_blank"><img alt="RIMG7026amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7026amx15s.jpg" width="320"/></a><br/>有階差的部分<br/>與平行四邊形內側夾板的<br/>U字形相契合。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7027amx15.jpg" target="_blank"><img alt="RIMG7027amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7027amx15s.jpg" width="320"/></a><br/>嗯，這是失敗作。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7038amx15.jpg" target="_blank"><img alt="RIMG7038amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7038amx15s.jpg" width="320"/></a><br/>材料有限，但還有。<br/>Colnago的車叉杯管也是D形斷面，不過<br/>埋入了車把杯側螺栓的螺孔<br/>也填充了補強材，裡面沒有空心。<br/>不管怎樣，這種D形杯管<br/>對於把管杯側螺栓的鎖緊扭力<br/>固定力很弱，如果是割口間隙很小的把管<br/>幾乎要把割口完全閉合才能<br/>固定把管，有時也會發生這種情況。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7040amx15.jpg" target="_blank"><img alt="RIMG7040amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7040amx15s.jpg" width="320"/></a><br/>↑完成版。<br/>右邊的零件上無謂的孔是<br/>試錯的「錯」的部分，不過<br/>我就當作是為了輕量化和<br/>提高膠水效果的加工<br/>瞎編一個謊。<br/>左邊的零件是個方形的巨大墊圈。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7041amx15.jpg" target="_blank"><img alt="RIMG7041amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7041amx15s.jpg" width="320"/></a><br/>右邊零件的背面是這樣<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7051amx15.jpg" target="_blank"><img alt="RIMG7051amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7051amx15s.jpg" width="320"/></a><br/>下坡側調整螺栓的螺紋<br/>是標準規格的M4，但<br/>因為需要比原廠長的螺栓<br/>買了不鏽鋼螺栓來加工。<br/>如果直接用，螺紋頭的直徑會太大<br/>放不進平行四邊形的孔，所以削掉了。<br/>上面的圖左邊是原始狀態，右邊是加工後。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7053amx15.jpg" target="_blank"><img alt="RIMG7053amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7053amx15s.jpg" width="320"/></a><br/>用M5螺栓固定了零件。<br/>由於作業關係，外側夾板上<br/>有個超大的孔，這幫了大忙。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7054amx15.jpg" target="_blank"><img alt="RIMG7054amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7054amx15s.jpg" width="320"/></a><br/>在7速低檔的狀態下<br/>把調整螺栓鎖到碰到碳纖維板為止。<br/>Ergopower變速桿會咔的一聲進到8速，<br/>但鏈條會嘎啦嘎啦響，馬上退回到7速就OK。<br/>怎麼都進不了9速。<br/>與製作這個東西之前不同，<br/>已經沒有跨越塑膠墊片的行為。<br/>調整螺栓在發揮作用。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7055amx15.jpg" target="_blank"><img alt="RIMG7055amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7055amx15s.jpg" width="320"/></a><br/>↑這是變到最高檔11T的狀態。<br/>碳纖維板的凸起在低檔以外<br/>不會與後變速器的其他部分干涉。<br/><br/>這次這樣做的原因<br/>是源於路車表面積越小越牛逼<br/>這種狂信的<br/>先鋒化的原始主義禮讚。<br/><br/>順便一提，曲柄側的齒數是44T單速，<br/>按計算的齒比來說<br/>相當於39×22.1T、34T×19.3T。<br/>除非是特別陡峭的山坡<br/>一應還是能爬的。<br/>話說之前的飛輪，11T以外的<br/>之後都是跳2齒的<br/>11-12-14-16-18-<br/>20-22-24-26-28-30T<br/>的11速飛輪，但<br/>30T基本沒用，最多用26T<br/>偶爾用一下28T而已。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7062amx15.jpg" target="_blank"><img alt="RIMG7062amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7062amx15s.jpg" width="320"/></a><br/>清洗了之前的飛輪。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7063amx15.jpg" target="_blank"><img alt="RIMG7063amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7063amx15s.jpg" width="320"/></a><br/>最高檔以後全部都是跳2齒<br/>所以飛輪齒尖的線<br/>成為一條直線。<br/>不是像寬邊帽那樣的形狀。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7064amx15.jpg" target="_blank"><img alt="RIMG7064amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7064amx15s.jpg" width="320"/></a><br/>應該也有過不少爬坡的使用，但<br/>看低檔齒谷，漆沒有剝落<br/>幾乎沒有磨損。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7065amx15.jpg" target="_blank"><img alt="RIMG7065amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7065amx15s.jpg" width="320"/></a><br/>↑圖右下是最高檔11T，<br/>平地常用的14-16-18T這3片<br/>被鏈條滾筒磨成ω形的齒谷。<br/>買這個飛輪的原因<br/>本來是因為Shimano零件超長期缺貨<br/>從Dura-Ace到105<br/>飛輪都完全買不到，所以<br/>結果買到了有趣的東西。<br/>廠商說的是用鉻鉬鋼製成的高耐久素材，<br/>聲稱耐用性是Dura-Ace飛輪的2.5～3倍。<br/>如果這是和低檔鈦合金部分比較的話<br/>我覺得那是狡猾的說法，但<br/>實際使用下來，即使和鋼鐵部分比較<br/>耐用性也至少有2倍以上。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4377amx15.jpg" target="_blank"><img alt="RIMG4377amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4377amx15s.jpg" width="320"/></a><br/>這是引用過去的文章，<br/>這個飛輪只有在花鍵的深處和靠近這兩個<br/>非常小的部分接觸。<br/>這個輪轂的花鼓體是鈦製，但<br/>如果是鋁製的話，可能會有<br/>令人厭惡的咬合方式。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4378amx15.jpg" target="_blank"><img alt="RIMG4378amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4378amx15s.jpg" width="320"/></a><br/>拆下飛輪。<br/>飛輪空心部分正下方<br/>有黑色金屬粉和鏈油一起<br/>結成硬塊，但<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4379amx15.jpg" target="_blank"><img alt="RIMG4379amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4379amx15s.jpg" width="320"/></a><br/>很容易就能擦掉。<br/>這個粉末的真面目是<br/>輸給飛輪硬度的鏈條削屑<br/>含量很多。<br/>飛輪的高耐用性是事實，但<br/>鏈條滾筒的磨損方式<br/>也確實異於尋常。<br/><br/>Shimano等套件廠商<br/>製造更硬的飛輪<s>這種第三方廠商都做得出來</s><br/>當然不是不可能，但<br/>應該是根據與鏈條適當磨損關係<br/>設定為恰當的硬度。<br/>類似的事在煞車皮和輪圈的關係上也存在，<br/>偏離原廠規格硬度的煞車皮<br/>會加速輪圈磨損。<br/>這不是說那很不好，<br/>而是SwissStop的BXP雨天制動力<br/>是其他鞋墊沒有的出眾表現。<br/>作為代價輪圈磨損更快，<br/>對此抱怨就是無理取鬧罷了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7070amx15.jpg" target="_blank"><img alt="RIMG7070amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7070amx15s.jpg" width="320"/></a><br/>曲柄是Campagnolo Ekar<br/>鏈盤是原廠的窄寬齒44T，但<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7067amx15.jpg" target="_blank"><img alt="RIMG7067amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7067amx15s.jpg" width="320"/></a><br/>裝上了自製的鏈條守衛。<br/>Ekar的鏈盤<br/>不太容易掉鏈，但<br/>在山中溪的大阪側下坡途中的<br/>某個縫隙<br/>幾乎一定會掉鏈，所以<br/>裝了這個。<br/>之後在唯一容易掉鏈的那個地方<br/>完全沒掉過，其他情況下也<br/>沒掉過鏈。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7068amx15.jpg" target="_blank"><img alt="RIMG7068amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7068amx15s.jpg" width="320"/></a><br/>但看這個<br/>它在拚命工作・・・。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7069amx15.jpg" target="_blank"><img alt="RIMG7069amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7069amx15s.jpg" width="320"/></a><br/>↑這是掛在最高檔11T的狀態，<br/>掛在低檔30T時<br/>鏈條上側會更靠近。<br/><br/>幾乎一定掉鏈的那個著名縫隙<br/>如果在低檔附近掛著鏈條<br/>因為鏈條張力大，就不會掉鏈。<br/>不過下坡時變到低檔<br/>這不是常規操作。<br/><br/>這次低檔從30T變成了25T，<br/>試著虛擬把鏈條緊到極限<br/>看能縮短多少，發現能縮7節。<br/>所以要剪鏈條的話<br/>6節（3節）・・・有點緊，<br/>4節（2節）的話很容易能縮。<br/>低檔的25T不在普通低檔位置而在<br/>從下往上數第7片的位置，<br/>這也可能與能縮短的節數有關。<br/><br/>而且Ekar曲柄<br/>本來就沒有鏈條守衛<br/>除了極端的特定情況外<br/>幾乎沒掉過鏈，所以<br/>「預想30T設定的鏈長44×11T」不是<br/>「25T為上限的鏈長44×11T」<br/>即使拆掉這個也許沒有問題。<br/><br/>所以決定拆掉。<br/>如果之後再裝的話<br/>會裝在比現在更低的位置。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7074amxv15.jpg" target="_blank"><img alt="RIMG7074amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7074amxv15s.jpg" width="320"/></a><br/>沒有直裝台座的真圓坐管上<br/>要是前變速器之類的東西一點都沒裝<br/>看起來就非常簡潔。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7075amxv15.jpg" target="_blank"><img alt="RIMG7075amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7075amxv15s.jpg" width="320"/></a><br/>擦去污垢做了簡易涂層。<br/>能看到束帶的痕跡，但<br/>認真的話是能消掉的。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7071amxv15.jpg" target="_blank"><img alt="RIMG7071amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7071amxv15s.jpg" width="320"/></a><br/>↑拆下的鏈條守衛<br/>碳纖維坐管外徑是30mm。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7072amxv15.jpg" target="_blank"><img alt="RIMG7072amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7072amxv15s.jpg" width="320"/></a><br/>所以內外徑差是2mm，<br/>半徑兼厚度是1mm的坐管墊片剪下來<br/>放進31.8mm內徑的E型F變速器夾的內側。<br/>但實際鎖上去時，在完全鎖緊之前<br/>割口就閉合了的感覺，所以<br/>貼上薄鋁箔<br/>用砂紙磨平來調整。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7073amxv15.jpg" target="_blank"><img alt="RIMG7073amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7073amxv15s.jpg" width="320"/></a><br/>看這個<br/>感覺馬上又得麻</div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,7 +405,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">斯坦（SRAM）的MTB套件零件中有<br/>一款PG-720這樣的越野下坡用的<br/>HG花鼓體對應的7速飛輪。<br/>齒數配置是11-13-15-17-19到這裡都是跳2齒，<br/>之後是-22-25跳3齒的<br/>11-25T。<br/>雖然是7速，但飛輪的齒間距離<br/>與11速相同，下坡側的4片用<br/>塑膠墊片填充。<br/>大概因為是入門款<br/>飛輪沒有蜘蛛臂結構<br/>是每片飛輪與墊片交替安裝的規格，<br/>材質是鋼鐵（廠商說法是鉻鉬鋼）。<br/>含稅定價6600日圓，公稱重量224g，<br/>相比之下Shimano Dura-Ace R9200的<br/>11-30T公稱223g、<br/>11-34T公稱253g來看<br/>算是輕的。<br/>同樣概念的7速飛輪高端版本有<br/>XD花鼓體對應的<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=SRAM+XG-795+7-speed+cassette+sprocket+XD" target="_blank" rel="noopener sponsored" class="amz-inline">XG-795</a>這款，<br/>齒數配置是從PG-720<br/>所有齒都小1齒的10-24T，<br/>材質也是鉻鉬鋼，不過<br/>銑削處理極致，公稱重量只有136g，超輕量，<br/>但含稅定價也是71500日圓，價格離譜，<br/>錢包的輕量化也挺驚人的。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7056amx15.jpg" target="_blank"><img alt="RIMG7056amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7056amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7057amx15.jpg" target="_blank"><img alt="RIMG7057amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7057amx15s.jpg" width="320"/></a><br/>↑大概是這樣（PG-720）<br/>後輪轂是<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+FH-9000+rear+hub" target="_blank" rel="noopener sponsored" class="amz-inline">FH-9000</a>，<br/>是公路用的11速花鍵，所以<br/>塑膠墊片前面<br/>我裝了1.85mm的墊片。<br/><br/>調整完變速後，我想著<br/>只要把下坡側的調整螺栓轉到底應該就可以了，<br/>但果然超出了後變速器的預想範圍，<br/>調整螺栓的頭部從要接觸的凸起處<br/>脫離了，所以必須想對策。<br/>要放到從上往下數第8片時<br/>很容易就跨越塑膠墊片，<br/>實際上雖然沒試過，但很容易就能<br/>掉鏈到內側。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7022amx15.jpg" target="_blank"><img alt="RIMG7022amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7022amx15s.jpg" width="320"/></a><br/>後變速器是Campagnolo Athena 11速，<br/>從打開紙箱那天起（※）內外平行四邊形的夾板<br/>就做了減重孔。內側夾板有圓孔，<br/>而且是U字形斷面，<br/>我打算利用這個特點來製造「螺栓接觸點」。<br/><br/>※我沒寫「打開紙箱時」<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7042amx15.jpg" target="_blank"><img alt="RIMG7042amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7042amx15s.jpg" width="320"/></a><br/>拆下後輪，大概在11速的低檔變速時<br/>的平行四邊形位置，讓調整螺栓接觸<br/>就是這樣的感覺。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7043amx15.jpg" target="_blank"><img alt="RIMG7043amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7043amx15s.jpg" width="320"/></a><br/>裝上後輪，變到7速低檔。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7044amx15.jpg" target="_blank"><img alt="RIMG7044amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7044amx15s.jpg" width="320"/></a><br/>在那個平行四邊形位置，<br/>螺栓的頭部沒有可以接觸的凸起。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7045amx15.jpg" target="_blank"><img alt="RIMG7045amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7045amx15s.jpg" width="320"/></a><br/>這是非原廠的長螺栓，<br/>鎖進去時會變成這樣。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7046amx15.jpg" target="_blank"><img alt="RIMG7046amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7046amx15s.jpg" width="320"/></a><br/>平行四邊形內側夾板的下側<br/>螺栓螺紋稍微擦過的位置。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7025amx15.jpg" target="_blank"><img alt="RIMG7025amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7025amx15s.jpg" width="320"/></a><br/>最近Ridley的，為了通過碟煞油管而<br/>做成D形斷面的車叉杯管的切割邊緣<br/>平面部分切下來<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7023amx15.jpg" target="_blank"><img alt="RIMG7023amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7023amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7024amx15.jpg" target="_blank"><img alt="RIMG7024amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7024amx15s.jpg" width="320"/></a><br/>↑製作了這樣的東西。<br/>用膠水貼著兩片碳纖維板。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7026amx15.jpg" target="_blank"><img alt="RIMG7026amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7026amx15s.jpg" width="320"/></a><br/>有階差的部分<br/>與平行四邊形內側夾板的<br/>U字形相契合。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7027amx15.jpg" target="_blank"><img alt="RIMG7027amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7027amx15s.jpg" width="320"/></a><br/>嗯，這是失敗作。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7038amx15.jpg" target="_blank"><img alt="RIMG7038amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7038amx15s.jpg" width="320"/></a><br/>材料有限，但還有。<br/>Colnago的車叉杯管也是D形斷面，不過<br/>埋入了車把杯側螺栓的螺孔<br/>也填充了補強材，裡面沒有空心。<br/>不管怎樣，這種D形杯管<br/>對於把管杯側螺栓的鎖緊扭力<br/>固定力很弱，如果是割口間隙很小的把管<br/>幾乎要把割口完全閉合才能<br/>固定把管，有時也會發生這種情況。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7040amx15.jpg" target="_blank"><img alt="RIMG7040amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7040amx15s.jpg" width="320"/></a><br/>↑完成版。<br/>右邊的零件上無謂的孔是<br/>試錯的「錯」的部分，不過<br/>我就當作是為了輕量化和<br/>提高膠水效果的加工<br/>瞎編一個謊。<br/>左邊的零件是個方形的巨大墊圈。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7041amx15.jpg" target="_blank"><img alt="RIMG7041amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7041amx15s.jpg" width="320"/></a><br/>右邊零件的背面是這樣<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7051amx15.jpg" target="_blank"><img alt="RIMG7051amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7051amx15s.jpg" width="320"/></a><br/>下坡側調整螺栓的螺紋<br/>是標準規格的M4，但<br/>因為需要比原廠長的螺栓<br/>買了不鏽鋼螺栓來加工。<br/>如果直接用，螺紋頭的直徑會太大<br/>放不進平行四邊形的孔，所以削掉了。<br/>上面的圖左邊是原始狀態，右邊是加工後。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7053amx15.jpg" target="_blank"><img alt="RIMG7053amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7053amx15s.jpg" width="320"/></a><br/>用M5螺栓固定了零件。<br/>由於作業關係，外側夾板上<br/>有個超大的孔，這幫了大忙。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7054amx15.jpg" target="_blank"><img alt="RIMG7054amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7054amx15s.jpg" width="320"/></a><br/>在7速低檔的狀態下<br/>把調整螺栓鎖到碰到碳纖維板為止。<br/>Ergopower變速桿會咔的一聲進到8速，<br/>但鏈條會嘎啦嘎啦響，馬上退回到7速就OK。<br/>怎麼都進不了9速。<br/>與製作這個東西之前不同，<br/>已經沒有跨越塑膠墊片的行為。<br/>調整螺栓在發揮作用。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7055amx15.jpg" target="_blank"><img alt="RIMG7055amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7055amx15s.jpg" width="320"/></a><br/>↑這是變到最高檔11T的狀態。<br/>碳纖維板的凸起在低檔以外<br/>不會與後變速器的其他部分干涉。<br/><br/>這次這樣做的原因<br/>是源於路車表面積越小越牛逼<br/>這種狂信的<br/>先鋒化的原始主義禮讚。<br/><br/>順便一提，曲柄側的齒數是44T單速，<br/>按計算的齒比來說<br/>相當於39×22.1T、34T×19.3T。<br/>除非是特別陡峭的山坡<br/>一應還是能爬的。<br/>話說之前的飛輪，11T以外的<br/>之後都是跳2齒的<br/>11-12-14-16-18-<br/>20-22-24-26-28-30T<br/>的11速飛輪，但<br/>30T基本沒用，最多用26T<br/>偶爾用一下28T而已。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7062amx15.jpg" target="_blank"><img alt="RIMG7062amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7062amx15s.jpg" width="320"/></a><br/>清洗了之前的飛輪。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7063amx15.jpg" target="_blank"><img alt="RIMG7063amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7063amx15s.jpg" width="320"/></a><br/>最高檔以後全部都是跳2齒<br/>所以飛輪齒尖的線<br/>成為一條直線。<br/>不是像寬邊帽那樣的形狀。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7064amx15.jpg" target="_blank"><img alt="RIMG7064amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7064amx15s.jpg" width="320"/></a><br/>應該也有過不少爬坡的使用，但<br/>看低檔齒谷，漆沒有剝落<br/>幾乎沒有磨損。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7065amx15.jpg" target="_blank"><img alt="RIMG7065amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7065amx15s.jpg" width="320"/></a><br/>↑圖右下是最高檔11T，<br/>平地常用的14-16-18T這3片<br/>被鏈條滾筒磨成ω形的齒谷。<br/>買這個飛輪的原因<br/>本來是因為Shimano零件超長期缺貨<br/>從Dura-Ace到105<br/>飛輪都完全買不到，所以<br/>結果買到了有趣的東西。<br/>廠商說的是用鉻鉬鋼製成的高耐久素材，<br/>聲稱耐用性是Dura-Ace飛輪的2.5～3倍。<br/>如果這是和低檔鈦合金部分比較的話<br/>我覺得那是狡猾的說法，但<br/>實際使用下來，即使和鋼鐵部分比較<br/>耐用性也至少有2倍以上。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4377amx15.jpg" target="_blank"><img alt="RIMG4377amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4377amx15s.jpg" width="320"/></a><br/>這是引用過去的文章，<br/>這個飛輪只有在花鍵的深處和靠近這兩個<br/>非常小的部分接觸。<br/>這個輪轂的花鼓體是鈦製，但<br/>如果是鋁製的話，可能會有<br/>令人厭惡的咬合方式。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4378amx15.jpg" target="_blank"><img alt="RIMG4378amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4378amx15s.jpg" width="320"/></a><br/>拆下飛輪。<br/>飛輪空心部分正下方<br/>有黑色金屬粉和鏈油一起<br/>結成硬塊，但<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4379amx15.jpg" target="_blank"><img alt="RIMG4379amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG4379amx15s.jpg" width="320"/></a><br/>很容易就能擦掉。<br/>這個粉末的真面目是<br/>輸給飛輪硬度的鏈條削屑<br/>含量很多。<br/>飛輪的高耐用性是事實，但<br/>鏈條滾筒的磨損方式<br/>也確實異於尋常。<br/><br/>Shimano等套件廠商<br/>製造更硬的飛輪<s>這種第三方廠商都做得出來</s><br/>當然不是不可能，但<br/>應該是根據與鏈條適當磨損關係<br/>設定為恰當的硬度。<br/>類似的事在煞車皮和輪圈的關係上也存在，<br/>偏離原廠規格硬度的煞車皮<br/>會加速輪圈磨損。<br/>這不是說那很不好，<br/>而是SwissStop的BXP雨天制動力<br/>是其他鞋墊沒有的出眾表現。<br/>作為代價輪圈磨損更快，<br/>對此抱怨就是無理取鬧罷了。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7070amx15.jpg" target="_blank"><img alt="RIMG7070amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7070amx15s.jpg" width="320"/></a><br/>曲柄是Campagnolo Ekar<br/>鏈盤是原廠的窄寬齒44T，但<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7067amx15.jpg" target="_blank"><img alt="RIMG7067amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7067amx15s.jpg" width="320"/></a><br/>裝上了自製的鏈條守衛。<br/>Ekar的鏈盤<br/>不太容易掉鏈，但<br/>在山中溪的大阪側下坡途中的<br/>某個縫隙<br/>幾乎一定會掉鏈，所以<br/>裝了這個。<br/>之後在唯一容易掉鏈的那個地方<br/>完全沒掉過，其他情況下也<br/>沒掉過鏈。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7068amx15.jpg" target="_blank"><img alt="RIMG7068amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7068amx15s.jpg" width="320"/></a><br/>但看這個<br/>它在拚命工作・・・。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7069amx15.jpg" target="_blank"><img alt="RIMG7069amx15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7069amx15s.jpg" width="320"/></a><br/>↑這是掛在最高檔11T的狀態，<br/>掛在低檔30T時<br/>鏈條上側會更靠近。<br/><br/>幾乎一定掉鏈的那個著名縫隙<br/>如果在低檔附近掛著鏈條<br/>因為鏈條張力大，就不會掉鏈。<br/>不過下坡時變到低檔<br/>這不是常規操作。<br/><br/>這次低檔從30T變成了25T，<br/>試著虛擬把鏈條緊到極限<br/>看能縮短多少，發現能縮7節。<br/>所以要剪鏈條的話<br/>6節（3節）・・・有點緊，<br/>4節（2節）的話很容易能縮。<br/>低檔的25T不在普通低檔位置而在<br/>從下往上數第7片的位置，<br/>這也可能與能縮短的節數有關。<br/><br/>而且Ekar曲柄<br/>本來就沒有鏈條守衛<br/>除了極端的特定情況外<br/>幾乎沒掉過鏈，所以<br/>「預想30T設定的鏈長44×11T」不是<br/>「25T為上限的鏈長44×11T」<br/>即使拆掉這個也許沒有問題。<br/><br/>所以決定拆掉。<br/>如果之後再裝的話<br/>會裝在比現在更低的位置。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7074amxv15.jpg" target="_blank"><img alt="RIMG7074amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7074amxv15s.jpg" width="320"/></a><br/>沒有直裝台座的真圓坐管上<br/>要是前變速器之類的東西一點都沒裝<br/>看起來就非常簡潔。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7075amxv15.jpg" target="_blank"><img alt="RIMG7075amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7075amxv15s.jpg" width="320"/></a><br/>擦去污垢做了簡易涂層。<br/>能看到束帶的痕跡，但<br/>認真的話是能消掉的。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7071amxv15.jpg" target="_blank"><img alt="RIMG7071amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7071amxv15s.jpg" width="320"/></a><br/>↑拆下的鏈條守衛<br/>碳纖維坐管外徑是30mm。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7072amxv15.jpg" target="_blank"><img alt="RIMG7072amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7072amxv15s.jpg" width="320"/></a><br/>所以內外徑差是2mm，<br/>半徑兼厚度是1mm的坐管墊片剪下來<br/>放進31.8mm內徑的E型F變速器夾的內側。<br/>但實際鎖上去時，在完全鎖緊之前<br/>割口就閉合了的感覺，所以<br/>貼上薄鋁箔<br/>用砂紙磨平來調整。<br/><br/><a href="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7073amxv15.jpg" target="_blank"><img alt="RIMG7073amxv15.jpg" border="0" height="240" src="https://blog-imgs-170-origin.fc2.com/p/a/s/pass13/RIMG7073amxv15s.jpg" width="320"/></a><br/>看這個<br/>感覺馬上又得麻</div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

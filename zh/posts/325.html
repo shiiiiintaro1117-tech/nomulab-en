@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/325.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Wheel</p>
     <h1>重新審視翼形花鼓，以及のむラボ輪組史上最輕後輪的故事</h1>
     <p class="post-meta">March 01, 2013</p>
+    <div class="post-body"><div class="entrytext">今天也是輪組日（下略）。<br/>今天組的是2號的後輪20H。<br/>「2號的20H輪圈竟然有！」想必在等待補貨的各位會這麼說，<br/>這是Evolution花鼓的後輪20H一直沒有現貨<br/>導致一直在等待的客人的預留組。<br/><span style="color:#FF0000">花鼓的補貨會相當延遲</span>，<br/>所以我主動請客人改用陶瓷軸承型的翼形花鼓，<br/>才有了現在這個局面。<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02614amx.jpg" target="_blank"><img alt="DSC02614amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02614amxs.jpg" width="300"/></a><br/>花鼓本體的尺寸Evolution花鼓比較優秀（凸緣寬度更寬，高低落差也大一點），<br/>所以對翼形花鼓多少有點敬而遠之，<br/>但最近我才知道翼形II代已經改進了不少。<br/>區分翼形I和II的方法之一，就是看花鼓本體上是否有「CERAMIC」的<br/>刻印。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02601amx.jpg" target="_blank"><img alt="DSC02601amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02601amxs.jpg" width="300"/></a><br/>↑引自進口代理商網站。<br/>雖然不叫I、II，而是叫無logo版、有logo版，<br/>但I代的凸緣寬度是38+16.8＝54.8mm，<br/>II代的凸緣寬度是39+18＝57mm，<br/>雖然不是高低落差設計，但凸緣寬度已經接近Evolution了。<br/>這1mm、2mm的差異其實很關鍵。<br/><br/>輻孔距離左右都標示為45mm，<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02602amx.jpg" target="_blank"><img alt="DSC02602amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02602amxs.jpg" width="300"/></a><br/>把游標卡尺設定在45mm<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02609amx.jpg" target="_blank"><img alt="DSC02609amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02609amxs.jpg" width="300"/></a><br/>實際測量卻不是這樣。大約是44mm。<br/>這0.5mm的半徑雖然對輪組成品影響不大，<br/>但在計算輻條長度時就有關係了。<br/>不能完全相信製造商的公稱值。<br/>不過凸緣寬度確實是57mm（備註一下）。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09953amx.jpg" target="_blank"><img alt="DSC09953amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09953amxs.jpg" width="300"/></a><br/>另外還有個決定性的翼形I後輪花鼓的區分方法。<br/>翼形I在非飛輪側的凸緣上有減重孔。<br/>那個年代的翼形就另當別論了，但現行的翼形<br/>組出來的輪組已經和Evolution不相上下。<br/>我組過EDGE輪組的客人當中，應該有不少人在組輪時<br/>被強烈建議「還是用Evolution花鼓吧」，<br/>不過現行版的話，加上花鼓本身的輕量化，<br/>翼形也算得上是可以納入考慮的選項了。<br/><span style="font-size:large;">「<span style="color:#0000FF">翼形是輕量派</span>・<span style="color:#FF0000">Evolution是左右平衡派</span>」</span><br/>就這麼寫個朗朗上口的標語吧（笑）。<br/><br/>客人的訂單要求是飛輪側<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+Competition+2.0+bicycle+spoke" target="_blank" rel="noopener sponsored" class="amz-inline">DT Comp</a>etition、非飛輪側<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+CX-RAY+bicycle+spoke" target="_blank" rel="noopener sponsored" class="amz-inline">CX-RAY</a>，<br/>穩定性結線，後輪20H，而且我還主動請改用翼形花鼓。<br/>既然改成翼形，客人在郵件裡說「說不定能破700g？」<br/>吊架上的現成2號後輪是全DT Competition、24H、Evolution花鼓，本店實測值759g。<br/>還能再輕60g嗎？<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02627amx.jpg" target="_blank"><img alt="DSC02627amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02627amxs.jpg" width="300"/></a><br/>花鼓在195g和194g之間來回，<br/>所以挑194g的時候拍照。這樣應該輕了1g。<br/>（不，那個邏輯有問題。）<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02628amx.jpg" target="_blank"><img alt="DSC02628amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02628amxs.jpg" width="300"/></a><br/>輪圈實測平均347g，這算是不錯的成績。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02631amx.jpg" target="_blank"><img alt="DSC02631amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02631amxs.jpg" width="300"/></a><br/>CX-RAY依照計算應該是（94／2）g，<br/>實測值竟然恰好是47g。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02630amx.jpg" target="_blank"><img alt="DSC02630amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02630amxs.jpg" width="300"/></a><br/>DT Competition的部分依照計算應該是65g，但實測是63g。<br/>這一直以來都是我的疑惑，DT Competition 2.0-1.8-2.0的<br/>2.0mm平頭輻條相比，重量比可能不是90.3%，<br/>而是大約89～88%左右。<br/>好在現在本店裡有約2000根Competition輻條的庫存，<br/>下次我想實測一下來重新計算。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02642amx.jpg" target="_blank"><img alt="DSC02642amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02642amxs.jpg" width="300"/></a><br/>本想拍花鼓帽的細部照片，<br/>但不管拍多少次，下方都會出現天空怪物（影像中下方那類似生物的東西），<br/>完全拍不到精細的照片。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02649amx.jpg" target="_blank"><img alt="DSC02649amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02649amxs.jpg" width="300"/></a><br/>倒是拍到了天空怪物的照片。<br/>沒辦法把花鼓帽的詳細照片呈現給各位，真是遺憾（木訥的語氣）。<br/>鋁合金花鼓帽3個大約1g，<br/>所以20H共20個大約7g。<br/>那麼194＋345＋47＋63＋7＝<span style="font-size:large;">657g！！</span><br/><span style="color:#FF0000">呃，比吊架上的2號輕約100g…</span><br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02633amx.jpg" target="_blank"><img alt="DSC02633amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02633amxs.jpg" width="300"/></a><br/>那就來實測。<br/>用膠帶紙捲筒當底座，<br/>但這個的重量已經扣除。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02636amx.jpg" target="_blank"><img alt="DSC02636amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02636amxs.jpg" width="300"/></a><br/>先量吊架上的2號。咦，比759g還輕耶。<br/>因為還沒有結線焊接，可能是這個原因。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02635amx.jpg" target="_blank"><img alt="DSC02635amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02635amxs.jpg" width="300"/></a><br/>接著是這次的訂單2號。確實落在概估值左右。<br/>結線焊接後可能會重幾g，但700g以下是肯定的。<br/>太好了。<br/><br/>這是のむラボ輪組史上最輕的後輪，<br/>如果飛輪側也改成CX-RAY的話應該能達到約640g。<br/>但比起那樣，多加18g的代價來換取658g後輪的<br/>更扎實紮實的騎乘感，<br/>這就是我認為的最佳方案。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02637amx.jpg" target="_blank"><img alt="DSC02637amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02637amxs.jpg" width="300"/></a><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02638amx.jpg" target="_blank"><img alt="DSC02638amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02638amxs.jpg" width="300"/></a><br/>啊，另外有個小發現滿不錯的。<br/>前輪花鼓是訂單的9000 <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+Dura-Ace+9000+front+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Dura-Ace</a>，<br/>在質感上、凸緣的厚度上都滿像的。<br/>Dura-Ace那邊的陽極氧化色<br/>與其說是純黑，不如說是濃厚的深綠色。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">今天也是輪組日（下略）。<br/>今天組的是2號的後輪20H。<br/>「2號的20H輪圈竟然有！」想必在等待補貨的各位會這麼說，<br/>這是Evolution花鼓的後輪20H一直沒有現貨<br/>導致一直在等待的客人的預留組。<br/><span style="color:#FF0000">花鼓的補貨會相當延遲</span>，<br/>所以我主動請客人改用陶瓷軸承型的翼形花鼓，<br/>才有了現在這個局面。<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02614amx.jpg" target="_blank"><img alt="DSC02614amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02614amxs.jpg" width="300"/></a><br/>花鼓本體的尺寸Evolution花鼓比較優秀（凸緣寬度更寬，高低落差也大一點），<br/>所以對翼形花鼓多少有點敬而遠之，<br/>但最近我才知道翼形II代已經改進了不少。<br/>區分翼形I和II的方法之一，就是看花鼓本體上是否有「CERAMIC」的<br/>刻印。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02601amx.jpg" target="_blank"><img alt="DSC02601amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02601amxs.jpg" width="300"/></a><br/>↑引自進口代理商網站。<br/>雖然不叫I、II，而是叫無logo版、有logo版，<br/>但I代的凸緣寬度是38+16.8＝54.8mm，<br/>II代的凸緣寬度是39+18＝57mm，<br/>雖然不是高低落差設計，但凸緣寬度已經接近Evolution了。<br/>這1mm、2mm的差異其實很關鍵。<br/><br/>輻孔距離左右都標示為45mm，<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02602amx.jpg" target="_blank"><img alt="DSC02602amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02602amxs.jpg" width="300"/></a><br/>把游標卡尺設定在45mm<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02609amx.jpg" target="_blank"><img alt="DSC02609amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02609amxs.jpg" width="300"/></a><br/>實際測量卻不是這樣。大約是44mm。<br/>這0.5mm的半徑雖然對輪組成品影響不大，<br/>但在計算輻條長度時就有關係了。<br/>不能完全相信製造商的公稱值。<br/>不過凸緣寬度確實是57mm（備註一下）。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09953amx.jpg" target="_blank"><img alt="DSC09953amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC09953amxs.jpg" width="300"/></a><br/>另外還有個決定性的翼形I後輪花鼓的區分方法。<br/>翼形I在非飛輪側的凸緣上有減重孔。<br/>那個年代的翼形就另當別論了，但現行的翼形<br/>組出來的輪組已經和Evolution不相上下。<br/>我組過EDGE輪組的客人當中，應該有不少人在組輪時<br/>被強烈建議「還是用Evolution花鼓吧」，<br/>不過現行版的話，加上花鼓本身的輕量化，<br/>翼形也算得上是可以納入考慮的選項了。<br/><span style="font-size:large;">「<span style="color:#0000FF">翼形是輕量派</span>・<span style="color:#FF0000">Evolution是左右平衡派</span>」</span><br/>就這麼寫個朗朗上口的標語吧（笑）。<br/><br/>客人的訂單要求是飛輪側<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+Competition+2.0+bicycle+spoke" target="_blank" rel="noopener sponsored" class="amz-inline">DT Comp</a>etition、非飛輪側<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+CX-RAY+bicycle+spoke" target="_blank" rel="noopener sponsored" class="amz-inline">CX-RAY</a>，<br/>穩定性結線，後輪20H，而且我還主動請改用翼形花鼓。<br/>既然改成翼形，客人在郵件裡說「說不定能破700g？」<br/>吊架上的現成2號後輪是全DT Competition、24H、Evolution花鼓，本店實測值759g。<br/>還能再輕60g嗎？<br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02627amx.jpg" target="_blank"><img alt="DSC02627amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02627amxs.jpg" width="300"/></a><br/>花鼓在195g和194g之間來回，<br/>所以挑194g的時候拍照。這樣應該輕了1g。<br/>（不，那個邏輯有問題。）<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02628amx.jpg" target="_blank"><img alt="DSC02628amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02628amxs.jpg" width="300"/></a><br/>輪圈實測平均347g，這算是不錯的成績。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02631amx.jpg" target="_blank"><img alt="DSC02631amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02631amxs.jpg" width="300"/></a><br/>CX-RAY依照計算應該是（94／2）g，<br/>實測值竟然恰好是47g。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02630amx.jpg" target="_blank"><img alt="DSC02630amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02630amxs.jpg" width="300"/></a><br/>DT Competition的部分依照計算應該是65g，但實測是63g。<br/>這一直以來都是我的疑惑，DT Competition 2.0-1.8-2.0的<br/>2.0mm平頭輻條相比，重量比可能不是90.3%，<br/>而是大約89～88%左右。<br/>好在現在本店裡有約2000根Competition輻條的庫存，<br/>下次我想實測一下來重新計算。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02642amx.jpg" target="_blank"><img alt="DSC02642amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02642amxs.jpg" width="300"/></a><br/>本想拍花鼓帽的細部照片，<br/>但不管拍多少次，下方都會出現天空怪物（影像中下方那類似生物的東西），<br/>完全拍不到精細的照片。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02649amx.jpg" target="_blank"><img alt="DSC02649amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02649amxs.jpg" width="300"/></a><br/>倒是拍到了天空怪物的照片。<br/>沒辦法把花鼓帽的詳細照片呈現給各位，真是遺憾（木訥的語氣）。<br/>鋁合金花鼓帽3個大約1g，<br/>所以20H共20個大約7g。<br/>那麼194＋345＋47＋63＋7＝<span style="font-size:large;">657g！！</span><br/><span style="color:#FF0000">呃，比吊架上的2號輕約100g…</span><br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02633amx.jpg" target="_blank"><img alt="DSC02633amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02633amxs.jpg" width="300"/></a><br/>那就來實測。<br/>用膠帶紙捲筒當底座，<br/>但這個的重量已經扣除。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02636amx.jpg" target="_blank"><img alt="DSC02636amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02636amxs.jpg" width="300"/></a><br/>先量吊架上的2號。咦，比759g還輕耶。<br/>因為還沒有結線焊接，可能是這個原因。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02635amx.jpg" target="_blank"><img alt="DSC02635amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02635amxs.jpg" width="300"/></a><br/>接著是這次的訂單2號。確實落在概估值左右。<br/>結線焊接後可能會重幾g，但700g以下是肯定的。<br/>太好了。<br/><br/>這是のむラボ輪組史上最輕的後輪，<br/>如果飛輪側也改成CX-RAY的話應該能達到約640g。<br/>但比起那樣，多加18g的代價來換取658g後輪的<br/>更扎實紮實的騎乘感，<br/>這就是我認為的最佳方案。<br/><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02637amx.jpg" target="_blank"><img alt="DSC02637amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02637amxs.jpg" width="300"/></a><br/><a href="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02638amx.jpg" target="_blank"><img alt="DSC02638amx.jpg" border="0" height="225" src="https://blog-imgs-54-origin.fc2.com/p/a/s/pass13/DSC02638amxs.jpg" width="300"/></a><br/>啊，另外有個小發現滿不錯的。<br/>前輪花鼓是訂單的9000 <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Shimano+Dura-Ace+9000+front+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Dura-Ace</a>，<br/>在質感上、凸緣的厚度上都滿像的。<br/>Dura-Ace那邊的陽極氧化色<br/>與其說是純黑，不如說是濃厚的深綠色。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

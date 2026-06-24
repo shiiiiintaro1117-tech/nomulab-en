@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/6320.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>Bora Ultra WTO 45</h1>
     <p class="post-meta">July 29, 2022</p>
+    <div class="post-body"><div class="entrytext">我們店裡進了 <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Bora+Ultra+WTO+45+wheelset" target="_blank" rel="noopener sponsored" class="amz-inline">Bora Ultra WTO 45</a>。<br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00065msn5.jpg" target="_blank"><img alt="DSC00065msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00065msn5s.jpg" width="320"/></a><br/>這是顧客的訂貨。<br/>關於這款 Bora Ultra WTO，按我的看法<br/>這是現行鋼製輻條盤式煞車用<br/>完組輪組的最優解。<br/>相比非 Ultra 款的 WTO，差別在於<br/>軸承不是 USB 而是 CULT<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00066msn5.jpg" target="_blank"><img alt="DSC00066msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00066msn5s.jpg" width="320"/></a><br/>前輪轂筒是碳纖維之類的<br/>這些細節倒是不太重要。<br/>非 Ultra 款的 WTO 與 Ultra 款根本上的差別在於輞的設計。<br/>不過在討論那之前，先做檢查吧。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00070msn5.jpg" target="_blank"><img alt="DSC00070msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00070msn5s.jpg" width="320"/></a><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00071msn5.jpg" target="_blank"><img alt="DSC00071msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00071msn5s.jpg" width="320"/></a><br/>幅度幾乎沒有，<br/>左側偏離了約兩張紙的厚度。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00072msn5.jpg" target="_blank"><img alt="DSC00072msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00072msn5s.jpg" width="320"/></a><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00073msn5.jpg" target="_blank"><img alt="DSC00073msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00073msn5s.jpg" width="320"/></a><br/>趁著加緊螺帽，我把它調正。<br/>由於需要緊的是少輻側，所以很輕鬆。<br/>這款 Ultra WTO 的螺帽非常難轉，整備性差<br/>所以盡量不想去碰多輻側的所有部分。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00053msn5.jpg" target="_blank"><img alt="DSC00053msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00053msn5s.jpg" width="320"/></a><br/>接著是後輪。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00049msn5.jpg" target="_blank"><img alt="DSC00049msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00049msn5s.jpg" width="320"/></a><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00050msn5.jpg" target="_blank"><img alt="DSC00050msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00050msn5s.jpg" width="320"/></a><br/>這邊也有約一張紙的定中偏差。<br/>幅度也隱約有一處。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00051msn5.jpg" target="_blank"><img alt="DSC00051msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00051msn5s.jpg" width="320"/></a><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00052msn5.jpg" target="_blank"><img alt="DSC00052msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00052msn5s.jpg" width="320"/></a><br/>調正了定中。<br/>後輪也是少輻側加緊<br/>定中就能調出來，很順利。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00059msn5.jpg" target="_blank"><img alt="DSC00059msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00059msn5s.jpg" width="320"/></a><br/>我個人認為盤式煞車的後輪<br/>用 2:1 組法不太妥當。<br/>盤式碟座側用徑向組法這簡直是瘋了。<br/>但如果用直輻條就不會頻繁出現輻折現象的話，<br/>實際乘騎時踩煞車的時間遠少於沒踩煞車的時間，<br/>所以如果輪組作為驅動輪的特性能更好的話，<br/>完組輪組用 2:1 組法我現在也還能接受。<br/>Ｒovāl 在這裡有點怕，反自由側用了切線組法。<br/>2:1 組法的後輪不應該用左右都切線組法（反自由側用切線組法）。<br/>無論盤式煞車還是圈式煞車，<br/>一般左右法蘭寬度不對稱、左右同徑法蘭的後輪轂<br/>用 2:1 組法時，反自由側用徑向組法<br/>輻左右張力的差異會比左右同數組法還要小。<br/>但這套用在 Campagnolo 完組輪組的轂上<br/>那種超高低法蘭時，左右就差不多了<br/>（關於這個要用 G3 組法還是Ж（Zhe）組法<br/>還是 XI（叉眼）組法或有休止位相的 2:1 組法，會因組法不同而變，<br/>那就另寫一篇吧）。<br/><br/>平均上自由側稍微偏高，<br/>但差異很小，所以反自由側最高張力的輻<br/>和自由側最低張力的輻<br/>前者會高上一點。<br/>如果只看輻張力左右差異「之少」，<br/>左右不同數組法不是什麼壞東西，<br/>但要避免輻張力明顯的左右反轉<br/>反自由側就只能用徑向組法，<br/>2:1 組法但反自由側也用徑向組法<br/>就避免不了帶上輪組的那種特性（如齧合度等），<br/>而且直輻條的話少輻側輻折斷的風險高<br/>所以我手工組輪組時不採用這種方式。<br/><br/>2:1 組法且反自由側用切線組法時<br/>把輪組輻張力拉到輞允許的極限<br/>先達到極限的會是反自由側<br/>這就有點怪了。<br/>事實上 Ｒovāl 的盤式煞車後輪<br/>自由側輻的變形比較大。<br/>如我一直在寫的，這是誰都能觀察到的。<br/>這種蠢輪組也只有 Ｒovāl 才做。<br/><br/>2:1 組法反自由側用徑向組法危險，<br/>2:1 組法反自由側用切線組法也不太好，那怎麼辦？<br/>人們可能會問，那就簡單啦，<br/>後輪改用左右同數組法就行了。<br/>屆時可以加入左右異徑組法。<br/>含 2:1 組法的左右異數組法和我平時做的左右異徑組法<br/>在左右各自輻量（輻比重×根數）的加權上有差異<br/>這一點是相同的。<br/>但很多廠家會採用左右異數組法<br/>卻幾乎沒人想到左右異徑組法，我覺得很奇怪。<br/>假設左右同數組法，自由側用 <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Sapim+Strong+spoke" target="_blank" rel="noopener sponsored" class="amz-inline">Sapim Strong</a>，<br/>反自由側用 Sapim CX-Ray Super，<br/>自由側 104.3%，反自由側 54%<br/>自由側算 100 的話，反自由側就是 51.7。<br/>這裡只算輵比重和根數，忽略長度，大約是 100:50，也就是 2:1。<br/>這種配置我沒組過實際的輪組，<br/>CX-Ray Super 是一再加熱硬化的 15 號基礎輻，<br/>有種一觸即斷、再擰 1/4 圈就要彈飛的感覺，<br/>組輪組時薄如冰面的感觸，<br/>再加上極端的左右異徑組法的話<br/>就快要爆裂了，輪組根本組不了。<br/>說實話碳纖維輵的組性還好一點。<br/>2:1 組法是左右同數組法<br/>輻比重變成 100:50 的反自由側輻，<br/>像筷子在折之前一樣捆成一束融合了，<br/>所以輵比重變成 100:100，輵根數左右差變成 2:1<br/>（還是忽略長度），從輵量來講是一樣的，<br/>但跟 Strong/CX-Ray Super 的組合不同<br/>在設計和輪組上沒那麼勉強。<br/>只是從中反自由側改用切線組法<br/>輵變形量左右差就反轉了，<br/>那樣的話到頭來還是左右同數組法比較好<br/>更直接的說法就是「傻瓜別碰 2:1 組法」。<br/>別被「咱們的賣點是 2:1 組法！」的哲學綁死，<br/>認清要素的大小很重要。<br/><br/>話題換一下，1999 年的 Xyslius SSC 輪組，<br/>尤其後輪想做的是什麼？<br/>不是「想推出鋁輵的完組輪組！」<br/>而是所謂 Iso Pulse 的一個要素<br/>（另一個是反自由側輵的軌跡幾乎和法蘭切線相同）<br/>自由側徑向組法，<br/>但當時的技術認為鋼輵很危險<br/>所以用了鋁輵，這是我的理解。<br/>但之後，有直輵的話鋼輵也安全的經驗知識傳開來<br/>（也就是「習慣了」），<br/>所以 Shimano 後來推出了鋼輵的 Iso Pulse 組法輪組 Xyslius Elite。<br/>Shimano 的 7800 系輪組，<br/>還有某個時期（Shimano 11S 推出前不久）的 ZIPP<br/>也有自由側徑向組法的後輪。<br/><s>現在都停了。</s><br/>這些的反自由側，尤其 ZIPP，<br/>輵的軌跡和 Iso Pulse 不同，<br/>說白了比 Iso Pulse 差。<br/><br/>1970 年代以前的公路車（公路自行車是最近才有的說法）<br/>前後 36H 切線組法輪組是當然的，<br/>分階段賽的計時賽<br/>從車架 BB 背面開始各零件都被打穿打洞減重<br/>當作計時賽車準備，<br/>當時的輵根數是 32H。<br/>有個時代認為 32H 是「常用的話有風險的根數」。<br/>1972 年埃迪‧梅克斯在小時紀錄賽用的前輪<br/>是 28H 的徑向組法。<br/>當時對此的反應應該是 28H 也危險，徑向組法更危險，<br/>梅克斯騎一小時下來前輪都要散架了，這樣的擔心。<br/>事實上 80 年代以後公路車輪也沒普及徑向組法。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00080msn5.jpg" target="_blank"><img alt="DSC00080msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00080msn5s.jpg" width="320"/></a><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00081msn5.jpg" target="_blank"><img alt="DSC00081msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00081msn5s.jpg" width="320"/></a><br/>↑這是盤式公路車的後輪<br/>剛開始用 2:1 組法加反自由側徑向組法時的<br/>Racing 5 DB 的後輪，<br/>對單根輵來說明顯在發抖的法蘭形狀。<br/>對比這個，往上翻一點的<br/>Bora Ultra WTO 的後輪轂的法蘭來看<br/>「經驗上不用那麼害怕，<br/>已經習慣了」的法蘭就是這樣。<br/><br/>所以 2:1 組法後輪反自由側的徑向組法<br/>只要輵是直輵，就不用那麼害怕，<br/>我先前寫的「瘋了」這種觀念<br/>也有可能變成「直輵才能成立」或<br/>「28H 和徑向組法輪組常用的話最壞會死人」之類的<br/>舊觀念。<br/><br/><br/>Smart Envoy 的「Smart」<br/>不是聰明的意思，而是源自人名。<br/>這點我過去寫過好幾次。<br/>Smart Envoy 是 Smart 先生<br/>「我認為這是最好的，你就乖乖用著」<br/>非常傲慢規格的輞或輪組。<br/>比如圈式煞車用的輞<br/>前輪只有 20H，後輪只有 24H。<br/>SES（Smart Envoy System）3.4 的話<br/>前輪輞只有 38mm 高 20H 輞，<br/>後輪輞只有 42mm 高 24H 輞，<br/>但要是用戶說「前後都想要 42mm 高<br/>能出 42mm 高 20H 輞嗎」<br/>或「就想要硬後輪，能出 28H 輞嗎」<br/>Envoy 也不會答應。<br/>與其說不答應，根本上不可能答應。<br/>因為 Smart Envoy 的輞孔<br/>不是無孔輞鑽出來的<br/>而是成型時就已經打好的。<br/>所以比如某個輞要出 28H 規格<br/>就得新備一套模具，<br/>小眾的孔數很難收回模具成本<br/>商業上想避免。<br/>把自己們出於成本的規格限制<br/>改口成「我們判斷這是最好的」<br/>這一招好好運用成賣點<br/>真不愧是美國人啊。<br/><br/>那麼 Bora Ultra WTO 的輞<br/>在成型時孔就打好的這一點<br/>和 Smart Envoy 採用相同的製法。<br/>非 Ultra 的 Bora WTO<br/>針對計時賽前輪的<br/>圈式煞車前輪專用 Bora WTO77 是 16H，<br/>其他的圈式煞車用型號<br/>前輪 18H 後輪 21H，煞車區用 AC3 處理。<br/>相對盤式煞車用型號<br/>無論輞高前後都是 24H。<br/>到了 Ultra WTO<br/>WTO77 沒推出，<br/>只有盤式煞車用輪組 WTO33、WTO45、WTO60<br/>3 款展開，孔數無論哪個輞高都只有 24H，<br/>輞孔有孔振，但後輪的「右左右」<br/>翻過來的前輪是「左右左」<br/>所以前後可以共用輞。<br/>所以 Ultra WTO 某個輞高的型號<br/>只有 1 種輞。<br/>這就是除了圈式煞車衰退之外<br/>Ultra WTO 只推盤式煞車版的理由。<br/><br/>那麼 Ultra WTO 的輞<br/>比非 Ultra 的 WTO 輞輕。<br/>如我先前寫的，這比前輪轂筒用碳纖之類的<br/>更重要。<br/>我從某個確實的渠道<br/>得到了 Ultra WTO 全輞高的實測重量，<br/>不過這邊寫不了。<br/>因為可能是那個信息來源的飯碗。<br/>如果得到許可我就寫。<br/>那個重量用輞高／重量比（輞高相應的相對重量）來說<br/>比 Ｒovāl 的 Alpinist CLX 略輕。<br/>也就是說 Alpinist 在輞的輕度「只有」這方面優秀。<br/>Ultra WTO 33→45 的重量差是 28g，<br/>同 45→60 的重量差是 51g。<br/><br/>Ultra WTO 33 的輞在絕對重量上也輕於 Alpinist CLX，<br/>但對應無管胎的 Alpinist CLX II 的輞的話<br/>絕對重量和相對重量都能有一拼。<br/>另外考慮到 Ultra WTO 33 和 45 的重量差<br/>45 的輞高／重量比非常優秀。<br/>從 Ultra WTO 的 33、45、60 三個中選的話<br/>很多人應該會選 45 為最佳。<br/>我是絕對重量至上主義者，所以即使 33 和 45 的重量差<br/>在 10g 以內，也想選 33，<br/>不過輞差 10g 以內的話，從輵的總長度考慮<br/>33 和 45 的整個輪組重量可能幾乎相同<br/>或許還會反轉。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00054msn5.jpg" target="_blank"><img alt="DSC00054msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00054msn5s.jpg" width="320"/></a><br/>輞外周側除了氣嘴孔外沒有其他孔。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00056msn5.jpg" target="_blank"><img alt="DSC00056msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00056msn5s.jpg" width="320"/></a><br/>作為非 Ultra 的 WTO 的區別<br/>Ultra WTO 在空力上<br/>和內置螺帽差不多的感覺。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00058msn5.jpg" target="_blank"><img alt="DSC00058msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00058msn5s.jpg" width="320"/></a><br/>螺帽是梅花孔的樣子<br/>幾乎嵌入輞裡。<br/>從專用工具的切口來看<br/>就算輵在梅花孔中彎了<br/>螺帽大概還是能轉。<br/>比起那個，髒污堵在裡面反而更煩人。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00057msn5.jpg" target="_blank"><img alt="DSC00057msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00057msn5s.jpg" width="320"/></a><br/>↑順帶一提孔振是這樣的<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00078msn5.jpg" target="_blank"><img alt="DSC00078msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00078msn5s.jpg" width="320"/></a><br/>Ultra WTO 45 在我們店已有銷售實績了<br/>所以也已經進了備用輵。<br/>附贈的螺帽就是上面的圖。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00079msn5.jpg" target="_blank"><img alt="DSC00079msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00079msn5s.jpg" width="320"/></a><br/>最初看時候還以為輞孔上面有螺紋<br/>但其實是把大丸孔內側<br/>用螺帽的圓筒填滿罷了。<br/>這個螺帽的邊緣到輞內周側<br/>填滿的（螺帽端面輕輕飛出輞外）長度看來<br/>輞好像很厚，但那只是輞孔周圍部分<br/>沒有輵張力的部分<br/>都成型得相當薄相當輕。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00060msn5.jpg" target="_blank"><img alt="DSC00060msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00060msn5s.jpg" width="320"/></a><br/>專用工具是這樣的，<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00062msn5.jpg" target="_blank"><img alt="DSC00062msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00062msn5s.jpg" width="320"/></a><br/>切口部分通過空力條紋部分，<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00064msn5.jpg" target="_blank"><img alt="DSC00064msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00064msn5s.jpg" width="320"/></a><br/>朝著輞滑動就能卡住梅花孔。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00061msn5.jpg" target="_blank"><img alt="DSC00061msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00061msn5s.jpg" width="320"/></a><br/>啊，說明不足。<br/>當作專用工具供應的是用 8mm 扳手卡住的<br/>這個像小驅動鑽頭一樣的部分而已。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">我們店裡進了 <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Bora+Ultra+WTO+45+wheelset" target="_blank" rel="noopener sponsored" class="amz-inline">Bora Ultra WTO 45</a>。<br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00065msn5.jpg" target="_blank"><img alt="DSC00065msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00065msn5s.jpg" width="320"/></a><br/>這是顧客的訂貨。<br/>關於這款 Bora Ultra WTO，按我的看法<br/>這是現行鋼製輻條盤式煞車用<br/>完組輪組的最優解。<br/>相比非 Ultra 款的 WTO，差別在於<br/>軸承不是 USB 而是 CULT<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00066msn5.jpg" target="_blank"><img alt="DSC00066msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00066msn5s.jpg" width="320"/></a><br/>前輪轂筒是碳纖維之類的<br/>這些細節倒是不太重要。<br/>非 Ultra 款的 WTO 與 Ultra 款根本上的差別在於輞的設計。<br/>不過在討論那之前，先做檢查吧。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00070msn5.jpg" target="_blank"><img alt="DSC00070msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00070msn5s.jpg" width="320"/></a><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00071msn5.jpg" target="_blank"><img alt="DSC00071msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00071msn5s.jpg" width="320"/></a><br/>幅度幾乎沒有，<br/>左側偏離了約兩張紙的厚度。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00072msn5.jpg" target="_blank"><img alt="DSC00072msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00072msn5s.jpg" width="320"/></a><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00073msn5.jpg" target="_blank"><img alt="DSC00073msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00073msn5s.jpg" width="320"/></a><br/>趁著加緊螺帽，我把它調正。<br/>由於需要緊的是少輻側，所以很輕鬆。<br/>這款 Ultra WTO 的螺帽非常難轉，整備性差<br/>所以盡量不想去碰多輻側的所有部分。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00053msn5.jpg" target="_blank"><img alt="DSC00053msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00053msn5s.jpg" width="320"/></a><br/>接著是後輪。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00049msn5.jpg" target="_blank"><img alt="DSC00049msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00049msn5s.jpg" width="320"/></a><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00050msn5.jpg" target="_blank"><img alt="DSC00050msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00050msn5s.jpg" width="320"/></a><br/>這邊也有約一張紙的定中偏差。<br/>幅度也隱約有一處。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00051msn5.jpg" target="_blank"><img alt="DSC00051msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00051msn5s.jpg" width="320"/></a><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00052msn5.jpg" target="_blank"><img alt="DSC00052msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00052msn5s.jpg" width="320"/></a><br/>調正了定中。<br/>後輪也是少輻側加緊<br/>定中就能調出來，很順利。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00059msn5.jpg" target="_blank"><img alt="DSC00059msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00059msn5s.jpg" width="320"/></a><br/>我個人認為盤式煞車的後輪<br/>用 2:1 組法不太妥當。<br/>盤式碟座側用徑向組法這簡直是瘋了。<br/>但如果用直輻條就不會頻繁出現輻折現象的話，<br/>實際乘騎時踩煞車的時間遠少於沒踩煞車的時間，<br/>所以如果輪組作為驅動輪的特性能更好的話，<br/>完組輪組用 2:1 組法我現在也還能接受。<br/>Ｒovāl 在這裡有點怕，反自由側用了切線組法。<br/>2:1 組法的後輪不應該用左右都切線組法（反自由側用切線組法）。<br/>無論盤式煞車還是圈式煞車，<br/>一般左右法蘭寬度不對稱、左右同徑法蘭的後輪轂<br/>用 2:1 組法時，反自由側用徑向組法<br/>輻左右張力的差異會比左右同數組法還要小。<br/>但這套用在 Campagnolo 完組輪組的轂上<br/>那種超高低法蘭時，左右就差不多了<br/>（關於這個要用 G3 組法還是Ж（Zhe）組法<br/>還是 XI（叉眼）組法或有休止位相的 2:1 組法，會因組法不同而變，<br/>那就另寫一篇吧）。<br/><br/>平均上自由側稍微偏高，<br/>但差異很小，所以反自由側最高張力的輻<br/>和自由側最低張力的輻<br/>前者會高上一點。<br/>如果只看輻張力左右差異「之少」，<br/>左右不同數組法不是什麼壞東西，<br/>但要避免輻張力明顯的左右反轉<br/>反自由側就只能用徑向組法，<br/>2:1 組法但反自由側也用徑向組法<br/>就避免不了帶上輪組的那種特性（如齧合度等），<br/>而且直輻條的話少輻側輻折斷的風險高<br/>所以我手工組輪組時不採用這種方式。<br/><br/>2:1 組法且反自由側用切線組法時<br/>把輪組輻張力拉到輞允許的極限<br/>先達到極限的會是反自由側<br/>這就有點怪了。<br/>事實上 Ｒovāl 的盤式煞車後輪<br/>自由側輻的變形比較大。<br/>如我一直在寫的，這是誰都能觀察到的。<br/>這種蠢輪組也只有 Ｒovāl 才做。<br/><br/>2:1 組法反自由側用徑向組法危險，<br/>2:1 組法反自由側用切線組法也不太好，那怎麼辦？<br/>人們可能會問，那就簡單啦，<br/>後輪改用左右同數組法就行了。<br/>屆時可以加入左右異徑組法。<br/>含 2:1 組法的左右異數組法和我平時做的左右異徑組法<br/>在左右各自輻量（輻比重×根數）的加權上有差異<br/>這一點是相同的。<br/>但很多廠家會採用左右異數組法<br/>卻幾乎沒人想到左右異徑組法，我覺得很奇怪。<br/>假設左右同數組法，自由側用 <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Sapim+Strong+spoke" target="_blank" rel="noopener sponsored" class="amz-inline">Sapim Strong</a>，<br/>反自由側用 Sapim CX-Ray Super，<br/>自由側 104.3%，反自由側 54%<br/>自由側算 100 的話，反自由側就是 51.7。<br/>這裡只算輵比重和根數，忽略長度，大約是 100:50，也就是 2:1。<br/>這種配置我沒組過實際的輪組，<br/>CX-Ray Super 是一再加熱硬化的 15 號基礎輻，<br/>有種一觸即斷、再擰 1/4 圈就要彈飛的感覺，<br/>組輪組時薄如冰面的感觸，<br/>再加上極端的左右異徑組法的話<br/>就快要爆裂了，輪組根本組不了。<br/>說實話碳纖維輵的組性還好一點。<br/>2:1 組法是左右同數組法<br/>輻比重變成 100:50 的反自由側輻，<br/>像筷子在折之前一樣捆成一束融合了，<br/>所以輵比重變成 100:100，輵根數左右差變成 2:1<br/>（還是忽略長度），從輵量來講是一樣的，<br/>但跟 Strong/CX-Ray Super 的組合不同<br/>在設計和輪組上沒那麼勉強。<br/>只是從中反自由側改用切線組法<br/>輵變形量左右差就反轉了，<br/>那樣的話到頭來還是左右同數組法比較好<br/>更直接的說法就是「傻瓜別碰 2:1 組法」。<br/>別被「咱們的賣點是 2:1 組法！」的哲學綁死，<br/>認清要素的大小很重要。<br/><br/>話題換一下，1999 年的 Xyslius SSC 輪組，<br/>尤其後輪想做的是什麼？<br/>不是「想推出鋁輵的完組輪組！」<br/>而是所謂 Iso Pulse 的一個要素<br/>（另一個是反自由側輵的軌跡幾乎和法蘭切線相同）<br/>自由側徑向組法，<br/>但當時的技術認為鋼輵很危險<br/>所以用了鋁輵，這是我的理解。<br/>但之後，有直輵的話鋼輵也安全的經驗知識傳開來<br/>（也就是「習慣了」），<br/>所以 Shimano 後來推出了鋼輵的 Iso Pulse 組法輪組 Xyslius Elite。<br/>Shimano 的 7800 系輪組，<br/>還有某個時期（Shimano 11S 推出前不久）的 ZIPP<br/>也有自由側徑向組法的後輪。<br/><s>現在都停了。</s><br/>這些的反自由側，尤其 ZIPP，<br/>輵的軌跡和 Iso Pulse 不同，<br/>說白了比 Iso Pulse 差。<br/><br/>1970 年代以前的公路車（公路自行車是最近才有的說法）<br/>前後 36H 切線組法輪組是當然的，<br/>分階段賽的計時賽<br/>從車架 BB 背面開始各零件都被打穿打洞減重<br/>當作計時賽車準備，<br/>當時的輵根數是 32H。<br/>有個時代認為 32H 是「常用的話有風險的根數」。<br/>1972 年埃迪‧梅克斯在小時紀錄賽用的前輪<br/>是 28H 的徑向組法。<br/>當時對此的反應應該是 28H 也危險，徑向組法更危險，<br/>梅克斯騎一小時下來前輪都要散架了，這樣的擔心。<br/>事實上 80 年代以後公路車輪也沒普及徑向組法。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00080msn5.jpg" target="_blank"><img alt="DSC00080msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00080msn5s.jpg" width="320"/></a><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00081msn5.jpg" target="_blank"><img alt="DSC00081msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00081msn5s.jpg" width="320"/></a><br/>↑這是盤式公路車的後輪<br/>剛開始用 2:1 組法加反自由側徑向組法時的<br/>Racing 5 DB 的後輪，<br/>對單根輵來說明顯在發抖的法蘭形狀。<br/>對比這個，往上翻一點的<br/>Bora Ultra WTO 的後輪轂的法蘭來看<br/>「經驗上不用那麼害怕，<br/>已經習慣了」的法蘭就是這樣。<br/><br/>所以 2:1 組法後輪反自由側的徑向組法<br/>只要輵是直輵，就不用那麼害怕，<br/>我先前寫的「瘋了」這種觀念<br/>也有可能變成「直輵才能成立」或<br/>「28H 和徑向組法輪組常用的話最壞會死人」之類的<br/>舊觀念。<br/><br/><br/>Smart Envoy 的「Smart」<br/>不是聰明的意思，而是源自人名。<br/>這點我過去寫過好幾次。<br/>Smart Envoy 是 Smart 先生<br/>「我認為這是最好的，你就乖乖用著」<br/>非常傲慢規格的輞或輪組。<br/>比如圈式煞車用的輞<br/>前輪只有 20H，後輪只有 24H。<br/>SES（Smart Envoy System）3.4 的話<br/>前輪輞只有 38mm 高 20H 輞，<br/>後輪輞只有 42mm 高 24H 輞，<br/>但要是用戶說「前後都想要 42mm 高<br/>能出 42mm 高 20H 輞嗎」<br/>或「就想要硬後輪，能出 28H 輞嗎」<br/>Envoy 也不會答應。<br/>與其說不答應，根本上不可能答應。<br/>因為 Smart Envoy 的輞孔<br/>不是無孔輞鑽出來的<br/>而是成型時就已經打好的。<br/>所以比如某個輞要出 28H 規格<br/>就得新備一套模具，<br/>小眾的孔數很難收回模具成本<br/>商業上想避免。<br/>把自己們出於成本的規格限制<br/>改口成「我們判斷這是最好的」<br/>這一招好好運用成賣點<br/>真不愧是美國人啊。<br/><br/>那麼 Bora Ultra WTO 的輞<br/>在成型時孔就打好的這一點<br/>和 Smart Envoy 採用相同的製法。<br/>非 Ultra 的 Bora WTO<br/>針對計時賽前輪的<br/>圈式煞車前輪專用 Bora WTO77 是 16H，<br/>其他的圈式煞車用型號<br/>前輪 18H 後輪 21H，煞車區用 AC3 處理。<br/>相對盤式煞車用型號<br/>無論輞高前後都是 24H。<br/>到了 Ultra WTO<br/>WTO77 沒推出，<br/>只有盤式煞車用輪組 WTO33、WTO45、WTO60<br/>3 款展開，孔數無論哪個輞高都只有 24H，<br/>輞孔有孔振，但後輪的「右左右」<br/>翻過來的前輪是「左右左」<br/>所以前後可以共用輞。<br/>所以 Ultra WTO 某個輞高的型號<br/>只有 1 種輞。<br/>這就是除了圈式煞車衰退之外<br/>Ultra WTO 只推盤式煞車版的理由。<br/><br/>那麼 Ultra WTO 的輞<br/>比非 Ultra 的 WTO 輞輕。<br/>如我先前寫的，這比前輪轂筒用碳纖之類的<br/>更重要。<br/>我從某個確實的渠道<br/>得到了 Ultra WTO 全輞高的實測重量，<br/>不過這邊寫不了。<br/>因為可能是那個信息來源的飯碗。<br/>如果得到許可我就寫。<br/>那個重量用輞高／重量比（輞高相應的相對重量）來說<br/>比 Ｒovāl 的 Alpinist CLX 略輕。<br/>也就是說 Alpinist 在輞的輕度「只有」這方面優秀。<br/>Ultra WTO 33→45 的重量差是 28g，<br/>同 45→60 的重量差是 51g。<br/><br/>Ultra WTO 33 的輞在絕對重量上也輕於 Alpinist CLX，<br/>但對應無管胎的 Alpinist CLX II 的輞的話<br/>絕對重量和相對重量都能有一拼。<br/>另外考慮到 Ultra WTO 33 和 45 的重量差<br/>45 的輞高／重量比非常優秀。<br/>從 Ultra WTO 的 33、45、60 三個中選的話<br/>很多人應該會選 45 為最佳。<br/>我是絕對重量至上主義者，所以即使 33 和 45 的重量差<br/>在 10g 以內，也想選 33，<br/>不過輞差 10g 以內的話，從輵的總長度考慮<br/>33 和 45 的整個輪組重量可能幾乎相同<br/>或許還會反轉。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00054msn5.jpg" target="_blank"><img alt="DSC00054msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00054msn5s.jpg" width="320"/></a><br/>輞外周側除了氣嘴孔外沒有其他孔。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00056msn5.jpg" target="_blank"><img alt="DSC00056msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00056msn5s.jpg" width="320"/></a><br/>作為非 Ultra 的 WTO 的區別<br/>Ultra WTO 在空力上<br/>和內置螺帽差不多的感覺。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00058msn5.jpg" target="_blank"><img alt="DSC00058msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00058msn5s.jpg" width="320"/></a><br/>螺帽是梅花孔的樣子<br/>幾乎嵌入輞裡。<br/>從專用工具的切口來看<br/>就算輵在梅花孔中彎了<br/>螺帽大概還是能轉。<br/>比起那個，髒污堵在裡面反而更煩人。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00057msn5.jpg" target="_blank"><img alt="DSC00057msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00057msn5s.jpg" width="320"/></a><br/>↑順帶一提孔振是這樣的<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00078msn5.jpg" target="_blank"><img alt="DSC00078msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00078msn5s.jpg" width="320"/></a><br/>Ultra WTO 45 在我們店已有銷售實績了<br/>所以也已經進了備用輵。<br/>附贈的螺帽就是上面的圖。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00079msn5.jpg" target="_blank"><img alt="DSC00079msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00079msn5s.jpg" width="320"/></a><br/>最初看時候還以為輞孔上面有螺紋<br/>但其實是把大丸孔內側<br/>用螺帽的圓筒填滿罷了。<br/>這個螺帽的邊緣到輞內周側<br/>填滿的（螺帽端面輕輕飛出輞外）長度看來<br/>輞好像很厚，但那只是輞孔周圍部分<br/>沒有輵張力的部分<br/>都成型得相當薄相當輕。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00060msn5.jpg" target="_blank"><img alt="DSC00060msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00060msn5s.jpg" width="320"/></a><br/>專用工具是這樣的，<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00062msn5.jpg" target="_blank"><img alt="DSC00062msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00062msn5s.jpg" width="320"/></a><br/>切口部分通過空力條紋部分，<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00064msn5.jpg" target="_blank"><img alt="DSC00064msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00064msn5s.jpg" width="320"/></a><br/>朝著輞滑動就能卡住梅花孔。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00061msn5.jpg" target="_blank"><img alt="DSC00061msn5.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00061msn5s.jpg" width="320"/></a><br/>啊，說明不足。<br/>當作專用工具供應的是用 8mm 扳手卡住的<br/>這個像小驅動鑽頭一樣的部分而已。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

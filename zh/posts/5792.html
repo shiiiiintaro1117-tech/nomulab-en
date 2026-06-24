@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/5792.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Nomu Lab Diary</p>
     <h1>ENVE的1-45輪圈前輪重新組裝</h1>
     <p class="post-meta">July 12, 2021</p>
+    <div class="post-body"><div class="entrytext">今天也是輪子的事（以下略）。<br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03718msn4.jpg" target="_blank"><img alt="DSC03718msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03718msn4s.jpg" width="320"/></a><br/>從客人那裡收到了用ENVE的1-45管狀輪圈組裝的<br/>前輪。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03719msn4.jpg" target="_blank"><img alt="DSC03719msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03719msn4s.jpg" width="320"/></a><br/>Chris King的R45花鼓 20孔 黑色<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Sapim+CX-RAY+spoke" target="_blank" rel="noopener sponsored" class="amz-inline">CX-RAY</a><br/>用外穿輻條輻向組裝，<br/>但客人希望用Tni（Tnium Innovations公司）的Eviolite花鼓重新組裝。<br/>由於Chris King的法蘭孔間距較大，<br/>用Eviolite花鼓重新組裝時無法重複使用原輻條。<br/>如果反過來的話就可以。<br/>重新組裝時客人希望使用銀色輻條，<br/>所以反正也用不了，這就無關緊要了。<br/><br/>花鼓珠距調整部件在完全鬆動的地方<br/>卡在了花鼓軸上，<br/>導致輪子有大得無法使用的橫向搖晃。<br/>雖然不會繼續使用這個花鼓，<br/>不過還是先調整了一下珠距。<br/>當時的中心偏移大約一張紙厚，<br/>可以組成輪子。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03720msn4.jpg" target="_blank"><img alt="DSC03720msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03720msn4s.jpg" width="320"/></a><br/>在沒有跳動的輪圈上用輻向組裝的前輪，偶爾會看到，<br/>但這個前輪是按反向輪圈處理組裝的。<br/>嚴格來說，並不是有意識地按反向輪圈處理，<br/>應該只是隨便組的結果才變成這樣。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03722msn4.jpg" target="_blank"><img alt="DSC03722msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03722msn4s.jpg" width="320"/></a><br/>有一根輻條是彎的。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03723msn4.jpg" target="_blank"><img alt="DSC03723msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03723msn4s.jpg" width="320"/></a><br/>在拆卸時發現了一些問題，<br/>所以從氣門孔旁邊開始的4個螺帽始終沒有鬆動，<br/>其他的全部取下。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03724msn4.jpg" target="_blank"><img alt="DSC03724msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03724msn4s.jpg" width="320"/></a><br/>從輪圈上取出完全沒有鬆動的螺帽。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03726msn4.jpg" target="_blank"><img alt="DSC03726msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03726msn4s.jpg" width="320"/></a><br/>從EDGE到ENVE的4代內置螺帽中，<br/>這是用第2代的組裝。<br/>第1代和第2代螺帽的握持部分是六角形，<br/>但初代還在一側埋入了防鬆動的尼龍，<br/>所以尼龍側朝外時<s>任何人都</s>能一目瞭然。<br/>第3代和第4代的握持部分是四角形，<br/>形狀像通用螺帽倒過來，<br/>所以不可能裝反。<br/>而只有第2代有裝反的可能，<br/>但這個重新組裝前的輪子<br/>就是螺帽裝反了。<br/><br/>這個螺帽的長度，大約等同於<br/>通用輻條的螺紋部分長度。<br/>之所以會有問題，是因為<br/>如果螺帽裝反，就會直接進入螺紋開始部分，<br/>導致輻條的螺紋被用完，<br/>後來就無法進行振擺調整（加緊），<br/>而且容易在輻條螺紋開始部分發生斷裂。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03727msn4.jpg" target="_blank"><img alt="DSC03727msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03727msn4s.jpg" width="320"/></a><br/>輻條的端面從螺帽伸出來，但這太長了。<br/>這個螺帽的齒周口袋深度也很淺，<br/>所以即使正確方向使用，適當的輻條長度範圍也很嚴格。<br/>還有，附著的淺藍色是<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Wheelsmith+thread-locking+compound" target="_blank" rel="noopener sponsored" class="amz-inline">Wheelsmith</a>的螺紋膠。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03733msn4.jpg" target="_blank"><img alt="DSC03733msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03733msn4s.jpg" width="320"/></a><br/>↑方向錯誤，所以齒周口袋在外周側。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03730msn4.jpg" target="_blank"><img alt="DSC03730msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03730msn4s.jpg" width="320"/></a><br/>↑內周側直接進入螺紋開始部分，<br/>看起來螺紋已經用完了。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03738msn4.jpg" target="_blank"><img alt="DSC03738msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03738msn4s.jpg" width="320"/></a><br/>既然不用重複使用，就把輻條剪掉了。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03739msn4.jpg" target="_blank"><img alt="DSC03739msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03739msn4s.jpg" width="320"/></a><br/>在輻條端邊貼上標記膠帶<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03740msn4.jpg" target="_blank"><img alt="DSC03740msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03740msn4s.jpg" width="320"/></a><br/>鬆動一些<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03741msn4.jpg" target="_blank"><img alt="DSC03741msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03741msn4s.jpg" width="320"/></a><br/>翻過來。<br/>果然輻條的螺紋已經用完了。<br/>對付鋁螺帽的話，從頂部還能再強行推進一圈左右，<br/>但這個幾乎已經卡到那種程度了。<br/><br/>這第2代螺帽是在ENVE之前的EDGE時期輪圈上用的，<br/>所以不是完全不可能，但時代不吻合。<br/>輪圈上貼的ENVE貼紙，<br/>很可能不是原廠貼的，<br/>而是有各種顏色的單獨販售貼紙中的白色，<br/>後來貼上去的。<br/>那這是EDGE時代的輪圈貼上ENVE貼紙嗎？也不太對，<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03736msn4.jpg" target="_blank"><img alt="DSC03736msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03736msn4s.jpg" width="320"/></a><br/>序號是11萬6000號台，6位數，<br/>所以是ENVE之後更晚期的產品。<br/>為什麼會使用第2代螺帽，我不明白。<br/>曾考慮過是不是從破裂的EDGE 1-45輪圈上回收螺帽，<br/>進行輪圈更換，但同年代輪圈的後輪也是重新組裝希望<br/>並且已經託付，所以這種可能性不太大。<br/>另外，這個輪子的現任擁有者不是最初的擁有者，<br/><s>所以不知道那個組裝錯誤的爛店鋪在哪</s><br/>具體情況我也不清楚。<br/><br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03742msn4.jpg" target="_blank"><img alt="DSC03742msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03742msn4s.jpg" width="320"/></a><br/>組好了。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03743msn4.jpg" target="_blank"><img alt="DSC03743msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03743msn4s.jpg" width="320"/></a><br/>Eviolite花鼓 20孔 銀色CX-RAY外穿輻向組裝。<br/>平時用銀色輻條時寫的是銀色CX-RAY而不只是CX-RAY<br/>（半競賽等也一樣），<br/>但這次為了強調從黑色改變了，<br/>才寫成銀色CX-RAY。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03745msn4.jpg" target="_blank"><img alt="DSC03745msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03745msn4s.jpg" width="320"/></a><br/>↑曾經彎曲的輻條
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">今天也是輪子的事（以下略）。<br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03718msn4.jpg" target="_blank"><img alt="DSC03718msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03718msn4s.jpg" width="320"/></a><br/>從客人那裡收到了用ENVE的1-45管狀輪圈組裝的<br/>前輪。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03719msn4.jpg" target="_blank"><img alt="DSC03719msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03719msn4s.jpg" width="320"/></a><br/>Chris King的R45花鼓 20孔 黑色<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Sapim+CX-RAY+spoke" target="_blank" rel="noopener sponsored" class="amz-inline">CX-RAY</a><br/>用外穿輻條輻向組裝，<br/>但客人希望用Tni（Tnium Innovations公司）的Eviolite花鼓重新組裝。<br/>由於Chris King的法蘭孔間距較大，<br/>用Eviolite花鼓重新組裝時無法重複使用原輻條。<br/>如果反過來的話就可以。<br/>重新組裝時客人希望使用銀色輻條，<br/>所以反正也用不了，這就無關緊要了。<br/><br/>花鼓珠距調整部件在完全鬆動的地方<br/>卡在了花鼓軸上，<br/>導致輪子有大得無法使用的橫向搖晃。<br/>雖然不會繼續使用這個花鼓，<br/>不過還是先調整了一下珠距。<br/>當時的中心偏移大約一張紙厚，<br/>可以組成輪子。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03720msn4.jpg" target="_blank"><img alt="DSC03720msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03720msn4s.jpg" width="320"/></a><br/>在沒有跳動的輪圈上用輻向組裝的前輪，偶爾會看到，<br/>但這個前輪是按反向輪圈處理組裝的。<br/>嚴格來說，並不是有意識地按反向輪圈處理，<br/>應該只是隨便組的結果才變成這樣。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03722msn4.jpg" target="_blank"><img alt="DSC03722msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03722msn4s.jpg" width="320"/></a><br/>有一根輻條是彎的。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03723msn4.jpg" target="_blank"><img alt="DSC03723msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03723msn4s.jpg" width="320"/></a><br/>在拆卸時發現了一些問題，<br/>所以從氣門孔旁邊開始的4個螺帽始終沒有鬆動，<br/>其他的全部取下。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03724msn4.jpg" target="_blank"><img alt="DSC03724msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03724msn4s.jpg" width="320"/></a><br/>從輪圈上取出完全沒有鬆動的螺帽。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03726msn4.jpg" target="_blank"><img alt="DSC03726msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03726msn4s.jpg" width="320"/></a><br/>從EDGE到ENVE的4代內置螺帽中，<br/>這是用第2代的組裝。<br/>第1代和第2代螺帽的握持部分是六角形，<br/>但初代還在一側埋入了防鬆動的尼龍，<br/>所以尼龍側朝外時<s>任何人都</s>能一目瞭然。<br/>第3代和第4代的握持部分是四角形，<br/>形狀像通用螺帽倒過來，<br/>所以不可能裝反。<br/>而只有第2代有裝反的可能，<br/>但這個重新組裝前的輪子<br/>就是螺帽裝反了。<br/><br/>這個螺帽的長度，大約等同於<br/>通用輻條的螺紋部分長度。<br/>之所以會有問題，是因為<br/>如果螺帽裝反，就會直接進入螺紋開始部分，<br/>導致輻條的螺紋被用完，<br/>後來就無法進行振擺調整（加緊），<br/>而且容易在輻條螺紋開始部分發生斷裂。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03727msn4.jpg" target="_blank"><img alt="DSC03727msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03727msn4s.jpg" width="320"/></a><br/>輻條的端面從螺帽伸出來，但這太長了。<br/>這個螺帽的齒周口袋深度也很淺，<br/>所以即使正確方向使用，適當的輻條長度範圍也很嚴格。<br/>還有，附著的淺藍色是<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Wheelsmith+thread-locking+compound" target="_blank" rel="noopener sponsored" class="amz-inline">Wheelsmith</a>的螺紋膠。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03733msn4.jpg" target="_blank"><img alt="DSC03733msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03733msn4s.jpg" width="320"/></a><br/>↑方向錯誤，所以齒周口袋在外周側。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03730msn4.jpg" target="_blank"><img alt="DSC03730msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03730msn4s.jpg" width="320"/></a><br/>↑內周側直接進入螺紋開始部分，<br/>看起來螺紋已經用完了。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03738msn4.jpg" target="_blank"><img alt="DSC03738msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03738msn4s.jpg" width="320"/></a><br/>既然不用重複使用，就把輻條剪掉了。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03739msn4.jpg" target="_blank"><img alt="DSC03739msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03739msn4s.jpg" width="320"/></a><br/>在輻條端邊貼上標記膠帶<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03740msn4.jpg" target="_blank"><img alt="DSC03740msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03740msn4s.jpg" width="320"/></a><br/>鬆動一些<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03741msn4.jpg" target="_blank"><img alt="DSC03741msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03741msn4s.jpg" width="320"/></a><br/>翻過來。<br/>果然輻條的螺紋已經用完了。<br/>對付鋁螺帽的話，從頂部還能再強行推進一圈左右，<br/>但這個幾乎已經卡到那種程度了。<br/><br/>這第2代螺帽是在ENVE之前的EDGE時期輪圈上用的，<br/>所以不是完全不可能，但時代不吻合。<br/>輪圈上貼的ENVE貼紙，<br/>很可能不是原廠貼的，<br/>而是有各種顏色的單獨販售貼紙中的白色，<br/>後來貼上去的。<br/>那這是EDGE時代的輪圈貼上ENVE貼紙嗎？也不太對，<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03736msn4.jpg" target="_blank"><img alt="DSC03736msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03736msn4s.jpg" width="320"/></a><br/>序號是11萬6000號台，6位數，<br/>所以是ENVE之後更晚期的產品。<br/>為什麼會使用第2代螺帽，我不明白。<br/>曾考慮過是不是從破裂的EDGE 1-45輪圈上回收螺帽，<br/>進行輪圈更換，但同年代輪圈的後輪也是重新組裝希望<br/>並且已經託付，所以這種可能性不太大。<br/>另外，這個輪子的現任擁有者不是最初的擁有者，<br/><s>所以不知道那個組裝錯誤的爛店鋪在哪</s><br/>具體情況我也不清楚。<br/><br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03742msn4.jpg" target="_blank"><img alt="DSC03742msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03742msn4s.jpg" width="320"/></a><br/>組好了。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03743msn4.jpg" target="_blank"><img alt="DSC03743msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03743msn4s.jpg" width="320"/></a><br/>Eviolite花鼓 20孔 銀色CX-RAY外穿輻向組裝。<br/>平時用銀色輻條時寫的是銀色CX-RAY而不只是CX-RAY<br/>（半競賽等也一樣），<br/>但這次為了強調從黑色改變了，<br/>才寫成銀色CX-RAY。<br/><br/><a href="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03745msn4.jpg" target="_blank"><img alt="DSC03745msn4.jpg" border="0" height="240" src="https://blog-imgs-148-origin.fc2.com/p/a/s/pass13/DSC03745msn4s.jpg" width="320"/></a><br/>↑曾經彎曲的輻條
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

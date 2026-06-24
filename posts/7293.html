@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/index.html" style="color:white;text-decoration:none">Nomu Lab Diary</a></h1>
-    <p>Bicycle Workshop — English Edition</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/index.html">
+        <span class="brand-title">Nomu Lab Diary</span>
+        <span class="brand-subtitle">Bicycle Workshop Archive</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/index.html">Archive</a>
+      <a href="/guides/wheel-building.html">Wheel Guide</a>
+      <a href="/glossary.html">Glossary</a>
+      <a href="/about.html">About</a>
+    </nav>
     <div class="lang-toggle"><span class="lang-btn active">EN</span><a class="lang-btn" href="/zh/posts/7293.html">繁中</a></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/index.html">← All posts</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">SRAM Calu</p>
     <h1>Specifications of the Lower Mount on the Hammerhead System</h1>
     <p class="post-meta">October 19, 2024</p>
+    <div class="post-body"><div class="entrytext">Regarding <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=SRAM+Karoo+cycling+computer" target="_blank" rel="noopener sponsored" class="amz-inline">SRAM's Karoo</a>, since there's no decent Japanese manual,<br/>I'm currently compiling articles based on what I've noticed through actual use<br/>in a category called "About SRAM's Karoo".<br/>There's still plenty I haven't written about yet.<br/>Also, regarding the altitude specifications, there was a misunderstanding in my previous article<br/>which I won't delete, but I plan to write a correction article.<br/><br/>For SRAM's Karoo,<br/>you can either buy it as included in the new RED component kit,<br/>or it's available as a standalone product,<br/>but the standalone stock sold out at the distributor on first delivery<br/>and has remained out of stock from then until today.<br/>However, there should still be several dozen units circulating in Japan,<br/>and I'd like to finish writing about this before it becomes widespread.<br/><br/>As for my weakness, except for the Yupitel handheld GPS unit that came out in the past,<br/>I've never used a cycling computer that displays full-color, high-definition maps,<br/>and in that sense, when comparing it to the <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Garmin+Edge+1000+cycling+computer" target="_blank" rel="noopener sponsored" class="amz-inline">Garmin Edge 1000 series</a> as a rival product,<br/>I can't really say what's good or bad about this versus that.<br/>So when I write about SRAM's Karoo like<br/>"Wow, amazing, nowadays cycling computers can do this kind of thing!",<br/>you might think to yourself<br/>"Well, that's already implemented in Garmin though"<br/>so I might be writing things like that.<br/><br/><br/>That's the preamble; now for the main topic.<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9881amxx15x.jpg" target="_blank"><img alt="RIMG9881amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9881amxx15xs.jpg" width="320"/></a><br/>The dedicated mount that comes with SRAM's Karoo,<br/>the Hammerhead System, has<br/>the Karoo body on top, and a universal mount for cameras and lights on the bottom,<br/>to which I've attached a Rec-Mounts (レックマウント) CatEye light mount.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9884amxx15x.jpg" target="_blank"><img alt="RIMG9884amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9884amxx15xs.jpg" width="320"/></a><br/>The acronym for the Hammerhead System is<br/><span style="color:#FF0000">H</span>AMMER<span style="color:#FF0000">H</span>EAD <span style="color:#FF0000">S</span>YSTEM, so it's not HHS...but rather<br/><span style="color:#FF0000">H</span>A<span style="color:#FF0000">M</span>MERHEAD <span style="color:#FF0000">S</span>YSTEM, so HMS.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9882amxx15x.jpg" target="_blank"><img alt="RIMG9882amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9882amxx15xs.jpg" width="320"/></a><br/>There's a satisfying click when attaching and detaching,<br/>and the fixing is solid.<br/>There's a possibility it could wear and loosen with long-term use over the years,<br/>but for now there's no problem at all.<br/><br/>It's compatible with 31.8mm diameter handlebars,<br/>but for those who want to attach it to a conventional Garmin mount,<br/>or have a stem-integrated handlebar,<br/>or want to attach it between aero bars,<br/>there's an adapter included with the Karoo that you insert into the back of the unit to convert it for Garmin mounts.<br/>Rather than wanting to avoid mentioning a competitor's name,<br/>they call it a "Quarter Turn Adapter" since it's a 1/4 turn to attach.<br/><br/>Garmin calls this adapter<br/>by a de facto standard name that's become popular and dominant<br/>(unlike CatEye's light mounting base H-34, other companies are tacitly allowed to make compatible products,<br/>so it can be called a de facto standard),<br/>"Universal Mount"—quite a pretentious name.<br/>Naturally, Hammerhead<br/>would never want to use this name.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9885amxx15x.jpg" target="_blank"><img alt="RIMG9885amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9885amxx15xs.jpg" width="320"/></a><br/>Now for the main topic—the underside of the Hammerhead System.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9886amxx15x.jpg" target="_blank"><img alt="RIMG9886amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9886amxx15xs.jpg" width="320"/></a><br/>I removed the <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Rec-Mounts+CatEye+light+mount" target="_blank" rel="noopener sponsored" class="amz-inline">Rec-Mounts CatEye light mount</a>.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9887amxx15x.jpg" target="_blank"><img alt="RIMG9887amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9887amxx15xs.jpg" width="320"/></a><br/>I also removed the lower universal mount for cameras and lights, which allows angle adjustment.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9889amxx15x.jpg" target="_blank"><img alt="RIMG9889amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9889amxx15xs.jpg" width="320"/></a><br/>The back side of the Hammerhead System.<br/>The screw holes in front and back are for the universal mount,<br/>and the screw hole slightly offset from center<br/>is for the cycling computer mount.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9890amxx15x.jpg" target="_blank"><img alt="RIMG9890amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9890amxx15xs.jpg" width="320"/></a><br/>Flipping to the front side, I removed the cycling computer mount.<br/>A specialized slotted washer is sandwiched so that when sliding,<br/>the bolt shoulder doesn't rub against the plastic.<br/>The bolt is an M4 cap screw head.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9891amxx15x.jpg" target="_blank"><img alt="RIMG9891amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9891amxx15xs.jpg" width="320"/></a><br/>Looking at the back side again.<br/>The universal mount for cameras and lights<br/>is designed to be tightened with M4 countersunk screws,<br/>but the hole on this Hammerhead System<br/>for that purpose is M3.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9892amxx15x.jpg" target="_blank"><img alt="RIMG9892amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9892amxx15xs.jpg" width="320"/></a><br/>The hole spacing is also different, and when I align one side of the universal mount with a center<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9893amxx15x.jpg" target="_blank"><img alt="RIMG9893amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9893amxx15xs.jpg" width="320"/></a><br/>the other side shifts by about this much.<br/>The lower universal mount that matches this Hammerhead System<br/>isn't included with the Karoo,<br/>and there might be a dedicated version available,<br/>but since the Hammerhead SRAM Karoo's predecessor<br/>Karoo 3 only comes to Japan at the personal import level,<br/>accessories aren't very well stocked currently.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9895amxx15x.jpg" target="_blank"><img alt="RIMG9895amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9895amxx15xs.jpg" width="320"/></a><br/>However, with <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=M3+countersunk+screws+stainless" target="_blank" rel="noopener sponsored" class="amz-inline">M3 countersunk screws</a>,<br/>the contact pressure on the blue tapered portion shown in the diagram above is sufficient,<br/>so it can be fixed without problems.<br/>In the diagram above, I drew the screw length a bit too long,<br/>but I'll upload a picture of the actual product later.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9896amxx15x.jpg" target="_blank"><img alt="RIMG9896amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9896amxx15xs.jpg" width="320"/></a><br/>The shoulder length below the tapered portion<br/>must be approximately 2.5–2.8 mm.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9894amxx15x.jpg" target="_blank"><img alt="RIMG9894amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9894amxx15xs.jpg" width="320"/></a><br/>↑This is the actual product.<br/>I made it by cutting from a longer countersunk screw.<br/>The thread pitch is about 3.5 turns.<br/>If it's any longer, it hits the Hammerhead System body<br/>and you don't get enough clamping force.<br/>If it's any shorter, there aren't enough threads<br/>and the holding force becomes questionable.<br/>The tolerance on length is quite tight.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9897amxx15x.jpg" target="_blank"><img alt="RIMG9897amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9897amxx15xs.jpg" width="320"/></a><br/>I tightened an M3 countersunk screw<br/>on just one side of the camera/light lower universal mount.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9898amxx15x.jpg" target="_blank"><img alt="RIMG9898amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9898amxx15xs.jpg" width="320"/></a><br/>The other side is offset just right so the threads contact the circumference of the mount's hole.<br/>If you want to attach a light to the bottom of the Hammerhead System!<br/>try making or buying M3 countersunk screws.<br/><br/><br/><br/>Bonus<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9899amxx15x.jpg" target="_blank"><img alt="RIMG9899amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9899amxx15xs.jpg" width="320"/></a><br/>↑This is a low-head stainless M5 bolt.<br/>It comes with stainless washers,<br/>but without a washer when tightening on the universal mount<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9900amxx15x.jpg" target="_blank"><img alt="RIMG9900amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9900amxx15xs.jpg" width="320"/></a><br/>you can adjust the angle by hand with some flexibility,<br/>but it won't change angle during riding—<br/>if you tighten it to this degree it looks like this.<br/>When adjusting the angle, not only grab the mount with one hand,<br/>but also hold the Hammerhead System body with the other hand.<br/>There's a non-zero chance it could break or snap off.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9901amxx15x.jpg" target="_blank"><img alt="RIMG9901amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9901amxx15xs.jpg" width="320"/></a><br/>The bolt head side looks like this<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9902amxx15x.jpg" target="_blank"><img alt="RIMG9902amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9902amxx15xs.jpg" width="320"/></a><br/>The bulges on both sides have similar shapes<br/>and look neat, so I like them.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9903amxx15x.jpg" target="_blank"><img alt="RIMG9903amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9903amxx15xs.jpg" width="320"/></a><br/>They're sold in 10-piece sets,<br/>and I've stocked several sets in the past.<br/>This is the one from the upper part of the image.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9904amxx15x.jpg" target="_blank"><img alt="RIMG9904amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9904amxx15xs.jpg" width="320"/></a><br/>Washers are also included.<br/>The product was originally intended for bottle cage mounting bolts.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9907amxx15x.jpg" target="_blank"><img alt="RIMG9907amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9907amxx15xs.jpg" width="320"/></a><br/>I took a photo at the same angle as in the catalog,<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9909amxx15x.jpg" target="_blank"><img alt="RIMG9909amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9909amxx15xs.jpg" width="320"/></a><br/>but in the catalog image the bolt head diameter is smaller than the actual product.<br/>The text that's cut off says<br/>"Rust-resistant stainless <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=M5+stainless+low-head+bolt" target="_blank" rel="noopener sponsored" class="amz-inline">M5 low-head bolt</a> set.<br/>Suitable for use on bottle cages and more."<br/>In my environment "rust" only comes out as<br/>"rust" or "corrosion" in kanji, but<br/>in the catalog it showed up as "gold blue resistant" with a character.<br/><br/>This bolt is an ADEPT (アデプト) brand product handled by a distributor that carries Topeak and DT,<br/>the AB5 Stainless Bolt Set,<br/>with a manufacturer's suggested retail price of ¥1,000 (excl. tax) and ¥1,100 (incl. tax).<br/>The distributor's internal product number is<br/>BOS00200, and you can search for it this way too.<br/><br/>The second character of BOS is O, not zero.<br/>Their M5 Alloy Bolt set, which is<br/>4 black aluminum bolts,<br/>is BOA00700, so<br/>BOS stands for Bolt Steel,<br/>and BOA stands for Bolt Alloy.<br/>00200 is because it was the 002nd item they handled,<br/>and the last two 00s are for classification based on detailed specifications.<br/>This distributor's internal product numbers often have 00 at the end,<br/>but for example with DT's XM481 rim,<br/>RIM05702 is 27.5" 28H<br/>RIM05700 is 27.5" 32H<br/>RIM05703 is 29" 28H<br/>RIM05701 is 29" 32H<br/>—this is how the last digits are used.<br/><br/>For this stainless bolt 10-piece set,<br/>many places sell it at about ¥990 including tax,<br/>but a shop called FIND SHOP on Amazon lists it at<br/>¥1,230.<br/>Since it's a size that fits in the mail, they claim free shipping<br/>but are adding that to the product price.<br/>Shops on Yahoo Shopping selling it for around ¥1,600<br/>have breakdowns like product ¥1,600 shipping ¥0<br/>or product ¥880 shipping ¥770.<br/>Our store sells it by the piece,<br/>so if you want a low-head stainless bolt for the lower universal mount<br/>regardless of the Karoo, feel free to contact us.<br/><br/><br/>Below is advertising<s>(when you call it advertising, it stops being advertising)</s><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9911amxx15x.jpg" target="_blank"><img alt="RIMG9911amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9911amxx15xs.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9912amxx15x.jpg" target="_blank"><img alt="RIMG9912amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9912amxx15xs.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9913amxx15x.jpg" target="_blank"><img alt="RIMG9913amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9913amxx15xs.jpg" width="320"/></a><br/><span style="font-size:x-large;">REC-MOUNTS® </span>Rec-Mounts has released<br/><span style="font-size:x-large;">【H34-Light6】</span>,<br/>a universal adapter that allows you to attach cylindrical lights,<br/>mobile batteries, and the like to CatEye mounts using rubber bands.<br/>The manufacturer's direct sale price is ¥2,585 (incl. tax).<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9914amxx15x.jpg" target="_blank"><img alt="RIMG9914amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9914amxx15xs.jpg" width="320"/></a><br/>↑It's like this<br/>True to its name "universal," it's quite convenient.<br/>I've also, when using the Karoo while charging,<br/>given up this spot for a mobile battery<br/>and moved the light to the handlebar<br/>and used it <s>once or twice</s>.<br/><br/>For those concerned about the security of rubber band fixing,<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9915amxx15x.jpg" target="_blank"><img alt="RIMG9915amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9915amxx15xs.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9916amxx15x.jpg" target="_blank"><img alt="RIMG9916amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9916amxx15xs.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9918amxx15x.jpg" target="_blank"><img alt="RIMG9918amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9918amxx15xs.jpg" width="320"/></a><br/><span style="font-size:x-large;">REC-MOUNTS® </span>Rec-Mounts has released<br/><span style="font-size:x-large;">【H34-Light8】</span>,<br/>a universal adapter with the same purpose but using three cable ties for fixing<br/>instead of rubber bands.<br/>The manufacturer's direct sale price is ¥2,420 (incl. tax).<br/><br/>There are similar products with the same concept that bolt directly to the<br/>lower universal mount without going through the CatEye mount—GP-Light6 and<br/>GP-Light8 respectively. But with the cable tie version 8,<br/>you need tools to remove the light or mobile battery, which is a hassle. So if you don't mind<br/>the cycling computer mount hanging down a bit longer,<br/>it's more convenient to use the CatEye H-34 mount in between.
+</div></div>
+    <aside class="post-guides">
+      <strong>Technical archive</strong>
+      <nav aria-label="Technical guides">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">Regarding <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=SRAM+Karoo+cycling+computer" target="_blank" rel="noopener sponsored" class="amz-inline">SRAM's Karoo</a>, since there's no decent Japanese manual,<br/>I'm currently compiling articles based on what I've noticed through actual use<br/>in a category called "About SRAM's Karoo".<br/>There's still plenty I haven't written about yet.<br/>Also, regarding the altitude specifications, there was a misunderstanding in my previous article<br/>which I won't delete, but I plan to write a correction article.<br/><br/>For SRAM's Karoo,<br/>you can either buy it as included in the new RED component kit,<br/>or it's available as a standalone product,<br/>but the standalone stock sold out at the distributor on first delivery<br/>and has remained out of stock from then until today.<br/>However, there should still be several dozen units circulating in Japan,<br/>and I'd like to finish writing about this before it becomes widespread.<br/><br/>As for my weakness, except for the Yupitel handheld GPS unit that came out in the past,<br/>I've never used a cycling computer that displays full-color, high-definition maps,<br/>and in that sense, when comparing it to the <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Garmin+Edge+1000+cycling+computer" target="_blank" rel="noopener sponsored" class="amz-inline">Garmin Edge 1000 series</a> as a rival product,<br/>I can't really say what's good or bad about this versus that.<br/>So when I write about SRAM's Karoo like<br/>"Wow, amazing, nowadays cycling computers can do this kind of thing!",<br/>you might think to yourself<br/>"Well, that's already implemented in Garmin though"<br/>so I might be writing things like that.<br/><br/><br/>That's the preamble; now for the main topic.<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9881amxx15x.jpg" target="_blank"><img alt="RIMG9881amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9881amxx15xs.jpg" width="320"/></a><br/>The dedicated mount that comes with SRAM's Karoo,<br/>the Hammerhead System, has<br/>the Karoo body on top, and a universal mount for cameras and lights on the bottom,<br/>to which I've attached a Rec-Mounts (レックマウント) CatEye light mount.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9884amxx15x.jpg" target="_blank"><img alt="RIMG9884amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9884amxx15xs.jpg" width="320"/></a><br/>The acronym for the Hammerhead System is<br/><span style="color:#FF0000">H</span>AMMER<span style="color:#FF0000">H</span>EAD <span style="color:#FF0000">S</span>YSTEM, so it's not HHS...but rather<br/><span style="color:#FF0000">H</span>A<span style="color:#FF0000">M</span>MERHEAD <span style="color:#FF0000">S</span>YSTEM, so HMS.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9882amxx15x.jpg" target="_blank"><img alt="RIMG9882amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9882amxx15xs.jpg" width="320"/></a><br/>There's a satisfying click when attaching and detaching,<br/>and the fixing is solid.<br/>There's a possibility it could wear and loosen with long-term use over the years,<br/>but for now there's no problem at all.<br/><br/>It's compatible with 31.8mm diameter handlebars,<br/>but for those who want to attach it to a conventional Garmin mount,<br/>or have a stem-integrated handlebar,<br/>or want to attach it between aero bars,<br/>there's an adapter included with the Karoo that you insert into the back of the unit to convert it for Garmin mounts.<br/>Rather than wanting to avoid mentioning a competitor's name,<br/>they call it a "Quarter Turn Adapter" since it's a 1/4 turn to attach.<br/><br/>Garmin calls this adapter<br/>by a de facto standard name that's become popular and dominant<br/>(unlike CatEye's light mounting base H-34, other companies are tacitly allowed to make compatible products,<br/>so it can be called a de facto standard),<br/>"Universal Mount"—quite a pretentious name.<br/>Naturally, Hammerhead<br/>would never want to use this name.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9885amxx15x.jpg" target="_blank"><img alt="RIMG9885amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9885amxx15xs.jpg" width="320"/></a><br/>Now for the main topic—the underside of the Hammerhead System.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9886amxx15x.jpg" target="_blank"><img alt="RIMG9886amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9886amxx15xs.jpg" width="320"/></a><br/>I removed the <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Rec-Mounts+CatEye+light+mount" target="_blank" rel="noopener sponsored" class="amz-inline">Rec-Mounts CatEye light mount</a>.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9887amxx15x.jpg" target="_blank"><img alt="RIMG9887amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9887amxx15xs.jpg" width="320"/></a><br/>I also removed the lower universal mount for cameras and lights, which allows angle adjustment.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9889amxx15x.jpg" target="_blank"><img alt="RIMG9889amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9889amxx15xs.jpg" width="320"/></a><br/>The back side of the Hammerhead System.<br/>The screw holes in front and back are for the universal mount,<br/>and the screw hole slightly offset from center<br/>is for the cycling computer mount.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9890amxx15x.jpg" target="_blank"><img alt="RIMG9890amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9890amxx15xs.jpg" width="320"/></a><br/>Flipping to the front side, I removed the cycling computer mount.<br/>A specialized slotted washer is sandwiched so that when sliding,<br/>the bolt shoulder doesn't rub against the plastic.<br/>The bolt is an M4 cap screw head.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9891amxx15x.jpg" target="_blank"><img alt="RIMG9891amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9891amxx15xs.jpg" width="320"/></a><br/>Looking at the back side again.<br/>The universal mount for cameras and lights<br/>is designed to be tightened with M4 countersunk screws,<br/>but the hole on this Hammerhead System<br/>for that purpose is M3.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9892amxx15x.jpg" target="_blank"><img alt="RIMG9892amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9892amxx15xs.jpg" width="320"/></a><br/>The hole spacing is also different, and when I align one side of the universal mount with a center<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9893amxx15x.jpg" target="_blank"><img alt="RIMG9893amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9893amxx15xs.jpg" width="320"/></a><br/>the other side shifts by about this much.<br/>The lower universal mount that matches this Hammerhead System<br/>isn't included with the Karoo,<br/>and there might be a dedicated version available,<br/>but since the Hammerhead SRAM Karoo's predecessor<br/>Karoo 3 only comes to Japan at the personal import level,<br/>accessories aren't very well stocked currently.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9895amxx15x.jpg" target="_blank"><img alt="RIMG9895amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9895amxx15xs.jpg" width="320"/></a><br/>However, with <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=M3+countersunk+screws+stainless" target="_blank" rel="noopener sponsored" class="amz-inline">M3 countersunk screws</a>,<br/>the contact pressure on the blue tapered portion shown in the diagram above is sufficient,<br/>so it can be fixed without problems.<br/>In the diagram above, I drew the screw length a bit too long,<br/>but I'll upload a picture of the actual product later.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9896amxx15x.jpg" target="_blank"><img alt="RIMG9896amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9896amxx15xs.jpg" width="320"/></a><br/>The shoulder length below the tapered portion<br/>must be approximately 2.5–2.8 mm.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9894amxx15x.jpg" target="_blank"><img alt="RIMG9894amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9894amxx15xs.jpg" width="320"/></a><br/>↑This is the actual product.<br/>I made it by cutting from a longer countersunk screw.<br/>The thread pitch is about 3.5 turns.<br/>If it's any longer, it hits the Hammerhead System body<br/>and you don't get enough clamping force.<br/>If it's any shorter, there aren't enough threads<br/>and the holding force becomes questionable.<br/>The tolerance on length is quite tight.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9897amxx15x.jpg" target="_blank"><img alt="RIMG9897amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9897amxx15xs.jpg" width="320"/></a><br/>I tightened an M3 countersunk screw<br/>on just one side of the camera/light lower universal mount.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9898amxx15x.jpg" target="_blank"><img alt="RIMG9898amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9898amxx15xs.jpg" width="320"/></a><br/>The other side is offset just right so the threads contact the circumference of the mount's hole.<br/>If you want to attach a light to the bottom of the Hammerhead System!<br/>try making or buying M3 countersunk screws.<br/><br/><br/><br/>Bonus<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9899amxx15x.jpg" target="_blank"><img alt="RIMG9899amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9899amxx15xs.jpg" width="320"/></a><br/>↑This is a low-head stainless M5 bolt.<br/>It comes with stainless washers,<br/>but without a washer when tightening on the universal mount<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9900amxx15x.jpg" target="_blank"><img alt="RIMG9900amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9900amxx15xs.jpg" width="320"/></a><br/>you can adjust the angle by hand with some flexibility,<br/>but it won't change angle during riding—<br/>if you tighten it to this degree it looks like this.<br/>When adjusting the angle, not only grab the mount with one hand,<br/>but also hold the Hammerhead System body with the other hand.<br/>There's a non-zero chance it could break or snap off.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9901amxx15x.jpg" target="_blank"><img alt="RIMG9901amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9901amxx15xs.jpg" width="320"/></a><br/>The bolt head side looks like this<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9902amxx15x.jpg" target="_blank"><img alt="RIMG9902amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9902amxx15xs.jpg" width="320"/></a><br/>The bulges on both sides have similar shapes<br/>and look neat, so I like them.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9903amxx15x.jpg" target="_blank"><img alt="RIMG9903amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9903amxx15xs.jpg" width="320"/></a><br/>They're sold in 10-piece sets,<br/>and I've stocked several sets in the past.<br/>This is the one from the upper part of the image.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9904amxx15x.jpg" target="_blank"><img alt="RIMG9904amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9904amxx15xs.jpg" width="320"/></a><br/>Washers are also included.<br/>The product was originally intended for bottle cage mounting bolts.<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9907amxx15x.jpg" target="_blank"><img alt="RIMG9907amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9907amxx15xs.jpg" width="320"/></a><br/>I took a photo at the same angle as in the catalog,<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9909amxx15x.jpg" target="_blank"><img alt="RIMG9909amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9909amxx15xs.jpg" width="320"/></a><br/>but in the catalog image the bolt head diameter is smaller than the actual product.<br/>The text that's cut off says<br/>"Rust-resistant stainless <a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=M5+stainless+low-head+bolt" target="_blank" rel="noopener sponsored" class="amz-inline">M5 low-head bolt</a> set.<br/>Suitable for use on bottle cages and more."<br/>In my environment "rust" only comes out as<br/>"rust" or "corrosion" in kanji, but<br/>in the catalog it showed up as "gold blue resistant" with a character.<br/><br/>This bolt is an ADEPT (アデプト) brand product handled by a distributor that carries Topeak and DT,<br/>the AB5 Stainless Bolt Set,<br/>with a manufacturer's suggested retail price of ¥1,000 (excl. tax) and ¥1,100 (incl. tax).<br/>The distributor's internal product number is<br/>BOS00200, and you can search for it this way too.<br/><br/>The second character of BOS is O, not zero.<br/>Their M5 Alloy Bolt set, which is<br/>4 black aluminum bolts,<br/>is BOA00700, so<br/>BOS stands for Bolt Steel,<br/>and BOA stands for Bolt Alloy.<br/>00200 is because it was the 002nd item they handled,<br/>and the last two 00s are for classification based on detailed specifications.<br/>This distributor's internal product numbers often have 00 at the end,<br/>but for example with DT's XM481 rim,<br/>RIM05702 is 27.5" 28H<br/>RIM05700 is 27.5" 32H<br/>RIM05703 is 29" 28H<br/>RIM05701 is 29" 32H<br/>—this is how the last digits are used.<br/><br/>For this stainless bolt 10-piece set,<br/>many places sell it at about ¥990 including tax,<br/>but a shop called FIND SHOP on Amazon lists it at<br/>¥1,230.<br/>Since it's a size that fits in the mail, they claim free shipping<br/>but are adding that to the product price.<br/>Shops on Yahoo Shopping selling it for around ¥1,600<br/>have breakdowns like product ¥1,600 shipping ¥0<br/>or product ¥880 shipping ¥770.<br/>Our store sells it by the piece,<br/>so if you want a low-head stainless bolt for the lower universal mount<br/>regardless of the Karoo, feel free to contact us.<br/><br/><br/>Below is advertising<s>(when you call it advertising, it stops being advertising)</s><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9911amxx15x.jpg" target="_blank"><img alt="RIMG9911amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9911amxx15xs.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9912amxx15x.jpg" target="_blank"><img alt="RIMG9912amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9912amxx15xs.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9913amxx15x.jpg" target="_blank"><img alt="RIMG9913amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9913amxx15xs.jpg" width="320"/></a><br/><span style="font-size:x-large;">REC-MOUNTS® </span>Rec-Mounts has released<br/><span style="font-size:x-large;">【H34-Light6】</span>,<br/>a universal adapter that allows you to attach cylindrical lights,<br/>mobile batteries, and the like to CatEye mounts using rubber bands.<br/>The manufacturer's direct sale price is ¥2,585 (incl. tax).<br/><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9914amxx15x.jpg" target="_blank"><img alt="RIMG9914amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9914amxx15xs.jpg" width="320"/></a><br/>↑It's like this<br/>True to its name "universal," it's quite convenient.<br/>I've also, when using the Karoo while charging,<br/>given up this spot for a mobile battery<br/>and moved the light to the handlebar<br/>and used it <s>once or twice</s>.<br/><br/>For those concerned about the security of rubber band fixing,<br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9915amxx15x.jpg" target="_blank"><img alt="RIMG9915amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9915amxx15xs.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9916amxx15x.jpg" target="_blank"><img alt="RIMG9916amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9916amxx15xs.jpg" width="320"/></a><br/><a href="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9918amxx15x.jpg" target="_blank"><img alt="RIMG9918amxx15x.jpg" border="0" height="240" src="https://blog-imgs-174-origin.fc2.com/p/a/s/pass13/RIMG9918amxx15xs.jpg" width="320"/></a><br/><span style="font-size:x-large;">REC-MOUNTS® </span>Rec-Mounts has released<br/><span style="font-size:x-large;">【H34-Light8】</span>,<br/>a universal adapter with the same purpose but using three cable ties for fixing<br/>instead of rubber bands.<br/>The manufacturer's direct sale price is ¥2,420 (incl. tax).<br/><br/>There are similar products with the same concept that bolt directly to the<br/>lower universal mount without going through the CatEye mount—GP-Light6 and<br/>GP-Light8 respectively. But with the cable tie version 8,<br/>you need tools to remove the light or mobile battery, which is a hassle. So if you don't mind<br/>the cycling computer mount hanging down a bit longer,<br/>it's more convenient to use the CatEye H-34 mount in between.
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">Products Mentioned in This Article</p>
       <ul>

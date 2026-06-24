@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,37 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/4658.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Wheel Building</p>
     <h1>關於刻意的輪圈中心偏移</h1>
     <p class="post-meta">May 24, 2019</p>
+    <div class="post-body"><div class="entrytext">前陣子寫了關於中心偏移是否應該容許的話題，<br/>收到了以下這樣的留言。<br/><br/>您說中心偏移騎乘時感受不到，<br/>但在無法重新組裝、飛輪側是死胡同的半飛輪輻條輻向組的情況下，<br/>為了提高飛輪側張力而故意偏移中心，有沒有優點呢？<br/>從要素大小來看，提高飛輪側張力似乎更好。<br/>另外，用這種想法調整的輪圈<br/>被輕率地貶低為「假裝調正」，這樣好嗎？<br/><br/>希望能聽到您的意見。<br/><br/>就是這樣的留言。<br/>關於「半飛輪」這個表述，我不打算挑毛病。<br/><br/>既然要我寫得這麼清楚，那我就寫吧，<br/>左右同數輻條反飛輪側輻向組的後輪，是在<br/>可以想到的合理範圍內幾乎最差的組法，<br/>對於這種愚蠢的組法，用「不管偏移就是強行拉」來作為<br/>權宜之計，重視反飛輪側張力勝過輪圈中心，<br/>這除了是愚蠢的淺知外什麼都不是。<br/>再說一遍清楚點，這種東西就是<br/>愚蠢的淺知，是假調正，是假組輪圈。<br/>偏移多少，具體來說偏移幾毫米<br/>才能比中心對正的輪圈更好呢？<br/>啊，不用回答，現在就給你詳細說明。<br/><br/>在Zéntis或稍早期的<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Reynolds+rear+wheel+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Reynolds</a>等<br/>直輻條規格輻圈的情況下，進行4.0組法，<br/>也就是說不改變後輪輻圈<br/>就只能是反飛輪側輻向組的後輪，<br/>經常會被說「太軟了，拉得更緊一點」。<br/>但沒辦法。<br/>「中心對正」且「飛輪側張力是死胡同」的<br/>後輪，無法在保持輪圈中心的前提下<br/>提高張力。<br/><br/>我前陣子寫過即使中心偏移<br/>騎乘時也感受不到，但也寫了<br/>「只要不是嚴重偏移的話」。<br/>這個「嚴重」指的是多少呢，<br/>雖然沒有一定的標準，<br/>但大概是1毫米或頂多2毫米吧。<br/>如果輪圈偏移了那種程度，<br/>煞車設定會受到影響，<br/>所以騎乘之前就能發現偏移而想著修正。<br/><br/>或者在後輪裝在車架上的狀態下<br/>目視鏈條座與輪胎側面的間隔，<br/>如果輪圈中心「嚴重」偏移的話<br/>在那裡也能判別出來<br/>（不含左右非對稱鏈條座的車架）。<br/><br/>看後挑架或前叉刀片與輛圈或輪胎的間隔時，<br/>假如中心對正的輪圈與間隔<br/>左右各為10毫米的話，<br/>從那裡輛圈向左側靠近1毫米的話<br/>左側間隔就變成負1毫米，也就是9毫米，<br/>右側間隔變成加1毫米，也就是11毫米，<br/>差距就成了2毫米，所以目視也能相當程度地看出來。<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01097amx12.jpg" target="_blank"><img alt="DSC01097amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01097amx12s.jpg" width="320"/></a><br/>現行11S飛輪體通常的輻圈法蘭尺寸，<br/>從輻圈中心到法蘭外側，飛輪側是19毫米，<br/>反飛輪側是38毫米，用遊標卡尺夾住法蘭的話就是57毫米。<br/><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+hub+rear+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">DT</a>的左法蘭稍微窄一點，<br/>除了American Classic或Gokiso等極端尺寸的輵圈以外，<br/>Shimano、Campagnolo、<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Chris+King+rear+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Chris King</a>、Novatec<br/>都沒有大幅偏離這個數值。<br/>Evo Lite輵圈的公稱法蘭寬度，飛輪側是16.35毫米，<br/>反飛輪側是36.93毫米，<br/>這些加起來是53.28毫米，但<br/>把遊標卡尺設到53.3毫米對著輵圈法蘭時<br/>會發現這是法蘭中心～法蘭中心間的尺寸。<br/>法蘭外～外間的尺寸大概是56.5毫米左右，所以<br/>Evo Lite輵圈也屬於「法蘭寬約57毫米的輵圈」。<br/><br/>這與本話題無關，但<br/>Evo Lite輵圈的公稱鎖母間距是130毫米。<br/>雖然你可能覺得這是理所當然，但實測130毫米的個體大概不存在。<br/>幾乎都差不多130.5毫米。<br/>根據幾家車架製造商的檢驗單，<br/>後挑架寬度的公差是130毫米加2毫米、減0毫米，<br/>也就是130～132毫米是容許範圍，<br/>實測的話也有很多車架約是131毫米左右，所以<br/>我沒聽說過Evo Lite輵圈的後輪要邊拓寬車架邊裝進去才行的情況。<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01099amx12.jpg" target="_blank"><img alt="DSC01099amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01099amx12s.jpg" width="320"/></a><br/>如果這個後輪輵圈不是高低法蘭式，而是<br/>左右同徑法蘭的話，<br/>用左右同徑輻條做同數組時<br/>左右輻條張力平衡的位置在哪呢，<br/>先說答案的話就是19毫米，但<br/>做一遍迂迴的加法來看看。<br/><br/>法蘭外側到輵圈端點的尺寸<br/>飛輪側是46毫米，反飛輪側是27毫米。<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01100amx12.jpg" target="_blank"><img alt="DSC01100amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01100amx12s.jpg" width="320"/></a><br/>輵圈法蘭寬57毫米分成左右均等的28.5毫米，<br/>輛圈在正上方（正下方也一樣），<br/>右挑架到輛圈的距離是74.5毫米，<br/>左挑架到輛圈的距離是55.5毫米，<br/>差距是19毫米。<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01101amx12.jpg" target="_blank"><img alt="DSC01101amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01101amx12s.jpg" width="320"/></a><br/>試試輛圈寬20毫米的情況。<br/>那時候左右挑架到輛圈的距離<br/>各縮近10毫米，但差距還是19毫米。<br/>我想說的是，用一般尺寸的後輪輵圈組成的<br/>左右同徑輻條4.4組或6.6組的後輪，<br/>左挑架與中心卡尺間隔約19毫米時<br/>左右輻條張力差就消失了。<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01047amx12.jpg" target="_blank"><img alt="DSC01047amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01047amx12s.jpg" width="320"/></a><br/>在前前篇文章裡組Nomunlab輪圈5號的後輪時<br/>順便做了個小實驗。<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01048amx12.jpg" target="_blank"><img alt="DSC01048amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01048amx12s.jpg" width="320"/></a><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01049amx12.jpg" target="_blank"><img alt="DSC01049amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01049amx12s.jpg" width="320"/></a><br/>Evo Lite輵圈全Campagnolo 4.6組。<br/>輵圈是高低法蘭，組法用的是左右異數組，<br/>條件上比剛才那個圖好一些。<br/>這個後輪在理論上應該在<br/>中心偏移達19毫米之前<br/>左右輻條張力就平衡或反轉。<br/><br/>之所以用全Campagnolo是因為同樣的輻條的話<br/>能確實比較第1輻條張力（以下簡稱ST）和第2ST的大小。<br/><br/>如果是同樣輵圈的話<br/>第1ST飛輪側＞反飛輪側時<br/>第2ST也會飛輪側＞反飛輪側，<br/>第1ST左右相同時第2ST也左右相同。<br/>如果用Campagnolo/Campagnolo或Campagnolo/CX-RAY（半Campagnolo）的話<br/>就做不了那種比較。<br/>要注意的是，第1ST和第2ST的關係不是正比直線，所以<br/>假如第1ST的左右差是「飛輪側是反飛輪側的120%」<br/>第2ST的左右差也不一定是120%。<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01028amx12.jpg" target="_blank"><img alt="DSC01028amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01028amx12s.jpg" width="320"/></a><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01029amx12.jpg" target="_blank"><img alt="DSC01029amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01029amx12s.jpg" width="320"/></a><br/>把卡尺和挑架間隔偏移到約2.5毫米。<br/>沒有決定要偏移幾毫米。<br/>在保持縱橫向擺動已調正狀態下<br/>逐步隨意增緊反飛輪側。<br/>如同之前提過的，這已經「嚴重」偏移了，<br/>而且煞車設定會受影響，<br/>後輪裝到車架上目視就能看出偏移。<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01030amx12.jpg" target="_blank"><img alt="DSC01030amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01030amx12s.jpg" width="320"/></a><br/>用Hozan張力計量測第1ST（以下簡稱H1ST），<br/>飛輪側是127，<br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01033amx12.jpg" target="_blank"><img alt="DSC01033amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01033amx12s.jpg" width="320"/></a><br/>反飛輪側稍微超過99，<br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01036amx12.jpg" target="_blank"><img alt="DSC01036amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01036amx12s.jpg" width="320"/></a><br/>飛輪側是125，<br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01035amx12.jpg" target="_blank"><img alt="DSC01035amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01035amx12s.jpg" width="320"/></a><br/>反飛輪側稍弱於94，大概是這個樣子。<br/>組過輪圈的人會明白，<br/>這拉得相當緊了，所以還不至於很慘，<br/>但低張力時反飛輪側的數值變動會更大。<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01037amx12.jpg" target="_blank"><img alt="DSC01037amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01037amx12s.jpg" width="320"/></a><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01038amx12.jpg" target="_blank"><img alt="DSC01038amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01038amx12s.jpg" width="320"/></a><br/>進一步只增緊反飛輪側。<br/>卡尺和挑架間隔約8.5毫米。<br/>到了這個程度輪圈就不能用了呢。<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01040amx12.jpg" target="_blank"><img alt="DSC01040amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01040amx12s.jpg" width="320"/></a><br/>飛輪側稍微超過135。<br/>從約2.5毫米開始飛輪側就沒拉過了。<br/>增緊反飛輪側時飛輪側張力也會稍微上升。<br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01042amx12.jpg" target="_blank"><img alt="DSC01042amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01042amx12s.jpg" width="320"/></a><br/>反飛輪側稍弱於127。<br/>但這是變動範圍內特別張的輻條，<br/>其他11本大概都在120左右。<br/><br/>飛輪側是死胡同，<br/>所以從這裡開始鬆開飛輪側。鬆了四分之三圈。<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01043amx12.jpg" target="_blank"><img alt="DSC01043amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01043amx12s.jpg" width="320"/></a><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01044amx12.jpg" target="_blank"><img alt="DSC01044amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01044amx12s.jpg" width="320"/></a><br/>左挑架和卡尺的間隔變成約11.5毫米。<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01045amx12.jpg" target="_blank"><img alt="DSC01045amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01045amx12s.jpg" width="320"/></a><br/>飛輪側的最小值<br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01046amx12.jpg" target="_blank"><img alt="DSC01046amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01046amx12s.jpg" width="320"/></a><br/>反飛輪側的最大值<br/>平均來說還是飛輪側＞反飛輪側，但<br/>飛輪側最小值和反飛輪側最大值終於開始反轉。<br/>如果再拉一點反飛輪側平均也會反轉，但<br/>進一步增緊反飛輪側到<br/>飛輪側最大值＜反飛輪側最小值的程度<br/>感覺上大概不可能，所以<br/>就把輪圈拆了。<br/>多虧高低法蘭和4.6組，<br/>左挑架和卡尺間隔達不到19毫米就<br/>會達到左右同張力，這是無庸置疑的。<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01057amx12.jpg" target="_blank"><img alt="DSC01057amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01057amx12s.jpg" width="320"/></a><br/>不是4.0組而是4.6組的原因，是因為<br/>後來要換成半Campagnolo 4.6組。<br/>不想無謂地在售品輵圈的法蘭上增加輵條痕跡。<br/><br/>那麼，4.0組的後輪即使輵圈尺寸好了點<br/>左挑架和卡尺間隔即使到19毫米<br/>也不會左右同張力，而且<br/>不會對煞車設定造成影響的程度，約1毫米地把輛圈向左靠<br/>也增不了多少反飛輪側張力，<br/>從要素大小來看，增緊反飛輪側不是上策。<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01102amx12.jpg" target="_blank"><img alt="DSC01102amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01102amx12s.jpg" width="320"/></a><br/>這涉及到車架和前叉的精度問題，但<br/>各部件芯對正的狀況下，為了稍微增加張力就<br/>讓輛圈單獨偏移沒關係，我對這種想法無法理解。<br/><br/>儘管如此還是要偏移的話，<br/>用「假調正」來貶低它是壞事嗎？<br/>這位朋友之前就經常給我挑毛病或吹毛求疵，<br/>但沒想到思考程度差到這種地步。<br/><br/>削減睡眠時間<br/>幾乎通宵寫文章也不太好，<br/>但只要能成為值得一讀的內容就好，所以我在寫。<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01058amx12.jpg" target="_blank"><img alt="DSC01058amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01058amx12s.jpg" width="320"/></a><br/>這不是刻意抽取，但<br/>現在組著LOOK的785 Huez上<br/>裝著Nomunlab輪圈5號（中心對正）的後輪，<br/>換上Continental 23C輪胎，<br/>輪胎最寬部分和鏈條座間隔約6毫米。<br/><br/>也就是說，視車架而定，<br/>根本上刻意後輪偏移大幅度進行本身就不可能，<br/>那就應該考慮在保持輪圈中心的前提下<br/>更強力地增緊反飛輪側的方法。<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01105amx12.jpg" target="_blank"><img alt="DSC01105amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01105amx12s.jpg" width="320"/></a><br/>「為了增緊反飛輪側就偏移輪圈中心」在<br/>留言中是以提高反飛輪側輵條張力的視角來談的，但<br/>只因為只增緊反飛輪側而導致<br/>「鞋與輛圈間隔變近容易摩擦」和<br/>「反飛輪側張力上升所以不容易摩擦」這兩個要素，<br/>從容易摩擦這一點比較要素大小，間隔變近這邊是更大要素。<br/>也就是說，會更容易摩擦。<br/>不是直接安裝的話就手動扭一下煞車？<br/><br/>借用發端留言的措詞的話<br/>只要你「認可」就行了呀。<br/>輪圈中心比反飛輪側微量張力增更重要，<br/>那樣的話「認可」更高的話沒關係，但<br/>看錯了要素大小這一點我敢斷言。<br/>假如發留言的是素人的話<br/>就用「輪圈組法」作為結束（你愛怎麼偏移就偏移吧），但<br/>我若是同行的話，跟客人說「特意偏移後輪是有原因的！」<br/>就得讓客人認可。<br/><br/>而且這傢伙，即使我寫<br/>「Nomunlab視反飛輪側張力增為大要素，<br/>所以刻意把後輛圈向左偏移」<br/>好像也會咬我呢。<br/><br/>順便提一下，<br/>世界上有中心對正但飛輪側張力是死胡同，<br/>不只是煞車摩擦甚至都碰到車架的輪圈<br/>（→<a href="/zh/posts/3760.html" target="_blank" title="這裡">這裡</a>），所以<br/>輵條張力的多寡無法解決的問題<br/>就只能改變組法本身。<br/>啊對了，連結先的後輪是反飛輪側輵向組，<br/>但不是左右同數組而是2:1組。<br/>稱不上追蹤調查，但自從我重新組過後<br/>已經確認煞車摩擦和車架摩擦都消失了。<br/><br/><br/><br/><br/>除了「為了稍微增強反飛輪側」那種愚蠢理由之外，<br/>我來寫寫其他意圖性輪圈中心偏移。<br/>「前後輪的正中心一絲不差地偏不開，<br/>在車架套組的芯上」<br/>這是理想狀態，但<br/>暫且信任車架和前叉的話<br/>我用輪圈單體做中心對正。<br/>嚴格來說車架和前叉的芯不如想像那麼可信，<br/>比大多數人更清楚，但<br/>這裡就不提了。<br/>太在意的話吊架式車架沒法騎。<br/><br/>把車架和前叉放在平板上<br/>以0.1毫米單位看出芯狂，<br/>以此為根據刻意偏移前後輪來組，<br/>如果做得到的話不失為一個辦法。<br/>當然了，針對某個特定車架套組偏移組好的輪圈<br/>就沒法用在其他車架套組上，前輪若是夾器煞車的話<br/>左右反著裝上相方前叉也NG。<br/>但這不是現實的想法。<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01106amx12.jpg" target="_blank"><img alt="DSC01106amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01106amx12s.jpg" width="320"/></a><br/>在Cannondale某些車架上<br/>12毫米快拆軸的後挑架寬度是148毫米，但<br/>不是12×148毫米BOOST規格，<br/>而是「從12×142毫米狀態右側單獨延長6毫米成148毫米」<br/>藉此減輕或幾乎消除輪圈的偏心，<br/>這樣的設計存在。<br/>這種情況下車架套組的芯，也就是坐</div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,7 +405,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">前陣子寫了關於中心偏移是否應該容許的話題，<br/>收到了以下這樣的留言。<br/><br/>您說中心偏移騎乘時感受不到，<br/>但在無法重新組裝、飛輪側是死胡同的半飛輪輻條輻向組的情況下，<br/>為了提高飛輪側張力而故意偏移中心，有沒有優點呢？<br/>從要素大小來看，提高飛輪側張力似乎更好。<br/>另外，用這種想法調整的輪圈<br/>被輕率地貶低為「假裝調正」，這樣好嗎？<br/><br/>希望能聽到您的意見。<br/><br/>就是這樣的留言。<br/>關於「半飛輪」這個表述，我不打算挑毛病。<br/><br/>既然要我寫得這麼清楚，那我就寫吧，<br/>左右同數輻條反飛輪側輻向組的後輪，是在<br/>可以想到的合理範圍內幾乎最差的組法，<br/>對於這種愚蠢的組法，用「不管偏移就是強行拉」來作為<br/>權宜之計，重視反飛輪側張力勝過輪圈中心，<br/>這除了是愚蠢的淺知外什麼都不是。<br/>再說一遍清楚點，這種東西就是<br/>愚蠢的淺知，是假調正，是假組輪圈。<br/>偏移多少，具體來說偏移幾毫米<br/>才能比中心對正的輪圈更好呢？<br/>啊，不用回答，現在就給你詳細說明。<br/><br/>在Zéntis或稍早期的<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Reynolds+rear+wheel+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Reynolds</a>等<br/>直輻條規格輻圈的情況下，進行4.0組法，<br/>也就是說不改變後輪輻圈<br/>就只能是反飛輪側輻向組的後輪，<br/>經常會被說「太軟了，拉得更緊一點」。<br/>但沒辦法。<br/>「中心對正」且「飛輪側張力是死胡同」的<br/>後輪，無法在保持輪圈中心的前提下<br/>提高張力。<br/><br/>我前陣子寫過即使中心偏移<br/>騎乘時也感受不到，但也寫了<br/>「只要不是嚴重偏移的話」。<br/>這個「嚴重」指的是多少呢，<br/>雖然沒有一定的標準，<br/>但大概是1毫米或頂多2毫米吧。<br/>如果輪圈偏移了那種程度，<br/>煞車設定會受到影響，<br/>所以騎乘之前就能發現偏移而想著修正。<br/><br/>或者在後輪裝在車架上的狀態下<br/>目視鏈條座與輪胎側面的間隔，<br/>如果輪圈中心「嚴重」偏移的話<br/>在那裡也能判別出來<br/>（不含左右非對稱鏈條座的車架）。<br/><br/>看後挑架或前叉刀片與輛圈或輪胎的間隔時，<br/>假如中心對正的輪圈與間隔<br/>左右各為10毫米的話，<br/>從那裡輛圈向左側靠近1毫米的話<br/>左側間隔就變成負1毫米，也就是9毫米，<br/>右側間隔變成加1毫米，也就是11毫米，<br/>差距就成了2毫米，所以目視也能相當程度地看出來。<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01097amx12.jpg" target="_blank"><img alt="DSC01097amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01097amx12s.jpg" width="320"/></a><br/>現行11S飛輪體通常的輻圈法蘭尺寸，<br/>從輻圈中心到法蘭外側，飛輪側是19毫米，<br/>反飛輪側是38毫米，用遊標卡尺夾住法蘭的話就是57毫米。<br/><a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+hub+rear+wheel" target="_blank" rel="noopener sponsored" class="amz-inline">DT</a>的左法蘭稍微窄一點，<br/>除了American Classic或Gokiso等極端尺寸的輵圈以外，<br/>Shimano、Campagnolo、<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Chris+King+rear+hub" target="_blank" rel="noopener sponsored" class="amz-inline">Chris King</a>、Novatec<br/>都沒有大幅偏離這個數值。<br/>Evo Lite輵圈的公稱法蘭寬度，飛輪側是16.35毫米，<br/>反飛輪側是36.93毫米，<br/>這些加起來是53.28毫米，但<br/>把遊標卡尺設到53.3毫米對著輵圈法蘭時<br/>會發現這是法蘭中心～法蘭中心間的尺寸。<br/>法蘭外～外間的尺寸大概是56.5毫米左右，所以<br/>Evo Lite輵圈也屬於「法蘭寬約57毫米的輵圈」。<br/><br/>這與本話題無關，但<br/>Evo Lite輵圈的公稱鎖母間距是130毫米。<br/>雖然你可能覺得這是理所當然，但實測130毫米的個體大概不存在。<br/>幾乎都差不多130.5毫米。<br/>根據幾家車架製造商的檢驗單，<br/>後挑架寬度的公差是130毫米加2毫米、減0毫米，<br/>也就是130～132毫米是容許範圍，<br/>實測的話也有很多車架約是131毫米左右，所以<br/>我沒聽說過Evo Lite輵圈的後輪要邊拓寬車架邊裝進去才行的情況。<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01099amx12.jpg" target="_blank"><img alt="DSC01099amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01099amx12s.jpg" width="320"/></a><br/>如果這個後輪輵圈不是高低法蘭式，而是<br/>左右同徑法蘭的話，<br/>用左右同徑輻條做同數組時<br/>左右輻條張力平衡的位置在哪呢，<br/>先說答案的話就是19毫米，但<br/>做一遍迂迴的加法來看看。<br/><br/>法蘭外側到輵圈端點的尺寸<br/>飛輪側是46毫米，反飛輪側是27毫米。<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01100amx12.jpg" target="_blank"><img alt="DSC01100amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01100amx12s.jpg" width="320"/></a><br/>輵圈法蘭寬57毫米分成左右均等的28.5毫米，<br/>輛圈在正上方（正下方也一樣），<br/>右挑架到輛圈的距離是74.5毫米，<br/>左挑架到輛圈的距離是55.5毫米，<br/>差距是19毫米。<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01101amx12.jpg" target="_blank"><img alt="DSC01101amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01101amx12s.jpg" width="320"/></a><br/>試試輛圈寬20毫米的情況。<br/>那時候左右挑架到輛圈的距離<br/>各縮近10毫米，但差距還是19毫米。<br/>我想說的是，用一般尺寸的後輪輵圈組成的<br/>左右同徑輻條4.4組或6.6組的後輪，<br/>左挑架與中心卡尺間隔約19毫米時<br/>左右輻條張力差就消失了。<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01047amx12.jpg" target="_blank"><img alt="DSC01047amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01047amx12s.jpg" width="320"/></a><br/>在前前篇文章裡組Nomunlab輪圈5號的後輪時<br/>順便做了個小實驗。<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01048amx12.jpg" target="_blank"><img alt="DSC01048amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01048amx12s.jpg" width="320"/></a><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01049amx12.jpg" target="_blank"><img alt="DSC01049amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01049amx12s.jpg" width="320"/></a><br/>Evo Lite輵圈全Campagnolo 4.6組。<br/>輵圈是高低法蘭，組法用的是左右異數組，<br/>條件上比剛才那個圖好一些。<br/>這個後輪在理論上應該在<br/>中心偏移達19毫米之前<br/>左右輻條張力就平衡或反轉。<br/><br/>之所以用全Campagnolo是因為同樣的輻條的話<br/>能確實比較第1輻條張力（以下簡稱ST）和第2ST的大小。<br/><br/>如果是同樣輵圈的話<br/>第1ST飛輪側＞反飛輪側時<br/>第2ST也會飛輪側＞反飛輪側，<br/>第1ST左右相同時第2ST也左右相同。<br/>如果用Campagnolo/Campagnolo或Campagnolo/CX-RAY（半Campagnolo）的話<br/>就做不了那種比較。<br/>要注意的是，第1ST和第2ST的關係不是正比直線，所以<br/>假如第1ST的左右差是「飛輪側是反飛輪側的120%」<br/>第2ST的左右差也不一定是120%。<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01028amx12.jpg" target="_blank"><img alt="DSC01028amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01028amx12s.jpg" width="320"/></a><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01029amx12.jpg" target="_blank"><img alt="DSC01029amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01029amx12s.jpg" width="320"/></a><br/>把卡尺和挑架間隔偏移到約2.5毫米。<br/>沒有決定要偏移幾毫米。<br/>在保持縱橫向擺動已調正狀態下<br/>逐步隨意增緊反飛輪側。<br/>如同之前提過的，這已經「嚴重」偏移了，<br/>而且煞車設定會受影響，<br/>後輪裝到車架上目視就能看出偏移。<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01030amx12.jpg" target="_blank"><img alt="DSC01030amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01030amx12s.jpg" width="320"/></a><br/>用Hozan張力計量測第1ST（以下簡稱H1ST），<br/>飛輪側是127，<br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01033amx12.jpg" target="_blank"><img alt="DSC01033amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01033amx12s.jpg" width="320"/></a><br/>反飛輪側稍微超過99，<br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01036amx12.jpg" target="_blank"><img alt="DSC01036amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01036amx12s.jpg" width="320"/></a><br/>飛輪側是125，<br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01035amx12.jpg" target="_blank"><img alt="DSC01035amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01035amx12s.jpg" width="320"/></a><br/>反飛輪側稍弱於94，大概是這個樣子。<br/>組過輪圈的人會明白，<br/>這拉得相當緊了，所以還不至於很慘，<br/>但低張力時反飛輪側的數值變動會更大。<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01037amx12.jpg" target="_blank"><img alt="DSC01037amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01037amx12s.jpg" width="320"/></a><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01038amx12.jpg" target="_blank"><img alt="DSC01038amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01038amx12s.jpg" width="320"/></a><br/>進一步只增緊反飛輪側。<br/>卡尺和挑架間隔約8.5毫米。<br/>到了這個程度輪圈就不能用了呢。<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01040amx12.jpg" target="_blank"><img alt="DSC01040amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01040amx12s.jpg" width="320"/></a><br/>飛輪側稍微超過135。<br/>從約2.5毫米開始飛輪側就沒拉過了。<br/>增緊反飛輪側時飛輪側張力也會稍微上升。<br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01042amx12.jpg" target="_blank"><img alt="DSC01042amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01042amx12s.jpg" width="320"/></a><br/>反飛輪側稍弱於127。<br/>但這是變動範圍內特別張的輻條，<br/>其他11本大概都在120左右。<br/><br/>飛輪側是死胡同，<br/>所以從這裡開始鬆開飛輪側。鬆了四分之三圈。<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01043amx12.jpg" target="_blank"><img alt="DSC01043amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01043amx12s.jpg" width="320"/></a><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01044amx12.jpg" target="_blank"><img alt="DSC01044amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01044amx12s.jpg" width="320"/></a><br/>左挑架和卡尺的間隔變成約11.5毫米。<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01045amx12.jpg" target="_blank"><img alt="DSC01045amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01045amx12s.jpg" width="320"/></a><br/>飛輪側的最小值<br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01046amx12.jpg" target="_blank"><img alt="DSC01046amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01046amx12s.jpg" width="320"/></a><br/>反飛輪側的最大值<br/>平均來說還是飛輪側＞反飛輪側，但<br/>飛輪側最小值和反飛輪側最大值終於開始反轉。<br/>如果再拉一點反飛輪側平均也會反轉，但<br/>進一步增緊反飛輪側到<br/>飛輪側最大值＜反飛輪側最小值的程度<br/>感覺上大概不可能，所以<br/>就把輪圈拆了。<br/>多虧高低法蘭和4.6組，<br/>左挑架和卡尺間隔達不到19毫米就<br/>會達到左右同張力，這是無庸置疑的。<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01057amx12.jpg" target="_blank"><img alt="DSC01057amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01057amx12s.jpg" width="320"/></a><br/>不是4.0組而是4.6組的原因，是因為<br/>後來要換成半Campagnolo 4.6組。<br/>不想無謂地在售品輵圈的法蘭上增加輵條痕跡。<br/><br/>那麼，4.0組的後輪即使輵圈尺寸好了點<br/>左挑架和卡尺間隔即使到19毫米<br/>也不會左右同張力，而且<br/>不會對煞車設定造成影響的程度，約1毫米地把輛圈向左靠<br/>也增不了多少反飛輪側張力，<br/>從要素大小來看，增緊反飛輪側不是上策。<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01102amx12.jpg" target="_blank"><img alt="DSC01102amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01102amx12s.jpg" width="320"/></a><br/>這涉及到車架和前叉的精度問題，但<br/>各部件芯對正的狀況下，為了稍微增加張力就<br/>讓輛圈單獨偏移沒關係，我對這種想法無法理解。<br/><br/>儘管如此還是要偏移的話，<br/>用「假調正」來貶低它是壞事嗎？<br/>這位朋友之前就經常給我挑毛病或吹毛求疵，<br/>但沒想到思考程度差到這種地步。<br/><br/>削減睡眠時間<br/>幾乎通宵寫文章也不太好，<br/>但只要能成為值得一讀的內容就好，所以我在寫。<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01058amx12.jpg" target="_blank"><img alt="DSC01058amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01058amx12s.jpg" width="320"/></a><br/>這不是刻意抽取，但<br/>現在組著LOOK的785 Huez上<br/>裝著Nomunlab輪圈5號（中心對正）的後輪，<br/>換上Continental 23C輪胎，<br/>輪胎最寬部分和鏈條座間隔約6毫米。<br/><br/>也就是說，視車架而定，<br/>根本上刻意後輪偏移大幅度進行本身就不可能，<br/>那就應該考慮在保持輪圈中心的前提下<br/>更強力地增緊反飛輪側的方法。<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01105amx12.jpg" target="_blank"><img alt="DSC01105amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01105amx12s.jpg" width="320"/></a><br/>「為了增緊反飛輪側就偏移輪圈中心」在<br/>留言中是以提高反飛輪側輵條張力的視角來談的，但<br/>只因為只增緊反飛輪側而導致<br/>「鞋與輛圈間隔變近容易摩擦」和<br/>「反飛輪側張力上升所以不容易摩擦」這兩個要素，<br/>從容易摩擦這一點比較要素大小，間隔變近這邊是更大要素。<br/>也就是說，會更容易摩擦。<br/>不是直接安裝的話就手動扭一下煞車？<br/><br/>借用發端留言的措詞的話<br/>只要你「認可」就行了呀。<br/>輪圈中心比反飛輪側微量張力增更重要，<br/>那樣的話「認可」更高的話沒關係，但<br/>看錯了要素大小這一點我敢斷言。<br/>假如發留言的是素人的話<br/>就用「輪圈組法」作為結束（你愛怎麼偏移就偏移吧），但<br/>我若是同行的話，跟客人說「特意偏移後輪是有原因的！」<br/>就得讓客人認可。<br/><br/>而且這傢伙，即使我寫<br/>「Nomunlab視反飛輪側張力增為大要素，<br/>所以刻意把後輛圈向左偏移」<br/>好像也會咬我呢。<br/><br/>順便提一下，<br/>世界上有中心對正但飛輪側張力是死胡同，<br/>不只是煞車摩擦甚至都碰到車架的輪圈<br/>（→<a href="/zh/posts/3760.html" target="_blank" title="這裡">這裡</a>），所以<br/>輵條張力的多寡無法解決的問題<br/>就只能改變組法本身。<br/>啊對了，連結先的後輪是反飛輪側輵向組，<br/>但不是左右同數組而是2:1組。<br/>稱不上追蹤調查，但自從我重新組過後<br/>已經確認煞車摩擦和車架摩擦都消失了。<br/><br/><br/><br/><br/>除了「為了稍微增強反飛輪側」那種愚蠢理由之外，<br/>我來寫寫其他意圖性輪圈中心偏移。<br/>「前後輪的正中心一絲不差地偏不開，<br/>在車架套組的芯上」<br/>這是理想狀態，但<br/>暫且信任車架和前叉的話<br/>我用輪圈單體做中心對正。<br/>嚴格來說車架和前叉的芯不如想像那麼可信，<br/>比大多數人更清楚，但<br/>這裡就不提了。<br/>太在意的話吊架式車架沒法騎。<br/><br/>把車架和前叉放在平板上<br/>以0.1毫米單位看出芯狂，<br/>以此為根據刻意偏移前後輪來組，<br/>如果做得到的話不失為一個辦法。<br/>當然了，針對某個特定車架套組偏移組好的輪圈<br/>就沒法用在其他車架套組上，前輪若是夾器煞車的話<br/>左右反著裝上相方前叉也NG。<br/>但這不是現實的想法。<br/><br/><a href="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01106amx12.jpg" target="_blank"><img alt="DSC01106amx12.jpg" border="0" height="240" src="https://blog-imgs-127-origin.fc2.com/p/a/s/pass13/DSC01106amx12s.jpg" width="320"/></a><br/>在Cannondale某些車架上<br/>12毫米快拆軸的後挑架寬度是148毫米，但<br/>不是12×148毫米BOOST規格，<br/>而是「從12×142毫米狀態右側單獨延長6毫米成148毫米」<br/>藉此減輕或幾乎消除輪圈的偏心，<br/>這樣的設計存在。<br/>這種情況下車架套組的芯，也就是坐</div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

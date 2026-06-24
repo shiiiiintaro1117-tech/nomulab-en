@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/4370.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Other Equipment</p>
     <h1>關於單速飛輪螺栓的長度</h1>
     <p class="post-meta">November 20, 2018</p>
+    <div class="post-body"><div class="entrytext">我來寫寫前變單速飛輪螺栓的事。<br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07737amx9.jpg" target="_blank"><img alt="DSC07737amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07737amx9s.jpg" width="320"/></a><br/>上面的圖片是來自同一廠商的前變單速飛輪螺栓，<br/>但這些是不同的零件，品號也不一樣。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07738amx9.jpg" target="_blank"><img alt="DSC07738amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07738amx9s.jpg" width="320"/></a><br/>其中一個是單速用的，螺帽側圓筒部分的長度是４．５ｍｍ，<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07739amx9.jpg" target="_blank"><img alt="DSC07739amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07739amx9s.jpg" width="320"/></a><br/>另一個只寫著單速用。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07740amx9.jpg" target="_blank"><img alt="DSC07740amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07740amx9s.jpg" width="320"/></a><br/>↑圖片左邊是４．５ｍｍ，<br/>右邊的螺帽比它更長，如果把左邊定為４．５ｍｍ的話，右邊就是６．５ｍｍ。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07741amx9.jpg" target="_blank"><img alt="DSC07741amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07741amx9s.jpg" width="320"/></a><br/>螺栓側也不同，<br/>６．５ｍｍ的那個螺牙更長，<br/>根部有一個沒有切螺牙的區域，雖然很微妙。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07749amx9.jpg" target="_blank"><img alt="DSC07749amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07749amx9s.jpg" width="320"/></a><br/>這是沃夫圖斯（WolfTooth）的飛輪，<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07742amx9.jpg" target="_blank"><img alt="DSC07742amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07742amx9s.jpg" width="320"/></a><br/>我手邊的３４、３６、４４、４６、４８Ｔ來看，<br/>從４６Ｔ開始，飛輪外側的孔變成了台階形「沉頭」。<br/>按沃夫圖斯的邏輯，<br/>安裝在曲柄的大盤側的前提是從４６Ｔ開始的。<br/><br/><span style="color:#FF0000">追記：有人在留言中告訴我，４臂用的３８Ｔ中也有沉頭的<br/>飛輪。沉頭的有無邊界可能根據<br/>PCD或預期的用途（公路車、山地車還是循環賽）的不同而不同。<br/>感謝你的留言。</span><br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07745amx9.jpg" target="_blank"><img alt="DSC07745amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07745amx9s.jpg" width="320"/></a><br/>背面沒有台階形孔。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07743amx9.jpg" target="_blank"><img alt="DSC07743amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07743amx9s.jpg" width="320"/></a><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07744amx9.jpg" target="_blank"><img alt="DSC07744amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07744amx9s.jpg" width="320"/></a><br/>台階形孔可以用沉頭的飛輪螺栓安裝。<br/>因此螺栓頭和飛輪大致平行。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07746amx9.jpg" target="_blank"><img alt="DSC07746amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07746amx9s.jpg" width="320"/></a><br/>但在４４Ｔ以下的情況（圖中是３６Ｔ），<br/>外側沒有台階形孔，<br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07747amx9.jpg" target="_blank"><img alt="DSC07747amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07747amx9s.jpg" width="320"/></a><br/>背面也沒有台階形孔。<br/>但沃夫圖斯的飛輪厚度莫名其妙地很厚，<br/>所以較短的飛輪螺栓（前面提到的４．５ｍｍ）<br/>長度不夠用。那該怎麼辦呢？<br/>就是需要根據實物來搭配，把螺帽側改用雙速用的，螺栓側用單速用的。<br/>反過來不行（後述）。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07876amx9.jpg" target="_blank"><img alt="DSC07876amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07876amx9s.jpg" width="320"/></a><br/>我的４公斤多重的車。<br/>目前裝著羅托的非正圓飛輪。<br/>我對非正圓沒有特別執著，所以換成沃夫圖斯也可以……<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07877amx9.jpg" target="_blank"><img alt="DSC07877amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07877amx9s.jpg" width="320"/></a><br/>如果換成沃夫圖斯的話，這個鏈條卡夾也能拆掉。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07909amx9.jpg" target="_blank"><img alt="DSC07909amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07909amx9s.jpg" width="320"/></a><br/>如前面所說，<br/>沃夫圖斯的飛輪厚度莫名其妙地很厚，所以並不輕。<br/>這應該可以看作單速化幾乎沒有掉鏈的代價。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07910amx9.jpg" target="_blank"><img alt="DSC07910amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07910amx9s.jpg" width="320"/></a><br/>羅托的飛輪，變相孔有減重設計，<br/>非常輕量。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07911amx9.jpg" target="_blank"><img alt="DSC07911amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07911amx9s.jpg" width="320"/></a><br/>就算減去鏈條卡夾的重量，<br/>羅托的飛輪還是更輕。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07914amx9.jpg" target="_blank"><img alt="DSC07914amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07914amx9s.jpg" width="320"/></a><br/>我把沃夫圖斯的３６Ｔ安裝在曲柄的小盤側。<br/>安裝的５臂位相再逆時針轉一格的話，<br/>齒數標示看起來會更好看。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07912amx9.jpg" target="_blank"><img alt="DSC07912amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07912amx9s.jpg" width="320"/></a><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07913amx9.jpg" target="_blank"><img alt="DSC07913amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07913amx9s.jpg" width="320"/></a><br/>然後用４．５ｍｍ的螺帽安裝的話，螺帽幾乎不會接觸到曲柄。<br/>沃夫圖斯飛輪的厚度，我量過是３．７ｍｍ。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07917amx9.jpg" target="_blank"><img alt="DSC07917amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07917amx9s.jpg" width="320"/></a><br/>羅托的飛輪，背面是台階形孔，呈沉頭狀。<br/>它之前用的飛輪螺帽（上圖左和中間）的<br/>圓筒部分長度是３．６ｍｍ，<br/>所以這些情況螺帽也不會接觸到曲柄。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07915amx9.jpg" target="_blank"><img alt="DSC07915amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07915amx9s.jpg" width="320"/></a><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07916amx9.jpg" target="_blank"><img alt="DSC07916amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07916amx9s.jpg" width="320"/></a><br/>６．５ｍｍ的話，螺帽恰好好地接觸到曲柄。<br/>前面說過在這裡用雙速螺帽的事，<br/>但雙速螺帽的長度也有差異，較長的會<br/>從曲柄的平面位置微微凸出。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07946amx9.jpg" target="_blank"><img alt="DSC07946amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07946amx9s.jpg" width="320"/></a><br/>曲柄的５臂（最近多為４臂）<br/>安裝飛輪的示意圖。<br/>這個圖是把飛輪安裝在外側。<br/>也有廠商從外側安裝螺帽的情況，<br/>但只要螺帽同時接觸到飛輪和曲柄就沒問題。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07942amx9.jpg" target="_blank"><img alt="DSC07942amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07942amx9s.jpg" width="320"/></a><br/>所以４４Ｔ以下的沃夫圖斯配６．５ｍｍ螺帽<br/>就相當於上圖的中間的情況，<br/>但如果螺帽長度不夠，<br/>飛輪正下方只有螺栓螺牙的話，<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07989amx9.jpg" target="_blank"><img alt="DSC07989amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07989amx9s.jpg" width="320"/></a><br/>飛輪會這樣移位，我認為。<br/><span style="color:#FF0000">※修正了移位方向的圖。</span><br/><br/>單速飛輪是要安裝在外側齒輪或內側齒輪的位置，<br/>要看右鏈柱是否會干涉。如果沒有干涉的話，<br/>安裝在內側齒輪位置在鏈條線條件上會更好。<br/>把它安裝在外側齒輪位置的話，當外×低檔時，<br/>因為防掉鏈是基於齒尖的加工而成，會被斜著磨削的感覺，<br/>所以還是應該儘量放在內側齒輪位置。<br/>不過，安裝在外側看起來好像更好看（←主觀意見），<br/>如果在循環賽中不幸掉鏈的話，<br/>外側的話不會發生「鏈條沙漏」，<br/>所以恢復會很容易，這好像是優點。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07947amx9.jpg" target="_blank"><img alt="DSC07947amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07947amx9s.jpg" width="320"/></a><br/>齒數標示的位相按前面說的方式，<br/>安裝在外側位置。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07949amx9.jpg" target="_blank"><img alt="DSC07949amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07949amx9s.jpg" width="320"/></a><br/>只有螺栓換成了杉野（<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Sugino+Torx+chainring+bolt" target="_blank" rel="noopener sponsored" class="amz-inline">Sugino</a>）的梅花槽版本。<br/>飛輪都沒有台階形孔，<br/>不管裝在哪一側都不會沉頭。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07950amx9.jpg" target="_blank"><img alt="DSC07950amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07950amx9s.jpg" width="320"/></a><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07951amx9.jpg" target="_blank"><img alt="DSC07951amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07951amx9s.jpg" width="320"/></a><br/>還是改成了內側。<br/>這次優先考慮鏈條線而不是外觀。<br/><br/>我之前把羅托的非正圓飛輪裝在內側齒輪位置的原因是，<br/>本來它就是雙速用的內側齒輪，<br/>還要裝鏈條卡夾等原因，<br/>但如果沉頭的話裝在外側齒輪位置，<br/>因為是非正圓飛輪，齒輪形狀會反轉。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07965amx9.jpg" target="_blank"><img alt="DSC07965amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07965amx9s.jpg" width="320"/></a><br/>這是我的斯拉姆·對手組（<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=SRAM+Rival+crankset" target="_blank" rel="noopener sponsored" class="amz-inline">SRAM Rival</a>）曲柄，<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07966amx9.jpg" target="_blank"><img alt="DSC07966amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07966amx9s.jpg" width="320"/></a><br/>曲柄臂側面有點磨光，那個無所謂，<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07967amx9.jpg" target="_blank"><img alt="DSC07967amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07967amx9s.jpg" width="320"/></a><br/>沃夫圖斯的４４Ｔ所以沒有沉頭。<br/>為了好看起見裝在了外側齒輪位置。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07970amx9.jpg" target="_blank"><img alt="DSC07970amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07970amx9s.jpg" width="320"/></a><br/>沃夫圖斯的飛輪，<br/>通過把鏈條齒尖交替設計成外鏈環和內鏈環專用形狀，<br/>使得飛輪單獨就幾乎不會脫落。<br/>所以當然只有偶數齒數。<br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07969amx9.jpg" target="_blank"><img alt="DSC07969amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07969amx9s.jpg" width="320"/></a><br/>內鏈環的齒<br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07968amx9.jpg" target="_blank"><img alt="DSC07968amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07968amx9s.jpg" width="320"/></a><br/>外鏈環的齒<br/>齒側的突起好像是起防脫作用的。<br/><br/>那我為什麼現在不用這個安裝了飛輪的曲柄呢？<br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07953amx9.jpg" target="_blank"><img alt="DSC07953amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07953amx9s.jpg" width="320"/></a><br/>因為我入手了適配坎帕尼奧羅（Campagnolo）的１６５ｍｍ曲柄（PCD１３５ｍｍ）的<br/>前變單速窄/寬飛輪。<br/>順帶一提，前面的對手組也是１６５ｍｍ。<br/>同時還把４４Ｔ升級到了４６Ｔ。<br/><br/>齒尖是窄和寬交替重複的飛輪，<br/>沃夫圖斯叫做寬/窄，<br/>瑞斯費斯（RaceFace）則叫做窄/寬。<br/>只要能溝通就行，誰叫誰都無所謂。<br/><br/>這個曲柄的飛輪裝在外側齒輪位置，<br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07955amx9.jpg" target="_blank"><img alt="DSC07955amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07955amx9s.jpg" width="320"/></a><br/>因為這樣的話飛輪才會和曲柄臂貼合。<br/><br/>斯拉姆的紅組（SRAM RED）也有<br/>不是５臂而是４臂＋曲柄裏隱藏螺栓的曲柄組，<br/>但在爬坡專用車等地方<br/>把單速用的飛輪裝在內側齒輪位置的話，<br/>曲柄裏和飛輪之間會有空隙。<br/><br/>曲柄裏的螺栓本來就有一個較長的，直接用它就行，<br/>為了用實物來填補飛輪和曲柄裏之間的空隙，<br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07971amx9.jpg" target="_blank"><img alt="DSC07971amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07971amx9s.jpg" width="320"/></a><br/>杉野推出了（本來並不是為了這個用途而開發的）<br/>飛輪墊圈組套，<br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07972amx9.jpg" target="_blank"><img alt="DSC07972amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07972amx9s.jpg" width="320"/></a><br/>有０．５ｍｍ厚的，<br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07973amx9.jpg" target="_blank"><img alt="DSC07973amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07973amx9s.jpg" width="320"/></a><br/>和３．５ｍｍ厚的，<br/>有時候就用這個來解決。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">我來寫寫前變單速飛輪螺栓的事。<br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07737amx9.jpg" target="_blank"><img alt="DSC07737amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07737amx9s.jpg" width="320"/></a><br/>上面的圖片是來自同一廠商的前變單速飛輪螺栓，<br/>但這些是不同的零件，品號也不一樣。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07738amx9.jpg" target="_blank"><img alt="DSC07738amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07738amx9s.jpg" width="320"/></a><br/>其中一個是單速用的，螺帽側圓筒部分的長度是４．５ｍｍ，<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07739amx9.jpg" target="_blank"><img alt="DSC07739amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07739amx9s.jpg" width="320"/></a><br/>另一個只寫著單速用。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07740amx9.jpg" target="_blank"><img alt="DSC07740amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07740amx9s.jpg" width="320"/></a><br/>↑圖片左邊是４．５ｍｍ，<br/>右邊的螺帽比它更長，如果把左邊定為４．５ｍｍ的話，右邊就是６．５ｍｍ。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07741amx9.jpg" target="_blank"><img alt="DSC07741amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07741amx9s.jpg" width="320"/></a><br/>螺栓側也不同，<br/>６．５ｍｍ的那個螺牙更長，<br/>根部有一個沒有切螺牙的區域，雖然很微妙。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07749amx9.jpg" target="_blank"><img alt="DSC07749amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07749amx9s.jpg" width="320"/></a><br/>這是沃夫圖斯（WolfTooth）的飛輪，<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07742amx9.jpg" target="_blank"><img alt="DSC07742amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07742amx9s.jpg" width="320"/></a><br/>我手邊的３４、３６、４４、４６、４８Ｔ來看，<br/>從４６Ｔ開始，飛輪外側的孔變成了台階形「沉頭」。<br/>按沃夫圖斯的邏輯，<br/>安裝在曲柄的大盤側的前提是從４６Ｔ開始的。<br/><br/><span style="color:#FF0000">追記：有人在留言中告訴我，４臂用的３８Ｔ中也有沉頭的<br/>飛輪。沉頭的有無邊界可能根據<br/>PCD或預期的用途（公路車、山地車還是循環賽）的不同而不同。<br/>感謝你的留言。</span><br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07745amx9.jpg" target="_blank"><img alt="DSC07745amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07745amx9s.jpg" width="320"/></a><br/>背面沒有台階形孔。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07743amx9.jpg" target="_blank"><img alt="DSC07743amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07743amx9s.jpg" width="320"/></a><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07744amx9.jpg" target="_blank"><img alt="DSC07744amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07744amx9s.jpg" width="320"/></a><br/>台階形孔可以用沉頭的飛輪螺栓安裝。<br/>因此螺栓頭和飛輪大致平行。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07746amx9.jpg" target="_blank"><img alt="DSC07746amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07746amx9s.jpg" width="320"/></a><br/>但在４４Ｔ以下的情況（圖中是３６Ｔ），<br/>外側沒有台階形孔，<br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07747amx9.jpg" target="_blank"><img alt="DSC07747amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07747amx9s.jpg" width="320"/></a><br/>背面也沒有台階形孔。<br/>但沃夫圖斯的飛輪厚度莫名其妙地很厚，<br/>所以較短的飛輪螺栓（前面提到的４．５ｍｍ）<br/>長度不夠用。那該怎麼辦呢？<br/>就是需要根據實物來搭配，把螺帽側改用雙速用的，螺栓側用單速用的。<br/>反過來不行（後述）。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07876amx9.jpg" target="_blank"><img alt="DSC07876amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07876amx9s.jpg" width="320"/></a><br/>我的４公斤多重的車。<br/>目前裝著羅托的非正圓飛輪。<br/>我對非正圓沒有特別執著，所以換成沃夫圖斯也可以……<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07877amx9.jpg" target="_blank"><img alt="DSC07877amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07877amx9s.jpg" width="320"/></a><br/>如果換成沃夫圖斯的話，這個鏈條卡夾也能拆掉。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07909amx9.jpg" target="_blank"><img alt="DSC07909amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07909amx9s.jpg" width="320"/></a><br/>如前面所說，<br/>沃夫圖斯的飛輪厚度莫名其妙地很厚，所以並不輕。<br/>這應該可以看作單速化幾乎沒有掉鏈的代價。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07910amx9.jpg" target="_blank"><img alt="DSC07910amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07910amx9s.jpg" width="320"/></a><br/>羅托的飛輪，變相孔有減重設計，<br/>非常輕量。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07911amx9.jpg" target="_blank"><img alt="DSC07911amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07911amx9s.jpg" width="320"/></a><br/>就算減去鏈條卡夾的重量，<br/>羅托的飛輪還是更輕。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07914amx9.jpg" target="_blank"><img alt="DSC07914amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07914amx9s.jpg" width="320"/></a><br/>我把沃夫圖斯的３６Ｔ安裝在曲柄的小盤側。<br/>安裝的５臂位相再逆時針轉一格的話，<br/>齒數標示看起來會更好看。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07912amx9.jpg" target="_blank"><img alt="DSC07912amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07912amx9s.jpg" width="320"/></a><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07913amx9.jpg" target="_blank"><img alt="DSC07913amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07913amx9s.jpg" width="320"/></a><br/>然後用４．５ｍｍ的螺帽安裝的話，螺帽幾乎不會接觸到曲柄。<br/>沃夫圖斯飛輪的厚度，我量過是３．７ｍｍ。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07917amx9.jpg" target="_blank"><img alt="DSC07917amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07917amx9s.jpg" width="320"/></a><br/>羅托的飛輪，背面是台階形孔，呈沉頭狀。<br/>它之前用的飛輪螺帽（上圖左和中間）的<br/>圓筒部分長度是３．６ｍｍ，<br/>所以這些情況螺帽也不會接觸到曲柄。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07915amx9.jpg" target="_blank"><img alt="DSC07915amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07915amx9s.jpg" width="320"/></a><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07916amx9.jpg" target="_blank"><img alt="DSC07916amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07916amx9s.jpg" width="320"/></a><br/>６．５ｍｍ的話，螺帽恰好好地接觸到曲柄。<br/>前面說過在這裡用雙速螺帽的事，<br/>但雙速螺帽的長度也有差異，較長的會<br/>從曲柄的平面位置微微凸出。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07946amx9.jpg" target="_blank"><img alt="DSC07946amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07946amx9s.jpg" width="320"/></a><br/>曲柄的５臂（最近多為４臂）<br/>安裝飛輪的示意圖。<br/>這個圖是把飛輪安裝在外側。<br/>也有廠商從外側安裝螺帽的情況，<br/>但只要螺帽同時接觸到飛輪和曲柄就沒問題。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07942amx9.jpg" target="_blank"><img alt="DSC07942amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07942amx9s.jpg" width="320"/></a><br/>所以４４Ｔ以下的沃夫圖斯配６．５ｍｍ螺帽<br/>就相當於上圖的中間的情況，<br/>但如果螺帽長度不夠，<br/>飛輪正下方只有螺栓螺牙的話，<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07989amx9.jpg" target="_blank"><img alt="DSC07989amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07989amx9s.jpg" width="320"/></a><br/>飛輪會這樣移位，我認為。<br/><span style="color:#FF0000">※修正了移位方向的圖。</span><br/><br/>單速飛輪是要安裝在外側齒輪或內側齒輪的位置，<br/>要看右鏈柱是否會干涉。如果沒有干涉的話，<br/>安裝在內側齒輪位置在鏈條線條件上會更好。<br/>把它安裝在外側齒輪位置的話，當外×低檔時，<br/>因為防掉鏈是基於齒尖的加工而成，會被斜著磨削的感覺，<br/>所以還是應該儘量放在內側齒輪位置。<br/>不過，安裝在外側看起來好像更好看（←主觀意見），<br/>如果在循環賽中不幸掉鏈的話，<br/>外側的話不會發生「鏈條沙漏」，<br/>所以恢復會很容易，這好像是優點。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07947amx9.jpg" target="_blank"><img alt="DSC07947amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07947amx9s.jpg" width="320"/></a><br/>齒數標示的位相按前面說的方式，<br/>安裝在外側位置。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07949amx9.jpg" target="_blank"><img alt="DSC07949amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07949amx9s.jpg" width="320"/></a><br/>只有螺栓換成了杉野（<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Sugino+Torx+chainring+bolt" target="_blank" rel="noopener sponsored" class="amz-inline">Sugino</a>）的梅花槽版本。<br/>飛輪都沒有台階形孔，<br/>不管裝在哪一側都不會沉頭。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07950amx9.jpg" target="_blank"><img alt="DSC07950amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07950amx9s.jpg" width="320"/></a><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07951amx9.jpg" target="_blank"><img alt="DSC07951amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07951amx9s.jpg" width="320"/></a><br/>還是改成了內側。<br/>這次優先考慮鏈條線而不是外觀。<br/><br/>我之前把羅托的非正圓飛輪裝在內側齒輪位置的原因是，<br/>本來它就是雙速用的內側齒輪，<br/>還要裝鏈條卡夾等原因，<br/>但如果沉頭的話裝在外側齒輪位置，<br/>因為是非正圓飛輪，齒輪形狀會反轉。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07965amx9.jpg" target="_blank"><img alt="DSC07965amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07965amx9s.jpg" width="320"/></a><br/>這是我的斯拉姆·對手組（<a href="https://www.amazon.com/s?tag=nomulabworksh-20&k=SRAM+Rival+crankset" target="_blank" rel="noopener sponsored" class="amz-inline">SRAM Rival</a>）曲柄，<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07966amx9.jpg" target="_blank"><img alt="DSC07966amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07966amx9s.jpg" width="320"/></a><br/>曲柄臂側面有點磨光，那個無所謂，<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07967amx9.jpg" target="_blank"><img alt="DSC07967amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07967amx9s.jpg" width="320"/></a><br/>沃夫圖斯的４４Ｔ所以沒有沉頭。<br/>為了好看起見裝在了外側齒輪位置。<br/><br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07970amx9.jpg" target="_blank"><img alt="DSC07970amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07970amx9s.jpg" width="320"/></a><br/>沃夫圖斯的飛輪，<br/>通過把鏈條齒尖交替設計成外鏈環和內鏈環專用形狀，<br/>使得飛輪單獨就幾乎不會脫落。<br/>所以當然只有偶數齒數。<br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07969amx9.jpg" target="_blank"><img alt="DSC07969amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07969amx9s.jpg" width="320"/></a><br/>內鏈環的齒<br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07968amx9.jpg" target="_blank"><img alt="DSC07968amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07968amx9s.jpg" width="320"/></a><br/>外鏈環的齒<br/>齒側的突起好像是起防脫作用的。<br/><br/>那我為什麼現在不用這個安裝了飛輪的曲柄呢？<br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07953amx9.jpg" target="_blank"><img alt="DSC07953amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07953amx9s.jpg" width="320"/></a><br/>因為我入手了適配坎帕尼奧羅（Campagnolo）的１６５ｍｍ曲柄（PCD１３５ｍｍ）的<br/>前變單速窄/寬飛輪。<br/>順帶一提，前面的對手組也是１６５ｍｍ。<br/>同時還把４４Ｔ升級到了４６Ｔ。<br/><br/>齒尖是窄和寬交替重複的飛輪，<br/>沃夫圖斯叫做寬/窄，<br/>瑞斯費斯（RaceFace）則叫做窄/寬。<br/>只要能溝通就行，誰叫誰都無所謂。<br/><br/>這個曲柄的飛輪裝在外側齒輪位置，<br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07955amx9.jpg" target="_blank"><img alt="DSC07955amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07955amx9s.jpg" width="320"/></a><br/>因為這樣的話飛輪才會和曲柄臂貼合。<br/><br/>斯拉姆的紅組（SRAM RED）也有<br/>不是５臂而是４臂＋曲柄裏隱藏螺栓的曲柄組，<br/>但在爬坡專用車等地方<br/>把單速用的飛輪裝在內側齒輪位置的話，<br/>曲柄裏和飛輪之間會有空隙。<br/><br/>曲柄裏的螺栓本來就有一個較長的，直接用它就行，<br/>為了用實物來填補飛輪和曲柄裏之間的空隙，<br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07971amx9.jpg" target="_blank"><img alt="DSC07971amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07971amx9s.jpg" width="320"/></a><br/>杉野推出了（本來並不是為了這個用途而開發的）<br/>飛輪墊圈組套，<br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07972amx9.jpg" target="_blank"><img alt="DSC07972amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07972amx9s.jpg" width="320"/></a><br/>有０．５ｍｍ厚的，<br/><a href="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07973amx9.jpg" target="_blank"><img alt="DSC07973amx9.jpg" border="0" height="240" src="https://blog-imgs-123-origin.fc2.com/p/a/s/pass13/DSC07973amx9s.jpg" width="320"/></a><br/>和３．５ｍｍ厚的，<br/>有時候就用這個來解決。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>

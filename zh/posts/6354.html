@@ -28,160 +28,292 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper: #f5f1e8;
+  --surface: #fffdfa;
+  --surface-soft: #ebe5d8;
+  --ink: #252321;
+  --muted: #6d706a;
+  --line: #d8d0c2;
+  --line-strong: #b9ad99;
+  --brass: #9a6b2f;
+  --green: #486b55;
+  --red: #8f332f;
+  --steel: #3f5966;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #2d3748; background: #f7fafc; line-height: 1.75;
+  color: var(--ink); background: var(--paper); line-height: 1.75;
+  text-rendering: optimizeLegibility;
 }
-a { color: #2b6cb0; }
+a { color: var(--steel); }
 a:hover { text-decoration: underline; }
 
 /* Header */
 .site-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white; padding: 28px 0;
+  background: rgba(255,253,250,.92);
+  color: var(--ink); border-bottom: 1px solid var(--line);
 }
-.site-header .inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-.site-header h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.5px; }
-.site-header p { margin-top: 4px; opacity: 0.75; font-size: 0.9rem; }
+.site-header .inner {
+  max-width: 1180px; margin: 0 auto; padding: 18px 22px;
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.brand-lockup { margin-right: auto; min-width: 220px; }
+.brand-link { color: var(--ink); text-decoration: none; display: inline-block; }
+.brand-title {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.68rem; line-height: 1; font-weight: 700; letter-spacing: 0;
+}
+.brand-subtitle {
+  display: block; margin-top: 5px; color: var(--muted);
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.site-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--ink); text-decoration: none; font-size: .9rem;
+  font-weight: 650; border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
 
 /* Main layout */
-.page-wrap { max-width: 900px; margin: 36px auto; padding: 0 20px; }
-.page-wrap.wide { max-width: 1200px; }
+.page-wrap { max-width: 900px; margin: 38px auto 0; padding: 0 22px; }
+.page-wrap.wide { max-width: 1180px; }
+
+/* Journal landing */
+.journal-hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; margin-bottom: 24px;
+}
+.journal-copy { padding: 40px 42px; min-width: 0; }
+.eyebrow {
+  display: inline-block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .09em; font-weight: 800;
+  margin-bottom: 12px;
+}
+.journal-copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
+  letter-spacing: 0; margin-bottom: 16px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+.journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
+.journal-copy .meta { color: var(--muted); font-size: .9rem; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 14px; border-radius: 6px;
+  text-decoration: none; font-weight: 750; font-size: .9rem;
+  background: var(--ink); color: white;
+}
+.hero-btn.secondary {
+  background: transparent; color: var(--ink); border: 1px solid var(--line-strong);
+}
+.journal-hero figure {
+  background: var(--surface-soft); min-height: 330px; margin: 0;
+  border-left: 1px solid var(--line);
+}
+.journal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.journal-hero figcaption {
+  padding: 9px 12px; color: var(--muted); font-size: .76rem;
+  border-top: 1px solid var(--line); background: rgba(255,253,250,.84);
+}
+.guide-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px; margin-bottom: 26px;
+}
+.guide-link {
+  display: block; min-height: 100%; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 15px;
+}
+.guide-link strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem; line-height: 1.16; letter-spacing: 0;
+}
+.guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+.guide-link:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
-.layout { display: flex; gap: 20px; align-items: flex-start; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
 .sidebar {
-  width: 230px; flex-shrink: 0;
-  background: white; border-radius: 10px; padding: 18px 14px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  border-right: 1px solid var(--line); padding-right: 18px;
   position: sticky; top: 16px;
   max-height: calc(100vh - 32px); overflow-y: auto;
 }
 .sidebar h2 {
-  font-size: 0.85rem; color: #a0aec0; text-transform: uppercase;
-  letter-spacing: 0.05em; margin-bottom: 10px; padding: 0 10px;
+  font-size: 0.76rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 10px;
 }
 .cat-list { list-style: none; }
 .cat-list button {
   display: flex; justify-content: space-between; align-items: center; gap: 8px;
   width: 100%; padding: 7px 10px; margin-bottom: 2px;
   border: none; border-radius: 6px; background: none;
-  font-size: 0.86rem; color: #2d3748; cursor: pointer; text-align: left;
+  font-size: 0.86rem; color: var(--ink); cursor: pointer; text-align: left;
   transition: background .12s;
 }
-.cat-list button:hover { background: #ebf8ff; color: #2b6cb0; }
-.cat-list button.active { background: #2b6cb0; color: white; }
-.cat-list .cnt { font-size: 0.74rem; color: #a0aec0; flex-shrink: 0; }
+.cat-list button:hover { background: #ebe5d8; color: var(--red); }
+.cat-list button.active { background: var(--ink); color: white; }
+.cat-list .cnt { font-size: 0.74rem; color: var(--muted); flex-shrink: 0; }
 .cat-list button.active .cnt { color: rgba(255,255,255,0.8); }
-.main-col { flex: 1; min-width: 0; }
+.main-col { min-width: 0; }
 @media (max-width: 800px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; max-height: none; }
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { width: 100%; position: static; max-height: none; border-right: 0; padding-right: 0; }
   .cat-list { display: flex; flex-wrap: wrap; gap: 4px; }
   .cat-list button { width: auto; margin-bottom: 0; }
+  .journal-hero { grid-template-columns: 1fr; }
+  .journal-hero figure { border-left: 0; border-top: 1px solid var(--line); }
+  .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Index: article cards */
-.card-grid { display: grid; gap: 14px; }
-.card {
-  background: white; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  transition: box-shadow .15s;
+.archive-heading {
+  display: flex; justify-content: space-between; gap: 16px; align-items: end;
+  margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
 }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.archive-heading h2 {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.8rem;
+  line-height: 1.1; letter-spacing: 0;
+}
+.archive-heading p { margin-top: 4px; color: var(--muted); font-size: .9rem; }
+.card-grid { display: grid; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--brass); transform: translateY(-1px); }
 .card-inner { display: flex; align-items: stretch; }
 .card-thumb {
-  width: 130px; min-height: 100px; object-fit: cover;
+  width: 142px; min-height: 112px; object-fit: cover;
   flex-shrink: 0; display: block;
 }
 .card-thumb-placeholder {
-  width: 130px; min-height: 100px; background: #e2e8f0;
+  width: 142px; min-height: 112px; background: var(--surface-soft);
   flex-shrink: 0;
 }
-.card-body { padding: 16px 20px; flex: 1; min-width: 0; }
-.card h2 { font-size: 1.0rem; margin-bottom: 5px; }
-.card h2 a { text-decoration: none; color: #1a365d; }
-.card h2 a:hover { color: #2b6cb0; }
-.card .meta { font-size: 0.8rem; color: #a0aec0; margin-bottom: 8px; }
-.card .excerpt { font-size: 0.85rem; color: #718096; line-height: 1.55; }
+.card-body { padding: 15px 18px 16px; flex: 1; min-width: 0; }
+.card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.12rem; line-height: 1.18; letter-spacing: 0; margin-bottom: 6px;
+}
+.card h2 a { text-decoration: none; color: var(--ink); }
+.card h2 a:hover { color: var(--red); }
+.card .meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+.card .excerpt { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
 @media (max-width: 500px) {
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
+  .guide-strip { grid-template-columns: 1fr; }
+  .journal-copy { padding: 30px 22px; }
+  .journal-copy h1 { font-size: 2rem; }
+  html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
+  html[lang^="zh"] .post-wrap h1 { font-size: 1.72rem; line-height: 1.16; }
 }
 
 /* Search bar */
-.search-bar {
-  margin-bottom: 14px;
-}
+.archive-tools { display: grid; gap: 10px; margin-bottom: 16px; }
+.search-bar { margin-bottom: 0; }
 .search-bar input {
-  width: 100%; padding: 9px 14px; font-size: 0.92rem;
-  border: 1px solid #cbd5e0; border-radius: 8px;
+  width: 100%; padding: 10px 13px; font-size: 0.93rem;
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  background: #fffefa; color: var(--ink);
   outline: none; transition: border-color .15s;
 }
-.search-bar input:focus { border-color: #2b6cb0; }
+.search-bar input:focus { border-color: var(--brass); }
 
 /* Post page */
 .post-wrap {
-  background: white; border-radius: 10px;
-  padding: 36px 40px; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 38px 44px; min-width: 0;
 }
-.back-link { margin-bottom: 20px; font-size: 0.88rem; }
-.post-wrap h1 { font-size: 1.6rem; color: #1a365d; line-height: 1.3; margin-bottom: 10px; }
-.post-meta { font-size: 0.82rem; color: #a0aec0; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 24px; }
-.post-body { font-size: 0.97rem; line-height: 1.85; }
-.post-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 10px 0; display: block; }
+.back-link { margin-bottom: 18px; font-size: 0.88rem; }
+.post-kicker {
+  color: var(--brass); font-size: .75rem; text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; margin-bottom: 8px;
+}
+.post-wrap h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
+  line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
+  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+}
+html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+.post-meta {
+  font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
+  border-bottom: 1px solid var(--line); margin-bottom: 26px;
+}
+.post-body { font-size: 1rem; line-height: 1.9; max-width: 760px; }
+.post-body img {
+  max-width: 100%; height: auto; border-radius: 6px;
+  margin: 12px 0; display: block; border: 1px solid rgba(32,34,35,.08);
+}
 .post-body p { margin-bottom: 14px; }
 .post-body br { line-height: 2; }
+.post-guides {
+  margin: 30px 0 0; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: #f7f2e8;
+}
+.post-guides strong {
+  display: block; color: var(--brass); font-size: .75rem;
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.post-guides nav { display: flex; gap: 12px; flex-wrap: wrap; }
+.post-guides a { font-size: .9rem; font-weight: 650; text-decoration: none; }
+.post-guides a:hover { color: var(--red); }
 
 /* Amazon アフィリエイトボックス */
 .affiliate-box {
   margin-top: 36px; padding: 20px 24px;
-  background: #fffbeb; border: 1px solid #f6e05e;
-  border-radius: 10px;
+  background: #f9f0da; border: 1px solid #d6b676;
+  border-radius: 8px;
 }
 .affiliate-box .affiliate-title {
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #744210;
+  font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: #6f4f1f;
 }
 .affiliate-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .affiliate-box li a {
   display: inline-block; padding: 6px 14px;
-  background: #ff9900; color: white; border-radius: 6px;
+  background: var(--brass); color: white; border-radius: 6px;
   text-decoration: none; font-size: 0.88rem; font-weight: 600;
 }
-.affiliate-box li a:hover { background: #e68900; }
-.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: #a0aec0; }
+.affiliate-box li a:hover { background: #7c5526; }
+.affiliate-note { margin-top: 12px; font-size: 0.75rem; color: var(--muted); }
 
 /* Category badge */
 .cat-badge {
   display:inline-block; font-size:0.72rem; padding:2px 9px;
-  background:#ebf8ff; color:#2b6cb0; border-radius:12px; margin-bottom:8px;
+  background:#efe7d8; color:var(--green); border-radius:999px; margin-bottom:8px;
+  font-weight: 750;
 }
 
 /* Sort controls */
 .sort-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 18px; font-size: 0.88rem; color: #718096;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 0; font-size: 0.88rem; color: var(--muted);
 }
 .sort-btn {
-  padding: 5px 14px; border-radius: 6px; border: 1px solid #cbd5e0;
-  background: white; color: #2d3748; font-size: 0.85rem;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: #fffefa; color: var(--ink); font-size: 0.85rem;
   cursor: pointer; transition: background .15s, border-color .15s;
 }
-.sort-btn:hover { background: #ebf8ff; border-color: #2b6cb0; color: #2b6cb0; }
-.sort-btn.active { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.sort-btn:hover { background: #efe7d8; border-color: var(--brass); color: var(--red); }
+.sort-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
 
 /* Language toggle */
-.lang-toggle { display:flex; gap:6px; margin-top:10px; }
+.lang-toggle { display:flex; gap:6px; }
 .lang-btn {
   padding:3px 11px; border-radius:4px; font-size:0.8rem;
-  border:1px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.65);
+  border:1px solid var(--line-strong); color:var(--muted);
   text-decoration:none;
 }
-.lang-btn.active { background:rgba(255,255,255,0.2); color:#fff; border-color:rgba(255,255,255,0.8); }
-.lang-btn:hover { color:#fff; border-color:#fff; text-decoration:none; }
+.lang-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.lang-btn:hover { color:var(--red); border-color:var(--brass); text-decoration:none; }
 
 /* Amazon inline affiliate links */
-a.amz-inline { color:#c05621; border-bottom:1px dotted #c05621; text-decoration:none; }
+a.amz-inline { color:#8f332f; border-bottom:1px dotted #8f332f; text-decoration:none; }
 a.amz-inline:hover { border-bottom-style:solid; }
 
 /* AdSense: 広告が配信されなかった枠は空白ごと非表示にする */
@@ -189,42 +321,45 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 
 /* Footer */
 .site-footer {
-  background: #1a365d; color: rgba(255,255,255,0.75);
-  padding: 28px 0; margin-top: 60px; font-size: 0.85rem;
+  background: #252321; color: rgba(255,253,250,0.72);
+  padding: 30px 0; margin-top: 64px; font-size: 0.85rem;
 }
 .site-footer .inner {
-  max-width: 900px; margin: 0 auto; padding: 0 20px;
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
   display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.site-footer a { color: rgba(255,255,255,0.85); }
+.site-footer a { color: rgba(255,253,250,0.86); }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
 /* Source link (original JP article) */
 .source-link {
-  font-size: 0.78rem; color: #a0aec0; margin-top: 28px;
-  padding-top: 16px; border-top: 1px solid #e2e8f0;
+  font-size: 0.78rem; color: var(--muted); margin-top: 28px;
+  padding-top: 16px; border-top: 1px solid var(--line);
 }
-.source-link a { color: #a0aec0; }
-.source-link a:hover { color: #718096; }
+.source-link a { color: var(--muted); }
+.source-link a:hover { color: var(--red); }
 
 /* Related posts */
-.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+.related { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .related h2 {
-  font-size: 1.05rem; color: #1a365d; margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.22rem; color: var(--ink); letter-spacing: 0; margin-bottom: 14px;
 }
 .related ul { list-style: none; display: grid; gap: 10px; }
 .related li a {
-  display: block; padding: 12px 16px; background: #f7fafc;
-  border-radius: 8px; text-decoration: none; color: #2b6cb0;
+  display: block; padding: 12px 16px; background: #f7f2e8;
+  border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: var(--steel);
   font-size: 0.9rem; line-height: 1.45; transition: background .12s;
 }
-.related li a:hover { background: #ebf8ff; text-decoration: none; }
+.related li a:hover { background: #efe7d8; text-decoration: none; color: var(--red); }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .post-wrap { padding: 22px 18px; }
-  .site-header h1 { font-size: 1.4rem; }
+  .post-wrap { padding: 26px 20px; }
+  .brand-title { font-size: 1.36rem; }
+  .site-header .inner { align-items: flex-start; gap: 14px; }
+  .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
 }
 </style>
@@ -232,16 +367,38 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/zh/index.html" style="color:white;text-decoration:none">野村工房日記</a></h1>
-    <p>自行車工房 — 繁體中文版</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/zh/index.html">
+        <span class="brand-title">野村工房日記</span>
+        <span class="brand-subtitle">自行車工房資料庫</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="/zh/index.html">文章列表</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於</a>
+    </nav>
     <div class="lang-toggle"><a class="lang-btn" href="/posts/6354.html">EN</a><span class="lang-btn active">繁中</span></div>
   </div>
 </header>
 <div class="page-wrap">
   <p class="back-link"><a href="/zh/index.html">← 所有文章</a></p>
   <article class="post-wrap">
+    <p class="post-kicker">Other Equipment</p>
     <h1>DT的星棘飛輪潤滑脂與各廠牌液封劑的比重測試</h1>
     <p class="post-meta">August 29, 2022</p>
+    <div class="post-body"><div class="entrytext">以前提到 DT的星棘飛輪潤滑脂從<br/>圓筒形塑膠容器２５ｍｌ裝改成<br/>軟管容器２０ｇ裝的時候<br/>因為單位不同所以搞不清楚用量是增加還是減少<br/>這次我就認真地查證了一下。<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05807amx14.jpg" target="_blank"><img alt="DSC05807amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05807amx14s.jpg" width="320"/></a><br/>這是現行的星棘飛輪潤滑脂。<br/>如圖所示，這是標註２０ｇ裝的軟管容器。<br/>跟舊容器相比，這種容器能更有效率地<br/>將潤滑脂塗布到飛輪的齒上。<br/>嚴格來說兩種容器都沒辦法完全用盡<br/>所以這點就不用太在意了。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05804amx14.jpg" target="_blank"><img alt="DSC05804amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05804amx14s.jpg" width="320"/></a><br/>這邊是已經停產的舊容器，<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05806amx14.jpg" target="_blank"><img alt="DSC05806amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05806amx14s.jpg" width="320"/></a><br/>標註著２５ｍｌ裝。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00523amx15.jpg" target="_blank"><img alt="DSC00523amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00523amx15s.jpg" width="320"/></a><br/>我們店裡還有舊容器的未使用品<br/>驗證時需要用到這個。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00524amx15.jpg" target="_blank"><img alt="DSC00524amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00524amx15s.jpg" width="320"/></a><br/>還有一個沒有完全用盡的舊容器<br/>我把它洗淨用精度０．１ｇ的秤測重<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00525amx15.jpg" target="_blank"><img alt="DSC00525amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00525amx15s.jpg" width="320"/></a><br/>得到３．４ｇ。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00526amx15.jpg" target="_blank"><img alt="DSC00526amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00526amx15s.jpg" width="320"/></a><br/>我把秤歸零<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00527amx15.jpg" target="_blank"><img alt="DSC00527amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00527amx15s.jpg" width="320"/></a><br/>拿掉容器當然就變成負３．４ｇ<br/>這時候我把新的２５ｍｌ裝放上去<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00528amx15.jpg" target="_blank"><img alt="DSC00528amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00528amx15s.jpg" width="320"/></a><br/>正好是２０ｇ！<br/>沒有０．１ｇ的誤差<br/>但這可不是事先安排好的。<br/><br/>DT的產品受到匯率影響<br/>從舊容器時期到現在已經漲價<br/>但容器改變的時候<br/>價格是維持不變的<br/>所以容器改變時內容量並沒有改變。<br/>實在是太讚了！<br/><br/><br/>趁著這次測試，我也想查證一件<br/>一直以來就想知道的事情。<br/>那就是液封劑的比重。<br/>比水輕？比水重？還是差不多？<br/>比方說「３０ｍｌ的話大概３０ｇ這樣可以嗎」？<br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00529amx15.jpg" target="_blank"><img alt="DSC00529amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00529amx15s.jpg" width="320"/></a><br/>平常我用來裝碟式煞車油的<br/>不鏽鋼量杯。<br/>重５９．１ｇ，我在秤上面把它歸零。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00530amx15.jpg" target="_blank"><img alt="DSC00530amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00530amx15s.jpg" width="320"/></a><br/>我用針筒小心翼翼地把水注入。<br/>最後階段改成一滴滴地加<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00531amx15.jpg" target="_blank"><img alt="DSC00531amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00531amx15s.jpg" width="320"/></a><br/>讓它達到５０．０ｇ。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00532amx15.jpg" target="_blank"><img alt="DSC00532amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00532amx15s.jpg" width="320"/></a><br/>因為是水，當然會在５０ｍｌ的刻度位置。<br/>量杯上可能標的是５０ｃｃ<br/>不過上面沒有特別標示單位，之後我就統一用ｍｌ表記。<br/>由於桌子傾斜或秤的放置面形狀<br/>好像沒有完全水平<br/>５０的刻度向左那一邊有點高<br/>線看得不太清楚只有一點點差。<br/>之後我也會像這樣小心翼翼地<br/>盡可能注到５０ｍｌ的刻度位置。<br/>當然每次我都有把量杯洗淨並擦乾。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00533amx15.jpg" target="_blank"><img alt="DSC00533amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00533amx15s.jpg" width="320"/></a><br/>首先是史坦茲(Stans)的輪胎液封劑。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00534amx15.jpg" target="_blank"><img alt="DSC00534amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00534amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00535amx15.jpg" target="_blank"><img alt="DSC00535amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00535amx15s.jpg" width="320"/></a><br/>看起來跟水幾乎相同。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00536amx15.jpg" target="_blank"><img alt="DSC00536amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00536amx15s.jpg" width="320"/></a><br/>倒回容器時，量杯底留下了纖維質的凝塊。<br/>這是史坦茲所謂的「密封晶體」。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00537amx15.jpg" target="_blank"><img alt="DSC00537amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00537amx15s.jpg" width="320"/></a><br/>接著是史坦茲的競賽液封劑。<br/>相比同廠的輪胎液封劑，這款含有<br/>大約２倍量的晶體，以及<br/>能填補更大穿孔的「XL」晶體<br/>所以效果非常強力<br/>但輪胎內完全凝固也比較快<br/>所以得要跟同廠輪胎液封劑區分使用。<br/>我們店在「明天比賽馬上要用」之類的<br/>沒時間觀察液封劑效果進度的情況下使用。<br/>用注射器之類的東西會堵塞<br/>所以得直接倒進輪胎裡。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00539amx15.jpg" target="_blank"><img alt="DSC00539amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00539amx15s.jpg" width="320"/></a><br/>雖然是新品，但打開封條時<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00538amx15.jpg" target="_blank"><img alt="DSC00538amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00538amx15s.jpg" width="320"/></a><br/>晶體已經在容器內凝固了。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00540amx15.jpg" target="_blank"><img alt="DSC00540amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00540amx15s.jpg" width="320"/></a><br/>我試著不用紅色蓋子直接倒進量杯<br/>結果晶體的凝塊飛了出來<br/>所以我改成隔著蓋子倒，盡量只倒液體部分。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00541amx15.jpg" target="_blank"><img alt="DSC00541amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00541amx15s.jpg" width="320"/></a><br/>跟輪胎液封劑幾乎相同的重量。<br/>比之前輕０．２ｇ應該是我倒的方式有誤差。<br/>不過比水輕一點點好像是確定的。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00542amx15.jpg" target="_blank"><img alt="DSC00542amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00542amx15s.jpg" width="320"/></a><br/>倒回容器了。<br/>比輪胎液封劑留下的晶體少<br/>是因為我在倒競賽液封劑時特別注意<br/>只倒上層的液體。<br/>不過量杯裡還是殘留著斑點狀的凝塊<br/>也許那就是XL晶體吧（←沒有把握）。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00543amx15.jpg" target="_blank"><img alt="DSC00543amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00543amx15s.jpg" width="320"/></a><br/>競賽液封劑的晶體會沉澱在容器底部<br/>雖然使用前要充分搖晃，但還是沒辦法完全用盡。<br/>用完的競賽液封劑容器如果切開的話<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00545amx15.jpg" target="_blank"><img alt="DSC00545amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00545amx15s.jpg" width="320"/></a><br/>會看到底部凝固的晶體是這樣的狀態。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00546amx15.jpg" target="_blank"><img alt="DSC00546amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00546amx15s.jpg" width="320"/></a><br/>用手指去刮的話，內側是乾燥的<br/>手感相當堅硬，像紙黏土一樣。<br/>要完全用盡的話，使用前得用<br/>堅硬的棒狀物體去戳底部。<br/>這樣處理的話沉澱晶體已經算很少的了<br/>因為我有充分搖晃。<br/>完全不搖的話，底部會有３～４ｃｍ以上的層堆積。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00547amx15.jpg" target="_blank"><img alt="DSC00547amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00547amx15s.jpg" width="320"/></a><br/>我把晶體放進量杯，量不超過５０ｍｌ的刻度<br/>然後倒入競賽液封劑到５０ｍｌ刻度<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00548amx15.jpg" target="_blank"><img alt="DSC00548amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00548amx15s.jpg" width="320"/></a><br/>↑只有晶體<br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00549amx15.jpg" target="_blank"><img alt="DSC00549amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00549amx15s.jpg" width="320"/></a><br/>明確超過５０ｇ了。<br/>晶體在液封劑內不會浮起而是沉澱<br/>所以比重肯定比液封劑高，數值也證實了這點。<br/>輪胎液封劑如果充分搖晃的話也有可能５０ｍｌ超過５０ｇ。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00550amx15.jpg" target="_blank"><img alt="DSC00550amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00550amx15s.jpg" width="320"/></a><br/>接著是艾費特馬里波薩(Effetto Mariposa)的咖啡乳膠。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00551amx15.jpg" target="_blank"><img alt="DSC00551amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00551amx15s.jpg" width="320"/></a><br/>我倒得相當小心。<br/>好像比史坦茲液封劑的液體部分輕一點。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00552amx15.jpg" target="_blank"><img alt="DSC00552amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00552amx15s.jpg" width="320"/></a><br/>倒回容器了。<br/>跟史坦茲不同，咖啡乳膠不是靠晶體來密封穿孔<br/>所以量杯裡的液體沒有凝塊。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00554amx15.jpg" target="_blank"><img alt="DSC00554amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00554amx15s.jpg" width="320"/></a><br/>我蓋好容器蓋並搖晃。<br/>跟史坦茲不同，液體只在第一搖時往上跳<br/>之後容器內容物會起泡沫<br/>像是液體滿到蓋子邊緣一樣<br/>或者像固體一樣的觸感。<br/>搖晃容器時感覺不到內部有重物移動<br/>變成一個均質的凝塊般的狀態。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00555amx15.jpg" target="_blank"><img alt="DSC00555amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00555amx15s.jpg" width="320"/></a><br/>我倒到５０ｍｌ刻度。<br/>差０．３ｇ應該是我倒的誤差。<br/>倒是可以硬是倒成４７．９ｇ<br/>不過我採取的方式是「倒到５０ｍｌ後再看數值」<br/>所以會是這樣的結果。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00556amx15.jpg" target="_blank"><img alt="DSC00556amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00556amx15s.jpg" width="320"/></a><br/>如同容器上輪胎內部的插圖一樣<br/>現在容器內的液封劑在起泡沫<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00557amx15.jpg" target="_blank"><img alt="DSC00557amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00557amx15s.jpg" width="320"/></a><br/>原本液量大約是半滿<br/>但泡沫上升到容器口附近<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00558amx15.jpg" target="_blank"><img alt="DSC00558amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00558amx15s.jpg" width="320"/></a><br/>倒一點點就從容器溢出來了<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00559amx15.jpg" target="_blank"><img alt="DSC00559amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00559amx15s.jpg" width="320"/></a><br/>雖然有點可惜，還是倒進<br/>之前切開的競賽液封劑容器裡了。<br/>搖晃前沒有的凝塊似的東西其實是小泡沫<br/>沒有變成真正的凝塊。<br/>咖啡乳膠平常我們店不用<br/>不過當輪胎內原本的液封劑是咖啡乳膠時<br/>有時候會需要補充<br/>所以我們有常備。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00563amx15.jpg" target="_blank"><img alt="DSC00563amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00563amx15s.jpg" width="320"/></a><br/>最後是伊梅吉(Impetus)。<br/>伊梅吉的液封劑優點是<br/>經過長時間使用後用清水就能簡單沖掉<br/>不過原本效力就比較弱<br/>所以我們店只進效力較強的<br/>含有黑色微纖維顆粒的那款。<br/>跟標準款辛型(Thin)的價格相同。<br/>Thin是指薄的意思。<br/>不是sin（原罪）啦。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00560amx15.jpg" target="_blank"><img alt="DSC00560amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00560amx15s.jpg" width="320"/></a><br/>我特別小心注意「秤上量杯的<br/>５０ｍｌ刻度只有左邊看得見」的程度。<br/>由於質感很濃稠，我原本以為<br/>這個會比水重？<br/>但結果是<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00561amx15.jpg" target="_blank"><img alt="DSC00561amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00561amx15s.jpg" width="320"/></a><br/>跟水一樣。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00562amx15.jpg" target="_blank"><img alt="DSC00562amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00562amx15s.jpg" width="320"/></a><br/>倒回容器了。<br/><br/>在我們店常備的液封劑範圍內<br/>雖然咖啡乳膠輕了一點<br/>但大體上「１ｍｌ＝１ｇ左右」應該就沒問題了。<br/>如果能把輪胎注入量控制在５０ｍｌ以內<br/>會比最輕的丁基軟管<br/>公稱５１ｇ、實測５１～５３ｇ的麥克斯飛重還輕<br/>要是能控制在３０ｍｌ的話就跟聚氨酯軟管相當了。<br/>節省液封劑的目的當然不是成本<br/>而是為了輕量化。
+</div></div>
+    <aside class="post-guides">
+      <strong>技術資料庫</strong>
+      <nav aria-label="技術指南">
+        <a href="/guides/wheel-building.html">Wheel Building Guide</a>
+        <a href="/guides/spoke-length.html">Spoke Length</a>
+        <a href="/guides/spoke-tying.html">Tying &amp; Soldering</a>
+        <a href="/glossary.html">Glossary</a>
+      </nav>
+    </aside>
     <ins class="adsbygoogle"
      style="display:block;margin:24px 0"
      data-ad-client="ca-pub-2988824672029852"
@@ -249,8 +406,6 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <div class="post-body"><div class="entrytext">以前提到 DT的星棘飛輪潤滑脂從<br/>圓筒形塑膠容器２５ｍｌ裝改成<br/>軟管容器２０ｇ裝的時候<br/>因為單位不同所以搞不清楚用量是增加還是減少<br/>這次我就認真地查證了一下。<br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05807amx14.jpg" target="_blank"><img alt="DSC05807amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05807amx14s.jpg" width="320"/></a><br/>這是現行的星棘飛輪潤滑脂。<br/>如圖所示，這是標註２０ｇ裝的軟管容器。<br/>跟舊容器相比，這種容器能更有效率地<br/>將潤滑脂塗布到飛輪的齒上。<br/>嚴格來說兩種容器都沒辦法完全用盡<br/>所以這點就不用太在意了。<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05804amx14.jpg" target="_blank"><img alt="DSC05804amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05804amx14s.jpg" width="320"/></a><br/>這邊是已經停產的舊容器，<br/><br/><a href="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05806amx14.jpg" target="_blank"><img alt="DSC05806amx14.jpg" border="0" height="240" src="https://blog-imgs-133-origin.fc2.com/p/a/s/pass13/DSC05806amx14s.jpg" width="320"/></a><br/>標註著２５ｍｌ裝。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00523amx15.jpg" target="_blank"><img alt="DSC00523amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00523amx15s.jpg" width="320"/></a><br/>我們店裡還有舊容器的未使用品<br/>驗證時需要用到這個。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00524amx15.jpg" target="_blank"><img alt="DSC00524amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00524amx15s.jpg" width="320"/></a><br/>還有一個沒有完全用盡的舊容器<br/>我把它洗淨用精度０．１ｇ的秤測重<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00525amx15.jpg" target="_blank"><img alt="DSC00525amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00525amx15s.jpg" width="320"/></a><br/>得到３．４ｇ。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00526amx15.jpg" target="_blank"><img alt="DSC00526amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00526amx15s.jpg" width="320"/></a><br/>我把秤歸零<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00527amx15.jpg" target="_blank"><img alt="DSC00527amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00527amx15s.jpg" width="320"/></a><br/>拿掉容器當然就變成負３．４ｇ<br/>這時候我把新的２５ｍｌ裝放上去<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00528amx15.jpg" target="_blank"><img alt="DSC00528amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00528amx15s.jpg" width="320"/></a><br/>正好是２０ｇ！<br/>沒有０．１ｇ的誤差<br/>但這可不是事先安排好的。<br/><br/>DT的產品受到匯率影響<br/>從舊容器時期到現在已經漲價<br/>但容器改變的時候<br/>價格是維持不變的<br/>所以容器改變時內容量並沒有改變。<br/>實在是太讚了！<br/><br/><br/>趁著這次測試，我也想查證一件<br/>一直以來就想知道的事情。<br/>那就是液封劑的比重。<br/>比水輕？比水重？還是差不多？<br/>比方說「３０ｍｌ的話大概３０ｇ這樣可以嗎」？<br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00529amx15.jpg" target="_blank"><img alt="DSC00529amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00529amx15s.jpg" width="320"/></a><br/>平常我用來裝碟式煞車油的<br/>不鏽鋼量杯。<br/>重５９．１ｇ，我在秤上面把它歸零。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00530amx15.jpg" target="_blank"><img alt="DSC00530amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00530amx15s.jpg" width="320"/></a><br/>我用針筒小心翼翼地把水注入。<br/>最後階段改成一滴滴地加<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00531amx15.jpg" target="_blank"><img alt="DSC00531amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00531amx15s.jpg" width="320"/></a><br/>讓它達到５０．０ｇ。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00532amx15.jpg" target="_blank"><img alt="DSC00532amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00532amx15s.jpg" width="320"/></a><br/>因為是水，當然會在５０ｍｌ的刻度位置。<br/>量杯上可能標的是５０ｃｃ<br/>不過上面沒有特別標示單位，之後我就統一用ｍｌ表記。<br/>由於桌子傾斜或秤的放置面形狀<br/>好像沒有完全水平<br/>５０的刻度向左那一邊有點高<br/>線看得不太清楚只有一點點差。<br/>之後我也會像這樣小心翼翼地<br/>盡可能注到５０ｍｌ的刻度位置。<br/>當然每次我都有把量杯洗淨並擦乾。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00533amx15.jpg" target="_blank"><img alt="DSC00533amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00533amx15s.jpg" width="320"/></a><br/>首先是史坦茲(Stans)的輪胎液封劑。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00534amx15.jpg" target="_blank"><img alt="DSC00534amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00534amx15s.jpg" width="320"/></a><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00535amx15.jpg" target="_blank"><img alt="DSC00535amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00535amx15s.jpg" width="320"/></a><br/>看起來跟水幾乎相同。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00536amx15.jpg" target="_blank"><img alt="DSC00536amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00536amx15s.jpg" width="320"/></a><br/>倒回容器時，量杯底留下了纖維質的凝塊。<br/>這是史坦茲所謂的「密封晶體」。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00537amx15.jpg" target="_blank"><img alt="DSC00537amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00537amx15s.jpg" width="320"/></a><br/>接著是史坦茲的競賽液封劑。<br/>相比同廠的輪胎液封劑，這款含有<br/>大約２倍量的晶體，以及<br/>能填補更大穿孔的「XL」晶體<br/>所以效果非常強力<br/>但輪胎內完全凝固也比較快<br/>所以得要跟同廠輪胎液封劑區分使用。<br/>我們店在「明天比賽馬上要用」之類的<br/>沒時間觀察液封劑效果進度的情況下使用。<br/>用注射器之類的東西會堵塞<br/>所以得直接倒進輪胎裡。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00539amx15.jpg" target="_blank"><img alt="DSC00539amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00539amx15s.jpg" width="320"/></a><br/>雖然是新品，但打開封條時<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00538amx15.jpg" target="_blank"><img alt="DSC00538amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00538amx15s.jpg" width="320"/></a><br/>晶體已經在容器內凝固了。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00540amx15.jpg" target="_blank"><img alt="DSC00540amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00540amx15s.jpg" width="320"/></a><br/>我試著不用紅色蓋子直接倒進量杯<br/>結果晶體的凝塊飛了出來<br/>所以我改成隔著蓋子倒，盡量只倒液體部分。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00541amx15.jpg" target="_blank"><img alt="DSC00541amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00541amx15s.jpg" width="320"/></a><br/>跟輪胎液封劑幾乎相同的重量。<br/>比之前輕０．２ｇ應該是我倒的方式有誤差。<br/>不過比水輕一點點好像是確定的。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00542amx15.jpg" target="_blank"><img alt="DSC00542amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00542amx15s.jpg" width="320"/></a><br/>倒回容器了。<br/>比輪胎液封劑留下的晶體少<br/>是因為我在倒競賽液封劑時特別注意<br/>只倒上層的液體。<br/>不過量杯裡還是殘留著斑點狀的凝塊<br/>也許那就是XL晶體吧（←沒有把握）。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00543amx15.jpg" target="_blank"><img alt="DSC00543amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00543amx15s.jpg" width="320"/></a><br/>競賽液封劑的晶體會沉澱在容器底部<br/>雖然使用前要充分搖晃，但還是沒辦法完全用盡。<br/>用完的競賽液封劑容器如果切開的話<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00545amx15.jpg" target="_blank"><img alt="DSC00545amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00545amx15s.jpg" width="320"/></a><br/>會看到底部凝固的晶體是這樣的狀態。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00546amx15.jpg" target="_blank"><img alt="DSC00546amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00546amx15s.jpg" width="320"/></a><br/>用手指去刮的話，內側是乾燥的<br/>手感相當堅硬，像紙黏土一樣。<br/>要完全用盡的話，使用前得用<br/>堅硬的棒狀物體去戳底部。<br/>這樣處理的話沉澱晶體已經算很少的了<br/>因為我有充分搖晃。<br/>完全不搖的話，底部會有３～４ｃｍ以上的層堆積。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00547amx15.jpg" target="_blank"><img alt="DSC00547amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00547amx15s.jpg" width="320"/></a><br/>我把晶體放進量杯，量不超過５０ｍｌ的刻度<br/>然後倒入競賽液封劑到５０ｍｌ刻度<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00548amx15.jpg" target="_blank"><img alt="DSC00548amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00548amx15s.jpg" width="320"/></a><br/>↑只有晶體<br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00549amx15.jpg" target="_blank"><img alt="DSC00549amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00549amx15s.jpg" width="320"/></a><br/>明確超過５０ｇ了。<br/>晶體在液封劑內不會浮起而是沉澱<br/>所以比重肯定比液封劑高，數值也證實了這點。<br/>輪胎液封劑如果充分搖晃的話也有可能５０ｍｌ超過５０ｇ。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00550amx15.jpg" target="_blank"><img alt="DSC00550amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00550amx15s.jpg" width="320"/></a><br/>接著是艾費特馬里波薩(Effetto Mariposa)的咖啡乳膠。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00551amx15.jpg" target="_blank"><img alt="DSC00551amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00551amx15s.jpg" width="320"/></a><br/>我倒得相當小心。<br/>好像比史坦茲液封劑的液體部分輕一點。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00552amx15.jpg" target="_blank"><img alt="DSC00552amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00552amx15s.jpg" width="320"/></a><br/>倒回容器了。<br/>跟史坦茲不同，咖啡乳膠不是靠晶體來密封穿孔<br/>所以量杯裡的液體沒有凝塊。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00554amx15.jpg" target="_blank"><img alt="DSC00554amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00554amx15s.jpg" width="320"/></a><br/>我蓋好容器蓋並搖晃。<br/>跟史坦茲不同，液體只在第一搖時往上跳<br/>之後容器內容物會起泡沫<br/>像是液體滿到蓋子邊緣一樣<br/>或者像固體一樣的觸感。<br/>搖晃容器時感覺不到內部有重物移動<br/>變成一個均質的凝塊般的狀態。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00555amx15.jpg" target="_blank"><img alt="DSC00555amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00555amx15s.jpg" width="320"/></a><br/>我倒到５０ｍｌ刻度。<br/>差０．３ｇ應該是我倒的誤差。<br/>倒是可以硬是倒成４７．９ｇ<br/>不過我採取的方式是「倒到５０ｍｌ後再看數值」<br/>所以會是這樣的結果。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00556amx15.jpg" target="_blank"><img alt="DSC00556amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00556amx15s.jpg" width="320"/></a><br/>如同容器上輪胎內部的插圖一樣<br/>現在容器內的液封劑在起泡沫<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00557amx15.jpg" target="_blank"><img alt="DSC00557amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00557amx15s.jpg" width="320"/></a><br/>原本液量大約是半滿<br/>但泡沫上升到容器口附近<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00558amx15.jpg" target="_blank"><img alt="DSC00558amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00558amx15s.jpg" width="320"/></a><br/>倒一點點就從容器溢出來了<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00559amx15.jpg" target="_blank"><img alt="DSC00559amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00559amx15s.jpg" width="320"/></a><br/>雖然有點可惜，還是倒進<br/>之前切開的競賽液封劑容器裡了。<br/>搖晃前沒有的凝塊似的東西其實是小泡沫<br/>沒有變成真正的凝塊。<br/>咖啡乳膠平常我們店不用<br/>不過當輪胎內原本的液封劑是咖啡乳膠時<br/>有時候會需要補充<br/>所以我們有常備。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00563amx15.jpg" target="_blank"><img alt="DSC00563amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00563amx15s.jpg" width="320"/></a><br/>最後是伊梅吉(Impetus)。<br/>伊梅吉的液封劑優點是<br/>經過長時間使用後用清水就能簡單沖掉<br/>不過原本效力就比較弱<br/>所以我們店只進效力較強的<br/>含有黑色微纖維顆粒的那款。<br/>跟標準款辛型(Thin)的價格相同。<br/>Thin是指薄的意思。<br/>不是sin（原罪）啦。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00560amx15.jpg" target="_blank"><img alt="DSC00560amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00560amx15s.jpg" width="320"/></a><br/>我特別小心注意「秤上量杯的<br/>５０ｍｌ刻度只有左邊看得見」的程度。<br/>由於質感很濃稠，我原本以為<br/>這個會比水重？<br/>但結果是<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00561amx15.jpg" target="_blank"><img alt="DSC00561amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00561amx15s.jpg" width="320"/></a><br/>跟水一樣。<br/><br/><a href="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00562amx15.jpg" target="_blank"><img alt="DSC00562amx15.jpg" border="0" height="240" src="https://blog-imgs-151-origin.fc2.com/p/a/s/pass13/DSC00562amx15s.jpg" width="320"/></a><br/>倒回容器了。<br/><br/>在我們店常備的液封劑範圍內<br/>雖然咖啡乳膠輕了一點<br/>但大體上「１ｍｌ＝１ｇ左右」應該就沒問題了。<br/>如果能把輪胎注入量控制在５０ｍｌ以內<br/>會比最輕的丁基軟管<br/>公稱５１ｇ、實測５１～５３ｇ的麥克斯飛重還輕<br/>要是能控制在３０ｍｌ的話就跟聚氨酯軟管相當了。<br/>節省液封劑的目的當然不是成本<br/>而是為了輕量化。
-</div></div>
     <div class="affiliate-box">
       <p class="affiliate-title">本文提及的商品</p>
       <ul>
