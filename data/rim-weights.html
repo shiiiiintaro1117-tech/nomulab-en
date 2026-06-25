@@ -24,59 +24,100 @@
 </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988824672029852" crossorigin="anonymous"></script>
 <style>
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#252321;background:#f5f1e8;line-height:1.7;margin:0}
-.site-header{background:#fffdfa;color:#252321;padding:24px 0;border-bottom:1px solid #d8d0c2}
-.site-header .inner{max-width:1000px;margin:0 auto;padding:0 20px}
-.site-header h1{font-size:1.9rem;font-weight:700}
-.site-header h1 a{color:#252321;text-decoration:none}
-.wrap{max-width:1000px;margin:40px auto;padding:0 20px}
-.card{background:#fffdfa;border:1px solid #d8d0c2;border-radius:8px;padding:36px 40px}
-.card>h1{font-size:2rem;color:#252321;line-height:1.25;margin-bottom:10px}
-.lead{color:#4a5568;font-size:1.05rem;margin-bottom:8px}
-h2{font-size:1.3rem;color:#252321;margin:30px 0 12px;border-bottom:2px solid #d8d0c2;padding-bottom:6px}
+*,*::before,*::after{box-sizing:border-box}
+:root{--paper:#f5f1e8;--surface:#fffdfa;--surface-soft:#ebe5d8;--ink:#252321;--muted:#6d706a;--line:#d8d0c2;--line-strong:#b9ad99;--brass:#9a6b2f;--green:#486b55;--red:#8f332f;--steel:#3f5966}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:var(--ink);background:var(--paper);line-height:1.7;margin:0;text-rendering:optimizeLegibility}
+a{color:var(--steel)}
+a:hover{color:var(--red)}
+.site-header{background:rgba(255,253,250,.92);color:var(--ink);border-bottom:1px solid var(--line)}
+.site-header .inner{max-width:1180px;margin:0 auto;padding:18px 22px;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.brand-lockup{margin-right:auto;min-width:220px}
+.brand-link{color:var(--ink);text-decoration:none;display:inline-block}
+.brand-title{display:block;font-family:Georgia,'Times New Roman',serif;font-size:1.68rem;line-height:1;font-weight:700;letter-spacing:0}
+.brand-subtitle{display:block;margin-top:5px;color:var(--muted);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
+.site-nav{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.site-nav a{color:var(--ink);text-decoration:none;font-size:.9rem;font-weight:650;border-bottom:1px solid transparent}
+.site-nav a:hover{color:var(--red);border-bottom-color:var(--red)}
+.tool-wrap{max-width:1000px;margin:42px auto 0;padding:0 22px}
+.tool-panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:38px 42px}
+.tool-panel>h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(2rem,4.5vw,3.1rem);line-height:1.08;letter-spacing:0;margin:0 0 12px;color:var(--ink)}
+.lead{color:var(--muted);font-size:1.05rem;margin:0 0 18px;max-width:760px}
+h2{font-family:Georgia,'Times New Roman',serif;font-size:1.32rem;color:var(--ink);margin:30px 0 12px;border-bottom:1px solid var(--line);padding-bottom:8px;letter-spacing:0}
 p{margin-bottom:14px}
-a{color:#3f5966}
-.search{width:100%;box-sizing:border-box;padding:11px 14px;font-size:1rem;border:1px solid #d8d0c2;border-radius:8px;background:#fffdfa;margin:6px 0 4px}
-.count{font-size:.85rem;color:#6d706a;margin-bottom:14px}
-.tbl-wrap{overflow-x:auto;border:1px solid #d8d0c2;border-radius:8px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 20px}
+.geo{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px 16px}
+.fld{display:flex;flex-direction:column;font-size:.9rem;min-width:0}
+.geo .fld{font-size:.85rem}
+.fld label{font-weight:650;margin-bottom:4px;color:#3a3733}
+.fld .hint{font-weight:400;color:#8d8a83;font-size:.8rem}
+select,input[type=number],.search{width:100%;box-sizing:border-box;min-width:0;padding:10px 12px;font-size:1rem;border:1px solid var(--line-strong);border-radius:7px;background:#fffefa;color:var(--ink)}
+select:focus,input[type=number]:focus,.search:focus{outline:none;border-color:var(--brass)}
+.sub{font-size:.82rem;color:var(--muted);margin:2px 0 0}
+.btn{margin-top:22px;background:var(--ink);color:var(--paper);border:none;border-radius:8px;padding:13px 26px;font-size:1.02rem;font-weight:700;cursor:pointer}
+.btn:hover{background:#3a3733}
+#out{margin-top:8px}
+.rec{background:#f7f2e8;border:1px solid #e3d9c6;border-left:4px solid #d6b676;border-radius:8px;padding:15px 18px;margin:14px 0}
+.rec h3{font-family:Georgia,'Times New Roman',serif;font-size:1.08rem;margin:0 0 6px;color:var(--ink)}
+.rec p{margin:0 0 8px;font-size:.95rem}
+.rec .links{font-size:.82rem;color:var(--muted)}
+.rec .links a{margin-right:12px}
+.spokebox,.key{background:#efe7d8;border-left:4px solid var(--brass);border-radius:8px;padding:14px 18px;margin:16px 0;color:var(--ink)}
+.lenbox{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px 18px;margin:14px 0;overflow-x:auto}
+.lenbox table{border-collapse:collapse;width:100%;font-size:.95rem;margin-top:6px}
+.lenbox th,.lenbox td{border:1px solid #e3d9c6;padding:7px 10px;text-align:left}
+.lenbox th{background:#f7f2e8}
+.big{font-size:1.45rem;font-weight:700;color:var(--ink)}
+.disc{font-size:.84rem;color:var(--muted);margin-top:18px;background:#f4efe4;border-radius:8px;padding:12px 16px}
+.count{font-size:.85rem;color:var(--muted);margin-bottom:14px}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px}
 table{border-collapse:collapse;width:100%;font-size:.92rem;min-width:680px}
 th,td{border-bottom:1px solid #e6ddcd;padding:9px 11px;text-align:left;vertical-align:top}
-th{background:#f7f2e8;color:#252321;cursor:pointer;user-select:none;white-space:nowrap;position:sticky;top:0}
+th{background:#f7f2e8;color:var(--ink);cursor:pointer;user-select:none;white-space:nowrap;position:sticky;top:0}
 th:hover{background:#efe7d8}
 th .arrow{color:#bca97f;font-size:.8em}
 td.num{text-align:right;white-space:nowrap}
-td.rim{font-weight:600}
+td.rim{font-weight:650}
 td.note{color:#5b5e58;font-size:.88rem;max-width:280px}
 tr:hover td{background:#fbf8f1}
 .bdg{display:inline-block;font-size:.66rem;font-weight:700;padding:1px 6px;border-radius:10px;vertical-align:middle;margin-left:4px;letter-spacing:.03em}
 .bdg.meas{background:#e4efe2;color:#2f6b3a;border:1px solid #bcd9bd}
 .bdg.cat{background:#efe7d8;color:#7a6a3f;border:1px solid #ddcfa9}
-a.amz-inline{color:#c05621;text-decoration:none;font-weight:600;border-bottom:1px dotted #c05621}
+a.amz-inline{color:var(--red);text-decoration:none;font-weight:650;border-bottom:1px dotted var(--red)}
 a.amz-inline:hover{border-bottom-style:solid}
-.key{background:#efe7d8;border-left:4px solid #9a6b2f;border-radius:6px;padding:14px 18px;margin:18px 0;font-size:.97rem;color:#252321}
-.footer-nav{margin-top:32px;padding-top:20px;border-top:1px solid #d8d0c2;font-size:.88rem}
-.footer-nav a{margin-right:16px;color:#6d706a}
-.empty{padding:18px;color:#6d706a;text-align:center}
+.empty{padding:18px;color:var(--muted);text-align:center}
+.footer-nav{margin-top:32px;padding-top:20px;border-top:1px solid var(--line);font-size:.88rem;display:flex;gap:12px 16px;flex-wrap:wrap}
+.footer-nav a{color:var(--muted)}
+@media(max-width:700px){.tool-panel{padding:28px 24px}.grid{grid-template-columns:1fr}.geo{grid-template-columns:1fr}.big{font-size:1.2rem}.site-header .inner{align-items:flex-start;gap:14px}.site-nav{width:100%;gap:10px}}
 </style>
 </head>
 <body>
 <header class="site-header">
   <div class="inner">
-    <h1><a href="/">Nomu Lab Diary</a></h1>
-    <p>Bicycle Workshop Blog</p>
+    <div class="brand-lockup">
+      <a class="brand-link" href="/index.html">
+        <span class="brand-title">Nomu Lab Diary</span>
+        <span class="brand-subtitle">Bicycle Workshop Archive</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/index.html">Archive</a>
+      <a href="/guides/wheel-building.html">Wheel Guide</a>
+      <a href="/glossary.html">Glossary</a>
+      <a href="/about.html">About</a>
+    </nav>
   </div>
 </header>
-<div class="wrap">
-  <article class="card">
+<div class="tool-wrap">
+  <article class="tool-panel">
     <h1>Measured Bicycle Rim Weights</h1>
     <p class="lead">The bare-rim weight makers rarely publish — gathered from one workshop's build reports, searchable and sourced.</p>
 
     <p>As the <a href="/guides/wheel-weight.html">wheel weight guide</a> argues, the advertised front-plus-rear total tells you little; the number worth knowing is the <strong>weight of the bare rim</strong>, and almost no brand prints it. This table collects rim-alone weights recorded over years of builds. Each figure is for a single bare rim and links to the post it came from. It is a curated, growing selection — in the source reports many rims are weighed only in a scale photo, so the list keeps expanding as those are read off and added.</p>
 
-    <div class="key"><strong>How to read this:</strong> a <span class="bdg meas">measured</span> tag means the source states an actual weighed figure for the bare rim; <span class="bdg cat">catalog</span> means only a nominal weight was given. Individual rims vary — often ±5–15 g, sometimes more — so treat each number as that sample, not a guarantee. Click any column heading to sort; type to filter.</p>
+    <div class="key"><strong>How to read this:</strong> a <span class="bdg meas">measured</span> tag means the source states an actual weighed figure for the bare rim; <span class="bdg cat">catalog</span> means only a nominal weight was given. Individual rims vary — often ±5–15 g, sometimes more — so treat each number as that sample, not a guarantee. Click any column heading to sort; type to filter.</div>
 
     <input type="text" id="q" class="search" placeholder="Search rim, brand, type…  (e.g. Kinlin, carbon, 50 mm)" autocomplete="off">
-    <div class="count"><span id="shown">48</span> of 48 rims · 39 measured</div>
+    <div class="count"><span id="shown">48</span> of 48 rims · 40 measured</div>
 
     <div class="tbl-wrap">
       <table id="rimtable">
@@ -98,8 +139,8 @@ a.amz-inline:hover{border-bottom-style:solid}
 <tr data-search="american classic cr420 clincher catalog 420 g; measured matches." data-h="-1" data-w="420" data-n="american classic cr420"><td class="rim">American Classic CR420 <span class="bdg meas">measured</span></td><td class="num">—</td><td class="num"><strong>420</strong></td><td>clincher</td><td class="note">Catalog 420 g; measured matches.</td><td class="num"><a href="/posts/7349.html">#7349</a></td><td class="num"><a class="amz-inline" href="https://www.amazon.com/s?tag=nomulabworksh-20&k=American+Classic+CR420+rim" target="_blank" rel="noopener sponsored">find</a></td></tr>
 <tr data-search="campagnolo sigma pavé rim clincher pavé." data-h="-1" data-w="407" data-n="campagnolo sigma pavé rim"><td class="rim">Campagnolo Sigma Pavé rim <span class="bdg meas">measured</span></td><td class="num">—</td><td class="num"><strong>407</strong></td><td>clincher</td><td class="note">Pavé.</td><td class="num"><a href="/posts/7831.html">#7831</a></td><td class="num"><a class="amz-inline" href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Campagnolo+Sigma+Pav%C3%A9+rim+rim" target="_blank" rel="noopener sponsored">find</a></td></tr>
 <tr data-search="campagnolo sigma strada rim clincher strada (paired with pavé)." data-h="-1" data-w="408" data-n="campagnolo sigma strada rim"><td class="rim">Campagnolo Sigma Strada rim <span class="bdg meas">measured</span></td><td class="num">—</td><td class="num"><strong>408</strong></td><td>clincher</td><td class="note">Strada (paired with Pavé).</td><td class="num"><a href="/posts/7831.html">#7831</a></td><td class="num"><a class="amz-inline" href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Campagnolo+Sigma+Strada+rim+rim" target="_blank" rel="noopener sponsored">find</a></td></tr>
+<tr data-search="dt swiss erc 1400 dicut 35 rim carbon clincher measured 408 g (scale photo; rim with tape). the 679 g figure is the front wheel&#x27;s catalog weight, not the rim." data-h="35" data-w="408" data-n="dt swiss erc 1400 dicut 35 rim"><td class="rim">DT Swiss ERC 1400 Dicut 35 rim <span class="bdg meas">measured</span></td><td class="num">35</td><td class="num"><strong>408</strong></td><td>carbon clincher</td><td class="note">Measured 408 g (scale photo; rim with tape). The 679 g figure is the front wheel&#x27;s catalog weight, not the rim.</td><td class="num"><a href="/posts/7367.html">#7367</a></td><td class="num"><a class="amz-inline" href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+Swiss+ERC+1400+Dicut+35+rim+rim" target="_blank" rel="noopener sponsored">find</a></td></tr>
 <tr data-search="dt swiss rr585 clincher catalog figure (the 585 is the nominal weight)." data-h="-1" data-w="585" data-n="dt swiss rr585"><td class="rim">DT Swiss RR585 <span class="bdg cat">catalog</span></td><td class="num">—</td><td class="num"><strong>585</strong></td><td>clincher</td><td class="note">Catalog figure (the 585 is the nominal weight).</td><td class="num"><a href="/posts/3025.html">#3025</a></td><td class="num"><a class="amz-inline" href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+Swiss+RR585+rim" target="_blank" rel="noopener sponsored">find</a></td></tr>
-<tr data-search="dt swiss erc 1400 dicut 35 rim carbon clincher catalog 679 g; the bare-rim measured figure is published only as a scale photo." data-h="35" data-w="679" data-n="dt swiss erc 1400 dicut 35 rim"><td class="rim">DT Swiss ERC 1400 Dicut 35 rim <span class="bdg cat">catalog</span></td><td class="num">35</td><td class="num"><strong>679</strong></td><td>carbon clincher</td><td class="note">Catalog 679 g; the bare-rim measured figure is published only as a scale photo.</td><td class="num"><a href="/posts/7367.html">#7367</a></td><td class="num"><a class="amz-inline" href="https://www.amazon.com/s?tag=nomulabworksh-20&k=DT+Swiss+ERC+1400+Dicut+35+rim+rim" target="_blank" rel="noopener sponsored">find</a></td></tr>
 <tr data-search="edge 1-25 (early, 195 g spec) carbon early edge era; catalog 195 g." data-h="25" data-w="204" data-n="edge 1-25 (early, 195 g spec)"><td class="rim">Edge 1-25 (early, 195 g spec) <span class="bdg meas">measured</span></td><td class="num">25</td><td class="num"><strong>204</strong></td><td>carbon</td><td class="note">Early Edge era; catalog 195 g.</td><td class="num"><a href="/posts/769.html">#769</a></td><td class="num"><a class="amz-inline" href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Edge+1-25+rim" target="_blank" rel="noopener sponsored">find</a></td></tr>
 <tr data-search="enve 1-25 (current enve) carbon catalog 250 g. enve rims have trended heavier over the years." data-h="25" data-w="250" data-n="enve 1-25 (current enve)"><td class="rim">Enve 1-25 (current ENVE) <span class="bdg meas">measured</span></td><td class="num">25</td><td class="num"><strong>250</strong></td><td>carbon</td><td class="note">Catalog 250 g. ENVE rims have trended heavier over the years.</td><td class="num"><a href="/posts/658.html">#658</a></td><td class="num"><a class="amz-inline" href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Enve+1-25+rim" target="_blank" rel="noopener sponsored">find</a></td></tr>
 <tr data-search="enve (45 mm) carbon catalog; cited for its outstanding height-to-weight ratio." data-h="45" data-w="295" data-n="enve (45 mm)"><td class="rim">Enve (45 mm) <span class="bdg cat">catalog</span></td><td class="num">45</td><td class="num"><strong>295</strong></td><td>carbon</td><td class="note">Catalog; cited for its outstanding height-to-weight ratio.</td><td class="num"><a href="/posts/1058.html">#1058</a></td><td class="num"><a class="amz-inline" href="https://www.amazon.com/s?tag=nomulabworksh-20&k=Enve++rim" target="_blank" rel="noopener sponsored">find</a></td></tr>
