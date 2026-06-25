@@ -416,6 +416,35 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
   .footer-rich .fmeta { margin-left: 0; max-width: none; }
 }
 </style>
+<style>
+:root { --sticky-header-offset: 78px; }
+.site-header {
+  background: rgba(255,253,250,.94);
+  position: sticky; top: 0; z-index: 30;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 1px 0 rgba(37,35,33,.04);
+}
+.sidebar {
+  top: var(--sticky-header-offset);
+  max-height: calc(100vh - var(--sticky-header-offset) - 16px);
+}
+.archive-heading { scroll-margin-top: var(--sticky-header-offset); }
+.pager {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; flex-wrap: wrap; margin: 18px 0 0;
+}
+.pager button {
+  min-height: 38px; padding: 8px 14px; border: 1px solid var(--line-strong);
+  border-radius: 6px; background: var(--surface); color: var(--ink);
+  font-weight: 700; cursor: pointer;
+}
+.pager button:hover:not(:disabled) { border-color: var(--brass); color: var(--red); }
+.pager button:disabled { opacity: .45; cursor: default; }
+.pager span { color: var(--muted); font-size: .86rem; }
+@media (max-width: 800px) {
+  :root { --sticky-header-offset: 126px; }
+}
+</style>
 </head>
 <body>
 <header class="site-header">
@@ -459,7 +488,7 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
     <h2 class="strip-head">Tools &amp; Data <span class="all">Free, no sign-up</span></h2>
     <div class="tools-grid">
       <a class="tool-card" href="/tools/build-advisor.html"><strong>Wheel Build Advisor</strong><span>Enter your hub &amp; rim and get a recommended lacing pattern, spoke gauges and spoke length — each tied to the guides.</span><em>Interactive tool →</em></a>
-      <a class="tool-card" href="/data/rim-weights.html"><strong>Measured Rim Weights</strong><span>The bare-rim weights makers rarely publish — 48 rims, searchable, sortable and sourced.</span><em>Database →</em></a>
+      <a class="tool-card" href="/data/rim-weights.html"><strong>Measured Rim Weights</strong><span>The bare-rim weights makers rarely publish — 52 rims, searchable, sortable and sourced.</span><em>Database →</em></a>
     </div>
   </section>
   <ins class="adsbygoogle"
@@ -509,7 +538,7 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
       </div>
       <div class="archive-tools">
         <div class="search-bar">
-          <input type="text" id="search-input" placeholder="Search articles, hubs, rims, spokes…" oninput="applyFilters()">
+          <input type="text" id="search-input" placeholder="Search articles, hubs, rims, spokes…" oninput="resetPage()">
         </div>
         <div class="sort-bar">
           <span>Sort:</span>
@@ -57202,22 +57231,39 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
     </div>
   </div>
       </div>
+      <div class="pager" id="pager" aria-label="Article pagination">
+        <button type="button" id="page-prev" onclick="changePage(-1)">Previous</button>
+        <span id="page-status"></span>
+        <button type="button" id="page-next" onclick="changePage(1)">Next</button>
+      </div>
     </div>
   </div>
 </div>
 <script>
-let _cat = 'all', _sort = 'new';
+const PAGE_SIZE = 12;
+let _cat = 'all', _sort = 'new', _page = 1;
 function filterCards(cat, btn) {
   _cat = cat;
+  _page = 1;
   document.querySelectorAll('.cat-list button').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   applyFilters();
 }
 function sortCards(order) {
   _sort = order;
+  _page = 1;
   document.getElementById('btn-new').classList.toggle('active', order === 'new');
   document.getElementById('btn-old').classList.toggle('active', order === 'old');
   applyFilters();
+}
+function resetPage() {
+  _page = 1;
+  applyFilters();
+}
+function changePage(delta) {
+  _page += delta;
+  applyFilters();
+  document.querySelector('.archive-heading')?.scrollIntoView({behavior: 'smooth', block: 'start'});
 }
 function applyFilters() {
   const q = (document.getElementById('search-input').value || '').toLowerCase().trim();
@@ -57227,13 +57273,26 @@ function applyFilters() {
     const da = a.dataset.date || '', db = b.dataset.date || '';
     return _sort === 'new' ? db.localeCompare(da) : da.localeCompare(db);
   });
+  const matches = [];
   cards.forEach(c => {
     const catOk = _cat === 'all' || c.dataset.category === _cat;
     const searchOk = !q || (c.dataset.search || '').includes(q);
-    c.style.display = (catOk && searchOk) ? '' : 'none';
+    if (catOk && searchOk) matches.push(c);
     grid.appendChild(c);
   });
+  const totalPages = Math.max(1, Math.ceil(matches.length / PAGE_SIZE));
+  _page = Math.min(Math.max(_page, 1), totalPages);
+  const start = (_page - 1) * PAGE_SIZE;
+  cards.forEach(c => c.style.display = 'none');
+  matches.slice(start, start + PAGE_SIZE).forEach(c => c.style.display = '');
+  const prev = document.getElementById('page-prev');
+  const next = document.getElementById('page-next');
+  const status = document.getElementById('page-status');
+  if (prev) prev.disabled = _page <= 1 || matches.length === 0;
+  if (next) next.disabled = _page >= totalPages || matches.length === 0;
+  if (status) status.textContent = matches.length ? `Page ${_page} of ${totalPages} · ${matches.length} articles` : 'No matching articles';
 }
+applyFilters();
 </script>
 <style>
 .footer-rich{background:#252321;color:rgba(255,253,250,.72);padding:34px 0 26px;margin-top:64px;font-size:.85rem}

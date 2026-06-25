@@ -69,10 +69,10 @@ select:focus,input[type=number]:focus,.search:focus{outline:none;border-color:va
 .big{font-size:1.45rem;font-weight:700;color:var(--ink)}
 .disc{font-size:.84rem;color:var(--muted);margin-top:18px;background:#f4efe4;border-radius:8px;padding:12px 16px}
 .count{font-size:.85rem;color:var(--muted);margin-bottom:14px}
-.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px}
+.tbl-wrap{overflow:auto;border:1px solid var(--line);border-radius:8px;max-height:72vh;background:var(--surface)}
 table{border-collapse:collapse;width:100%;font-size:.92rem;min-width:680px}
 th,td{border-bottom:1px solid #e6ddcd;padding:9px 11px;text-align:left;vertical-align:top}
-th{background:#f7f2e8;color:var(--ink);cursor:pointer;user-select:none;white-space:nowrap;position:sticky;top:0}
+th{background:#f7f2e8;color:var(--ink);cursor:pointer;user-select:none;white-space:nowrap;position:sticky;top:0;z-index:2;box-shadow:0 1px 0 #e6ddcd}
 th:hover{background:#efe7d8}
 th .arrow{color:#bca97f;font-size:.8em}
 td.num{text-align:right;white-space:nowrap}
