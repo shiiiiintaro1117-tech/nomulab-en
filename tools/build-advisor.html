@@ -126,6 +126,11 @@ a.amz-inline:hover{border-bottom-style:solid}
 
     <h2>Hub &amp; rim measurements <span style="font-weight:400;font-size:.85rem;color:#6d706a">— optional, for spoke length</span></h2>
     <p class="sub">Leave blank if you only want the build recommendation. "Right" = drive (freehub) side. Flange diameter is to the spoke-hole centres; centre-to-flange is the distance from the wheel centreline to each flange.</p>
+    <div class="fld" style="margin-bottom:14px">
+      <label for="hubpreset">Load a hub preset <span style="font-weight:400;color:#6d706a">— fills the flange figures below</span></label>
+      <select id="hubpreset"><option value="">— pick a hub (or enter your own) —</option><option value="0">DT Swiss 350 — rear, rim brake (130mm)</option><option value="1">DT Swiss 350 — rear, disc (142mm)</option><option value="2">DT Swiss 350 — front, rim brake (100mm)</option><option value="3">DT Swiss 350 — front, disc (100mm)</option><option value="4">DT Swiss 240s — rear, rim brake (130mm)</option><option value="5">DT Swiss 240s — front, rim brake (100mm)</option><option value="6">Chris King R45 — rear, rim brake (130mm)</option><option value="7">Chris King R45 — front, rim brake (100mm)</option><option value="8">Chris King R45D — rear, disc (142mm)</option><option value="9">Chris King R45D — front, disc (100mm)</option><option value="10">Hope RS4 — rear, rim brake (130mm, hi-lo)</option><option value="11">Hope RS4 — front, rim brake (100mm)</option><option value="12">Hope RS4 — rear, disc (135mm, hi-lo)</option><option value="13">Hope RS4 — front, disc Centerlock (100mm)</option></select>
+      <p class="sub" id="hubsrc" style="margin-top:4px">Preset flange figures are published reference values (source: Velodrop). They're a starting point — measure or verify against your actual hub before cutting.</p>
+    </div>
     <div class="geo">
       <div class="fld"><label for="erd">ERD (mm)</label><input type="number" id="erd" step="0.1" placeholder="e.g. 600"></div>
       <div class="fld"><label for="holed">Spoke hole &oslash; (mm)</label><input type="number" id="holed" step="0.1" value="2.6"></div>
@@ -192,6 +197,24 @@ a.amz-inline:hover{border-bottom-style:solid}
   function val(id){ var e=document.getElementById(id); var v=parseFloat(e.value); return isNaN(v)?null:v; }
   function sel(id){ return document.getElementById(id).value; }
   function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+
+  // ハブプリセット: 選択でフランジ寸法を自動入力
+  var HUBS = [{"pos": "rear", "brake": "rim", "flL": 46, "flR": 46, "offL": 33.5, "offR": 16.8}, {"pos": "rear", "brake": "disc", "flL": 46, "flR": 46, "offL": 33.6, "offR": 19.6}, {"pos": "front", "brake": "rim", "flL": 39, "flR": 39, "offL": 37.4, "offR": 37.4}, {"pos": "front", "brake": "disc", "flL": 44, "flR": 44, "offL": 22.4, "offR": 35.0}, {"pos": "rear", "brake": "rim", "flL": 45, "flR": 45, "offL": 32.6, "offR": 16.9}, {"pos": "front", "brake": "rim", "flL": 38.8, "flR": 38.8, "offL": 37.3, "offR": 37.3}, {"pos": "rear", "brake": "rim", "flL": 51, "flR": 51, "offL": 34.3, "offR": 17.0}, {"pos": "front", "brake": "rim", "flL": 39.8, "flR": 39.8, "offL": 34.8, "offR": 34.8}, {"pos": "rear", "brake": "disc", "flL": 57.4, "flR": 57.4, "offL": 33.0, "offR": 18.7}, {"pos": "front", "brake": "disc", "flL": 57.4, "flR": 57.4, "offL": 22.3, "offR": 30.6}, {"pos": "rear", "brake": "rim", "flL": 47, "flR": 57, "offL": 34.5, "offR": 16.5}, {"pos": "front", "brake": "rim", "flL": 42, "flR": 42, "offL": 34.5, "offR": 34.5}, {"pos": "rear", "brake": "disc", "flL": 47, "flR": 57, "offL": 32.0, "offR": 19.0}, {"pos": "front", "brake": "disc", "flL": 42, "flR": 42, "offL": 21.7, "offR": 32.7}];
+  var hubSel = document.getElementById('hubpreset');
+  if (hubSel) {
+    hubSel.addEventListener('change', function(){
+      var v = hubSel.value;
+      if (v === '') return;
+      var h = HUBS[parseInt(v,10)];
+      if (!h) return;
+      document.getElementById('flL').value = h.flL;
+      document.getElementById('flR').value = h.flR;
+      document.getElementById('offL').value = h.offL;
+      document.getElementById('offR').value = h.offR;
+      if (h.pos) document.getElementById('position').value = h.pos;
+      if (h.brake) document.getElementById('brake').value = h.brake;
+    });
+  }
 
   function spokeLen(erd, flangeDia, offset, cross, N, holeD){
     var R=erd/2, F=flangeDia/2;
