@@ -95,9 +95,9 @@ a:hover { text-decoration: underline; }
   font-family: Georgia, 'Times New Roman', serif;
   font-size: clamp(2.25rem, 5vw, 4.1rem); line-height: 1.02;
   letter-spacing: 0; margin-bottom: 16px;
-  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+  overflow-wrap: break-word; word-break: normal; line-break: auto;
 }
-html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
+html[lang^="zh"] .journal-copy h1 { overflow-wrap: anywhere; word-break: break-all; line-break: anywhere; }
 .journal-copy p { color: var(--muted); max-width: 640px; margin-bottom: 22px; }
 .journal-copy .meta { color: var(--muted); font-size: .9rem; }
 .hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
@@ -134,6 +134,31 @@ html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
 }
 .guide-link span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
 .guide-link:hover { border-color: var(--brass); text-decoration: none; }
+
+/* Tools & Data strip (homepage, below the guide-strip) */
+.tools-strip { margin: 0 0 26px; }
+.strip-head {
+  font-family: Georgia, 'Times New Roman', serif; font-size: 1.18rem;
+  margin: 6px 0 10px; display: flex; align-items: baseline; gap: 10px;
+  line-height: 1.2; letter-spacing: 0;
+}
+.strip-head .all { font-size: .78rem; font-weight: 600; color: var(--steel); }
+.tools-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.tool-card {
+  display: block; text-decoration: none; color: var(--ink);
+  background: rgba(255,253,250,.7); border: 1px solid var(--line);
+  border-left: 3px solid var(--brass); border-radius: 8px; padding: 15px 17px;
+}
+.tool-card strong {
+  display: block; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.08rem; line-height: 1.16; letter-spacing: 0;
+}
+.tool-card span { display: block; margin-top: 6px; color: var(--muted); font-size: .82rem; line-height: 1.45; }
+.tool-card em {
+  display: inline-block; margin-top: 9px; font-style: normal; font-size: .72rem;
+  font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: var(--brass);
+}
+.tool-card:hover { border-color: var(--brass); text-decoration: none; }
 
 /* Sidebar layout (index) */
 .layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 28px; align-items: start; }
@@ -207,6 +232,8 @@ html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
   .card-inner { flex-direction: column; }
   .card-thumb, .card-thumb-placeholder { width: 100%; min-height: 160px; }
   .guide-strip { grid-template-columns: 1fr; }
+  .tools-grid { grid-template-columns: 1fr; }
+  .strip-head { flex-direction: column; align-items: flex-start; gap: 2px; }
   .journal-copy { padding: 30px 22px; }
   .journal-copy h1 { font-size: 2rem; }
   html[lang^="zh"] .journal-copy h1 { font-size: 1.72rem; line-height: 1.16; }
@@ -238,9 +265,9 @@ html[lang^="zh"] .journal-copy h1 { word-break: break-all; }
   font-family: Georgia, 'Times New Roman', serif;
   font-size: clamp(2rem, 4.5vw, 3.25rem); color: var(--ink);
   line-height: 1.08; letter-spacing: 0; margin-bottom: 12px;
-  overflow-wrap: anywhere; word-break: normal; line-break: anywhere;
+  overflow-wrap: break-word; word-break: normal; line-break: auto;
 }
-html[lang^="zh"] .post-wrap h1 { word-break: break-all; }
+html[lang^="zh"] .post-wrap h1 { overflow-wrap: anywhere; word-break: break-all; line-break: anywhere; }
 .post-meta {
   font-size: 0.84rem; color: var(--muted); padding-bottom: 20px;
   border-bottom: 1px solid var(--line); margin-bottom: 26px;
@@ -332,6 +359,27 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 .site-footer a:hover { color: white; text-decoration: none; }
 .site-footer .attribution { margin-left: auto; font-size: 0.78rem; }
 
+.footer-rich {
+  background: #252321; color: rgba(255,253,250,.72);
+  padding: 34px 0 26px; margin-top: 64px; font-size: .85rem;
+}
+.footer-rich .inner {
+  max-width: 1180px; margin: 0 auto; padding: 0 22px;
+  display: flex; gap: 40px 48px; align-items: flex-start; flex-wrap: wrap;
+}
+.footer-rich .fcol { display: flex; flex-direction: column; gap: 7px; }
+.footer-rich .fhead {
+  font-size: .7rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--brass); font-weight: 800; margin-bottom: 3px;
+}
+.footer-rich a { color: rgba(255,253,250,.86); text-decoration: none; font-size: .88rem; }
+.footer-rich a:hover { color: #fff; text-decoration: none; }
+.footer-rich .fmeta {
+  margin-left: auto; max-width: 300px; display: flex; flex-direction: column; gap: 6px;
+  color: rgba(255,253,250,.6); font-size: .78rem;
+}
+.footer-rich .fmeta a { color: rgba(255,253,250,.8); }
+
 /* Source link (original JP article) */
 .source-link {
   font-size: 0.78rem; color: var(--muted); margin-top: 28px;
@@ -361,6 +409,8 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
   .site-header .inner { align-items: flex-start; gap: 14px; }
   .site-nav { width: 100%; gap: 10px; }
   .site-footer .attribution { margin-left: 0; }
+  .footer-rich .inner { gap: 26px 32px; }
+  .footer-rich .fmeta { margin-left: 0; max-width: none; }
 }
 </style>
 </head>
@@ -417,13 +467,39 @@ ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
     <p class="source-link">日文原文：<a href="http://pass13.blog.fc2.com/blog-entry-2525.html" target="_blank" rel="noopener">のむラボ日記 #2525</a></p>
   </article>
 </div>
-<footer class="site-footer">
+<style>
+.footer-rich{background:#252321;color:rgba(255,253,250,.72);padding:34px 0 26px;margin-top:64px;font-size:.85rem}
+.footer-rich .inner{max-width:1180px;margin:0 auto;padding:0 22px;display:flex;gap:40px 48px;align-items:flex-start;flex-wrap:wrap}
+.footer-rich .fcol{display:flex;flex-direction:column;gap:7px}
+.footer-rich .fhead{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#9a6b2f;font-weight:800;margin-bottom:3px}
+.footer-rich a{color:rgba(255,253,250,.86);text-decoration:none;font-size:.88rem}
+.footer-rich a:hover{color:#fff;text-decoration:none}
+.footer-rich .fmeta{margin-left:auto;max-width:300px;display:flex;flex-direction:column;gap:6px;color:rgba(255,253,250,.6);font-size:.78rem}
+.footer-rich .fmeta a{color:rgba(255,253,250,.8)}
+@media(max-width:760px){.footer-rich .inner{gap:26px 32px}.footer-rich .fmeta{margin-left:0;max-width:none}}
+</style><footer class="footer-rich">
   <div class="inner">
-    <span>© 2007–2026 野村工房日記</span>
-    <a href="/about.html">關於本站</a>
-    <a href="/privacy-policy.html">隱私政策</a>
-    <a href="/sitemap.xml">網站地圖</a>
-    <span class="attribution">翻譯自 <a href="http://pass13.blog.fc2.com" target="_blank" rel="noopener">のむラボ日記</a>（日文原著）</span>
+    <div class="fcol">
+      <span class="fhead">瀏覽</span>
+      <a href="/zh/">所有文章</a>
+      <a href="/guides/wheel-building.html">輪組指南</a>
+      <a href="/glossary.html">術語表</a>
+      <a href="/about.html">關於本站</a>
+    </div>
+    <div class="fcol">
+      <span class="fhead">工具與資料</span>
+      <a href="/tools/build-advisor.html">組法建議工具</a>
+      <a href="/data/rim-weights.html">實測輪框重量</a>
+    </div>
+    <div class="fcol">
+      <span class="fhead">網站</span>
+      <a href="/privacy-policy.html">隱私政策</a>
+      <a href="/sitemap.xml">網站地圖</a>
+    </div>
+    <div class="fmeta">
+      <span>© 2007–2026 野村工房日記</span>
+      <span class="attribution">翻譯自 <a href="http://pass13.blog.fc2.com" target="_blank" rel="noopener">のむラボ日記</a>（日文原著）</span>
+    </div>
   </div>
 </footer>
 </body>

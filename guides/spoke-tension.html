@@ -140,15 +140,39 @@ a.amz-inline:hover{border-bottom-style:solid}
     </div>
   </article>
 </div>
-<footer class="site-footer">
+<style>
+.footer-rich{background:#252321;color:rgba(255,253,250,.72);padding:34px 0 26px;margin-top:64px;font-size:.85rem}
+.footer-rich .inner{max-width:1180px;margin:0 auto;padding:0 22px;display:flex;gap:40px 48px;align-items:flex-start;flex-wrap:wrap}
+.footer-rich .fcol{display:flex;flex-direction:column;gap:7px}
+.footer-rich .fhead{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#9a6b2f;font-weight:800;margin-bottom:3px}
+.footer-rich a{color:rgba(255,253,250,.86);text-decoration:none;font-size:.88rem}
+.footer-rich a:hover{color:#fff;text-decoration:none}
+.footer-rich .fmeta{margin-left:auto;max-width:300px;display:flex;flex-direction:column;gap:6px;color:rgba(255,253,250,.6);font-size:.78rem}
+.footer-rich .fmeta a{color:rgba(255,253,250,.8)}
+@media(max-width:760px){.footer-rich .inner{gap:26px 32px}.footer-rich .fmeta{margin-left:0;max-width:none}}
+</style><footer class="footer-rich">
   <div class="inner">
-    <span>© 2007–2026 Nomu Lab Diary</span>
-    <a href="/about.html">About</a>
-    <a href="/guides/wheel-building.html">Wheel Building Guide</a>
-    <a href="/glossary.html">Glossary</a>
-    <a href="/privacy-policy.html">Privacy</a>
-    <a href="/sitemap.xml">Sitemap</a>
-    <span class="attribution">Translation of <a href="http://pass13.blog.fc2.com" target="_blank" rel="noopener">のむラボ日記</a> (Japanese original)</span>
+    <div class="fcol">
+      <span class="fhead">Explore</span>
+      <a href="/">Archive</a>
+      <a href="/guides/wheel-building.html">Wheel Guide</a>
+      <a href="/glossary.html">Glossary</a>
+      <a href="/about.html">About</a>
+    </div>
+    <div class="fcol">
+      <span class="fhead">Tools &amp; Data</span>
+      <a href="/tools/build-advisor.html">Build Advisor</a>
+      <a href="/data/rim-weights.html">Rim Weights</a>
+    </div>
+    <div class="fcol">
+      <span class="fhead">Site</span>
+      <a href="/privacy-policy.html">Privacy</a>
+      <a href="/sitemap.xml">Sitemap</a>
+    </div>
+    <div class="fmeta">
+      <span>© 2007–2026 Nomu Lab Diary</span>
+      <span class="attribution">Translation of <a href="http://pass13.blog.fc2.com" target="_blank" rel="noopener">のむラボ日記</a> (Japanese original)</span>
+    </div>
   </div>
 </footer>
 </body>
