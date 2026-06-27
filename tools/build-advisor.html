@@ -89,6 +89,17 @@ a.amz-inline:hover{border-bottom-style:solid}
 .footer-nav a{color:var(--muted)}
 @media(max-width:700px){.tool-panel{padding:28px 24px}.grid{grid-template-columns:1fr}.geo{grid-template-columns:1fr}.big{font-size:1.2rem}.site-header .inner{align-items:flex-start;gap:14px}.site-nav{width:100%;gap:10px}}
 </style>
+<style>
+.calc-alert{border:1px solid var(--line);border-left:4px solid var(--steel);border-radius:8px;padding:12px 16px;margin:12px 0;font-size:.88rem;background:#f3f6f7;color:var(--ink)}
+.calc-alert.warning{border-left-color:var(--brass);background:#faf5e9}
+.calc-alert.error{border-left-color:var(--red);background:#fbefec}
+.calc-alert strong{display:block;margin-bottom:4px}
+.calc-alert ul{margin:5px 0 0;padding-left:20px}
+.calc-alert li{margin:3px 0}
+.measure-mode{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:12px 16px}
+[hidden]{display:none!important}
+@media(max-width:700px){.measure-mode{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 <header class="site-header">
@@ -120,34 +131,43 @@ a.amz-inline:hover{border-bottom-style:solid}
         <select id="brake"><option value="rim">Rim brake</option><option value="disc">Disc brake</option></select></div>
       <div class="fld"><label for="hub">Hub spoke attachment</label>
         <select id="hub"><option value="jbend">J-bend (elbowed)</option><option value="straightpull">Straight-pull</option></select></div>
-      <div class="fld"><label for="count">Total spoke count</label>
+      <div class="fld"><label for="count">Total spoke count <span class="hint">— hub and rim</span></label>
         <input type="number" id="count" min="8" max="48" step="2" value="24"></div>
+      <div class="fld"><label for="distribution">Spoke distribution</label>
+        <select id="distribution"><option value="equal">Equal left / right</option><option value="asymmetric">Asymmetric or custom drilling</option></select>
+        <span class="sub">Length calculation supports equal counts only.</span></div>
     </div>
 
     <h2>Hub &amp; rim measurements <span style="font-weight:400;font-size:.85rem;color:#6d706a">— optional, for spoke length</span></h2>
-    <p class="sub">Leave blank if you only want the build recommendation. "Right" = drive (freehub) side. Flange diameter is to the spoke-hole centres; centre-to-flange is the distance from the wheel centreline to each flange.</p>
+    <p class="sub">Leave the main dimensions blank if you only want the build recommendation. Left and right are viewed from the rider's position; right is the drive side on a rear wheel and left is the rotor side on a disc front. Flange diameter is measured through the spoke-hole centres.</p>
     <div class="fld" style="margin-bottom:14px">
       <label for="hubpreset">Load a hub preset <span style="font-weight:400;color:#6d706a">— fills the flange figures below</span></label>
-      <select id="hubpreset"><option value="">— pick a hub (or enter your own) —</option><option value="0">DT Swiss 350 — rear, rim brake (130mm)</option><option value="1">DT Swiss 350 — rear, disc (142mm)</option><option value="2">DT Swiss 350 — front, rim brake (100mm)</option><option value="3">DT Swiss 350 — front, disc (100mm)</option><option value="4">DT Swiss 240s — rear, rim brake (130mm)</option><option value="5">DT Swiss 240s — front, rim brake (100mm)</option><option value="6">Chris King R45 — rear, rim brake (130mm)</option><option value="7">Chris King R45 — front, rim brake (100mm)</option><option value="8">Chris King R45D — rear, disc (142mm)</option><option value="9">Chris King R45D — front, disc (100mm)</option><option value="10">Hope RS4 — rear, rim brake (130mm, hi-lo)</option><option value="11">Hope RS4 — front, rim brake (100mm)</option><option value="12">Hope RS4 — rear, disc (135mm, hi-lo)</option><option value="13">Hope RS4 — front, disc Centerlock (100mm)</option></select>
-      <p class="sub" id="hubsrc" style="margin-top:4px">Preset flange figures are published reference values (source: Velodrop). They're a starting point — measure or verify against your actual hub before cutting.</p>
+      <select id="hubpreset"><option value="">— pick a hub (or enter your own) —</option><option value="0">DT Swiss 350 — rear, rim brake (130mm, pre-2021)</option><option value="1">DT Swiss 350 — rear, disc (142mm DBCL, pre-2021)</option><option value="2">DT Swiss 350 — front, rim brake (100mm radial flange)</option><option value="3">DT Swiss 350 — front, disc (100mm DBCL)</option><option value="4">DT Swiss 240s — rear, rim brake (130mm, pre-EXP)</option><option value="5">DT Swiss 240s — front, rim brake (100mm radial flange, pre-2020)</option><option value="6">Chris King R45 — rear, rim brake (130mm)</option><option value="7">Chris King R45 — front, rim brake (100mm)</option><option value="8">Chris King R45D — rear, Centerlock disc (142mm)</option><option value="9">Chris King R45D — front, Centerlock disc (100mm)</option><option value="10">Hope RS4 — rear, rim brake (130mm, hi-lo)</option><option value="11">Hope RS4 — front, rim brake (100mm)</option><option value="12">Hope RS4 — rear, disc (135mm, hi-lo)</option><option value="13">Hope RS4 — front, disc Centerlock (100mm)</option></select>
+      <p class="sub" id="hubsrc" style="margin-top:4px">J-bend presets are published reference values (source: Velodrop). Match the exact generation and variant, then measure or verify before cutting.</p>
     </div>
     <div class="geo">
-      <div class="fld"><label for="erd">ERD (mm)</label><input type="number" id="erd" step="0.1" placeholder="e.g. 600"></div>
-      <div class="fld"><label for="holed">Spoke hole &oslash; (mm)</label><input type="number" id="holed" step="0.1" value="2.6"></div>
-      <div></div>
-      <div class="fld"><label for="flL">Left flange &oslash; (mm)</label><input type="number" id="flL" step="0.1" placeholder="e.g. 45"></div>
-      <div class="fld"><label for="offL">Left centre&rarr;flange (mm)</label><input type="number" id="offL" step="0.1" placeholder="e.g. 37"></div>
+      <div class="fld"><label for="erd">ERD (mm)</label><input type="number" id="erd" min="150" max="750" step="0.1" placeholder="e.g. 600"></div>
+      <div class="fld"><label for="osb">Rim spoke-bed offset (mm)</label><input type="number" id="osb" min="0" max="20" step="0.1" value="0"></div>
+      <div class="fld"><label for="osbside">Offset direction</label><select id="osbside"><option value="center">Centred / none</option><option value="left">Toward left</option><option value="right">Toward right</option></select></div>
+      <div class="fld"><label for="flL">Left flange &oslash; (mm)</label><input type="number" id="flL" min="10" max="200" step="0.1" placeholder="e.g. 45"></div>
+      <div class="fld"><label for="offL">Left centre&rarr;flange (mm)</label><input type="number" id="offL" min="1" max="100" step="0.1" placeholder="e.g. 37"></div>
       <div class="fld"><label for="crossL">Left cross</label><input type="number" id="crossL" min="0" max="4" step="1" placeholder="0–4"></div>
-      <div class="fld"><label for="flR">Right flange &oslash; (mm)</label><input type="number" id="flR" step="0.1" placeholder="e.g. 45"></div>
-      <div class="fld"><label for="offR">Right centre&rarr;flange (mm)</label><input type="number" id="offR" step="0.1" placeholder="e.g. 18"></div>
+      <div class="fld"><label for="flR">Right flange &oslash; (mm)</label><input type="number" id="flR" min="10" max="200" step="0.1" placeholder="e.g. 45"></div>
+      <div class="fld"><label for="offR">Right centre&rarr;flange (mm)</label><input type="number" id="offR" min="1" max="100" step="0.1" placeholder="e.g. 18"></div>
       <div class="fld"><label for="crossR">Right cross</label><input type="number" id="crossR" min="0" max="4" step="1" placeholder="0–4"></div>
+      <div class="measure-mode">
+        <div class="fld" id="hole-field"><label for="holed">J-bend spoke hole &oslash; (mm)</label><input type="number" id="holed" min="1.5" max="6.6" step="0.1" value="2.6"></div>
+        <div class="fld straight-only" hidden><label for="spokeoffL">Left spoke-head offset (mm)</label><input type="number" id="spokeoffL" min="-5" max="5" step="0.1" placeholder="manufacturer value"></div>
+        <div class="fld straight-only" hidden><label for="spokeoffR">Right spoke-head offset (mm)</label><input type="number" id="spokeoffR" min="-5" max="5" step="0.1" placeholder="manufacturer value"></div>
+      </div>
     </div>
+    <p class="sub" style="margin-top:8px">Rim offset is the lateral distance from the wheel centreline to the spoke bed. Straight-pull spoke-head offset is a separate hub-specific value; it is not the flange-to-centre distance.</p>
 
-    <button class="btn" id="go">Get recommendation</button>
+    <button class="btn" id="go" type="button">Get recommendation</button>
 
     <div id="out"></div>
 
-    <div class="disc"><strong>Read me:</strong> the recommendations encode the rules the Nomu Lab guides set out (each linked below the advice); they are a starting point, not a substitute for checking against your actual hub and rim. Spoke length uses the standard geometric formula, rounded to 0.5&nbsp;mm (the workshop cuts in 0.5&nbsp;mm steps); for crossed wheels the inpoke/outpoke difference is negligible. <strong>Always double-check a length before cutting.</strong></div>
+    <div class="disc"><strong>Read me:</strong> the recommendations encode the rules the Nomu Lab guides set out and remain a starting point. Length calculation supports equal left/right spoke counts. J-bend uses the standard geometric formula; straight-pull uses its separate angular and spoke-head-offset correction. Targets are rounded to 0.5&nbsp;mm because the workshop cuts in 0.5&nbsp;mm steps. <strong>Measure the actual ERD with the nipples and washers you will use, then verify one spoke before cutting a batch.</strong></div>
 
     <div class="footer-nav">
       <a href="/guides/spoke-length.html">← Spoke length guide</a>
@@ -194,13 +214,31 @@ a.amz-inline:hover{border-bottom-style:solid}
 </footer>
 <script>
 (function(){
-  function val(id){ var e=document.getElementById(id); var v=parseFloat(e.value); return isNaN(v)?null:v; }
+  function byId(id){ return document.getElementById(id); }
+  function val(id){ var e=byId(id); var v=parseFloat(e.value); return isNaN(v)?null:v; }
   function sel(id){ return document.getElementById(id).value; }
-  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function present(v){ return v!==null && isFinite(v); }
+  function inRange(v,min,max){ return present(v) && v>=min && v<=max; }
+  function listAlert(kind,title,items){
+    if(!items.length) return '';
+    return '<div class="calc-alert '+kind+'" role="'+(kind==='error'?'alert':'note')+'"><strong>'+esc(title)+'</strong><ul>'
+      +items.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('')+'</ul></div>';
+  }
 
   // ハブプリセット: 選択でフランジ寸法を自動入力
-  var HUBS = [{"pos": "rear", "brake": "rim", "flL": 46, "flR": 46, "offL": 33.5, "offR": 16.8}, {"pos": "rear", "brake": "disc", "flL": 46, "flR": 46, "offL": 33.6, "offR": 19.6}, {"pos": "front", "brake": "rim", "flL": 39, "flR": 39, "offL": 37.4, "offR": 37.4}, {"pos": "front", "brake": "disc", "flL": 44, "flR": 44, "offL": 22.4, "offR": 35.0}, {"pos": "rear", "brake": "rim", "flL": 45, "flR": 45, "offL": 32.6, "offR": 16.9}, {"pos": "front", "brake": "rim", "flL": 38.8, "flR": 38.8, "offL": 37.3, "offR": 37.3}, {"pos": "rear", "brake": "rim", "flL": 51, "flR": 51, "offL": 34.3, "offR": 17.0}, {"pos": "front", "brake": "rim", "flL": 39.8, "flR": 39.8, "offL": 34.8, "offR": 34.8}, {"pos": "rear", "brake": "disc", "flL": 57.4, "flR": 57.4, "offL": 33.0, "offR": 18.7}, {"pos": "front", "brake": "disc", "flL": 57.4, "flR": 57.4, "offL": 22.3, "offR": 30.6}, {"pos": "rear", "brake": "rim", "flL": 47, "flR": 57, "offL": 34.5, "offR": 16.5}, {"pos": "front", "brake": "rim", "flL": 42, "flR": 42, "offL": 34.5, "offR": 34.5}, {"pos": "rear", "brake": "disc", "flL": 47, "flR": 57, "offL": 32.0, "offR": 19.0}, {"pos": "front", "brake": "disc", "flL": 42, "flR": 42, "offL": 21.7, "offR": 32.7}];
-  var hubSel = document.getElementById('hubpreset');
+  var HUBS = [{"type": "jbend", "pos": "rear", "brake": "rim", "flL": 46, "flR": 46, "offL": 33.5, "offR": 16.8}, {"type": "jbend", "pos": "rear", "brake": "disc", "flL": 46, "flR": 46, "offL": 33.6, "offR": 19.6}, {"type": "jbend", "pos": "front", "brake": "rim", "flL": 39, "flR": 39, "offL": 37.4, "offR": 37.4}, {"type": "jbend", "pos": "front", "brake": "disc", "flL": 44, "flR": 44, "offL": 22.4, "offR": 35.0}, {"type": "jbend", "pos": "rear", "brake": "rim", "flL": 45, "flR": 45, "offL": 32.6, "offR": 16.9}, {"type": "jbend", "pos": "front", "brake": "rim", "flL": 38.8, "flR": 38.8, "offL": 37.3, "offR": 37.3}, {"type": "jbend", "pos": "rear", "brake": "rim", "flL": 51, "flR": 51, "offL": 34.3, "offR": 17.0}, {"type": "jbend", "pos": "front", "brake": "rim", "flL": 39.8, "flR": 39.8, "offL": 34.8, "offR": 34.8}, {"type": "jbend", "pos": "rear", "brake": "disc", "flL": 57.4, "flR": 57.4, "offL": 33.0, "offR": 18.7}, {"type": "jbend", "pos": "front", "brake": "disc", "flL": 57.4, "flR": 57.4, "offL": 22.3, "offR": 30.6}, {"type": "jbend", "pos": "rear", "brake": "rim", "flL": 47, "flR": 57, "offL": 34.5, "offR": 16.5}, {"type": "jbend", "pos": "front", "brake": "rim", "flL": 42, "flR": 42, "offL": 34.5, "offR": 34.5}, {"type": "jbend", "pos": "rear", "brake": "disc", "flL": 47, "flR": 57, "offL": 32.0, "offR": 19.0}, {"type": "jbend", "pos": "front", "brake": "disc", "flL": 42, "flR": 42, "offL": 21.7, "offR": 32.7}];
+  var hubSel = byId('hubpreset');
+  function syncHubFields(){
+    var straight=sel('hub')==='straightpull';
+    byId('hole-field').hidden=straight;
+    Array.prototype.forEach.call(document.querySelectorAll('.straight-only'),function(el){ el.hidden=!straight; });
+    hubSel.disabled=straight;
+    if(straight && hubSel.value!=='') hubSel.value='';
+    byId('hubsrc').innerHTML=straight
+      ? 'Straight-pull presets are disabled: use the exact flange and spoke-head-offset dimensions supplied for your hub.'
+      : 'J-bend presets are published reference values (source: <a href="https://velodrop.com/resources/" target="_blank" rel="noopener">Velodrop</a>). Match the exact generation and variant, then measure or verify before cutting.';
+  }
   if (hubSel) {
     hubSel.addEventListener('change', function(){
       var v = hubSel.value;
@@ -211,28 +249,51 @@ a.amz-inline:hover{border-bottom-style:solid}
       document.getElementById('flR').value = h.flR;
       document.getElementById('offL').value = h.offL;
       document.getElementById('offR').value = h.offR;
+      if (h.type) document.getElementById('hub').value = h.type;
       if (h.pos) document.getElementById('position').value = h.pos;
       if (h.brake) document.getElementById('brake').value = h.brake;
+      syncHubFields();
     });
   }
+  byId('hub').addEventListener('change',syncHubFields);
+  syncHubFields();
 
-  function spokeLen(erd, flangeDia, offset, cross, N, holeD){
+  function geometryCross(hub,cross){
+    return hub==='straightpull' && cross>0 ? cross+0.5 : cross;
+  }
+  function spokeLen(erd,flangeDia,lateralOffset,cross,sideCount,hub,holeD,spokeOffset){
     var R=erd/2, F=flangeDia/2;
-    var theta=(720*cross/N)*Math.PI/180;
+    var theta=(360*geometryCross(hub,cross)/sideCount)*Math.PI/180;
     var chord2=R*R+F*F-2*R*F*Math.cos(theta);
-    var L=Math.sqrt(chord2+offset*offset)-holeD/2;
-    return L;
+    var L=Math.sqrt(chord2+lateralOffset*lateralOffset);
+    return hub==='jbend' ? L-holeD/2 : L+spokeOffset;
   }
   function round05(x){ return Math.round(x*2)/2; }
+  function defaultCross(position,brake,count){
+    if(position==='front' && brake==='rim') return 0;
+    if(count<=12) return 1;
+    if(count<=24) return 2;
+    return 3;
+  }
+  function sideNames(position,brake){
+    if(position==='rear') return ['Left (non-drive)','Right (drive)'];
+    if(brake==='disc') return ['Left (rotor)','Right (non-rotor)'];
+    return ['Left','Right'];
+  }
 
   function recCard(t,b,links){
     var l=links.map(function(x){return '<a href="'+x[1]+'">'+x[0]+'</a>';}).join('');
     return '<div class="rec"><h3>'+esc(t)+'</h3><p>'+b+'</p><div class="links">Why: '+l+'</div></div>';
   }
 
+  Array.prototype.forEach.call(document.querySelectorAll('.tool-panel select,.tool-panel input'),function(el){
+    el.addEventListener(el.tagName==='SELECT'?'change':'input',function(){ byId('out').innerHTML=''; });
+  });
+
   document.getElementById('go').addEventListener('click', function(){
     var position=sel('position'), brake=sel('brake'), hub=sel('hub');
-    var count=val('count')||0;
+    var count=val('count'), distribution=sel('distribution');
+    var countValid=present(count) && Number.isInteger(count) && count>=8 && count<=48 && count%2===0;
     var recs=[], spokeRec='';
 
     if(position==='front'){
@@ -254,7 +315,7 @@ a.amz-inline:hover{border-bottom-style:solid}
       spokeRec='<strong>Half-Competition.</strong> Heavier double-butted spoke on the drive side (Competition, cross-section &#8776;86); lighter bladed spoke on the non-drive side (CX-Ray, &#8776;64). The heavier spoke always goes on the drive side \u2014 never the reverse.';
       if(hub==='jbend'){
         recs.push(recCard('Consider an asymmetric spoke count',
-          'More spokes on the drive side than the non-drive side fights the slack non-drive side \u2014 e.g. 4:6, or 2:1 on a 24-spoke wheel (16 drive : 8 non-drive). A J-bend hub gives you this freedom; only use a split your hub actually drills.',
+          'More spokes on the drive side than the non-drive side fights the slack non-drive side \u2014 e.g. 4:6, or 2:1 on a 24-spoke wheel (16 drive : 8 non-drive). A J-bend hub gives you this freedom; only use a split your hub and rim are drilled for. The length calculator intentionally stops for asymmetric drilling.',
           [['Asymmetric wheel','/guides/asymmetric-wheel.html']]));
       } else {
         recs.push(recCard('Hub note: straight-pull limits your options',
@@ -264,7 +325,7 @@ a.amz-inline:hover{border-bottom-style:solid}
       recs.push(recCard('Even the angle with an offset rim or hi-lo flange',
         'An offset (asymmetric) rim or a hi-lo flange brings the left and right spoke angles closer together, easing the tension imbalance without narrowing the flange.',
         [['Spoke tension','/guides/spoke-tension.html'],['Rear hub','/guides/rear-hub.html']]));
-      if(count && count<=24){
+      if(countValid && count<=24){
         recs.push(recCard('Tying & soldering helps at this spoke count',
           'At low spoke counts (around 20\u201324) tying and soldering the crossings evens out how the spokes share load \u2014 near-essential around 20 spokes.',
           [['Spoke tying','/guides/spoke-tying.html']]));
@@ -272,23 +333,84 @@ a.amz-inline:hover{border-bottom-style:solid}
     }
 
     // spoke length
-    var erd=val('erd'), holeD=val('holed')||2.6;
+    var erd=val('erd'), holeD=val('holed');
     var flL=val('flL'), offL=val('offL'), flR=val('flR'), offR=val('offR');
-    var cL=val('crossL'), cR=val('crossR');
-    var defCross=(position==='front'&&brake==='rim')?0:3;
-    if(cL===null) cL=defCross;
-    if(cR===null) cR=defCross;
+    var cLInput=val('crossL'), cRInput=val('crossR');
+    var spokeOffL=val('spokeoffL'), spokeOffR=val('spokeoffR');
+    var osb=val('osb'), osbSide=sel('osbside');
+    if(osb===null) osb=0;
+    var defCross=defaultCross(position,brake,countValid?count:24);
+    var cL=cLInput===null?defCross:cLInput, cR=cRInput===null?defCross:cRInput;
+    var errors=[], warnings=[];
+    var mainDimensions=[erd,flL,offL,flR,offR];
+    var started=mainDimensions.some(present);
     var lenHtml='';
-    if(erd && flL && offL && flR && offR && count){
-      var LL=spokeLen(erd,flL,offL,cL,count,holeD);
-      var LR=spokeLen(erd,flR,offR,cR,count,holeD);
-      lenHtml='<div class="lenbox"><strong>Spoke length</strong> (standard formula, rounded to 0.5&nbsp;mm)'
-        +'<table><tr><th>Side</th><th>Cross</th><th>Cut to</th><th>Raw</th></tr>'
-        +'<tr><td>Left (non-drive)</td><td>'+cL+'\u00d7</td><td class="big">'+round05(LL).toFixed(1)+'&nbsp;mm</td><td>'+LL.toFixed(2)+'</td></tr>'
-        +'<tr><td>Right (drive)</td><td>'+cR+'\u00d7</td><td class="big">'+round05(LR).toFixed(1)+'&nbsp;mm</td><td>'+LR.toFixed(2)+'</td></tr>'
-        +'</table><p class="sub" style="margin-top:8px">Cut to = rounded to the nearest 0.5&nbsp;mm. Hole &oslash; '+holeD+'&nbsp;mm subtracted as &frac12;.</p></div>';
+    if(distribution==='asymmetric'){
+      lenHtml='<div class="lenbox"><strong>Spoke length</strong>'
+        +listAlert('warning','Length not calculated',['Asymmetric and 2:1 drilling can place same-side rim holes at unequal angles. Use the drilling plan supplied by the hub or rim maker, or a calculator made for that exact pattern.'])+'</div>';
+    } else if(started){
+      if(!countValid) errors.push('Total spoke count must be an even whole number from 8 to 48.');
+      if(!inRange(erd,150,750)) errors.push('ERD must be between 150 and 750 mm.');
+      if(!inRange(flL,10,200) || !inRange(flR,10,200)) errors.push('Both flange diameters must be between 10 and 200 mm.');
+      if(!inRange(offL,1,100) || !inRange(offR,1,100)) errors.push('Both centre-to-flange distances must be between 1 and 100 mm.');
+      if(present(erd) && ((present(flL) && flL>=erd) || (present(flR) && flR>=erd))) errors.push('A flange diameter must be smaller than the ERD.');
+      if(!inRange(osb,0,20)) errors.push('Rim spoke-bed offset must be between 0 and 20 mm.');
+      if(osb>0 && osbSide==='center') errors.push('Choose whether the offset spoke bed sits toward the left or right.');
+      if(!Number.isInteger(cL) || cL<0 || cL>4 || !Number.isInteger(cR) || cR<0 || cR>4) errors.push('Left and right cross values must be whole numbers from 0 to 4.');
+
+      if(hub==='jbend'){
+        if(!inRange(holeD,1.5,6.6)) errors.push('J-bend spoke-hole diameter must be between 1.5 and 6.6 mm.');
+      } else {
+        if(!inRange(spokeOffL,-5,5) || !inRange(spokeOffR,-5,5)) errors.push('Straight-pull spoke-head offsets are required on both sides and must be between -5 and 5 mm.');
+        if(cL===0 && present(spokeOffL) && spokeOffL!==0) errors.push('Left radial straight-pull lacing requires a 0 mm spoke-head offset.');
+        if(cR===0 && present(spokeOffR) && spokeOffR!==0) errors.push('Right radial straight-pull lacing requires a 0 mm spoke-head offset.');
+      }
+
+      if(countValid && Number.isInteger(cL) && Number.isInteger(cR)){
+        var sideCount=count/2;
+        [['Left',cL],['Right',cR]].forEach(function(item){
+          var angle=360*geometryCross(hub,item[1])/sideCount;
+          if(angle>90.0001) errors.push(item[0]+' lacing exceeds the 90-degree geometric crossing limit; reduce the cross count.');
+          else if(angle>=80) warnings.push(item[0]+' lacing is near tangent ('+angle.toFixed(1)+' degrees). Verify spoke-head and adjacent-hole clearance on the actual flange.');
+        });
+      }
+      if(position==='rear' && cR===0) errors.push('A rear drive side must be crossed to transmit drive torque.');
+      if(position==='rear' && cL===0) warnings.push('Radial rear non-drive lacing is calculable but is not the Nomu Lab recommendation.');
+      if(position==='front' && brake==='disc' && cL===0) errors.push('The left rotor side of a disc front wheel must be crossed to transmit braking torque.');
+      if(position==='front' && brake==='disc' && cR===0) warnings.push('A radial non-rotor side is calculable, but this advisor recommends crossing both sides.');
+
+      var shift=osb===0?0:(osbSide==='right'?osb:-osb);
+      var effectiveOffL=present(offL)?offL+shift:null;
+      var effectiveOffR=present(offR)?offR-shift:null;
+      if(present(effectiveOffL) && effectiveOffL<=0) errors.push('Rim offset places the spoke bed beyond the left flange; check offset direction and dimensions.');
+      if(present(effectiveOffR) && effectiveOffR<=0) errors.push('Rim offset places the spoke bed beyond the right flange; check offset direction and dimensions.');
+
+      if(cLInput===null || cRInput===null) warnings.push('Blank cross field(s) defaulted to '+defCross+'x for this wheel and spoke count.');
+      if(osb>0) warnings.push('Rim offset was applied toward the '+osbSide+' as entered. Confirm the rim is installed in that orientation.');
+      if(hubSel.value!=='') warnings.push('Preset dimensions can vary by generation, axle and freehub variant. Confirm the exact hub or measure it.');
+      if(hub==='straightpull') warnings.push('Straight-pull geometry uses cross + 0.5 for crossed lacing and adds each spoke-head offset. Confirm that your hub maker defines its offset the same way.');
+      warnings.push('Measure ERD with the nipples, washers and intended spoke-end position. Published ERD conventions can differ.');
+      warnings.push('The 0.5 mm target is a workshop cutting step, not an accuracy guarantee. Verify one spoke before cutting or ordering a batch.');
+
+      if(errors.length){
+        lenHtml='<div class="lenbox"><strong>Spoke length</strong>'+listAlert('error','Length not calculated',errors)+listAlert('warning','Check before retrying',warnings)+'</div>';
+      } else {
+        var LL=spokeLen(erd,flL,effectiveOffL,cL,count/2,hub,holeD,spokeOffL);
+        var LR=spokeLen(erd,flR,effectiveOffR,cR,count/2,hub,holeD,spokeOffR);
+        var names=sideNames(position,brake);
+        var correction=hub==='jbend'
+          ? 'J-bend correction: half of the '+holeD.toFixed(1)+' mm spoke-hole diameter subtracted.'
+          : 'Straight-pull figures are an approximation: per-side spoke-head offset added and crossed geometry uses cross + 0.5. This is hub-specific \u2014 confirm against your hub maker before cutting.';
+        var lenLabel=hub==='jbend' ? 'Spoke length target' : 'Spoke length estimate (straight-pull)';
+        lenHtml='<div class="lenbox"><strong>'+lenLabel+'</strong> (equal left/right count, rounded to 0.5&nbsp;mm)'
+          +'<table><tr><th>Side</th><th>Cross</th><th>Target</th><th>Unrounded</th></tr>'
+          +'<tr><td>'+names[0]+'</td><td>'+cL+'&times;</td><td class="big">'+round05(LL).toFixed(1)+'&nbsp;mm</td><td>'+LL.toFixed(2)+'&nbsp;mm</td></tr>'
+          +'<tr><td>'+names[1]+'</td><td>'+cR+'&times;</td><td class="big">'+round05(LR).toFixed(1)+'&nbsp;mm</td><td>'+LR.toFixed(2)+'&nbsp;mm</td></tr>'
+          +'</table><p class="sub" style="margin-top:8px">'+correction+'</p>'
+          +listAlert('warning','Accuracy checks',warnings)+'</div>';
+      }
     } else {
-      lenHtml='<div class="lenbox"><strong>Spoke length</strong><p class="sub" style="margin:6px 0 0">Fill in ERD, both flange diameters and both centre&rarr;flange distances (and spoke count) to get left/right lengths.</p></div>';
+      lenHtml='<div class="lenbox"><strong>Spoke length</strong><p class="sub" style="margin:6px 0 0">Fill in ERD, both flange diameters and both centre&rarr;flange distances to calculate a length. Leave them blank for recommendations only.</p></div>';
     }
 
     var html='<h2>Recommendation</h2>'+recs.join('')
