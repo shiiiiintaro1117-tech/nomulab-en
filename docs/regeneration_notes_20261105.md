@@ -61,7 +61,7 @@ description（meta / og:description / JSON-LD）は、対象の記事だけ「�
 | | 対象記事 | 仕様・作業内容だけで区別 | 仕様＋日付 | 日付のみ | 記事番号まで |
 |---|---|---|---|---|---|
 | 英語 | 1,898 | 735 | 879 | 280 | 4 |
-| 中国語 | 1,239 | 589 | 354 | 296 | 0 |
+| 中国語 | 1,239 | 590 | 353 | 296 | 0 |
 
 英語の1,898件には、元の完全一致の重複1,802件に加え、「#5」と「No. 5」の統一や Nomulab の表記統一で同じタイトルになった記事が含まれます。適用後、英語・中国語とも重複タイトルは0件、title・og:title・headline・h1 の不一致も0件です。全件の対応表は `docs/duplicate_titles_20261105.csv` にあります。
 
@@ -88,13 +88,17 @@ description（meta / og:description / JSON-LD）は、対象の記事だけ「�
 
 ### C-2. about の記事数（今回）
 
-「With more than 4,900 posts」を「With more than 5,300 posts translated in this edition」に直しました（翻訳済みは英語5,307記事）。about がテンプレートから生成されている場合は、件数を実際の記事数から計算して差し込むか、毎回の更新で見直してください。guides/wheel-building.html の見出し「Go deeper: 4,900 real wheel builds」も古い数字ですが、全記事がホイール組みの記事ではないため、文面をオーナーが決める必要があり、今回は直していません。
+「With more than 4,900 posts」を「With more than 5,300 posts translated in this edition」に直しました（翻訳済みは英語5,307記事）。about がテンプレートから生成されている場合は、件数を実際の記事数から計算して差し込むか、毎回の更新で見直してください。guides/wheel-building.html の見出し「Go deeper: 4,900 real wheel builds」も古い数字でした。全記事がホイール組みの記事ではないため、件数を含まない「Go deeper: real wheel builds from the workshop diary」に改めています。
 
 ### C-3. プライバシーポリシー（PR #1・今回）
 
 PR #1 では description・canonical・OGP・favicon を足し、Amazon.co.jp を Amazon.com に直しました。今回は「3. Google Analytics」の節を追加し、Cookies の節にアナリティクスの用途を加え、節番号と最終更新日を直しています。手書きページであれば対応は要りません。テンプレートから生成している場合は、今回の privacy-policy.html を元にしてください。なお、privacy-policy.html だけは GA タグが入っていません（他の10,637ページには G-TCJ5CJ4XYR が入っています）。意図したものかどうかを確認してください。
 
-### C-4. ガイド・用語集（PR #1）
+### C-4. 手書きページの h1（今回）
+
+about、glossary と guides の17ページでは、ヘッダーのサイト名とページ見出しの両方が h1 になっていました。ヘッダー側を `<p class="site-name">` に変え、CSS のセレクタも `.site-header .site-name` に合わせています（余白は従来の h1 と同じ値）。変更前後のスクリーンショット（幅375px・1280px、計38枚）はピクセル単位で一致しています。これらのページの生成元がある場合は、ヘッダー部分を同じように直してください。
+
+### C-5. ガイド・用語集（PR #1）
 
 guides/wheel-truing, spoke-tension, wheel-building, asymmetric-wheel と glossary の修正は、これらが手書きページであれば対応不要です。生成元がある場合は、PR #1 の差分をそちらにも入れてください。
 
@@ -112,3 +116,4 @@ NOMULAB_ROOT=/path/to/nomulab-en sh /path/to/nomulab-en/docs/regeneration_script
 - 何度実行しても同じ結果になります。適用済みの記事は書き換えず、og:image がすでにあるページは飛ばします。
 - PR #1 時点のファイルにこのスクリプトを実行すると、今回のコミットと完全に一致する結果になることを確認済みです（about.html と privacy-policy.html は手で直したため対象外）。今回のコミット後の状態に対して、①旧タイトルで書き戻した記事、②旧タイトルを持つ新しい記事、の2つを再現して実行し、①が元に戻り、②に区別情報が付くことも確認しています。
 - PR #1 の本文修正（A-1）とブランド名の修正（A-2）は、このスクリプトでは当て直されません。元データ側で直してください。
+- 規則を変えて対応表を作り直すときは、変更前のサイトに `run_all.sh` を実行したあと、同じ作業ディレクトリで `NOMULAB_ROOT=/path/to/nomulab-en python3 docs/regeneration_scripts_20261105/make_csv.py` を実行します。

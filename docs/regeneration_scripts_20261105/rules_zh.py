@@ -3,7 +3,7 @@ import re, datetime, unicodedata
 def nfkc(s): return unicodedata.normalize('NFKC', s)
 HUB_ALIAS = [('Evolite', r'(?:Tni\s*)?(?:Evo\s*[-]?\s*(?:[Ll]ite|ライト|[Ll]ight)|Evolight|EvoLite|Ebolite|Evorite)'),
              ('Leaf', r'(?:Leaf|Leef|Reif|Reaf)')]
-HUBWORD = r'(?:（輪轂品牌）)?\s*(?:花鼓|輪轂|鼓心|轂)'
+HUBWORD = r'(?:[（(](?:輪轂|花鼓)(?:品牌)?[）)]|(?:[（(]輪轂品牌[）)])?\s*(?:花鼓|輪轂|鼓心|轂))'
 def canon(c):
     for k, rx in HUB_ALIAS:
         if re.fullmatch(rx, c): return k
